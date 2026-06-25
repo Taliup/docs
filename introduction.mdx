@@ -1,0 +1,127 @@
+---
+title: "Taliup PHP SDK: Accept Payments with Hosted Checkout"
+sidebarTitle: "Introduction"
+description: "The official PHP SDK for Taliup. Integrate hosted payments, verify transactions, handle webhooks, and catch errors in your PHP 8.2+ application."
+---
+
+The Taliup PHP SDK gives you a clean, straightforward way to accept payments in your PHP application. Rather than building and hosting your own payment form, you redirect customers to a secure, Taliup-hosted checkout page and get notified the moment a payment is captured — no PCI scope headaches, no card-data handling on your servers.
+
+## What the SDK provides
+
+<CardGroup cols={2}>
+  <Card title="Hosted Payments" icon="credit-card" href="/quickstart">
+    Generate a checkout URL, redirect your customer, and let Taliup handle the payment form, card tokenisation, and 3-D Secure flows. Verify completed transactions server-side with `verifyTransaction()`.
+  </Card>
+  <Card title="Webhook Verification" icon="shield-check" href="/quickstart">
+    Receive a signed `payment.captured` event the moment a transaction completes, and verify the HMAC-SHA256 signature with a single method call.
+  </Card>
+  <Card title="Typed Error Handling" icon="triangle-exclamation" href="/quickstart">
+    Every API and connection failure surfaces as a single `ApiException` that exposes the HTTP status code, human-readable message, and raw response body.
+  </Card>
+  <Card title="Quickstart" icon="bolt" href="/quickstart">
+    Up and running in minutes — install via Composer, drop in your credentials, and create your first checkout URL.
+  </Card>
+</CardGroup>
+
+## Key features
+
+- **Zero configuration by default** — the SDK points at `https://taliuphq.com/api/v1` out of the box; only your credentials are required.
+- **Fluent resource interface** — access hosted-payments functionality through `$client->hostedPayments()`, keeping future resources nicely namespaced.
+- **Webhook helpers** — `Webhook::constructEvent()` verifies the signature and decodes the payload in one call; `Webhook::verify()` returns a plain `bool` when you just need a guard check.
+- **Transaction verification** — `verifyTransaction()` lets you confirm a completed transaction server-side using the token returned by `createCheckoutUrl()`.
+- **Guzzle-powered HTTP** — built on `guzzlehttp/guzzle ^7.8` with a configurable timeout and clean exception wrapping.
+- **MIT licensed** — use it freely in commercial and open-source projects alike.
+
+## Requirements
+
+| Requirement | Version |
+|---|---|
+| PHP | 8.2 or higher |
+| Composer | 2.x recommended |
+| Guzzle | Installed automatically as a dependency |
+
+## Installation
+
+Install the SDK with Composer:
+
+```bash
+composer require taliup/taliuphq-php
+```
+
+Composer will pull in `guzzlehttp/guzzle` automatically. Once the install completes, the SDK is available via your project's standard autoloader:
+
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+use Taliup\Sdk\Client;
+```
+
+## Public API surface
+
+The following classes and methods make up the full public interface of the SDK.
+
+### `Client`
+
+```php
+new Client(array $config): Client
+```
+
+Constructs the API client. Required keys: `merchant_site_id`, `merchant_secret_key`. Optional keys: `base_url` (default `https://taliuphq.com/api/v1`), `timeout` (default `10` seconds). Throws `ApiException` immediately if either required credential is missing.
+
+```php
+$client->hostedPayments(): HostedPayments
+```
+
+Returns the `HostedPayments` resource, which exposes checkout and transaction-verification methods.
+
+### `HostedPayments`
+
+```php
+$client->hostedPayments()->createCheckoutUrl(array $payload): array
+```
+
+Creates a hosted checkout session and returns `checkout_url`, `token`, and `expires_at`. Redirect your customer to `checkout_url` to collect payment.
+
+```php
+$client->hostedPayments()->verifyTransaction(array $payload): array
+```
+
+Verifies a completed transaction server-side. Pass the `token` returned by `createCheckoutUrl()` to confirm the payment outcome without relying solely on the webhook.
+
+### `Webhook`
+
+```php
+Webhook::verify(string $payload, string $signature, string $secret): bool
+```
+
+Returns `true` if the `X-Taliup-Signature` header matches an HMAC-SHA256 digest of the raw request body signed with your `merchant_secret_key`. Returns `false` otherwise — no exception is thrown.
+
+```php
+Webhook::constructEvent(string $payload, string $signature, string $secret): array
+```
+
+Verifies the signature and decodes the JSON payload in one call. Throws `ApiException` if the signature is invalid or the body is not valid JSON.
+
+### `ApiException`
+
+```php
+$e->getStatusCode(): int
+```
+
+Returns the HTTP status code of the failed request, or `0` for connection-level errors.
+
+```php
+$e->getResponseBody(): array
+```
+
+Returns the raw decoded response body as an associative array, or an empty array when no body was returned.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Quickstart" icon="rocket" href="/quickstart">
+    Create your first checkout URL and handle your first webhook in under five minutes.
+  </Card>
+</CardGroup>

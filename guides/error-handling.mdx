@@ -1,0 +1,204 @@
+---
+title: "Error Handling and Exceptions in the Taliup PHP SDK"
+sidebarTitle: "Error Handling"
+description: "Learn how to catch and handle ApiException errors from the Taliup PHP SDK, including HTTP status codes, network failures, and webhook signature errors."
+---
+
+Every error raised by the Taliup PHP SDK is thrown as a `Taliup\Sdk\Exceptions\ApiException`. This includes failed API calls, invalid responses, and webhook signature verification failures. Wrapping your SDK calls in a `try/catch` block gives you full control over how your application responds to each failure scenario.
+
+## Catching exceptions
+
+Use a standard `try/catch` block wherever you call the SDK:
+
+```php
+<?php
+
+use Taliup\Sdk\Exceptions\ApiException;
+
+try {
+    $response = $client->hostedPayments()->createCheckoutUrl([
+        'amount'    => 49.99,
+        'currency'  => 'CAD',
+        'reference' => 'ORDER-10029',
+    ]);
+} catch (ApiException $e) {
+    $message      = $e->getMessage();      // Human-readable error description
+    $statusCode   = $e->getStatusCode();   // HTTP status code (0 for connection errors)
+    $responseBody = $e->getResponseBody(); // Decoded response array from the API
+}
+```
+
+## ApiException methods
+
+`ApiException` extends PHP's built-in `RuntimeException`. The following methods are available for handling errors:
+
+| Method              | Return type | Description                                                    |
+|---------------------|-------------|----------------------------------------------------------------|
+| `getMessage()`      | `string`    | A human-readable description of the error.                     |
+| `getStatusCode()`   | `int`       | The HTTP status code returned by the API, or `0` on connection errors. |
+| `getResponseBody()` | `array`     | The decoded JSON response body from the API, if one was returned. |
+
+## HTTP status codes
+
+Use `getStatusCode()` to branch your error-handling logic by failure type:
+
+```php
+try {
+    $response = $client->hostedPayments()->createCheckoutUrl($payload);
+} catch (ApiException $e) {
+    match ($e->getStatusCode()) {
+        400 => handleBadRequest($e),
+        401 => handleUnauthorized($e),
+        422 => handleValidationError($e),
+        500 => handleServerError($e),
+        0   => handleConnectionError($e),
+        default => handleUnknownError($e),
+    };
+}
+```
+
+The table below lists the status codes you are most likely to encounter:
+
+| Status code | Meaning            | Common cause                                                              |
+|-------------|--------------------|---------------------------------------------------------------------------|
+| `400`       | Bad Request        | The request was malformed or contained an unsupported value.              |
+| `401`       | Unauthorized       | Invalid `merchant_site_id` or `merchant_secret_key`, or a failed webhook signature check. |
+| `422`       | Unprocessable Entity | A required field is missing or a field value failed validation (e.g. `amount` is negative). |
+| `500`       | Server Error       | An unexpected error occurred on the Taliup API. Try again after a short delay. |
+| `0`         | Connection Error   | The SDK could not reach the API — check network connectivity and the `base_url` configuration. |
+
+<Note>
+  A status code of `0` does not come from the Taliup API — it means the HTTP request never completed. This typically indicates a network outage, DNS failure, firewall rule, or a `timeout` value that is too low for your environment. Check your server's outbound connectivity and consider increasing the `timeout` option when instantiating `Client`.
+</Note>
+
+## Validation errors
+
+When the API returns `422`, the `getResponseBody()` array often contains field-level detail you can use for debugging:
+
+```php
+try {
+    $response = $client->hostedPayments()->createCheckoutUrl($payload);
+} catch (ApiException $e) {
+    if ($e->getStatusCode() === 422) {
+        $body = $e->getResponseBody();
+        // $body may contain a 'errors' or 'message' key with field-level detail
+        error_log('Validation errors: ' . json_encode($body));
+    }
+}
+```
+
+## Webhook signature errors
+
+`Webhook::constructEvent()` throws an `ApiException` with status code `401` and the message `'Webhook signature verification failed.'` when the signature does not match:
+
+```php
+use Taliup\Sdk\Exceptions\ApiException;
+use Taliup\Sdk\Webhook;
+
+$payload   = (string) file_get_contents('php://input');
+$signature = $_SERVER['HTTP_X_TALIUP_SIGNATURE'] ?? '';
+$secret    = (string) getenv('TALIUP_MERCHANT_SECRET_KEY');
+
+try {
+    $event = Webhook::constructEvent($payload, $signature, $secret);
+} catch (ApiException $e) {
+    // $e->getStatusCode() === 401
+    // $e->getMessage()    === 'Webhook signature verification failed.'
+    http_response_code(401);
+    exit($e->getMessage());
+}
+```
+
+A signature failure usually means one of the following:
+
+- The request did not originate from Taliup (potential spoofing attempt).
+- You read `$_POST` or called `json_decode()` before reading `php://input`, which altered the raw body.
+- The wrong secret key is set in the `TALIUP_MERCHANT_SECRET_KEY` environment variable.
+
+## Best practices
+
+<CardGroup cols={2}>
+  <Card title="Log errors server-side" icon="file-lines">
+    Always log `getMessage()`, `getStatusCode()`, and `getResponseBody()` to your server logs or error-tracking service. This gives you the context you need to diagnose issues without exposing sensitive data to users.
+
+    ```php
+    } catch (ApiException $e) {
+        error_log(sprintf(
+            '[Taliup] %d — %s | body: %s',
+            $e->getStatusCode(),
+            $e->getMessage(),
+            json_encode($e->getResponseBody())
+        ));
+    }
+    ```
+  </Card>
+
+  <Card title="Never expose raw errors to users" icon="eye-slash">
+    Display a generic, friendly message to your customers. Raw API error messages can leak implementation details, field names, or configuration hints that an attacker could use.
+
+    ```php
+    } catch (ApiException $e) {
+        // Log internally
+        error_log($e->getMessage());
+
+        // Show a safe message to the customer
+        echo 'Something went wrong. Please try again.';
+    }
+    ```
+  </Card>
+</CardGroup>
+
+## Complete error-handling example
+
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+use Taliup\Sdk\Client;
+use Taliup\Sdk\Exceptions\ApiException;
+
+$client = new Client([
+    'merchant_site_id'    => getenv('TALIUP_MERCHANT_SITE_ID'),
+    'merchant_secret_key' => getenv('TALIUP_MERCHANT_SECRET_KEY'),
+]);
+
+try {
+    $response = $client->hostedPayments()->createCheckoutUrl([
+        'amount'      => 49.99,
+        'currency'    => 'CAD',
+        'reference'   => 'ORDER-10029',
+        'redirect_url' => 'https://yoursite.com/payment/success',
+        'cancel_url'  => 'https://yoursite.com/payment/cancel',
+    ]);
+
+    header('Location: ' . $response['checkout_url']);
+    exit;
+
+} catch (ApiException $e) {
+    // Log the full error for internal investigation
+    error_log(sprintf(
+        '[Taliup] status=%d message=%s body=%s',
+        $e->getStatusCode(),
+        $e->getMessage(),
+        json_encode($e->getResponseBody())
+    ));
+
+    // Branch on status code for targeted handling
+    if ($e->getStatusCode() === 0) {
+        // Network / connectivity issue
+        $userMessage = 'We could not connect to the payment provider. Please try again in a moment.';
+    } elseif ($e->getStatusCode() === 401) {
+        // Credentials misconfigured — alert your team
+        $userMessage = 'Payment configuration error. Please contact support.';
+    } elseif ($e->getStatusCode() === 422) {
+        // Bad payload — fixable in code
+        $userMessage = 'There was a problem with your order details. Please try again.';
+    } else {
+        $userMessage = 'Something went wrong. Please try again.';
+    }
+
+    http_response_code(500);
+    exit($userMessage);
+}
+```

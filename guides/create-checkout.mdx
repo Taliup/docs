@@ -1,0 +1,217 @@
+---
+title: "Create a Hosted Checkout Session with Taliup PHP SDK"
+sidebarTitle: "Create Checkout"
+description: "Learn how to create a hosted payment checkout session, redirect your customer to complete payment, and handle the return with the Taliup PHP SDK."
+---
+
+The Taliup PHP SDK lets you generate a secure, hosted payment page in just a few lines of code. You build a checkout payload, call `createCheckoutUrl()`, and redirect your customer to the returned URL — Taliup handles the payment form, card processing, and post-payment redirect for you.
+
+<Steps>
+  <Step title="Install and configure the client">
+    Install the SDK via Composer. PHP 8.2 or higher is required.
+
+    ```bash
+    composer require taliup/taliuphq-php
+    ```
+
+    Get your credentials from **Taliup → Settings → Payments → Credentials**, then instantiate the `Client`:
+
+    ```php
+    <?php
+
+    require __DIR__ . '/vendor/autoload.php';
+
+    use Taliup\Sdk\Client;
+
+    $client = new Client([
+        'merchant_site_id'    => 'your_merchant_site_id',
+        'merchant_secret_key' => 'your_merchant_secret_key',
+    ]);
+    ```
+
+    The following configuration options are available:
+
+    | Option               | Required | Default                          | Description                  |
+    |----------------------|----------|----------------------------------|------------------------------|
+    | `merchant_site_id`   | Yes      | —                                | Your Merchant Site ID        |
+    | `merchant_secret_key`| Yes      | —                                | Your Merchant Secret Key     |
+    | `base_url`           | No       | `https://taliuphq.com/api/v1`    | API base URL                 |
+    | `timeout`            | No       | `10`                             | HTTP timeout in seconds      |
+  </Step>
+
+  <Step title="Build the checkout payload">
+    Construct the payload array with the fields you need. Only `amount` is strictly required, but including `reference`, `redirect_url`, `cancel_url`, and customer details is strongly recommended.
+
+    <Tip>
+      Always pass a `reference` that maps to your internal order ID. Taliup returns this value in the webhook, so you can reliably reconcile payments without querying your database by transaction ID.
+    </Tip>
+
+    ```php
+    $payload = [
+        // Required
+        'amount'       => 49.99,
+
+        // Recommended
+        'currency'     => 'CAD',                                    // 'CAD' or 'USD'. Defaults to merchant's currency.
+        'reference'    => 'ORDER-10029',                            // Your order ID — returned in the webhook
+        'redirect_url' => 'https://yoursite.com/payment/success',   // Customer lands here after payment
+        'cancel_url'   => 'https://yoursite.com/payment/cancel',    // Customer lands here if they cancel
+
+        // Optional customer info — pre-fills the checkout form
+        'first_name'   => 'Jane',
+        'last_name'    => 'Doe',
+        'email'        => 'jane@example.com',
+
+        // Optional — itemised line items
+        'items' => [
+            [
+                'product_id' => 'SKU-001',
+                'name'       => 'Widget',
+                'quantity'   => 2,
+                'price'      => 24.99,
+                'subtotal'   => 49.98,
+                'tax_total'  => 0.00,
+                'sku'        => 'SKU-001',
+            ],
+        ],
+
+        // Optional — webhook called after payment is captured
+        'webhook_url'        => 'https://yoursite.com/webhooks/taliup',
+
+        // Optional — tag the source for reporting
+        'external_source'    => 'my-platform',
+
+        // Optional — session expiry in minutes (5–60, default 30)
+        'expires_in_minutes' => 30,
+    ];
+    ```
+
+    The session remains valid for between 5 and 60 minutes. If you omit `expires_in_minutes`, it defaults to 30 minutes. Once the session expires, the customer will need to start a new checkout.
+  </Step>
+
+  <Step title="Call createCheckoutUrl()">
+    Pass your payload to `createCheckoutUrl()`. The SDK sends the request to the Taliup API and returns an associative array with the hosted checkout details.
+
+    ```php
+    use Taliup\Sdk\Exceptions\ApiException;
+
+    try {
+        $response = $client->hostedPayments()->createCheckoutUrl($payload);
+    } catch (ApiException $e) {
+        // See the Error Handling guide for details
+        error_log('Taliup error: ' . $e->getMessage());
+        // Show a friendly error page to your customer
+    }
+    ```
+
+    A successful response contains three fields:
+
+    | Field        | Type   | Description                                          |
+    |--------------|--------|------------------------------------------------------|
+    | `checkout_url` | string | The hosted payment page URL. Redirect your customer here. |
+    | `token`       | string | The session token for this checkout.                 |
+    | `expires_at`  | string | ISO 8601 timestamp when the session expires.         |
+
+    ```php
+    $checkoutUrl = $response['checkout_url']; // Redirect customer here
+    $token       = $response['token'];        // Session token
+    $expiresAt   = $response['expires_at'];   // e.g. "2026-05-14T18:00:00+00:00"
+    ```
+  </Step>
+
+  <Step title="Redirect the customer to checkout_url">
+    Once you have the `checkout_url`, redirect your customer's browser to it immediately. The customer completes their payment on Taliup's secure hosted page.
+
+    ```php
+    header('Location: ' . $checkoutUrl);
+    exit;
+    ```
+
+    <Note>
+      `redirect_url`, `cancel_url`, and `webhook_url` must all use **HTTPS**. Plain HTTP URLs will be rejected by the API.
+    </Note>
+  </Step>
+
+  <Step title="Handle the return">
+    After the payment is completed or abandoned, Taliup redirects the customer back to one of two URLs you provided in the payload:
+
+    - **`redirect_url`** — the customer completed the payment flow (this does not guarantee approval; always confirm via the webhook).
+    - **`cancel_url`** — the customer clicked **Cancel** or closed the checkout page.
+
+    Handle both routes in your application:
+
+    ```php
+    // https://yoursite.com/payment/success
+    // The customer has returned after attempting payment.
+    // Do NOT mark the order as paid here — wait for the webhook instead.
+    echo 'Thank you! We are confirming your payment…';
+    ```
+
+    ```php
+    // https://yoursite.com/payment/cancel
+    // The customer cancelled or left the checkout page.
+    echo 'Your order has not been placed. You can try again below.';
+    ```
+
+    <Warning>
+      Do not fulfil orders based solely on the `redirect_url` callback. A redirect to that URL means the payment flow ended, not that the payment was approved. Always wait for a webhook event with `status === 'approved'` before marking an order as paid.
+    </Warning>
+  </Step>
+</Steps>
+
+## Complete example
+
+The following snippet combines every step above into a single file you can adapt as a starting point:
+
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+use Taliup\Sdk\Client;
+use Taliup\Sdk\Exceptions\ApiException;
+
+$client = new Client([
+    'merchant_site_id'    => getenv('TALIUP_MERCHANT_SITE_ID'),
+    'merchant_secret_key' => getenv('TALIUP_MERCHANT_SECRET_KEY'),
+]);
+
+try {
+    $response = $client->hostedPayments()->createCheckoutUrl([
+        'amount'             => 49.99,
+        'currency'           => 'CAD',
+        'reference'          => 'ORDER-10029',
+        'redirect_url'       => 'https://yoursite.com/payment/success',
+        'cancel_url'         => 'https://yoursite.com/payment/cancel',
+        'first_name'         => 'Jane',
+        'last_name'          => 'Doe',
+        'email'              => 'jane@example.com',
+        'items'              => [
+            [
+                'product_id' => 'SKU-001',
+                'name'       => 'Widget',
+                'quantity'   => 2,
+                'price'      => 24.99,
+                'subtotal'   => 49.98,
+                'tax_total'  => 0.00,
+                'sku'        => 'SKU-001',
+            ],
+        ],
+        'webhook_url'        => 'https://yoursite.com/webhooks/taliup',
+        'external_source'    => 'my-platform',
+        'expires_in_minutes' => 30,
+    ]);
+} catch (ApiException $e) {
+    error_log(sprintf(
+        'Taliup checkout error [%d]: %s',
+        $e->getStatusCode(),
+        $e->getMessage()
+    ));
+    http_response_code(500);
+    exit('Unable to create checkout session. Please try again.');
+}
+
+// Redirect the customer to the hosted payment page
+header('Location: ' . $response['checkout_url']);
+exit;
+```

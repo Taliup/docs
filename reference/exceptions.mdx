@@ -1,0 +1,113 @@
+---
+title: "Taliup PHP SDK ApiException — Error Handling Reference"
+sidebarTitle: "ApiException"
+description: "Complete reference for the Taliup PHP SDK ApiException class: constructor, status codes, response body inspection, and error-handling patterns."
+---
+
+`Taliup\Sdk\Exceptions\ApiException` is thrown for every error that occurs inside the Taliup PHP SDK — including failed API requests, connection timeouts, invalid webhook signatures, and bad configuration. It extends PHP's built-in `RuntimeException`, so you can catch it alongside other runtime errors or on its own.
+
+```php
+Taliup\Sdk\Exceptions\ApiException extends RuntimeException
+```
+
+## Constructor
+
+```php
+new ApiException(string $message, int $statusCode, array $responseBody = [])
+```
+
+You will not typically construct `ApiException` yourself — the SDK throws it for you. The constructor signature is documented here for completeness and for use in testing or custom error handling.
+
+<ParamField body="message" type="string" required>
+  Human-readable description of the error.
+</ParamField>
+
+<ParamField body="statusCode" type="int" required>
+  HTTP status code associated with the error. Pass `0` for errors that occurred before any HTTP response was received (e.g. connection timeouts, missing credentials).
+</ParamField>
+
+<ParamField body="responseBody" type="array">
+  Decoded response body from the API. Defaults to `[]` when no response body is available.
+</ParamField>
+
+## Methods
+
+### `getMessage(): string`
+
+Inherited from `RuntimeException`. Returns a human-readable description of the error, sourced from the API `message` field when available.
+
+```php
+$e->getMessage(); // e.g. "Missing merchant credentials."
+```
+
+---
+
+### `getStatusCode(): int`
+
+Returns the HTTP status code associated with the error.
+
+```php
+$e->getStatusCode(); // e.g. 422
+```
+
+Returns `0` for errors that occurred before an HTTP response was received — for example, a connection timeout or a missing credential detected client-side.
+
+---
+
+### `getResponseBody(): array`
+
+Returns the raw decoded response body from the API as an associative array. Useful for inspecting validation errors or additional context returned by the server.
+
+```php
+$e->getResponseBody(); // e.g. ['message' => 'Validation failed', 'errors' => [...]]
+```
+
+Returns an empty array `[]` when no response body is available (such as connection errors or client-side validation failures).
+
+## Common status codes
+
+| Code | Meaning |
+|---|---|
+| `0` | No HTTP response received. Covers connection errors, timeouts, and client-side failures (e.g. missing credentials). |
+| `400` | Bad request — the request was malformed or the webhook payload was not valid JSON. |
+| `401` | Unauthorized — invalid or missing credentials, or webhook signature verification failed. |
+| `422` | Unprocessable entity — the request was well-formed but failed validation. Check `getResponseBody()` for field-level error details. |
+| `500` | Internal server error — an unexpected error occurred on Taliup's servers. |
+
+## Example
+
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+use Taliup\Sdk\Client;
+use Taliup\Sdk\Exceptions\ApiException;
+
+$client = new Client([
+    'merchant_site_id'    => getenv('TALIUP_MERCHANT_SITE_ID'),
+    'merchant_secret_key' => getenv('TALIUP_MERCHANT_SECRET_KEY'),
+]);
+
+try {
+    $response = $client->hostedPayments()->createCheckoutUrl([
+        'amount'   => 49.99,
+        'currency' => 'CAD',
+    ]);
+} catch (ApiException $e) {
+    $message    = $e->getMessage();      // Human-readable error string
+    $statusCode = $e->getStatusCode();   // HTTP status code (0 for connection errors)
+    $body       = $e->getResponseBody(); // Raw decoded response array
+
+    match ($statusCode) {
+        0   => error_log("Connection error: {$message}"),
+        401 => error_log("Authentication failed: {$message}"),
+        422 => error_log("Validation error: " . json_encode($body)),
+        default => error_log("API error {$statusCode}: {$message}"),
+    };
+}
+```
+
+<Note>
+  For webhook errors, `Webhook::constructEvent()` throws `ApiException` with status `401` for an invalid signature and `400` for a non-JSON payload. See the [Webhook reference](/reference/webhook) for a full example.
+</Note>

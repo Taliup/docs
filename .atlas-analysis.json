@@ -1,0 +1,73 @@
+{
+  "projectType": "sdk-library",
+  "projectName": "Taliup",
+  "projectDescription": "Official PHP SDK for accepting payments through the Taliup hosted payments API.",
+  "theme": "luma",
+  "primaryColor": "#b2bdda",
+  "lightColor": "#696cb2",
+  "darkColor": "#dcdcea",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "quickstart"
+            ]
+          },
+          {
+            "group": "Core Concepts",
+            "pages": [
+              "concepts/authentication",
+              "concepts/hosted-payments",
+              "concepts/webhooks"
+            ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              "guides/create-checkout",
+              "guides/handle-webhooks",
+              "guides/error-handling"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "SDK Reference",
+        "groups": [
+          {
+            "group": "Client",
+            "pages": [
+              "reference/client",
+              "reference/hosted-payments",
+              "reference/webhook",
+              "reference/exceptions"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Hosted payment page generation — redirect customers to a Taliup-hosted checkout URL",
+    "Webhook signature verification with HMAC-SHA256",
+    "Structured error handling via ApiException",
+    "Support for CAD and USD currencies",
+    "Optional line-item details, customer info, and session expiry",
+    "Transaction verification endpoint"
+  ],
+  "publicApiSurface": [
+    "Client::__construct(array $config): Client",
+    "Client::hostedPayments(): HostedPayments",
+    "HostedPayments::createCheckoutUrl(array $payload): array",
+    "HostedPayments::verifyTransaction(array $payload): array",
+    "Webhook::verify(string $payload, string $signature, string $secret): bool",
+    "Webhook::constructEvent(string $payload, string $signature, string $secret): array",
+    "ApiException::getStatusCode(): int",
+    "ApiException::getResponseBody(): array"
+  ]
+}

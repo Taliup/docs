@@ -1,0 +1,153 @@
+---
+title: "Taliup PHP SDK Webhook Class — Signature Verification"
+sidebarTitle: "Webhook"
+description: "Complete reference for the Taliup PHP SDK Webhook class: verify HMAC-SHA256 signatures and decode incoming webhook event payloads safely."
+---
+
+`Taliup\Sdk\Webhook` is a static utility class for verifying Taliup webhook signatures. After a payment is captured, Taliup sends a `POST` request to your `webhook_url` with a JSON body and an `X-Taliup-Signature` header. You must verify this signature before processing the event.
+
+The signature is computed as `sha256=<HMAC-SHA256>` of the **raw request body**, signed with your `merchant_secret_key`.
+
+<Warning>
+  Always verify the webhook signature before trusting the payload or updating order state. Skipping verification opens your endpoint to spoofed events.
+</Warning>
+
+## Methods
+
+### `Webhook::constructEvent()`
+
+```php
+Webhook::constructEvent(string $payload, string $signature, string $secret): array
+```
+
+Verifies the signature and returns the decoded JSON payload as an associative array. This is the recommended method for production webhook handlers — it throws an `ApiException` on failure so you can respond with an appropriate HTTP status code.
+
+#### Parameters
+
+<ParamField body="payload" type="string" required>
+  The raw request body. Read it with `file_get_contents('php://input')` **before** any framework middleware parses it.
+</ParamField>
+
+<ParamField body="signature" type="string" required>
+  The value of the `X-Taliup-Signature` HTTP header sent with the webhook request.
+</ParamField>
+
+<ParamField body="secret" type="string" required>
+  Your Merchant Secret Key. This is the same key you pass to the `Client` as `merchant_secret_key`.
+</ParamField>
+
+#### Returns
+
+An associative array containing the decoded webhook event payload.
+
+#### Throws
+
+- `ApiException` with status `401` if the signature does not match.
+- `ApiException` with status `400` if the payload is not valid JSON.
+
+#### Example
+
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+use Taliup\Sdk\Exceptions\ApiException;
+use Taliup\Sdk\Webhook;
+
+$secret    = getenv('TALIUP_MERCHANT_SECRET_KEY');
+$payload   = file_get_contents('php://input');
+$signature = $_SERVER['HTTP_X_TALIUP_SIGNATURE'] ?? '';
+
+try {
+    $event = Webhook::constructEvent($payload, $signature, $secret);
+} catch (ApiException $e) {
+    // 401 → invalid signature, 400 → bad JSON
+    http_response_code($e->getStatusCode());
+    exit($e->getMessage());
+}
+
+// Safe to process the event
+$reference = $event['reference'];  // Your order ID
+$status    = $event['status'];     // 'approved', 'declined', etc.
+
+if ($status === 'approved') {
+    // Mark the order as paid in your database
+}
+
+http_response_code(200);
+echo json_encode(['received' => true]);
+```
+
+---
+
+### `Webhook::verify()`
+
+```php
+Webhook::verify(string $payload, string $signature, string $secret): bool
+```
+
+Verifies the webhook signature and returns `true` if valid, `false` otherwise. Unlike `constructEvent()`, this method never throws — it is well-suited for middleware guards or situations where you want to handle the failure yourself.
+
+#### Parameters
+
+<ParamField body="payload" type="string" required>
+  The raw request body. Read it with `file_get_contents('php://input')`.
+</ParamField>
+
+<ParamField body="signature" type="string" required>
+  The value of the `X-Taliup-Signature` HTTP header.
+</ParamField>
+
+<ParamField body="secret" type="string" required>
+  Your Merchant Secret Key.
+</ParamField>
+
+#### Returns
+
+`true` if the HMAC-SHA256 signature matches; `false` otherwise. Also returns `false` if any argument is an empty string.
+
+#### Example
+
+```php
+<?php
+
+use Taliup\Sdk\Webhook;
+
+$isValid = Webhook::verify(
+    file_get_contents('php://input'),
+    $_SERVER['HTTP_X_TALIUP_SIGNATURE'] ?? '',
+    getenv('TALIUP_MERCHANT_SECRET_KEY')
+);
+
+if (!$isValid) {
+    http_response_code(401);
+    exit('Invalid signature.');
+}
+
+// Decode and handle the payload yourself
+$event = json_decode(file_get_contents('php://input'), true);
+```
+
+<Note>
+  **`constructEvent` vs `verify`** — Use `constructEvent()` in most webhook handlers: it verifies the signature, decodes the JSON, and surfaces errors as typed exceptions that map directly to HTTP status codes. Use `verify()` only when you need a simple boolean gate and want to control decoding and error handling yourself.
+</Note>
+
+## Webhook payload reference
+
+Below is a representative payload sent by Taliup after a payment is captured:
+
+```json
+{
+    "event":              "payment.captured",
+    "merchant_site_id":   "your_merchant_site_id",
+    "transaction_id":     "abc123",
+    "amount":             "49.99",
+    "currency":           "CAD",
+    "status":             "approved",
+    "card_type":          "VISA",
+    "card_number_masked": "41**********1111",
+    "reference":          "ORDER-10029",
+    "timestamp":          "2026-05-14T18:00:00+00:00"
+}
+```

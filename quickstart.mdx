@@ -1,0 +1,226 @@
+---
+title: "Taliup PHP SDK: Quickstart Guide to Accepting Payments"
+sidebarTitle: "Quickstart"
+description: "Install the Taliup PHP SDK, create a hosted checkout URL, redirect your customer, verify the payment webhook, and confirm the transaction — end to end."
+---
+
+This guide walks you through a complete payment flow using the Taliup PHP SDK. By the end you'll have installed the SDK, initialised the client with your credentials, generated a hosted checkout URL, redirected a customer, and handled the webhook Taliup fires once their payment is captured.
+
+<Steps>
+
+  <Step title="Install the SDK">
+    Add the SDK to your project with Composer:
+
+    ```bash
+    composer require taliup/taliuphq-php
+    ```
+
+    The SDK requires **PHP 8.2+**. Guzzle is pulled in automatically as a dependency — there are no other manual steps.
+  </Step>
+
+  <Step title="Get your credentials">
+    Log in to your Taliup dashboard and navigate to **Taliup → Settings → Payments → Credentials**.
+
+    You need two values:
+
+    | Credential | Description |
+    |---|---|
+    | `merchant_site_id` | Identifies your merchant site on the Taliup platform |
+    | `merchant_secret_key` | Signs API requests and authenticates webhook signatures |
+
+    <Tip>
+      Store both values as environment variables (e.g. in a `.env` file) rather than hard-coding them in source files. The examples below use `getenv()` to follow that practice.
+    </Tip>
+  </Step>
+
+  <Step title="Initialise the client">
+    Load the Composer autoloader and create a `Client` instance with your credentials:
+
+    ```php
+    <?php
+
+    require __DIR__ . '/vendor/autoload.php';
+
+    use Taliup\Sdk\Client;
+
+    $client = new Client([
+        'merchant_site_id'    => getenv('TALIUP_MERCHANT_SITE_ID'),
+        'merchant_secret_key' => getenv('TALIUP_MERCHANT_SECRET_KEY'),
+    ]);
+    ```
+
+    The `base_url` defaults to `https://taliuphq.com/api/v1` and the HTTP `timeout` defaults to `10` seconds — you can override either if needed:
+
+    ```php
+    $client = new Client([
+        'merchant_site_id'    => getenv('TALIUP_MERCHANT_SITE_ID'),
+        'merchant_secret_key' => getenv('TALIUP_MERCHANT_SECRET_KEY'),
+        'base_url'            => 'https://taliuphq.com/api/v1', // optional
+        'timeout'             => 15,                             // optional, seconds
+    ]);
+    ```
+
+    The constructor throws `Taliup\Sdk\Exceptions\ApiException` immediately if either required credential is empty, so misconfiguration surfaces at boot time rather than at the first API call.
+  </Step>
+
+  <Step title="Create a checkout URL and redirect the customer">
+    Call `createCheckoutUrl()` with the details of the order, then redirect the customer to the returned URL:
+
+    ```php
+    <?php
+
+    use Taliup\Sdk\Exceptions\ApiException;
+
+    try {
+        $response = $client->hostedPayments()->createCheckoutUrl([
+            // Required
+            'amount'       => 49.99,
+
+            // Recommended
+            'currency'     => 'CAD',                                   // 'CAD' or 'USD'
+            'reference'    => 'ORDER-10029',                           // your order ID — echoed back in the webhook
+            'redirect_url' => 'https://yoursite.com/payment/success',
+            'cancel_url'   => 'https://yoursite.com/payment/cancel',
+
+            // Optional — pre-fill the customer's details on the checkout page
+            'first_name'   => 'Jane',
+            'last_name'    => 'Doe',
+            'email'        => 'jane@example.com',
+
+            // Optional — line items
+            'items' => [
+                [
+                    'product_id' => 'SKU-001',
+                    'name'       => 'Widget',
+                    'quantity'   => 2,
+                    'price'      => 24.99,
+                    'subtotal'   => 49.98,
+                    'tax_total'  => 0.00,
+                    'sku'        => 'SKU-001',
+                ],
+            ],
+
+            // Optional — webhook called after payment is captured
+            'webhook_url' => 'https://yoursite.com/webhooks/taliup',
+
+            // Optional — tag the source for reporting
+            'external_source' => 'my-platform',
+
+            // Optional — session expiry (5–60 minutes, default 30)
+            'expires_in_minutes' => 30,
+        ]);
+    } catch (ApiException $e) {
+        // $e->getMessage()      — human-readable description
+        // $e->getStatusCode()   — HTTP status (0 for connection errors)
+        // $e->getResponseBody() — raw decoded response array
+        error_log('Taliup error: ' . $e->getMessage());
+        // show your error page here
+        exit;
+    }
+
+    $checkoutUrl = $response['checkout_url']; // redirect the customer here
+    $token       = $response['token'];        // session token — save this for verifyTransaction()
+    $expiresAt   = $response['expires_at'];  // ISO 8601 expiry timestamp
+
+    // Redirect the customer to the hosted checkout page
+    header('Location: ' . $checkoutUrl);
+    exit;
+    ```
+
+    <Note>
+      `redirect_url`, `cancel_url`, and `webhook_url` must all use **HTTPS**. Plain HTTP URLs are rejected by the API.
+    </Note>
+  </Step>
+
+  <Step title="Handle the webhook after payment">
+    After a payment is captured, Taliup sends a `POST` request to your `webhook_url` with a JSON body and an `X-Taliup-Signature` header. Always verify the signature before acting on the event.
+
+    ```php
+    <?php
+
+    require __DIR__ . '/vendor/autoload.php';
+
+    use Taliup\Sdk\Exceptions\ApiException;
+    use Taliup\Sdk\Webhook;
+
+    $secret    = getenv('TALIUP_MERCHANT_SECRET_KEY');
+    $payload   = file_get_contents('php://input');
+    $signature = $_SERVER['HTTP_X_TALIUP_SIGNATURE'] ?? '';
+
+    try {
+        $event = Webhook::constructEvent($payload, $signature, $secret);
+    } catch (ApiException $e) {
+        // Signature verification failed — reject the request
+        http_response_code(401);
+        exit($e->getMessage());
+    }
+
+    $reference = $event['reference'];  // the order ID you passed to createCheckoutUrl()
+    $status    = $event['status'];     // 'approved', 'declined', etc.
+
+    if ($status === 'approved') {
+        // mark the order as paid in your database
+    }
+
+    http_response_code(200);
+    echo json_encode(['received' => true]);
+    ```
+
+    `Webhook::constructEvent()` verifies the HMAC-SHA256 signature and decodes the JSON body in one call, throwing `ApiException` if the signature is invalid. If you only need a quick boolean guard, use `Webhook::verify()` instead:
+
+    ```php
+    $isValid = Webhook::verify($payload, $signature, $secret); // bool
+    ```
+
+    A successful `payment.captured` event looks like this:
+
+    ```json
+    {
+        "event":              "payment.captured",
+        "merchant_site_id":   "your_merchant_site_id",
+        "transaction_id":     "abc123",
+        "amount":             "49.99",
+        "currency":           "CAD",
+        "status":             "approved",
+        "card_type":          "VISA",
+        "card_number_masked": "41**********1111",
+        "reference":          "ORDER-10029",
+        "timestamp":          "2026-05-14T18:00:00+00:00"
+    }
+    ```
+  </Step>
+
+  <Step title="Verify the transaction server-side (optional)">
+    In addition to webhook events, you can confirm a completed transaction programmatically using the `token` returned by `createCheckoutUrl()`. This is useful as a fallback or for server-to-server confirmation flows.
+
+    ```php
+    <?php
+
+    use Taliup\Sdk\Exceptions\ApiException;
+
+    try {
+        $result = $client->hostedPayments()->verifyTransaction([
+            'token' => $token, // the token from createCheckoutUrl()
+        ]);
+    } catch (ApiException $e) {
+        error_log('Verification error: ' . $e->getMessage());
+        exit;
+    }
+
+    $status = $result['status']; // 'approved', 'declined', etc.
+    ```
+
+    <Note>
+      `verifyTransaction()` is a server-side check against the Taliup API. Use it alongside — not as a replacement for — webhook verification.
+    </Note>
+  </Step>
+
+</Steps>
+
+## What's next?
+
+<CardGroup cols={2}>
+  <Card title="Introduction" icon="book-open" href="/introduction">
+    Explore the full public API surface — every method, parameter, and error type documented in one place.
+  </Card>
+</CardGroup>

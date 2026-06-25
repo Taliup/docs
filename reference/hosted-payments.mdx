@@ -1,0 +1,194 @@
+---
+title: "Taliup PHP SDK HostedPayments — Checkout and Verify"
+sidebarTitle: "HostedPayments"
+description: "Complete reference for the Taliup PHP SDK HostedPayments class: create hosted checkout URLs, verify transactions, and handle API responses."
+---
+
+`Taliup\Sdk\Resources\HostedPayments` provides methods for creating hosted checkout sessions and verifying transactions. You access it through the `Client` — never instantiate it directly.
+
+Retrieve the resource by calling `hostedPayments()` on a configured `Client` instance:
+
+```php
+$hostedPayments = $client->hostedPayments();
+```
+
+## Methods
+
+### `createCheckoutUrl(array $payload): array`
+
+Creates a hosted payment page and returns the URL to redirect your customer to. The customer enters their card details on Taliup's secure hosted page; your server is notified of the result via webhook.
+
+**Endpoint:** `POST /hosted-payments/checkout-url`
+
+#### Parameters
+
+<ParamField body="amount" type="float" required>
+  The total amount to charge. For example, `49.99`.
+</ParamField>
+
+<ParamField body="currency" type="string">
+  ISO 4217 currency code. Accepted values: `CAD`, `USD`. Defaults to the currency configured on your merchant account.
+</ParamField>
+
+<ParamField body="reference" type="string">
+  Your internal order or reference ID. This value is echoed back in the webhook payload, making it easy to reconcile payments with your own records.
+</ParamField>
+
+<ParamField body="redirect_url" type="string">
+  HTTPS URL to redirect the customer to after a successful payment. Must use `https://`.
+</ParamField>
+
+<ParamField body="cancel_url" type="string">
+  HTTPS URL to redirect the customer to if they cancel the payment. Must use `https://`.
+</ParamField>
+
+<ParamField body="first_name" type="string">
+  Customer's first name. Pre-fills the checkout form if provided.
+</ParamField>
+
+<ParamField body="last_name" type="string">
+  Customer's last name. Pre-fills the checkout form if provided.
+</ParamField>
+
+<ParamField body="email" type="string">
+  Customer's email address. Pre-fills the checkout form if provided.
+</ParamField>
+
+<ParamField body="items" type="array">
+  Array of line-item objects to display on the checkout page. Each element may include:
+
+  <Expandable title="Item fields">
+    <ParamField body="product_id" type="string">
+      Your internal product identifier.
+    </ParamField>
+
+    <ParamField body="name" type="string">
+      Display name of the product.
+    </ParamField>
+
+    <ParamField body="quantity" type="int">
+      Number of units.
+    </ParamField>
+
+    <ParamField body="price" type="float">
+      Unit price of the product.
+    </ParamField>
+
+    <ParamField body="subtotal" type="float">
+      Line subtotal (before tax).
+    </ParamField>
+
+    <ParamField body="tax_total" type="float">
+      Tax amount for this line item.
+    </ParamField>
+
+    <ParamField body="sku" type="string">
+      Stock-keeping unit identifier.
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField body="webhook_url" type="string">
+  HTTPS URL that Taliup will `POST` a notification to after the payment is captured. Must use `https://`. See the [Webhook reference](/reference/webhook) for signature verification.
+</ParamField>
+
+<ParamField body="external_source" type="string">
+  A free-form tag used to identify the originating platform or integration (e.g. `"my-storefront"`). Appears in reporting.
+</ParamField>
+
+<ParamField body="expires_in_minutes" type="int">
+  How long the checkout session stays valid, in minutes. Must be between `5` and `60`. Defaults to `30`.
+</ParamField>
+
+#### Response
+
+<ResponseField name="checkout_url" type="string">
+  The hosted checkout page URL. Redirect your customer here immediately after receiving this response.
+</ResponseField>
+
+<ResponseField name="token" type="string">
+  Unique session token that identifies this checkout attempt. Store it if you need to reference the session later.
+</ResponseField>
+
+<ResponseField name="expires_at" type="string">
+  ISO 8601 timestamp indicating when the session expires (e.g. `2026-05-14T18:30:00+00:00`).
+</ResponseField>
+
+#### Example
+
+```php
+<?php
+
+use Taliup\Sdk\Exceptions\ApiException;
+
+try {
+    $response = $client->hostedPayments()->createCheckoutUrl([
+        // Required
+        'amount'       => 49.99,
+
+        // Recommended
+        'currency'     => 'CAD',
+        'reference'    => 'ORDER-10029',
+        'redirect_url' => 'https://yoursite.com/payment/success',
+        'cancel_url'   => 'https://yoursite.com/payment/cancel',
+
+        // Optional customer info
+        'first_name'   => 'Jane',
+        'last_name'    => 'Doe',
+        'email'        => 'jane@example.com',
+
+        // Optional line items
+        'items' => [
+            [
+                'product_id' => 'SKU-001',
+                'name'       => 'Widget',
+                'quantity'   => 2,
+                'price'      => 24.99,
+                'subtotal'   => 49.98,
+                'tax_total'  => 0.00,
+                'sku'        => 'SKU-001',
+            ],
+        ],
+
+        // Optional webhook + session options
+        'webhook_url'        => 'https://yoursite.com/webhooks/taliup',
+        'external_source'    => 'my-platform',
+        'expires_in_minutes' => 30,
+    ]);
+
+    // Redirect the customer to the hosted checkout page
+    header('Location: ' . $response['checkout_url']);
+    exit;
+} catch (ApiException $e) {
+    echo $e->getMessage();      // Human-readable error
+    echo $e->getStatusCode();   // HTTP status code
+}
+```
+
+<Warning>
+  `redirect_url`, `cancel_url`, and `webhook_url` must all use `https://`. Plain HTTP URLs will be rejected.
+</Warning>
+
+---
+
+### `verifyTransaction(array $payload): array`
+
+Verifies the status of a previously created transaction. Use this to confirm a payment server-side when you prefer polling over webhooks, or as a secondary check after receiving a webhook.
+
+**Endpoint:** `POST /hosted-payments/verify-transaction`
+
+#### Example
+
+```php
+<?php
+
+use Taliup\Sdk\Exceptions\ApiException;
+
+try {
+    $result = $client->hostedPayments()->verifyTransaction([
+        'token' => $sessionToken, // token returned by createCheckoutUrl
+    ]);
+} catch (ApiException $e) {
+    echo $e->getMessage();
+}
+```

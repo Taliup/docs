@@ -1,0 +1,86 @@
+---
+title: "Authenticate API Requests with Your Taliup Credentials"
+sidebarTitle: "Authentication"
+description: "Learn how to configure your Merchant Site ID and Merchant Secret Key to authenticate every API request made through the Taliup PHP SDK."
+---
+
+Every request you make through the Taliup PHP SDK is authenticated using two merchant credentials: a **Merchant Site ID** and a **Merchant Secret Key**. The SDK attaches these automatically as HTTP headers (`X-Merchant-Site-Id` and `X-Merchant-Secret-Key`) on every outgoing API call — you never need to set headers manually.
+
+## Get your credentials
+
+You can find your credentials in the Taliup dashboard:
+
+<Steps>
+  <Step title="Open your Taliup dashboard">
+    Log in to your Taliup account and navigate to **Settings**.
+  </Step>
+  <Step title="Go to Payments">
+    Select **Payments** from the Settings menu.
+  </Step>
+  <Step title="Copy your credentials">
+    Under **Credentials**, copy your **Merchant Site ID** and **Merchant Secret Key**.
+  </Step>
+</Steps>
+
+## Initialize the client
+
+Pass your credentials when you create a new `Client` instance. The SDK validates that both values are present at construction time and throws an `ApiException` immediately if either is missing — so you catch configuration errors before any API call is made.
+
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+use Taliup\Sdk\Client;
+
+$client = new Client([
+    'merchant_site_id'    => getenv('TALIUP_MERCHANT_SITE_ID'),
+    'merchant_secret_key' => getenv('TALIUP_MERCHANT_SECRET_KEY'),
+]);
+```
+
+<Tip>
+  Read credentials from environment variables (as shown above) rather than hardcoding them. Most hosting platforms and CI systems let you set environment variables through a dashboard or secrets manager.
+</Tip>
+
+## Configuration options
+
+| Option | Required | Default | Description |
+|---|---|---|---|
+| `merchant_site_id` | Yes | — | Your Merchant Site ID |
+| `merchant_secret_key` | Yes | — | Your Merchant Secret Key |
+| `base_url` | No | `https://taliuphq.com/api/v1` | API base URL |
+| `timeout` | No | `10` | HTTP timeout in seconds |
+
+You can override `base_url` to point at a staging environment, or increase `timeout` for slower network conditions:
+
+```php
+$client = new Client([
+    'merchant_site_id'    => getenv('TALIUP_MERCHANT_SITE_ID'),
+    'merchant_secret_key' => getenv('TALIUP_MERCHANT_SECRET_KEY'),
+    'base_url'            => 'https://taliuphq.com/api/v1',
+    'timeout'             => 30,
+]);
+```
+
+## How credentials are sent
+
+Under the hood, every request the `Client` makes includes these HTTP headers:
+
+| Header | Value |
+|---|---|
+| `X-Merchant-Site-Id` | Your `merchant_site_id` |
+| `X-Merchant-Secret-Key` | Your `merchant_secret_key` |
+
+You never construct or attach these headers yourself — the SDK handles it automatically on every outgoing API call.
+
+## Security best practices
+
+<Warning>
+  Never commit your `merchant_secret_key` (or `merchant_site_id`) to source control. Treat the secret key the same way you would a database password — if it is ever exposed, rotate it immediately from the Taliup dashboard.
+</Warning>
+
+- **Use environment variables.** Store credentials in `.env` files (excluded from version control via `.gitignore`), server environment variables, or a secrets manager such as AWS Secrets Manager or HashiCorp Vault.
+- **Restrict access.** Only the services that need to call the Taliup API should have access to these credentials.
+- **Rotate regularly.** Periodically rotate your `merchant_secret_key` from **Settings → Payments → Credentials** and update all deployment environments.
+- **Keep the secret key server-side.** Never expose credentials to a browser, mobile app, or any client-side code.

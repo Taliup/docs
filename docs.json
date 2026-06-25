@@ -1,0 +1,74 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "name": "Taliup",
+  "theme": "luma",
+  "favicon": "https://media.brand.dev/51b56c8c-cbe7-40ed-91a2-086e62e64d7c.png",
+  "colors": {
+    "primary": "#b2bdda",
+    "light": "#696cb2",
+    "dark": "#dcdcea"
+  },
+  "appearance": {
+    "default": "dark"
+  },
+  "fonts": {
+    "heading": {
+      "family": "Work Sans"
+    },
+    "body": {
+      "family": "Work Sans"
+    }
+  },
+  "navbar": {
+    "primary": {
+      "type": "github",
+      "href": "https://github.com/Taliup/taliuphq-php"
+    }
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "quickstart"
+            ]
+          },
+          {
+            "group": "Core Concepts",
+            "pages": [
+              "concepts/authentication",
+              "concepts/hosted-payments",
+              "concepts/webhooks"
+            ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              "guides/create-checkout",
+              "guides/handle-webhooks",
+              "guides/error-handling"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "SDK Reference",
+        "groups": [
+          {
+            "group": "Client",
+            "pages": [
+              "reference/client",
+              "reference/hosted-payments",
+              "reference/webhook",
+              "reference/exceptions"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

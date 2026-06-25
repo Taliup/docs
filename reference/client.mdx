@@ -1,0 +1,76 @@
+---
+title: "Taliup PHP SDK Client Class — Constructor and Config"
+sidebarTitle: "Client"
+description: "Complete reference for the Taliup PHP SDK Client class: constructor configuration, credential validation, and accessing payment resources."
+---
+
+`Taliup\Sdk\Client` is the main entry point for the Taliup PHP SDK. You instantiate it once with your merchant credentials and use it to access all available payment resources.
+
+<Note>
+  Get your credentials from **Taliup → Settings → Payments → Credentials**. Never commit your `merchant_secret_key` to source control — store it in an environment variable or secrets manager.
+</Note>
+
+## Constructor
+
+```php
+new Client(array $config)
+```
+
+Creates a new `Client` instance. Throws an `ApiException` immediately if either `merchant_site_id` or `merchant_secret_key` is empty.
+
+### Config parameters
+
+<ParamField body="merchant_site_id" type="string" required>
+  Your Merchant Site ID, available from Taliup → Settings → Payments → Credentials.
+</ParamField>
+
+<ParamField body="merchant_secret_key" type="string" required>
+  Your Merchant Secret Key. Used to authenticate every API request and to verify webhook signatures.
+</ParamField>
+
+<ParamField body="base_url" type="string">
+  The base URL of the Taliup API. Defaults to `https://taliuphq.com/api/v1`. You do not need to set this unless you have been given a custom endpoint.
+</ParamField>
+
+<ParamField body="timeout" type="int">
+  HTTP request timeout in seconds. Defaults to `10`.
+</ParamField>
+
+## Methods
+
+| Method | Returns | Description |
+|---|---|---|
+| `hostedPayments()` | `HostedPayments` | Returns a [`HostedPayments`](/reference/hosted-payments) resource instance scoped to this client. |
+
+## Example
+
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+use Taliup\Sdk\Client;
+use Taliup\Sdk\Exceptions\ApiException;
+
+try {
+    $client = new Client([
+        'merchant_site_id'    => getenv('TALIUP_MERCHANT_SITE_ID'),
+        'merchant_secret_key' => getenv('TALIUP_MERCHANT_SECRET_KEY'),
+    ]);
+} catch (ApiException $e) {
+    // Thrown when merchant_site_id or merchant_secret_key is empty
+    echo $e->getMessage(); // "Missing merchant credentials."
+}
+
+// Access resources through the client
+$hostedPayments = $client->hostedPayments();
+```
+
+## Error handling
+
+The constructor throws [`ApiException`](/reference/exceptions) (status code `0`) in two cases:
+
+- Either `merchant_site_id` or `merchant_secret_key` is missing or empty — message: `"Missing merchant credentials."`
+- `base_url` is explicitly set to an empty string — message: `"Missing base_url."`
+
+All subsequent API calls made through the client also throw `ApiException` on failure — see the [ApiException reference](/reference/exceptions) for details.
