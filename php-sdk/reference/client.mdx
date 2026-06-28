@@ -40,7 +40,7 @@ Creates a new `Client` instance. Throws an `ApiException` immediately if either 
 
 | Method | Returns | Description |
 |---|---|---|
-| `hostedPayments()` | `HostedPayments` | Returns a [`HostedPayments`](/reference/hosted-payments) resource instance scoped to this client. |
+| `hostedPayments()` | `HostedPayments` | Returns a [`HostedPayments`](/php-sdk/reference/hosted-payments) resource instance scoped to this client. |
 
 ## Example
 
@@ -68,9 +68,9 @@ $hostedPayments = $client->hostedPayments();
 
 ## Error handling
 
-The constructor throws [`ApiException`](/reference/exceptions) (status code `0`) in two cases:
+The constructor throws [`ApiException`](/php-sdk/reference/exceptions) (status code `0`) in two cases:
 
 - Either `merchant_site_id` or `merchant_secret_key` is missing or empty — message: `"Missing merchant credentials."`
 - `base_url` is explicitly set to an empty string — message: `"Missing base_url."`
 
-All subsequent API calls made through the client also throw `ApiException` on failure — see the [ApiException reference](/reference/exceptions) for details.
+All subsequent API calls made through the client also throw `ApiException` on failure — see the [ApiException reference](/php-sdk/reference/exceptions) for details.

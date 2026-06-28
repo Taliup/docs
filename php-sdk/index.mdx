@@ -1,0 +1,30 @@
+---
+title: "Taliup PHP SDK"
+sidebarTitle: "Overview"
+description: "Accept hosted payments and verify webhooks in PHP with the official Taliup SDK."
+---
+
+The Taliup PHP SDK (`taliup/taliuphq-php`) gives you everything you need to accept payments in your PHP application. Redirect customers to a Taliup-hosted checkout page, verify incoming webhook signatures with HMAC-SHA256, and handle structured errors — all without building or hosting your own payment UI.
+
+<CardGroup cols={2}>
+  <Card title="Introduction" icon="book-open" href="/php-sdk/introduction">
+    Learn what the SDK provides, what it requires, and how the hosted payments model works.
+  </Card>
+  <Card title="Quickstart" icon="bolt" href="/php-sdk/quickstart">
+    Install the SDK and create your first checkout session in minutes.
+  </Card>
+  <Card title="Core concepts" icon="lightbulb" href="/php-sdk/concepts/authentication">
+    Understand authentication, hosted payments, and webhooks.
+  </Card>
+  <Card title="SDK reference" icon="square-terminal" href="/php-sdk/reference/client">
+    Complete reference for every class and method in the SDK.
+  </Card>
+</CardGroup>
+
+## Installation
+
+```bash
+composer require taliup/taliuphq-php
+```
+
+Requires **PHP 8.2+**. Guzzle is pulled in automatically as a dependency.
