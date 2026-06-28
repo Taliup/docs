@@ -1,0 +1,56 @@
+---
+title: "Virtual Terminal"
+sidebarTitle: "Virtual Terminal"
+description: "Configure the Virtual Terminal to allow authorized staff to process card-not-present payments directly from the Taliup HQ dashboard."
+---
+
+The **Virtual Terminal** lets authorized staff process card-not-present payments directly from the Taliup HQ dashboard — no physical payment terminal required. It is useful for phone orders, back-office charges, and situations where the customer is not present.
+
+The Virtual Terminal uses the merchant's **Online Gateway** credentials and is tied to the merchant's MID (configured under [Locations](/taliup-hq/onboarding/locations)). The Online Gateway must be configured before the Virtual Terminal can process payments.
+
+<Frame caption="The Virtual Terminal configuration tab in Taliup HQ, showing Transaction Modes and Payment Methods.">
+  ![Virtual Terminal tab with Location selector, Transaction Modes checkboxes, Enable Discounts and Fees toggles, and Payment Methods toggles](/images/taliup-hq/virtual-terminal.png)
+</Frame>
+
+## How to get here
+
+**Entities** → find the Entity → **Manage** → **Settings** → **Virtual Terminal** tab.
+
+## Configure the Virtual Terminal
+
+<Steps>
+  <Step title="Open the Virtual Terminal tab">
+    From the **Settings** page, click the **Virtual Terminal** tab.
+  </Step>
+  <Step title="Select the location">
+    Select the **Location** where the Virtual Terminal will be used. The Virtual Terminal is tied to the Online Gateway credentials for the selected location.
+  </Step>
+  <Step title="Select transaction modes">
+    Under **Transaction Modes**, select the modes you want to offer the merchant:
+
+    | Mode | Description |
+    |---|---|
+    | **Quick Sale** | The merchant enters an amount and proceeds directly to payment — equivalent to Open Sale in Taliup POS. |
+    | **Itemized Sale** | The merchant selects products from their Catalog to build an itemized order before payment — equivalent to the Catalog in Taliup POS. |
+  </Step>
+  <Step title="Configure discounts and fees">
+    - Toggle **Enable Discounts** on to allow the merchant to apply discounts from **Catalog → Discounts** on Virtual Terminal orders.
+    - Toggle **Enable Fees** on to allow the merchant to apply fees from **Catalog → Fees** on Virtual Terminal orders.
+  </Step>
+  <Step title="Select payment methods">
+    Under **Payment Methods**, enable the methods the merchant will accept:
+
+    | Method | Description |
+    |---|---|
+    | **Cash** | Records a cash payment. No card processing occurs. |
+    | **Card** | Processes credit card and Visa/Mastercard debit card payments through the Online Gateway. |
+    | **Other** | Records a payment made by any method other than cash or card (for example, check or store credit). |
+  </Step>
+  <Step title="Save">
+    Click **Save**.
+  </Step>
+</Steps>
+
+<Note>
+  The Virtual Terminal requires an active **Online Payment Gateway** to process card payments. Configure the gateway under [Locations](/taliup-hq/onboarding/locations) before enabling **Card** as a payment method.
+</Note>

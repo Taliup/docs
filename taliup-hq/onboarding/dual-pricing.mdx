@@ -1,0 +1,37 @@
+---
+title: "Dual Pricing"
+sidebarTitle: "Dual Pricing"
+description: "Show a cash price and a card price at checkout, with the difference covering the merchant's card processing fee."
+---
+
+**Dual Pricing** shows two prices at checkout: a lower cash price and a higher card price. The difference between the two prices covers the card processing fee, passing that cost to customers who pay by card.
+
+The fee structure can be set by the ISO (admin-managed) or delegated to the merchant so they can adjust it themselves under **Settings → Payments** in Taliup HQ.
+
+<Warning>
+  **Dual Pricing** and **Surcharge** cannot both be enabled on the same merchant. Enabling one disables the other. If the merchant is currently using Surcharge, disable it before enabling Dual Pricing.
+</Warning>
+
+## How to get here
+
+**Entities** → find the Entity → **Manage** → **Settings** → **Dual Pricing** tab.
+
+## Configure Dual Pricing
+
+<Steps>
+  <Step title="Open the Dual Pricing tab">
+    From the **Settings** page, click the **Dual Pricing** tab.
+  </Step>
+  <Step title="Enable Dual Pricing">
+    Toggle **Dual Pricing** on.
+  </Step>
+  <Step title="Select the fee type">
+    Choose **Percentage** to calculate the card price as a percentage above the cash price, or **Amount** to apply a fixed dollar amount.
+  </Step>
+  <Step title="Enter the fee value">
+    Enter the **Fee Value** — the percentage or flat amount added to the card price.
+  </Step>
+  <Step title="Allow merchant management (optional)">
+    Toggle **Allow Merchant to Manage** on if the merchant should be able to adjust their own dual pricing settings under **Settings → Payments** in Taliup HQ.
+  </Step>
+</Steps>

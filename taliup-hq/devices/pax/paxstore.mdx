@@ -1,0 +1,129 @@
+---
+title: "PaxStore Setup"
+sidebarTitle: "PaxStore Setup"
+description: "Create and activate PAX terminals in PaxStore, push the correct apps for your device type, and note each TID before moving to Taliup HQ."
+---
+
+Before you can register a PAX terminal in Taliup HQ, the terminal must exist in **PaxStore** — this is where each device is created, activated, and assigned its **TID** (terminal ID). The TID is required when adding devices to Taliup HQ.
+
+## Before you start
+
+- Access to **PaxStore** with the correct **Administrator Center** and **Reseller** account (if applicable).
+- All terminals powered on and connected to the internet while you work in PaxStore.
+- The acquirer **VAR sheet** (terminal ID, merchant ID, host settings, etc.) for the BroadPOS payment app.
+
+## 1. Create terminals in PaxStore
+
+<Steps>
+  <Step title="Log in to PaxStore">
+    Log in to PaxStore with your administrator credentials.
+  </Step>
+  <Step title="Confirm your Administrator Center">
+    Confirm you are in the correct **Administrator Center** (administrators only).
+  </Step>
+  <Step title="Confirm your Reseller account">
+    If applicable, confirm you are in the correct **Reseller** account (administrators only).
+  </Step>
+  <Step title="Open Terminal Management">
+    Navigate to **Terminal Management**.
+  </Step>
+  <Step title="Create and activate the Merchant">
+    Create and **Activate** the Merchant in PaxStore if it does not already exist.
+  </Step>
+  <Step title="Create and activate terminals">
+    Under the Merchant, create and **Activate** the terminals for the device type:
+
+    | Device | Terminals to create |
+    |---|---|
+    | **PAX Elys** | Two terminals: **L1400** (cashier) and **A3700** (customer display) |
+    | **PAX A920 Pro** | One terminal: the **A920 Pro** |
+  </Step>
+  <Step title="Note the TID for each terminal">
+    After activating each terminal, note its **TID**. You will enter these TIDs in Taliup HQ when registering devices.
+  </Step>
+  <Step title="Confirm marketplace subscriptions">
+    Before pushing apps, confirm the Reseller or Merchant is **subscribed** to the required apps in the PaxStore marketplace.
+  </Step>
+</Steps>
+
+<Frame caption="Terminal Management in PaxStore showing an activated terminal and its TID.">
+  ![PaxStore Terminal Management screen showing an activated terminal entry with the TID displayed](/images/taliup-hq/paxstore-terminal.png)
+</Frame>
+
+## 2. PAX Elys — push apps
+
+The PAX Elys requires apps on both the **L1400** (cashier terminal) and the **A3700** (customer display).
+
+### L1400 — Taliup Elys
+
+<Steps>
+  <Step title="Open the L1400 terminal">
+    In Terminal Management, open the **L1400** terminal.
+  </Step>
+  <Step title="Go to Push Task">
+    Click the **Push Task** tab.
+  </Step>
+  <Step title="Push Taliup Elys">
+    Click **+ PUSH APP**, search for and select **Taliup Elys**, then click **OK** and **Activate**.
+  </Step>
+</Steps>
+
+### A3700 — three apps, in order
+
+<Warning>
+  Install apps on the A3700 in this exact order. **BroadPOS Manager** must be installed before the acquirer payment app. Install **Taliup Companion** last. Installing out of order can cause the card prompt to fail.
+</Warning>
+
+<Steps>
+  <Step title="Push BroadPOS Manager">
+    Terminal Management → open the **A3700** → **Push Task** → **+ PUSH APP** → search **BroadPOS Manager** → **OK** → **Activate**.
+  </Step>
+  <Step title="Push the acquirer BroadPOS app">
+    **Push Task** → **+ PUSH APP** → select the BroadPOS app for your acquirer (for example, BroadPOS-Elavon or BroadPOS-Nuvei) → enter the **Parameters** from the VAR sheet → **OK** → **Activate**.
+  </Step>
+  <Step title="Push Taliup Companion">
+    **Push Task** → **+ PUSH APP** → search **Taliup Companion** → **OK** → **Activate**.
+  </Step>
+  <Step title="Confirm all push tasks succeed">
+    Wait for all Push Tasks to show **Success** before continuing.
+  </Step>
+</Steps>
+
+<Frame caption="The Push Task tab in PaxStore showing three completed app installations on the A3700.">
+  ![PaxStore Push Task tab listing BroadPOS Manager, acquirer BroadPOS app, and Taliup Companion each with a Success status](/images/taliup-hq/paxstore-push-task-elys.png)
+</Frame>
+
+## 3. PAX A920 Pro — push apps
+
+<Warning>
+  Install apps on the A920 Pro in this exact order. **BroadPOS Manager** must be installed before the acquirer payment app. Install **Taliup POS** last.
+</Warning>
+
+<Steps>
+  <Step title="Push BroadPOS Manager">
+    Terminal Management → open the **A920 Pro** → **Push Task** → **+ PUSH APP** → search **BroadPOS Manager** → **OK** → **Activate**.
+  </Step>
+  <Step title="Push the acquirer BroadPOS app">
+    **Push Task** → **+ PUSH APP** → select the BroadPOS app for your acquirer → enter **Parameters** from the VAR sheet → **OK** → **Activate**.
+  </Step>
+  <Step title="Push Taliup POS">
+    **Push Task** → **+ PUSH APP** → search **Taliup POS** → **OK** → **Activate**.
+  </Step>
+  <Step title="Confirm all push tasks succeed">
+    Wait for all Push Tasks to show **Success** before continuing.
+  </Step>
+</Steps>
+
+## Troubleshooting
+
+| Problem | What to try |
+|---|---|
+| PaxStore push never completes | Confirm the terminal is online in PaxStore, check Push Task status, verify the app is subscribed in the marketplace, then reboot the terminal and retry. |
+| No card prompt after Companion accepts the order (PAX Elys) | BroadPOS is missing or misconfigured on the A3700. Re-push **BroadPOS Manager**, then the acquirer BroadPOS app with VAR parameters, then **Taliup Companion** — in that order. |
+| No card prompt on A920 Pro | BroadPOS is missing or misconfigured. Re-push **BroadPOS Manager**, then the acquirer BroadPOS app with VAR parameters, then **Taliup POS** — in that order. |
+
+## What's next
+
+Register each terminal as a **Device** in Taliup HQ using the TIDs from PaxStore. Device registration is required before the first Taliup POS login on the terminal.
+
+[Add PAX devices in Taliup HQ →](/taliup-hq/devices/pax/add-devices)

@@ -33,11 +33,38 @@
         "description": "Merchant management portal",
         "tabs": [
           {
-            "tab": "Overview",
+            "tab": "Merchant Onboarding",
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["taliup-hq/index"]
+                "pages": [
+                  "taliup-hq/index",
+                  "taliup-hq/onboarding/create-entity"
+                ]
+              },
+              {
+                "group": "Configuration",
+                "pages": [
+                  "taliup-hq/onboarding/plans-features",
+                  "taliup-hq/onboarding/tips",
+                  "taliup-hq/onboarding/locations",
+                  "taliup-hq/onboarding/virtual-terminal",
+                  "taliup-hq/onboarding/dual-pricing",
+                  "taliup-hq/onboarding/surcharge"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Devices",
+            "groups": [
+              {
+                "group": "PAX",
+                "pages": [
+                  "taliup-hq/devices/pax/index",
+                  "taliup-hq/devices/pax/paxstore",
+                  "taliup-hq/devices/pax/add-devices"
+                ]
               }
             ]
           }

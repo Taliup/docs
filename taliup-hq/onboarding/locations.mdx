@@ -1,0 +1,69 @@
+---
+title: "Locations"
+sidebarTitle: "Locations"
+description: "Manage physical merchant sites, Merchant IDs (MIDs), currency, and online payment gateway credentials in Taliup HQ."
+---
+
+A **Location** represents a physical merchant site. Each location is tied to a **Merchant ID (MID)**, which links it to payment processing and manual settlement. A merchant can have multiple locations, each with its own MID and gateway configuration.
+
+## How to get here
+
+**Entities** → find the Entity → **Manage** → **Settings** → **Locations** tab.
+
+## Edit a location
+
+<Steps>
+  <Step title="Open the Locations tab">
+    From the **Settings** page, click the **Locations** tab.
+  </Step>
+  <Step title="Open the edit form">
+    Find the location you want to update and click **Edit**.
+  </Step>
+  <Step title="Update the fields">
+    Update the location name, address, currency, or MID as needed. Ensure all required fields are complete.
+  </Step>
+  <Step title="Save">
+    Click **Save Changes**.
+  </Step>
+</Steps>
+
+<Warning>
+  The **MID** is tied to the merchant's ability to run **Manual Settlements**. Changing the MID breaks the settlement history for that location. Only change the MID if you are intentionally migrating the merchant to a new processing agreement.
+</Warning>
+
+## Enable and disable a location
+
+A location is enabled by default. An ISO Administrator can disable a location at any time.
+
+<Warning>
+  Disabling a location **immediately locks all PAX devices assigned to that location out of Taliup POS**. Re-enable the location to restore access.
+</Warning>
+
+## Online Payment Gateway
+
+Each location can have an online payment gateway attached to it. Online gateway credentials are associated with the location's MID and must be obtained from the acquirer or online payment gateway provider.
+
+<Frame caption="The Online Gateway configuration form, accessed from the Locations tab.">
+  ![Online Gateway sub-form showing Provider, credentials fields, Environment selector, and Active toggle](/images/taliup-hq/locations-online-gateway.png)
+</Frame>
+
+<Steps>
+  <Step title="Open Online Gateway">
+    From the **Locations** tab, find the location and click **Online Gateway**.
+  </Step>
+  <Step title="Select the provider">
+    Select the **Payment Gateway Provider** from the list.
+  </Step>
+  <Step title="Enter credentials">
+    Fill in the required fields for the selected payment gateway (credentials are provided by the acquirer or gateway).
+  </Step>
+  <Step title="Set the environment">
+    Select **Live** for production payments. If the gateway supports it, select **Sandbox** to use test cards with card-not-present features enabled for the merchant.
+  </Step>
+  <Step title="Activate">
+    Toggle **Active** on to enable online payment processing for this location. Toggle it off to suspend online processing without removing the gateway configuration.
+  </Step>
+  <Step title="Save">
+    Click **Save Payment Gateway**.
+  </Step>
+</Steps>

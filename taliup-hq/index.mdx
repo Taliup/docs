@@ -1,26 +1,66 @@
 ---
 title: "Taliup HQ"
 sidebarTitle: "Overview"
-description: "Taliup HQ is the merchant management portal for configuring and managing your Taliup account, devices, payments, and reporting."
+description: "Taliup HQ is the merchant management portal for creating and configuring merchant accounts, registering payment devices, and managing daily operations."
 ---
 
-Taliup HQ ([taliuphq.com](https://taliuphq.com)) is the central dashboard for merchants and ISOs. Use it to manage entities, configure payment settings, register devices, review transactions, and control every aspect of your Taliup account.
+[Taliup HQ](https://taliuphq.com) is the central dashboard for ISOs and implementers. Use it to create merchant accounts (Entities), register payment terminals, configure payment settings, and manage every aspect of a merchant's Taliup environment.
+
+<Frame caption="Taliup HQ dashboard — the central hub for merchant and device management.">
+  ![Taliup HQ dashboard showing the main sidebar with Entities, Devices, and Settings navigation](/images/taliup-hq/dashboard.png)
+</Frame>
+
+## Onboarding a merchant
+
+Follow these steps in order when setting up a new merchant:
+
+```mermaid
+flowchart TD
+    createEntity["1. Create Entity\nNew merchant account in Taliup HQ"]
+    addDevices["2. Register Devices\nEnter TID for each terminal"]
+    configure["3. Configure merchant\nPlan · Tips · Locations · Virtual Terminal"]
+    deviceSetup["4. Device setup\nPer-provider — see Devices tab"]
+
+    createEntity --> addDevices --> configure --> deviceSetup
+```
+
+<Steps>
+  <Step title="Create a merchant (Entity)">
+    Create the merchant account in Taliup HQ. This also creates the first Employee user automatically.
+
+    [Create a merchant →](/taliup-hq/onboarding/create-entity)
+  </Step>
+  <Step title="Register devices">
+    Before staff can log in on a terminal, each device must be registered in Taliup HQ with the TID from your device provider (for example, PaxStore for PAX terminals).
+
+    [PAX device setup →](/taliup-hq/devices/pax/index)
+  </Step>
+  <Step title="Configure merchant settings">
+    Optionally configure Plans & Features, Tips, Locations, Virtual Terminal, Dual Pricing, and Surcharge to match the merchant's requirements.
+
+    [Configuration overview →](/taliup-hq/onboarding/plans-features)
+  </Step>
+</Steps>
+
+## What you can configure
 
 <CardGroup cols={2}>
-  <Card title="Entities" icon="building-2">
-    Create and manage merchant accounts (Entities), assign plans, and configure locations.
+  <Card title="Plans & Features" icon="star" href="/taliup-hq/onboarding/plans-features">
+    Set the merchant's billing tier and control which features are available.
   </Card>
-  <Card title="Devices" icon="credit-card">
-    Register PAX terminals and other payment devices with their PaxStore TIDs.
+  <Card title="Tips" icon="hand-holding-dollar" href="/taliup-hq/onboarding/tips">
+    Enable tip prompts on the customer-facing payment screen with percentage or fixed-amount presets.
   </Card>
-  <Card title="Payments" icon="dollar-sign">
-    Configure tips, dual pricing, surcharging, and online payment gateways.
+  <Card title="Locations" icon="location-dot" href="/taliup-hq/onboarding/locations">
+    Manage physical merchant sites, MIDs, and online payment gateway credentials.
   </Card>
-  <Card title="Virtual Terminal" icon="monitor">
-    Process card-not-present payments directly from the HQ dashboard.
+  <Card title="Virtual Terminal" icon="monitor" href="/taliup-hq/onboarding/virtual-terminal">
+    Process card-not-present payments directly from the Taliup HQ dashboard.
+  </Card>
+  <Card title="Dual Pricing" icon="tags" href="/taliup-hq/onboarding/dual-pricing">
+    Show a cash price and a card price at checkout, with the difference covering the processing fee.
+  </Card>
+  <Card title="Surcharge" icon="percent" href="/taliup-hq/onboarding/surcharge">
+    Add a flat or percentage fee on top of the transaction total for card payments.
   </Card>
 </CardGroup>
-
-<Note>
-  Full documentation for Taliup HQ is coming soon. Contact your ISO or Taliup support for assistance in the meantime.
-</Note>

@@ -1,0 +1,68 @@
+---
+title: "Add PAX Devices in Taliup HQ"
+sidebarTitle: "Add Devices in HQ"
+description: "Register PAX terminals as Devices in Taliup HQ using the TID from PaxStore. Device registration is required before the first login on the terminal."
+---
+
+After creating terminals in PaxStore and noting each **TID**, register each terminal as a **Device** in Taliup HQ. Taliup POS uses the device TID to request the list of assigned users from Taliup HQ — device registration must be complete before staff log in on the terminal for the first time.
+
+## How many device records do I need?
+
+| Device | Device records to create |
+|---|---|
+| **PAX Elys** (L1400 + A3700) | Two — one for the L1400 (cashier terminal) and one for the A3700 (customer display) |
+| **PAX A920 Pro** | One — for the A920 Pro |
+
+<Warning>
+  For PAX Elys, both the L1400 and A3700 TIDs must be registered in Taliup HQ **before** opening Taliup POS on the L1400 for the first time. Logging in before device registration is complete will cause the login screen to show no users.
+</Warning>
+
+## Steps
+
+<Steps>
+  <Step title="Open the Entity">
+    In Taliup HQ, click **Entities** in the sidebar, find the merchant's Entity, and click **Manage**.
+  </Step>
+  <Step title="Open the Devices tab">
+    Click the **Devices** tab.
+  </Step>
+  <Step title="Create a new Device">
+    Click **+ Create Device**.
+  </Step>
+  <Step title="Enter the device details">
+    Fill in the required fields:
+
+    - **Device Name** — a descriptive name for this terminal (for example, "Front Register" or "L1400 Cashier").
+    - **Device Type** — select the correct device type for this terminal.
+    - **TID** — enter the TID from PaxStore for this terminal.
+    - Complete any remaining required fields.
+  </Step>
+  <Step title="Save">
+    Click **Create Device** (or **Save**) to register the device.
+  </Step>
+  <Step title="Repeat for additional terminals">
+    For PAX Elys, repeat steps 3–5 to create a second device record for the A3700 using its TID from PaxStore.
+  </Step>
+</Steps>
+
+<Frame caption="The Create Device form in Taliup HQ, with the TID field highlighted.">
+  ![Create Device form in Taliup HQ showing Device Name, Device Type, and TID fields, with the TID field highlighted](/images/taliup-hq/create-device.png)
+</Frame>
+
+## Troubleshooting
+
+| Problem | What to try |
+|---|---|
+| No users on login screen / cannot log in on first setup | Confirm the terminal TID exists in PaxStore and a matching Device record exists in Taliup HQ before opening Taliup POS. Confirm the Entity has assigned users (an Employee user is created automatically when the Entity is created). |
+| Demo Mode passcode rejected | Confirm the passcode with your ISO, confirm the terminal has internet access, and confirm the terminal TID is registered in Taliup HQ. |
+| Terminal keeps logging out with 503 errors | The marketplace subscription may have expired. Renew the subscription in PaxStore or use Demo Mode. |
+| Merchant locked out of Taliup POS | An ISO Administrator may have disabled the merchant's **Location** in Taliup HQ. Re-enable the location under **Settings → Locations**. |
+
+## What's next
+
+With devices registered, configure the merchant's payment settings in Taliup HQ.
+
+- [Plans & Features →](/taliup-hq/onboarding/plans-features)
+- [Tips →](/taliup-hq/onboarding/tips)
+- [Locations →](/taliup-hq/onboarding/locations)
+- [Virtual Terminal →](/taliup-hq/onboarding/virtual-terminal)
