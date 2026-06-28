@@ -1,0 +1,44 @@
+---
+title: "PAX Terminals"
+sidebarTitle: "Overview"
+description: "Overview of PAX terminal types supported by Taliup POS and the prerequisites required before first login on any device."
+---
+
+Taliup POS supports two PAX terminal configurations. The setup steps and app architecture differ between them — select the guide for your device below.
+
+| Device | Form factor | Apps |
+|---|---|---|
+| **PAX Elys** (L1400 + A3700) | Two-device pair — L1400 cashier terminal + A3700 customer display | Taliup Elys (L1400) · BroadPOS Manager, acquirer BroadPOS app, Taliup Companion (A3700) |
+| **PAX A920 Pro** | Single standalone terminal — all-in-one | BroadPOS Manager · acquirer BroadPOS app · Taliup POS |
+
+## Prerequisites — complete before first login
+
+Both steps below must be finished before you open Taliup POS on the terminal for the first time.
+
+<Steps>
+  <Step title="PaxStore setup">
+    Terminals must be created and activated in PaxStore, and the correct apps pushed to each device. The **TID** (terminal ID) assigned in PaxStore is required for the next step.
+
+    [PAX PaxStore Setup →](/taliup-hq/devices/pax/paxstore)
+  </Step>
+  <Step title="Taliup HQ device registration">
+    Each terminal must be registered as a **Device** in Taliup HQ using its TID from PaxStore. The merchant Entity must also exist, and at least one user (Employee) must be assigned.
+
+    [Add PAX Devices in HQ →](/taliup-hq/devices/pax/add-devices)
+  </Step>
+</Steps>
+
+<Warning>
+  Do not open Taliup POS on the terminal until both steps are complete. The login screen will show no users if the device TID is not registered in Taliup HQ.
+</Warning>
+
+## Select your device
+
+<CardGroup cols={2}>
+  <Card title="PAX Elys" icon="tablet" href="/taliup-pos/devices/pax/elys">
+    First login, connection mode configuration, L1400-to-A3700 pairing, test sale, and troubleshooting for the two-device Elys setup.
+  </Card>
+  <Card title="PAX A920 Pro" icon="credit-card" href="/taliup-pos/devices/pax/a920-pro">
+    First login, test sale, and troubleshooting for the standalone A920 Pro. No pairing or connection configuration required.
+  </Card>
+</CardGroup>

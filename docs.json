@@ -83,6 +83,19 @@
                 "pages": ["taliup-pos/index"]
               }
             ]
+          },
+          {
+            "tab": "Devices",
+            "groups": [
+              {
+                "group": "PAX",
+                "pages": [
+                  "taliup-pos/devices/pax/index",
+                  "taliup-pos/devices/pax/elys",
+                  "taliup-pos/devices/pax/a920-pro"
+                ]
+              }
+            ]
           }
         ]
       },

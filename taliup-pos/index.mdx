@@ -1,26 +1,33 @@
 ---
 title: "Taliup POS"
 sidebarTitle: "Overview"
-description: "Taliup POS is the point-of-sale application for ringing up sales, processing payments, and managing daily store operations on PAX terminals."
+description: "Taliup POS is the point-of-sale application for ringing up sales and processing payments on PAX terminals."
 ---
 
 Taliup POS runs on PAX payment terminals and turns them into a full point-of-sale system. Use it to ring up sales, accept card payments, manage open orders, and keep track of transactions — all connected to your Taliup HQ account in real time.
 
+<Frame caption="Taliup POS on a PAX terminal showing the Register screen.">
+  ![Taliup POS Register screen on a PAX terminal](/images/taliup-pos/register.png)
+</Frame>
+
+## Prerequisites
+
+Before setting up Taliup POS on any terminal, the following must be completed first:
+
+1. **PaxStore setup** — terminals created, activated, and apps pushed. See [Taliup HQ → Devices → PAX → PaxStore Setup](/taliup-hq/devices/pax/paxstore).
+2. **Taliup HQ merchant setup** — Entity created and each terminal registered as a Device with its TID. See [Taliup HQ → Devices → PAX → Add Devices](/taliup-hq/devices/pax/add-devices).
+
+<Warning>
+  Do not open Taliup POS on a terminal for the first time until both steps above are complete. Logging in before device registration results in no users appearing on the login screen.
+</Warning>
+
+## Select your device
+
 <CardGroup cols={2}>
-  <Card title="PAX Elys" icon="tablet">
-    Two-device setup: L1400 cashier terminal paired with an A3700 customer display.
+  <Card title="PAX Elys" icon="tablet" href="/taliup-pos/devices/pax/elys">
+    Two-device setup: L1400 cashier terminal running Taliup Elys, paired with an A3700 customer display running Taliup Companion. Requires connection configuration and pairing on first setup.
   </Card>
-  <Card title="PAX A920 Pro" icon="credit-card">
-    All-in-one standalone terminal with built-in customer display and payment processing.
-  </Card>
-  <Card title="Register" icon="shopping-cart">
-    Open Sale, Itemized Sale, and catalog-driven order flows for daily store operations.
-  </Card>
-  <Card title="Transactions" icon="receipt">
-    View, refund, and settle transactions from the terminal or from Taliup HQ.
+  <Card title="PAX A920 Pro" icon="credit-card" href="/taliup-pos/devices/pax/a920-pro">
+    All-in-one standalone terminal. Taliup POS and BroadPOS run on the same device — no pairing or connection configuration required.
   </Card>
 </CardGroup>
-
-<Note>
-  Full documentation for Taliup POS is coming soon. Contact your ISO or Taliup support for device setup and onboarding assistance.
-</Note>
