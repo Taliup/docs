@@ -26,45 +26,81 @@
     }
   },
   "navigation": {
-    "tabs": [
+    "products": [
       {
-        "tab": "Documentation",
-        "groups": [
+        "product": "Taliup HQ",
+        "icon": "building-2",
+        "description": "Merchant management portal",
+        "tabs": [
           {
-            "group": "Get Started",
-            "pages": [
-              "introduction",
-              "quickstart"
-            ]
-          },
-          {
-            "group": "Core Concepts",
-            "pages": [
-              "concepts/authentication",
-              "concepts/hosted-payments",
-              "concepts/webhooks"
-            ]
-          },
-          {
-            "group": "Guides",
-            "pages": [
-              "guides/create-checkout",
-              "guides/handle-webhooks",
-              "guides/error-handling"
+            "tab": "Overview",
+            "groups": [
+              {
+                "group": "Getting started",
+                "pages": ["taliup-hq/index"]
+              }
             ]
           }
         ]
       },
       {
-        "tab": "SDK Reference",
-        "groups": [
+        "product": "Taliup POS",
+        "icon": "credit-card",
+        "description": "Point-of-sale application",
+        "tabs": [
           {
-            "group": "Client",
-            "pages": [
-              "reference/client",
-              "reference/hosted-payments",
-              "reference/webhook",
-              "reference/exceptions"
+            "tab": "Overview",
+            "groups": [
+              {
+                "group": "Getting started",
+                "pages": ["taliup-pos/index"]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "product": "Taliup PHP SDK",
+        "icon": "code",
+        "description": "PHP library for hosted payments and webhooks",
+        "tabs": [
+          {
+            "tab": "Documentation",
+            "groups": [
+              {
+                "group": "Get started",
+                "pages": ["php-sdk/index", "php-sdk/introduction", "php-sdk/quickstart"]
+              },
+              {
+                "group": "Core concepts",
+                "pages": [
+                  "php-sdk/concepts/authentication",
+                  "php-sdk/concepts/hosted-payments",
+                  "php-sdk/concepts/webhooks"
+                ]
+              },
+              {
+                "group": "Guides",
+                "pages": [
+                  "php-sdk/guides/create-checkout",
+                  "php-sdk/guides/handle-webhooks",
+                  "php-sdk/guides/error-handling"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "SDK Reference",
+            "groups": [
+              {
+                "group": "Reference",
+                "pages": [
+                  "php-sdk/reference/client",
+                  "php-sdk/reference/hosted-payments",
+                  "php-sdk/reference/webhook",
+                  "php-sdk/reference/exceptions"
+                ]
+              }
             ]
           }
         ]
