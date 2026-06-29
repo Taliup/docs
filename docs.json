@@ -39,6 +39,7 @@
                 "group": "Getting started",
                 "pages": [
                   "taliup-hq/index",
+                  "taliup-hq/dashboard",
                   "taliup-hq/onboarding/create-entity"
                 ]
               },
