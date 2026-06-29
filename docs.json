@@ -47,7 +47,8 @@
               {
                 "group": "Managing merchants",
                 "pages": [
-                  "taliup-hq/manage/profile"
+                  "taliup-hq/manage/profile",
+                  "taliup-hq/manage/permissions"
                 ]
               },
               {
