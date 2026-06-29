@@ -45,6 +45,12 @@
                 ]
               },
               {
+                "group": "Managing merchants",
+                "pages": [
+                  "taliup-hq/manage/profile"
+                ]
+              },
+              {
                 "group": "Configuration",
                 "pages": [
                   "taliup-hq/onboarding/plans-features",
