@@ -1,0 +1,123 @@
+---
+title: "Entities"
+sidebarTitle: "Entities"
+description: "The Entities page is the master list of all merchant accounts on the Taliup platform. Search, filter, and manage every merchant from a single view."
+---
+
+The **Entities** page lists every merchant account on the platform. Use it to find a specific merchant, drill into their settings, or view the platform from their perspective. Navigate to it by clicking **Entities** in the sidebar.
+
+<Frame caption="The Taliup HQ Entities page showing the filter bar, entity list, and action buttons.">
+  ![Taliup HQ Entities page with filter bar, entity list showing ID, Entity Name, ISO Name, Industry, Terminal, MIDs, and Actions columns](/images/taliup-hq/entities.png)
+</Frame>
+
+## Access and visibility
+
+The list is automatically scoped to what you are permitted to see based on your role. No additional configuration is required.
+
+| Role | Entities visible |
+|---|---|
+| **Super Admin** | All entities on the platform, across every ISO |
+| **ISO Admin** | Only entities that belong to their ISO and any descendant (child/grandchild) ISOs |
+
+## Filters
+
+The filter bar at the top of the list lets you narrow results by search term, ISO, industry type, and terminal provider. Filters apply immediately — the search field waits 500 ms after your last keystroke before applying; dropdowns apply as soon as you make a selection.
+
+<Frame caption="The Entities filter bar showing the search field, ISO dropdown, Industry Types dropdown, Terminal Provider dropdown, and Reset button.">
+  ![Filter bar with Search by ID Entity Name or MID input, All ISOs dropdown, Industry Types dropdown, Terminal Provider dropdown, and Reset button](/images/taliup-hq/entities-filters.png)
+</Frame>
+
+<Note>
+  Active filters are saved to your browser's local storage. When you navigate away and return — or use the browser's back button — your previous filter state is restored automatically. Click **Reset** to clear all filters and remove the saved state.
+</Note>
+
+### Search
+
+The search field matches across three fields simultaneously:
+
+| What you type | How it matches |
+|---|---|
+| A number (e.g. `8206`) | Exact match on Entity ID |
+| Text (e.g. `Coffee`) | Partial match on Entity Name |
+| A MID (e.g. `123456`) | Partial match on any MID associated with the entity |
+
+Press **Enter** to apply immediately, or wait 500 ms after your last keystroke and the search applies automatically.
+
+### All ISOs
+
+Narrows the list to entities belonging to a specific ISO. When you select an ISO, entities from all of that ISO's descendant ISOs are also included — not just the direct children.
+
+<Note>
+  The ISO dropdown is only shown when you have more than one ISO in your scope. Super Admins see all active ISOs. ISO Admins see their own ISO and any child ISOs beneath them.
+</Note>
+
+### Industry Types
+
+Filters by merchant industry category. The available options are derived from the industry types present in the current result set:
+
+- **Restaurant**
+- **Retail/Wholesale**
+
+### Terminal Provider
+
+Filters by the terminal hardware provider assigned to the entity. Options are derived from the terminal providers present in the current result set (for example, **PAX**, **Ingenico**, **Poynt**).
+
+### Reset
+
+Clears all active filters, removes the saved filter state from local storage, and reloads the complete unfiltered entity list.
+
+## Entity list
+
+Results are sorted by creation date, newest first, and paginated at **50 entities per page**.
+
+<Frame caption="A single entity row showing the logo, name, location, ISO, industry, terminal, MIDs, and action buttons.">
+  ![Entity row showing The Coffee Terminal with location Toronto Ontario, ISO Unity Payments, industry RESTAURANT, terminal PAX, two MID badges, and Manage and View As buttons](/images/taliup-hq/entities-row.png)
+</Frame>
+
+| Column | What it shows |
+|---|---|
+| **ID** | The entity's unique numeric ID. |
+| **Entity Name** | The merchant's logo or a placeholder icon, the business name, city and region, the date the entity was created, and the name of the user who created it. Hover over the info icon next to the creator's name to see their email address. |
+| **ISO Name** | The ISO this entity is assigned to. |
+| **Industry** | The merchant's industry — `RESTAURANT` or `RETAIL/WHOLESALE`. |
+| **Terminal** | The terminal provider assigned to the entity — for example, `PAX`, `INGENICO`, or `POYNT`. |
+| **MIDs** | All Merchant IDs linked to the entity's locations, each displayed as a badge. An entity with multiple locations will show multiple MIDs. |
+| **Actions** | **Manage** and **View As** buttons. |
+
+## Actions
+
+Each entity row has two action buttons.
+
+### Manage
+
+Opens the entity's full management page. From there you can:
+
+- Edit the entity's details (name, address, industry, currency, terminal provider)
+- Manage devices and terminals
+- Configure tips, locations, virtual terminal, dual pricing, and surcharge
+- View orders and transactions
+- Manage staff users and roles
+
+This is the primary entry point for configuring or supporting a merchant after it has been created.
+
+### View As
+
+Switches your session to view Taliup HQ as the entity's owner — this is called impersonation. Use it to troubleshoot issues, verify configuration, or demonstrate features from the merchant's perspective without sharing credentials.
+
+<Warning>
+  While impersonating, a banner appears at the top of every page indicating you are viewing as another entity. Click that banner to return to your admin session. Any changes you make while impersonating take effect on the merchant's account.
+</Warning>
+
+## Pagination
+
+The bar below the entity list shows how many records are currently displayed and provides navigation controls:
+
+- **"Showing X to Y of Z entries"** — the total count of matching records across all pages.
+- **← Previous** and **Next →** arrows to move between pages.
+- **Numbered page links** to jump directly to a specific page.
+
+Active filters are preserved when you navigate between pages. The current filter state is automatically included in each page request, so your results stay consistent throughout.
+
+## No results
+
+If no entities match the current filters, the page shows a "No results found" state. Try broadening your search term, clearing one or more filters, or clicking **Reset** to return to the full list.
