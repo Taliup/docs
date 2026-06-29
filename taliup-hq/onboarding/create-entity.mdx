@@ -1,44 +1,196 @@
 ---
 title: "Create a Merchant (Entity)"
 sidebarTitle: "Create a Merchant"
-description: "Learn how to create a new merchant account (Entity) in Taliup HQ, select a plan, and understand what is created automatically."
+description: "Step-by-step reference for the Create Entity form — all six sections, conditional fields, and smart behaviours."
 ---
 
-In Taliup HQ, a merchant account is called an **Entity**. Creating an Entity is the first step in onboarding a new merchant. Once an Entity exists, you can register devices, configure payment settings, and grant staff access.
+In Taliup HQ, a merchant account is called an **Entity**. Creating an Entity provisions the merchant's account, assigns a subscription plan, and creates their initial administrator login. Once an Entity exists, you can register devices, configure payment settings, and grant staff access.
 
-<Frame caption="The Create Entity form in Taliup HQ.">
-  ![Create Entity form showing fields for business name, plan selection, and merchant details](/images/taliup-hq/create-entity.png)
+<Frame caption="The full Create Entity form in Taliup HQ.">
+  ![Create Entity form with Entity Configuration, Business Profile, Location, Technical Configuration, and Administrator sections alongside the Entity Preview sidebar](/images/taliup-hq/create-entity.png)
 </Frame>
 
-## What happens when you create an Entity
+The form is split into five configuration sections on the left and a live **Entity Preview** sidebar on the right that reflects your selections in real time.
 
-- A merchant account is created in Taliup HQ.
-- An **Employee** user is created automatically and assigned to the Entity. This user appears on the terminal login screen so staff can sign in on their first shift.
-- The Entity is assigned a **Plan** that controls which features are available and determines the billing tier.
+---
 
-## Steps
+## Entity Preview sidebar
 
-<Steps>
-  <Step title="Log in to Taliup HQ">
-    Go to [taliuphq.com](https://taliuphq.com) and log in with an account that has permission to create Entities.
-  </Step>
-  <Step title="Open Entities">
-    Click **Entities** in the sidebar.
-  </Step>
-  <Step title="Create a new Entity">
-    Click **+ Create Entity**.
-  </Step>
-  <Step title="Complete the required fields">
-    Fill in the merchant's details, including the business name and contact information. Select a **Plan** for the merchant.
-  </Step>
-  <Step title="Save">
-    Click **Create Entity** to save. The Entity is now created and the Employee user is available.
-  </Step>
-</Steps>
+<Frame caption="The Entity Preview sidebar updates as you fill the form.">
+  ![Entity Preview sidebar showing Partner, Subscription, Hardware, Location, and Credentials summary cards](/images/taliup-hq/create-entity-preview.png)
+</Frame>
+
+The sticky right-column preview card gives you a running summary of the entity you are building before you submit. It displays five sections:
+
+| Preview section | What it shows |
+|---|---|
+| **Partner** | The selected Parent Partner (ISO) name. |
+| **Subscription** | The selected Subscription Plan name. |
+| **Hardware** | The selected Terminal Provider. |
+| **Location** | The entered business name and address. |
+| **Credentials** | The administrator first name, last name, and email. |
+
+The preview updates with a **700 ms debounce** after any configuration change, so it does not flicker while you are actively typing. When a partner is selected, the preview header reads _"Setting up entity for [Partner name]"_.
+
+<Note>
+  If Poynt is the selected Terminal Provider, a Poynt-specific tip appears in the preview reminding you to have your Poynt HQ credentials ready before submitting.
+</Note>
+
+---
+
+## Section 1 — Entity Configuration
+
+<Frame caption="The Entity Configuration section.">
+  ![Entity Configuration card with fields for Parent Partner, Subscription Plan, Terminal Provider, Payment Provider, Offered Payment Types, and Open Sale Only](/images/taliup-hq/create-entity-configuration.png)
+</Frame>
+
+This section defines the commercial and technical setup of the entity.
+
+| Field | Required | Notes |
+|---|---|---|
+| **Parent Partner (ISO)** | Yes | Searchable dropdown listing the ISOs available to your role. Selecting a partner triggers an async fetch of that partner's available plans, terminal providers, and payment providers. ISO Admins are pre-selected and the field is locked — they can only create entities under their own ISO. |
+| **Subscription Plan** | Yes | Populated after a partner is selected. Disabled until a partner is chosen. If the partner has exactly one plan it is auto-selected. If the partner has no active plans, a **Missing Configuration** modal appears — see below. |
+| **Terminal Provider** | Yes | Populated from the partner's configuration. Disabled until a plan is selected. |
+| **Payment Provider** | Conditional | Shown for all terminal providers **except Express**. For Poynt, automatically set to Elavon and cannot be changed. |
+| **Offered Payment Types** | Conditional | Shown only when Terminal Provider is **PAX** and Payment Provider is **TSYS Sierra** or **Rapid Connect**. Toggles for Cash, Credit, Debit, and EBT. |
+| **Open Sale Only** | Conditional | Shown only if the parent ISO has Open Sale Only enabled at the ISO level. Restricts the entity to open-sale transactions only. |
+
+### No plans found — Missing Configuration modal
+
+If the selected partner has no active subscription plans, a modal appears explaining the issue and offering two options:
+
+- **Go to Plans & Features** — navigates away to create a plan. Before leaving, the form state (including the selected partner) is saved to browser local storage and restored automatically when you return to the Create Entity page.
+- **Select a different partner** — closes the modal so you can choose a different ISO.
+
+---
+
+## Section 2 — Business Profile
+
+<Frame caption="The Business Profile section.">
+  ![Business Profile card with fields for Entity Name, Description, Industry, and Language](/images/taliup-hq/create-entity-business-profile.png)
+</Frame>
+
+| Field | Required | Notes |
+|---|---|---|
+| **Entity Name** | Yes | The merchant's trading name as it will appear throughout Taliup HQ and on receipts. |
+| **Description** | No | Internal note — not visible to the merchant's staff or customers. Useful for distinguishing similarly named entities. |
+| **Industry** | Yes | **Restaurant** or **Retail/Wholesale**. Controls which features and reporting categories are enabled for the entity. |
+| **Language** | Yes | **English** or **French**. Controls the language of automated merchant communications (e.g., onboarding emails). |
+
+---
+
+## Section 3 — Location
+
+<Frame caption="The Location section.">
+  ![Location card with address search bar and individual fields for street, city, region, postal, country, currency, timezone, and phone](/images/taliup-hq/create-entity-location.png)
+</Frame>
+
+### Address Search (Google Maps autocomplete)
+
+Type a partial address in the **Address Search** field and select a result from the dropdown. Selecting a result auto-fills the following fields:
+
+- Street Address
+- City
+- Country
+- Postal code (formatted for the detected country)
+- Latitude / Longitude (stored internally for mapping)
+- Timezone
+
+Region is resolved after Country is determined.
+
+### Location fields
+
+| Field | Required | Notes |
+|---|---|---|
+| **Street Address** | Yes | Auto-filled by Address Search; can be edited manually. |
+| **Unit** | No | Suite or unit number appended to the street address. |
+| **City** | Yes | Auto-filled by Address Search. |
+| **Region** | Yes | Province, state, or Mexican state. Options are dynamically populated based on the selected Country. |
+| **Postal** | Yes | Formatted automatically: `A1A 1A1` for Canada · `12345` or `12345-6789` for the US · 5-digit for Mexico. |
+| **Country** | Yes | **Canada**, **United States**, or **Mexico**. Selecting Country automatically sets the Currency field. |
+| **Currency** | Yes | Set automatically when Country is chosen — **CAD** for Canada, **USD** for the US, **MXN** for Mexico. Cannot be changed independently. |
+| **Timezone** | Yes | Auto-filled by Address Search. Can be overridden manually if the business operates in a different timezone than their address suggests. |
+| **Phone** | Yes | Formatted as `(555) 555-5555` as you type. |
+
+---
+
+## Section 4 — Technical Configuration
+
+This section appears **only when the selected Terminal Provider requires credentials**. The fields differ by provider.
+
+<Note>
+  No screenshot is provided for this section because it only appears after a Terminal Provider is selected and its layout changes per provider.
+</Note>
+
+### PAX · Castles · Ingenico · None
+
+| Field | Required |
+|---|---|
+| **Merchant ID (MID)** | Yes |
+
+### Poynt
+
+| Field | Required | Notes |
+|---|---|---|
+| **Business ID** | Yes | UUID from the Poynt HQ portal. |
+| **Application ID** | Yes | App identifier from the Poynt HQ portal. |
+| **Publishable Key** | No | Optional Poynt publishable key. |
+| **Private Key** | Yes | PEM-formatted RSA private key downloaded from Poynt HQ. A **Paste from Clipboard** button is available. Toggle visibility with the eye icon. |
+
+### Express
+
+| Field | Required |
+|---|---|
+| **Restaurant ID** | Yes |
+| **MID** | Yes |
+
+---
+
+## Section 5 — Administrator
+
+<Frame caption="The Administrator section.">
+  ![Administrator card with fields for first name, last name, email, temporary password, and a collapsible permissions list](/images/taliup-hq/create-entity-administrator.png)
+</Frame>
+
+This section creates the initial Taliup HQ web user account for the merchant. The administrator can log in to Taliup HQ and manage the entity's settings after onboarding.
+
+| Field | Required | Notes |
+|---|---|---|
+| **First Name** | Yes | |
+| **Last Name** | Yes | |
+| **Email** | Yes | Used as the login username for Taliup HQ. Must be unique across all users. |
+| **Temporary Password** | No | Pre-filled as `12345678`. Read-only — the merchant should change this on first login. |
+| **Permissions** | — | Defaults to all 35 permissions granted. Expand the permissions list before submitting to restrict access to specific features if needed. |
+
+---
+
+## Submitting the form
+
+Click **Create Entity** in the top-right header bar to submit the form.
+
+| State | What you see |
+|---|---|
+| **Processing** | The button shows "Processing…" while the request is in flight. |
+| **Success** | The button briefly shows a checkmark and "Created", then returns to normal after 3 seconds. You are redirected to the new entity's management page. |
+| **Validation errors** | A "Check errors" indicator appears in the header bar next to the Cancel button. Scroll down to find the highlighted fields. |
+
+Clicking **Cancel** triggers a **Discard Changes?** confirmation modal before navigating back to the Entities list. Any unsaved form data is discarded.
+
+---
 
 ## What's next
 
-After creating the Entity, register the merchant's payment terminals as **Devices** in Taliup HQ. Each device requires the **TID** (terminal ID) from your device provider.
-
-- [Register PAX devices →](/taliup-hq/devices/pax/add-devices)
-- [Configure Plans & Features →](/taliup-hq/onboarding/plans-features)
+<CardGroup cols={2}>
+  <Card title="Register PAX Devices" icon="tablet" href="/taliup-hq/devices/pax/add-devices">
+    Add the merchant's payment terminals to Taliup HQ using their TIDs.
+  </Card>
+  <Card title="Plans & Features" icon="list-check" href="/taliup-hq/onboarding/plans-features">
+    Review or adjust the merchant's subscription plan and enabled features.
+  </Card>
+  <Card title="Configure Tips" icon="hand-holding-dollar" href="/taliup-hq/onboarding/tips">
+    Set up tip prompts and tip types for payment terminals.
+  </Card>
+  <Card title="Locations & Online Gateway" icon="location-dot" href="/taliup-hq/onboarding/locations">
+    Manage the merchant's physical sites and online payment gateway.
+  </Card>
+</CardGroup>
