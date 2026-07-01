@@ -67,14 +67,9 @@
                 "pages": [
                   "taliup-hq/admin/terminal-directory"
                 ]
-              }
-            ]
-          },
-          {
-            "tab": "Devices",
-            "groups": [
+              },
               {
-                "group": "PAX",
+                "group": "Devices",
                 "pages": [
                   "taliup-hq/devices/pax/index",
                   "taliup-hq/devices/pax/paxstore",
