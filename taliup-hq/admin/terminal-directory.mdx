@@ -1,0 +1,143 @@
+---
+title: "Terminal Directory"
+sidebarTitle: "Terminal Directory"
+description: "Admin-level view for monitoring terminal ownership, activation status, and catalog readiness across every merchant in scope."
+icon: "monitor"
+---
+
+The **Terminal Directory** is a cross-merchant operations view available to Taliup HQ admins. It shows every terminal in your accessible scope — with ownership, activation status, device type, and catalog assignment — all in one paginated table. Use it to audit readiness, spot gaps (unactivated or catalog-less terminals), and navigate directly to a merchant or terminal record.
+
+<Frame caption="The Terminal Directory showing 10,571 terminals across all merchants, filtered to Activated status.">
+  ![Terminal Directory full-page view with hero metrics, filter toolbar, and paginated terminal table](/images/taliup-hq/terminal-directory.png)
+</Frame>
+
+<Note>
+  Access to this page requires an admin role. Super Admins see terminals across all ISOs. ISO users see only the terminals belonging to merchants within their ISO hierarchy.
+</Note>
+
+---
+
+## Summary metrics
+
+The hero panel at the top of the page shows three live counters that reflect the currently active filter scope:
+
+| Metric | Description |
+|---|---|
+| **In Scope** | Total number of terminals visible to your account under the current filters. |
+| **Activated** | Terminals with a status of Activated. |
+| **Not Activated** | Terminals that have not yet been activated (In Scope minus Activated). |
+
+---
+
+## Filters
+
+<Frame caption="The filter toolbar with Search, Sort, Rows, ISO, Status, and Catalog controls.">
+  ![Filter toolbar showing dropdown menus and the Apply filters / Reset filters buttons](/images/taliup-hq/terminal-directory-filters.png)
+</Frame>
+
+The toolbar exposes six filter controls. Changes are staged locally — click **Apply filters** to run the query and refresh the table.
+
+| Control | Description |
+|---|---|
+| **Search** | Free-text search across terminal name, serial number, TID, device identifier, merchant name, merchant provider, location name, location MID, city, catalog name, and assigned staff names. Press Enter or click **Apply filters** to run the search. |
+| **Sort** | Order results by Newest first (default), Oldest first, Recently activated, or Name A–Z. |
+| **Rows** | Number of rows per page: 25 (default), 50, or 100. |
+| **ISO** | Filter to a specific ISO. Only ISOs accessible to your account appear in the list. Hidden when you have no ISO scope. |
+| **Status** | Filter by activation status: All statuses, Activated, or Pending Activation. Defaults to Activated. |
+| **Catalog** | Filter by catalog assignment: All catalog states, Catalog assigned, or No catalog. |
+
+After adjusting one or more controls, click **Apply filters** to fetch results. Click **Reset filters** to clear all controls back to their defaults and reload.
+
+Active filters appear as labeled pills below the toolbar so you can see what is currently applied at a glance.
+
+<Frame caption="Active filter pills and result count shown below the toolbar.">
+  ![Active filters bar showing 'Status: Activated' pill and result count '1-25 of 10,571 terminals'](/images/taliup-hq/terminal-directory-summary-chips.png)
+</Frame>
+
+### Quick views
+
+Four preset buttons let you jump to common views without manually adjusting individual controls:
+
+| Quick view | What it sets |
+|---|---|
+| **All** | Clears Status and Catalog filters — shows every terminal in scope. |
+| **Activated** | Sets Status to Activated. |
+| **Pending** | Sets Status to Pending Activation. |
+| **No catalog** | Sets Catalog to No catalog and clears the Status filter. |
+
+Each button displays a live count from the current summary. Clicking a quick view stages the filter change; **Apply filters** still runs the query.
+
+---
+
+## Terminal table
+
+The table lists one terminal per row. Each row shows the following columns:
+
+<Frame caption="A single terminal row showing all seven columns.">
+  ![Terminal row with name, TID, serial number, merchant name, location, device type, activation status, and catalog name](/images/taliup-hq/terminal-directory-row.png)
+</Frame>
+
+| Column | Contents |
+|---|---|
+| **Terminal** | Terminal name (or "Unnamed terminal" if none is set), internal ID (`#`), primary identifier (TID or Device ID depending on type), and serial number when available. |
+| **Merchant** | Merchant name (or "Archived merchant") and a secondary line with the merchant provider and location count. |
+| **Location** | Location display name and city/region, followed by the MID on a separate line. Shows "Primary location" when the terminal has no specific location assigned. |
+| **Type** | Device type label — Pax, AiOne, Castles, or the device type returned by the system. |
+| **Status** | Activation status badge (green dot for Activated, amber for Pending Activation) and the date the terminal was created. |
+| **Catalog** | Catalog name if one is assigned, or "—" when no catalog has been mapped to the terminal. Long names are truncated with a tooltip. |
+| **Actions** | Three-dot menu button. See [Row actions](#row-actions) below. |
+
+<Info>
+  The primary identifier label in the Terminal column switches automatically: PAX and Poynt terminals show **TID**, while AiOne and Castles terminals show **Device ID**.
+</Info>
+
+---
+
+## Row actions
+
+Click the **···** button on any terminal row to open its actions menu.
+
+<Frame caption="The actions menu for a terminal row, showing Open terminal, View merchant, and Delete terminal options.">
+  ![Actions dropdown with three items: Open terminal (with external link icon), View merchant (with store icon), and Delete terminal (in red with trash icon)](/images/taliup-hq/terminal-directory-actions.png)
+</Frame>
+
+| Action | Description |
+|---|---|
+| **Open terminal** | Navigates to the Terminals tab on the merchant's Manage Entity page, pre-scoped to this terminal. Available when the terminal has a linked merchant. |
+| **View merchant** | Navigates to the merchant's Manage Entity profile page. Available when the terminal has a linked merchant. |
+| **Delete terminal** | Opens the delete confirmation modal for this terminal. See [Deleting a terminal](#deleting-a-terminal) below. |
+
+---
+
+## Deleting a terminal
+
+Deleting a terminal archives it from active use while preserving all historical references. The operation is not reversible from the directory — contact engineering if a deletion was made in error.
+
+<Steps>
+  <Step title="Open the actions menu">
+    Click the **···** button on the terminal row you want to remove.
+  </Step>
+  <Step title="Select Delete terminal">
+    Click **Delete terminal** in the actions menu. A confirmation modal opens showing the terminal name, its primary identifier, merchant, and location.
+  </Step>
+  <Step title="Review what will be removed">
+    The modal lists what the deletion clears:
+
+    - Staff assignments to this terminal are removed.
+    - Catalog mappings and reader configuration are cleared.
+    - If the terminal is Factor4-enabled, it is marked as Suspended in Factor4 before deletion proceeds (see note below).
+
+    Orders, transactions, and reports are **not** affected and remain fully intact.
+  </Step>
+  <Step title="Confirm">
+    Click **Delete terminal** to proceed. The button shows "Deleting…" while the request is in flight. The modal closes and the row is removed from the table on success.
+  </Step>
+</Steps>
+
+<Warning>
+  Deletion is permanent from the Terminal Directory. Staff assignments and catalog mappings cannot be recovered after the operation completes. Confirm with the merchant or ISO before proceeding.
+</Warning>
+
+### Factor4 safety check
+
+When the terminal's location has an active Factor4 configuration, the confirmation modal displays a **Factor4 Safety Check** notice. In this case, the system suspends the terminal in Factor4 first. If that sync fails, the deletion is blocked and an error is returned — no data is changed.
