@@ -61,6 +61,12 @@
                   "taliup-hq/onboarding/dual-pricing",
                   "taliup-hq/onboarding/surcharge"
                 ]
+              },
+              {
+                "group": "Terminals",
+                "pages": [
+                  "taliup-hq/admin/terminal-directory"
+                ]
               }
             ]
           },
@@ -84,17 +90,6 @@
                 "group": "Online Payments",
                 "pages": [
                   "taliup-hq/features/hosted-payments"
-                ]
-              }
-            ]
-          },
-          {
-            "tab": "Admin Operations",
-            "groups": [
-              {
-                "group": "Terminals",
-                "pages": [
-                  "taliup-hq/admin/terminal-directory"
                 ]
               }
             ]
