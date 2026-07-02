@@ -78,7 +78,8 @@
                 "pages": [
                   "taliup-hq/admin/dashboard",
                   "taliup-hq/admin/entities",
-                  "taliup-hq/admin/terminal-directory"
+                  "taliup-hq/admin/terminal-directory",
+                  "taliup-hq/admin/performance"
                 ]
               }
             ]
