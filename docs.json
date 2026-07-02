@@ -84,7 +84,8 @@
                   "taliup-hq/admin/role-management",
                   "taliup-hq/admin/organizations",
                   "taliup-hq/admin/plans-features",
-                  "taliup-hq/admin/ui-settings"
+                  "taliup-hq/admin/ui-settings",
+                  "taliup-hq/admin/message-center"
                 ]
               }
             ]
