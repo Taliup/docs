@@ -39,9 +39,7 @@
                 "group": "Getting started",
                 "pages": [
                   "taliup-hq/index",
-                  "taliup-hq/dashboard",
-                  "taliup-hq/entities",
-                  "taliup-hq/onboarding/create-entity"
+                  "taliup-hq/create-entity"
                 ]
               },
               {
@@ -49,6 +47,14 @@
                 "pages": [
                   "taliup-hq/manage/profile",
                   "taliup-hq/manage/permissions"
+                ]
+              },
+              {
+                "group": "Devices",
+                "pages": [
+                  "taliup-hq/devices/pax/index",
+                  "taliup-hq/devices/pax/paxstore",
+                  "taliup-hq/devices/pax/add-devices"
                 ]
               },
               {
@@ -61,19 +67,18 @@
                   "taliup-hq/onboarding/dual-pricing",
                   "taliup-hq/onboarding/surcharge"
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "tab": "Admin Operations",
+            "groups": [
               {
-                "group": "Terminals",
+                "group": "Getting Started",
                 "pages": [
+                  "taliup-hq/admin/dashboard",
+                  "taliup-hq/admin/entities",
                   "taliup-hq/admin/terminal-directory"
-                ]
-              },
-              {
-                "group": "Devices",
-                "pages": [
-                  "taliup-hq/devices/pax/index",
-                  "taliup-hq/devices/pax/paxstore",
-                  "taliup-hq/devices/pax/add-devices"
                 ]
               }
             ]
