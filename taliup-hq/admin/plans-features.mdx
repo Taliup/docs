@@ -1,0 +1,162 @@
+---
+title: "Plans & Features"
+sidebarTitle: "Plans & Features"
+description: "Create and manage POS feature plans for your ISO — define which features are available to your merchants and control optional software subscription gates."
+icon: "dollar-sign"
+---
+
+**Plans & Features** lets ISO admins create named plans that bundle POS features together and assign those plans to merchant entities. Each plan acts as the feature entitlement layer for all merchants on it — toggling a feature on a plan instantly updates every entity assigned to that plan.
+
+<Frame caption="The Plan Management page showing seven plans across two rows, each displayed as a card with its feature count and plan type badge.">
+  ![Plan Management page with an ISO dropdown showing Unity Payments and a + Create Plan button. Plans shown include Basic (5 features, Base Plan), Light Retail (9 features, Base Plan), Lite Restaurant x2 (13 features each, Base Plan), Micamp (9 features, Add-on Plan), Quickbooks (5 features, Add-on Plan), and TALIUP (9 features, Base Plan). Each card has Edit Plan, Copy, and Delete buttons.](/images/taliup-hq/plans-features.png)
+</Frame>
+
+<Note>
+  Plans & Features is a feature that must be **enabled for your ISO by Taliup HQ**. If this section is not visible in the sidebar, contact Taliup HQ to have it activated for your account.
+
+  Additionally, the **Plans and Features** role permission must be granted to your admin role to toggle individual feature switches on plans.
+</Note>
+
+---
+
+## Plan types
+
+| Type | Description |
+|---|---|
+| **Base Plan** | The primary plan assigned to a merchant entity. Defines the core feature set. Each entity can have one base plan at a time. |
+| **Add-on Plan** | A supplemental plan that merchants can subscribe to on top of their base plan. Add-on plans cannot have a Software Subscription gate. |
+
+---
+
+## Plan Management list
+
+The index page shows all plans for the selected ISO as a card grid. Each card displays:
+
+- **Plan name** — unique within the ISO
+- **Feature count badge** — total number of features enabled on the plan
+- **Plan type badge** — Base Plan or Add-on Plan
+- **Actions** — Edit Plan, Copy to another ISO, Delete
+
+Use the **ISO dropdown** in the header to switch between your ISO and any child organizations if you manage multiple.
+
+---
+
+## Creating a plan
+
+Click **+ Create Plan** to open the creation form. The form has three sections: Plan Details, Features, and Software Subscription.
+
+<Frame caption="The Create Plan page with a Plan Details panel on the left and a Features panel on the right showing toggles for Employees, Catalogs, Inventory, and more. A Software Subscription section appears below.">
+  ![Create Plan page: left panel shows Plan Name field, ISO dropdown (Unity Payments), Industries checkboxes (Restaurant, Retail/Wholesale), Selected features counter (0), Allow Feature Add-ons toggle, and This is an Add-on Plan toggle. Right panel shows a Features list with Expand All, Select All, Clear All controls and individual feature toggles including Employees, Catalogs, Inventory, Reports, Ecommerce, Clients, Calendar, Virtual Terminal, Invoicing, Link To Pay, Hosted Payment Solution, and Table Management. Below both panels is a Software Subscription section with an enable toggle.](/images/taliup-hq/plans-features-create.png)
+</Frame>
+
+### Plan details
+
+| Field | Notes |
+|---|---|
+| **Plan Name** | Required. Must be unique within the ISO. |
+| **ISO** | Required. The ISO this plan belongs to. Visible only when you have access to multiple ISOs. Cannot be changed after creation. |
+| **Industries** | Optional. Check one or more to restrict this plan to specific merchant industries (Restaurant, Retail/Wholesale). Leave all unchecked to make the plan available to all industries. |
+| **Selected features** | Read-only counter that updates as you toggle features on the right. |
+| **Allow Feature Add-ons** | When enabled, merchants on this plan can subscribe to additional Add-on Plans. |
+| **This is an Add-on Plan** | Marks the plan as an add-on. Add-on plans cannot have a Software Subscription gate. |
+
+### Features
+
+The Features panel lists all available POS features, organized hierarchically. Use the toolbar controls to manage selections quickly:
+
+- **Expand All** — expand all feature groups to show sub-features
+- **Select All** — enable every feature in the list
+- **Clear All** — disable every feature in the list
+
+<Note>
+  Some features have dependencies. When you enable a feature that requires another, both are automatically enabled. Disabling a parent feature also disables all of its child features.
+</Note>
+
+Available features include:
+
+| Feature | Description |
+|---|---|
+| Employees | Staff management and time tracking. |
+| Catalogs | Product catalog management. |
+| Inventory | Stock tracking for retail merchants. |
+| Reports | Reporting and analytics dashboards. |
+| Ecommerce | Online ordering and QR code flows (Pickup, Room Service, Dine-in). |
+| Clients | Customer management. |
+| Calendar | Appointment and scheduling management. |
+| Virtual Terminal | Browser-based card-not-present payments. |
+| Invoicing | Invoice creation and sending. |
+| Link To Pay | Shareable payment links. |
+| Hosted Payment Solution | Embeddable hosted checkout. |
+| Table Management | Dine-in table layout and management. |
+| Quickbooks | Quickbooks integration. |
+
+### Software subscription
+
+The **Software Subscription** section lets you require merchants to agree to and pay a recurring fee before they can use the POS. This gate is shown to the merchant on first login.
+
+<Note>
+  Software Subscription is not available on Add-on Plans.
+</Note>
+
+| Field | Notes |
+|---|---|
+| **Subscription Name** | Required when enabled. Displayed to the merchant. |
+| **Amount** | Required. The recurring charge amount. |
+| **Frequency** | Required. One of: Daily, Weekly, Bi-weekly, Monthly, Annually. |
+| **Demo Passcode** | Optional. A 6-digit code that lets a merchant bypass the subscription gate for demo purposes. |
+| **Terms & Conditions** | Optional. Upload an HTML file with the subscription terms. Displayed to the merchant before they accept. |
+
+Click **Save Plan** to create the plan.
+
+---
+
+## Editing a plan
+
+Click **Edit Plan** on any plan card to open the edit form.
+
+<Frame caption="The Edit Plan page for the Basic plan showing 5 selected features (Employees and Catalogs toggled on), with Plan Details on the left and the Features panel on the right. A Delete Plan button and Save Changes button appear in the header.">
+  ![Edit Plan page for Basic: Plan Name shows Basic, ISO shows Unity Payments (read-only with note ISO cannot be changed after creation), Industries unchecked, Selected features showing 5, Allow Feature Add-ons showing DISABLED badge, This is an Add-on Plan showing NO badge. Features panel shows Employees and Catalogs toggled on. Header has Delete Plan (red) and Save Changes (dark) buttons.](/images/taliup-hq/plans-features-edit.png)
+</Frame>
+
+The edit form is identical to the create form with these differences:
+
+- The **ISO** field is read-only — it cannot be changed after creation
+- **Allow Feature Add-ons** and **Is Add-on Plan** show their current state as a badge rather than a toggle
+- A **Delete Plan** button appears in the page header
+
+<Warning>
+  Saving feature changes on an edit affects every entity currently assigned to this plan. Added features are immediately granted to all assigned entities; removed features are immediately revoked (except features the entity holds via an add-on subscription, which are left untouched).
+</Warning>
+
+Click **Save Changes** to apply.
+
+---
+
+## Copying a plan
+
+Click the **Copy icon** on any plan card to open the Copy Plan modal. Select one or more target ISOs from the hierarchical list (hold Ctrl/Cmd to multi-select) and click **Copy**.
+
+The copy is a deep clone — it duplicates the plan name, type, industries, all feature assignments, and price. If a plan with the same name already exists in the target ISO, the copy is renamed with a `(copy)` or `(copy 2)` suffix automatically.
+
+<Note>
+  You can only copy plans to ISOs within your own descendant hierarchy. You cannot copy a plan to a parent ISO or an unrelated ISO.
+</Note>
+
+---
+
+## Deleting a plan
+
+Click the **Delete icon** on a plan card to open the Delete Plan confirmation modal.
+
+<Frame caption="The Delete Plan confirmation modal with a yellow warning banner, a description of what will be deleted, and a note that deletion is blocked if the plan is assigned to any entity or has active subscriptions.">
+  ![Delete Plan modal: yellow Warning banner reads 'This action cannot be undone.' Body text reads 'You are about to delete Lite Restaurant. This will: Permanently disable this plan for assignment, Remove all feature associations. Note: Deletion cannot proceed if this plan is assigned to any entity or has active subscriptions.' Cancel and red Delete Plan buttons at the bottom.](/images/taliup-hq/plans-features-delete.png)
+</Frame>
+
+Clicking **Delete Plan** permanently removes the plan record, all its feature associations, and its software subscription settings (if any).
+
+<Warning>
+  Deletion is blocked in two cases:
+
+  - **Plan is assigned to entities** — at least one merchant entity is currently on this plan. Reassign or remove all entities from the plan first. When this error occurs, a **Download CSV** link appears in the error banner so you can export the full list of assigned entities.
+  - **Plan has active subscriptions** — one or more merchants have an active software subscription tied to this plan. Cancel those subscriptions first.
+</Warning>

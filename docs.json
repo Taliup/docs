@@ -82,7 +82,8 @@
                   "taliup-hq/admin/performance",
                   "taliup-hq/admin/user-management",
                   "taliup-hq/admin/role-management",
-                  "taliup-hq/admin/organizations"
+                  "taliup-hq/admin/organizations",
+                  "taliup-hq/admin/plans-features"
                 ]
               }
             ]
