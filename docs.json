@@ -39,9 +39,7 @@
                 "group": "Getting started",
                 "pages": [
                   "taliup-hq/index",
-                  "taliup-hq/dashboard",
-                  "taliup-hq/entities",
-                  "taliup-hq/onboarding/create-entity"
+                  "taliup-hq/create-entity"
                 ]
               },
               {
@@ -49,6 +47,14 @@
                 "pages": [
                   "taliup-hq/manage/profile",
                   "taliup-hq/manage/permissions"
+                ]
+              },
+              {
+                "group": "Devices",
+                "pages": [
+                  "taliup-hq/devices/pax/index",
+                  "taliup-hq/devices/pax/paxstore",
+                  "taliup-hq/devices/pax/add-devices"
                 ]
               },
               {
@@ -65,14 +71,14 @@
             ]
           },
           {
-            "tab": "Devices",
+            "tab": "Admin Operations",
             "groups": [
               {
-                "group": "PAX",
+                "group": "Getting Started",
                 "pages": [
-                  "taliup-hq/devices/pax/index",
-                  "taliup-hq/devices/pax/paxstore",
-                  "taliup-hq/devices/pax/add-devices"
+                  "taliup-hq/admin/dashboard",
+                  "taliup-hq/admin/entities",
+                  "taliup-hq/admin/terminal-directory"
                 ]
               }
             ]
