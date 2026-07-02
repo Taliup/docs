@@ -1,0 +1,91 @@
+---
+title: "UI Settings"
+sidebarTitle: "UI Settings"
+description: "White-label Taliup HQ with your own platform name, logo, color scheme, and support links through the Brand Hub."
+icon: "paintbrush"
+---
+
+The **Brand Hub** (UI Settings) lets ISO admins customize the visual identity of their Taliup HQ instance. Changes apply immediately across the platform for all users under your ISO — including the navigation logo, button and link colors, browser tab title, and support links surfaced in the POS app.
+
+<Frame caption="The Brand Hub page showing the Brand Identity, Visual Theme, and Links & Support sections alongside the Color Scheme Preview sidebar.">
+  ![Brand Hub full page with Platform Name field, Platform Logo and Browser Favicon upload areas, Accent/Secondary/Light color pickers with a preset palette, Support/Privacy Policy/Terms of Service URL fields, and a Color Scheme Preview sidebar showing live color swatches for Accent (#372E5F), Secondary (#8E98F05C), and Light (#F5F7FF)](/images/taliup-hq/ui-settings.png)
+</Frame>
+
+---
+
+## Brand Identity
+
+<Frame caption="The Brand Identity section showing the Platform Name field and upload areas for the Platform Logo and Browser Favicon.">
+  ![Brand Identity panel with Platform Name text field (placeholder: Enter custom platform name, helper: Appears in the header and browser tab), Platform Logo upload area (placeholder icon with Upload Logo label and Recommended: 200x50px hint), and Browser Favicon upload area showing a browser tab mockup with a globe icon and Your Title placeholder](/images/taliup-hq/ui-settings-brand-identity.png)
+</Frame>
+
+| Field | Notes |
+|---|---|
+| **Platform Name** | Replaces "Taliup" in the navigation header and browser tab title. Optional — leave blank to keep the default. |
+| **Platform Logo** | Replaces the default logo in the navigation bar. Accepted formats: JPEG, PNG, GIF, SVG. Max file size: 2 MB. Recommended dimensions: 200×50 px. |
+| **Browser Favicon** | The small icon shown in the browser tab. Accepted formats: PNG, ICO. Max file size: 512 KB. |
+
+**Uploading a file** — click the upload area to open the file picker. A preview appears immediately after selection.
+
+**Removing a file** — hover over the uploaded image and click the red trash icon that slides in from the top-right corner. If the file has already been saved, it is deleted from the server immediately. If the file was just selected but not yet saved, it is cleared from the form without a server request.
+
+---
+
+## Visual Theme
+
+<Frame caption="The Visual Theme section with color pickers for Accent, Secondary, and Light, and a row of 20 suggested color swatches.">
+  ![Visual Theme panel showing Accent Color (Primary) with a dark purple swatch (#372E5F) and a hex input, a row of 20 preset color swatches ranging from navy to dark green to burgundy, Secondary Color (#8e98f05c) with a light lavender swatch, and Light Color (#f5f7ff) with a near-white swatch](/images/taliup-hq/ui-settings-visual-theme.png)
+</Frame>
+
+The Visual Theme controls the three-tier color scheme used throughout Taliup HQ:
+
+| Color | Used for |
+|---|---|
+| **Accent (Primary)** | Buttons, active links, highlights, and the navigation bar accent. This is the dominant brand color. |
+| **Secondary** | Hover states, selected navigation items, and secondary UI elements. |
+| **Light** | Page backgrounds, subtle card fills, and light accent areas. |
+
+**Setting a color** — click the color swatch to open the native color picker, or type a hex value directly into the text input. Use the row of 20 preset swatches to quickly apply a curated dark or brand-safe color.
+
+**Auto-derived colors** — when you change the Accent color, the Secondary and Light values are automatically recalculated as lighter tints of the accent (75% and 95% lightened, respectively). You can override them manually at any time.
+
+The **Color Scheme Preview** sidebar on the right updates in real time as you change colors, so you can verify the combination before saving.
+
+---
+
+## Links & Support
+
+<Frame caption="The Links & Support section showing Support URL, Privacy Policy URL, and Terms of Service URL fields.">
+  ![Links & Support panel with two URL inputs in a row (Support URL: https://support.mycompany.com, Privacy Policy URL: https://mycompany.com/privacy) and a full-width Terms of Service URL input below (https://mycompany.com/terms)](/images/taliup-hq/ui-settings-links-support.png)
+</Frame>
+
+These URLs are shown to merchants and users in the POS app and in platform-generated emails. All fields are optional.
+
+| Field | Where it appears |
+|---|---|
+| **Support URL** | Help/support link in the POS app footer and merchant portal. |
+| **Privacy Policy URL** | Privacy policy link shown during account creation and in the app footer. |
+| **Terms of Service URL** | Terms link shown on login and during account setup flows. |
+
+---
+
+## Color Scheme Preview
+
+<Frame caption="The Color Scheme Preview sidebar showing live swatches for Accent, Secondary, and Light with hex values and an accessibility note.">
+  ![Color Scheme Preview sidebar with three color rows: Accent (#372E5F, dark purple swatch), Secondary (#8E98F05C, light lavender swatch), Light (#F5F7FF, near-white swatch), and a note: Ensure your accent color has sufficient contrast for accessibility (WCAG AA: 4.5:1 ratio)](/images/taliup-hq/ui-settings-color-preview.png)
+</Frame>
+
+The sidebar displays a live preview of your current color selections with their hex values. Use it to confirm the three colors work together before saving.
+
+<Note>
+  Ensure your Accent color provides sufficient contrast against white text to meet the WCAG AA accessibility standard (minimum 4.5:1 contrast ratio). Low-contrast accent colors can make buttons and links difficult to read for users with visual impairments.
+</Note>
+
+---
+
+## Saving and resetting
+
+| Button | Action |
+|---|---|
+| **Save Changes** | Saves all settings. If a logo or favicon file is pending, the form submits in two phases: text fields first, then the file upload. A full-page branded saving animation is shown during the save. |
+| **Reset** | Discards all unsaved edits and reverts every field to the last saved values. Does not affect the server — no data is changed until you click Save Changes. |
