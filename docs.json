@@ -80,7 +80,8 @@
                   "taliup-hq/admin/entities",
                   "taliup-hq/admin/terminal-directory",
                   "taliup-hq/admin/performance",
-                  "taliup-hq/admin/user-management"
+                  "taliup-hq/admin/user-management",
+                  "taliup-hq/admin/role-management"
                 ]
               }
             ]
