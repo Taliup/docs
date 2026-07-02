@@ -1,0 +1,246 @@
+---
+title: "Organizations"
+sidebarTitle: "Organizations"
+description: "Create and manage sub-organizations (child ISOs) under your ISO — including provider access, location, Open Sale configuration, and administrator setup."
+icon: "sitemap"
+---
+
+The **Organizations** page lets ISO admins create and manage sub-organizations (child ISOs) within their hierarchy. Each sub-organization is an independent ISO with its own users, entities, provider access, and admin role — all nested under your parent ISO.
+
+<Frame caption="The Organizations page showing the Sub-Organizations list with three active child ISOs.">
+  ![Organizations page with a Sub-Organizations table listing Local Payments, Priority Pay, and Divvia with status, entity count, user count, sub-org count, created date, and Manage / Edit / Delete actions](/images/taliup-hq/organizations.png)
+</Frame>
+
+<Note>
+  This page requires the **Organizations** permission. This permission must be granted to your role by your Super Admin at Taliup HQ. Without it, the Organizations section is not accessible.
+</Note>
+
+---
+
+## Sub-organizations table
+
+Each row in the table shows a summary of one child ISO:
+
+<Frame caption="A single organization row showing status, entity count, user count, sub-org count, and row actions.">
+  ![Organization row for Local Payments showing Active status, 0 Entities, 1 User, 0 Sub-Orgs, created May 27 2026, with Manage, Edit, and Delete buttons](/images/taliup-hq/organizations-row.png)
+</Frame>
+
+| Column | Contents |
+|---|---|
+| **Organization** | Organization name and code. |
+| **Status** | Active or inactive. |
+| **Entities** | Number of merchant entities assigned to this organization. |
+| **Users** | Number of admin users belonging to this organization. |
+| **Sub-Orgs** | Number of direct child organizations nested under this one. |
+| **Created** | Date the organization was created. |
+| **Actions** | Manage, Edit, Delete. |
+
+---
+
+## Creating an organization
+
+Click **+ Create Organization** to open the creation form. The form is divided into five sections completed top to bottom.
+
+<Frame caption="The Create Organization page showing the Organization Details and Organization Preview panels.">
+  ![Create Organization page with a form on the left and a live Organization Preview panel on the right showing hierarchy level and assigned entities](/images/taliup-hq/organizations-create.png)
+</Frame>
+
+A **live Organization Preview** panel on the right updates in real time as you fill in the form, showing the parent organization, hierarchy level, assigned entities, and location.
+
+<Steps>
+  <Step title="Organization details">
+    <Frame caption="The Organization Details section showing the Name, Subdomain, and Description fields.">
+      ![Organization Details section with Organization Name (required), Subdomain (optional), and Description textarea](/images/taliup-hq/organizations-create-details.png)
+    </Frame>
+
+    | Field | Notes |
+    |---|---|
+    | **Organization Name** | Required. Must be unique within your ISO. |
+    | **Subdomain** | Optional. A custom subdomain for this organization's Taliup HQ login page. Must be unique across the platform. |
+    | **Description** | Optional. Internal notes about this organization. |
+  </Step>
+
+  <Step title="Location">
+    <Frame caption="The Location section with Address Search and individual address fields.">
+      ![Location section with Address Search bar, Address, Unit, City, Region, Country, Postal Code, and Phone fields](/images/taliup-hq/organizations-create-location.png)
+    </Frame>
+
+    Use **Address Search** to auto-fill the address fields, or enter them manually. All location fields are optional at creation time.
+
+    | Field | Notes |
+    |---|---|
+    | **Address / Unit** | Street address and optional unit number. |
+    | **City / Region** | City and state or province. |
+    | **Country** | Two-letter ISO country code (e.g. CA, US). |
+    | **Postal Code** | ZIP or postal code. |
+    | **Phone** | Organization contact phone number. |
+  </Step>
+
+  <Step title="Open Sale (conditional)">
+    <Frame caption="The Open Sale section showing the Allow Open Sale Only toggle.">
+      ![Open Sale section with an 'Allow Open Sale Only' toggle and description: Allow entities under this organization to be restricted to open sale transactions only](/images/taliup-hq/organizations-create-open-sale.png)
+    </Frame>
+
+    <Note>
+      The Open Sale section only appears when your parent ISO has the **Open Sale Only** feature enabled. This feature must be turned on by Taliup HQ for your ISO. When enabled, toggling **Allow Open Sale Only** restricts all entities under this organization to open-sale transactions exclusively.
+    </Note>
+  </Step>
+
+  <Step title="Configuration — provider access">
+    <Frame caption="The Configuration section showing Terminal Providers, Payment Providers, and Gateway Providers checkboxes.">
+      ![Configuration section with PROVIDER ACCESS showing Terminal Providers (POYNT, PAX, CASTLES, INGENICO), Payment Providers (NUVEI, ELAVON, TSYS SIERRA, RAPID CONNECT), and Gateway Providers (Elavon Converge, Nuvei Web SDK, MiCamp, Rise Payments, NMI Payments) checkboxes](/images/taliup-hq/organizations-create-config.png)
+    </Frame>
+
+    Select which providers this organization can use. You can only grant access to providers that are already enabled on your own ISO — the list is constrained to your parent's configuration.
+
+    | Provider type | Description |
+    |---|---|
+    | **Terminal Providers** | Required. At least one must be selected. Controls which POS terminal hardware the organization's merchants can use. |
+    | **Payment Providers** | Required. At least one must be selected. Controls which payment processors are available. |
+    | **Gateway Providers** | Optional. Online payment gateway access for hosted payment flows. |
+  </Step>
+
+  <Step title="Organization administrator">
+    <Frame caption="The Organization Administrator section for creating the initial admin user and selecting their permissions.">
+      ![Organization Administrator section with First Name, Last Name, Email fields (required), and an expandable Permissions row showing 'ISO Admin will have access to 13 of 13 permissions'](/images/taliup-hq/organizations-create-admin.png)
+    </Frame>
+
+    This section creates the first admin user for the new organization and sends them an invitation email.
+
+    | Field | Notes |
+    |---|---|
+    | **First Name / Last Name** | Required. |
+    | **Email** | Required. Must be unique across the platform. An invitation email is sent to this address. |
+    | **Permissions** | Select which permissions the ISO Admin role for this organization will have. Only permissions held by your own admin role are available — you cannot grant more than you have. At least one permission must be selected. |
+
+    <Note>
+      The new organization is created in **Hosted mode**, inheriting the database structure from the parent ISO. The administrator account starts in **Pending** status until the invitation is accepted.
+    </Note>
+  </Step>
+</Steps>
+
+Click **Create Org** to submit. On success you are returned to the Organizations list.
+
+<Note>
+  A maximum of **2 levels** of sub-organizations are supported. If your ISO already has child organizations that themselves have children, the Create Organization button will be unavailable and an error is shown.
+</Note>
+
+---
+
+## Managing an organization
+
+Click **Manage** on any row to open the organization detail page.
+
+<Frame caption="The Manage page for Local Payments showing Basic Information, Logo & Favicon, Statistics, and Hierarchy panels, with Manage Entities, Manage Users, and Edit buttons in the header.">
+  ![Manage page for Local Payments with Basic Information panel showing name, status badge, terminal providers (POYNT, INGENICO, PAX, CASTLES), and payment providers (NUVEI, ELAVON); Logo & Favicon upload panels on the right](/images/taliup-hq/organizations-manage.png)
+</Frame>
+
+The manage page is divided into four panels:
+
+### Basic information
+
+<Frame caption="The Basic Information panel showing organization name, Active status badge, and provider tags.">
+  ![Basic Information panel with Name: Local Payments, Status: ACTIVE badge, Terminal Providers: POYNT INGENICO PAX CASTLES tags, and Payment Providers: NUVEI ELAVON tags](/images/taliup-hq/organizations-manage-basic-info.png)
+</Frame>
+
+Shows the organization name, current status, and the terminal and payment providers enabled for this organization.
+
+### Logo & Favicon
+
+<Frame caption="The Logo & Favicon panel showing upload areas for the partner logo and favicon.">
+  ![Logo & Favicon panel with an Upload Logo button under a placeholder logo area, and an Upload Favicon button under a favicon placeholder. Favicon accepts 16x16 or 32x32 PNG, ICO, or SVG.](/images/taliup-hq/organizations-manage-logo.png)
+</Frame>
+
+Upload a white-label logo and favicon for this organization's Taliup HQ instance. The logo appears in the navigation bar; the favicon appears in the browser tab.
+
+- **Logo** — any standard image format; replaces the default Taliup logo
+- **Favicon** — PNG, ICO, or SVG at 16×16 or 32×32 pixels
+
+### Statistics
+
+<Frame caption="The Statistics panel showing Entities, Users, Transactions, and Sub-Organizations counts.">
+  ![Statistics panel with four colored KPI cards: Entities (0, blue), Users (1, green), Transactions (0, yellow), Sub-Organizations (0, purple)](/images/taliup-hq/organizations-manage-stats.png)
+</Frame>
+
+| Metric | Description |
+|---|---|
+| **Entities** | Number of merchant entities directly assigned to this organization. |
+| **Users** | Number of admin users belonging to this organization. |
+| **Transactions** | Total transaction count for entities assigned to this organization. |
+| **Sub-Organizations** | Number of direct child organizations nested under this one. |
+
+### Hierarchy
+
+<Frame caption="The Hierarchy panel showing the parent organization and the absence of any sub-organizations.">
+  ![Hierarchy panel showing Parent Organization: Unity Payments (UP) with a view link, and a 'No sub-organizations' placeholder below](/images/taliup-hq/organizations-manage-hierarchy.png)
+</Frame>
+
+Shows the parent organization with a link to view it, and lists any direct child organizations nested under this one.
+
+### Recent activity
+
+<Frame caption="The Recent Activity panel showing Created and Last Updated timestamps.">
+  ![Recent Activity panel with Created: 1 month ago and Last Updated: 1 month ago](/images/taliup-hq/organizations-manage-activity.png)
+</Frame>
+
+Displays when the organization was created and last updated.
+
+### Header actions
+
+The manage page header contains three action buttons:
+
+| Button | Action |
+|---|---|
+| **Manage Entities** | Opens the entity assignment view — assign or remove merchant entities for this organization. |
+| **Manage Users** | Opens the user and permissions management view — add/remove users and configure the ISO Admin role's permissions for this organization. |
+| **Edit** | Opens the Edit Organization form. |
+
+---
+
+## Editing an organization
+
+Click **Edit** from either the list row or the manage page header to open the Edit Organization form.
+
+<Frame caption="The Edit Organization page showing the Organization Information form on the left and the Live Preview + Statistics sidebar on the right.">
+  ![Edit Organization page with Organization Information (Name, Subdomain, Parent Organization, Description), Location section below it, and a Live Preview + Statistics sidebar on the right](/images/taliup-hq/organizations-edit.png)
+</Frame>
+
+The edit form mirrors the create form with these differences:
+
+- The **Parent Organization** field is read-only — it cannot be changed after creation
+- A **Live Preview** sidebar shows the current organization name, status badge, and location in real time as you edit
+- A **Statistics** sidebar shows entity, user, and sub-org counts, plus the created date, Org ID, and Mode
+
+<Frame caption="Organization Information fields on the edit form showing the current name and subdomain.">
+  ![Organization Information section with Organization Name: Local Payments, Subdomain placeholder, Parent Organization: Unity Payments (read-only), and Description textarea](/images/taliup-hq/organizations-edit-info.png)
+</Frame>
+
+<Frame caption="The Location section on the edit form showing a fully populated address.">
+  ![Location section with Address: 112 Supertest Road, City: Toronto, Region: ON, Country: Canada, Postal Code: M3H 5S9, Phone: (111) 111-1111](/images/taliup-hq/organizations-edit-location.png)
+</Frame>
+
+<Frame caption="The System Configuration section showing the Organization Status toggle, Allow Open Sale Only toggle, and provider access checkboxes.">
+  ![System Configuration section with Organization Status toggle (Active), Allow Open Sale Only toggle (disabled), and Provider Access checkboxes with ELAVON, NUVEI, Elavon Converge, and Nuvei Web SDK checked](/images/taliup-hq/organizations-edit-config.png)
+</Frame>
+
+The **System Configuration** section adds two controls not present in the create form:
+
+| Control | Notes |
+|---|---|
+| **Organization Status** | Toggle between Active and Inactive. Inactive organizations are disabled and their users cannot log in. |
+| **Allow Open Sale Only** | Only shown when the parent ISO has this feature enabled. Editable only by the parent ISO admin or a Super Admin. Disabling it after it was previously enabled requires a confirmation that existing Open Sale Only locations will be turned off. |
+
+Click **Save Changes** to apply. You are returned to the Organizations list on success.
+
+---
+
+## Deleting an organization
+
+Click **Delete** on any organization row. A browser confirmation dialog appears asking you to confirm. Click **OK** to proceed.
+
+<Warning>
+  Deletion is permanent and cannot be undone. It removes the organization record, all users belonging to it, all roles assigned to it, and all entity access grants. The following conditions will **block** deletion:
+
+  - The organization has one or more entities assigned to it — remove all entities first
+  - The organization has one or more child sub-organizations — delete those first
+</Warning>
