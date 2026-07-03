@@ -29,7 +29,7 @@
     "products": [
       {
         "product": "Taliup HQ",
-        "icon": "building-2",
+        "icon": "business-time",
         "description": "Merchant management portal",
         "tabs": [
           {
