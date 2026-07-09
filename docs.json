@@ -91,10 +91,16 @@
             ]
           },
           {
-            "tab": "Features",
+            "tab": "Merchant Portal",
             "groups": [
               {
-                "group": "Online Payments",
+                "group": "Getting Started",
+                "pages": [
+                  "taliup-hq/merchant/dashboard"
+                ]
+              },
+              {
+                "group": "Features",
                 "pages": [
                   "taliup-hq/features/hosted-payments"
                 ]

@@ -1,0 +1,160 @@
+---
+title: Dashboard
+description: View your sales performance, top products, and employee metrics for your merchant location.
+---
+
+The Dashboard is the home screen for every merchant in Taliup HQ. It gives you an at-a-glance view of sales activity, financial summaries, and employee performance — all scoped to your location and timezone.
+
+<Frame caption="The merchant Dashboard showing the Sales tab with KPI cards, a Sales Performance chart, Quick Links, Summary table, Top Products, and Sales Distribution.">
+  ![Merchant Dashboard full Sales tab view with Gross Sales $2401.19, Net Sales $2401.19, Tips $110.18, Authorizations $0.00 KPI cards; a Sales Performance area chart for July 9, 2026; Quick Links sidebar; and a Summary table below.](/images/taliup-hq/dashboard-sales.png)
+</Frame>
+
+The dashboard is divided into two tabs: **Sales** and **Employees**.
+
+---
+
+## Sales tab
+
+### KPI cards
+
+The four metric cards at the top of the Sales tab update whenever you change the time period in the Sales Performance chart.
+
+<Frame caption="The four KPI cards showing Gross Sales, Net Sales, Tips, and Authorizations for the selected period.">
+  ![Four KPI cards: Gross Sales $2401.19 (Including taxes and tips), Net Sales $2401.19 (46 Transactions), Tips $110.18 (Total tips received), Authorizations $0.00 (0 Transactions)](/images/taliup-hq/dashboard-kpi-cards.png)
+</Frame>
+
+| Card | What it shows |
+|---|---|
+| **Gross Sales** | Total revenue including taxes and tips |
+| **Net Sales** | Revenue after refunds and voids, plus the transaction count |
+| **Tips** | Total tip amount collected in the period |
+| **Authorizations** | Pre-authorized (open tab) total and transaction count |
+
+### Sales Performance chart
+
+The Sales Performance chart plots **Gross Sales** over time as a shaded area chart. A dashed red reference line marks the **average sale amount** for the selected period.
+
+<Frame caption="The Sales Performance chart showing Gross Sales by hour for July 9, 2026, with a dashed average-sale-amount reference line at $197.07.">
+  ![Sales Performance area chart with DAY / WEEK / MONTH / YEAR tabs and a date picker. The chart shows gross sales activity from midnight to 11 PM with a peak around 5 PM. The average sale amount tooltip reads $197.07.](/images/taliup-hq/dashboard-sales-performance.png)
+</Frame>
+
+Use the period tabs to change the granularity:
+
+| Tab | Data granularity | Date input |
+|---|---|---|
+| **DAY** | Hourly breakdown for a single date | Date picker (YYYY-MM-DD) |
+| **WEEK** | Daily breakdown for an ISO week | Week-number picker |
+| **MONTH** | Daily breakdown for a calendar month | Month picker (YYYY-MM) |
+| **YEAR** | Monthly breakdown for a calendar year | Year picker (YYYY) |
+
+Selecting a different period or date immediately refreshes the KPI cards and chart data via an AJAX call — no full page reload required.
+
+### Quick Links
+
+The Quick Links sidebar provides one-click navigation to the most-used sections of your merchant portal:
+
+- **Products** — manage your product catalog
+- **Taxes** — configure tax rates
+- **Timesheets** — view employee time records
+- **Settings** — adjust entity configuration
+- **FAQs** — access help documentation
+
+### Summary
+
+The Summary section is a detailed financial breakdown for the selected period.
+
+<Frame caption="The Summary table showing a hierarchical breakdown of Gross Sales, Refunds, Voids, Net Total, Tips, Taxes, Surcharge Total, and Authorizations.">
+  ![Summary table with two columns: # Transactions and Total. Gross Sales (incl. taxes, incl. tips) = 46 / $2401.19, broken down by ACH Sales, Cash Sales, Credit Card Sales (expandable), Debit Card Sales. Refunds = 0 / -$0.00, Voids = 0 / -$0.00, Net Total = 46 / $2401.19, Tips = $110.18, Taxes = $0.00, Surcharge Total = $16.16, Authorizations = 0 / $0.00.](/images/taliup-hq/dashboard-summary.png)
+</Frame>
+
+The table is organized into the following rows:
+
+| Row | Description |
+|---|---|
+| **Gross Sales** | All completed transactions (incl. taxes, incl. tips) |
+| — ACH Sales | Bank transfer transactions |
+| — Cash Sales | Cash tender transactions |
+| — Gift Card Sales | Gift card redemptions (shown when applicable) |
+| — Credit Card Sales | Card-present credit transactions; click the chevron to expand by card type (Visa, Mastercard, Amex, etc.) |
+| — Debit Card Sales | Debit card transactions |
+| — EBT Sales | EBT transactions (shown when applicable) |
+| **Refunds** | Refunded transactions (negative values) |
+| — Cash Refunds | Refunds applied to cash tender |
+| — Credit Card Refunds | Refunds applied to credit cards |
+| — Debit Card Refunds | Refunds applied to debit cards |
+| **Voids** | Voided transactions (negative values) |
+| **Net Total** | Gross Sales minus Refunds and Voids |
+| **Tips** | Total tips collected |
+| **Taxes** | Total taxes collected |
+| **Surcharge Total** | Total surcharge collected |
+| **Authorizations** | Open pre-authorized amounts not yet captured |
+
+### Top Products
+
+The Top Products table lists up to 20 of your best-selling products (custom products excluded), ranked by units sold.
+
+| Column | Description |
+|---|---|
+| **Products** | Product name |
+| **Units Sold** | Total quantity sold |
+| **Total Sales** | Total revenue from this product |
+| **Units Available** | Current inventory count |
+
+Click any product row to see its sales broken down by month for the current year.
+
+### Sales Distribution
+
+The Sales Distribution section shows a breakdown of your sales by category with a **Top Selling Products (Quantity)** chart. This gives a visual overview of which product categories drive the most volume.
+
+---
+
+## Employees tab
+
+The Employees tab contains three sections for analyzing individual employee performance within your location.
+
+<Frame caption="The Employees tab showing the Employee Performance, Employee Distribution, and Employee Tips sections.">
+  ![Employees tab with an Employee Performance card (no employee selected, showing 'No Employee selected'), and an Employee Distribution bar chart showing Gross Sales by employee name.](/images/taliup-hq/dashboard-employees.png)
+</Frame>
+
+### Employee Performance
+
+Select an employee from the **Employee** dropdown to display a monthly time-series chart of their gross sales over the rolling 12-month period.
+
+<Frame caption="Employee Performance chart for Thomas Walker showing monthly gross sales from August 2025 to July 2026.">
+  ![Employee Performance card with Thomas Walker selected in the dropdown. A line chart titled 'Sales Performance: Thomas Walker' plots monthly gross sales from 2025-08 to 2026-07, with all values showing $0 on the y-axis.](/images/taliup-hq/dashboard-employee-performance.png)
+</Frame>
+
+When no employee is selected, the chart area displays a **No Employee selected** placeholder. Once an employee is chosen, the chart loads automatically.
+
+### Employee Distribution
+
+The Employee Distribution card shows a bar chart of **Gross Sales** grouped by employee, giving a quick visual comparison of sales volume across your team.
+
+<Frame caption="Employee Distribution bar chart showing Gross Sales by employee.">
+  ![Employee Distribution card with a Gross Sales bar chart. The x-axis shows employee names (Thomas) and the y-axis shows sales values from 0 to 6.](/images/taliup-hq/dashboard-employee-distribution.png)
+</Frame>
+
+### Employee Tips
+
+The Employee Tips table shows tips received by each employee within a date range you specify.
+
+<Frame caption="Employee Tips table with a date range picker and columns for ID, Name, Total Sales, Total Sales Amount, Total Tips, and Average Ticket.">
+  ![Employee Tips card with a Date Range field showing 2026-07-09 to 2026-07-09 and a table with columns: ID, Name, Total Sales, Total Sales Amount, Total Tips, Average Ticket. The table is empty for the selected range.](/images/taliup-hq/dashboard-employee-tips.png)
+</Frame>
+
+Use the **Date Range** picker to filter the tips table by a custom start and end date. The table columns are:
+
+| Column | Description |
+|---|---|
+| **ID** | Employee record ID |
+| **Name** | Employee full name |
+| **Total Sales** | Number of transactions attributed to this employee |
+| **Total Sales Amount** | Gross revenue from this employee's transactions |
+| **Total Tips** | Total tips received by this employee |
+| **Average Ticket** | Average transaction value (Total Sales Amount ÷ Total Sales) |
+
+---
+
+## Data scope
+
+All dashboard figures are scoped to your merchant entity and calculated in your entity's configured **timezone**. Dates and time groupings (hourly, daily, weekly, monthly, yearly) all respect this timezone, so sales that occur near midnight are attributed to the correct local business day.
