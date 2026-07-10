@@ -5,8 +5,8 @@ description: View your sales performance, top products, and employee metrics for
 
 The Dashboard is the home screen for every merchant in Taliup HQ. It gives you an at-a-glance view of sales activity, financial summaries, and employee performance — all scoped to your location and timezone.
 
-<Frame caption="The merchant Dashboard showing the Sales tab with KPI cards, a Sales Performance chart, Quick Links, Summary table, Top Products, and Sales Distribution.">
-  ![Merchant Dashboard full Sales tab view with Gross Sales $2401.19, Net Sales $2401.19, Tips $110.18, Authorizations $0.00 KPI cards; a Sales Performance area chart for July 9, 2026; Quick Links sidebar; and a Summary table below.](/images/taliup-hq/dashboard-sales.png)
+<Frame caption="The merchant Dashboard showing the Sales tab with KPI cards, a Sales Performance chart, and Quick Links sidebar.">
+  ![Merchant Dashboard Sales tab with Gross Sales $1656.58, Net Sales $1376.36 (39 Transactions), Tips $76.71, Authorizations $0.00 KPI cards; a Sales Performance area chart for July 10, 2026; and Quick Links sidebar listing Products, Taxes, Timesheets, Settings, and FAQs.](/images/taliup-hq/dashboard-sales.png)
 </Frame>
 
 The dashboard is divided into two tabs: **Sales** and **Employees**.
@@ -20,7 +20,7 @@ The dashboard is divided into two tabs: **Sales** and **Employees**.
 The four metric cards at the top of the Sales tab update whenever you change the time period in the Sales Performance chart.
 
 <Frame caption="The four KPI cards showing Gross Sales, Net Sales, Tips, and Authorizations for the selected period.">
-  ![Four KPI cards: Gross Sales $2401.19 (Including taxes and tips), Net Sales $2401.19 (46 Transactions), Tips $110.18 (Total tips received), Authorizations $0.00 (0 Transactions)](/images/taliup-hq/dashboard-kpi-cards.png)
+  ![Four KPI cards: Gross Sales $1656.58 (Including taxes and tips), Net Sales $1376.36 (39 Transactions), Tips $76.71 (Total tips received), Authorizations $0.00 (0 Transactions)](/images/taliup-hq/dashboard-kpi-cards.png)
 </Frame>
 
 | Card | What it shows |
@@ -32,10 +32,10 @@ The four metric cards at the top of the Sales tab update whenever you change the
 
 ### Sales Performance chart
 
-The Sales Performance chart plots **Gross Sales** over time as a shaded area chart. A dashed red reference line marks the **average sale amount** for the selected period.
+The Sales Performance chart plots **Gross Sales** over time as a shaded area chart. A dashed red reference line marks the **average sale amount** for the selected period. Hovering over the chart shows a tooltip with the exact gross sales value at that time.
 
-<Frame caption="The Sales Performance chart showing Gross Sales by hour for July 9, 2026, with a dashed average-sale-amount reference line at $197.07.">
-  ![Sales Performance area chart with DAY / WEEK / MONTH / YEAR tabs and a date picker. The chart shows gross sales activity from midnight to 11 PM with a peak around 5 PM. The average sale amount tooltip reads $197.07.](/images/taliup-hq/dashboard-sales-performance.png)
+<Frame caption="The Sales Performance chart for July 10, 2026 showing Gross Sales by hour, with a tooltip at 06:00 am and the average sale amount reference line at $125.80.">
+  ![Sales Performance area chart with DAY / WEEK / MONTH / YEAR tabs and a date picker showing 2026-07-10. The chart shows hourly gross sales activity with a peak around 1 PM–2 PM. A tooltip reads '06:00 am — Gross Sales: 0.00'. The dashed red average-sale-amount reference line shows Avg Sale Amount: $125.80.](/images/taliup-hq/dashboard-sales-performance.png)
 </Frame>
 
 Use the period tabs to change the granularity:
@@ -63,8 +63,8 @@ The Quick Links sidebar provides one-click navigation to the most-used sections 
 
 The Summary section is a detailed financial breakdown for the selected period.
 
-<Frame caption="The Summary table showing a hierarchical breakdown of Gross Sales, Refunds, Voids, Net Total, Tips, Taxes, Surcharge Total, and Authorizations.">
-  ![Summary table with two columns: # Transactions and Total. Gross Sales (incl. taxes, incl. tips) = 46 / $2401.19, broken down by ACH Sales, Cash Sales, Credit Card Sales (expandable), Debit Card Sales. Refunds = 0 / -$0.00, Voids = 0 / -$0.00, Net Total = 46 / $2401.19, Tips = $110.18, Taxes = $0.00, Surcharge Total = $16.16, Authorizations = 0 / $0.00.](/images/taliup-hq/dashboard-summary.png)
+<Frame caption="The Summary table showing a hierarchical breakdown of Gross Sales, Refunds, Payouts, Voids, Net Total, Tips, Taxes, Surcharge Total, and Authorizations.">
+  ![Summary table with two columns: # Transactions and Total. Gross Sales (incl. taxes, incl. tips) = 34 / $1656.58, broken down by ACH Sales ($0.00), Cash Sales (17 / $880.78), Credit Card Sales (17 / $775.75, expandable), Debit Card Sales ($0.00). Refunds = 0 / -$0.00. Payouts = 5 / -$280.22. Voids = 0 / -$0.00. Net Total = 34 / $1376.36. Tips = $76.71. Taxes = $0.00. Surcharge Total = $7.04. Authorizations = 0 / $0.00.](/images/taliup-hq/dashboard-summary.png)
 </Frame>
 
 The table is organized into the following rows:
@@ -82,8 +82,9 @@ The table is organized into the following rows:
 | — Cash Refunds | Refunds applied to cash tender |
 | — Credit Card Refunds | Refunds applied to credit cards |
 | — Debit Card Refunds | Refunds applied to debit cards |
+| **Payouts** | Cash payouts recorded at the terminal (negative values) |
 | **Voids** | Voided transactions (negative values) |
-| **Net Total** | Gross Sales minus Refunds and Voids |
+| **Net Total** | Gross Sales minus Refunds, Payouts, and Voids |
 | **Tips** | Total tips collected |
 | **Taxes** | Total taxes collected |
 | **Surcharge Total** | Total surcharge collected |
@@ -93,18 +94,26 @@ The table is organized into the following rows:
 
 The Top Products table lists up to 20 of your best-selling products (custom products excluded), ranked by units sold.
 
+<Frame caption="The Top Products table listing up to 20 best-selling products ranked by units sold, with expandable rows for monthly sales detail.">
+  ![Top Products table showing products such as BondRight Construction Adhesive 295 mL (6 units, $39.24), SwitchPro 3-Way Light Switch White (6 units, $27.30), BrightGuard Reflective Safety Vest (5 units, $48.90), and other products. Each row has columns: Products, Units Sold, Total Sales, Units Available, and a chevron to expand monthly breakdowns.](/images/taliup-hq/dashboard-top-products.png)
+</Frame>
+
 | Column | Description |
 |---|---|
-| **Products** | Product name |
+| **Products** | Product name and unit price |
 | **Units Sold** | Total quantity sold |
 | **Total Sales** | Total revenue from this product |
 | **Units Available** | Current inventory count |
 
-Click any product row to see its sales broken down by month for the current year.
+Click any product row to expand a monthly sales breakdown for the current year.
 
 ### Sales Distribution
 
-The Sales Distribution section shows a breakdown of your sales by category with a **Top Selling Products (Quantity)** chart. This gives a visual overview of which product categories drive the most volume.
+The Sales Distribution section shows a breakdown of your sales by category with a **Top Selling Products (Quantity)** pie chart. This gives a visual overview of which products drive the most volume.
+
+<Frame caption="Sales Distribution pie chart showing Top Selling Products by quantity, with a color-coded legend.">
+  ![Sales Distribution section titled 'Breakdown of your sales by category'. A multicolored pie chart labeled 'Top Selling Products (Quantity)' is shown alongside a legend listing product names including BondRight Construction Adhesive 295 mL, SwitchPro 3-Way Light Switch White, RollerPro Paint Roller Frame 9 in., IceMelt Pro Sidewalk Salt 10 kg, CablePro Outdoor Extension Cord 50 ft, BrightGuard Reflective Safety Vest, MeasureMax 25 ft Tape Measure, GripWorks Adjustable Wrench 8 in., SawSharp Jigsaw Blade Set – 10 Piece, and DriverPro 10-Piece Screwdriver Set.](/images/taliup-hq/dashboard-sales-distribution.png)
+</Frame>
 
 ---
 
@@ -112,16 +121,16 @@ The Sales Distribution section shows a breakdown of your sales by category with 
 
 The Employees tab contains three sections for analyzing individual employee performance within your location.
 
-<Frame caption="The Employees tab showing the Employee Performance, Employee Distribution, and Employee Tips sections.">
-  ![Employees tab with an Employee Performance card (no employee selected, showing 'No Employee selected'), and an Employee Distribution bar chart showing Gross Sales by employee name.](/images/taliup-hq/dashboard-employees.png)
+<Frame caption="The Employees tab with Thomas Walker selected, showing the Employee Performance chart, Employee Distribution bar chart, and Employee Tips table.">
+  ![Employees tab with Thomas Walker selected in the Employee dropdown. The Employee Performance section shows a line chart titled 'Sales Performance: Thomas Walker' with a peak of $2218.98 in July 2026. The Employee Distribution bar chart shows Gross Sales by employee with Thomas at approximately 42. The Employee Tips table shows Thomas Walker with 34 Total Sales, $1789.84 Total Sales Amount, $66.90 Total Tips, and $52.64 Average Ticket.](/images/taliup-hq/dashboard-employees.png)
 </Frame>
 
 ### Employee Performance
 
 Select an employee from the **Employee** dropdown to display a monthly time-series chart of their gross sales over the rolling 12-month period.
 
-<Frame caption="Employee Performance chart for Thomas Walker showing monthly gross sales from August 2025 to July 2026.">
-  ![Employee Performance card with Thomas Walker selected in the dropdown. A line chart titled 'Sales Performance: Thomas Walker' plots monthly gross sales from 2025-08 to 2026-07, with all values showing $0 on the y-axis.](/images/taliup-hq/dashboard-employee-performance.png)
+<Frame caption="Employee Performance chart for Thomas Walker showing a peak of $2218.98 in July 2026.">
+  ![Employees tab showing the Employee Performance section with Thomas Walker selected. The line chart 'Sales Performance: Thomas Walker' plots monthly gross sales from 2025-08 to 2026-07 with a spike to $2218.98 in the final month.](/images/taliup-hq/dashboard-employee-performance.png)
 </Frame>
 
 When no employee is selected, the chart area displays a **No Employee selected** placeholder. Once an employee is chosen, the chart loads automatically.
@@ -131,15 +140,15 @@ When no employee is selected, the chart area displays a **No Employee selected**
 The Employee Distribution card shows a bar chart of **Gross Sales** grouped by employee, giving a quick visual comparison of sales volume across your team.
 
 <Frame caption="Employee Distribution bar chart showing Gross Sales by employee.">
-  ![Employee Distribution card with a Gross Sales bar chart. The x-axis shows employee names (Thomas) and the y-axis shows sales values from 0 to 6.](/images/taliup-hq/dashboard-employee-distribution.png)
+  ![Employee Distribution card with a Gross Sales bar chart. The x-axis shows the employee name Thomas and the y-axis shows sales values from 0 to 50, with Thomas's bar reaching approximately 42.](/images/taliup-hq/dashboard-employee-distribution.png)
 </Frame>
 
 ### Employee Tips
 
 The Employee Tips table shows tips received by each employee within a date range you specify.
 
-<Frame caption="Employee Tips table with a date range picker and columns for ID, Name, Total Sales, Total Sales Amount, Total Tips, and Average Ticket.">
-  ![Employee Tips card with a Date Range field showing 2026-07-09 to 2026-07-09 and a table with columns: ID, Name, Total Sales, Total Sales Amount, Total Tips, Average Ticket. The table is empty for the selected range.](/images/taliup-hq/dashboard-employee-tips.png)
+<Frame caption="Employee Tips table showing Thomas Walker with 34 sales, $1789.84 in sales, $66.90 in tips, and a $52.64 average ticket for July 10, 2026.">
+  ![Employee Tips card with a Date Range field showing 2026-07-10 to 2026-07-10. The table shows one row: ID 1, Name Thomas Walker, Total Sales 34, Total Sales Amount $1789.84, Total Tips $66.90, Average Ticket $52.64.](/images/taliup-hq/dashboard-employee-tips.png)
 </Frame>
 
 Use the **Date Range** picker to filter the tips table by a custom start and end date. The table columns are:
