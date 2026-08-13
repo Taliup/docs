@@ -1,0 +1,56 @@
+---
+title: "First login"
+sidebarTitle: "First login"
+description: "Log in to Taliup POS after your merchant and devices are set up in Taliup HQ."
+---
+
+After your merchant (Entity) and devices are registered in Taliup HQ, open Taliup POS on the terminal and sign in with a staff user.
+
+<Note>
+  **Screenshot coming soon:** Login screen with user list and passcode pad.  
+  Planned path: `/images/taliup-pos/first-login.png`
+</Note>
+
+## Before you start
+
+- Device registration and merchant setup in Taliup HQ are complete. See [PAX device setup in Taliup HQ](/taliup-hq/devices/pax/index).
+- At least one employee user exists for the merchant.
+- The terminal is online.
+
+<Warning>
+  Do not open Taliup POS for the first time until the device is registered in Taliup HQ. An unregistered device shows an empty login list.
+</Warning>
+
+## Sign in
+
+<Steps>
+  <Step title="Open Taliup POS">
+    Launch the Taliup POS app on the terminal.
+  </Step>
+  <Step title="Select your user">
+    Choose your name from the login list. If no users appear, the device is not registered correctly in Taliup HQ — finish device setup there first.
+  </Step>
+  <Step title="Enter your passcode">
+    Enter the staff passcode on the keypad. Subscription or demo plans may require a demo passcode from your ISO or partner.
+  </Step>
+  <Step title="Continue to Home">
+    After a successful login you land on the [Home screen](/taliup-pos/home-screen).
+  </Step>
+</Steps>
+
+## Clock in
+
+If time sheets are enabled for the merchant, staff may also use clock in / clock out from Home after login. That control is separate from signing into the app.
+
+## Troubleshooting
+
+| Situation | What to check |
+|---|---|
+| Empty user list | Device TID not registered, or no employees on the Entity in Taliup HQ |
+| Passcode rejected | Confirm the user’s passcode in HQ, or ask your ISO/partner for the demo passcode |
+| App asks for an update | Install the required version before continuing |
+
+## Next
+
+- [Home screen](/taliup-pos/home-screen)
+- [Register](/taliup-pos/register)

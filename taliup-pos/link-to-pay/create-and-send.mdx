@@ -1,0 +1,47 @@
+---
+title: "Create and send Link To Pay"
+sidebarTitle: "Create and send"
+description: "Send a Link To Pay from Register and understand New Invoice fields."
+---
+
+## From Register payment
+
+When Link To Pay is enabled for the merchant, the payment screen can show **Link To Pay** under other methods.
+
+<Steps>
+  <Step title="Build the sale">
+    Add items or an Open Sale amount in [Register](/taliup-pos/register), then tap **Pay**.
+  </Step>
+  <Step title="Choose Link To Pay">
+    Tap **Link To Pay**.
+  </Step>
+  <Step title="Confirm">
+    Confirm sending when prompted (**Link To Pay** / proceed to send to the selected client contact).
+  </Step>
+</Steps>
+
+Attach a [client](/taliup-pos/clients/attach-from-register) first when the flow requires a customer email or phone.
+
+<Note>
+  **Screenshot coming soon:** Register payment with Link To Pay option.  
+  Planned path: `/images/taliup-pos/link-to-pay/register.png`
+</Note>
+
+## New Invoice form (fields)
+
+The POS also includes a **New Invoice** / **Edit Invoice** form used for full invoice creation (also related to HQ invoicing). Key fields:
+
+| Section | Fields |
+|---|---|
+| Header | **Invoice Number**, **Client**, **Invoice Summary**, **Invoice Message**, **Location** |
+| Timing | **Send Invoice Immediately**, **Send Date**, **Due Date** |
+| **Items** | **Add Item**, **Edit Attribute** |
+| **Total** | **Subtotal:**, **Add Discount**, **Total:** |
+| Payment | **Payment Details**, **Recurring Payment**, **Add Link To Pay the Invoice** |
+| **Communications** | **Send Invoice Via Email**, **Send Invoice Via Invoice As SMS** |
+
+Footer actions include **draft** and **create invoice** (or **update invoice** / **update draft** when editing).
+
+Validation examples: invoice number, client, and location required; SMS requires the client to have a phone number.
+
+For HQ-side invoicing setup, see [Invoicing](/taliup-hq/features/invoicing).

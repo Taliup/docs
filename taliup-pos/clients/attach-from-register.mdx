@@ -1,0 +1,36 @@
+---
+title: "Attach a client from Register"
+sidebarTitle: "Attach from Register"
+description: "Attach, change, or remove a client on a Register order."
+---
+
+You can attach a client to the current Register order when the Clients feature is available.
+
+<Note>
+  **Screenshot coming soon:** Attach Client sheet in Register.  
+  Planned path: `/images/taliup-pos/clients/attach-register.png`
+</Note>
+
+## Attach a client
+
+<Steps>
+  <Step title="Open Attach Client">
+    From the Register cart, tap the attach-client control (person icon). The sheet title is **Attach Client** with hint **Optional for register orders.**
+  </Step>
+  <Step title="Find or create">
+    Use **Search clients**, pick a row, or tap **Add New** to create inline (**First name**, **Last name**, **Email**, **Phone**).
+  </Step>
+  <Step title="Confirm">
+    Tap **Attach Client**. The cart shows **Client Attached**.
+  </Step>
+</Steps>
+
+## Change or remove
+
+| Action | Label |
+|---|---|
+| Switch client | **Change Client** |
+| Remove from order | **Remove Client** → toast **Client removed from order.** |
+| View details | **View** / **Tap to view client details** |
+
+Phone validation on inline create expects a valid format (for example `+1XXXXXXXXXX`). Invalid email or missing required fields show inline errors.

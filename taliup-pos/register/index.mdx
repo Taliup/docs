@@ -1,0 +1,64 @@
+---
+title: "Register"
+sidebarTitle: "Overview"
+description: "Ring up sales in Taliup POS — Open Sale, Menu/Catalog, cart, payment, and the Options side menu."
+---
+
+**Register** is where staff build an order and take payment. Open it from the Home screen.
+
+<Note>
+  **Screenshot coming soon:** Register main screen (Open Sale or Menu/Catalog with cart).  
+  Planned path: `/images/taliup-pos/register/overview.png`
+</Note>
+
+## What’s on the screen
+
+| Area | Purpose |
+|---|---|
+| **Open Sale** | Keypad for a custom amount |
+| **Menu** / **Catalog** | Pick sellable items (label depends on industry type) |
+| **Cart** | Review line items and totals |
+| **Pay** | Start the payment flow |
+| **Options** | Side menu for bills, discounts, order actions, kitchen, and more |
+
+Restaurants see **Menu**; other industry types see **Catalog**. If the catalog feature is not available for the merchant, Register stays on **Open Sale** only.
+
+### Layout notes
+
+- In portrait, use the bottom navigation to switch views and open **Cart** or **Pay**.
+- In landscape, the cart often stays visible beside the keypad or item picker.
+- Switching between Open Sale and Menu/Catalog while the cart has items shows a warning that the cart will be cleared.
+
+## Typical paths
+
+<Steps>
+  <Step title="Open Sale (amount only)">
+    Enter an amount on the keypad → **Pay** → choose card or cash. See [Open a sale](/taliup-pos/register/open-sale) and [Take payment](/taliup-pos/register/take-payment).
+  </Step>
+  <Step title="Catalog / menu sale">
+    Add items → review [Cart](/taliup-pos/register/cart) → **Pay**. See [Add items](/taliup-pos/register/add-items).
+  </Step>
+  <Step title="Table order">
+    Start from [Tables](/taliup-pos/tables), then continue in Register. Table-only tools appear under [Options](/taliup-pos/register/options) (print individual bills, complete order, move order, and more).
+  </Step>
+</Steps>
+
+## In this section
+
+<CardGroup cols={2}>
+  <Card title="Open a sale" href="/taliup-pos/register/open-sale">
+    Charge a custom amount from the keypad.
+  </Card>
+  <Card title="Add items" href="/taliup-pos/register/add-items">
+    Add Menu or Catalog items to the cart.
+  </Card>
+  <Card title="Cart" href="/taliup-pos/register/cart">
+    Edit items, guests, and totals before payment.
+  </Card>
+  <Card title="Take payment" href="/taliup-pos/register/take-payment">
+    Pay Full or Split Amount — card, cash, and more.
+  </Card>
+  <Card title="Options side menu" href="/taliup-pos/register/options">
+    Print bills, auth, refund, discounts, save order, kitchen, scanner.
+  </Card>
+</CardGroup>

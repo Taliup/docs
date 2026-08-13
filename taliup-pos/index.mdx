@@ -1,33 +1,61 @@
 ---
 title: "Taliup POS"
 sidebarTitle: "Overview"
-description: "Taliup POS is the point-of-sale application for ringing up sales and processing payments on PAX terminals."
+description: "Taliup POS is the point-of-sale app for ringing up sales, managing orders, and processing payments."
 ---
 
-Taliup POS runs on PAX payment terminals and turns them into a full point-of-sale system. Use it to ring up sales, accept card payments, manage open orders, and keep track of transactions — all connected to your Taliup HQ account in real time.
+Taliup POS is the point-of-sale application your staff use after the merchant and devices are set up in Taliup HQ. Documentation follows the same sections as the Home screen so you can find topics the same way you open them in the app.
 
-<Frame caption="Taliup POS on a PAX terminal showing the Register screen.">
-  ![Taliup POS Register screen on a PAX terminal](/images/taliup-pos/register.png)
-</Frame>
+<Note>
+  **Screenshot coming soon:** Taliup POS Register screen.  
+  Planned path: `/images/taliup-pos/register/overview.png`
+</Note>
 
-## Prerequisites
+## Before you use Taliup POS
 
-Before setting up Taliup POS on any terminal, the following must be completed first:
+Merchant onboarding and device registration happen in Taliup HQ first:
 
-1. **PaxStore setup** — terminals created, activated, and apps pushed. See [Taliup HQ → Devices → PAX → PaxStore Setup](/taliup-hq/devices/pax/paxstore).
-2. **Taliup HQ merchant setup** — Entity created and each terminal registered as a Device with its TID. See [Taliup HQ → Devices → PAX → Add Devices](/taliup-hq/devices/pax/add-devices).
+1. Create the merchant Entity and users
+2. Register each payment device
+3. Configure plans, tips, and other merchant settings as needed
 
-<Warning>
-  Do not open Taliup POS on a terminal for the first time until both steps above are complete. Logging in before device registration results in no users appearing on the login screen.
-</Warning>
+See [Taliup HQ](/taliup-hq) for onboarding. When that is done, continue here with [First login](/taliup-pos/first-login).
 
-## Select your device
+## Browse by Home section
 
 <CardGroup cols={2}>
-  <Card title="PAX Elys" icon="tablet" href="/taliup-pos/devices/pax/elys">
-    Two-device setup: L1400 cashier terminal running Taliup Elys, paired with an A3700 customer display running Taliup Companion. Requires connection configuration and pairing on first setup.
+  <Card title="Register" icon="cash-register" href="/taliup-pos/register">
+    Open a sale, add items, take payment, and use the options side menu.
   </Card>
-  <Card title="PAX A920 Pro" icon="credit-card" href="/taliup-pos/devices/pax/a920-pro">
-    All-in-one standalone terminal. Taliup POS and BroadPOS run on the same device — no pairing or connection configuration required.
+  <Card title="Tables" icon="chair" href="/taliup-pos/tables">
+    Seat guests and manage table orders when table management is enabled.
+  </Card>
+  <Card title="Menu / Catalog" icon="book-open" href="/taliup-pos/catalog">
+    Featured, categories, products or items, taxes, discounts, fees, and inventory.
+  </Card>
+  <Card title="Orders" icon="receipt" href="/taliup-pos/orders">
+    Find open or past orders and reopen them in Register.
+  </Card>
+  <Card title="Transactions" icon="credit-card" href="/taliup-pos/transactions">
+    Search payments, void, refund, and reprint receipts.
+  </Card>
+  <Card title="Clients" icon="users" href="/taliup-pos/clients">
+    Create customers and attach them to Register orders.
+  </Card>
+  <Card title="Link To Pay" icon="link" href="/taliup-pos/link-to-pay">
+    Manage payment links, reminders, and recorded payments.
+  </Card>
+  <Card title="Analytics" icon="chart-line" href="/taliup-pos/analytics">
+    Total, itemized, and employee sales charts.
+  </Card>
+  <Card title="Calendar" icon="calendar" href="/taliup-pos/calendar">
+    Create and manage appointments.
+  </Card>
+  <Card title="Settings" icon="gear" href="/taliup-pos/settings">
+    General, business, printer, and device settings.
   </Card>
 </CardGroup>
+
+<Note>
+  Restaurants see **Menu**; other industry types see **Catalog**. The features are the same — only the labels change.
+</Note>

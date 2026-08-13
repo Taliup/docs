@@ -1,0 +1,52 @@
+---
+title: "Transactions"
+sidebarTitle: "Overview"
+description: "Find payments in Taliup POS and void, return (refund), or reprint receipts."
+---
+
+**Transactions** is where you look up completed payments and take follow-up actions such as void, return (refund), or reprint.
+
+Opening **Transactions** from Home requires the **manage transactions** permission. Without it, staff see **Permission denied** — *You do not have permission to access Transactions.*
+
+<Note>
+  **Screenshot coming soon:** Transactions list with ID, Date/Time, and Total columns.  
+  Planned path: `/images/taliup-pos/transactions/list.png`
+</Note>
+
+## What’s on the list
+
+| Column | Shows |
+|---|---|
+| **ID** | Short payment reference |
+| **Date/Time** | When the payment was taken |
+| **Total** | Payment amount |
+
+Each row also indicates payment method (cash vs card) and uses status coloring (for example captured, authorized, voided, refunded).
+
+### Search and filters
+
+- Tap search to filter the list by typing.
+- Tap filter to open **Filter Transactions** (date range, status, type, payment method, settlement status). See [Search and filters](/taliup-pos/transactions/search-and-filters).
+
+Tap a row to open [Transaction details](/taliup-pos/transactions/details).
+
+## Common follow-ups
+
+<CardGroup cols={2}>
+  <Card title="Void" href="/taliup-pos/transactions/void">
+    Cancel an unsettled captured payment or void an authorization.
+  </Card>
+  <Card title="Refund (Return)" href="/taliup-pos/transactions/refund">
+    Full or partial return on an eligible payment.
+  </Card>
+  <Card title="Reprint" href="/taliup-pos/transactions/reprint">
+    Print merchant or customer copy again.
+  </Card>
+  <Card title="Details" href="/taliup-pos/transactions/details">
+    Status, history, terminal info, and available actions.
+  </Card>
+</CardGroup>
+
+<Info>
+  Settlement / close-batch workflows are not covered here yet. Filter chips may still mention settlement status.
+</Info>

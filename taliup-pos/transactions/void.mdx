@@ -1,0 +1,65 @@
+---
+title: "Void a transaction"
+sidebarTitle: "Void"
+description: "Void an unsettled captured payment or void an authorization from Transaction Details."
+---
+
+Use **Void** to cancel a payment that is still eligible (typically unsettled and captured). Use **Void Auth** (or **Delete Auth** on some setups) for an authorization that has not been captured.
+
+<Note>
+  **Screenshot coming soon:** Void confirmation dialog on Transaction Details.  
+  Planned path: `/images/taliup-pos/transactions/void.png`
+</Note>
+
+## Before you start
+
+- You need permission to manage transactions.
+- The payment must still be eligible (for example unsettled and in a voidable status). Settled payments are usually refunded with **Return** instead — see [Refund](/taliup-pos/transactions/refund).
+- If **Void** is not shown, the payment is not eligible or your role cannot manage transactions.
+
+## Void a captured payment
+
+<Steps>
+  <Step title="Open the payment">
+    Go to Home → **Transactions**, find the payment, and open **Transaction Details**.
+  </Step>
+  <Step title="Tap Void">
+    Tap **Void** at the bottom of the screen.
+  </Step>
+  <Step title="Confirm">
+    Confirm **Void Transaction** — *Are you sure you want to void this transaction?*
+  </Step>
+  <Step title="Complete on the terminal">
+    Follow any on-device prompts. Taliup POS processes the void, typically reprints a merchant copy, then returns you to the list.
+  </Step>
+</Steps>
+
+## Void an authorization
+
+<Steps>
+  <Step title="Open the authorized payment">
+    Open **Transaction Details** for an unsettled **Authorized** payment.
+  </Step>
+  <Step title="Tap Void Auth">
+    Tap **Void Auth** (or **Delete Auth** when that button is shown).
+  </Step>
+  <Step title="Confirm">
+    Confirm the dialog (**Void Auth Transaction** or **Delete Auth Transaction**).
+  </Step>
+  <Step title="Complete">
+    Finish any terminal prompts. You return to the transactions list when done.
+  </Step>
+</Steps>
+
+## Troubleshooting
+
+| Situation | What to check |
+|---|---|
+| No **Void** button | Payment may already be settled, voided, or refunded — or your role lacks manage-transactions |
+| Permission snackbar | *You do not have permission to manage transactions.* Ask a manager or update the role in Taliup HQ |
+| Need money back after settlement | Use [Return / refund](/taliup-pos/transactions/refund) instead of void |
+
+## Related
+
+- [Transaction details](/taliup-pos/transactions/details)
+- [Refund](/taliup-pos/transactions/refund)

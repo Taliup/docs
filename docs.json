@@ -13,10 +13,10 @@
   },
   "fonts": {
     "heading": {
-      "family": "Work Sans"
+      "family": "Plus Jakarta Sans"
     },
     "body": {
-      "family": "Work Sans"
+      "family": "DM Sans"
     }
   },
   "navbar": {
@@ -116,23 +116,151 @@
         "description": "Point-of-sale application",
         "tabs": [
           {
-            "tab": "Overview",
+            "tab": "Get started",
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["taliup-pos/index"]
+                "pages": [
+                  "taliup-pos/index",
+                  "taliup-pos/first-login",
+                  "taliup-pos/home-screen"
+                ]
               }
             ]
           },
           {
-            "tab": "Devices",
+            "tab": "Register",
             "groups": [
               {
-                "group": "PAX",
+                "group": "Register",
                 "pages": [
-                  "taliup-pos/devices/pax/index",
-                  "taliup-pos/devices/pax/elys",
-                  "taliup-pos/devices/pax/a920-pro"
+                  "taliup-pos/register/index",
+                  "taliup-pos/register/open-sale",
+                  "taliup-pos/register/add-items",
+                  "taliup-pos/register/cart",
+                  "taliup-pos/register/take-payment",
+                  "taliup-pos/register/options"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Tables",
+            "groups": [
+              {
+                "group": "Tables",
+                "pages": ["taliup-pos/tables/index"]
+              }
+            ]
+          },
+          {
+            "tab": "Menu / Catalog",
+            "groups": [
+              {
+                "group": "Menu / Catalog",
+                "pages": [
+                  "taliup-pos/catalog/index",
+                  "taliup-pos/catalog/featured",
+                  "taliup-pos/catalog/categories",
+                  "taliup-pos/catalog/catalog-taxes",
+                  "taliup-pos/catalog/products",
+                  "taliup-pos/catalog/services",
+                  "taliup-pos/catalog/attributes",
+                  "taliup-pos/catalog/taxes",
+                  "taliup-pos/catalog/discounts",
+                  "taliup-pos/catalog/fees",
+                  "taliup-pos/catalog/inventory"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Orders",
+            "groups": [
+              {
+                "group": "Orders",
+                "pages": [
+                  "taliup-pos/orders/index",
+                  "taliup-pos/orders/find-and-reopen",
+                  "taliup-pos/orders/past-order-actions"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Transactions",
+            "groups": [
+              {
+                "group": "Transactions",
+                "pages": [
+                  "taliup-pos/transactions/index",
+                  "taliup-pos/transactions/search-and-filters",
+                  "taliup-pos/transactions/details",
+                  "taliup-pos/transactions/void",
+                  "taliup-pos/transactions/refund",
+                  "taliup-pos/transactions/reprint"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Clients",
+            "groups": [
+              {
+                "group": "Clients",
+                "pages": [
+                  "taliup-pos/clients/index",
+                  "taliup-pos/clients/create-and-edit",
+                  "taliup-pos/clients/attach-from-register"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Link To Pay",
+            "groups": [
+              {
+                "group": "Link To Pay",
+                "pages": [
+                  "taliup-pos/link-to-pay/index",
+                  "taliup-pos/link-to-pay/create-and-send",
+                  "taliup-pos/link-to-pay/manage"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Analytics",
+            "groups": [
+              {
+                "group": "Analytics",
+                "pages": ["taliup-pos/analytics/index"]
+              }
+            ]
+          },
+          {
+            "tab": "Calendar",
+            "groups": [
+              {
+                "group": "Calendar",
+                "pages": [
+                  "taliup-pos/calendar/index",
+                  "taliup-pos/calendar/appointments"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Settings",
+            "groups": [
+              {
+                "group": "Settings",
+                "pages": [
+                  "taliup-pos/settings/index",
+                  "taliup-pos/settings/general",
+                  "taliup-pos/settings/business",
+                  "taliup-pos/settings/printers",
+                  "taliup-pos/settings/device"
                 ]
               }
             ]
