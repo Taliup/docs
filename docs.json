@@ -65,7 +65,8 @@
                   "taliup-hq/onboarding/locations",
                   "taliup-hq/onboarding/virtual-terminal",
                   "taliup-hq/onboarding/dual-pricing",
-                  "taliup-hq/onboarding/surcharge"
+                  "taliup-hq/onboarding/surcharge",
+                  "taliup-hq/onboarding/web-srm"
                 ]
               }
             ]
@@ -262,6 +263,15 @@
                   "taliup-pos/settings/printers",
                   "taliup-pos/settings/device"
                 ]
+              }
+            ]
+          },
+          {
+            "tab": "WEB-SRM",
+            "groups": [
+              {
+                "group": "Getting started",
+                "pages": ["taliup-pos/web-srm/index"]
               }
             ]
           }

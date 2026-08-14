@@ -1,0 +1,58 @@
+---
+title: "WEB-SRM settings"
+sidebarTitle: "WEB-SRM"
+description: "Enable Revenu Québec WEB-SRM on a merchant Entity and store the credentials Taliup POS needs to enrol as an SRS."
+keywords: ["WEB-SRM", "Revenu Québec", "MEV", "SRS", "QST", "GST", "enrolment"]
+---
+
+Taliup POS acts as a sales recording system (SRS / MEV) for Revenu Québec's WEB-SRM. Taliup HQ stores the merchant's Revenu Québec identifiers. The POS uses those identifiers on every fiscal request, including the certificate that enrols each terminal.
+
+Complete this page before you enrol a terminal. If HQ is not configured, Taliup POS shows **This business has no WEB-SRM configuration from Taliup HQ.**
+
+## How to get here
+
+Entity sidebar → **Web-SRM**.
+
+The menu item is visible only to an **Admin** when the Entity plan includes the **Web-SRM** feature. If you do not see it, add the feature on [Plans & Features](/taliup-hq/onboarding/plans-features).
+
+## Enable WEB-SRM
+
+<Warning>
+  The first time you enable WEB-SRM, Taliup HQ creates default Québec **GST** (5%) and **QST** (9.975%) taxes if they do not already exist. Any other catalog taxes are removed and replaced with those Québec taxes. Confirm the catalog is ready for that change before you continue.
+</Warning>
+
+<Steps>
+  <Step title="Open Web-SRM">
+    From the Entity sidebar, click **Web-SRM**.
+  </Step>
+  <Step title="Enable Web-SRM">
+    Turn on **Enable Web-SRM**.
+  </Step>
+  <Step title="Enter Revenu Québec credentials">
+    Fill in the mandatory fields. Use the values Revenu Québec issued to the merchant.
+
+    | Field | Example | Notes |
+    |---|---|---|
+    | **User Identification Number** | `5678912340` | Merchant user identification number from Revenu Québec. |
+    | **User Authorization Code** | `X1X1-X1X1` | Format `XXXX-XXXX`. |
+    | **QST Number** | `5678912340TQ0001` | Québec sales tax number. |
+    | **GST Number** | `123456789RT0001` | Federal GST/HST number. |
+    | **Billing File Number** | `ER0001` | Revenu Québec billing file number. |
+  </Step>
+  <Step title="Confirm and save">
+    Click **Save Changes**. On first enable, confirm the **Confirm Web-SRM Activation** modal, then click **Confirm and Enable Web-SRM**.
+  </Step>
+</Steps>
+
+<Note>
+  You can still adjust GST and QST later in catalog tax settings. Other tax types are not used for WEB-SRM billing.
+</Note>
+
+## Next step — enrol each terminal
+
+HQ configuration alone does not enrol a device. On every terminal that will bill in Québec:
+
+1. Complete [device setup](/taliup-pos/index) so staff can log in.
+2. Enrol the device and register the signed-in user. See [Enrol Taliup POS with WEB-SRM](/taliup-pos/web-srm).
+
+Repeat enrolment on each terminal. Each device receives its own Revenu Québec certificate and device identifier.
