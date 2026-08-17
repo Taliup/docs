@@ -1,0 +1,50 @@
+---
+title: "Détails de la transaction"
+sidebarTitle: "Détails"
+description: "Consulter les détails du paiement et les actions disponibles comme Annuler, Retour, Post Autorisation, Ajuster le pourboire et réimprimer."
+---
+
+Ouvrez n'importe quelle ligne de la liste Transactions pour voir **Transaction Details**.
+
+<Note>
+  **Capture d'écran à venir :** Détails de la transaction avec statut, montant et boutons d'action.  
+  Chemin prévu : `/images/taliup-pos/transactions/details.png`
+</Note>
+
+## Ce que vous voyez
+
+| Champ | Description |
+|---|---|
+| Type / référence de transaction | Libellé de type avec la référence du paiement |
+| **Status** | Statut actuel (code couleur) |
+| **Amount** | Montant du paiement |
+| **Payment Method** | Espèces, ou marque / titulaire / quatre derniers chiffres de la carte |
+| **Date** / **Time** | Quand le paiement a été pris |
+| **Employee** | Membre du personnel, ou N/A |
+| **Terminal Model** / **Terminal SN** | Infos de l'appareil lorsque disponibles |
+| **History** | Historique de statut/montant dépliable |
+| **Batch #** / **Trans. #** | Références du processeur lorsque disponibles |
+| **Settlement** | **Réglée** ou **Non Réglée** |
+
+## Actions
+
+Les actions apparaissent en bas de l'écran seulement lorsque le paiement est admissible. Le personnel sans permission de gérer les transactions ne voit pas **Annuler**, **Annulation d'autorisation** ni **Retour**.
+
+| Bouton | Usage typique |
+|---|---|
+| **Annuler** | Annuler un paiement capturé non réglé |
+| **Annulation d'autorisation** | Annuler une autorisation non réglée qui n'a pas été capturée |
+| **Supprimer l'autorisation** | Retirer une préautorisation sur certains lecteurs de carte |
+| **Retour** | Démarrer un flux de remboursement / retour |
+| **Post Autorisation** | Capturer une autorisation non réglée (permission requise) |
+| **Ajuster le pourboire** | Modifier le pourboire sur un paiement carte non réglé admissible lorsque l'ajustement est activé |
+
+Voir [Annulation](/fr-CA/taliup-pos/transactions/void) et [Remboursement](/fr-CA/taliup-pos/transactions/refund) pour les étapes.
+
+### Réimprimer depuis les détails
+
+Appuyez sur l'icône d'impression dans la barre d'application, puis choisissez **Imprimer la copie du commerçant** ou **Imprimer la copie du client** (les payouts peuvent n'afficher que **Imprimer le reçu**). Voir [Réimprimer](/fr-CA/taliup-pos/transactions/reprint).
+
+## Connexe
+
+- [Recherche et filtres](/fr-CA/taliup-pos/transactions/search-and-filters)

@@ -1,0 +1,91 @@
+---
+title: "Encaisser"
+sidebarTitle: "Encaisser"
+description: "Encaisser Payer en totalité ou Montant partagé par carte, espèces, pourboires et options de reçu."
+---
+
+Depuis le panier (ou **Payer** en Vente ouverte), Taliup POS ouvre l'écran de paiement pour encaisser le solde.
+
+<Note>
+  **Capture d'écran à venir :** écran de paiement avec Payer en totalité / Montant partagé et options carte/espèces.  
+  Chemin prévu : `/images/taliup-pos/register/take-payment.png`
+</Note>
+
+## Comment y arriver
+
+1. Construisez une commande dans Caisse (Vente ouverte ou Menu/Catalogue).
+2. Appuyez sur **Payer**.
+3. Ou, sur une commande de table, ouvrez les options d'un invité et appuyez sur **Payer** pour encaisser uniquement le solde de cet invité.
+
+Les méthodes disponibles dépendent de ce que le marchand a activé (par exemple espèces, crédit, débit, EBT, Lien Pour Payer).
+
+## Payer en totalité ou Montant partagé
+
+| Onglet | Utilisez-le lorsque |
+|---|---|
+| **Payer en totalité** | Vous encaissez le solde restant au complet |
+| **Montant partagé** | Vous encaissez une partie du solde maintenant |
+
+Sur **Montant partagé**, choisissez un préréglage comme **Montant total**, **N parts** ou **Personnaliser**, puis encaissez la portion sélectionnée. Après un paiement partagé réussi, vous pouvez prendre le **Prochain paiement**, ou **Payer plus tard**.
+
+## Paiement par carte
+
+<Steps>
+  <Step title="Choisir la carte">
+    Appuyez sur l'option de débit carte affichée pour votre marchand (par exemple débiter sur **Carte**, **Crédit** ou **Débit**).
+  </Step>
+  <Step title="Terminer sur l'appareil">
+    Suivez les invites à l'écran. Si les pourboires sont activés dans Taliup HQ, le client peut voir **Ajouter un pourboire** avec des préréglages, **Aucun pourboire** ou **Personnaliser**.
+  </Step>
+  <Step title="Terminer">
+    Attendez l'approbation. Taliup POS enregistre le paiement et peut demander des reçus (voir ci-dessous).
+  </Step>
+</Steps>
+
+Les options de pourboire se configurent dans Taliup HQ. Voir [Pourboires](/fr-CA/taliup-hq/onboarding/tips).
+
+## Paiement en espèces
+
+<Steps>
+  <Step title="Choisir les espèces">
+    Dans la section **Espèces**, choisissez un préréglage ou appuyez sur **Personnaliser**.
+  </Step>
+  <Step title="Saisir l'argent reçu (personnalisé)">
+    Sur le clavier personnalisé, confirmez le montant total de la vente, l'argent reçu et la **Monnaie rendue**. Utilisez **Exact** pour un montant exact au besoin, puis **Payer comptant**.
+  </Step>
+  <Step title="Confirmer">
+    Confirmez le paiement en espèces lorsque l'invite s'affiche (**Confirmer le paiement comptant** / **Confirmer le paiement**).
+  </Step>
+</Steps>
+
+<Note>
+  **Capture d'écran à venir :** écran d'espèces montrant la monnaie rendue.  
+  Chemin prévu : `/images/taliup-pos/register/cash-payment.png`
+</Note>
+
+## Autres méthodes
+
+Lorsque c'est activé pour le marchand, l'écran de paiement peut aussi afficher :
+
+- **EBT**
+- [**Lien Pour Payer**](/fr-CA/taliup-pos/link-to-pay)
+
+## Après le paiement
+
+Selon les paramètres et le type de commande, vous pouvez voir des invites comme :
+
+1. **Envoyer la commande à la cuisine** — envoyer les articles aux imprimantes de cuisine
+2. **Exemplaire client** — **Imprimer le reçu de copie du client ?**
+3. **Commande entièrement payée** — imprimer le reçu de la commande
+4. **Invité entièrement payé** — imprimer le reçu de cet invité
+
+Le comportement des reçus est aussi contrôlé par les [Paramètres généraux](/fr-CA/taliup-pos/settings/general) (impression automatique, ignorer la copie marchand, ignorer les invites de paiement complet).
+
+Les paiements terminés apparaissent sous [Transactions](/fr-CA/taliup-pos/transactions).
+
+## Connexe
+
+- [Panier](/fr-CA/taliup-pos/register/cart)
+- [Menu Options](/fr-CA/taliup-pos/register/options) — Créer une autorisation, Créer un remboursement, imprimer la facture
+- [Annulation](/fr-CA/taliup-pos/transactions/void) · [Remboursement](/fr-CA/taliup-pos/transactions/refund)
+- [Lien Pour Payer](/fr-CA/taliup-pos/link-to-pay)

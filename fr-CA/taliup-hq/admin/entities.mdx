@@ -1,0 +1,124 @@
+---
+title: "Entités (marchands)"
+sidebarTitle: "Entités"
+description: "La page Entités est la liste maître de tous les comptes marchands sur la plateforme Taliup. Cherchez, filtrez et gérez chaque marchand depuis une seule vue."
+icon: briefcase
+---
+
+La page **Entities** liste chaque compte marchand. Utilisez-la pour trouver un marchand, ouvrir ses paramètres, ou voir la plateforme de son point de vue. Cliquez sur **Entities** dans la barre latérale.
+
+<Frame caption="La page Entities de Taliup HQ avec la barre de filtres, la liste et les boutons d'action.">
+  ![Page Entities Taliup HQ avec barre de filtres, liste montrant ID, Entity Name, ISO Name, Industry, Terminal, MIDs et Actions](/images/taliup-hq/entities.png)
+</Frame>
+
+## Accès et visibilité
+
+La liste est automatiquement limitée à ce que votre rôle vous permet de voir. Aucune configuration supplémentaire n'est requise.
+
+| Rôle | Entités visibles |
+|---|---|
+| **Super Admin** | Toutes les entités de la plateforme, tous ISO |
+| **ISO Admin** | Seulement les entités de leur ISO et des ISO descendants (enfants / petits-enfants) |
+
+## Filtres
+
+La barre en haut permet de restreindre par terme de recherche, ISO, type d'industrie et fournisseur de terminaux. Les filtres s'appliquent immédiatement — le champ de recherche attend 500 ms après la dernière frappe; les listes s'appliquent dès la sélection.
+
+<Frame caption="La barre de filtres Entities : recherche, listes ISO, Industry Types, Terminal Provider et bouton Reset.">
+  ![Barre de filtres avec Search by ID Entity Name or MID, All ISOs, Industry Types, Terminal Provider et Reset](/images/taliup-hq/entities-filters.png)
+</Frame>
+
+<Note>
+  Les filtres actifs sont enregistrés dans le stockage local du navigateur. Lorsque vous quittez et revenez — ou utilisez le bouton retour — l'état précédent est restauré. Cliquez sur **Reset** pour tout effacer.
+</Note>
+
+### Search
+
+Le champ de recherche compare trois champs à la fois :
+
+| Ce que vous tapez | Comment ça correspond |
+|---|---|
+| Un nombre (p. ex. `8206`) | Correspondance exacte sur l'ID d'entité |
+| Du texte (p. ex. `Coffee`) | Correspondance partielle sur Entity Name |
+| Un MID (p. ex. `123456`) | Correspondance partielle sur tout MID lié à l'entité |
+
+Appuyez sur **Enter** pour appliquer tout de suite, ou attendez 500 ms.
+
+### All ISOs
+
+Restreint la liste aux entités d'un ISO. Lorsque vous sélectionnez un ISO, les entités de tous ses ISO descendants sont aussi incluses — pas seulement les enfants directs.
+
+<Note>
+  La liste ISO n'apparaît que lorsque vous avez plus d'un ISO dans votre portée. Les Super Admins voient tous les ISO actifs. Les ISO Admins voient leur ISO et les ISO enfants.
+</Note>
+
+### Industry Types
+
+Filtre par catégorie d'industrie. Les options viennent des types présents dans le jeu de résultats actuel :
+
+- **Restaurant**
+- **Retail/Wholesale**
+
+### Terminal Provider
+
+Filtre par le fournisseur de matériel assigné à l'entité. Les options viennent des fournisseurs présents dans le jeu actuel (par exemple **PAX**, **Ingenico**, **Poynt**).
+
+### Reset
+
+Efface tous les filtres, retire l'état enregistré et recharge la liste complète.
+
+## Liste des entités
+
+Les résultats sont triés par date de création, plus récent en premier, et paginés à **50 entités par page**.
+
+<Frame caption="Une ligne d'entité montrant le logo, le nom, l'emplacement, l'ISO, l'industrie, le terminal, les MID et les boutons d'action.">
+  ![Ligne The Coffee Terminal avec Toronto Ontario, ISO Unity Payments, industrie RESTAURANT, terminal PAX, deux pastilles MID, et boutons Manage et View As](/images/taliup-hq/entities-row.png)
+</Frame>
+
+| Colonne | Ce qu'elle affiche |
+|---|---|
+| **ID** | L'ID numérique unique de l'entité. |
+| **Entity Name** | Logo ou icône, nom d'entreprise, ville et région, date de création, et nom de l'utilisateur créateur. Survolez l'icône info à côté du créateur pour voir son courriel. |
+| **ISO Name** | L'ISO auquel l'entité est assignée. |
+| **Industry** | L'industrie — `RESTAURANT` ou `RETAIL/WHOLESALE`. |
+| **Terminal** | Le fournisseur — par exemple `PAX`, `INGENICO` ou `POYNT`. |
+| **MIDs** | Tous les Merchant ID liés aux emplacements, chacun en pastille. Plusieurs emplacements = plusieurs MID. |
+| **Actions** | Boutons **Manage** et **View As**. |
+
+## Actions
+
+Chaque ligne a deux boutons.
+
+### Manage
+
+Ouvre la page de gestion complète. À partir de là vous pouvez :
+
+- Modifier les détails (nom, adresse, industrie, devise, fournisseur de terminaux)
+- Gérer les appareils
+- Configurer pourboires, emplacements, terminal virtuel, double tarification et surcharge
+- Consulter commandes et transactions
+- Gérer le personnel et les rôles
+
+C'est le point d'entrée principal pour configurer ou soutenir un marchand après sa création.
+
+### View As {#view-as-impersonate}
+
+Passe votre session pour voir Taliup HQ comme le propriétaire de l'entité — c'est l'impersonation. Utilisez-la pour dépanner, vérifier la configuration ou démontrer des fonctions du point de vue du marchand, sans partager d'identifiants.
+
+<Warning>
+  Pendant l'impersonation, une bannière en haut de chaque page indique que vous voyez une autre entité. Cliquez cette bannière pour revenir à votre session admin. Tout changement fait pendant l'impersonation s'applique au compte du marchand.
+</Warning>
+
+## Pagination
+
+La barre sous la liste indique combien d'enregistrements sont affichés :
+
+- **« Showing X to Y of Z entries »** — le total des enregistrements correspondants.
+- Flèches **← Previous** et **Next →** pour changer de page.
+- **Liens numérotés** pour aller directement à une page.
+
+Les filtres actifs sont conservés d'une page à l'autre.
+
+## Aucun résultat
+
+Si aucune entité ne correspond, la page affiche « No results found ». Élargissez le terme, retirez des filtres, ou cliquez sur **Reset**.

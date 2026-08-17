@@ -1,0 +1,92 @@
+---
+title: "Centre de messages"
+sidebarTitle: "Centre de messages"
+description: "Envoyer des notifications en texte enrichi aux marchands — par groupe ISO, par entreprise précise, ou à toute la plateforme — avec l'Admin Message Composer."
+icon: "bell"
+---
+
+L'**Admin Message Composer** permet aux admins ISO d'envoyer des notifications formatées aux entités marchandes sous leur ISO. Les messages arrivent dans l'Inbox du marchand dans Taliup HQ.
+
+Le compositeur a trois étapes : choisir l'audience, la configurer, puis rédiger et envoyer.
+
+<Frame caption="L'Admin Message Composer montrant les trois options d'audience.">
+  ![Admin Message Composer avec trois cartes : By Group (ISO), By Specific Entity et To All Entities (Platform-wide)](/images/taliup-hq/message-center.png)
+</Frame>
+
+---
+
+## Étape 1 — Choisir l'audience
+
+Sélectionnez un des trois modes. Changer de mode réinitialise tous les champs d'audience et de message.
+
+| Mode | Qui reçoit le message |
+|---|---|
+| **By Group (ISO)** | Toutes les entités marchandes d'un ou plusieurs groupes ISO que vous sélectionnez. |
+| **By Specific Entity** | Un ou plusieurs marchands que vous cherchez par nom. |
+| **To All Entities (Platform-wide)** | Chaque entité marchande de la plateforme, tous ISO. |
+
+---
+
+## Étape 2 — Configurer l'audience
+
+L'étape 2 s'adapte au mode choisi.
+
+### By Group (ISO)
+
+<Frame caption="Étape 2 pour By Group (ISO) : liste multi-sélection ISO et case d'inclusion des sous-ISO.">
+  ![Admin Message Composer avec By Group (ISO), Select ISO Group(s) et la case Also include businesses from any sub-ISOs](/images/taliup-hq/message-center-iso.png)
+</Frame>
+
+| Champ | Notes |
+|---|---|
+| **ISO Groups** | Obligatoire. Cherchez et sélectionnez un ou plusieurs ISO. Les messages vont à toutes les entités de chaque ISO choisi. |
+| **Also include businesses from any sub-ISOs** | Facultatif. Lorsque c'est coché, les entités des ISO enfants sont aussi incluses. |
+
+### By Specific Entity
+
+<Frame caption="Étape 2 pour By Specific Entity : recherche par nom avec résultats en direct et pastilles amovibles.">
+  ![Admin Message Composer avec By Specific Entity, champ Search Business et Compose Your Message](/images/taliup-hq/message-center-entity.png)
+</Frame>
+
+Tapez au moins 2 caractères dans **Search Business** pour lancer une recherche en direct. Cliquez un résultat pour l'ajouter.
+
+Les destinataires sélectionnés apparaissent en pastilles. Cliquez **×** pour retirer une entreprise.
+
+### To All Entities (Platform-wide)
+
+<Frame caption="Étape 2 pour To All Entities : bannière d'avertissement avant Compose Your Message.">
+  ![Admin Message Composer avec To All Entities et une bannière ambre You are about to send a platform-wide announcement](/images/taliup-hq/message-center-platform.png)
+</Frame>
+
+Aucune configuration d'audience n'est requise. Une bannière ambre confirme que le message ira à **chaque entité marchande de la plateforme**. Relisez avant d'envoyer.
+
+<Warning>
+  Les messages à toute la plateforme ne peuvent pas être rappelés. Ils sont livrés à tous les marchands, peu importe l'ISO, le statut ou le plan.
+</Warning>
+
+---
+
+## Étape 3 — Rédiger le message
+
+| Champ | Notes |
+|---|---|
+| **Subject** | Obligatoire. Texte simple. Titre dans l'Inbox du marchand. |
+| **Body** | Obligatoire. Éditeur enrichi avec barre de formatage. |
+
+L'éditeur enrichi prend en charge :
+
+- Formatage : gras, italique, souligné, barré
+- Alignement : gauche, centre, droite, justifié
+- Blocs : citation, code en ligne
+- Listes : ordonnées, non ordonnées, retrait
+- Couleur de texte et de fond
+- Liens, images en ligne et tableaux
+- Effacer le formatage
+
+---
+
+## Envoi
+
+Cliquez sur **Send Message** pour livrer. Le bouton affiche un indicateur et le libellé **Sending...** pendant la requête.
+
+En cas de succès, tout le formulaire revient à l'état initial — prêt pour le prochain message.

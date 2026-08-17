@@ -1,0 +1,129 @@
+---
+title: "Configuration PaxStore"
+sidebarTitle: "Configuration PaxStore"
+description: "Créer et activer des terminaux PAX dans PaxStore, pousser les bonnes applications selon le type d'appareil, et noter chaque TID avant de passer à Taliup HQ."
+---
+
+Avant d'enregistrer un terminal PAX dans Taliup HQ, le terminal doit exister dans **PaxStore** — c'est là que chaque appareil est créé, activé et reçoit son **TID** (terminal ID). Le TID est requis pour ajouter des appareils dans Taliup HQ.
+
+## Avant de commencer
+
+- Accès à **PaxStore** avec le bon **Administrator Center** et le compte **Reseller** (le cas échéant).
+- Tous les terminaux allumés et connectés à Internet pendant que vous travaillez dans PaxStore.
+- La **fiche VAR** de l'acquéreur (terminal ID, merchant ID, paramètres d'hôte, etc.) pour l'application de paiement BroadPOS.
+
+## 1. Créer des terminaux dans PaxStore
+
+<Steps>
+  <Step title="Se connecter à PaxStore">
+    Connectez-vous à PaxStore avec vos identifiants administrateur.
+  </Step>
+  <Step title="Confirmer l'Administrator Center">
+    Confirmez que vous êtes dans le bon **Administrator Center** (administrateurs seulement).
+  </Step>
+  <Step title="Confirmer le compte Reseller">
+    Le cas échéant, confirmez que vous êtes dans le bon compte **Reseller** (administrateurs seulement).
+  </Step>
+  <Step title="Ouvrir Terminal Management">
+    Allez à **Terminal Management**.
+  </Step>
+  <Step title="Créer et activer le Merchant">
+    Créez et **Activate** le Merchant dans PaxStore s'il n'existe pas déjà.
+  </Step>
+  <Step title="Créer et activer les terminaux">
+    Sous le Merchant, créez et **Activate** les terminaux pour le type d'appareil :
+
+    | Appareil | Terminaux à créer |
+    |---|---|
+    | **PAX Elys** | Deux terminaux : **L1400** (caissier) et **A3700** (écran client) |
+    | **PAX A920 Pro** | Un terminal : le **A920 Pro** |
+  </Step>
+  <Step title="Noter le TID de chaque terminal">
+    Après l'activation, notez le **TID**. Vous les saisirez dans Taliup HQ à l'enregistrement des appareils.
+  </Step>
+  <Step title="Confirmer les abonnements marketplace">
+    Avant de pousser les applications, confirmez que le Reseller ou le Merchant est **abonné** aux applications requises dans le marketplace PaxStore.
+  </Step>
+</Steps>
+
+<Frame caption="Terminal Management dans PaxStore montrant un terminal activé et son TID.">
+  ![Écran Terminal Management de PaxStore montrant une entrée de terminal activé avec le TID](/images/taliup-hq/paxstore-terminal.png)
+</Frame>
+
+## 2. PAX Elys — pousser les applications
+
+Le PAX Elys exige des applications sur le **L1400** (terminal caissier) et l'**A3700** (écran client).
+
+### L1400 — Taliup Elys
+
+<Steps>
+  <Step title="Ouvrir le terminal L1400">
+    Dans Terminal Management, ouvrez le terminal **L1400**.
+  </Step>
+  <Step title="Aller à Push Task">
+    Cliquez sur l'onglet **Push Task**.
+  </Step>
+  <Step title="Pousser Taliup Elys">
+    Cliquez sur **+ PUSH APP**, cherchez et sélectionnez **Taliup Elys**, puis cliquez sur **OK** et **Activate**.
+  </Step>
+</Steps>
+
+### A3700 — trois applications, dans l'ordre
+
+<Warning>
+  Installez les applications sur l'A3700 dans cet ordre exact. **BroadPOS Manager** doit être installé avant l'application de paiement de l'acquéreur. Installez **Taliup Companion** en dernier. Un mauvais ordre peut faire échouer l'invite carte.
+</Warning>
+
+<Steps>
+  <Step title="Pousser BroadPOS Manager">
+    Terminal Management → ouvrir l'**A3700** → **Push Task** → **+ PUSH APP** → chercher **BroadPOS Manager** → **OK** → **Activate**.
+  </Step>
+  <Step title="Pousser l'application BroadPOS de l'acquéreur">
+    **Push Task** → **+ PUSH APP** → sélectionnez l'application BroadPOS de votre acquéreur (par exemple BroadPOS-Elavon ou BroadPOS-Nuvei) → saisissez les **Parameters** de la fiche VAR → **OK** → **Activate**.
+  </Step>
+  <Step title="Pousser Taliup Companion">
+    **Push Task** → **+ PUSH APP** → chercher **Taliup Companion** → **OK** → **Activate**.
+  </Step>
+  <Step title="Confirmer que toutes les tâches réussissent">
+    Attendez que toutes les Push Tasks affichent **Success** avant de continuer.
+  </Step>
+</Steps>
+
+<Frame caption="L'onglet Push Task dans PaxStore montrant trois installations réussies sur l'A3700.">
+  ![Onglet Push Task de PaxStore listant BroadPOS Manager, l'application BroadPOS de l'acquéreur et Taliup Companion, chacun avec le statut Success](/images/taliup-hq/paxstore-push-task-elys.png)
+</Frame>
+
+## 3. PAX A920 Pro — pousser les applications
+
+<Warning>
+  Installez les applications sur l'A920 Pro dans cet ordre exact. **BroadPOS Manager** doit être installé avant l'application de paiement de l'acquéreur. Installez **Taliup POS** en dernier.
+</Warning>
+
+<Steps>
+  <Step title="Pousser BroadPOS Manager">
+    Terminal Management → ouvrir l'**A920 Pro** → **Push Task** → **+ PUSH APP** → chercher **BroadPOS Manager** → **OK** → **Activate**.
+  </Step>
+  <Step title="Pousser l'application BroadPOS de l'acquéreur">
+    **Push Task** → **+ PUSH APP** → sélectionnez l'application BroadPOS de votre acquéreur → saisissez les **Parameters** de la fiche VAR → **OK** → **Activate**.
+  </Step>
+  <Step title="Pousser Taliup POS">
+    **Push Task** → **+ PUSH APP** → chercher **Taliup POS** → **OK** → **Activate**.
+  </Step>
+  <Step title="Confirmer que toutes les tâches réussissent">
+    Attendez que toutes les Push Tasks affichent **Success** avant de continuer.
+  </Step>
+</Steps>
+
+## Dépannage
+
+| Problème | Quoi essayer |
+|---|---|
+| La poussée PaxStore ne se termine jamais | Confirmez que le terminal est en ligne dans PaxStore, vérifiez le statut Push Task, confirmez que l'application est abonnée dans le marketplace, puis redémarrez le terminal et réessayez. |
+| Pas d'invite carte après que Companion accepte la commande (PAX Elys) | BroadPOS manque ou est mal configuré sur l'A3700. Repoussez **BroadPOS Manager**, puis l'application BroadPOS de l'acquéreur avec les paramètres VAR, puis **Taliup Companion** — dans cet ordre. |
+| Pas d'invite carte sur A920 Pro | BroadPOS manque ou est mal configuré. Repoussez **BroadPOS Manager**, puis l'application BroadPOS de l'acquéreur avec les paramètres VAR, puis **Taliup POS** — dans cet ordre. |
+
+## Suite
+
+Enregistrez chaque terminal comme **Device** dans Taliup HQ avec les TID de PaxStore. L'enregistrement est requis avant la première connexion Taliup POS sur l'appareil.
+
+[Ajouter des appareils PAX dans Taliup HQ →](/fr-CA/taliup-hq/devices/pax/add-devices)

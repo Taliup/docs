@@ -1,0 +1,111 @@
+---
+title: "Gestion des rôles"
+sidebarTitle: "Gestion des rôles"
+description: "Créer et gérer des rôles dans votre ISO, attribuer des permissions, inviter des utilisateurs et contrôler l'accès."
+icon: "shield-check"
+---
+
+La page **Role Management** permet aux admins ISO de définir des rôles, de contrôler les fonctions de chaque rôle et d'inviter des utilisateurs. Chaque rôle est limité à votre ISO — les rôles créés ici ne sont pas visibles aux autres ISO.
+
+<Frame caption="La page Role Management montrant la carte du rôle ISO Admin avec le compte de permissions, la liste d'utilisateurs et Invite User.">
+  ![Page Role Management avec la carte ISO Admin étiquetée Your Role, 13 permissions, un utilisateur actif, Invite User et Create Role](/images/taliup-hq/role-management.png)
+</Frame>
+
+<Note>
+  Cette page exige la permission **Role Management**. Votre rôle actif est étiqueté **Your Role** et ne peut pas être modifié ni supprimé — cela évite un auto-verrouillage. Seuls les rôles personnalisés que vous avez créés peuvent être modifiés ou retirés.
+</Note>
+
+---
+
+## Cartes de rôle
+
+Chaque rôle apparaît comme une carte :
+
+- **Nom du rôle** — avec une pastille **Your Role** s'il vous est assigné
+- **Compte de permissions** — nombre de permissions accordées
+- **Liste d'utilisateurs** — chaque utilisateur assigné, avec nom, courriel et pastille (Active ou Pending)
+- Bouton **Invite User** — ouvre l'invitation préremplie pour ce rôle
+- Contrôles **Edit / Delete** — visibles seulement sur les rôles personnalisés que vous pouvez modifier
+
+---
+
+## Créer un rôle
+
+Cliquez sur **+ Create Role** en haut à droite pour ouvrir Create New Role.
+
+<Frame caption="La fenêtre Create New Role avec Role Name et la liste des permissions.">
+  ![Fenêtre Create New Role avec Role Name et une grille de 13 cases dont Dashboard, Entities, Performance, User Management, Role Management, Groups, Plans and Features, Organizations, ISO UI Settings, Message Center, Inbox, Cancel Entities et Dual Pricing](/images/taliup-hq/role-management-create-role.png)
+</Frame>
+
+| Champ | Notes |
+|---|---|
+| **Role Name** | Obligatoire. Doit être unique dans votre ISO. |
+| **Permissions** | Sélectionnez une ou plusieurs permissions. Un rôle sans permission peut quand même être créé et assigné. |
+
+Cliquez sur **Create Role** pour enregistrer. La nouvelle carte apparaît tout de suite.
+
+### Permissions disponibles
+
+| Permission | Ce qu'elle contrôle |
+|---|---|
+| **Dashboard** | Accès au tableau de bord admin |
+| **Entities** | Consulter et gérer les entités marchandes |
+| **Performance** | Générer et télécharger les rapports de performance |
+| **User Management** | Consulter et gérer les utilisateurs de la hiérarchie ISO |
+| **Role Management** | Créer, modifier et supprimer des rôles et inviter des utilisateurs |
+| **Groups** | Gérer les groupes de marchands |
+| **Plans and Features** | Gérer les plans et les drapeaux de fonctions |
+| **Organizations** | Consulter et gérer les organisations ISO enfants |
+| **ISO UI Settings** | Configurer la personnalisation d'interface ISO |
+| **Message Center** | Accéder au Message Center |
+| **Inbox** | Accéder à Inbox |
+| **Cancel Entities** | Annuler des entités marchandes |
+| **Dual Pricing** | Gérer la configuration de double tarification |
+
+---
+
+## Modifier et supprimer un rôle
+
+Les rôles que vous avez créés (personnalisés) affichent **Edit** et **Delete**. Les rôles intégrés comme **ISO Admin** et votre rôle actuel sont protégés.
+
+Lorsque vous modifiez les permissions d'un rôle, le système reconstruit immédiatement le cache pour chaque utilisateur qui a ce rôle — leur accès se met à jour sans déconnexion.
+
+<Warning>
+  Supprimer un rôle est permanent. Tous les utilisateurs assignés perdent les permissions qu'il accordait. Assignez-les à un autre rôle avant de supprimer s'ils doivent conserver l'accès.
+</Warning>
+
+---
+
+## Inviter un utilisateur {#inviter-un-utilisateur}
+
+Cliquez sur **Invite User** sur une carte pour ouvrir Invite New User. Le champ **Assign Role** est prérempli avec le rôle de la carte.
+
+<Frame caption="La fenêtre Invite New User avec First Name, Last Name, Email et Assign Role prérempli à ISO Admin.">
+  ![Fenêtre Invite New User avec First Name, Last Name, Email et Assign Role ISO Admin, boutons Cancel et Send Invitation](/images/taliup-hq/role-management-invite-user.png)
+</Frame>
+
+| Champ | Notes |
+|---|---|
+| **First Name** | Obligatoire. |
+| **Last Name** | Obligatoire. |
+| **Email** | Obligatoire. Doit être unique — ne peut pas correspondre à un compte existant. |
+| **Assign Role** | Obligatoire. Prérempli; peut être changé vers n'importe quel rôle accessible. |
+
+Cliquez sur **Send Invitation** pour créer le compte et envoyer le courriel. Le nouvel utilisateur apparaît sur la carte avec une pastille **Pending**. Il reçoit un lien sécurisé pour terminer la configuration et définir son mot de passe.
+
+---
+
+## Gérer les utilisateurs existants
+
+Chaque utilisateur listé sur une carte a ces actions :
+
+| Action | Description |
+|---|---|
+| **Edit** | Mettre à jour prénom, nom, courriel ou rôle assigné. |
+| **Reset password** | Envoie un courriel de réinitialisation. Lien unique. Seulement pour les utilisateurs Active. |
+| **Resend invitation** | Renvoie le courriel d'invitation. Seulement pour le statut **Pending**. |
+| **Remove user** | Détache tous les rôles et permissions et supprime définitivement le compte. |
+
+<Warning>
+  Retirer un utilisateur est permanent — rôles, permissions et données du compte sont supprimés. Vous ne pouvez pas retirer votre propre compte.
+</Warning>

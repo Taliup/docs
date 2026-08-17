@@ -1,0 +1,79 @@
+---
+title: "Emplacements"
+sidebarTitle: "Emplacements"
+description: "Gérer les sites physiques du marchand, les identifiants marchands (MID), la devise et les identifiants de passerelle de paiement en ligne dans Taliup HQ."
+---
+
+Un **emplacement** représente un site physique du marchand. Chaque emplacement est lié à un **Merchant ID (MID)**, qui le relie au traitement des paiements et au règlement manuel. Un marchand peut avoir plusieurs emplacements, chacun avec son propre MID et sa configuration de passerelle.
+
+Cliquez sur **Add Location** pour créer un autre site. Cette option est disponible pour les fournisseurs **PAX**, **Poynt**, **Castles**, **Ingenico** et **None**.
+
+Pour **Poynt**, les magasins synchronisés depuis Poynt HQ apparaissent toujours en premier. Les emplacements que vous ajoutez dans Taliup HQ et qui ne sont pas sur poynt.net sont des **emplacements compagnons**. Ils restent dans la liste pour que vous puissiez y attacher des passerelles en ligne, des types d'appareils et des sites supplémentaires que Poynt ne synchronise pas.
+
+<Frame caption="Emplacements sur une entité Poynt, y compris Add Location et un site compagnon.">
+  ![Onglet Locations des paramètres Lemon Cafe Poynt avec Add Location et deux emplacements, Lemon Cafe et Lemon Cafe - New](/images/taliup-hq/locations-add-poynt.png)
+</Frame>
+
+Après avoir activé un emplacement Poynt, utilisez **View As** le marchand, ouvrez **Settings → Terminals**, puis cliquez sur **Sync Terminals**.
+
+## Comment y accéder
+
+**Entités** → trouver l'entité → **Manage** → **Settings** → onglet **Locations**.
+
+## Modifier un emplacement
+
+<Steps>
+  <Step title="Ouvrir l'onglet Locations">
+    Depuis la page **Settings**, cliquez sur l'onglet **Locations**.
+  </Step>
+  <Step title="Ouvrir le formulaire de modification">
+    Trouvez l'emplacement à mettre à jour et cliquez sur **Edit**.
+  </Step>
+  <Step title="Mettre à jour les champs">
+    Mettez à jour le nom, l'adresse, la devise ou le MID au besoin. Assurez-vous que tous les champs obligatoires sont remplis.
+  </Step>
+  <Step title="Enregistrer">
+    Cliquez sur **Save Changes**.
+  </Step>
+</Steps>
+
+<Warning>
+  Le **MID** est lié à la capacité du marchand d'exécuter des **Manual Settlements**. Changer le MID brise l'historique de règlement de cet emplacement. Ne changez le MID que si vous migrez volontairement le marchand vers une nouvelle entente de traitement.
+</Warning>
+
+## Activer et désactiver un emplacement
+
+Un emplacement est activé par défaut. Un administrateur ISO peut le désactiver en tout temps.
+
+<Warning>
+  Désactiver un emplacement **verrouille immédiatement tous les appareils PAX assignés à cet emplacement hors de Taliup POS**. Réactivez l'emplacement pour rétablir l'accès.
+</Warning>
+
+## Passerelle de paiement en ligne
+
+Chaque emplacement peut avoir une passerelle de paiement en ligne. Les identifiants de passerelle sont associés au MID de l'emplacement et doivent être obtenus auprès de l'acquéreur ou du fournisseur de passerelle.
+
+<Frame caption="Le formulaire Online Gateway, accessible depuis l'onglet Locations.">
+  ![Sous-formulaire Online Gateway montrant Provider, les champs d'identifiants, le sélecteur Environment et le bascule Active](/images/taliup-hq/locations-online-gateway.png)
+</Frame>
+
+<Steps>
+  <Step title="Ouvrir Online Gateway">
+    Depuis l'onglet **Locations**, trouvez l'emplacement et cliquez sur **Online Gateway**.
+  </Step>
+  <Step title="Sélectionner le fournisseur">
+    Sélectionnez le **Payment Gateway Provider** dans la liste.
+  </Step>
+  <Step title="Saisir les identifiants">
+    Remplissez les champs obligatoires pour la passerelle sélectionnée (les identifiants sont fournis par l'acquéreur ou la passerelle).
+  </Step>
+  <Step title="Définir l'environnement">
+    Sélectionnez **Live** pour les paiements en production. Si la passerelle le permet, sélectionnez **Sandbox** pour utiliser des cartes de test avec les fonctions carte absente activées pour le marchand.
+  </Step>
+  <Step title="Activer">
+    Activez **Active** pour activer le traitement en ligne pour cet emplacement. Désactivez-le pour suspendre le traitement en ligne sans retirer la configuration de la passerelle.
+  </Step>
+  <Step title="Enregistrer">
+    Cliquez sur **Save Payment Gateway**.
+  </Step>
+</Steps>

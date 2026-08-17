@@ -1,0 +1,56 @@
+---
+title: "Première connexion"
+sidebarTitle: "Première connexion"
+description: "Se connecter à Taliup POS une fois le marchand et les appareils configurés dans Taliup HQ."
+---
+
+Une fois le marchand (entité) et les appareils enregistrés dans Taliup HQ, ouvrez Taliup POS sur l'appareil et connectez-vous avec un utilisateur du personnel.
+
+<Note>
+  **Capture d'écran à venir :** écran de connexion avec la liste des utilisateurs et le clavier de NIP.  
+  Chemin prévu : `/images/taliup-pos/first-login.png`
+</Note>
+
+## Avant de commencer
+
+- L'enregistrement de l'appareil et la configuration du marchand dans Taliup HQ sont terminés. Voir [Configuration des appareils PAX dans Taliup HQ](/fr-CA/taliup-hq/devices/pax/index).
+- Au moins un employé existe pour le marchand.
+- L'appareil est en ligne.
+
+<Warning>
+  N'ouvrez pas Taliup POS pour la première fois tant que l'appareil n'est pas enregistré dans Taliup HQ. Un appareil non enregistré affiche une liste de connexion vide.
+</Warning>
+
+## Se connecter
+
+<Steps>
+  <Step title="Ouvrir Taliup POS">
+    Lancez l'application Taliup POS sur l'appareil.
+  </Step>
+  <Step title="Sélectionner votre utilisateur">
+    Choisissez votre nom dans la liste de connexion. Si aucun utilisateur n'apparaît, l'appareil n'est pas enregistré correctement dans Taliup HQ — terminez d'abord la configuration de l'appareil là-bas.
+  </Step>
+  <Step title="Saisir votre NIP">
+    Saisissez le NIP du personnel sur le clavier. Les plans d'abonnement ou de démonstration peuvent exiger un NIP de démo de votre ISO ou partenaire.
+  </Step>
+  <Step title="Continuer vers Accueil">
+    Après une connexion réussie, vous arrivez à l'[écran Accueil](/fr-CA/taliup-pos/home-screen).
+  </Step>
+</Steps>
+
+## Pointer
+
+Si les feuilles de temps sont activées pour le marchand, le personnel peut aussi pointer à l'arrivée et au départ depuis **Accueil** après la connexion. Cette commande est distincte de la connexion à l'application.
+
+## Dépannage
+
+| Situation | Quoi vérifier |
+|---|---|
+| Liste d'utilisateurs vide | TID de l'appareil non enregistré, ou aucun employé sur l'entité dans Taliup HQ |
+| NIP refusé | Confirmez le NIP de l'utilisateur dans HQ, ou demandez le NIP de démo à votre ISO ou partenaire |
+| L'application demande une mise à jour | Installez la version requise avant de continuer |
+
+## Suite
+
+- [Écran Accueil](/fr-CA/taliup-pos/home-screen)
+- [Caisse](/fr-CA/taliup-pos/register)

@@ -1,0 +1,43 @@
+---
+title: "Analytique"
+sidebarTitle: "Aperçu"
+description: "Consulter les graphiques des ventes totales, détaillées et par employé dans Taliup POS."
+---
+
+**Analytique** affiche les graphiques de performance des ventes pour ce marchand.
+
+<Note>
+  **Capture d'écran à venir :** Analytique avec Total Sales, Itemized Sales et Employee Sales.  
+  Chemin prévu : `/images/taliup-pos/analytics/overview.png`
+</Note>
+
+## Comment y arriver
+
+Depuis Accueil, appuyez sur **Analytique**.
+
+### Exigences d'accès
+
+Deux vérifications s'appliquent :
+
+1. **Permission de rôle** — exige view-analytics. Refus : **Permission denied** — *You do not have permission to access Analytics.*
+2. **Droit de fonction** — la fonction Rapports / analytique doit être activée sur le compte. Sinon, un message d'accès pointe vers Taliup HQ / Marketplace.
+
+## Graphiques
+
+| Graphique | Type | Contrôles |
+|---|---|---|
+| **Total Sales** | Ligne | Intervalle **Week** / **Month** / **Year** |
+| **Itemized Sales** | Camembert | Meilleurs articles par ventes |
+| **Employee Sales** | Barres | Employés sur l'axe X |
+
+Les étiquettes d'axe semaine utilisent les jours (**Mon**–**Sun**). L'année utilise les mois (**Jan**–**Dec**).
+
+Il n'y a pas de sélecteur de plage personnalisée ni de filtre d'emplacement sur cet écran.
+
+## Dépannage
+
+| Situation | À vérifier |
+|---|---|
+| Permission refusée | Mettre à jour le rôle du personnel dans Taliup HQ |
+| Message d'accès à la fonction | Activer Rapports/analytique pour le plan du marchand |
+| **Something went wrong** | Réessayer; vérifier le réseau; communiquer avec le soutien si ça persiste |

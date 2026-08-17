@@ -1,0 +1,242 @@
+---
+title: "Organisations"
+sidebarTitle: "Organisations"
+description: "Créer et gérer des sous-organisations (ISO enfants) sous votre ISO — accès fournisseurs, emplacement, configuration Open Sale et administrateur."
+icon: "sitemap"
+---
+
+La page **Organizations** permet aux admins ISO de créer et gérer des sous-organisations (ISO enfants). Chaque sous-organisation est un ISO indépendant avec ses propres utilisateurs, entités, accès fournisseurs et rôle admin — le tout imbriqué sous votre ISO parent.
+
+<Frame caption="La page Organizations montrant la liste Sub-Organizations avec trois ISO enfants actifs.">
+  ![Page Organizations avec un tableau Sub-Organizations listant Local Payments, Priority Pay et Divvia avec statut, comptes d'entités et d'utilisateurs, et actions Manage / Edit / Delete](/images/taliup-hq/organizations.png)
+</Frame>
+
+<Note>
+  Cette page exige la permission **Organizations**. Elle doit être accordée à votre rôle par un Super Admin Taliup HQ. Sans elle, la section n'est pas accessible.
+</Note>
+
+---
+
+## Tableau des sous-organisations
+
+Chaque ligne résume un ISO enfant :
+
+<Frame caption="Une ligne d'organisation avec statut, comptes et actions.">
+  ![Ligne Local Payments : Active, 0 Entities, 1 User, 0 Sub-Orgs, créé le 27 mai 2026, boutons Manage, Edit et Delete](/images/taliup-hq/organizations-row.png)
+</Frame>
+
+| Colonne | Contenu |
+|---|---|
+| **Organization** | Nom et code. |
+| **Status** | Actif ou inactif. |
+| **Entities** | Nombre d'entités marchandes assignées. |
+| **Users** | Nombre d'utilisateurs admin. |
+| **Sub-Orgs** | Nombre d'organisations enfants directes. |
+| **Created** | Date de création. |
+| **Actions** | Manage, Edit, Delete. |
+
+---
+
+## Créer une organisation
+
+Cliquez sur **+ Create Organization** pour ouvrir le formulaire en cinq sections.
+
+<Frame caption="La page Create Organization avec Organization Details et Organization Preview.">
+  ![Page Create Organization avec un formulaire à gauche et un aperçu en direct à droite](/images/taliup-hq/organizations-create.png)
+</Frame>
+
+Un panneau **Organization Preview** à droite se met à jour en temps réel : organisation parent, niveau de hiérarchie, entités assignées et emplacement.
+
+<Steps>
+  <Step title="Organization details">
+    <Frame caption="La section Organization Details : Name, Subdomain et Description.">
+      ![Organization Details avec Organization Name (obligatoire), Subdomain (facultatif) et Description](/images/taliup-hq/organizations-create-details.png)
+    </Frame>
+
+    | Champ | Notes |
+    |---|---|
+    | **Organization Name** | Obligatoire. Unique dans votre ISO. |
+    | **Subdomain** | Facultatif. Sous-domaine personnalisé pour la page de connexion Taliup HQ. Unique sur la plateforme. |
+    | **Description** | Facultatif. Notes internes. |
+  </Step>
+
+  <Step title="Location">
+    <Frame caption="La section Location avec Address Search et les champs d'adresse.">
+      ![Location avec Address Search, Address, Unit, City, Region, Country, Postal Code et Phone](/images/taliup-hq/organizations-create-location.png)
+    </Frame>
+
+    Utilisez **Address Search** pour remplir automatiquement, ou saisissez manuellement. Tous les champs d'emplacement sont facultatifs à la création.
+
+    | Champ | Notes |
+    |---|---|
+    | **Address / Unit** | Adresse et numéro d'unité facultatif. |
+    | **City / Region** | Ville et province ou État. |
+    | **Country** | Code pays ISO à deux lettres (p. ex. CA, US). |
+    | **Postal Code** | Code postal. |
+    | **Phone** | Téléphone de contact. |
+  </Step>
+
+  <Step title="Open Sale (conditionnel)">
+    <Frame caption="La section Open Sale avec la bascule Allow Open Sale Only.">
+      ![Section Open Sale avec Allow Open Sale Only](/images/taliup-hq/organizations-create-open-sale.png)
+    </Frame>
+
+    <Note>
+      La section Open Sale n'apparaît que lorsque votre ISO parent a la fonction **Open Sale Only** activée par Taliup HQ. Lorsque c'est activé, **Allow Open Sale Only** restreint toutes les entités sous cette organisation aux transactions Vente ouverte seulement.
+    </Note>
+  </Step>
+
+  <Step title="Configuration — accès fournisseurs">
+    <Frame caption="La section Configuration avec Terminal Providers, Payment Providers et Gateway Providers.">
+      ![Configuration PROVIDER ACCESS avec cases Terminal, Payment et Gateway](/images/taliup-hq/organizations-create-config.png)
+    </Frame>
+
+    Sélectionnez les fournisseurs que cette organisation peut utiliser. Vous ne pouvez accorder que les fournisseurs déjà activés sur votre ISO.
+
+    | Type | Description |
+    |---|---|
+    | **Terminal Providers** | Obligatoire. Au moins un. Contrôle le matériel PDV des marchands. |
+    | **Payment Providers** | Obligatoire. Au moins un. Contrôle les processeurs de paiement. |
+    | **Gateway Providers** | Facultatif. Accès passerelle en ligne pour les flux hébergés. |
+  </Step>
+
+  <Step title="Administrateur de l'organisation">
+    <Frame caption="La section Organization Administrator pour créer le premier admin et choisir ses permissions.">
+      ![Organization Administrator avec First Name, Last Name, Email et une rangée Permissions](/images/taliup-hq/organizations-create-admin.png)
+    </Frame>
+
+    Cette section crée le premier utilisateur admin et lui envoie un courriel d'invitation.
+
+    | Champ | Notes |
+    |---|---|
+    | **First Name / Last Name** | Obligatoire. |
+    | **Email** | Obligatoire. Unique sur la plateforme. Un courriel d'invitation est envoyé. |
+    | **Permissions** | Choisissez les permissions du rôle ISO Admin. Seulement celles que vous avez vous-même. Au moins une est requise. |
+
+    <Note>
+      La nouvelle organisation est créée en **Hosted mode**, en héritant de la structure de base de l'ISO parent. Le compte admin démarre en **Pending** jusqu'à l'acceptation de l'invitation.
+    </Note>
+  </Step>
+</Steps>
+
+Cliquez sur **Create Org** pour envoyer. En cas de succès, vous revenez à la liste.
+
+<Note>
+  Un maximum de **2 niveaux** de sous-organisations est pris en charge. Si votre ISO a déjà des enfants qui ont eux-mêmes des enfants, le bouton Create Organization est indisponible.
+</Note>
+
+---
+
+## Gérer une organisation
+
+Cliquez sur **Manage** pour ouvrir la page de détail.
+
+<Frame caption="La page Manage de Local Payments avec Basic Information, Logo & Favicon, Statistics et Hierarchy.">
+  ![Page Manage Local Payments avec Basic Information, fournisseurs, et panneaux Logo & Favicon](/images/taliup-hq/organizations-manage.png)
+</Frame>
+
+### Basic information
+
+<Frame caption="Le panneau Basic Information avec nom, pastille Active et étiquettes de fournisseurs.">
+  ![Basic Information : Name Local Payments, Status ACTIVE, Terminal Providers et Payment Providers](/images/taliup-hq/organizations-manage-basic-info.png)
+</Frame>
+
+Affiche le nom, le statut et les fournisseurs de terminaux et de paiement.
+
+### Logo & Favicon
+
+<Frame caption="Le panneau Logo & Favicon avec zones de téléversement.">
+  ![Logo & Favicon avec Upload Logo et Upload Favicon. Favicon accepte PNG, ICO ou SVG 16x16 ou 32x32.](/images/taliup-hq/organizations-manage-logo.png)
+</Frame>
+
+Téléversez un logo et un favicon en marque blanche. Le logo apparaît dans la barre de navigation; le favicon dans l'onglet du navigateur.
+
+- **Logo** — tout format d'image standard; remplace le logo Taliup
+- **Favicon** — PNG, ICO ou SVG à 16×16 ou 32×32 pixels
+
+### Statistics
+
+<Frame caption="Le panneau Statistics avec Entities, Users, Transactions et Sub-Organizations.">
+  ![Quatre cartes KPI : Entities, Users, Transactions, Sub-Organizations](/images/taliup-hq/organizations-manage-stats.png)
+</Frame>
+
+| Métrique | Description |
+|---|---|
+| **Entities** | Entités marchandes assignées directement. |
+| **Users** | Utilisateurs admin. |
+| **Transactions** | Nombre total de transactions des entités assignées. |
+| **Sub-Organizations** | Organisations enfants directes. |
+
+### Hierarchy
+
+<Frame caption="Le panneau Hierarchy montrant l'organisation parent.">
+  ![Hierarchy avec Parent Organization Unity Payments (UP) et placeholder No sub-organizations](/images/taliup-hq/organizations-manage-hierarchy.png)
+</Frame>
+
+Affiche l'organisation parent avec un lien, et liste les enfants directs.
+
+### Recent activity
+
+<Frame caption="Le panneau Recent Activity avec Created et Last Updated.">
+  ![Recent Activity : Created et Last Updated](/images/taliup-hq/organizations-manage-activity.png)
+</Frame>
+
+Affiche quand l'organisation a été créée et mise à jour.
+
+### Actions d'en-tête
+
+| Bouton | Action |
+|---|---|
+| **Manage Entities** | Vue d'attribution d'entités — assigner ou retirer des marchands. |
+| **Manage Users** | Vue utilisateurs et permissions — ajouter/retirer des utilisateurs et configurer le rôle ISO Admin. |
+| **Edit** | Ouvre le formulaire Edit Organization. |
+
+---
+
+## Modifier une organisation
+
+Cliquez sur **Edit** depuis la ligne ou l'en-tête Manage.
+
+<Frame caption="La page Edit Organization avec Organization Information à gauche et Live Preview + Statistics à droite.">
+  ![Edit Organization avec Name, Subdomain, Parent Organization, Description, Location et barre latérale Live Preview](/images/taliup-hq/organizations-edit.png)
+</Frame>
+
+Le formulaire reprend la création, avec ces différences :
+
+- **Parent Organization** est en lecture seule
+- Une barre **Live Preview** montre le nom, la pastille de statut et l'emplacement
+- Une barre **Statistics** montre les comptes, la date de création, Org ID et Mode
+
+<Frame caption="Les champs Organization Information sur le formulaire d'édition.">
+  ![Organization Name Local Payments, Subdomain, Parent Organization Unity Payments (lecture seule), Description](/images/taliup-hq/organizations-edit-info.png)
+</Frame>
+
+<Frame caption="La section Location sur le formulaire d'édition.">
+  ![Location : 112 Supertest Road, Toronto, ON, Canada, M3H 5S9](/images/taliup-hq/organizations-edit-location.png)
+</Frame>
+
+<Frame caption="La section System Configuration avec Organization Status, Allow Open Sale Only et les cases fournisseurs.">
+  ![System Configuration avec Organization Status Active, Allow Open Sale Only et cases Provider Access](/images/taliup-hq/organizations-edit-config.png)
+</Frame>
+
+**System Configuration** ajoute deux contrôles absents à la création :
+
+| Contrôle | Notes |
+|---|---|
+| **Organization Status** | Basculer Active / Inactive. Les organisations inactives sont désactivées et leurs utilisateurs ne peuvent pas se connecter. |
+| **Allow Open Sale Only** | Affiché seulement si l'ISO parent a cette fonction. Modifiable seulement par l'admin ISO parent ou un Super Admin. Le désactiver après l'avoir activé exige une confirmation que les emplacements Open Sale Only existants seront éteints. |
+
+Cliquez sur **Save Changes**. Vous revenez à la liste en cas de succès.
+
+---
+
+## Supprimer une organisation
+
+Cliquez sur **Delete** sur une ligne. Une confirmation du navigateur apparaît. Cliquez sur **OK** pour continuer.
+
+<Warning>
+  La suppression est permanente. Elle retire l'enregistrement, tous les utilisateurs, tous les rôles et toutes les attributions d'entités. La suppression est **bloquée** si :
+
+  - L'organisation a une ou plusieurs entités — retirez-les d'abord
+  - L'organisation a une ou plusieurs sous-organisations — supprimez-les d'abord
+</Warning>

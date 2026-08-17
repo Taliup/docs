@@ -1,0 +1,69 @@
+---
+title: "Menu Options"
+sidebarTitle: "Menu Options"
+description: "Menu Options de Caisse pour les factures et paiements, rabais et frais, actions de commande, cuisine, notes, tiroir-caisse et scanneur."
+---
+
+Appuyez sur **Options** dans la barre d'application de Caisse pour ouvrir le menu latéral. Les sections vides sont masquées. Ce que vous voyez dépend de Vente ouverte vs Menu/Catalogue, commande de table vs hors table, permissions du rôle et fonctions du plan.
+
+<Note>
+  **Capture d'écran à venir :** menu Options de Caisse entièrement déployé.  
+  Chemin prévu : `/images/taliup-pos/register/options.png`
+</Note>
+
+## Factures et paiements
+
+| Option | Ce qu'elle fait | Quand elle apparaît |
+|---|---|---|
+| **Imprimer la facture complète** | Imprime la facture de toute la commande | Pas sur l'onglet Vente ouverte |
+| **Imprimer les factures individuelles** | Ouvre l'impression de facture par invité | Commandes de table |
+| **Créer une autorisation** | Passe Caisse en mode autorisation (préautorisation) | Commandes hors table; exige la permission de préautorisation |
+| **Créer un remboursement** | Passe Caisse en mode remboursement | Commandes hors table; exige la permission de remboursement |
+| **Créer un paiement en espèces** | Démarre un paiement en espèces (payout) | Lorsque la fonction payout est disponible (ou affiche un état de mise à niveau / refus) |
+
+Lorsque Caisse est en mode **Autorisation** ou **Remboursement**, le menu latéral affiche **Annuler l'autorisation** ou **Annuler le remboursement** pour revenir au mode paiement normal. Le titre de la barre d'application devient **Auth** ou **Refund**.
+
+## Rabais et frais
+
+Affichés pour les commandes hors table lorsque vous n'êtes pas sur l'onglet Vente ouverte.
+
+| Option | Ce qu'elle fait | Notes |
+|---|---|---|
+| **Ajouter des réductions à la commande** | Appliquer des rabais au niveau de la commande | Exige la fonction rabais |
+| **Ajouter des frais à la commande** | Appliquer des frais au niveau de la commande | Exige la fonction frais |
+
+Si la fonction n'est pas incluse au plan, Taliup POS indique que l'accès est bloqué au lieu d'appliquer le rabais ou les frais.
+
+## Commandes et serveurs
+
+| Option | Ce qu'elle fait | Quand elle apparaît |
+|---|---|---|
+| **Ajouter un élément personnalisé** | Ajoute une ligne à prix personnalisé | Pas sur Vente ouverte |
+| **Enregistrer commande** | Enregistre la commande ouverte en cours | Pas sur Vente ouverte |
+| **Terminer la commande** | Termine une commande de table (confirmation requise) | Commandes de table |
+| **Annuler la commande** | Annule la commande en cours (confirmation requise) | Pas sur Vente ouverte |
+| **Déplacer la commande** | Déplace la commande vers une autre table | Commandes de table |
+
+## Plus d'options
+
+| Option | Ce qu'elle fait | Quand elle apparaît |
+|---|---|---|
+| **Envoyer à l'imprimante de cuisine** | Ouvre l'impression cuisine pour la commande | Restaurants; pas sur Vente ouverte |
+| **Combiner les articles** | Combine les commandes de table | Commandes de table |
+| **Augmenter la taille du groupe** | Augmente les invités sur la commande de table | Commandes de table |
+| **Ajouter une note** | Ajoute une note de commande | Toujours |
+| **Ajouter un nom de commande personnalisé** | Nomme la commande | Restaurants; pas sur Vente ouverte |
+| **Ouvrir le tiroir-caisse** | Ouvre le tiroir-caisse | Toujours |
+| **Ouvrir le scanneur** | Ouvre le scanneur de codes-barres | Pas sur Vente ouverte |
+
+## Conseils de permission pour le soutien
+
+- **Créer une autorisation** / **Créer un remboursement** apparaissent mais peuvent être désactivés sans la permission de rôle — le personnel voit un message de permission lorsqu'il appuie dessus.
+- Les rabais, frais, clients et payouts peuvent être limités par le plan même si l'entrée de menu est visible ou tentée.
+- Plusieurs entrées Options disparaissent sur **Vente ouverte**; passez à Menu/Catalogue ou ouvrez une commande enregistrée / de table si un outil manque.
+
+## Connexe
+
+- [Panier](/fr-CA/taliup-pos/register/cart)
+- [Encaisser](/fr-CA/taliup-pos/register/take-payment)
+- [Tables](/fr-CA/taliup-pos/tables)

@@ -1,0 +1,166 @@
+---
+title: "Plans et fonctionnalités (admin)"
+sidebarTitle: "Plans et fonctionnalités"
+description: "Créer et gérer les plans de fonctions PDV pour votre ISO — définir les fonctions disponibles pour vos marchands et contrôler les portes d'abonnement logiciel."
+icon: "dollar-sign"
+---
+
+**Plans & Features** permet aux admins ISO de créer des plans nommés qui regroupent des fonctions PDV et de les assigner aux entités. Chaque plan est la couche d'entitlement — basculer une fonction sur un plan met à jour immédiatement chaque entité assignée.
+
+<Frame caption="La page Plan Management montrant sept plans en cartes avec compte de fonctions et pastille de type.">
+  ![Page Plan Management avec liste ISO Unity Payments et + Create Plan. Plans Basic, Light Retail, Lite Restaurant, Micamp, Quickbooks et TALIUP.](/images/taliup-hq/plans-features.png)
+</Frame>
+
+<Note>
+  Plans & Features doit être **activé pour votre ISO par Taliup HQ**. Si la section n'est pas dans la barre latérale, contactez Taliup HQ.
+
+  De plus, la permission de rôle **Plans and Features** doit être accordée pour basculer les fonctions individuelles.
+</Note>
+
+---
+
+## Types de plan
+
+| Type | Description |
+|---|---|
+| **Base Plan** | Le plan principal assigné à une entité. Définit le jeu de fonctions de base. Une entité a un plan de base à la fois. |
+| **Add-on Plan** | Un plan supplémentaire auquel les marchands peuvent s'abonner en plus du plan de base. Les add-ons ne peuvent pas avoir de porte Software Subscription. |
+
+---
+
+## Liste Plan Management
+
+La page d'index affiche tous les plans de l'ISO sélectionné en grille. Chaque carte affiche :
+
+- **Nom du plan** — unique dans l'ISO
+- **Pastille de compte de fonctions**
+- **Pastille de type** — Base Plan ou Add-on Plan
+- **Actions** — Edit Plan, Copy to another ISO, Delete
+
+Utilisez la **liste ISO** dans l'en-tête pour passer d'un ISO à une organisation enfant.
+
+---
+
+## Créer un plan
+
+Cliquez sur **+ Create Plan**. Le formulaire a trois sections : Plan Details, Features et Software Subscription.
+
+<Frame caption="La page Create Plan avec Plan Details à gauche et Features à droite.">
+  ![Create Plan : Plan Name, ISO, Industries, compteurs, bascules Allow Feature Add-ons et This is an Add-on Plan, liste Features, Software Subscription](/images/taliup-hq/plans-features-create.png)
+</Frame>
+
+<Note>
+  Recapturez cette capture si vous voulez la case **Charity** et les pastilles d'industrie visibles. L'image actuelle les précède.
+</Note>
+
+### Plan details
+
+| Champ | Notes |
+|---|---|
+| **Plan Name** | Obligatoire. Unique dans l'ISO. |
+| **ISO** | Obligatoire. Visible seulement si vous avez plusieurs ISO. Ne peut pas être changé après la création. |
+| **Industries** | Facultatif. Cochez une ou plusieurs pour restreindre le plan (**Restaurant**, **Retail / Wholesale**, **Charity**). Laissez tout décoché pour tous les types. |
+| **Selected features** | Compteur en lecture seule. |
+| **Allow Feature Add-ons** | Lorsque c'est activé, les marchands peuvent s'abonner à des Add-on Plans. |
+| **This is an Add-on Plan** | Marque le plan comme add-on. Les add-ons ne peuvent pas avoir de porte Software Subscription. |
+
+### Features
+
+Le panneau Features liste toutes les fonctions PDV, organisées hiérarchiquement :
+
+- **Expand All** — déplier tous les groupes
+- **Select All** — activer toutes les fonctions
+- **Clear All** — désactiver toutes les fonctions
+
+<Note>
+  Certaines fonctions ont des dépendances. Activer une fonction qui en exige une autre active les deux. Désactiver un parent désactive aussi ses enfants.
+</Note>
+
+Fonctions disponibles :
+
+| Fonction | Description |
+|---|---|
+| Employees | Gestion du personnel et suivi du temps. |
+| Catalogs | Gestion du catalogue. |
+| Inventory | Suivi de stock pour le détail. |
+| Reports | Tableaux de bord de rapports. |
+| Ecommerce | Commandes en ligne et flux QR (Pickup, Room Service, Dine-in). |
+| Clients | Gestion des clients. |
+| Calendar | Rendez-vous et horaires. |
+| Virtual Terminal | Paiements carte absente dans le navigateur. |
+| Invoicing | Création et envoi de factures. |
+| Link To Pay | Liens de paiement partageables. |
+| Hosted Payment Solution | Paiement hébergé intégrable. |
+| Table Management | Disposition et gestion des tables. |
+| Quickbooks | Intégration QuickBooks. |
+
+### Software subscription
+
+La section **Software Subscription** exige que les marchands acceptent et paient des frais récurrents avant d'utiliser le PDV. Cette porte s'affiche à la première connexion.
+
+<Note>
+  Software Subscription n'est pas disponible sur les Add-on Plans.
+</Note>
+
+| Champ | Notes |
+|---|---|
+| **Subscription Name** | Obligatoire lorsque activé. Affiché au marchand. |
+| **Amount** | Obligatoire. Montant récurrent. |
+| **Frequency** | Obligatoire. Daily, Weekly, Bi-weekly, Monthly ou Annually. |
+| **Demo Passcode** | Facultatif. Code à 6 chiffres pour contourner la porte en démo. Demandez le code à votre ISO. |
+| **Terms & Conditions** | Facultatif. Téléversez un fichier HTML des conditions. |
+
+Cliquez sur **Save Plan** pour créer.
+
+---
+
+## Modifier un plan
+
+Cliquez sur **Edit Plan** sur une carte.
+
+<Frame caption="La page Edit Plan du plan Basic avec 5 fonctions sélectionnées.">
+  ![Edit Plan Basic : Plan Name, ISO en lecture seule, Industries, Selected features 5, badges Allow Feature Add-ons et Add-on Plan, Delete Plan et Save Changes](/images/taliup-hq/plans-features-edit.png)
+</Frame>
+
+Le formulaire est identique à la création, avec ces différences :
+
+- **ISO** est en lecture seule
+- **Allow Feature Add-ons** et **Is Add-on Plan** s'affichent en pastille plutôt qu'en bascule
+- Un bouton **Delete Plan** apparaît dans l'en-tête
+
+<Warning>
+  Enregistrer des changements de fonctions affecte chaque entité actuellement assignée. Les fonctions ajoutées sont accordées immédiatement; les fonctions retirées sont révoquées immédiatement (sauf celles que l'entité a via un abonnement add-on).
+</Warning>
+
+Cliquez sur **Save Changes**.
+
+---
+
+## Copier un plan
+
+Cliquez sur l'**icône Copy** pour ouvrir Copy Plan. Sélectionnez un ou plusieurs ISO cibles (Ctrl/Cmd pour multi-sélection) et cliquez sur **Copy**.
+
+La copie est un clone profond — nom, type, industries, fonctions et prix. Si un plan du même nom existe déjà, la copie est renommée avec `(copy)` ou `(copy 2)`.
+
+<Note>
+  Vous ne pouvez copier que vers des ISO de votre hiérarchie descendante. Pas vers un ISO parent ni un ISO non lié.
+</Note>
+
+---
+
+## Supprimer un plan
+
+Cliquez sur l'**icône Delete** pour ouvrir la confirmation.
+
+<Frame caption="La fenêtre Delete Plan avec une bannière d'avertissement.">
+  ![Fenêtre Delete Plan : This action cannot be undone. Delete Plan en rouge.](/images/taliup-hq/plans-features-delete.png)
+</Frame>
+
+**Delete Plan** retire définitivement l'enregistrement, ses associations de fonctions et ses paramètres d'abonnement logiciel.
+
+<Warning>
+  La suppression est bloquée dans deux cas :
+
+  - **Le plan est assigné à des entités** — réassignez ou retirez toutes les entités d'abord. Un lien **Download CSV** apparaît dans la bannière d'erreur.
+  - **Le plan a des abonnements actifs** — annulez ces abonnements d'abord.
+</Warning>

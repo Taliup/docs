@@ -1,0 +1,68 @@
+---
+title: "Ajouter des appareils PAX dans Taliup HQ"
+sidebarTitle: "Ajouter des appareils dans HQ"
+description: "Enregistrer des terminaux PAX comme Devices dans Taliup HQ avec le TID de PaxStore. L'enregistrement est requis avant la première connexion sur l'appareil."
+---
+
+Après avoir créé les terminaux dans PaxStore et noté chaque **TID**, enregistrez chaque terminal comme **Device** dans Taliup HQ. Taliup POS utilise le TID de l'appareil pour demander la liste des utilisateurs assignés — l'enregistrement doit être terminé avant que le personnel se connecte pour la première fois.
+
+## Combien de dossiers Device dois-je créer ?
+
+| Appareil | Dossiers Device à créer |
+|---|---|
+| **PAX Elys** (L1400 + A3700) | Deux — un pour le L1400 (terminal caissier) et un pour l'A3700 (écran client) |
+| **PAX A920 Pro** | Un — pour l'A920 Pro |
+
+<Warning>
+  Pour PAX Elys, les TID du L1400 et de l'A3700 doivent être enregistrés dans Taliup HQ **avant** d'ouvrir Taliup POS sur le L1400 pour la première fois. Se connecter avant l'enregistrement affiche aucun utilisateur à l'écran de connexion.
+</Warning>
+
+## Étapes
+
+<Steps>
+  <Step title="Ouvrir l'entité">
+    Dans Taliup HQ, cliquez sur **Entities** dans la barre latérale, trouvez l'entité du marchand et cliquez sur **Manage**.
+  </Step>
+  <Step title="Ouvrir l'onglet Devices">
+    Cliquez sur l'onglet **Devices**.
+  </Step>
+  <Step title="Créer un Device">
+    Cliquez sur **+ Create Device**.
+  </Step>
+  <Step title="Saisir les détails">
+    Remplissez les champs obligatoires :
+
+    - **Device Name** — un nom descriptif (par exemple « Front Register » ou « L1400 Cashier »).
+    - **Device Type** — sélectionnez le type d'appareil correspondant.
+    - **TID** — saisissez le TID de PaxStore pour ce terminal.
+    - Complétez les autres champs obligatoires.
+  </Step>
+  <Step title="Enregistrer">
+    Cliquez sur **Create Device** (ou **Save**) pour enregistrer l'appareil.
+  </Step>
+  <Step title="Répéter pour les autres terminaux">
+    Pour PAX Elys, répétez les étapes 3 à 5 pour créer un deuxième dossier Device pour l'A3700 avec son TID PaxStore.
+  </Step>
+</Steps>
+
+<Frame caption="Le formulaire Create Device dans Taliup HQ, avec le champ TID en surbrillance.">
+  ![Formulaire Create Device dans Taliup HQ montrant Device Name, Device Type et TID, avec le champ TID en surbrillance](/images/taliup-hq/create-device.png)
+</Frame>
+
+## Dépannage
+
+| Problème | Quoi essayer |
+|---|---|
+| Aucun utilisateur à l'écran de connexion / impossible de se connecter à la première configuration | Confirmez que le TID du terminal existe dans PaxStore et qu'un dossier Device correspondant existe dans Taliup HQ avant d'ouvrir Taliup POS. Confirmez que l'entité a des utilisateurs assignés (un utilisateur Employé est créé automatiquement à la création de l'entité). |
+| Code du mode démo refusé | Confirmez le code avec votre ISO, confirmez que l'appareil a Internet, et confirmez que le TID est enregistré dans Taliup HQ. |
+| L'appareil se déconnecte avec des erreurs 503 | L'abonnement marketplace a peut-être expiré. Renouvelez-le dans PaxStore ou utilisez le mode démo. |
+| Le marchand est verrouillé hors de Taliup POS | Un administrateur ISO a peut-être désactivé l'**Location** du marchand dans Taliup HQ. Réactivez l'emplacement sous **Settings → Locations**. |
+
+## Suite
+
+Une fois les appareils enregistrés, configurez les paramètres de paiement du marchand dans Taliup HQ.
+
+- [Plans et fonctionnalités →](/fr-CA/taliup-hq/onboarding/plans-features)
+- [Pourboires →](/fr-CA/taliup-hq/onboarding/tips)
+- [Emplacements →](/fr-CA/taliup-hq/onboarding/locations)
+- [Terminal virtuel →](/fr-CA/taliup-hq/onboarding/virtual-terminal)

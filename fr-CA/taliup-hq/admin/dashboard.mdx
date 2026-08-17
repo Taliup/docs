@@ -1,0 +1,94 @@
+---
+title: "Tableau de bord admin"
+sidebarTitle: "Tableau de bord"
+description: "Référence du tableau de bord admin Taliup HQ — filtre de temps, cartes KPI, graphiques de performance et Quick Links."
+icon: chart-line
+---
+
+Le **tableau de bord admin** est la page d'accueil lorsque vous vous connectez à [Taliup HQ](https://taliuphq.com). Il donne aux administrateurs un aperçu en temps réel de l'activité : croissance des marchands, volume de transactions, mix de paiements et composition des entités — le tout contrôlé par un seul filtre de temps.
+
+<Note>
+  Le tableau de bord admin est visible aux utilisateurs **Admin** ou **Super Admin**. Les utilisateurs de niveau marchand voient une vue limitée à leur propre entité.
+</Note>
+
+<Frame caption="Le tableau de bord admin Taliup HQ avec le filtre de temps, les cartes KPI, le graphique System Performance et Quick Links.">
+  ![Tableau de bord admin Taliup HQ montrant les cartes KPI, les onglets de filtre, un graphique Entities Created Over Time et un panneau Quick Links](/images/taliup-hq/dashboard.png)
+</Frame>
+
+## Filtre de temps
+
+La barre de filtre en haut contrôle la plage de dates appliquée à **chaque carte KPI et chaque graphique**. Changer le filtre met à jour toutes les données immédiatement — sans recharger la page.
+
+| Option | Ce qu'elle affiche |
+|---|---|
+| **1 Day** | Données du jour civil en cours. Vue par défaut. |
+| **1 Week** | Fenêtre glissante de 7 jours se terminant aujourd'hui. |
+| **1 Month** | Fenêtre glissante de 30 jours se terminant aujourd'hui. |
+| **1 Year** | Fenêtre glissante de 365 jours se terminant aujourd'hui. |
+| **Sélecteur de date** | Choisir une date passée pour voir ce seul jour. |
+
+<Note>
+  La carte KPI **Active Entities** reflète toujours les 24 dernières heures, peu importe le filtre. Toutes les autres cartes et graphiques suivent le filtre.
+</Note>
+
+## Cartes KPI
+
+Quatre cartes de résumé apparaissent en haut. Chacune affiche une métrique pour la période sélectionnée.
+
+### Merchants Created
+
+Nombre de nouvelles **entités** créées pendant la période. Utilisez-le pour suivre le rythme d'intégration — une baisse soudaine peut indiquer un problème de processus; un pic peut suivre une campagne ou une poussée partenaire.
+
+### Total Orders
+
+Nombre total de commandes traitées sur toutes les entités actives pendant la période. Une commande est comptée lorsqu'elle est soumise via Taliup POS ou le Terminal virtuel, peu importe le résultat du paiement.
+
+### Transaction Volume
+
+Valeur totale en dollars de toutes les transactions pendant la période. **Les remboursements sont inclus** et réduisent le total — le chiffre représente le volume net, pas le revenu brut.
+
+### Active Entities
+
+Nombre d'entités distinctes qui ont enregistré au moins une commande ou transaction dans les **24 dernières heures**. Cette carte est toujours fixe sur 24 heures. Utilisez-la comme pouls du nombre de marchands qui transigent maintenant.
+
+## Graphiques
+
+Quatre panneaux apparaissent sous les cartes KPI. Tous suivent le filtre de temps.
+
+### System Performance — Entities Created Over Time
+
+Un graphique linéaire du nombre de nouvelles entités, avec une granularité adaptée au filtre (horaire pour 1 Day, quotidienne pour 1 Week et 1 Month, hebdomadaire pour 1 Year). Utilisez-le pour :
+
+- Repérer les tendances d'intégration et de croissance.
+- Identifier les périodes d'inscription inhabituellement hautes ou basses.
+- Corréler les pics de création avec des événements externes (campagnes, lancements partenaires).
+
+### Active Entities
+
+Un graphique du nombre d'entités qui ont eu de l'activité (au moins une commande ou transaction) pendant la période, avec la même granularité. Une ligne plate ou en baisse malgré un volume élevé peut indiquer que l'activité se concentre chez moins de marchands à fort volume.
+
+### Payment Methods
+
+Une ventilation des transactions par méthode — **Cash**, **Card** et **Other** — sur toutes les entités. Utilisez-le pour comprendre le mix :
+
+- Une part **Cash** élevée peut indiquer que les marchands utilisent surtout Taliup POS pour gérer les commandes.
+- **Card** est habituellement le plus grand segment et le principal générateur de revenu.
+- **Other** capture tout paiement hors espèces et carte (par exemple chèque ou crédit magasin).
+
+### Entity Category Breakdown
+
+Une distribution des entités par catégorie (par exemple Retail, Restaurant, Service). Utile pour :
+
+- Comprendre quels verticales forment la majorité de la base.
+- Identifier les catégories sous-desservies.
+- Cibler le soutien opérationnel par type de marchand.
+
+## Quick Links
+
+Un panneau **Quick Links** en haut à droite mène aux tâches admin les plus courantes :
+
+| Lien | Destination |
+|---|---|
+| **Create New Entity** | Ouvre directement le formulaire Créer une entité. |
+| **Plans and Features** | Va à la page de gestion Plans & Features. |
+| **Inbox** | Ouvre la boîte de réception du Message Center. |

@@ -1,0 +1,143 @@
+---
+title: "Répertoire des terminaux"
+sidebarTitle: "Terminaux"
+description: "Vue admin pour surveiller la propriété, le statut d'activation et la préparation catalogue de chaque appareil dans votre portée."
+icon: cash-register
+---
+
+Le **Terminal Directory** est une vue opérationnelle multi-marchands pour les admins Taliup HQ. Il affiche chaque terminal dans votre portée — propriété, statut d'activation, type d'appareil et catalogue assigné — dans un tableau paginé. Utilisez-le pour auditer la préparation, repérer les trous (non activés ou sans catalogue) et aller directement à un marchand ou un dossier.
+
+<Frame caption="Le Terminal Directory montrant 10 571 terminaux, filtré sur le statut Activated.">
+  ![Vue pleine page du Terminal Directory avec métriques, barre de filtres et tableau paginé](/images/taliup-hq/terminal-directory.png)
+</Frame>
+
+<Note>
+  Cette page exige un rôle admin. Les Super Admins voient les terminaux de tous les ISO. Les utilisateurs ISO voient seulement les terminaux des marchands de leur hiérarchie ISO.
+</Note>
+
+---
+
+## Métriques résumé
+
+Le panneau en haut affiche trois compteurs en direct selon les filtres actifs :
+
+| Métrique | Description |
+|---|---|
+| **In Scope** | Nombre total de terminaux visibles sous les filtres actuels. |
+| **Activated** | Terminaux avec le statut Activated. |
+| **Not Activated** | Terminaux pas encore activés (In Scope moins Activated). |
+
+---
+
+## Filtres
+
+<Frame caption="La barre de filtres avec Search, Sort, Rows, ISO, Status et Catalog.">
+  ![Barre de filtres avec listes et boutons Apply filters / Reset filters](/images/taliup-hq/terminal-directory-filters.png)
+</Frame>
+
+La barre expose six contrôles. Les changements sont mis en attente — cliquez sur **Apply filters** pour lancer la requête.
+
+| Contrôle | Description |
+|---|---|
+| **Search** | Recherche libre sur nom, numéro de série, TID, identifiant d'appareil, nom du marchand, fournisseur, nom d'emplacement, MID, ville, nom de catalogue et noms du personnel. Appuyez sur Enter ou cliquez sur **Apply filters**. |
+| **Sort** | Trier par Newest first (défaut), Oldest first, Recently activated ou Name A–Z. |
+| **Rows** | Lignes par page : 25 (défaut), 50 ou 100. |
+| **ISO** | Filtrer un ISO. Seuls les ISO accessibles apparaissent. Masqué si vous n'avez pas de portée ISO. |
+| **Status** | Filtrer par statut : All statuses, Activated ou Pending Activation. Défaut : Activated. |
+| **Catalog** | Filtrer par catalogue : All catalog states, Catalog assigned ou No catalog. |
+
+Après avoir ajusté, cliquez sur **Apply filters**. Cliquez sur **Reset filters** pour revenir aux défauts.
+
+Les filtres actifs apparaissent en pastilles sous la barre.
+
+<Frame caption="Pastilles de filtres actifs et compte de résultats sous la barre.">
+  ![Barre de filtres actifs montrant la pastille Status: Activated et le compte 1-25 of 10,571 terminals](/images/taliup-hq/terminal-directory-summary-chips.png)
+</Frame>
+
+### Vues rapides
+
+Quatre boutons préréglés sautent aux vues courantes :
+
+| Vue rapide | Ce qu'elle règle |
+|---|---|
+| **All** | Efface Status et Catalog — tous les terminaux dans la portée. |
+| **Activated** | Status = Activated. |
+| **Pending** | Status = Pending Activation. |
+| **No catalog** | Catalog = No catalog et efface Status. |
+
+Chaque bouton affiche un compte en direct. Cliquer met le filtre en attente; **Apply filters** lance encore la requête.
+
+---
+
+## Tableau des terminaux
+
+Une ligne par terminal.
+
+<Frame caption="Une ligne de terminal montrant les sept colonnes.">
+  ![Ligne avec nom, TID, numéro de série, marchand, emplacement, type, statut d'activation et catalogue](/images/taliup-hq/terminal-directory-row.png)
+</Frame>
+
+| Colonne | Contenu |
+|---|---|
+| **Terminal** | Nom (ou « Unnamed terminal »), ID interne (`#`), identifiant principal (TID ou Device ID selon le type) et numéro de série si disponible. |
+| **Merchant** | Nom du marchand (ou « Archived merchant ») et une ligne secondaire avec le fournisseur et le nombre d'emplacements. |
+| **Location** | Nom d'affichage et ville/région, puis le MID. Affiche « Primary location » lorsqu'aucun emplacement précis n'est assigné. |
+| **Type** | Libellé de type — Pax, AiOne, Castles, ou le type retourné par le système. |
+| **Status** | Pastille d'activation (point vert Activated, ambre Pending Activation) et date de création. |
+| **Catalog** | Nom du catalogue, ou « — » s'il n'y en a pas. Les noms longs sont tronqués avec une infobulle. |
+| **Actions** | Bouton menu trois points. Voir [Actions de ligne](#actions-de-ligne). |
+
+<Info>
+  L'étiquette d'identifiant principal bascule automatiquement : les terminaux PAX et Poynt affichent **TID**, les AiOne et Castles affichent **Device ID**.
+</Info>
+
+---
+
+## Actions de ligne
+
+Cliquez sur **···** pour ouvrir le menu.
+
+<Frame caption="Le menu d'actions : Open terminal, View merchant et Delete terminal.">
+  ![Menu avec Open terminal, View merchant et Delete terminal en rouge](/images/taliup-hq/terminal-directory-actions.png)
+</Frame>
+
+| Action | Description |
+|---|---|
+| **Open terminal** | Va à l'onglet Terminals de Manage Entity, limité à ce terminal. Disponible lorsqu'un marchand est lié. |
+| **View merchant** | Va au profil Manage Entity du marchand. |
+| **Delete terminal** | Ouvre la confirmation de suppression. Voir [Supprimer un terminal](#supprimer-un-terminal). |
+
+---
+
+## Supprimer un terminal
+
+Supprimer un terminal l'archive tout en conservant les références historiques. L'opération n'est pas réversible depuis le répertoire — contactez l'ingénierie si une suppression a été faite par erreur.
+
+<Steps>
+  <Step title="Ouvrir le menu d'actions">
+    Cliquez sur **···** sur la ligne à retirer.
+  </Step>
+  <Step title="Sélectionner Delete terminal">
+    Cliquez sur **Delete terminal**. Une confirmation affiche le nom, l'identifiant principal, le marchand et l'emplacement.
+  </Step>
+  <Step title="Examiner ce qui sera retiré">
+    La fenêtre liste ce que la suppression efface :
+
+    - Les attributions de personnel à ce terminal sont retirées.
+    - Les mappings de catalogue et la config du lecteur sont effacés.
+    - Si le terminal est activé Factor4, il est marqué Suspended dans Factor4 avant la suppression (voir la note ci-dessous).
+
+    Les commandes, transactions et rapports **ne sont pas** affectés.
+  </Step>
+  <Step title="Confirmer">
+    Cliquez sur **Delete terminal**. Le bouton affiche « Deleting… » pendant la requête. La fenêtre se ferme et la ligne disparaît en cas de succès.
+  </Step>
+</Steps>
+
+<Warning>
+  La suppression est permanente depuis le Terminal Directory. Les attributions de personnel et mappings de catalogue ne peuvent pas être récupérés. Confirmez avec le marchand ou l'ISO avant de continuer.
+</Warning>
+
+### Contrôle de sécurité Factor4
+
+Lorsque l'emplacement a une configuration Factor4 active, la confirmation affiche un avis **Factor4 Safety Check**. Le système suspend d'abord le terminal dans Factor4. Si cette sync échoue, la suppression est bloquée et une erreur est retournée — aucune donnée n'est changée.

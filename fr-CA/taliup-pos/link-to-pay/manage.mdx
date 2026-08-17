@@ -1,0 +1,49 @@
+---
+title: "Gérer Lien Pour Payer"
+sidebarTitle: "Gérer"
+description: "Rechercher, filtrer, renvoyer, rappeler, enregistrer un paiement, rembourser ou supprimer un Lien Pour Payer."
+---
+
+## Recherche et filtres
+
+Dans **Lien Pour Payer**, utilisez la recherche dans la barre d'application, ou ouvrez **Filter Link To Pay** :
+
+| Section | Options |
+|---|---|
+| **DATE RANGE** | **From:** / **To:** |
+| **CLIENT** | Sélecteur de client |
+| Statut | **All**, **draft**, **pending**, **sent**, **paid**, **overdue**, **refunded** |
+
+**Reset Filters**, puis **Save** ou **Cancel**.
+
+## Actions de ligne
+
+Appuyez sur une ligne pour développer les actions :
+
+| Action | Quand elle apparaît | Ce qu'elle fait |
+|---|---|---|
+| **Resend Link To Pay** | **SENT** | Renvoie le lien de paiement |
+| **Send Reminder** | **OVERDUE** | Envoie un rappel de retard |
+| **Add Payment** | **SENT** ou **OVERDUE** | Enregistrer un paiement hors ligne |
+| **Refund** | **PAID** | Confirmer **Proceed to refund this Link To Pay …?** |
+| **Delete** | Toujours | Confirmer **Proceed to deleting this Link To Pay?** |
+
+<Note>
+  **Capture d'écran à venir :** actions de ligne Lien Pour Payer développées.  
+  Chemin prévu : `/images/taliup-pos/link-to-pay/actions.png`
+</Note>
+
+## Add Payment
+
+Dans **Add Payment** :
+
+1. Saisissez **AMOUNT ($)**.
+2. Choisissez **Payment Method** (**CHEQUE** ou **OTHER**).
+3. **Notes** facultatives.
+4. Réglez **Send Receipt To Customer** (**YES** / **NO**).
+5. Appuyez sur **Record Payment**.
+
+## Connexe
+
+- [Créer et envoyer](/fr-CA/taliup-pos/link-to-pay/create-and-send)
+- [Clients](/fr-CA/taliup-pos/clients)

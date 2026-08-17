@@ -1,0 +1,156 @@
+---
+title: "Inscrire Taliup POS au WEB-SRM"
+sidebarTitle: "Inscrire un appareil"
+description: "Inscrire Taliup POS comme SRS de Revenu Québec : demander un certificat, enregistrer l'employé connecté, puis renouveler ou supprimer le certificat."
+keywords: ["WEB-SRM", "MEV-WEB", "Revenu Québec", "inscription", "certificat", "IDAPPRL", "SRS", "MEV"]
+---
+
+Taliup POS agit comme système d'enregistrement des ventes (SRS / MEV) pour le WEB-SRM de Revenu Québec. Un marchand du Québec ne peut pas facturer sur un appareil tant que cet appareil n'est pas inscrit et que l'employé connecté n'est pas enregistré auprès du WEB-SRM.
+
+Revenu Québec exige les deux étapes. Répétez-les sur chaque appareil.
+
+<Tip>
+  Si le marchand facture déjà avec Taliup POS et que vous activez le WEB-SRM maintenant, commencez par [Commencer à utiliser le WEB-SRM chez un marchand existant](/fr-CA/taliup-pos/web-srm/switch-live-merchant). Cette page couvre la mise à jour de l'application et la déconnexion / reconnexion obligatoires avant l'inscription.
+</Tip>
+
+## Avant de commencer
+
+- L'appareil est configuré et le personnel peut se connecter. Voir [Aperçu de Taliup POS](/fr-CA/taliup-pos/index) et [Première configuration du PAX A920 Pro](/taliup-pos/devices/pax/a920-pro) (page en anglais).
+- MEV-WEB est activé dans Taliup HQ avec les identifiants Revenu Québec du marchand. Voir [Paramètres MEV-WEB](/fr-CA/taliup-hq/onboarding/web-srm).
+- L'appareil est en ligne. La demande de certificat est envoyée à Revenu Québec.
+
+<Warning>
+  Si HQ n'est pas configuré, Taliup POS affiche **This business has no WEB-SRM configuration from Taliup HQ.** Terminez les [Paramètres MEV-WEB](/fr-CA/taliup-hq/onboarding/web-srm) avant de continuer.
+</Warning>
+
+## Inscrire cet appareil
+
+Après la connexion, **Inscrire cet appareil** bloque **Caisse**, **Tables** et **Menu** jusqu'à ce que les deux étapes soient terminées.
+
+<Steps>
+  <Step title="Se connecter">
+    Ouvrez Taliup POS et saisissez le NIP à six chiffres de l'employé.
+
+    <Frame caption="Écran de connexion Taliup POS. Sélectionnez l'employé, puis saisissez son NIP.">
+      ![Taliup POS login screen with employee selector, passcode field, and numeric keypad](/images/taliup-pos/web-srm/login.png)
+    </Frame>
+  </Step>
+  <Step title="Ouvrir la demande de certificat">
+    Dans **Inscrire cet appareil**, appuyez sur **Demander un certificat**.
+
+    L'étape 2, l'enregistrement de l'employé, reste verrouillée jusqu'à ce que l'appareil soit inscrit.
+
+    <Frame caption="Feuille d'inscription WEB-SRM. L'étape 1 est Inscrire cet appareil. L'étape 2 est verrouillée jusqu'à l'installation du certificat.">
+      ![Set up this terminal modal with Enrol this device active and Register your user locked](/images/taliup-pos/web-srm/setup-terminal.png)
+    </Frame>
+  </Step>
+  <Step title="Nommer le certificat">
+    Saisissez un **surnom de certificat (SN)** de 8 à 32 caractères. Choisissez un nom que vous reconnaîtrez plus tard sur cet appareil.
+
+    <Frame caption="Formulaire de certificat dans Paramètres. Saisissez un surnom, puis choisissez comment l'identifiant de l'appareil est attribué.">
+      ![Certificate screen with nickname field, device identifier radio buttons, and Request a certificate button](/images/taliup-pos/web-srm/request-certificate.png)
+    </Frame>
+  </Step>
+  <Step title="Choisir l'identifiant de l'appareil">
+    Sous la question demandant si vous avez l'identifiant de cet appareil :
+
+    - Première inscription : appuyez sur **Non — laisser Revenu Québec en attribuer un**.
+    - Restauration d'un appareil qui a déjà un identifiant : appuyez sur **Oui**, puis saisissez l'identifiant au format `XXXX-XXXX-XXXX`.
+  </Step>
+  <Step title="Demander le certificat">
+    Appuyez sur **Demander un certificat**. Attendez que le PDV affiche **Certificat installé** et un **identifiant d'appareil**.
+
+    <Frame caption="Certificat installé. La bannière verte affiche l'identifiant d'appareil attribué par Revenu Québec.">
+      ![WEB-SRM Certificate screen showing Certificate installed with Renew certificate and Delete certificate actions](/images/taliup-pos/web-srm/certificate-installed.png)
+    </Frame>
+  </Step>
+  <Step title="Enregistrer l'employé">
+    Revenez à la feuille d'inscription WEB-SRM. L'étape 2 est maintenant disponible. Appuyez sur **Enregistrer** pour inscrire l'employé connecté auprès du WEB-SRM.
+
+    L'appareil ne peut facturer qu'après la réussite de cette étape.
+  </Step>
+</Steps>
+
+<Check>
+  L'inscription est terminée lorsque l'employé connecté est enregistré et que **Caisse**, **Tables** et **Menu** sont disponibles sur **Accueil**.
+</Check>
+
+## Vérifier l'inscription
+
+Allez à **Paramètres** → **WEB-SRM**. La carte **Aperçu** devrait afficher :
+
+| Champ | Signification |
+|---|---|
+| **Statut** | **Certificat installé** |
+| **Identifiant d'appareil (IDAPPRL)** | Identifiant attribué à cet appareil par Revenu Québec |
+| **Nom du certificat (SN)** | Le surnom que vous avez saisi |
+| **Numéro de série** | Numéro de série du certificat de Revenu Québec |
+| **Expire** | Date d'expiration du certificat |
+
+<Frame caption="Aperçu WEB-SRM après une inscription réussie, avec identifiant d'appareil, nom du certificat, numéro de série et expiration.">
+  ![WEB-SRM Overview showing Certificate installed, device identifier, certificate name, serial number, and expiry date](/images/taliup-pos/web-srm/overview.png)
+</Frame>
+
+<Tip>
+  Conservez l'**identifiant d'appareil**. Vous en aurez besoin si vous restaurez cet appareil et choisissez **Oui** dans le formulaire de certificat.
+</Tip>
+
+## Renouveler le certificat
+
+Renouvelez lorsque Taliup POS avertit que le certificat expire, ou lorsque la feuille d'inscription WEB-SRM demande un renouvellement parce que le certificat est expiré ou pas encore valide.
+
+<Steps>
+  <Step title="Ouvrir Certificat">
+    Allez à **Paramètres** → **WEB-SRM** → **Certificat**.
+  </Step>
+  <Step title="Renouveler">
+    Appuyez sur **Renouveler le certificat**.
+  </Step>
+  <Step title="Confirmer">
+    Confirmez que Revenu Québec délivrera un nouveau certificat en remplacement de l'actuel.
+
+    <Frame caption="Confirmation de renouvellement. Revenu Québec remplace le certificat actuel.">
+      ![Renew certificate dialog asking to continue with Cancel and Confirm actions](/images/taliup-pos/web-srm/renew-certificate.png)
+    </Frame>
+  </Step>
+</Steps>
+
+L'identifiant d'appareil reste le même après un renouvellement réussi.
+
+## Supprimer le certificat
+
+Supprimez seulement lorsque vous mettez l'appareil hors service ou que vous recommencez l'inscription.
+
+<Warning>
+  Revenu Québec retire le certificat. L'appareil ne peut plus facturer tant que vous ne l'inscrivez pas de nouveau.
+</Warning>
+
+<Steps>
+  <Step title="Ouvrir Certificat">
+    Allez à **Paramètres** → **WEB-SRM** → **Certificat**.
+  </Step>
+  <Step title="Supprimer">
+    Appuyez sur **Supprimer le certificat**.
+  </Step>
+  <Step title="Confirmer">
+    Confirmez le retrait.
+
+    <Frame caption="Confirmation de suppression. La facturation est bloquée sur cet appareil jusqu'à une nouvelle inscription.">
+      ![Delete certificate dialog warning that the device will not be able to bill until it is enrolled again](/images/taliup-pos/web-srm/delete-certificate.png)
+    </Frame>
+  </Step>
+</Steps>
+
+Après la suppression, la feuille d'inscription WEB-SRM réapparaît. Demandez un nouveau certificat, puis enregistrez l'employé connecté.
+
+## Dépannage
+
+| Problème | Que faire |
+|---|---|
+| **This business has no WEB-SRM configuration from Taliup HQ** | Activez MEV-WEB et enregistrez les identifiants dans Taliup HQ. Voir [Paramètres MEV-WEB](/fr-CA/taliup-hq/onboarding/web-srm). |
+| **Caisse**, **Tables** et **Menu** restent grisés | Terminez les deux étapes d'inscription. L'étape 2 reste verrouillée jusqu'à l'installation du certificat. |
+| La demande de certificat a échoué | Confirmez que l'appareil est en ligne et que les identifiants HQ sont exacts, puis appuyez de nouveau sur **Demander un certificat**. Le surnom doit compter de 8 à 32 caractères. |
+| L'enregistrement de l'employé n'est pas terminé | Appuyez de nouveau sur **Enregistrer**. L'employé n'est inscrit auprès du WEB-SRM qu'après la réussite de cette étape. |
+| Le renouvellement n'est pas terminé | Confirmez que l'appareil est en ligne, puis appuyez de nouveau sur **Renouveler le certificat**. |
+| L'appareil ne peut pas facturer après une suppression | Attendu. Inscrivez l'appareil et enregistrez l'employé connecté de nouveau. |
+| Restauration d'un appareil déjà inscrit | Dans le formulaire de certificat, appuyez sur **Oui** et saisissez l'identifiant existant au format `XXXX-XXXX-XXXX`. |

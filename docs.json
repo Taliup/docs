@@ -27,7 +27,11 @@
     }
   },
   "navigation": {
-    "products": [
+    "languages": [
+      {
+        "language": "en",
+        "default": true,
+        "products": [
       {
         "product": "Taliup HQ",
         "icon": "business-time",
@@ -277,6 +281,220 @@
                   "php-sdk/reference/hosted-payments",
                   "php-sdk/reference/webhook",
                   "php-sdk/reference/exceptions"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+      },
+      {
+        "language": "fr-CA",
+        "products": [
+          {
+            "product": "Taliup HQ",
+            "icon": "business-time",
+            "description": "Portail de gestion des marchands",
+            "tabs": [
+              {
+                "tab": "Intégration marchand",
+                "groups": [
+                  {
+                    "group": "Pour commencer",
+                    "pages": [
+                      "fr-CA/taliup-hq/index",
+                      "fr-CA/taliup-hq/create-entity"
+                    ]
+                  },
+                  {
+                    "group": "Gérer les marchands",
+                    "pages": [
+                      "fr-CA/taliup-hq/manage/profile",
+                      "fr-CA/taliup-hq/manage/permissions"
+                    ]
+                  },
+                  {
+                    "group": "Appareils",
+                    "pages": [
+                      "fr-CA/taliup-hq/devices/pax/index",
+                      "fr-CA/taliup-hq/devices/pax/paxstore",
+                      "fr-CA/taliup-hq/devices/pax/add-devices"
+                    ]
+                  },
+                  {
+                    "group": "Configuration",
+                    "pages": [
+                      "fr-CA/taliup-hq/onboarding/plans-features",
+                      "fr-CA/taliup-hq/onboarding/tips",
+                      "fr-CA/taliup-hq/onboarding/locations",
+                      "fr-CA/taliup-hq/onboarding/virtual-terminal",
+                      "fr-CA/taliup-hq/onboarding/dual-pricing",
+                      "fr-CA/taliup-hq/onboarding/surcharge",
+                      "fr-CA/taliup-hq/onboarding/web-srm"
+                    ]
+                  }
+                ]
+              },
+              {
+                "tab": "Opérations admin",
+                "groups": [
+                  {
+                    "group": "Pour commencer",
+                    "pages": [
+                      "fr-CA/taliup-hq/admin/dashboard",
+                      "fr-CA/taliup-hq/admin/entities",
+                      "fr-CA/taliup-hq/admin/terminal-directory",
+                      "fr-CA/taliup-hq/admin/performance",
+                      "fr-CA/taliup-hq/admin/user-management",
+                      "fr-CA/taliup-hq/admin/role-management",
+                      "fr-CA/taliup-hq/admin/organizations",
+                      "fr-CA/taliup-hq/admin/plans-features",
+                      "fr-CA/taliup-hq/admin/ui-settings",
+                      "fr-CA/taliup-hq/admin/message-center"
+                    ]
+                  }
+                ]
+              },
+              {
+                "tab": "Portail marchand",
+                "groups": [
+                  {
+                    "group": "Pour commencer",
+                    "pages": ["fr-CA/taliup-hq/merchant/dashboard"]
+                  },
+                  {
+                    "group": "Fonctions",
+                    "pages": [
+                      "fr-CA/taliup-hq/features/hosted-payments",
+                      "fr-CA/taliup-hq/features/invoicing",
+                      "fr-CA/taliup-hq/features/clients"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "product": "Taliup POS",
+            "icon": "credit-card",
+            "description": "Application de point de vente",
+            "tabs": [
+              {
+                "tab": "Pour commencer",
+                "groups": [
+                  {
+                    "group": "Pour commencer",
+                    "pages": [
+                      "fr-CA/taliup-pos/index",
+                      "fr-CA/taliup-pos/first-login",
+                      "fr-CA/taliup-pos/home-screen"
+                    ]
+                  }
+                ]
+              },
+              {
+                "tab": "Utiliser le PDV",
+                "groups": [
+                  {
+                    "group": "Caisse",
+                    "pages": [
+                      "fr-CA/taliup-pos/register/index",
+                      "fr-CA/taliup-pos/register/open-sale",
+                      "fr-CA/taliup-pos/register/add-items",
+                      "fr-CA/taliup-pos/register/cart",
+                      "fr-CA/taliup-pos/register/take-payment",
+                      "fr-CA/taliup-pos/register/options"
+                    ]
+                  },
+                  {
+                    "group": "Tables",
+                    "pages": ["fr-CA/taliup-pos/tables/index"]
+                  },
+                  {
+                    "group": "Menu / Catalogue",
+                    "pages": [
+                      "fr-CA/taliup-pos/catalog/index",
+                      "fr-CA/taliup-pos/catalog/featured",
+                      "fr-CA/taliup-pos/catalog/categories",
+                      "fr-CA/taliup-pos/catalog/catalog-taxes",
+                      "fr-CA/taliup-pos/catalog/products",
+                      "fr-CA/taliup-pos/catalog/services",
+                      "fr-CA/taliup-pos/catalog/attributes",
+                      "fr-CA/taliup-pos/catalog/taxes",
+                      "fr-CA/taliup-pos/catalog/discounts",
+                      "fr-CA/taliup-pos/catalog/fees",
+                      "fr-CA/taliup-pos/catalog/inventory"
+                    ]
+                  },
+                  {
+                    "group": "Commandes",
+                    "pages": [
+                      "fr-CA/taliup-pos/orders/index",
+                      "fr-CA/taliup-pos/orders/find-and-reopen",
+                      "fr-CA/taliup-pos/orders/past-order-actions"
+                    ]
+                  },
+                  {
+                    "group": "Transactions",
+                    "pages": [
+                      "fr-CA/taliup-pos/transactions/index",
+                      "fr-CA/taliup-pos/transactions/search-and-filters",
+                      "fr-CA/taliup-pos/transactions/details",
+                      "fr-CA/taliup-pos/transactions/void",
+                      "fr-CA/taliup-pos/transactions/refund",
+                      "fr-CA/taliup-pos/transactions/reprint"
+                    ]
+                  },
+                  {
+                    "group": "Clients",
+                    "pages": [
+                      "fr-CA/taliup-pos/clients/index",
+                      "fr-CA/taliup-pos/clients/create-and-edit",
+                      "fr-CA/taliup-pos/clients/attach-from-register"
+                    ]
+                  },
+                  {
+                    "group": "Lien Pour Payer",
+                    "pages": [
+                      "fr-CA/taliup-pos/link-to-pay/index",
+                      "fr-CA/taliup-pos/link-to-pay/create-and-send",
+                      "fr-CA/taliup-pos/link-to-pay/manage"
+                    ]
+                  },
+                  {
+                    "group": "Analytique",
+                    "pages": ["fr-CA/taliup-pos/analytics/index"]
+                  },
+                  {
+                    "group": "Calendrier",
+                    "pages": [
+                      "fr-CA/taliup-pos/calendar/index",
+                      "fr-CA/taliup-pos/calendar/appointments"
+                    ]
+                  },
+                  {
+                    "group": "Paramètres",
+                    "pages": [
+                      "fr-CA/taliup-pos/settings/index",
+                      "fr-CA/taliup-pos/settings/general",
+                      "fr-CA/taliup-pos/settings/business",
+                      "fr-CA/taliup-pos/settings/printers",
+                      "fr-CA/taliup-pos/settings/device"
+                    ]
+                  }
+                ]
+              },
+              {
+                "tab": "WEB-SRM",
+                "groups": [
+                  {
+                    "group": "Pour commencer",
+                    "pages": [
+                      "fr-CA/taliup-pos/web-srm/index",
+                      "fr-CA/taliup-pos/web-srm/switch-live-merchant"
+                    ]
+                  }
                 ]
               }
             ]

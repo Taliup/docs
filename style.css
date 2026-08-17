@@ -68,6 +68,11 @@ sidebar-title {
   background-color: rgba(195, 177, 225, 0.18);
 }
 
+/* Language selector: sit in the right cluster, immediately left of search */
+.topbar-right-container .taliup-lang-select {
+  flex-shrink: 0;
+}
+
 /* Top nav: luma uses aria-current, not nav-tabs-item */
 #navbar nav[aria-label="Main"] a[aria-current="location"] {
   background-color: rgba(55, 27, 88, 0.12) !important;

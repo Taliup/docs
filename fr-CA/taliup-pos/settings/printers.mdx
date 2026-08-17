@@ -1,0 +1,55 @@
+---
+title: "Imprimantes"
+sidebarTitle: "Imprimantes"
+description: "Configurer les imprimantes de reçus et de cuisine dans Taliup POS."
+---
+
+**Paramètres de l'imprimante** gère les imprimantes Bluetooth, l'imprimante de reçus et le routage des imprimantes de cuisine.
+
+<Note>
+  **Capture d'écran à venir :** Paramètres de l'imprimante avec sections reçus et cuisine.  
+  Chemin prévu : `/images/taliup-pos/settings/printers.png`
+</Note>
+
+## Comment y arriver
+
+Accueil → **Paramètres** → **Général** → **Paramètres de l'imprimante**.
+
+## Gérer les imprimantes
+
+Sous **Imprimantes** / **Gérez vos imprimantes Bluetooth** :
+
+1. Appuyez sur **Gérer les imprimantes** → **My Printers**.
+2. Utilisez **Add Paired Printer** pour ajouter un appareil couplé.
+3. **Rename** ou **Remove** les imprimantes au besoin.
+
+## Imprimante de reçus
+
+| Contrôle | Utilité |
+|---|---|
+| **Imprimante de reçus** | Choisir quelle imprimante imprime les reçus |
+| **Utiliser l'imprimante intégrée comme imprimante de reçus** | Utiliser l'imprimante intégrée de l'appareil lorsqu'elle est disponible |
+
+## Imprimantes de cuisine
+
+Les imprimantes de cuisine acheminent les tickets selon les étiquettes de produit.
+
+<Steps>
+  <Step title="Ajouter une imprimante de cuisine">
+    Appuyez sur **Ajouter une imprimante** pour ouvrir **Add kitchen printer**.
+  </Step>
+  <Step title="Configurer">
+    Définissez **Name**, choisissez une **Paired printer**, sélectionnez éventuellement des **Product tags**, et décidez s'il faut **Print non-tagged items to this printer**.
+  </Step>
+  <Step title="Enregistrer">
+    Appuyez sur **Enregistrer**. Modifiez plus tard avec **Gérer**, ou **Supprimer** une config cuisine.
+  </Step>
+</Steps>
+
+Chaque config cuisine affiche l'imprimante couplée et le résumé d'étiquettes (**Étiquettes : aucune (routage par défaut)** ou un nombre sélectionné).
+
+## Connexe
+
+- [Caisse → Options → Envoyer à l'imprimante de cuisine](/fr-CA/taliup-pos/register/options)
+- [Commandes → actions sur une commande passée](/fr-CA/taliup-pos/orders/past-order-actions)
+- [Transactions → Réimprimer](/fr-CA/taliup-pos/transactions/reprint)

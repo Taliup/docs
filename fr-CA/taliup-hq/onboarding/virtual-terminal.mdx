@@ -1,0 +1,56 @@
+---
+title: "Terminal virtuel"
+sidebarTitle: "Terminal virtuel"
+description: "Configurer le Terminal virtuel pour que le personnel autorisé traite les paiements carte absente depuis le tableau de bord Taliup HQ."
+---
+
+Le **Terminal virtuel** permet au personnel autorisé de traiter des paiements carte absente directement depuis le tableau de bord Taliup HQ — aucun appareil de paiement physique n'est requis. Il est utile pour les commandes téléphoniques, les charges de bureau et les situations où le client n'est pas présent.
+
+Le Terminal virtuel utilise les identifiants **Online Gateway** du marchand et est lié au MID du marchand (configuré sous [Emplacements](/fr-CA/taliup-hq/onboarding/locations)). La passerelle en ligne doit être configurée avant que le Terminal virtuel puisse traiter des paiements.
+
+<Frame caption="L'onglet Virtual Terminal dans Taliup HQ, montrant Transaction Modes et Payment Methods.">
+  ![Onglet Virtual Terminal avec sélecteur Location, cases Transaction Modes, bascules Enable Discounts et Fees, et bascules Payment Methods](/images/taliup-hq/virtual-terminal.png)
+</Frame>
+
+## Comment y accéder
+
+**Entités** → trouver l'entité → **Manage** → **Settings** → onglet **Virtual Terminal**.
+
+## Configurer le Terminal virtuel
+
+<Steps>
+  <Step title="Ouvrir l'onglet Virtual Terminal">
+    Depuis la page **Settings**, cliquez sur l'onglet **Virtual Terminal**.
+  </Step>
+  <Step title="Sélectionner l'emplacement">
+    Sélectionnez le **Location** où le Terminal virtuel sera utilisé. Le Terminal virtuel est lié aux identifiants Online Gateway de l'emplacement choisi.
+  </Step>
+  <Step title="Sélectionner les modes de transaction">
+    Sous **Transaction Modes**, sélectionnez les modes à offrir au marchand :
+
+    | Mode | Description |
+    |---|---|
+    | **Quick Sale** | Le marchand saisit un montant et passe directement au paiement — l'équivalent de **Vente ouverte** dans Taliup POS. |
+    | **Itemized Sale** | Le marchand choisit des produits dans son catalogue pour construire une commande détaillée avant le paiement — l'équivalent du **Catalogue** dans Taliup POS. |
+  </Step>
+  <Step title="Configurer les rabais et les frais">
+    - Activez **Enable Discounts** pour permettre au marchand d'appliquer des rabais de **Catalog → Discounts** sur les commandes du Terminal virtuel.
+    - Activez **Enable Fees** pour permettre au marchand d'appliquer des frais de **Catalog → Fees** sur les commandes du Terminal virtuel.
+  </Step>
+  <Step title="Sélectionner les méthodes de paiement">
+    Sous **Payment Methods**, activez les méthodes que le marchand acceptera :
+
+    | Méthode | Description |
+    |---|---|
+    | **Cash** | Enregistre un paiement en espèces. Aucun traitement de carte. |
+    | **Card** | Traite les paiements par carte de crédit et débit Visa/Mastercard via la passerelle en ligne. |
+    | **Other** | Enregistre un paiement par toute méthode autre que les espèces ou la carte (par exemple chèque ou crédit magasin). |
+  </Step>
+  <Step title="Enregistrer">
+    Cliquez sur **Save**.
+  </Step>
+</Steps>
+
+<Note>
+  Le Terminal virtuel exige une **Online Payment Gateway** active pour traiter les paiements par carte. Configurez la passerelle sous [Emplacements](/fr-CA/taliup-hq/onboarding/locations) avant d'activer **Card** comme méthode de paiement.
+</Note>

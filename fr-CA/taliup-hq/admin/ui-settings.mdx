@@ -1,0 +1,91 @@
+---
+title: "Paramètres d'interface"
+sidebarTitle: "Paramètres d'interface"
+description: "Personnaliser Taliup HQ avec votre nom de plateforme, logo, couleurs et liens de soutien via le Brand Hub."
+icon: "paintbrush"
+---
+
+Le **Brand Hub** (UI Settings) permet aux admins ISO de personnaliser l'identité visuelle de leur instance Taliup HQ. Les changements s'appliquent immédiatement pour tous les utilisateurs sous votre ISO — logo de navigation, couleurs de boutons et de liens, titre d'onglet et liens de soutien dans l'application POS.
+
+<Frame caption="La page Brand Hub avec Brand Identity, Visual Theme, Links & Support et Color Scheme Preview.">
+  ![Brand Hub avec Platform Name, téléversements de logo et favicon, sélecteurs de couleurs et champs d'URL](/images/taliup-hq/ui-settings.png)
+</Frame>
+
+---
+
+## Brand Identity
+
+<Frame caption="La section Brand Identity : Platform Name, Platform Logo et Browser Favicon.">
+  ![Brand Identity avec Platform Name, zone Upload Logo (200x50 px) et Browser Favicon](/images/taliup-hq/ui-settings-brand-identity.png)
+</Frame>
+
+| Champ | Notes |
+|---|---|
+| **Platform Name** | Remplace « Taliup » dans l'en-tête et le titre d'onglet. Facultatif — laissez vide pour le défaut. |
+| **Platform Logo** | Remplace le logo dans la barre de navigation. JPEG, PNG, GIF, SVG. Max 2 Mo. Recommandé : 200×50 px. |
+| **Browser Favicon** | Petite icône de l'onglet. PNG, ICO. Max 512 Ko. |
+
+**Téléverser un fichier** — cliquez la zone pour ouvrir le sélecteur. Un aperçu apparaît tout de suite.
+
+**Retirer un fichier** — survolez l'image et cliquez l'icône poubelle rouge. Si le fichier est déjà enregistré, il est supprimé du serveur tout de suite. S'il vient d'être choisi, il est seulement retiré du formulaire.
+
+---
+
+## Visual Theme
+
+<Frame caption="La section Visual Theme avec sélecteurs Accent, Secondary et Light.">
+  ![Visual Theme : Accent Color, 20 pastilles préréglées, Secondary et Light](/images/taliup-hq/ui-settings-visual-theme.png)
+</Frame>
+
+Visual Theme contrôle le schéma à trois niveaux de Taliup HQ :
+
+| Couleur | Utilisée pour |
+|---|---|
+| **Accent (Primary)** | Boutons, liens actifs, surbrillances et accent de navigation. Couleur de marque dominante. |
+| **Secondary** | États de survol, éléments de navigation sélectionnés et UI secondaire. |
+| **Light** | Fonds de page, remplissages de cartes et zones d'accent claires. |
+
+**Définir une couleur** — cliquez la pastille pour ouvrir le sélecteur natif, ou tapez une valeur hex. Utilisez les 20 pastilles préréglées pour appliquer une couleur sûre.
+
+**Couleurs dérivées** — lorsque vous changez Accent, Secondary et Light sont recalculées automatiquement (75 % et 95 % plus claires). Vous pouvez les remplacer manuellement.
+
+La barre **Color Scheme Preview** à droite se met à jour en temps réel.
+
+---
+
+## Links & Support
+
+<Frame caption="La section Links & Support : Support URL, Privacy Policy URL et Terms of Service URL.">
+  ![Links & Support avec Support URL, Privacy Policy URL et Terms of Service URL](/images/taliup-hq/ui-settings-links-support.png)
+</Frame>
+
+Ces URL sont montrées aux marchands et utilisateurs dans l'application POS et dans les courriels générés. Tous les champs sont facultatifs.
+
+| Champ | Où il apparaît |
+|---|---|
+| **Support URL** | Lien d'aide dans le pied de page POS et le portail marchand. |
+| **Privacy Policy URL** | Lien de confidentialité à la création de compte et dans le pied de page. |
+| **Terms of Service URL** | Lien des conditions à la connexion et à la configuration. |
+
+---
+
+## Color Scheme Preview
+
+<Frame caption="La barre Color Scheme Preview avec pastilles Accent, Secondary et Light.">
+  ![Color Scheme Preview : Accent, Secondary, Light et une note d'accessibilité WCAG AA](/images/taliup-hq/ui-settings-color-preview.png)
+</Frame>
+
+La barre affiche un aperçu en direct avec les valeurs hex. Confirmez que les trois couleurs fonctionnent ensemble avant d'enregistrer.
+
+<Note>
+  Assurez-vous que votre couleur Accent a un contraste suffisant avec le texte blanc pour WCAG AA (ratio minimum 4,5:1). Un accent trop pâle rend les boutons et liens difficiles à lire.
+</Note>
+
+---
+
+## Enregistrer et réinitialiser
+
+| Bouton | Action |
+|---|---|
+| **Save Changes** | Enregistre tout. Si un logo ou favicon est en attente, le formulaire envoie d'abord les champs texte, puis le fichier. Une animation d'enregistrement s'affiche. |
+| **Reset** | Abandonne les modifications non enregistrées et revient aux dernières valeurs enregistrées. Ne touche pas le serveur tant que vous n'avez pas cliqué Save Changes. |

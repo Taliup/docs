@@ -1,0 +1,92 @@
+---
+title: "Rembourser une transaction"
+sidebarTitle: "Remboursement"
+description: "Émettre un remboursement complet ou un retour partiel depuis Détails de la transaction avec Retour."
+---
+
+Dans Détails de la transaction, les remboursements commencent par **Retour**. Vous pouvez rembourser le montant complet, des articles sélectionnés ou un montant personnalisé — selon la commande d'origine.
+
+<Note>
+  **Capture d'écran à venir :** options de remboursement — Tout rembourser, Rembourser des articles, Rembourser un montant.  
+  Chemin prévu : `/images/taliup-pos/transactions/refund-options.png`
+</Note>
+
+## Avant de commencer
+
+- Vous avez besoin de la permission de gérer les transactions.
+- **Retour** apparaît lorsque le paiement est admissible (par exemple réglé/capturé avec un montant encore remboursable, ou déjà partiellement remboursé).
+- Les options de remboursement partiel sont masquées pour les commandes de table — utilisez **Tout rembourser** dans ce cas.
+- Si **Retour** est absent, le paiement est peut-être déjà entièrement remboursé/annulé, ou votre rôle ne peut pas gérer les transactions.
+
+## Démarrer un retour
+
+<Steps>
+  <Step title="Ouvrir le paiement">
+    Allez à Accueil → **Transactions** et ouvrez **Transaction Details**.
+  </Step>
+  <Step title="Appuyer sur Retour">
+    Appuyez sur **Retour**.
+  </Step>
+  <Step title="Choisir une option de remboursement">
+    Sur **Veuillez sélectionner une option de remboursement :** choisissez l'un des parcours ci-dessous.
+  </Step>
+</Steps>
+
+## Remboursement complet
+
+1. Appuyez sur **Tout rembourser**.
+2. Sur l'écran **Customer**, saisissez le nom du client lorsque demandé.
+3. Appuyez sur **Refund** et terminez les invites de l'appareil.
+4. Taliup POS traite le retour et réimprime habituellement une copie marchand avant de revenir à la liste.
+
+## Remboursement partiel (articles)
+
+Disponible lorsque la commande liée a des lignes (et n'est pas une commande de table).
+
+<Steps>
+  <Step title="Choisir Rembourser des articles">
+    Appuyez sur **Rembourser des articles**.
+  </Step>
+  <Step title="Sélectionner les articles">
+    Utilisez **Select All** ou sélectionnez des articles individuels, puis appuyez sur **Next**.
+  </Step>
+  <Step title="Saisir le client et rembourser">
+    Saisissez le nom du client sur l'écran **Customer**, puis appuyez sur **Refund**.
+  </Step>
+</Steps>
+
+<Note>
+  **Capture d'écran à venir :** sélecteur d'articles pour remboursement avec Select All.  
+  Chemin prévu : `/images/taliup-pos/transactions/refund-itemized.png`
+</Note>
+
+## Remboursement partiel (saisir un montant)
+
+Affiché lorsque le remboursement par articles n'est pas disponible (par exemple aucune ligne).
+
+<Steps>
+  <Step title="Choisir Rembourser un montant">
+    Appuyez sur **Rembourser un montant**.
+  </Step>
+  <Step title="Saisir le montant">
+    Saisissez un montant supérieur à zéro et pas plus élevé que le total encore remboursable. L'aide affiche **Montant de la transaction**; le montant devient rouge s'il est trop élevé. Appuyez sur **Next**.
+  </Step>
+  <Step title="Saisir le client et rembourser">
+    Saisissez le nom du client, puis appuyez sur **Refund**.
+  </Step>
+</Steps>
+
+## Dépannage
+
+| Situation | Quoi vérifier |
+|---|---|
+| Seulement **Tout rembourser** est disponible | Les commandes de table n'offrent pas de retour partiel dans ce flux |
+| **Next** désactivé à la saisie du montant | Le montant doit être &gt; 0 et ≤ le montant encore remboursable |
+| Pas de bouton **Retour** | Non admissible, déjà entièrement retourné, ou permission de gérer les transactions manquante |
+| Message de permission | Demandez à un gestionnaire ou mettez à jour le rôle dans Taliup HQ |
+
+## Connexe
+
+- [Annulation](/fr-CA/taliup-pos/transactions/void) — pour les annulations non réglées
+- [Détails de la transaction](/fr-CA/taliup-pos/transactions/details)
+- [Réimprimer](/fr-CA/taliup-pos/transactions/reprint)

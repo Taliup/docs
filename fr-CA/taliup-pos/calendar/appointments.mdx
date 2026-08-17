@@ -1,0 +1,54 @@
+---
+title: "Rendez-vous"
+sidebarTitle: "Rendez-vous"
+description: "Créer, modifier et supprimer des rendez-vous du calendrier dans Taliup POS."
+---
+
+## Créer un rendez-vous
+
+<Steps>
+  <Step title="Ouvrir un jour">
+    Depuis **Calendrier**, appuyez sur un jour, puis sur **Nouveau rendez-vous**.
+  </Step>
+  <Step title="Remplir les détails">
+    Dans **Nouveau rendez-vous**, complétez les champs ci-dessous.
+  </Step>
+  <Step title="Enregistrer">
+    Appuyez sur **Ajouter nouveau**.
+  </Step>
+</Steps>
+
+<Note>
+  **Capture d'écran à venir :** formulaire Nouveau rendez-vous.  
+  Chemin prévu : `/images/taliup-pos/calendar/new-appointment.png`
+</Note>
+
+### Champs
+
+| Champ | Notes |
+|---|---|
+| **Location** | Emplacement obligatoire du rendez-vous |
+| **Title** | Obligatoire |
+| **Date** | Date du rendez-vous |
+| **Starts** / **Ends** | Le début doit précéder la fin |
+| **Note** | Facultatif |
+| **Client** | **Select Client** |
+| **Service** | **Select service** (exige Services / `catalog_services`) |
+| **Employee** | Sélecteur incluant **None** |
+| **Send Reminder?** | **YES** / **NO** |
+| **Allow Client To Confirm The Appointment?** | **YES** / **NO** |
+| **Allow Client To Cancel The Appointment?** | **YES** / **NO** |
+
+## Modifier ou supprimer
+
+Appuyez sur une puce de rendez-vous pour ouvrir **Appointment** (mêmes champs que la création).
+
+| Action | Comment |
+|---|---|
+| Enregistrer | Appuyez sur **Save** |
+| Supprimer | Appuyez sur **Delete Appointment** → confirmer **Please confirm you want to delete this appointment?** |
+
+## Connexe
+
+- [Clients](/fr-CA/taliup-pos/clients) — dossiers clients et activité **Appointments**
+- [Services](/fr-CA/taliup-pos/catalog/services) — catalogue de services utilisé par le sélecteur

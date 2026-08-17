@@ -1,0 +1,65 @@
+---
+title: "Annuler une transaction"
+sidebarTitle: "Annulation"
+description: "Annuler un paiement capturé non réglé ou une autorisation depuis Détails de la transaction."
+---
+
+Utilisez **Annuler** pour annuler un paiement encore admissible (typiquement non réglé et capturé). Utilisez **Annulation d'autorisation** (ou **Supprimer l'autorisation** sur certains montages) pour une autorisation qui n'a pas été capturée.
+
+<Note>
+  **Capture d'écran à venir :** dialogue de confirmation d'annulation sur Détails de la transaction.  
+  Chemin prévu : `/images/taliup-pos/transactions/void.png`
+</Note>
+
+## Avant de commencer
+
+- Vous avez besoin de la permission de gérer les transactions.
+- Le paiement doit encore être admissible (par exemple non réglé et dans un statut annulable). Les paiements réglés sont habituellement remboursés avec **Retour** — voir [Remboursement](/fr-CA/taliup-pos/transactions/refund).
+- Si **Annuler** n'apparaît pas, le paiement n'est pas admissible ou votre rôle ne peut pas gérer les transactions.
+
+## Annuler un paiement capturé
+
+<Steps>
+  <Step title="Ouvrir le paiement">
+    Allez à Accueil → **Transactions**, trouvez le paiement et ouvrez **Transaction Details**.
+  </Step>
+  <Step title="Appuyer sur Annuler">
+    Appuyez sur **Annuler** en bas de l'écran.
+  </Step>
+  <Step title="Confirmer">
+    Confirmez **Annuler la transaction** — *Are you sure you want to void this transaction?*
+  </Step>
+  <Step title="Terminer sur l'appareil">
+    Suivez les invites à l'écran. Taliup POS traite l'annulation, réimprime habituellement une copie marchand, puis vous ramène à la liste.
+  </Step>
+</Steps>
+
+## Annuler une autorisation
+
+<Steps>
+  <Step title="Ouvrir le paiement autorisé">
+    Ouvrez **Transaction Details** pour un paiement **Autorisée** non réglé.
+  </Step>
+  <Step title="Appuyer sur Annulation d'autorisation">
+    Appuyez sur **Annulation d'autorisation** (ou **Supprimer l'autorisation** lorsque ce bouton est affiché).
+  </Step>
+  <Step title="Confirmer">
+    Confirmez le dialogue (**Annuler la transaction d'autorisation** ou **Supprimer la transaction d'autorisation**).
+  </Step>
+  <Step title="Terminer">
+    Terminez les invites de l'appareil. Vous revenez à la liste des transactions une fois terminé.
+  </Step>
+</Steps>
+
+## Dépannage
+
+| Situation | Quoi vérifier |
+|---|---|
+| Pas de bouton **Annuler** | Le paiement est peut-être déjà réglé, annulé ou remboursé — ou votre rôle n'a pas la permission de gérer les transactions |
+| Message de permission | *You do not have permission to manage transactions.* Demandez à un gestionnaire ou mettez à jour le rôle dans Taliup HQ |
+| Besoin de rembourser après le règlement | Utilisez [Retour / remboursement](/fr-CA/taliup-pos/transactions/refund) au lieu de l'annulation |
+
+## Connexe
+
+- [Détails de la transaction](/fr-CA/taliup-pos/transactions/details)
+- [Remboursement](/fr-CA/taliup-pos/transactions/refund)

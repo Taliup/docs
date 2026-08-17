@@ -1,0 +1,37 @@
+---
+title: "Double tarification"
+sidebarTitle: "Double tarification"
+description: "Afficher un prix comptant et un prix carte à la caisse, la différence couvrant les frais de traitement du marchand."
+---
+
+La **double tarification** affiche deux prix à la caisse : un prix comptant plus bas et un prix carte plus élevé. La différence entre les deux prix couvre les frais de traitement de carte, et ce coût est assumé par les clients qui paient par carte.
+
+La structure des frais peut être définie par l'ISO (gérée par l'admin) ou déléguée au marchand pour qu'il l'ajuste lui-même sous **Settings → Payments** dans Taliup HQ.
+
+<Warning>
+  **Dual Pricing** et **Surcharge** ne peuvent pas être activés en même temps sur le même marchand. En activer un désactive l'autre. Si le marchand utilise déjà Surcharge, désactivez-le avant d'activer Dual Pricing.
+</Warning>
+
+## Comment y accéder
+
+**Entités** → trouver l'entité → **Manage** → **Settings** → onglet **Dual Pricing**.
+
+## Configurer la double tarification
+
+<Steps>
+  <Step title="Ouvrir l'onglet Dual Pricing">
+    Depuis la page **Settings**, cliquez sur l'onglet **Dual Pricing**.
+  </Step>
+  <Step title="Activer Dual Pricing">
+    Activez **Dual Pricing**.
+  </Step>
+  <Step title="Choisir le type de frais">
+    Choisissez **Percentage** pour calculer le prix carte comme un pourcentage au-dessus du prix comptant, ou **Amount** pour appliquer un montant fixe.
+  </Step>
+  <Step title="Saisir la valeur des frais">
+    Saisissez le **Fee Value** — le pourcentage ou le montant fixe ajouté au prix carte.
+  </Step>
+  <Step title="Permettre la gestion par le marchand (facultatif)">
+    Activez **Allow Merchant to Manage** si le marchand doit pouvoir ajuster ses propres paramètres de double tarification sous **Settings → Payments** dans Taliup HQ.
+  </Step>
+</Steps>

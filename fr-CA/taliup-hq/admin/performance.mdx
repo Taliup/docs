@@ -1,0 +1,112 @@
+---
+title: "Rapports de performance"
+sidebarTitle: "Rapports de performance"
+description: "Générer et télécharger des rapports Excel de performance pour les marchands de votre portée ISO — ventes brutes, remboursements, mix de paiements, taxes et ventilations par marchand."
+icon: "chart-bar"
+---
+
+La page **Performance Reports** permet aux admins ISO de générer des rapports de performance pour n'importe quelle plage de dates et portée de marchands dans leur ISO. Les rapports sont traités en tâches d'arrière-plan et exportés en fichiers Excel (.xlsx) multi-feuilles prêts à télécharger.
+
+<Frame caption="La page Performance Reports avec le formulaire de génération, le panneau Report Information et la liste Generated Reports.">
+  ![Page Performance Reports avec Generate New Report à gauche, Report Information à droite, et une liste Generated Reports vide en bas](/images/taliup-hq/performance.png)
+</Frame>
+
+<Note>
+  Cette page n'est accessible qu'aux utilisateurs avec un ISO associé. Sans ISO, vous recevez une erreur 403. Les rapports sont limités à votre ISO — vous ne pouvez générer et voir que les rapports des marchands de votre hiérarchie.
+</Note>
+
+---
+
+## Générer un nouveau rapport
+
+<Frame caption="Le formulaire Generate New Report avec Report Type, Merchants, plage de dates et Quick Date Presets.">
+  ![Formulaire Generate New Report avec type Merchant Performance Report, case All Merchants, champs From et To, et boutons Last 7 Days, Last 30 Days, This Month, Last Month](/images/taliup-hq/performance-form.png)
+</Frame>
+
+| Champ | Description |
+|---|---|
+| **Report Type** | Fixé à **Merchant Performance Report** — le seul type actuellement disponible. |
+| **Merchants** | Cochez **All Merchants** (défaut) pour inclure tous les marchands de votre portée. Décochez pour afficher une sélection multiple searchable par nom ou ville. |
+| **From Date & Time** | Début de la fenêtre. Défaut : date du jour à 00:00. |
+| **To Date & Time** | Fin de la fenêtre. Défaut : date du jour à 23:59. Doit être le même jour ou après From. |
+| **Quick Date Presets** | Raccourcis : **Last 7 Days**, **Last 30 Days**, **This Month** ou **Last Month**. |
+
+Cliquez sur **Generate Report** pour ouvrir la confirmation avant l'envoi de la tâche.
+
+---
+
+## Contenu du rapport
+
+<Frame caption="Le panneau Report Information montrant ce qui est inclus dans le fichier Excel.">
+  ![Panneau Report Information listant Report Contents, Export Format et Process](/images/taliup-hq/performance-report-info.png)
+</Frame>
+
+Chaque rapport est un fichier Excel (.xlsx) multi-feuilles contenant :
+
+- Résumé de portefeuille avec ventes brutes, remboursements, annulations et totaux nets
+- Ventilation par méthode — Cash, Visa, MasterCard, Debit et autres types de carte
+- Pourboires et taxes perçus (GST, PST, HST — TPS/TVQ au Québec selon la config)
+- Indicateurs de performance par marchand
+- Nombre de transactions et tickets moyens
+
+Le fichier est structuré en plusieurs feuilles pour l'analyse dans Excel ou Google Sheets.
+
+---
+
+## Générer un rapport
+
+<Steps>
+  <Step title="Configurer le rapport">
+    Choisissez la portée (tous ou marchands précis) et la plage From / To. Utilisez un Quick Date Preset pour remplir automatiquement.
+  </Step>
+  <Step title="Cliquer sur Generate Report">
+    Le formulaire valide et ouvre une confirmation avec les paramètres exacts — portée Merchants, From et To.
+  </Step>
+  <Step title="Confirmer dans la fenêtre">
+    Examinez les paramètres et cliquez sur **Start Generation**. La tâche est envoyée à la file immédiatement.
+
+    <Frame caption="La fenêtre Confirm Report Generation résumant les paramètres avant l'envoi.">
+      ![Fenêtre Confirm Report Generation montrant Merchants: All Merchants (7920), From: 2 juin 2026 00:00, To: 2 juillet 2026 23:59, et Start Generation](/images/taliup-hq/performance-confirm-modal.png)
+    </Frame>
+  </Step>
+  <Step title="Suivre le statut dans la liste">
+    Le nouveau rapport apparaît dans **Generated Reports** tout de suite avec le statut **Pending**. La liste se met à jour automatiquement.
+  </Step>
+</Steps>
+
+---
+
+## Liste Generated Reports
+
+La liste **Generated Reports** sous le formulaire montre chaque rapport généré par votre ISO, plus récent en premier. Chaque ligne affiche le type, la portée, la plage, le statut, l'horodatage et les actions.
+
+### Statuts
+
+<Frame caption="Liste Generated Reports montrant un rapport Pending (en file).">
+  ![Ligne Merchant Performance, Scope: 7920 selected merchants, Range: Jun 2 - Jul 2, pastille Pending grise](/images/taliup-hq/performance-status-pending.png)
+</Frame>
+
+<Frame caption="Liste Generated Reports montrant un rapport Processing (tâche en cours).">
+  ![Ligne avec pastille Processing bleue indiquant que le fichier Excel est en cours de génération](/images/taliup-hq/performance-status-processing.png)
+</Frame>
+
+<Frame caption="Liste Generated Reports montrant un rapport Completed avec le bouton Download.">
+  ![Ligne avec pastille Completed verte, Generated On 2 juillet 2026 13:57, et bouton Download vert](/images/taliup-hq/performance-status-completed.png)
+</Frame>
+
+| Statut | Signification |
+|---|---|
+| **Pending** | La tâche est acceptée et attend dans la file. |
+| **Processing** | La tâche tourne — le fichier Excel est en cours de génération. |
+| **Completed** | Le fichier est prêt. Un bouton **Download** apparaît dans Actions. |
+
+### Actions
+
+| Action | Description |
+|---|---|
+| **Download** | Télécharge le fichier Excel via une URL signée temporaire. Le lien est valide environ 23 heures après la génération. |
+| **Delete** | Retire définitivement l'enregistrement et le fichier Excel du stockage. |
+
+<Warning>
+  Supprimer un rapport est permanent. Le fichier Excel est retiré et ne peut pas être récupéré. Téléchargez-le avant de supprimer si vous devez le conserver.
+</Warning>

@@ -1,0 +1,169 @@
+---
+title: Tableau de bord
+description: Consulter les ventes, les meilleurs produits et les indicateurs d'employés pour votre emplacement marchand.
+---
+
+Le tableau de bord est l'écran d'accueil de chaque marchand dans Taliup HQ. Il donne un aperçu des ventes, des résumés financiers et de la performance des employés — le tout limité à votre emplacement et à votre fuseau horaire.
+
+<Frame caption="Le tableau de bord marchand, onglet Sales, avec cartes KPI, graphique Sales Performance et barre latérale Quick Links.">
+  ![Onglet Sales du tableau de bord marchand avec Gross Sales 1656,58 $, Net Sales 1376,36 $ (39 Transactions), Tips 76,71 $, Authorizations 0,00 $; un graphique en aire pour le 10 juillet 2026; et Quick Links listant Products, Taxes, Timesheets, Settings et FAQs.](/images/taliup-hq/dashboard-sales.png)
+</Frame>
+
+Le tableau de bord a deux onglets : **Sales** et **Employees**.
+
+---
+
+## Onglet Sales
+
+### Cartes KPI
+
+Les quatre cartes en haut de l'onglet Sales se mettent à jour lorsque vous changez la période du graphique Sales Performance.
+
+<Frame caption="Les quatre cartes KPI : Gross Sales, Net Sales, Tips et Authorizations pour la période sélectionnée.">
+  ![Quatre cartes KPI : Gross Sales 1656,58 $ (taxes et pourboires inclus), Net Sales 1376,36 $ (39 Transactions), Tips 76,71 $ (pourboires reçus), Authorizations 0,00 $ (0 Transactions)](/images/taliup-hq/dashboard-kpi-cards.png)
+</Frame>
+
+| Carte | Ce qu'elle affiche |
+|---|---|
+| **Gross Sales** | Revenu total, taxes et pourboires inclus |
+| **Net Sales** | Revenu après remboursements et annulations, plus le nombre de transactions |
+| **Tips** | Total des pourboires perçus dans la période |
+| **Authorizations** | Total des préautorisations (onglets ouverts) et nombre de transactions |
+
+### Graphique Sales Performance
+
+Le graphique Sales Performance trace les **Gross Sales** dans le temps en aire ombrée. Une ligne de référence rouge pointillée marque le **montant moyen de vente** pour la période. Survoler le graphique affiche une infobulle avec la valeur exacte.
+
+<Frame caption="Le graphique Sales Performance du 10 juillet 2026 montrant les Gross Sales par heure, avec une infobulle à 06:00 et la ligne de moyenne à 125,80 $.">
+  ![Graphique en aire Sales Performance avec onglets DAY / WEEK / MONTH / YEAR et un sélecteur de date 2026-07-10. Pic vers 13 h–14 h. Infobulle « 06:00 am — Gross Sales: 0.00 ». Ligne rouge pointillée Avg Sale Amount: 125,80 $.](/images/taliup-hq/dashboard-sales-performance.png)
+</Frame>
+
+Utilisez les onglets de période pour changer la granularité :
+
+| Onglet | Granularité | Saisie de date |
+|---|---|---|
+| **DAY** | Répartition horaire pour une date | Sélecteur de date (AAAA-MM-JJ) |
+| **WEEK** | Répartition quotidienne pour une semaine ISO | Sélecteur de numéro de semaine |
+| **MONTH** | Répartition quotidienne pour un mois civil | Sélecteur de mois (AAAA-MM) |
+| **YEAR** | Répartition mensuelle pour une année civile | Sélecteur d'année (AAAA) |
+
+Changer la période ou la date actualise immédiatement les cartes KPI et le graphique par appel AJAX — sans recharger toute la page.
+
+### Quick Links
+
+La barre latérale Quick Links mène en un clic aux sections les plus utilisées du portail marchand :
+
+- **Products** — gérer le catalogue de produits
+- **Taxes** — configurer les taux de taxe
+- **Timesheets** — consulter les feuilles de temps
+- **Settings** — ajuster la configuration de l'entité
+- **FAQs** — accéder à l'aide
+
+### Summary
+
+La section Summary est une ventilation financière détaillée pour la période sélectionnée.
+
+<Frame caption="Le tableau Summary avec une ventilation hiérarchique de Gross Sales, Refunds, Payouts, Voids, Net Total, Tips, Taxes, Surcharge Total et Authorizations.">
+  ![Tableau Summary à deux colonnes : # Transactions et Total. Gross Sales (taxes et pourboires inclus) = 34 / 1656,58 $, ventilé par ACH, Cash, Credit Card, Debit. Refunds, Payouts, Voids, Net Total, Tips, Taxes, Surcharge Total, Authorizations.](/images/taliup-hq/dashboard-summary.png)
+</Frame>
+
+Le tableau est organisé ainsi :
+
+| Ligne | Description |
+|---|---|
+| **Gross Sales** | Toutes les transactions terminées (taxes et pourboires inclus) |
+| — ACH Sales | Virements bancaires |
+| — Cash Sales | Paiements en espèces |
+| — Gift Card Sales | Utilisations de cartes-cadeaux (lorsque pertinent) |
+| — Credit Card Sales | Transactions crédit en présence; cliquez le chevron pour ventiler par type de carte (Visa, Mastercard, Amex, etc.) |
+| — Debit Card Sales | Transactions débit |
+| — EBT Sales | Transactions EBT (lorsque pertinent) |
+| **Refunds** | Transactions remboursées (valeurs négatives) |
+| — Cash Refunds | Remboursements en espèces |
+| — Credit Card Refunds | Remboursements sur cartes de crédit |
+| — Debit Card Refunds | Remboursements sur cartes de débit |
+| **Payouts** | Paiements en espèces enregistrés à l'appareil (valeurs négatives) |
+| **Voids** | Transactions annulées (valeurs négatives) |
+| **Net Total** | Gross Sales moins Refunds, Payouts et Voids |
+| **Tips** | Total des pourboires perçus |
+| **Taxes** | Total des taxes perçues |
+| **Surcharge Total** | Total des frais supplémentaires perçus |
+| **Authorizations** | Montants préautorisés ouverts, pas encore capturés |
+
+### Top Products
+
+Le tableau Top Products liste jusqu'à 20 de vos meilleurs produits (produits personnalisés exclus), classés par unités vendues.
+
+<Frame caption="Le tableau Top Products listant jusqu'à 20 meilleurs produits classés par unités vendues, avec des lignes dépliables pour le détail mensuel.">
+  ![Tableau Top Products avec colonnes Products, Units Sold, Total Sales, Units Available et un chevron pour la ventilation mensuelle.](/images/taliup-hq/dashboard-top-products.png)
+</Frame>
+
+| Colonne | Description |
+|---|---|
+| **Products** | Nom du produit et prix unitaire |
+| **Units Sold** | Quantité totale vendue |
+| **Total Sales** | Revenu total de ce produit |
+| **Units Available** | Stock actuel |
+
+Cliquez une ligne pour déplier une ventilation mensuelle de l'année en cours.
+
+### Sales Distribution
+
+La section Sales Distribution ventile vos ventes par catégorie avec un diagramme circulaire **Top Selling Products (Quantity)**. Cela donne un aperçu visuel des produits qui génèrent le plus de volume.
+
+<Frame caption="Diagramme circulaire Sales Distribution montrant les meilleurs produits par quantité, avec une légende couleur.">
+  ![Section Sales Distribution intitulée Breakdown of your sales by category, avec un diagramme circulaire Top Selling Products (Quantity) et une légende de noms de produits.](/images/taliup-hq/dashboard-sales-distribution.png)
+</Frame>
+
+---
+
+## Onglet Employees
+
+L'onglet Employees contient trois sections pour analyser la performance individuelle dans votre emplacement.
+
+<Frame caption="L'onglet Employees avec Thomas Walker sélectionné, montrant le graphique Employee Performance, le graphique Employee Distribution et le tableau Employee Tips.">
+  ![Onglet Employees avec Thomas Walker dans la liste Employee. Graphique Sales Performance, graphique à barres Gross Sales, et tableau Employee Tips.](/images/taliup-hq/dashboard-employees.png)
+</Frame>
+
+### Employee Performance
+
+Sélectionnez un employé dans la liste **Employee** pour afficher un graphique mensuel de ses ventes brutes sur 12 mois glissants.
+
+<Frame caption="Graphique Employee Performance pour Thomas Walker avec un pic de 2218,98 $ en juillet 2026.">
+  ![Carte Employee Performance avec Thomas Walker sélectionné et un graphique linéaire Sales Performance de 2025-08 à 2026-07.](/images/taliup-hq/dashboard-employee-performance.png)
+</Frame>
+
+Lorsqu'aucun employé n'est sélectionné, la zone affiche le placeholder **No Employee selected**. Une fois un employé choisi, le graphique se charge automatiquement.
+
+### Employee Distribution
+
+La carte Employee Distribution affiche un graphique à barres des **Gross Sales** par employé, pour comparer rapidement le volume de l'équipe.
+
+<Frame caption="Graphique à barres Employee Distribution montrant les Gross Sales par employé.">
+  ![Carte Employee Distribution avec un graphique à barres Gross Sales.](/images/taliup-hq/dashboard-employee-distribution.png)
+</Frame>
+
+### Employee Tips
+
+Le tableau Employee Tips affiche les pourboires reçus par chaque employé dans une plage de dates.
+
+<Frame caption="Tableau Employee Tips pour Thomas Walker : 34 ventes, 1789,84 $ de ventes, 66,90 $ de pourboires et un ticket moyen de 52,64 $ le 10 juillet 2026.">
+  ![Carte Employee Tips avec Date Range 2026-07-10 à 2026-07-10 et une ligne pour Thomas Walker.](/images/taliup-hq/dashboard-employee-tips.png)
+</Frame>
+
+Utilisez le sélecteur **Date Range** pour filtrer le tableau. Les colonnes sont :
+
+| Colonne | Description |
+|---|---|
+| **ID** | Identifiant du dossier employé |
+| **Name** | Nom complet |
+| **Total Sales** | Nombre de transactions attribuées à cet employé |
+| **Total Sales Amount** | Revenu brut de ses transactions |
+| **Total Tips** | Total des pourboires reçus |
+| **Average Ticket** | Valeur moyenne de transaction (Total Sales Amount ÷ Total Sales) |
+
+---
+
+## Portée des données
+
+Tous les chiffres du tableau de bord sont limités à votre entité marchande et calculés dans le **fuseau horaire** configuré de l'entité. Les dates et regroupements (horaire, quotidien, hebdomadaire, mensuel, annuel) respectent ce fuseau, pour que les ventes près de minuit soient attribuées au bon jour d'affaires local.

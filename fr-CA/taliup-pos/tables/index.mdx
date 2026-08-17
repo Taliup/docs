@@ -1,0 +1,101 @@
+---
+title: "Tables"
+sidebarTitle: "Aperçu"
+description: "Asseoir les clients, démarrer des commandes de table et gérer les tables occupées dans Taliup POS."
+---
+
+**Tables** apparaît sur Accueil lorsque la gestion des tables est activée pour le marchand. Utilisez-la pour voir la salle, démarrer des commandes et continuer le service dans Caisse.
+
+Si la gestion des tables n'est pas activée, l'écran indique que la gestion des tables n'est pas activée pour cette entité.
+
+<Note>
+  **Capture d'écran à venir :** grille de salle Tables avec cartes Available / Occupied.  
+  Chemin prévu : `/images/taliup-pos/tables/floor.png`
+</Note>
+
+## Comment y arriver
+
+Depuis Accueil, appuyez sur **Tables**.
+
+## Aperçu de la salle
+
+Chaque carte affiche le nom de la table, le statut et la capacité ou la taille du groupe.
+
+| Statut | Ce que vous faites habituellement |
+|---|---|
+| **Available** | Appuyez sur **Start Order**, ou ouvrez les actions pour réserver / renommer |
+| **Reserved** | Appuyez sur **Check In**, ou annulez la réservation |
+| **Occupied** | Ouvrez la commande liée dans Caisse, ou consultez les commandes / en démarrez une autre |
+
+Tirez vers le bas pour actualiser. État vide : **No tables found.**
+
+## Démarrer une commande de table
+
+<Steps>
+  <Step title="Choisir une table disponible ou réservée">
+    Appuyez sur **Start Order** (Available) ou **Check In** (Reserved). Vous pouvez aussi utiliser **New Order** depuis le dialogue d'actions de la table.
+  </Step>
+  <Step title="Saisir la taille du groupe">
+    Dans **Enter Party Size**, saisissez le nombre d'invités et confirmez.
+  </Step>
+  <Step title="Continuer dans Caisse">
+    Taliup POS ouvre [Caisse](/fr-CA/taliup-pos/register) pour cette table afin d'ajouter des articles et d'encaisser.
+  </Step>
+</Steps>
+
+## Actions de table
+
+Appuyez longuement sur une table (ou utilisez les actions de la carte) pour ouvrir les options selon le statut :
+
+| Statut | Actions |
+|---|---|
+| **Available** | **Reserve Table**, **New Order**, **Change Table Name** |
+| **Reserved** | **Check In**, **Cancel Reservation**, **Change Table Name** |
+| **Occupied** | **View Orders**, **New Order** — le renommage est bloqué tant que la table est occupée |
+
+Les cartes Occupied avec une commande liée ouvrent cette commande dans Caisse. Elles peuvent aussi afficher le solde restant et les détails serveur / heure d'assise dans les dialogues.
+
+## Commandes sur une table
+
+Depuis une table occupée, vous pouvez ouvrir l'écran des commandes de cette table (**Orders** avec le nom de la table). Le menu overflow peut inclure :
+
+- **New Order**
+- **Group by Guest**
+- **Split Order**
+- **Merge Orders**
+- **Open In Register**
+- **Move Order**
+- **Cancel Order**
+
+Les raccourcis par commande peuvent inclure **Add**, **More** et **Cancel**. Depuis **More**, vous pouvez **Add Item**, partager/fusionner/déplacer ou annuler.
+
+### Déplacer, partager, fusionner
+
+| Action | Ce qui se passe |
+|---|---|
+| **Move Order** / **Change Table** | Choisir une autre table (places, statut, serveur) |
+| **Split Order** | Partager les articles ou les invités en plusieurs factures |
+| **Merge Orders** | Combiner les commandes et éventuellement **Set as primary** |
+| **Group by Guest** | Organiser les articles par invité |
+
+Annuler une commande ouverte demande de confirmer : **Please confirm you want to cancel this open order?**
+
+Plusieurs de ces outils apparaissent aussi dans Caisse sous [Options](/fr-CA/taliup-pos/register/options) lorsqu'une commande de table est ouverte.
+
+## Modifier le plan de salle
+
+Utilisez le contrôle crayon sur **Tables** pour gérer la disposition.
+
+- **Create Table** / **Edit Table**
+- Champs : **Table name**, **Capacity (optional)**, **Width**, **Height**, **Shape** (**Rectangle** / **Square** / **Circle**), préréglages de taille (**Small** / **Medium** / **Large**), **Description (optional)**
+- **Delete Table** — seules les tables **Available** peuvent être modifiées ou supprimées
+
+<Note>
+  **Capture d'écran à venir :** formulaire Create/Edit Table.  
+  Chemin prévu : `/images/taliup-pos/tables/edit-table.png`
+</Note>
+
+## Connexe
+
+- [Caisse](/fr-CA/taliup-pos/register)
+- [Commandes](/fr-CA/taliup-pos/orders)

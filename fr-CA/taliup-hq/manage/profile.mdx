@@ -1,0 +1,166 @@
+---
+title: "Profil de l'entité"
+sidebarTitle: "Profil"
+description: "Référence de l'onglet Profile sur la page Manage Entity — pastilles de statut, détails du profil, Payment Types, identifiants Poynt, Features, Entity Timeline, modification et annulation d'une entité."
+---
+
+L'onglet **Profile** est la vue d'accueil lorsque vous ouvrez un marchand (entité) depuis la liste Entités. Il donne un résumé en lecture seule de la configuration, avec des contrôles en ligne pour Payment Types et une fenêtre pour modifier les détails principaux.
+
+<Frame caption="L'onglet Manage Entity — Profile dans Taliup HQ.">
+  ![Page Profile de Manage Entity montrant les pastilles de statut, le tableau de détails, les bascules Payment Types, la liste Features et le panneau Entity Timeline](/images/taliup-hq/manage-entity-profile.png)
+</Frame>
+
+<Note>
+  La page Manage Entity a sept onglets : **Profile**, Permissions, Transactions, Orders, Devices, Employees et Settings. Cette page documente seulement l'onglet Profile.
+</Note>
+
+---
+
+## En-tête de la page
+
+En haut, le nom de l'entité est un lien de retour — cliquer dessus ramène à la [liste Entités](/fr-CA/taliup-hq/admin/entities). Sous le nom, une rangée de pastilles résume l'entité :
+
+| Pastille | Condition |
+|---|---|
+| **X Terminals** | Verte lorsque l'entité a un ou plusieurs appareils enregistrés; grise lorsqu'il n'y en a aucun. |
+| **Tips Enabled / Tips Disabled** | Verte lorsque les pourboires sont configurés; grise lorsqu'ils sont désactivés. |
+| **Plan: [name]** | Pastille bleue avec le nom du plan d'abonnement actuel. |
+| **No plan assigned** | Pastille grise lorsqu'aucun plan n'est lié. |
+| **QuickBooks Online Connected** | Pastille verte; affichée seulement lorsque l'entité a une intégration QuickBooks active. |
+
+Le bouton **View As Merchant** en haut à droite impersonne le marchand — la même action que depuis la [liste Entités](/fr-CA/taliup-hq/admin/entities). Voir [View As / Impersonate](/fr-CA/taliup-hq/admin/entities#view-as-impersonate) pour les détails.
+
+---
+
+## Détails du profil
+
+La carte principale affiche un résumé en lecture seule. Cliquez sur l'**icône crayon** à côté du nom de l'entité pour modifier ces champs — voir [Modifier le profil](#modifier-le-profil) ci-dessous.
+
+| Champ | Notes |
+|---|---|
+| **Partner/Organization Name** | L'ISO parent qui possède cette entité. |
+| **Created By** | Visible aux Super Admins seulement. Prénom, nom et courriel de l'utilisateur qui a créé l'entité. |
+| **Description** | Note interne définie à la création. Affiche `---` si vide. |
+| **Industry Type** | En majuscules — `RESTAURANT`, `RETAIL/WHOLESALE` ou `CHARITY`. |
+| **MID(s)** | Liste séparée par des virgules de tous les Merchant ID des emplacements. |
+| **Terminal Provider** | En majuscules (p. ex. `PAX`, `POYNT`, `EXPRESS`). |
+| **Payment Provider** | En majuscules (p. ex. `NUVEI`, `TSYS_SIERRA`, `RAPID_CONNECT`). |
+| **Currency** | `CAD`, `USD` ou `MXN`. |
+| **Address** | Adresse complète, y compris le numéro d'unité facultatif, la ville, la région, le code postal et le pays. |
+| **Timezone** | Chaîne de fuseau IANA (p. ex. `America/Toronto`). |
+| **Contact** | Numéro de téléphone de l'entité. |
+| **Payment Types** | Bascules en ligne — voir [Payment Types](#payment-types) ci-dessous. |
+| **Open Sale Mode** | Conditionnel — voir [Open Sale Mode](#open-sale-mode) ci-dessous. |
+
+---
+
+## Payment Types
+
+La rangée Payment Types affiche une bascule pour chaque type de paiement pris en charge. **Chaque bascule s'enregistre immédiatement** — il n'y a pas de bouton d'envoi séparé.
+
+| Type de paiement | Quand c'est modifiable |
+|---|---|
+| **CASH** | Toujours modifiable, peu importe le Terminal ou Payment Provider. |
+| **CREDIT** | Modifiable seulement lorsque Terminal Provider = **PAX** et Payment Provider = **TSYS Sierra** ou **Rapid Connect**. Affiché mais désactivé pour les autres configurations. |
+| **DEBIT** | Même condition que CREDIT. |
+| **EBT** | Affiché seulement lorsque Payment Provider est TSYS Sierra ou Rapid Connect (et Terminal Provider est PAX). Modifiable lorsqu'il est affiché. |
+
+<Note>
+  Pour les entités Poynt, Express ou tout fournisseur autre que PAX, les bascules CREDIT et DEBIT apparaissent désactivées. Seul CASH peut être basculé. EBT n'apparaît pas.
+</Note>
+
+---
+
+## Open Sale Mode
+
+Cette rangée apparaît seulement lorsqu'**au moins un** emplacement de l'entité a Open Sale Only activé. Elle affiche un mini-tableau de chaque emplacement et de son mode :
+
+| Colonne | Contenu |
+|---|---|
+| **Location** | Nom de l'emplacement. |
+| **Status** | **Open Sale Only** (pastille ambre) ou **Feature Based Access** (pastille verte). |
+
+L'étiquette au-dessus du tableau affiche aussi le compte — par exemple « 2 of 3 Locations » — pour voir d'un coup d'œil combien d'emplacements sont restreints.
+
+---
+
+## Identifiants Poynt
+
+Cette carte apparaît **seulement lorsque le Terminal Provider est Poynt**. Elle affiche les identifiants d'intégration Poynt configurés à la création de l'entité :
+
+| Champ | Notes |
+|---|---|
+| **Business ID** | UUID du portail Poynt HQ. |
+| **Application ID** | Identifiant d'application du portail Poynt HQ. |
+| **Publishable Key** | Clé publiable Poynt facultative. |
+| **Private Key** | Jamais affichée en clair. Pastille verte **Present** ou rouge **Not Present**. |
+
+---
+
+## Features
+
+Sous la carte de profil (et la carte Poynt Credentials le cas échéant), une section **Features** liste chaque fonction activée pour cette entité selon son plan. Exemples : Inventory, Quickbooks, Timesheets, Calendar, Catalogs, Services, Discounts, Fees, Reports, Employees, Clients, Bulk Import/Export, Transaction History, et plus.
+
+La liste est en lecture seule. Pour ajouter ou retirer des fonctions, mettez à jour le plan dans [Plans et fonctionnalités](/fr-CA/taliup-hq/onboarding/plans-features).
+
+---
+
+## Entity Timeline
+
+Le panneau Entity Timeline n'est visible qu'aux utilisateurs avec la permission **Show Timeline**. Lorsqu'il est affiché, la page passe à deux colonnes — le profil à gauche et la chronologie à droite.
+
+La chronologie est un journal d'audit des changements faits à l'entité.
+
+- **Filtre de date** — un sélecteur de date en haut du panneau. Choisir une date charge les enregistrements correspondants sans recharger toute la page. Tous les horodatages sont stockés et affichés en **UTC**.
+- **Colonnes du tableau :**
+  - **Date** — date sur la première ligne; heure (UTC) sur la deuxième.
+  - **Action** — description du changement (p. ex. « Entity updated ») avec le nom de l'utilisateur qui l'a fait.
+
+---
+
+## Modifier le profil
+
+Cliquez sur l'**icône crayon** à côté du nom de l'entité pour ouvrir la fenêtre **Admin Update**. Les champs suivants peuvent être modifiés :
+
+| Champ | Notes |
+|---|---|
+| **Timezone** | Liste de tous les fuseaux IANA pris en charge. |
+| **Phone** | Numéro de téléphone en texte libre. |
+| **Terminal Provider** | Liste. Le changer n'affiche pas d'avertissement. |
+| **Payment Provider** | Liste. Le changer n'affiche pas d'avertissement. |
+| **Industry Type** | Restaurant ou Retail/Wholesale. |
+| **Location** | Autocomplétion Google Maps. Choisir un résultat remplit Address, City, Region, Country et Postal Code. Ces sous-champs sont en lecture seule. |
+| **Unit Number** | Numéro de suite ou d'unité facultatif ajouté à l'adresse. |
+| **Currency** | CAD, USD ou MXN. |
+
+Cliquez sur **Update Information** pour enregistrer. La fenêtre se ferme en cas de succès et le profil se recharge.
+
+<Warning>
+  Changer le Terminal Provider ou le Payment Provider sur une entité active peut affecter le traitement des transactions des appareils existants. Coordonnez tout changement de fournisseur avec le marchand avant d'enregistrer.
+</Warning>
+
+---
+
+## Cancel Entity
+
+Le bouton **Cancel Entity** apparaît en bas à droite et n'est visible qu'aux utilisateurs avec la permission **Cancel Entities**.
+
+Cliquer ouvre une confirmation qui liste toutes les données **retirées ou désactivées de façon permanente** :
+
+- Tous les utilisateurs (web et application) et leur accès
+- Rôles, permissions et attributions
+- Rapports, catalogues, catégories et produits (y compris images et inventaire)
+- Modificateurs, taxes, rabais, frais et matières premières
+- Paramètres e-commerce (préférences, site, expédition, facturation, promotions, étiquettes, etc.)
+- Clients, factures et rendez-vous (avec plages horaires)
+- Horaires, feuilles de temps et données d'employés liées
+- Collections média (logos, bannières, images promotionnelles, rapports, etc.)
+- Configurations financières (QuickBooks, jeton de facturation, types de paiement, pourboires, config de reçu, rabais comptant)
+- Emplacements et tous leurs paramètres de paiement / appareils
+- Plans et associations ISO
+
+<Warning>
+  Cette action est irréversible. Confirmez avec le marchand et votre équipe avant de continuer.
+</Warning>
+
+Cliquez sur **Yes, Cancel Entity** pour continuer ou **Don't Cancel** pour fermer sans changer quoi que ce soit.

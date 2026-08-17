@@ -1,0 +1,127 @@
+---
+title: "Commencer à utiliser le WEB-SRM chez un marchand existant"
+sidebarTitle: "Commencer le WEB-SRM — marchand existant"
+description: "Activer le WEB-SRM pour un marchand déjà sur Taliup POS : l'activer dans HQ, confirmer la version de l'application, puis se déconnecter et inscrire chaque appareil."
+keywords: ["WEB-SRM", "MEV-WEB", "MEV", "marchand existant", "Poynt", "Newland", "AiOne", "2.0.14", "2.0.8"]
+---
+
+Utilisez cette page lorsqu'un marchand **facture déjà** avec Taliup POS et qu'il a maintenant besoin du WEB-SRM de Revenu Québec. Suivez les quatre étapes dans l'ordre. Le marchand ne doit pas utiliser **Caisse** tant que l'inscription n'est pas terminée sur cet appareil.
+
+<Steps>
+  <Step title="Activer MEV-WEB dans Taliup HQ">
+    Terminez les [Paramètres MEV-WEB](/fr-CA/taliup-hq/onboarding/web-srm) : activez **Activer MEV-WEB**, saisissez les identifiants Revenu Québec, puis enregistrez.
+
+    Faites-le avant que le marchand se reconnecte sur l'appareil.
+
+    <Note>
+      La première fois que vous activez MEV-WEB, Taliup HQ remplace les taxes du catalogue par la **TPS** et la **TVQ** du Québec. Confirmez que le catalogue est prêt avant d'enregistrer.
+    </Note>
+  </Step>
+  <Step title="Confirmer la version de Taliup POS">
+    L'appareil a besoin d'une version Taliup POS compatible WEB-SRM. Vérifiez la version sur l'appareil :
+
+    | Appareil | Version minimale |
+    |---|---|
+    | **Poynt C / Newland N950** | **2.0.14** (code de version **57**) |
+    | **PAX A920 Pro** | **2.0.8** (code de version **26**) |
+
+    - **Égale ou supérieure au minimum** — sautez la mise à jour. Passez à l'étape 3.
+    - **Inférieure au minimum** — mettez à jour l'application avec l'onglet correspondant ci-dessous, puis passez à l'étape 3.
+
+    <div className="update-app-panel">
+    <Accordion title="Comment mettre à jour si la version est trop ancienne">
+      <Tabs>
+        <Tab title="Poynt C / Newland N950">
+          <Steps>
+            <Step title="Vérifier les mises à jour logicielles">
+              Sur l'appareil, allez à **Settings** → **Software updates** → **Check for software update**. Appuyez sur **Check for updates**.
+
+              Installez la version **2.0.14** (code de version **57**) ou une version ultérieure.
+            </Step>
+            <Step title="Pousser depuis Poynt Store au besoin">
+              Si **Check for updates** ne lance pas le téléchargement, poussez Taliup POS **2.0.14** depuis **Poynt Store**.
+            </Step>
+          </Steps>
+        </Tab>
+        <Tab title="PAX A920 Pro">
+          Poussez Taliup POS **2.0.8** (code de version **26**) ou une version ultérieure depuis **PaxStore**. Ne demandez pas au marchand de mettre à jour depuis l'appareil.
+
+          <Steps>
+            <Step title="Ouvrir l'appareil dans PaxStore">
+              Dans **PaxStore** → **Terminal Management**, ouvrez le A920 Pro du marchand.
+            </Step>
+            <Step title="Pousser Taliup POS">
+              Dans **Push Task**, poussez **Taliup POS** **2.0.8** ou une version ultérieure. Voir [Configuration PaxStore](/fr-CA/taliup-hq/devices/pax/paxstore) si vous avez besoin de la séquence complète.
+            </Step>
+            <Step title="Attendre Success">
+              Confirmez que la tâche Push affiche **Success** avant que le marchand ouvre Taliup POS.
+            </Step>
+          </Steps>
+        </Tab>
+        <Tab title="AiOne">
+          AiOne ne peut pas mettre à jour Taliup POS sur place. Désinstallez puis réinstallez depuis **Payrillium Store**, puis activez l'appareil avec l'**ID de l'appareil** de Taliup HQ.
+
+          <Steps>
+            <Step title="Quitter Taliup POS">
+              Quittez l'application Taliup POS et allez à l'écran d'accueil de l'appareil.
+            </Step>
+            <Step title="Désinstaller Taliup POS">
+              Ouvrez **Payrillium Store** → trouvez **Taliup POS** → appuyez sur **Uninstall**.
+            </Step>
+            <Step title="Installer la nouvelle version">
+              Sur la même fiche Taliup POS, appuyez sur **Install**.
+            </Step>
+            <Step title="Ouvrir Taliup POS et saisir l'ID de l'appareil">
+              Ouvrez **Taliup POS**. L'appareil demande un **Device ID**.
+            </Step>
+            <Step title="Copier l'ID de l'appareil depuis Taliup HQ">
+              Dans Taliup HQ, allez à **Entités**, ouvrez le marchand, cliquez sur **Gérer**, puis ouvrez l'onglet **Appareils**. Trouvez l'appareil AiOne et donnez au marchand cet **ID de l'appareil**.
+            </Step>
+            <Step title="Activer l'appareil">
+              Saisissez l'**ID de l'appareil** sur l'appareil et appuyez sur **Activate device**.
+            </Step>
+            <Step title="Choisir le type d'appareil">
+              Si l'ID est exact, choisissez **Lane 3600** ou **Link 2500** selon le matériel, puis appuyez sur **Continue**.
+            </Step>
+          </Steps>
+
+          Taliup POS ouvre ensuite l'écran de connexion. Continuez à l'étape 3.
+        </Tab>
+      </Tabs>
+    </Accordion>
+    </div>
+  </Step>
+  <Step title="Se déconnecter et se reconnecter">
+    Faites-le sur **chaque** appareil qui facturera, même si vous n'avez pas mis à jour l'application.
+
+    Taliup POS ne récupère les identifiants et paramètres WEB-SRM (MEV) qu'à la connexion.
+
+    <Warning>
+      Si le marchand reste connecté après l'activation de MEV-WEB dans HQ, l'inscription n'apparaîtra pas. Déconnectez-vous, puis reconnectez-vous avec le NIP à six chiffres de l'employé.
+    </Warning>
+  </Step>
+  <Step title="Inscrire l'appareil">
+    Après la connexion, **Inscrire cet appareil** devrait apparaître. Demandez un certificat, puis enregistrez l'employé connecté.
+
+    Suivez [Inscrire un appareil](/fr-CA/taliup-pos/web-srm). Répétez sur chaque appareil.
+  </Step>
+</Steps>
+
+## Vérification
+
+| Vérification | Attendu |
+|---|---|
+| Version de l'application | Poynt / Newland **2.0.14+** (code **57**), ou A920 Pro **2.0.8+** (code **26**) |
+| **Paramètres** → **WEB-SRM** | Le **statut** est **Certificat installé** |
+| Accueil | **Caisse**, **Tables** et **Menu** sont disponibles |
+
+## Dépannage
+
+| Problème | Que faire |
+|---|---|
+| L'écran d'inscription n'apparaît jamais | Confirmez que MEV-WEB est enregistré dans HQ, puis **déconnectez-vous et reconnectez-vous**. |
+| **This business has no WEB-SRM configuration from Taliup HQ** | Terminez les [Paramètres MEV-WEB](/fr-CA/taliup-hq/onboarding/web-srm), puis déconnectez-vous et reconnectez-vous. |
+| Poynt / Newland est sous 2.0.14 | **Settings** → **Software updates** → **Check for updates**, ou poussez **2.0.14** depuis **Poynt Store**. |
+| A920 Pro est sous 2.0.8 | Poussez Taliup POS **2.0.8** depuis **PaxStore**. |
+| AiOne demande un Device ID après la réinstallation | Attendu. Copiez l'**ID de l'appareil** depuis Taliup HQ → **Entités** → **Gérer** → **Appareils**. |
+| Étape du type d'appareil AiOne | Choisissez **Lane 3600** ou **Link 2500** selon le matériel. |

@@ -1,0 +1,45 @@
+---
+title: "Écran Accueil"
+sidebarTitle: "Écran Accueil"
+description: "Aperçu des tuiles de l'écran Accueil de Taliup POS, des permissions et du pointage."
+---
+
+L'écran **Accueil** est le hub principal après la connexion. Chaque tuile ouvre une section de l'application. La disponibilité peut dépendre du plan, du type d'industrie et des permissions du rôle.
+
+<Note>
+  **Capture d'écran à venir :** grille de tuiles de l'écran Accueil.  
+  Chemin prévu : `/images/taliup-pos/home-screen.png`
+</Note>
+
+## Sections
+
+| Section | Utilité | Notes |
+|---|---|---|
+| **Caisse** | Encaisser et prendre les paiements | Toujours disponible après la connexion |
+| **Tables** | Asseoir les clients et gérer les commandes de table | Affiché lorsque la gestion des tables est activée |
+| **Menu** / **Catalogue** | Gérer ce que vous vendez | Le libellé dépend du type d'industrie |
+| **Commandes** | Trouver les commandes ouvertes ou passées | Toujours disponible |
+| **Transactions** | Rechercher des paiements, annuler, rembourser, réimprimer | Exige la permission de gérer les transactions |
+| **Clients** | Dossiers clients | Exige la fonction Clients — [Clients](/fr-CA/taliup-pos/clients) |
+| **Lien Pour Payer** | Liens de paiement / factures | Exige Link to Pay + L2P — [Lien Pour Payer](/fr-CA/taliup-pos/link-to-pay) |
+| **Analytique** | Graphiques des ventes | Exige la permission d'analytique + la fonction Rapports — [Analytique](/fr-CA/taliup-pos/analytics) |
+| **Calendrier** | Rendez-vous | Exige la fonction Calendrier — [Calendrier](/fr-CA/taliup-pos/calendar) |
+| **Paramètres** | Paramètres de l'appareil et de l'entreprise | Toujours disponible |
+
+Les restaurants voient **Menu**; les autres types d'industrie voient **Catalogue**.
+
+## Refus de permission
+
+Si vous appuyez sur **Transactions** ou **Analytique** sans la permission de rôle requise, Taliup POS affiche un message de permission refusée pour cette section. Demandez à un gestionnaire ou mettez à jour le rôle dans Taliup HQ.
+
+## Pointer / quitter
+
+Lorsque les feuilles de temps sont activées, **Accueil** inclut **Clock In / Clock Out**. Utilisez-le pour enregistrer le temps du personnel. Cela ne remplace pas la connexion à l'application.
+
+## Bannière de version
+
+Si une version plus récente de l'application est disponible (sans être obligatoire), une bannière jaune peut apparaître en haut d'**Accueil** avec le numéro de la dernière version.
+
+## Suite
+
+Ouvrez la tuile dont vous avez besoin — commencez par [Caisse](/fr-CA/taliup-pos/register) pour les ventes, ou [Paramètres](/fr-CA/taliup-pos/settings) pour configurer cet appareil.

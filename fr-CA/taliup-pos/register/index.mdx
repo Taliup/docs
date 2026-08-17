@@ -1,0 +1,64 @@
+---
+title: "Caisse"
+sidebarTitle: "Aperçu"
+description: "Encaisser dans Taliup POS — Vente ouverte, Menu/Catalogue, panier, paiement et menu Options."
+---
+
+**Caisse** est l'endroit où le personnel construit une commande et encaisse. Ouvrez-la depuis l'écran **Accueil**.
+
+<Note>
+  **Capture d'écran à venir :** écran principal de Caisse (Vente ouverte ou Menu/Catalogue avec panier).  
+  Chemin prévu : `/images/taliup-pos/register/overview.png`
+</Note>
+
+## Ce que vous voyez à l'écran
+
+| Zone | Utilité |
+|---|---|
+| **Vente ouverte** | Clavier pour un montant personnalisé |
+| **Menu** / **Catalogue** | Choisir les articles à vendre (le libellé dépend du type d'industrie) |
+| **Panier** | Vérifier les lignes et les totaux |
+| **Payer** | Démarrer le flux de paiement |
+| **Options** | Menu latéral pour les factures, rabais, actions de commande, cuisine, et plus |
+
+Les restaurants voient **Menu**; les autres types d'industrie voient **Catalogue**. Si la fonction catalogue n'est pas disponible pour le marchand, Caisse reste sur **Vente ouverte** seulement.
+
+### Notes de mise en page
+
+- En portrait, utilisez la navigation du bas pour changer de vue et ouvrir **Panier** ou **Payer**.
+- En paysage, le panier reste souvent visible à côté du clavier ou du sélecteur d'articles.
+- Passer de Vente ouverte à Menu/Catalogue (ou l'inverse) alors que le panier contient des articles affiche un avertissement : le panier sera vidé.
+
+## Parcours typiques
+
+<Steps>
+  <Step title="Vente ouverte (montant seulement)">
+    Saisissez un montant au clavier → **Payer** → choisissez carte ou espèces. Voir [Ouvrir une vente](/fr-CA/taliup-pos/register/open-sale) et [Encaisser](/fr-CA/taliup-pos/register/take-payment).
+  </Step>
+  <Step title="Vente catalogue / menu">
+    Ajoutez des articles → vérifiez le [Panier](/fr-CA/taliup-pos/register/cart) → **Payer**. Voir [Ajouter des articles](/fr-CA/taliup-pos/register/add-items).
+  </Step>
+  <Step title="Commande de table">
+    Commencez par [Tables](/fr-CA/taliup-pos/tables), puis continuez dans Caisse. Les outils propres aux tables apparaissent sous [Options](/fr-CA/taliup-pos/register/options) (imprimer les factures individuelles, terminer la commande, déplacer la commande, et plus).
+  </Step>
+</Steps>
+
+## Dans cette section
+
+<CardGroup cols={2}>
+  <Card title="Ouvrir une vente" href="/fr-CA/taliup-pos/register/open-sale">
+    Facturer un montant personnalisé depuis le clavier.
+  </Card>
+  <Card title="Ajouter des articles" href="/fr-CA/taliup-pos/register/add-items">
+    Ajouter des articles Menu ou Catalogue au panier.
+  </Card>
+  <Card title="Panier" href="/fr-CA/taliup-pos/register/cart">
+    Modifier les articles, les invités et les totaux avant le paiement.
+  </Card>
+  <Card title="Encaisser" href="/fr-CA/taliup-pos/register/take-payment">
+    Payer en totalité ou montant partagé — carte, espèces, et plus.
+  </Card>
+  <Card title="Menu Options" href="/fr-CA/taliup-pos/register/options">
+    Imprimer les factures, autorisation, remboursement, rabais, enregistrer la commande, cuisine, scanneur.
+  </Card>
+</CardGroup>

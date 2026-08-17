@@ -1,0 +1,122 @@
+---
+title: "Gestion des utilisateurs"
+sidebarTitle: "Gestion des utilisateurs"
+description: "Consulter, modifier et gérer tous les utilisateurs admin de votre ISO et de ses organisations enfants — filtrage de statut, profil, réinitialisation de mot de passe et suppression."
+icon: "users"
+---
+
+La page **User Management** donne aux admins ISO une vue paginée de chaque utilisateur admin de leur organisation et de tous les ISO enfants. Vous pouvez chercher et filtrer, modifier le profil, envoyer des invitations de réinitialisation de mot de passe et supprimer des comptes.
+
+<Frame caption="La page User Management montrant tous les utilisateurs de Unity Payments et de ses organisations enfants.">
+  ![Page User Management avec recherche, filtres de statut et d'organisation, et un tableau de nom, courriel, organisation, register time, last updated, pastille de statut et boutons d'action](/images/taliup-hq/user-management.png)
+</Frame>
+
+<Note>
+  Cette page exige la permission **User Management**. Sans association ISO, vous recevez une 403. Vous ne pouvez voir et gérer que les utilisateurs de votre ISO ou d'un ISO enfant.
+</Note>
+
+---
+
+## Filtres
+
+<Frame caption="La barre de filtres Search, Status et Organization.">
+  ![Barre avec Search users by name or email..., All Statuses et All Organizations](/images/taliup-hq/user-management-filters.png)
+</Frame>
+
+| Filtre | Description |
+|---|---|
+| **Search** | Recherche en direct (avec délai) sur prénom, nom et courriel. |
+| **Status** | Filtrer par statut : All Statuses, Active, Pending ou Inactive. |
+| **Organization** | Filtrer un ISO ou ISO enfant. Par défaut, tous les utilisateurs des organisations accessibles. |
+
+---
+
+## Tableau des utilisateurs
+
+Le tableau liste 20 utilisateurs par page, plus récent en premier. Chaque ligne affiche :
+
+| Colonne | Contenu |
+|---|---|
+| **User** | Nom complet et ID interne. |
+| **Email** | Courriel principal. |
+| **Organization** | L'ISO de l'utilisateur. Revient au nom de l'ISO racine si aucun ISO enfant n'est défini. |
+| **Register Time** | Horodatage de création du compte. |
+| **Last Updated** | Dernier changement de profil. |
+| **Status** | **Active** (vert) — compte en règle. **Pending** (jaune) — invitation acceptée mais configuration incomplète. **Inactive** (gris) — compte désactivé. |
+| **Actions** | Modifier le profil (crayon) et Send Password Reset (clé). |
+
+---
+
+## Créer un utilisateur
+
+Les nouveaux utilisateurs admin se créent depuis **Role Management** via le flux Invite User. Vous ne pouvez pas créer un utilisateur directement depuis cette page.
+
+Lorsque vous invitez un utilisateur, vous lui attribuez un rôle à la création. Le compte démarre en **Pending** et l'utilisateur reçoit un courriel d'invitation avec un lien sécurisé pour définir son mot de passe.
+
+<Card title="Inviter un utilisateur" icon="user-plus" href="/fr-CA/taliup-hq/admin/role-management#inviter-un-utilisateur">
+  Instructions étape par étape pour créer un utilisateur et lui attribuer un rôle.
+</Card>
+
+---
+
+## Modifier un utilisateur
+
+Cliquez sur l'icône **crayon** pour ouvrir Edit User Profile.
+
+<Frame caption="La page Edit User Profile avec la carte de profil, les champs User Information et la section Account Actions.">
+  ![Page Edit User Profile avec avatar et pastille à gauche, et Profile Settings à droite : First Name, Last Name, Email, Delete User et Save Changes](/images/taliup-hq/user-management-edit.png)
+</Frame>
+
+Le panneau gauche montre le nom, le courriel, la pastille de statut et les dates en lecture seule. Le panneau droit a deux sections :
+
+### User information
+
+| Champ | Notes |
+|---|---|
+| **First Name** | Obligatoire. |
+| **Last Name** | Obligatoire. |
+| **Email Address** | Obligatoire. Doit être unique — ne peut pas être une adresse déjà utilisée. |
+
+Cliquez sur **Save Changes** pour appliquer. En cas de succès, vous revenez à la liste.
+
+### Supprimer un utilisateur
+
+La section **Account Actions** en bas contient le bouton **Delete User**.
+
+<Warning>
+  Supprimer un utilisateur est permanent. Toutes les données sont retirées, les rôles et permissions sont détachés, et l'action est irréversible. Vous ne pouvez pas supprimer votre propre compte — le système refuse la requête.
+</Warning>
+
+---
+
+## Envoyer une réinitialisation de mot de passe
+
+Cliquez sur l'icône **clé** pour ouvrir Send Password Reset Invitation.
+
+<Frame caption="La fenêtre Send Password Reset Invitation confirmant le destinataire.">
+  ![Fenêtre Send Password Reset Invitation avec un message de confirmation, une note sur le lien sécurisé, et boutons Cancel / Send Invitation](/images/taliup-hq/user-management-reset-password.png)
+</Frame>
+
+Confirmez en cliquant sur **Send Invitation**. L'utilisateur reçoit un courriel avec un lien unique pour définir son mot de passe. L'invitation va à l'adresse actuellement au dossier.
+
+<Note>
+  Si l'envoi échoue (par exemple un problème de configuration courriel), un message d'erreur s'affiche et aucun changement n'est fait au compte.
+</Note>
+
+---
+
+## Gestion des utilisateurs d'une organisation
+
+Cliquer une organisation depuis **Organizations** ouvre une vue de gestion au niveau de cette organisation. Cette vue a deux onglets :
+
+### Onglet Users
+
+Liste les utilisateurs assignés à cette organisation. Vous pouvez gérer les attributions, rôles et accès dans cette portée.
+
+### Onglet Admin Role Permissions
+
+Configure les permissions du rôle Admin pour cette organisation. Les changements affectent immédiatement tous les utilisateurs qui ont ce rôle.
+
+<Note>
+  Cette vue est distincte de la page User Management à l'échelle ISO. Utilisez la page ISO pour une vue transversale, et la vue organisation lorsque vous gérez une seule organisation enfant.
+</Note>

@@ -1,0 +1,52 @@
+---
+title: "Transactions"
+sidebarTitle: "Aperçu"
+description: "Trouver les paiements dans Taliup POS et annuler, retourner (rembourser) ou réimprimer les reçus."
+---
+
+**Transactions** est l'endroit où vous cherchez les paiements terminés et prenez des actions de suivi comme l'annulation, le retour (remboursement) ou la réimpression.
+
+Ouvrir **Transactions** depuis Accueil exige la permission **gérer les transactions**. Sans elle, le personnel voit **Permission refusée** — *You do not have permission to access Transactions.*
+
+<Note>
+  **Capture d'écran à venir :** liste Transactions avec colonnes ID, Date/heure et Total.  
+  Chemin prévu : `/images/taliup-pos/transactions/list.png`
+</Note>
+
+## Ce que la liste affiche
+
+| Colonne | Affiche |
+|---|---|
+| **ID** | Référence courte du paiement |
+| **Date/Time** | Quand le paiement a été pris |
+| **Total** | Montant du paiement |
+
+Chaque ligne indique aussi la méthode de paiement (espèces vs carte) et utilise un code couleur de statut (par exemple capturé, autorisé, annulé, remboursé).
+
+### Recherche et filtres
+
+- Appuyez sur la recherche pour filtrer la liste en tapant.
+- Appuyez sur le filtre pour ouvrir **Filtrer les transactions** (plage de dates, statut, type, méthode de paiement, statut de règlement). Voir [Recherche et filtres](/fr-CA/taliup-pos/transactions/search-and-filters).
+
+Appuyez sur une ligne pour ouvrir [Détails de la transaction](/fr-CA/taliup-pos/transactions/details).
+
+## Suivis courants
+
+<CardGroup cols={2}>
+  <Card title="Annulation" href="/fr-CA/taliup-pos/transactions/void">
+    Annuler un paiement capturé non réglé ou une autorisation.
+  </Card>
+  <Card title="Remboursement (Retour)" href="/fr-CA/taliup-pos/transactions/refund">
+    Retour complet ou partiel sur un paiement admissible.
+  </Card>
+  <Card title="Réimprimer" href="/fr-CA/taliup-pos/transactions/reprint">
+    Imprimer de nouveau la copie marchand ou client.
+  </Card>
+  <Card title="Détails" href="/fr-CA/taliup-pos/transactions/details">
+    Statut, historique, infos d'appareil et actions disponibles.
+  </Card>
+</CardGroup>
+
+<Info>
+  Les flux de règlement / fermeture de lot ne sont pas encore couverts ici. Les pastilles de filtre peuvent quand même mentionner le statut de règlement.
+</Info>

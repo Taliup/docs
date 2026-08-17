@@ -1,0 +1,202 @@
+---
+title: "Créer un marchand (entité)"
+sidebarTitle: "Créer un marchand"
+description: "Référence étape par étape du formulaire Créer une entité — les sections, les champs conditionnels et les comportements intelligents."
+---
+
+Dans Taliup HQ, un compte marchand s'appelle une **entité**. Créer une entité provisionne le compte du marchand, attribue un plan d'abonnement et crée la première connexion administrateur. Une fois l'entité créée, vous pouvez enregistrer des appareils, configurer les paiements et accorder l'accès au personnel.
+
+Pour créer une entité, allez à la section Admin <Icon icon="arrow-right" /> **[Entités](/fr-CA/taliup-hq/admin/entities)** et cliquez sur **Créer une entité**.
+
+<Frame caption="Le formulaire complet Créer une entité dans Taliup HQ.">
+  ![Create Entity form with Entity Configuration, Business Profile, Location, Technical Configuration, and Administrator sections alongside the Entity Preview sidebar](/images/taliup-hq/create-entity.png)
+</Frame>
+
+Le formulaire est divisé en cinq sections de configuration à gauche et un aperçu d'entité en direct à droite, qui reflète vos sélections en temps réel.
+
+---
+
+## Barre latérale Aperçu de l'entité
+
+<Frame caption="L'aperçu de l'entité se met à jour à mesure que vous remplissez le formulaire.">
+  ![Entity Preview sidebar showing Partner, Subscription, Hardware, Location, and Credentials summary cards](/images/taliup-hq/create-entity-preview.png)
+</Frame>
+
+La carte d'aperçu collante à droite donne un résumé de l'entité avant l'envoi. Elle affiche cinq sections :
+
+| Section d'aperçu | Contenu |
+|---|---|
+| **Partenaire** | Le nom du partenaire parent (ISO) sélectionné. |
+| **Abonnement** | Le nom du plan d'abonnement sélectionné. |
+| **Matériel** | Le fournisseur de terminaux sélectionné. |
+| **Emplacement** | Le nom et l'adresse de l'entreprise saisis. |
+| **Identifiants** | Le prénom, le nom et le courriel de l'administrateur. |
+
+L'aperçu se met à jour avec un **délai de 700 ms** après chaque changement, pour éviter le scintillement pendant la saisie. Lorsqu'un partenaire est sélectionné, l'en-tête d'aperçu indique _« Setting up entity for [nom du partenaire] »_.
+
+<Note>
+  Si Poynt est le fournisseur de terminaux, un conseil Poynt apparaît dans l'aperçu pour vous rappeler d'avoir vos identifiants Poynt HQ avant l'envoi.
+</Note>
+
+---
+
+## Section 1 — Configuration de l'entité
+
+<Frame caption="La section Configuration de l'entité.">
+  ![Entity Configuration card with fields for Parent Partner, Subscription Plan, Terminal Provider, Payment Provider, Offered Payment Types, and Open Sale Only](/images/taliup-hq/create-entity-configuration.png)
+</Frame>
+
+Cette section définit la configuration commerciale et technique de l'entité.
+
+| Champ | Obligatoire | Notes |
+|---|---|---|
+| **Partenaire parent (ISO)** | Oui | Liste déroulante searchable des ISO accessibles à votre rôle. La sélection d'un partenaire charge ses plans, fournisseurs de terminaux et fournisseurs de paiement. Les admins ISO sont présélectionnés et le champ est verrouillé — ils ne peuvent créer des entités que sous leur propre ISO. |
+| **Plan d'abonnement** | Oui | Rempli après la sélection d'un partenaire. Désactivé tant qu'aucun partenaire n'est choisi. S'il n'y a qu'un plan, il est sélectionné automatiquement. Si le partenaire n'a aucun plan actif, une fenêtre **Missing Configuration** s'affiche — voir ci-dessous. |
+| **Fournisseur de terminaux** | Oui | Rempli à partir de la configuration du partenaire. Désactivé tant qu'aucun plan n'est sélectionné. |
+| **Fournisseur de paiement** | Conditionnel | Affiché pour tous les fournisseurs de terminaux **sauf Express**. Pour Poynt, fixé à Elavon et non modifiable. |
+| **Types de paiement offerts** | Conditionnel | Affiché seulement lorsque le fournisseur de terminaux est **PAX** et le fournisseur de paiement est **TSYS Sierra** ou **Rapid Connect**. Interrupteurs Comptant, Crédit, Débit et EBT. |
+| **Vente ouverte seulement** | Conditionnel | Affiché seulement si l'ISO parent a activé Open Sale Only au niveau ISO. Restreint l'entité aux transactions de vente ouverte. |
+
+### Aucun plan — fenêtre Missing Configuration
+
+Si le partenaire sélectionné n'a aucun plan d'abonnement actif, une fenêtre explique le problème et offre deux options :
+
+- **Go to Plans & Features** — quitte le formulaire pour créer un plan. L'état du formulaire (y compris le partenaire) est enregistré dans le stockage local du navigateur et restauré à votre retour.
+- **Select a different partner** — ferme la fenêtre pour choisir un autre ISO.
+
+---
+
+## Section 2 — Profil d'entreprise
+
+<Frame caption="La section Profil d'entreprise.">
+  ![Business Profile card with fields for Entity Name, Description, Industry, and Language](/images/taliup-hq/create-entity-business-profile.png)
+</Frame>
+
+<Note>
+  Recapturez cette capture si vous voulez que **Charity** soit visible dans la liste Industrie. L'image actuelle précède cette option.
+</Note>
+
+| Champ | Obligatoire | Notes |
+|---|---|---|
+| **Nom de l'entité** | Oui | Le nom commercial du marchand, tel qu'il apparaîtra dans Taliup HQ et sur les reçus. |
+| **Description** | Non | Note interne — invisible pour le personnel ou les clients du marchand. Utile pour distinguer des entités au nom semblable. |
+| **Industrie** | Oui | **Restaurant**, **Retail/Wholesale** ou **Charity**. Contrôle les fonctions, plans et catégories de rapports. Les entités Charity peuvent envoyer des reçus de don conformes depuis [Paiements hébergés](/fr-CA/taliup-hq/features/hosted-payments#reçus-fiscaux-de-don-organismes-de-bienfaisance) après avoir rempli les détails Charity. |
+| **Langue** | Oui | **English** ou **French**. Contrôle la langue des communications automatisées (p. ex. courriels d'intégration). |
+
+---
+
+## Section 3 — Emplacement
+
+<Frame caption="La section Emplacement.">
+  ![Location card with address search bar and individual fields for street, city, region, postal, country, currency, timezone, and phone](/images/taliup-hq/create-entity-location.png)
+</Frame>
+
+### Recherche d'adresse (saisie semi-automatique Google Maps)
+
+Saisissez une adresse partielle dans **Address Search** et sélectionnez un résultat. La sélection remplit automatiquement :
+
+- Adresse
+- Ville
+- Pays
+- Code postal (formaté selon le pays détecté)
+- Latitude / longitude (stockées pour la cartographie)
+- Fuseau horaire
+
+La région est résolue après le pays.
+
+### Champs d'emplacement
+
+| Champ | Obligatoire | Notes |
+|---|---|---|
+| **Street Address** | Oui | Rempli par la recherche d'adresse; modifiable manuellement. |
+| **Unit** | Non | Numéro de bureau ou d'unité ajouté à l'adresse. |
+| **City** | Oui | Rempli par la recherche d'adresse. |
+| **Region** | Oui | Province, État ou État mexicain. Les options dépendent du pays. |
+| **Postal** | Oui | Formaté automatiquement : `A1A 1A1` pour le Canada · `12345` ou `12345-6789` pour les États-Unis · 5 chiffres pour le Mexique. |
+| **Country** | Oui | **Canada**, **United States** ou **Mexico**. Le choix du pays fixe la devise. |
+| **Currency** | Oui | Fixé automatiquement — **CAD** pour le Canada, **USD** pour les États-Unis, **MXN** pour le Mexique. Non modifiable séparément. |
+| **Timezone** | Oui | Rempli par la recherche d'adresse. Peut être modifié si l'entreprise opère dans un autre fuseau. |
+| **Phone** | Oui | Formaté `(555) 555-5555` pendant la saisie. |
+
+---
+
+## Section 4 — Configuration technique
+
+Cette section n'apparaît **que lorsque le fournisseur de terminaux exige des identifiants**. Les champs varient selon le fournisseur.
+
+<Note>
+  Aucune capture n'est fournie pour cette section, car elle n'apparaît qu'après la sélection d'un fournisseur et son agencement change.
+</Note>
+
+### PAX · Castles · Ingenico · None
+
+| Champ | Obligatoire |
+|---|---|
+| **Merchant ID (MID)** | Oui |
+
+### Poynt
+
+| Champ | Obligatoire | Notes |
+|---|---|---|
+| **Business ID** | Oui | UUID du portail Poynt HQ. |
+| **Application ID** | Oui | Identifiant d'application du portail Poynt HQ. |
+| **Publishable Key** | Non | Clé publique Poynt facultative. |
+| **Private Key** | Oui | Clé privée RSA au format PEM téléchargée depuis Poynt HQ. Un bouton **Paste from Clipboard** est disponible. Basculez la visibilité avec l'icône œil. |
+
+### Express
+
+| Champ | Obligatoire |
+|---|---|
+| **Restaurant ID** | Oui |
+| **MID** | Oui |
+
+---
+
+## Section 5 — Administrateur
+
+<Frame caption="La section Administrateur.">
+  ![Administrator card with fields for first name, last name, email, temporary password, and a collapsible permissions list](/images/taliup-hq/create-entity-administrator.png)
+</Frame>
+
+Cette section crée le premier compte web Taliup HQ du marchand. L'administrateur peut se connecter à Taliup HQ et gérer les paramètres de l'entité après l'intégration.
+
+| Champ | Obligatoire | Notes |
+|---|---|---|
+| **First Name** | Oui | |
+| **Last Name** | Oui | |
+| **Email** | Oui | Sert de nom d'utilisateur pour Taliup HQ. Doit être unique parmi tous les utilisateurs. |
+| **Temporary Password** | Non | Prérempli `12345678`. En lecture seule — le marchand devrait le changer à la première connexion. |
+| **Permissions** | — | Par défaut, les 35 permissions sont accordées. Développez la liste avant l'envoi pour restreindre l'accès au besoin. |
+
+---
+
+## Envoyer le formulaire
+
+Cliquez sur **Create Entity** dans la barre d'en-tête en haut à droite.
+
+| État | Ce que vous voyez |
+|---|---|
+| **Processing** | Le bouton affiche « Processing… » pendant l'envoi. |
+| **Success** | Le bouton affiche brièvement une coche et « Created », puis revient à la normale après 3 secondes. Vous êtes redirigé vers la page de gestion de la nouvelle entité. |
+| **Erreurs de validation** | Un indicateur « Check errors » apparaît à côté de Cancel. Faites défiler pour trouver les champs en surbrillance. |
+
+**Cancel** ouvre une confirmation **Discard Changes?** avant de revenir à la liste des entités. Les données non enregistrées sont perdues.
+
+---
+
+## Suite
+
+<CardGroup cols={2}>
+  <Card title="Enregistrer des appareils PAX" icon="tablet" href="/fr-CA/taliup-hq/devices/pax/add-devices">
+    Ajouter les appareils de paiement du marchand dans Taliup HQ à l'aide de leurs TID.
+  </Card>
+  <Card title="Plans et fonctionnalités" icon="list-check" href="/fr-CA/taliup-hq/onboarding/plans-features">
+    Examiner ou ajuster le plan d'abonnement et les fonctions activées.
+  </Card>
+  <Card title="Configurer les pourboires" icon="hand-holding-dollar" href="/fr-CA/taliup-hq/onboarding/tips">
+    Définir les invites et types de pourboire pour les appareils de paiement.
+  </Card>
+  <Card title="Emplacements et passerelle en ligne" icon="location-dot" href="/fr-CA/taliup-hq/onboarding/locations">
+    Gérer les sites physiques du marchand et la passerelle de paiement en ligne.
+  </Card>
+</CardGroup>

@@ -1,0 +1,58 @@
+---
+title: "Paramètres MEV-WEB"
+sidebarTitle: "MEV-WEB"
+description: "Activer le WEB-SRM de Revenu Québec sur une entité marchande et enregistrer les identifiants dont Taliup POS a besoin pour s'inscrire comme SRS."
+keywords: ["WEB-SRM", "MEV-WEB", "Revenu Québec", "MEV", "SRS", "TVQ", "TPS", "inscription"]
+---
+
+Taliup POS agit comme système d'enregistrement des ventes (SRS / MEV) pour le WEB-SRM de Revenu Québec. Dans Taliup HQ, cette fonction s'appelle **MEV-WEB**. Taliup HQ conserve les identifiants Revenu Québec du marchand. Le PDV les utilise pour chaque demande fiscale, y compris le certificat qui inscrit chaque appareil.
+
+Terminez cette page avant d'inscrire un appareil. Si HQ n'est pas configuré, Taliup POS affiche **This business has no WEB-SRM configuration from Taliup HQ.**
+
+## Comment y accéder
+
+Barre latérale de l'entité → **MEV-WEB**.
+
+L'élément de menu n'est visible que pour un **Admin** lorsque le plan de l'entité inclut la fonction **Web-SRM**. Si vous ne le voyez pas, ajoutez la fonction dans [Plans et fonctionnalités](/fr-CA/taliup-hq/onboarding/plans-features).
+
+## Activer MEV-WEB
+
+<Warning>
+  La première fois que vous activez MEV-WEB, Taliup HQ crée les taxes du Québec **TPS** (5 %) et **TVQ** (9,975 %) si elles n'existent pas déjà. Toute autre taxe du catalogue est retirée et remplacée par ces taxes du Québec. Confirmez que le catalogue est prêt avant de continuer.
+</Warning>
+
+<Steps>
+  <Step title="Ouvrir MEV-WEB">
+    Dans la barre latérale de l'entité, cliquez sur **MEV-WEB**.
+  </Step>
+  <Step title="Activer MEV-WEB">
+    Activez **Activer MEV-WEB**.
+  </Step>
+  <Step title="Saisir les identifiants Revenu Québec">
+    Remplissez les champs obligatoires. Utilisez les valeurs délivrées au marchand par Revenu Québec.
+
+    | Champ | Exemple | Notes |
+    |---|---|---|
+    | **Numéro d'identification de l'utilisateur** | `5678912340` | Numéro d'identification de l'utilisateur du marchand, fourni par Revenu Québec. |
+    | **Code d'autorisation de l'utilisateur** | `X1X1-X1X1` | Format `XXXX-XXXX`. |
+    | **Numéro de TVQ** | `5678912340TQ0001` | Numéro de taxe de vente du Québec. |
+    | **Numéro de TPS** | `123456789RT0001` | Numéro de TPS/TVH fédéral. |
+    | **Numéro de fichier de facturation** | `ER0001` | Numéro de fichier de facturation de Revenu Québec. |
+  </Step>
+  <Step title="Confirmer et enregistrer">
+    Cliquez sur **Enregistrer les modifications**. À la première activation, confirmez la fenêtre **Confirm Web-SRM Activation**, puis cliquez sur **Confirmer et activer MEV-WEB**.
+  </Step>
+</Steps>
+
+<Note>
+  Vous pouvez encore ajuster la TPS et la TVQ plus tard dans les paramètres de taxes du catalogue. Les autres types de taxes ne sont pas utilisés pour la facturation MEV-WEB.
+</Note>
+
+## Étape suivante — inscrire chaque appareil
+
+La configuration HQ n'inscrit pas un appareil à elle seule.
+
+- **Nouvel appareil** — terminez la [configuration de l'appareil](/fr-CA/taliup-pos/index), puis [inscrivez l'appareil](/fr-CA/taliup-pos/web-srm).
+- **Marchand déjà en service sur Taliup POS** — suivez [Commencer à utiliser le WEB-SRM chez un marchand existant](/fr-CA/taliup-pos/web-srm/switch-live-merchant). Ils doivent se déconnecter et se reconnecter après l'enregistrement de MEV-WEB ici.
+
+Répétez l'inscription sur chaque appareil. Chaque appareil reçoit son propre certificat et identifiant Revenu Québec.

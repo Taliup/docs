@@ -1,0 +1,47 @@
+---
+title: "Créer et envoyer Lien Pour Payer"
+sidebarTitle: "Créer et envoyer"
+description: "Envoyer un Lien Pour Payer depuis Caisse et comprendre les champs New Invoice."
+---
+
+## Depuis le paiement en Caisse
+
+Lorsque Lien Pour Payer est activé pour le marchand, l'écran de paiement peut afficher **Lien Pour Payer** parmi les autres méthodes.
+
+<Steps>
+  <Step title="Composer la vente">
+    Ajoutez des articles ou un montant Vente ouverte dans [Caisse](/fr-CA/taliup-pos/register), puis appuyez sur **Pay**.
+  </Step>
+  <Step title="Choisir Lien Pour Payer">
+    Appuyez sur **Lien Pour Payer**.
+  </Step>
+  <Step title="Confirmer">
+    Confirmez l'envoi lorsque demandé (**Lien Pour Payer** / procéder à l'envoi au contact du client sélectionné).
+  </Step>
+</Steps>
+
+Associez d'abord un [client](/fr-CA/taliup-pos/clients/attach-from-register) lorsque le flux exige un courriel ou un téléphone.
+
+<Note>
+  **Capture d'écran à venir :** paiement Caisse avec l'option Lien Pour Payer.  
+  Chemin prévu : `/images/taliup-pos/link-to-pay/register.png`
+</Note>
+
+## Formulaire New Invoice (champs)
+
+Le PDV inclut aussi un formulaire **New Invoice** / **Edit Invoice** pour la création complète de facture (aussi lié à la facturation HQ). Champs clés :
+
+| Section | Champs |
+|---|---|
+| En-tête | **Invoice Number**, **Client**, **Invoice Summary**, **Invoice Message**, **Location** |
+| Horaires | **Send Invoice Immediately**, **Send Date**, **Due Date** |
+| **Items** | **Add Item**, **Edit Attribute** |
+| **Total** | **Subtotal:**, **Add Discount**, **Total:** |
+| Paiement | **Payment Details**, **Recurring Payment**, **Add Link To Pay the Invoice** |
+| **Communications** | **Send Invoice Via Email**, **Send Invoice Via Invoice As SMS** |
+
+Les actions du pied de page incluent **draft** et **create invoice** (ou **update invoice** / **update draft** à la modification).
+
+Exemples de validation : numéro de facture, client et emplacement obligatoires; le SMS exige que le client ait un numéro de téléphone.
+
+Pour la configuration de facturation côté HQ, voir [Facturation](/fr-CA/taliup-hq/features/invoicing).

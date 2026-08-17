@@ -1,0 +1,91 @@
+---
+title: "Clients"
+sidebarTitle: "Clients"
+description: "Créer et gérer les dossiers clients dans Taliup HQ, y compris restaurer un client supprimé lorsque vous réutilisez le même courriel."
+---
+
+**Clients** conserve les dossiers clients que vous pouvez associer aux factures, à Link to Pay, aux rendez-vous Calendrier et aux paiements du Terminal virtuel.
+
+Ouvrez **Clients** dans la barre latérale marchande pour commencer.
+
+<Frame caption="La liste Clients avec recherche, Add Client et import en lot.">
+  ![Page Clients de Michael's Kitchen montrant 15 clients avec les colonnes Name, Phone, Address, Notes et Actions](/images/taliup-hq/clients/list.png)
+</Frame>
+
+---
+
+## Prérequis
+
+La fonction **Clients** doit être activée sur le plan de l'entité. Demandez à votre admin ISO de l'activer dans [Plans et fonctionnalités](/fr-CA/taliup-hq/onboarding/plans-features) si vous ne voyez pas **Clients** dans la barre latérale.
+
+---
+
+## Créer un client
+
+<Steps>
+  <Step title="Ouvrir Clients">
+    Dans la barre latérale marchande, cliquez sur **Clients**, puis **Create** (ou **Add Client**).
+  </Step>
+  <Step title="Saisir les détails">
+    Remplissez **First Name**, **Last Name** et **Email**. Téléphone, adresse, nom d'entreprise et notes sont facultatifs.
+  </Step>
+  <Step title="Enregistrer">
+    Cliquez sur **Add Client**.
+  </Step>
+</Steps>
+
+Vous pouvez aussi ajouter un client sans quitter **Create Invoice**, **Link to Pay**, **Calendar** ou **Virtual Terminal**. Utilisez le contrôle personne-plus à côté de la recherche client.
+
+**Email** est obligatoire. Taliup l'utilise pour retrouver le client plus tard et pour envoyer factures ou reçus.
+
+---
+
+## Restaurer un client supprimé
+
+Supprimer un client masque le dossier. Cela ne retire pas définitivement son historique.
+
+Si vous créez de nouveau un client avec le **même courriel** sur la même entité, Taliup trouve le dossier précédent et vous demande de le restaurer.
+
+<Frame caption="Confirmation Restore previous client après réutilisation d'un courriel supprimé.">
+  ![Fenêtre Restore previous client pour Ava Bennett avec les boutons Cancel et Restore](/images/taliup-hq/clients/restore-confirm.png)
+</Frame>
+
+<Steps>
+  <Step title="Ajouter le client de nouveau">
+    Utilisez **Clients → Create**, ou **Add Client** depuis une facture, Link to Pay, Calendar ou Virtual Terminal. Saisissez le même courriel que le client supprimé.
+  </Step>
+  <Step title="Confirmer la restauration">
+    Lorsque Taliup trouve une correspondance, il affiche **Restore previous client?** Le message nomme le client précédent et explique que la restauration réutilise son dossier et ramène factures, rendez-vous, paiements et autre historique.
+  </Step>
+  <Step title="Restaurer ou annuler">
+    Cliquez sur **Restore** pour réutiliser ce client. Cliquez sur **Cancel** pour le laisser supprimé et rester sur le formulaire.
+  </Step>
+</Steps>
+
+Après la restauration :
+
+- Le client conserve le même dossier (pas une deuxième copie du même courriel).
+- Le nom et le téléphone du nouveau formulaire remplacent les anciennes valeurs.
+- Les factures, rendez-vous et paiements antérieurs restent associés.
+
+Un client **actif** avec ce courriel ne peut toujours pas être dupliqué. Taliup affiche une erreur de courriel unique au lieu de l'invite de restauration.
+
+<Tip>
+  La restauration est le bon chemin lorsqu'un marchand a supprimé un client par erreur et veut récupérer l'historique. Ne créez pas un second client avec un autre courriel si vous avez besoin des anciennes factures.
+</Tip>
+
+---
+
+## Supprimer un client
+
+Depuis la liste Clients ou la page de détail, cliquez sur **Delete** et confirmez l'avertissement.
+
+Le client disparaît de la liste. Le recréer avec le même courriel démarre le flux de restauration ci-dessus.
+
+---
+
+## Connexe
+
+- [Facturation](/fr-CA/taliup-hq/features/invoicing)
+- [Paiements hébergés](/fr-CA/taliup-hq/features/hosted-payments)
+- [Clients dans Taliup POS](/fr-CA/taliup-pos/clients)
