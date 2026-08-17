@@ -1,24 +1,24 @@
 ---
 title: "Start using WEB-SRM on an existing merchant"
 sidebarTitle: "Start using WEB-SRM — existing merchant"
-description: "Turn WEB-SRM on for a merchant already using Taliup POS: enable it in HQ, confirm the app version, then log out and enrol each terminal."
+description: "Turn WEB-SRM on for a merchant already using Taliup POS: enable it in HQ, confirm the app version, then log out and enrol each device."
 keywords: ["WEB-SRM", "MEV", "switch", "existing merchant", "Poynt", "Newland", "AiOne", "2.0.14", "2.0.8"]
 ---
 
-Use this page when a merchant is **already taking sales** on Taliup POS and now needs Revenu Québec WEB-SRM. Work through the four steps in order. Keep the merchant off **Register** until enrolment is done on that terminal.
+Use this page when a merchant is **already taking sales** on Taliup POS and now needs Revenu Québec WEB-SRM. Work through the four steps in order. Keep the merchant off **Register** until enrolment is done on that device.
 
 <Steps>
   <Step title="Enable WEB-SRM in Taliup HQ">
     Complete [WEB-SRM settings](/taliup-hq/onboarding/web-srm): turn on **Enable Web-SRM**, enter the Revenu Québec credentials, and save.
 
-    Do this before the merchant logs back in on the terminal.
+    Do this before the merchant logs back in on the device.
 
     <Note>
       The first time you enable WEB-SRM, Taliup HQ replaces catalog taxes with Québec **GST** and **QST**. Confirm the catalog is ready before you save.
     </Note>
   </Step>
   <Step title="Confirm the Taliup POS version">
-    The terminal needs a WEB-SRM-capable Taliup POS build. Check the version on the device:
+    The device needs a WEB-SRM-capable Taliup POS build. Check the version on the device:
 
     | Device | Minimum version |
     |---|---|
@@ -34,7 +34,7 @@ Use this page when a merchant is **already taking sales** on Taliup POS and now 
         <Tab title="Poynt C / Newland N950">
           <Steps>
             <Step title="Check for a software update">
-              On the terminal, go to **Settings** → **Software updates** → **Check for software update**. Tap **Check for updates**.
+              On the device, go to **Settings** → **Software updates** → **Check for software update**. Tap **Check for updates**.
 
               Install **2.0.14** (version code **57**) or later.
             </Step>
@@ -44,10 +44,10 @@ Use this page when a merchant is **already taking sales** on Taliup POS and now 
           </Steps>
         </Tab>
         <Tab title="PAX A920 Pro">
-          Push Taliup POS **2.0.8** (version code **26**) or later from **PaxStore**. Do not ask the merchant to update from the terminal.
+          Push Taliup POS **2.0.8** (version code **26**) or later from **PaxStore**. Do not ask the merchant to update from the device.
 
           <Steps>
-            <Step title="Open the terminal in PaxStore">
+            <Step title="Open the device in PaxStore">
               In **PaxStore** → **Terminal Management**, open the merchant's A920 Pro.
             </Step>
             <Step title="Push Taliup POS">
@@ -78,7 +78,7 @@ Use this page when a merchant is **already taking sales** on Taliup POS and now 
               In Taliup HQ, go to **Entities**, open the merchant, click **Manage**, then open the **Devices** tab. Find the AiOne device and give the merchant that **Device ID**.
             </Step>
             <Step title="Activate the device">
-              Enter the **Device ID** on the terminal and tap **Activate device**.
+              Enter the **Device ID** on the device and tap **Activate device**.
             </Step>
             <Step title="Choose the device type">
               If the Device ID is correct, choose **Lane 3600** or **Link 2500** to match the hardware, then tap **Continue**.
@@ -92,7 +92,7 @@ Use this page when a merchant is **already taking sales** on Taliup POS and now 
     </div>
   </Step>
   <Step title="Log out and log back in">
-    Do this on **every** terminal that will bill, even if you did not update the app.
+    Do this on **every** device that will bill, even if you did not update the app.
 
     Taliup POS only fetches WEB-SRM (MEV) credentials and settings on login.
 
@@ -100,10 +100,10 @@ Use this page when a merchant is **already taking sales** on Taliup POS and now 
       If the merchant stays logged in after you enable WEB-SRM in HQ, enrolment will not appear. Log out, then log back in with the employee's six-digit passcode.
     </Warning>
   </Step>
-  <Step title="Enrol the terminal">
-    After login, **Set up this terminal** should appear. Request a certificate, then register the signed-in user.
+  <Step title="Enrol the device">
+    After login, **Enrol this device** should appear. Request a certificate, then register the signed-in user.
 
-    Follow [Enrol a terminal](/taliup-pos/web-srm). Repeat on every terminal.
+    Follow [Enrol a device](/taliup-pos/web-srm). Repeat on every device.
   </Step>
 </Steps>
 

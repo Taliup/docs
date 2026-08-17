@@ -1,13 +1,13 @@
 ---
 title: "Enrol Taliup POS with WEB-SRM"
-sidebarTitle: "Enrol a terminal"
+sidebarTitle: "Enrol a device"
 description: "Enrol Taliup POS as a Revenu Québec SRS: request a certificate, register the signed-in user, then renew or delete the certificate."
 keywords: ["WEB-SRM", "Revenu Québec", "enrolment", "certificate", "IDAPPRL", "SRS", "MEV"]
 ---
 
-Taliup POS acts as a sales recording system (SRS / MEV) for Revenu Québec's WEB-SRM. A Québec merchant cannot bill on a terminal until that device is enrolled and the signed-in user is registered with the WEB-SRM.
+Taliup POS acts as a sales recording system (SRS / MEV) for Revenu Québec's WEB-SRM. A Québec merchant cannot bill on a device until that device is enrolled and the signed-in user is registered with the WEB-SRM.
 
-Revenu Québec requires both steps. Repeat them on every terminal.
+Revenu Québec requires both steps. Repeat them on every device.
 
 <Tip>
   If the merchant is already taking sales on Taliup POS and you are turning WEB-SRM on now, start with [Start using WEB-SRM on an existing merchant](/taliup-pos/web-srm/switch-live-merchant). That page covers the app update and the required log out / log in before enrolment.
@@ -15,17 +15,17 @@ Revenu Québec requires both steps. Repeat them on every terminal.
 
 ## Before you start
 
-- The terminal is set up and staff can log in. See [Taliup POS overview](/taliup-pos/index) and [PAX A920 Pro first setup](/taliup-pos/devices/pax/a920-pro).
+- The device is set up and staff can log in. See [Taliup POS overview](/taliup-pos/index) and [PAX A920 Pro first setup](/taliup-pos/devices/pax/a920-pro).
 - WEB-SRM is enabled in Taliup HQ with the merchant's Revenu Québec credentials. See [WEB-SRM settings](/taliup-hq/onboarding/web-srm).
-- The terminal is online. The certificate request is sent to Revenu Québec.
+- The device is online. The certificate request is sent to Revenu Québec.
 
 <Warning>
   If HQ is not configured, Taliup POS shows **This business has no WEB-SRM configuration from Taliup HQ.** Finish [WEB-SRM settings](/taliup-hq/onboarding/web-srm) before you continue.
 </Warning>
 
-## Enrol this terminal
+## Enrol this device
 
-After you log in, **Set up this terminal** blocks **Register**, **Tables**, and **Menu** until both steps are complete.
+After you log in, **Enrol this device** blocks **Register**, **Tables**, and **Menu** until both steps are complete.
 
 <Steps>
   <Step title="Log in">
@@ -36,7 +36,7 @@ After you log in, **Set up this terminal** blocks **Register**, **Tables**, and 
     </Frame>
   </Step>
   <Step title="Open the certificate request">
-    On **Set up this terminal**, tap **Request a certificate**.
+    On **Enrol this device**, tap **Request a certificate**.
 
     Step 2, **Register your user**, stays locked until the device is enrolled.
 
@@ -45,7 +45,7 @@ After you log in, **Set up this terminal** blocks **Register**, **Tables**, and 
     </Frame>
   </Step>
   <Step title="Name the certificate">
-    Enter a **Certificate nickname (SN)** of 8 to 32 characters. Use a name you can recognize later on this terminal.
+    Enter a **Certificate nickname (SN)** of 8 to 32 characters. Use a name you can recognize later on this device.
 
     <Frame caption="Certificate form under Settings. Enter a nickname, then choose how the device identifier is assigned.">
       ![Certificate screen with nickname field, device identifier radio buttons, and Request a certificate button](/images/taliup-pos/web-srm/request-certificate.png)
@@ -65,9 +65,9 @@ After you log in, **Set up this terminal** blocks **Register**, **Tables**, and 
     </Frame>
   </Step>
   <Step title="Register your user">
-    Return to **Set up this terminal**. Step 2 is now available. Tap **Register** to record the signed-in employee with the WEB-SRM.
+    Return to the WEB-SRM setup sheet. Step 2 is now available. Tap **Register** to record the signed-in employee with the WEB-SRM.
 
-    The terminal can bill only after this step succeeds.
+    The device can bill only after this step succeeds.
   </Step>
 </Steps>
 
@@ -82,7 +82,7 @@ Go to **Settings** → **WEB-SRM**. The **Overview** card should show:
 | Field | What it means |
 |---|---|
 | **Status** | **Certificate installed** |
-| **Device identifier (IDAPPRL)** | Identifier Revenu Québec assigned to this terminal |
+| **Device identifier (IDAPPRL)** | Identifier Revenu Québec assigned to this device |
 | **Certificate name (SN)** | The nickname you entered |
 | **Serial number** | Certificate serial from Revenu Québec |
 | **Expires** | Certificate expiry date |
@@ -92,12 +92,12 @@ Go to **Settings** → **WEB-SRM**. The **Overview** card should show:
 </Frame>
 
 <Tip>
-  Keep a record of the **Device identifier**. You need it if you restore this terminal and choose **Yes** on the certificate form.
+  Keep a record of the **Device identifier**. You need it if you restore this device and choose **Yes** on the certificate form.
 </Tip>
 
 ## Renew the certificate
 
-Renew when Taliup POS warns that the certificate is expiring, or when **Set up this terminal** asks you to renew because the certificate is expired or not yet valid.
+Renew when Taliup POS warns that the certificate is expiring, or when the WEB-SRM setup sheet asks you to renew because the certificate is expired or not yet valid.
 
 <Steps>
   <Step title="Open Certificate">
@@ -119,7 +119,7 @@ The device identifier stays the same after a successful renewal.
 
 ## Delete the certificate
 
-Delete only when you are decommissioning the terminal or starting enrolment over.
+Delete only when you are decommissioning the device or starting enrolment over.
 
 <Warning>
   Revenu Québec withdraws the certificate. The device cannot bill until you enrol it again.
@@ -141,7 +141,7 @@ Delete only when you are decommissioning the terminal or starting enrolment over
   </Step>
 </Steps>
 
-After deletion, **Set up this terminal** returns. Request a new certificate, then register the signed-in user.
+After deletion, the WEB-SRM setup sheet returns. Request a new certificate, then register the signed-in user.
 
 ## Troubleshooting
 
@@ -149,8 +149,8 @@ After deletion, **Set up this terminal** returns. Request a new certificate, the
 |---|---|
 | **This business has no WEB-SRM configuration from Taliup HQ** | Enable WEB-SRM and save credentials in Taliup HQ. See [WEB-SRM settings](/taliup-hq/onboarding/web-srm). |
 | **Register**, **Tables**, and **Menu** stay greyed out | Finish both enrolment steps. Step 2 stays locked until the certificate is installed. |
-| Certificate request failed | Confirm the terminal is online and HQ credentials are correct, then tap **Request a certificate** again. The nickname must be 8 to 32 characters. |
+| Certificate request failed | Confirm the device is online and HQ credentials are correct, then tap **Request a certificate** again. The nickname must be 8 to 32 characters. |
 | User registration did not complete | Tap **Register** again. The employee is recorded with the WEB-SRM only after this step succeeds. |
-| Certificate renewal did not complete | Confirm the terminal is online, then tap **Renew certificate** again. |
+| Certificate renewal did not complete | Confirm the device is online, then tap **Renew certificate** again. |
 | Device cannot bill after delete | Expected. Enrol the device and register the signed-in user again. |
 | Restoring a previously enrolled device | On the certificate form, tap **Yes** and enter the existing device identifier as `XXXX-XXXX-XXXX`. |
