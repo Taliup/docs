@@ -6,6 +6,16 @@ description: "Manage physical merchant sites, Merchant IDs (MIDs), currency, and
 
 A **Location** represents a physical merchant site. Each location is tied to a **Merchant ID (MID)**, which links it to payment processing and manual settlement. A merchant can have multiple locations, each with its own MID and gateway configuration.
 
+Click **Add Location** to create another site. This is available for **PAX**, **Poynt**, **Castles**, **Ingenico**, and **None** terminal providers.
+
+For **Poynt**, stores synced from Poynt HQ still appear first. Locations you add in Taliup HQ that are not on poynt.net are **companion locations**. They stay on the list so you can attach online gateways, device types, and extra sites that Poynt does not sync.
+
+<Frame caption="Locations on a Poynt entity, including Add Location and a companion site.">
+  ![Lemon Cafe Poynt Settings Locations tab with Add Location and two locations, Lemon Cafe and Lemon Cafe - New](/images/taliup-hq/locations-add-poynt.png)
+</Frame>
+
+After you enable a Poynt location, **View As** the merchant, open **Settings → Terminals**, and click **Sync Terminals**.
+
 ## How to get here
 
 **Entities** → find the Entity → **Manage** → **Settings** → **Locations** tab.

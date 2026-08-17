@@ -182,6 +182,26 @@ A customer visits a Taliup-hosted landing page (or clicks an embedded button on 
 - A **Client record** is found by email or created automatically.
 - An optional **email receipt** is sent to the customer.
 
+### Charity donation tax receipts
+
+If the entity industry is **Charity**, the open-amount donation page can send a tax-compliant electronic receipt (English, French, or Spanish).
+
+Before the donation page works, complete **Charity Details** on the entity:
+
+- **Charity / Registration Number** (required)
+- **Tax ID** (optional)
+- A complete registered address on the [entity profile](/taliup-hq/manage/profile)
+
+<Frame caption="Charity Details on Settings → Business.">
+  ![Harbour Light Foundation Business settings with Charity Details, registration number BN 123456789RR0001, and Tax ID](/images/taliup-hq/charity-details.png)
+</Frame>
+
+Incomplete charity details block the open-amount donation landing page and initiate call. Fixed-amount checkout and Direct Integration still work.
+
+<Warning>
+  Do not enable Charity and share the open-amount `/pay/{merchant_site_id}` URL until **Charity Details** and the profile address are complete. Donors will otherwise see an error instead of the payment page.
+</Warning>
+
 ### Embed Snippet
 
 <Frame caption="The Embed Snippet sub-tab — minimal two-line embed for any platform.">

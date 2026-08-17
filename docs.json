@@ -104,7 +104,8 @@
                 "group": "Features",
                 "pages": [
                   "taliup-hq/features/hosted-payments",
-                  "taliup-hq/features/invoicing"
+                  "taliup-hq/features/invoicing",
+                  "taliup-hq/features/clients"
                 ]
               }
             ]

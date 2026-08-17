@@ -1,7 +1,7 @@
 ---
 title: "Invoicing"
 sidebarTitle: "Invoicing"
-description: "Create, send, and manage invoices from the merchant portal — including email delivery conditions and troubleshooting."
+description: "Create, send, update, and manage invoices from the merchant portal — including restore-client, update and resend, inventory on delete, and email troubleshooting."
 ---
 
 Invoicing lets you create professional invoices, email them to clients, optionally include an online payment link, and track payment from Taliup HQ.
@@ -38,6 +38,7 @@ From here you can:
 
 - Click **+ Create Invoice** (or **Create your first invoice**) to open the create form
 - Use the filter control once you have invoices to narrow the list
+- Sent invoices show **Due in X days** or **Due today** as whole days. Overdue invoices show **Overdue by X days**.
 
 ---
 
@@ -70,6 +71,8 @@ Select who the invoice is for and which location it belongs to.
 </Frame>
 
 **Email** is required when you create a client who should receive invoices by email.
+
+If that email belongs to a client you already deleted, Taliup asks **Restore previous client?** instead of creating a duplicate. Click **Restore** to reuse the existing record and their invoice history. See [Restore a deleted client](/taliup-hq/features/clients#restore-a-deleted-client).
 
 ### Invoice Details
 
@@ -138,9 +141,62 @@ If email delivery is on but no client is selected, Taliup shows validation such 
 
 The right-hand preview updates as you edit so you can confirm branding, message, line items, and totals before you create the invoice.
 
+If the entity has a logo in **Settings → Business**, that logo appears on the preview and on downloaded invoice and receipt PDFs.
+
 <Frame caption="Live Invoice Preview showing merchant branding and placeholders for client details.">
   ![Invoice Preview for Cornerstone Hardware with logo, address, client placeholders, invoice number 000005, issued date, message, empty items table, and total $0.00](/images/taliup-hq/invoicing/invoice-preview.png)
 </Frame>
+
+---
+
+## Edit a sent invoice
+
+You can edit an invoice after it has been sent, as long as it is not paid.
+
+| Status | What you can do |
+|---|---|
+| **Draft** | Edit all fields, including client, location, and invoice number. Click **Update Invoice**. |
+| **Sent**, **Overdue**, or **Canceled** | Edit message, items, dates, and payment settings. Client, location, and invoice number stay locked. Click **Update and Resend** to save and email the updated invoice. |
+| **Paid** | Editing is blocked. Taliup shows that the invoice can no longer be edited because it has been paid or is otherwise locked. |
+
+<Frame caption="Edit a sent invoice. The header action is Update and Resend.">
+  ![Edit Invoice page with Client Details, Invoice Details, live preview, and Update and Resend in the header](/images/taliup-hq/invoicing/invoice-update-and-resend.png)
+</Frame>
+
+<Steps>
+  <Step title="Open the invoice">
+    From **Invoices**, open a sent unpaid invoice.
+  </Step>
+  <Step title="Make your changes">
+    Update the message, line items, due date, or payment settings. You cannot change the client, location, or invoice number after send.
+  </Step>
+  <Step title="Update and Resend">
+    Click **Update and Resend**. Taliup saves the changes and emails the client again when email delivery is on.
+  </Step>
+</Steps>
+
+---
+
+## Return stock when you delete an invoice
+
+When you delete an unpaid invoice that held inventory, Taliup can put those quantities back into stock.
+
+Set the default in **Settings → Invoice Settings → Inventory**:
+
+| Setting | What happens |
+|---|---|
+| **Always return stock** (toggle on) | Stock is returned automatically when you delete an unpaid invoice. |
+| **Ask** (toggle off) | Each delete asks whether to **Return stock to inventory**. |
+
+<Frame caption="Invoice Settings Inventory section with Return stock on invoice delete.">
+  ![Invoice Settings showing Email, Reminders, and Inventory with Return stock on invoice delete turned on](/images/taliup-hq/invoicing/invoice-settings-inventory.png)
+</Frame>
+
+<Frame caption="Delete invoice confirmation with Return stock to inventory.">
+  ![Confirmation modal asking to delete an invoice for Ava Bennett, with Return stock to inventory turned on](/images/taliup-hq/invoicing/invoice-return-stock.png)
+</Frame>
+
+Draft and paid invoice deletes do not return stock.
 
 ---
 
