@@ -4,9 +4,16 @@
   "theme": "luma",
   "favicon": "https://media.brand.dev/51b56c8c-cbe7-40ed-91a2-086e62e64d7c.png",
   "colors": {
-    "primary": "#b2bdda",
-    "light": "#696cb2",
-    "dark": "#dcdcea"
+    "primary": "#371B58",
+    "light": "#C3B1E1",
+    "dark": "#371B58"
+  },
+  "background": {
+    "decoration": "gradient",
+    "color": {
+      "light": "#f6f6ff",
+      "dark": "#1A0F2B"
+    }
   },
   "appearance": {
     "default": "dark"
@@ -17,12 +24,6 @@
     },
     "body": {
       "family": "DM Sans"
-    }
-  },
-  "navbar": {
-    "primary": {
-      "type": "github",
-      "href": "https://github.com/Taliup/taliuphq-php"
     }
   },
   "navigation": {
@@ -131,7 +132,7 @@
             ]
           },
           {
-            "tab": "Register",
+            "tab": "Using the POS",
             "groups": [
               {
                 "group": "Register",
@@ -143,21 +144,11 @@
                   "taliup-pos/register/take-payment",
                   "taliup-pos/register/options"
                 ]
-              }
-            ]
-          },
-          {
-            "tab": "Tables",
-            "groups": [
+              },
               {
                 "group": "Tables",
                 "pages": ["taliup-pos/tables/index"]
-              }
-            ]
-          },
-          {
-            "tab": "Menu / Catalog",
-            "groups": [
+              },
               {
                 "group": "Menu / Catalog",
                 "pages": [
@@ -173,12 +164,7 @@
                   "taliup-pos/catalog/fees",
                   "taliup-pos/catalog/inventory"
                 ]
-              }
-            ]
-          },
-          {
-            "tab": "Orders",
-            "groups": [
+              },
               {
                 "group": "Orders",
                 "pages": [
@@ -186,12 +172,7 @@
                   "taliup-pos/orders/find-and-reopen",
                   "taliup-pos/orders/past-order-actions"
                 ]
-              }
-            ]
-          },
-          {
-            "tab": "Transactions",
-            "groups": [
+              },
               {
                 "group": "Transactions",
                 "pages": [
@@ -202,12 +183,7 @@
                   "taliup-pos/transactions/refund",
                   "taliup-pos/transactions/reprint"
                 ]
-              }
-            ]
-          },
-          {
-            "tab": "Clients",
-            "groups": [
+              },
               {
                 "group": "Clients",
                 "pages": [
@@ -215,12 +191,7 @@
                   "taliup-pos/clients/create-and-edit",
                   "taliup-pos/clients/attach-from-register"
                 ]
-              }
-            ]
-          },
-          {
-            "tab": "Link To Pay",
-            "groups": [
+              },
               {
                 "group": "Link To Pay",
                 "pages": [
@@ -228,33 +199,18 @@
                   "taliup-pos/link-to-pay/create-and-send",
                   "taliup-pos/link-to-pay/manage"
                 ]
-              }
-            ]
-          },
-          {
-            "tab": "Analytics",
-            "groups": [
+              },
               {
                 "group": "Analytics",
                 "pages": ["taliup-pos/analytics/index"]
-              }
-            ]
-          },
-          {
-            "tab": "Calendar",
-            "groups": [
+              },
               {
                 "group": "Calendar",
                 "pages": [
                   "taliup-pos/calendar/index",
                   "taliup-pos/calendar/appointments"
                 ]
-              }
-            ]
-          },
-          {
-            "tab": "Settings",
-            "groups": [
+              },
               {
                 "group": "Settings",
                 "pages": [
@@ -272,7 +228,10 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["taliup-pos/web-srm/index"]
+                "pages": [
+                  "taliup-pos/web-srm/index",
+                  "taliup-pos/web-srm/switch-live-merchant"
+                ]
               }
             ]
           }

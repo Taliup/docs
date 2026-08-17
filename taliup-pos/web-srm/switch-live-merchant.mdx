@@ -1,0 +1,127 @@
+---
+title: "Start using WEB-SRM on an existing merchant"
+sidebarTitle: "Start using WEB-SRM — existing merchant"
+description: "Turn WEB-SRM on for a merchant already using Taliup POS: enable it in HQ, confirm the app version, then log out and enrol each terminal."
+keywords: ["WEB-SRM", "MEV", "switch", "existing merchant", "Poynt", "Newland", "AiOne", "2.0.14", "2.0.8"]
+---
+
+Use this page when a merchant is **already taking sales** on Taliup POS and now needs Revenu Québec WEB-SRM. Work through the four steps in order. Keep the merchant off **Register** until enrolment is done on that terminal.
+
+<Steps>
+  <Step title="Enable WEB-SRM in Taliup HQ">
+    Complete [WEB-SRM settings](/taliup-hq/onboarding/web-srm): turn on **Enable Web-SRM**, enter the Revenu Québec credentials, and save.
+
+    Do this before the merchant logs back in on the terminal.
+
+    <Note>
+      The first time you enable WEB-SRM, Taliup HQ replaces catalog taxes with Québec **GST** and **QST**. Confirm the catalog is ready before you save.
+    </Note>
+  </Step>
+  <Step title="Confirm the Taliup POS version">
+    The terminal needs a WEB-SRM-capable Taliup POS build. Check the version on the device:
+
+    | Device | Minimum version |
+    |---|---|
+    | **Poynt C / Newland N950** | **2.0.14** (version code **57**) |
+    | **PAX A920 Pro** | **2.0.8** (version code **26**) |
+
+    - **At or above the minimum** — skip the update. Go to step 3.
+    - **Below the minimum** — update the app using the matching tab below, then go to step 3.
+
+    <div className="update-app-panel">
+    <Accordion title="How to update if the version is too low">
+      <Tabs>
+        <Tab title="Poynt C / Newland N950">
+          <Steps>
+            <Step title="Check for a software update">
+              On the terminal, go to **Settings** → **Software updates** → **Check for software update**. Tap **Check for updates**.
+
+              Install **2.0.14** (version code **57**) or later.
+            </Step>
+            <Step title="Push from Poynt Store if needed">
+              If **Check for updates** does not start the download, push Taliup POS **2.0.14** from **Poynt Store**.
+            </Step>
+          </Steps>
+        </Tab>
+        <Tab title="PAX A920 Pro">
+          Push Taliup POS **2.0.8** (version code **26**) or later from **PaxStore**. Do not ask the merchant to update from the terminal.
+
+          <Steps>
+            <Step title="Open the terminal in PaxStore">
+              In **PaxStore** → **Terminal Management**, open the merchant's A920 Pro.
+            </Step>
+            <Step title="Push Taliup POS">
+              On **Push Task**, push **Taliup POS** **2.0.8** or later. See [PaxStore setup](/taliup-hq/devices/pax/paxstore) if you need the full push sequence.
+            </Step>
+            <Step title="Wait for Success">
+              Confirm the Push Task shows **Success** before the merchant opens Taliup POS.
+            </Step>
+          </Steps>
+        </Tab>
+        <Tab title="AiOne">
+          AiOne cannot update Taliup POS in place. Uninstall and install again from **Payrillium Store**, then activate the device with the **Device ID** from Taliup HQ.
+
+          <Steps>
+            <Step title="Exit Taliup POS">
+              Leave the Taliup POS app and go to the device home screen.
+            </Step>
+            <Step title="Uninstall Taliup POS">
+              Open **Payrillium Store** → find **Taliup POS** → tap **Uninstall**.
+            </Step>
+            <Step title="Install the new version">
+              On the same Taliup POS listing, tap **Install**.
+            </Step>
+            <Step title="Open Taliup POS and enter the Device ID">
+              Open **Taliup POS**. The device asks for a **Device ID**.
+            </Step>
+            <Step title="Copy the Device ID from Taliup HQ">
+              In Taliup HQ, go to **Entities**, open the merchant, click **Manage**, then open the **Devices** tab. Find the AiOne device and give the merchant that **Device ID**.
+            </Step>
+            <Step title="Activate the device">
+              Enter the **Device ID** on the terminal and tap **Activate device**.
+            </Step>
+            <Step title="Choose the device type">
+              If the Device ID is correct, choose **Lane 3600** or **Link 2500** to match the hardware, then tap **Continue**.
+            </Step>
+          </Steps>
+
+          Taliup POS then opens the login screen. Continue with step 3.
+        </Tab>
+      </Tabs>
+    </Accordion>
+    </div>
+  </Step>
+  <Step title="Log out and log back in">
+    Do this on **every** terminal that will bill, even if you did not update the app.
+
+    Taliup POS only fetches WEB-SRM (MEV) credentials and settings on login.
+
+    <Warning>
+      If the merchant stays logged in after you enable WEB-SRM in HQ, enrolment will not appear. Log out, then log back in with the employee's six-digit passcode.
+    </Warning>
+  </Step>
+  <Step title="Enrol the terminal">
+    After login, **Set up this terminal** should appear. Request a certificate, then register the signed-in user.
+
+    Follow [Enrol a terminal](/taliup-pos/web-srm). Repeat on every terminal.
+  </Step>
+</Steps>
+
+## Check
+
+| Check | Expected |
+|---|---|
+| App version | Poynt / Newland **2.0.14+** (code **57**), or A920 Pro **2.0.8+** (code **26**) |
+| **Settings** → **WEB-SRM** | **Status** is **Certificate installed** |
+| Home | **Register**, **Tables**, and **Menu** are available |
+
+## Troubleshooting
+
+| Problem | What to try |
+|---|---|
+| Enrolment screen never appears | Confirm HQ WEB-SRM is saved, then **log out and log back in**. |
+| **This business has no WEB-SRM configuration from Taliup HQ** | Finish [WEB-SRM settings](/taliup-hq/onboarding/web-srm), then log out and log back in. |
+| Poynt / Newland is below 2.0.14 | **Settings** → **Software updates** → **Check for updates**, or push **2.0.14** from **Poynt Store**. |
+| A920 Pro is below 2.0.8 | Push Taliup POS **2.0.8** from **PaxStore**. |
+| AiOne asks for a Device ID after reinstall | Expected. Copy **Device ID** from Taliup HQ → **Entities** → **Manage** → **Devices**. |
+| AiOne device type step | Choose **Lane 3600** or **Link 2500** to match the hardware. |

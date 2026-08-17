@@ -1,0 +1,99 @@
+/* Taliup brand: #371B58, #C3B1E1, #f6f6ff */
+
+#sidebar,
+#sidebar-content {
+  background-color: #ece8f4;
+}
+
+#table-of-contents-content {
+  background-color: #f6f6ff;
+  border: 1px solid #d4c8e8;
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+
+.dark #sidebar,
+.dark #sidebar-content {
+  background-color: #2a1844;
+}
+
+.dark #table-of-contents-content {
+  background-color: #241536;
+  border-color: #c3b1e1;
+}
+
+/* Left nav: group labels vs page links */
+sidebar-group {
+  display: block;
+  margin-top: 1.15rem;
+}
+
+sidebar-group:first-child {
+  margin-top: 0.25rem;
+}
+
+sidebar-group-header,
+sidebar-title {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #371b58;
+  opacity: 0.7;
+  margin-bottom: 0.35rem;
+}
+
+#sidebar-content li a {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 400;
+  line-height: 1.35;
+  padding-left: 0.75rem;
+  border-radius: 6px;
+}
+
+#sidebar-content li[data-active] a {
+  font-weight: 600;
+  background-color: rgba(55, 27, 88, 0.12);
+}
+
+.dark sidebar-group-header,
+.dark sidebar-title {
+  color: #c3b1e1;
+  opacity: 0.85;
+}
+
+.dark #sidebar-content li[data-active] a {
+  background-color: rgba(195, 177, 225, 0.18);
+}
+
+/* Top nav: luma uses aria-current, not nav-tabs-item */
+#navbar nav[aria-label="Main"] a[aria-current="location"] {
+  background-color: rgba(55, 27, 88, 0.12) !important;
+  color: #371b58 !important;
+  font-weight: 600;
+}
+
+.dark #navbar nav[aria-label="Main"] a[aria-current="location"] {
+  background-color: rgba(195, 177, 225, 0.18) !important;
+  color: #c3b1e1 !important;
+}
+
+/* Widen the article column; keep TOC. Default luma cap is ~43.5rem. */
+#content-area {
+  max-width: 52rem !important;
+  margin-inline: auto !important;
+}
+
+.update-app-panel details.accordion,
+.update-app-panel accordion {
+  background-color: #ece8f4 !important;
+  border-color: #d4c8e8 !important;
+}
+
+.dark .update-app-panel details.accordion,
+.dark .update-app-panel accordion {
+  background-color: #2a1844 !important;
+  border-color: #c3b1e1 !important;
+}
