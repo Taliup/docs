@@ -220,7 +220,6 @@
                 "pages": [
                   "taliup-pos/settings/index",
                   "taliup-pos/settings/general",
-                  "taliup-pos/settings/business",
                   "taliup-pos/settings/printers",
                   "taliup-pos/settings/device"
                 ]
@@ -478,7 +477,6 @@
                     "pages": [
                       "fr-CA/taliup-pos/settings/index",
                       "fr-CA/taliup-pos/settings/general",
-                      "fr-CA/taliup-pos/settings/business",
                       "fr-CA/taliup-pos/settings/printers",
                       "fr-CA/taliup-pos/settings/device"
                     ]
@@ -502,5 +500,17 @@
         ]
       }
     ]
-  }
+  },
+  "redirects": [
+    {
+      "source": "/taliup-pos/settings/business",
+      "destination": "/taliup-pos/settings",
+      "permanent": true
+    },
+    {
+      "source": "/fr-CA/taliup-pos/settings/business",
+      "destination": "/fr-CA/taliup-pos/settings",
+      "permanent": true
+    }
+  ]
 }
