@@ -91,13 +91,7 @@ sidebar-title {
   margin-inline: auto !important;
 }
 
-/* POS phone screenshots: keep them phone-sized, not full article width. */
-frame:has(img[src*="/images/taliup-pos/"]),
-img[src*="/images/taliup-pos/"] {
-  max-width: 20rem;
-  margin-inline: auto;
-}
-
+/* POS landscape screenshots: fill the article Frame. */
 img[src*="/images/taliup-pos/"] {
   width: 100%;
   height: auto;
