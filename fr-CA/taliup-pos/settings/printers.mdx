@@ -1,12 +1,13 @@
 ---
 title: "Imprimantes"
 sidebarTitle: "Imprimantes"
-description: "Configurer les imprimantes de reçus et de cuisine dans Taliup POS."
+description: "Ajouter une imprimante Bluetooth, choisir où imprimer les reçus et connecter une imprimante de cuisine ou une autre imprimante externe dans Taliup POS."
+keywords: ["imprimantes", "Bluetooth", "imprimante de cuisine", "imprimante de reçus", "imprimante externe"]
 ---
 
-**Paramètres de l'imprimante** gère les imprimantes Bluetooth, l'imprimante de reçus et le routage des imprimantes de cuisine.
+Utilisez **Paramètres de l'imprimante** pour ajouter des imprimantes Bluetooth et choisir où les reçus et les tickets de cuisine s'impriment.
 
-<Frame caption="Paramètres de l'imprimante avec sections reçus et cuisine.">
+<Frame caption="Paramètres de l'imprimante avec sections reçus et imprimantes externes.">
   ![Paramètres de l'imprimante avec sections reçus et cuisine](/images/taliup-pos/settings/printers.png)
 </Frame>
 
@@ -14,41 +15,115 @@ description: "Configurer les imprimantes de reçus et de cuisine dans Taliup POS
 
 Accueil → **Paramètres** → **Général** → **Paramètres de l'imprimante**.
 
-## Gérer les imprimantes
+<Note>
+Si vous ouvrez cet écran depuis Caisse avec des articles dans le panier, Taliup POS peut demander **Continuer vers les paramètres de l'imprimante ?** Le panier est effacé si vous continuez.
+</Note>
 
-Sous **Imprimantes** / **Gérez vos imprimantes Bluetooth** :
+## Avant de commencer
 
-1. Appuyez sur **Gérer les imprimantes** → **My Printers**.
-2. Utilisez **Add Paired Printer** pour ajouter un appareil couplé.
-3. **Rename** ou **Remove** les imprimantes au besoin.
+1. Allumez l'imprimante et gardez-la près du terminal.
+2. Si l'imprimante a un mode couplage ou découverte, activez-le.
+3. Activez le Bluetooth du terminal.
 
-## Imprimante de reçus
+Ajoutez l'imprimante sous **Mes imprimantes** avant de l'assigner comme imprimante de reçus ou comme imprimante externe (cuisine).
 
-| Contrôle | Utilité |
-|---|---|
-| **Imprimante de reçus** | Choisir quelle imprimante imprime les reçus |
-| **Utiliser l'imprimante intégrée comme imprimante de reçus** | Utiliser l'imprimante intégrée de l'appareil lorsqu'elle est disponible |
-
-## Imprimantes de cuisine
-
-Les imprimantes de cuisine acheminent les tickets selon les étiquettes de produit.
+## Ajouter une imprimante Bluetooth
 
 <Steps>
-  <Step title="Ajouter une imprimante de cuisine">
-    Appuyez sur **Ajouter une imprimante** pour ouvrir **Add kitchen printer**.
+  <Step title="Ouvrir Mes imprimantes">
+    Dans **Paramètres de l'imprimante**, appuyez sur **Gérer les imprimantes**.
   </Step>
-  <Step title="Configurer">
-    Définissez **Name**, choisissez une **Paired printer**, sélectionnez éventuellement des **Product tags**, et décidez s'il faut **Print non-tagged items to this printer**.
+  <Step title="Ajouter l'imprimante">
+    Appuyez sur **Ajouter une imprimante couplée**. Sélectionnez l'imprimante dans la liste, puis appuyez sur **Enregistrer**.
   </Step>
-  <Step title="Enregistrer">
-    Appuyez sur **Enregistrer**. Modifiez plus tard avec **Gérer**, ou **Supprimer** une config cuisine.
+  <Step title="Confirmer qu'elle a été ajoutée">
+    L'imprimante apparaît sous **Mes imprimantes**. Utilisez **Renommer** pour un nom plus clair, comme Cuisine ou Comptoir.
   </Step>
 </Steps>
 
-Chaque config cuisine affiche l'imprimante couplée et le résumé d'étiquettes (**Étiquettes : aucune (routage par défaut)** ou un nombre sélectionné).
+La liste peut inclure les imprimantes déjà couplées et les imprimantes à proximité qui ne le sont pas encore. Vous n'avez pas à coupler l'imprimante dans les paramètres Android du terminal d'abord.
+
+Si la liste est vide, appuyez sur **Rechercher à nouveau**. Gardez l'imprimante allumée et à portée.
+
+<Note>
+La plupart des terminaux n'affichent pas de demande d'autorisation à cette étape. Si le terminal demande de trouver des appareils à proximité ou d'utiliser le Bluetooth, appuyez sur **Autoriser**. La recherche ne trouvera pas d'imprimantes si cette demande est refusée.
+</Note>
+
+## Choisir l'imprimante de reçus
+
+Dans **Paramètres de l'imprimante**, utilisez la section **Imprimante de reçus**.
+
+| Option | Résultat |
+|---|---|
+| **Utiliser l'imprimante intégrée comme imprimante de reçus** est activé | Les reçus et rapports s'impriment sur l'imprimante intégrée du terminal. C'est la configuration habituelle lorsque le terminal a une imprimante. |
+| **Utiliser l'imprimante intégrée comme imprimante de reçus** est désactivé | Les reçus s'impriment sur l'imprimante Bluetooth sélectionnée sous **Imprimante de reçus**. |
+
+Pour utiliser une imprimante de reçus Bluetooth :
+
+1. Désactivez **Utiliser l'imprimante intégrée comme imprimante de reçus**.
+2. Sélectionnez une imprimante dans **Mes imprimantes**, ou ajoutez-en une avec **Ajouter une imprimante couplée**.
+3. Imprimez un reçu test depuis une vente comptant, ou réimprimez depuis [Transactions](/fr-CA/taliup-pos/transactions/reprint).
+
+## Ajouter une imprimante de cuisine ou externe
+
+Utilisez **Imprimantes externes** pour une imprimante de cuisine ou une autre imprimante de station.
+
+<Steps>
+  <Step title="Ouvrir Ajouter une imprimante externe">
+    Dans **Paramètres de l'imprimante**, sous **Imprimantes externes**, appuyez sur **Ajouter une imprimante**.
+  </Step>
+  <Step title="Nommer la station">
+    Entrez un **Nom**, comme Cuisine ou Bar.
+  </Step>
+  <Step title="Sélectionner l'imprimante">
+    Sous **Imprimante couplée**, choisissez l'imprimante. Si elle n'est pas listée, choisissez **Ajouter une imprimante couplée**, sélectionnez l'appareil, puis revenez à cet écran.
+  </Step>
+  <Step title="Définir le routage">
+    Laissez **Étiquettes de produits** vides si cette imprimante doit recevoir le ticket de cuisine complet. Pour n'envoyer ici que certains articles, sélectionnez ces **Étiquettes de produits**. Activez **Imprimer les articles sans étiquette sur cette imprimante** si ce poste doit aussi recevoir les articles sans étiquette. Si plusieurs imprimantes ont cette option, les articles sans étiquette s'impriment sur toutes.
+  </Step>
+  <Step title="Enregistrer et tester">
+    Appuyez sur **Enregistrer**. Dans Caisse, ajoutez un article et appuyez sur **Options** → **Envoyer à l'imprimante de cuisine**, ou terminez une vente et envoyez le ticket de cuisine lorsque demandé.
+  </Step>
+</Steps>
+
+Chaque station enregistrée affiche **Couplée :** et soit **Étiquettes : aucune (routage par défaut)**, soit le nombre d'étiquettes sélectionnées. Appuyez sur **Gérer** pour modifier la station, ou **Supprimer** pour retirer seulement cette station.
+
+<Warning>
+Une imprimante Bluetooth ne peut être assignée qu'à une seule imprimante externe. Si vous voyez **Cette imprimante est déjà utilisée par une autre imprimante externe**, choisissez une autre imprimante ou supprimez d'abord l'autre station.
+</Warning>
+
+## Renommer ou supprimer une imprimante
+
+Dans **Mes imprimantes** :
+
+| Action | Ce qui se passe |
+|---|---|
+| **Renommer** | Change le nom affiché. Les assignations de reçu et de cuisine restent en place. |
+| **Supprimer** | Retire l'imprimante de **Mes imprimantes**. Si c'était l'imprimante de reçus ou une imprimante externe, Taliup POS efface cette assignation et déconnecte l'imprimante. |
+
+**Supprimer** sous **Imprimantes externes** retire seulement cette assignation de cuisine ou de station. L'imprimante peut rester dans **Mes imprimantes**.
+
+## Paramètres liés
+
+| Paramètre | Emplacement |
+|---|---|
+| **Envoyer la commande à l'imprimante de cuisine après paiement** | [Général](/fr-CA/taliup-pos/settings/general) |
+| **Envoyer à l'imprimante de cuisine** | [Caisse → Options](/fr-CA/taliup-pos/register/options). Disponible pour les restaurants. Non affiché sur Vente ouverte. |
+| Réimprimer un reçu | [Transactions → Réimprimer](/fr-CA/taliup-pos/transactions/reprint) |
+
+## Dépannage
+
+| Situation | Quoi vérifier |
+|---|---|
+| L'imprimante n'est pas dans la liste | Confirmez que l'imprimante est allumée, à portée et visible. Appuyez sur **Rechercher à nouveau**. |
+| Une demande d'appareils à proximité ou de Bluetooth est apparue | Appuyez sur **Autoriser**. Si elle a été refusée plus tôt, autorisez Taliup POS dans les permissions de l'application, puis ouvrez **Ajouter une imprimante couplée** de nouveau. La plupart des terminaux n'affichent jamais cette demande. |
+| Les reçus sortent sur la mauvaise imprimante | Vérifiez **Utiliser l'imprimante intégrée comme imprimante de reçus**. Lorsqu'elle est activée, les reçus vont au terminal. Lorsqu'elle est désactivée, confirmez l'**Imprimante de reçus** sélectionnée. |
+| Les tickets de cuisine ne s'impriment pas | Confirmez qu'une rangée **Imprimantes externes** existe et que **Couplée :** affiche la bonne imprimante. Envoyez un ticket depuis **Options** → **Envoyer à l'imprimante de cuisine**. Si des étiquettes sont utilisées, confirmez que l'étiquette de l'article correspond ou que **Imprimer les articles sans étiquette sur cette imprimante** est activé. |
+| L'impression échoue ou un message de connexion apparaît | Ouvrez **Paramètres de l'imprimante** et confirmez que l'imprimante est encore assignée. Supprimez l'imprimante de **Mes imprimantes** et ajoutez-la de nouveau si elle ne se reconnecte pas. |
 
 ## Connexe
 
+- [Paramètres généraux](/fr-CA/taliup-pos/settings/general)
 - [Caisse → Options → Envoyer à l'imprimante de cuisine](/fr-CA/taliup-pos/register/options)
 - [Commandes → actions sur une commande passée](/fr-CA/taliup-pos/orders/past-order-actions)
 - [Transactions → Réimprimer](/fr-CA/taliup-pos/transactions/reprint)
