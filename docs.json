@@ -107,8 +107,9 @@
               },
               {
                 "group": "Features",
-                "pages": [
+                  "pages": [
                   "taliup-hq/features/hosted-payments",
+                  "taliup-hq/features/recurring-payments",
                   "taliup-hq/features/invoicing",
                   "taliup-hq/features/clients"
                 ]
@@ -366,6 +367,7 @@
                     "group": "Fonctions",
                     "pages": [
                       "fr-CA/taliup-hq/features/hosted-payments",
+                      "fr-CA/taliup-hq/features/recurring-payments",
                       "fr-CA/taliup-hq/features/invoicing",
                       "fr-CA/taliup-hq/features/clients"
                     ]
