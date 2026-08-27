@@ -144,6 +144,7 @@
                   "taliup-pos/register/index",
                   "taliup-pos/register/open-sale",
                   "taliup-pos/register/add-items",
+                  "taliup-pos/register/scale-barcodes",
                   "taliup-pos/register/cart",
                   "taliup-pos/register/take-payment",
                   "taliup-pos/register/options"
@@ -401,6 +402,7 @@
                       "fr-CA/taliup-pos/register/index",
                       "fr-CA/taliup-pos/register/open-sale",
                       "fr-CA/taliup-pos/register/add-items",
+                      "fr-CA/taliup-pos/register/scale-barcodes",
                       "fr-CA/taliup-pos/register/cart",
                       "fr-CA/taliup-pos/register/take-payment",
                       "fr-CA/taliup-pos/register/options"

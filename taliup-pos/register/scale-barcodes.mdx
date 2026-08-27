@@ -1,0 +1,94 @@
+---
+title: "Scale barcodes"
+sidebarTitle: "Scale barcodes"
+description: "Scan price or weight labels from a counter scale into the Register cart."
+---
+
+Use a barcode-printing scale (deli, butcher, produce) and scan the sticker in **Register**. Taliup reads the product and the printed price or weight. You do not pair the scale to the terminal.
+
+<Note>
+  The product **SKU** in Taliup must match the 5-digit PLU programmed on the scale. The item must be in the catalog this terminal uses.
+</Note>
+
+## Two kinds of labels
+
+| Label | What the scale prints | What Register does |
+|---|---|---|
+| **Price** | Product + a dollar amount | Adds the item with quantity 1 and uses the **printed price** |
+| **Weight** | Product + a measured weight | Adds the item with that **weight as quantity**, times the catalog price per unit |
+
+Weight labels need the product marked **Weighable** with a unit of **kg**, **g**, **lb**, or **oz**. Set that in Taliup HQ on the product, or on POS under **Menu / Catalog → Inventory** when you manage the product.
+
+## Scan in Register
+
+<Steps>
+  <Step title="Open Register">
+    From Home, tap **Register**, then **Menu** or **Catalog**.
+  </Step>
+  <Step title="Scan the sticker">
+    Use the hardware scanner, or **Options → Open Scanner** for the camera. Scanning is not available on Open Sale.
+  </Step>
+  <Step title="Choose modifiers if asked">
+    If the item has attributes or modifiers, the add-to-cart screen opens with the scanned price or weight already filled in. Complete required groups, then tap **Apply**. That selection is what inventory deducts from.
+  </Step>
+  <Step title="Review the cart">
+    Weight lines show the decoded amount with the unit (for example `0.450 kg`). Then tap **Pay**. See [Cart](/taliup-pos/register/cart) and [Take payment](/taliup-pos/register/take-payment).
+  </Step>
+</Steps>
+
+If several products share the same SKU, pick the correct one from the list.
+
+## Set up the product
+
+Do this once per scale item, in Taliup HQ (or on POS inventory for **Weighable** and **Unit**).
+
+<Steps>
+  <Step title="Match the PLU">
+    Set **SKU** to the exact 5-digit PLU on the scale. No extra characters.
+  </Step>
+  <Step title="Put it on the terminal catalog">
+    Add the product to the catalog this device is signed in to.
+  </Step>
+  <Step title="Price labels">
+    Leave **Weighable** off. Catalog price is a fallback only — the sticker price wins at scan.
+  </Step>
+  <Step title="Weight labels">
+    Turn **Weighable** on and choose a unit whose abbreviation is **kg**, **g**, **lb**, or **oz**. The unit tells Register where the decimal goes in the printed weight.
+  </Step>
+</Steps>
+
+In Taliup HQ, you can also set **Weighable** and **SKU** when you create an item from a catalog or category, or on a Products bulk-upload sheet (**Weighable** and **Unit** columns).
+
+## Labels we read
+
+Register only treats **12-digit** (UPC-A) and **13-digit** (EAN-13) numeric barcodes in the GS1 in-store `2` family. That is the layout most counter scales print (Hobart, Mettler Toledo, Bizerba, DIGI, CAS, and similar).
+
+| Length | Starts with | We treat the amount as |
+|---|---|---|
+| 12 digits | `2` | Price (cents) |
+| 13 digits | `02` or `20` | Price (cents) |
+| 13 digits | `21`–`29` | Weight |
+
+The 5 digits after the prefix are the **PLU**. The last digit is a standard check digit. Bad check digits are ignored as scale labels and searched as a normal barcode instead.
+
+Price labels may encode 4 or 5 digits of cents. Amounts under $100 read the same either way. A printed price of $100 or more on a 5-digit field can be read as a 4-digit price — confirm the scale mask with your ISO or partner if high-value stickers look wrong.
+
+<Warning>
+  We do not read QR codes, Code 128 / GS1-128, or a scale plugged into the terminal. Only the printed UPC-A or EAN-13 sticker.
+</Warning>
+
+## If a scan fails
+
+| What you see | What to check |
+|---|---|
+| Product not found | **SKU** equals the 5-digit PLU, and the item is on this terminal's catalog |
+| Line uses catalog price, not the sticker | The barcode is not a supported 12- or 13-digit `2…` label |
+| Weighable not configured | Turn **Weighable** on and assign **kg**, **g**, **lb**, or **oz** |
+| Wrong variant stock after sale | Choose the modifier on add-to-cart before **Apply** |
+
+## Related
+
+- [Add items](/taliup-pos/register/add-items)
+- [Cart](/taliup-pos/register/cart)
+- [Inventory](/taliup-pos/catalog/inventory)
+- [Products / Items](/taliup-pos/catalog/products)

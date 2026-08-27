@@ -1,0 +1,94 @@
+---
+title: "Codes-barres de balance"
+sidebarTitle: "Codes-barres de balance"
+description: "Scanner une étiquette de prix ou de poids depuis une balance de comptoir vers le panier de Caisse."
+---
+
+Utilisez une balance qui imprime une étiquette (charcuterie, boucherie, fruits et légumes) et scannez l'autocollant dans **Caisse**. Taliup lit le produit et le prix ou le poids imprimé. Vous n'avez pas à jumeler la balance au terminal.
+
+<Note>
+  Le **SKU** du produit dans Taliup doit correspondre au PLU à 5 chiffres programmé sur la balance. L'article doit être dans le catalogue utilisé par ce terminal.
+</Note>
+
+## Deux types d'étiquettes
+
+| Étiquette | Ce que la balance imprime | Ce que fait Caisse |
+|---|---|---|
+| **Prix** | Produit + un montant | Ajoute l'article en quantité 1 et utilise le **prix imprimé** |
+| **Poids** | Produit + un poids mesuré | Ajoute l'article avec ce **poids comme quantité**, multiplié par le prix unitaire du catalogue |
+
+Les étiquettes de poids exigent que le produit soit marqué **Produit pesé** dans Taliup HQ, ou **Pesable** dans l'inventaire POS, avec une unité **kg**, **g**, **lb** ou **oz**. Réglez cela dans Taliup HQ sur le produit, ou sur le POS sous **Menu / Catalogue → Inventaire** en gérant le produit.
+
+## Scanner dans Caisse
+
+<Steps>
+  <Step title="Ouvrir Caisse">
+    Depuis Accueil, appuyez sur **Caisse**, puis **Menu** ou **Catalogue**.
+  </Step>
+  <Step title="Scanner l'étiquette">
+    Utilisez le scanneur matériel, ou **Options → Ouvrir le scanneur** pour la caméra. Le scan n'est pas disponible en Vente ouverte.
+  </Step>
+  <Step title="Choisir les modificateurs si demandé">
+    Si l'article a des attributs ou des modificateurs, l'écran d'ajout au panier s'ouvre avec le prix ou le poids déjà inscrit. Complétez les groupes obligatoires, puis appuyez sur **Appliquer**. C'est cette sélection qui est déduite de l'inventaire.
+  </Step>
+  <Step title="Vérifier le panier">
+    Les lignes au poids affichent le montant décodé avec l'unité (par exemple `0.450 kg`). Puis appuyez sur **Payer**. Voir [Panier](/fr-CA/taliup-pos/register/cart) et [Encaisser](/fr-CA/taliup-pos/register/take-payment).
+  </Step>
+</Steps>
+
+Si plusieurs produits partagent le même SKU, choisissez le bon dans la liste.
+
+## Configurer le produit
+
+Faites-le une fois par article de balance, dans Taliup HQ (ou dans l'inventaire POS pour **Pesable** et **Unité**).
+
+<Steps>
+  <Step title="Faire correspondre le PLU">
+    Réglez le **SKU** exactement sur le PLU à 5 chiffres de la balance. Aucun caractère en plus.
+  </Step>
+  <Step title="L'ajouter au catalogue du terminal">
+    Ajoutez le produit au catalogue auquel cet appareil est connecté.
+  </Step>
+  <Step title="Étiquettes de prix">
+    Laissez **Produit pesé** / **Pesable** désactivé. Le prix catalogue n'est qu'un secours — le prix de l'étiquette l'emporte au scan.
+  </Step>
+  <Step title="Étiquettes de poids">
+    Activez **Produit pesé** (HQ) ou **Pesable** (POS) et choisissez une unité dont l'abréviation est **kg**, **g**, **lb** ou **oz**. L'unité indique à Caisse où placer la décimale dans le poids imprimé.
+  </Step>
+</Steps>
+
+Dans Taliup HQ, vous pouvez aussi régler **Produit pesé** et le **SKU** à la création d'un article depuis un catalogue ou une catégorie, ou dans la feuille d'import en masse (colonnes **Weighable** et **Unit**).
+
+## Étiquettes que nous lisons
+
+Caisse ne traite que les codes-barres numériques **12 chiffres** (UPC-A) et **13 chiffres** (EAN-13) de la famille GS1 en magasin commençant par `2`. C'est la disposition que la plupart des balances de comptoir impriment (Hobart, Mettler Toledo, Bizerba, DIGI, CAS, et similaires).
+
+| Longueur | Commence par | Nous traitons le montant comme |
+|---|---|---|
+| 12 chiffres | `2` | Prix (cents) |
+| 13 chiffres | `02` ou `20` | Prix (cents) |
+| 13 chiffres | `21`–`29` | Poids |
+
+Les 5 chiffres après le préfixe sont le **PLU**. Le dernier chiffre est une clé de contrôle standard. Une clé invalide n'est pas lue comme étiquette de balance : le code est cherché comme un code-barres normal.
+
+Les étiquettes de prix peuvent encoder 4 ou 5 chiffres de cents. En dessous de 100 $, le résultat est le même. Un prix imprimé de 100 $ ou plus sur un champ à 5 chiffres peut être lu comme un prix à 4 chiffres — confirmez le masque de la balance avec votre ISO ou partenaire si les étiquettes à montant élevé sont incorrectes.
+
+<Warning>
+  Nous ne lisons pas les codes QR, le Code 128 / GS1-128, ni une balance branchée au terminal. Seulement l'étiquette UPC-A ou EAN-13 imprimée.
+</Warning>
+
+## Si un scan échoue
+
+| Ce que vous voyez | À vérifier |
+|---|---|
+| Produit introuvable | Le **SKU** égale le PLU à 5 chiffres, et l'article est dans le catalogue de ce terminal |
+| La ligne utilise le prix catalogue, pas l'étiquette | Le code n'est pas une étiquette `2…` de 12 ou 13 chiffres prise en charge |
+| Pesable non configuré | Activez **Produit pesé** (HQ) ou **Pesable** (POS) et assignez **kg**, **g**, **lb** ou **oz** |
+| Mauvais stock de variante après la vente | Choisissez le modificateur à l'ajout au panier avant **Appliquer** |
+
+## Connexe
+
+- [Ajouter des articles](/fr-CA/taliup-pos/register/add-items)
+- [Panier](/fr-CA/taliup-pos/register/cart)
+- [Inventaire](/fr-CA/taliup-pos/catalog/inventory)
+- [Produits / Articles](/fr-CA/taliup-pos/catalog/products)
