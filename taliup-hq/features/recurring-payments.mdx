@@ -46,8 +46,8 @@ flowchart LR
   create --> invite --> enroll --> bill --> manage
 ```
 
-- Without a free trial, checkout charges the first cycle today and starts the schedule.
-- With a free trial, checkout saves the card only. Charging starts when the trial ends.
+- If the first charge is today and there is no trial, checkout charges that cycle and starts the schedule.
+- If the first charge is later, or you offer a free trial, checkout saves the card only. Charging starts on the first-charge date.
 - Later cycles are collected by Converge. Taliup HQ syncs status, next date, and charge history.
 
 ---
@@ -63,12 +63,14 @@ Tabs:
 | Tab | What it includes |
 |---|---|
 | **All** | Active and pending agreements |
-| **Needs attention** | Past due, grace period, paused, failed setup, expired checkout, or a card that is about to expire |
+| **Needs attention** | Past due, grace period, paused, expired checkout, or a card that is about to expire |
 | **Active** | Agreements that are billing |
 | **Pending** | Waiting for the customer to complete checkout |
-| **Closed** | Completed or cancelled |
+| **Closed** | Completed, cancelled, or failed setup |
 
-Search by client name, then **Apply**. Click a row to open the agreement. **Copy link** copies the checkout link (pending) or the customer manage link (enrolled).
+Search by client name, email, or amount (`100` or `$100`), then **Apply**. Newest agreements appear first. **Reset** clears the search and keeps the tab you are on.
+
+Click a row to open the agreement. **Copy link** copies the checkout link (pending) or the customer manage link (enrolled).
 
 If anything needs a click, the list opens on **Needs attention**.
 
@@ -77,7 +79,7 @@ If anything needs a click, the list opens on **Needs attention**.
 ## Create an agreement
 
 <Frame caption="The New recurring agreement form with client, plan items, schedule, and per-cycle total.">
-  ![New recurring agreement for Jane Doe with a Subscription Fee item, Monthly frequency, and CAD $17.52 per-cycle total](/images/taliup-hq/recurring-payments/create.png)
+  ![New recurring agreement for Jane Doe with a Subscription Fee item, annually frequency, a 7-day free trial, and CAD $113.00 per-cycle total](/images/taliup-hq/recurring-payments/create.png)
 </Frame>
 
 <Steps>
@@ -91,7 +93,7 @@ If anything needs a click, the list opens on **Needs attention**.
     Search products and services, or **Add custom item**. Set quantity and options. Taxes follow the selected location.
   </Step>
   <Step title="Set the schedule">
-    Choose frequency. Optionally offer a free trial and an end date.
+    Choose frequency, then set the first charge or offer a free trial. Optionally add an end date.
   </Step>
   <Step title="Create agreement">
     Confirm the **Per-cycle total**, then click **Create agreement**. Taliup emails the checkout link to the client.
@@ -103,31 +105,30 @@ If anything needs a click, the list opens on **Needs attention**.
 | Setting | Description |
 |---|---|
 | **Client** | Required. Must have an email. |
-| **Location** | The location whose Converge gateway collects the charges. |
+| **Location** | The location whose Converge gateway collects the charges. Hidden when the entity has only one location. |
 | **Allow this customer to cancel** | When on, the customer can cancel from their manage page. You can always cancel from HQ. Defaults from Settings. |
 
 ### Plan items
 
 Search the catalog or add a one-off custom item. Catalog items with options open the options picker. Custom items can have their own taxes.
 
-You cannot change catalog items after the agreement is created. Change the amount later from **Update schedule**.
+You cannot change catalog items or the schedule after the agreement is created. Create a new agreement if the plan needs to change.
 
 ### Schedule
 
 | Setting | Description |
 |---|---|
-| **Frequency** | **Daily**, **Weekly**, **Biweekly**, **Monthly**, or **Annually**. The Settings default prefills this. |
-| **Offer a free trial** | The customer authorizes a card now. Charging starts after the trial. |
+| **Frequency** | **Daily**, **Weekly**, **Biweekly**, **Monthly**, or **Annually**. Each cycle is charged at the start of the period. The Settings default prefills this. |
+| **Offer a free trial** | The customer authorizes a card now. Charging starts after the trial. Hides **First charge**. |
 | **Trial length** | 1–90 days. The form shows the first-charge date. |
+| **First charge** | Shown when the trial is off. Today charges the card at checkout. A later date saves the card and charges then. |
 | **End date** | Optional. Leave blank to bill until cancelled. |
 
 The checkout link expiry (default 7 days) is shown on this form. Change it in Settings.
 
-Without a free trial, checkout charges today. The first-charge date is not a separate field unless you turn the trial on.
-
 ### Per-cycle total
 
-The sidebar shows subtotal, tax, and total for each billing cycle. This is the amount Converge charges after enrollment (and at checkout when there is no trial).
+The sidebar shows subtotal, tax, and total for each billing cycle. This is the amount Converge charges after enrollment (and at checkout when the first charge is today and there is no trial).
 
 ---
 
@@ -135,8 +136,8 @@ The sidebar shows subtotal, tax, and total for each billing cycle. This is the a
 
 The agreement starts as **Pending**.
 
-<Frame caption="The Agreement page with status, card, customer manage link, schedule, items, and charges.">
-  ![Active agreement for Jane Doe showing CAD $17.52 monthly, VISA ending in 0002, customer manage link, Update schedule, and a captured charge](/images/taliup-hq/recurring-payments/show.png)
+<Frame caption="The Agreement page with status, first charge, card, customer manage link, items, and charges.">
+  ![Active agreement for Jane Doe showing CAD $20.00 monthly, first charge and next payment dates, VISA ending in 0002, customer manage link, and a captured charge](/images/taliup-hq/recurring-payments/show.png)
 </Frame>
 
 | Action | When it appears |
@@ -149,9 +150,11 @@ The checkout link expires after the invitation window and can be used once. An e
 
 After checkout:
 
-- A charge appears under **Charges** (or the card is saved if this is a free trial).
+- A charge appears under **Charges** when the first charge is today. If the first charge is later, or this is a free trial, the card is saved and nothing is charged yet.
 - Status moves to **Active**.
-- The **Customer manage link** appears. It does not expire. Customers use it to see history and update their card.
+- The **Customer manage link** appears. It does not expire. Customers use it to see history, update their card, and cancel if you allowed it.
+
+If the customer cancels, or you cancel from HQ, the agreement shows **Cancelled** plus who cancelled: **Customer**, the merchant name, or **Automatically**.
 
 ---
 
@@ -223,22 +226,9 @@ The banner stays until either:
 | **Resume** | Available on Suspended. Scheduled charges start again. |
 | **Cancel agreement** | Stops future charges. Past charges stay captured. A pending cancel only disables the checkout link. |
 
-You cannot change frequency or the next payment date while the agreement is paused. Resume first.
+Customers can cancel from the manage page only when **Allow this customer to cancel** is on for that agreement. They confirm in a sheet, then the page shows who cancelled.
 
-Customers can cancel from the manage page only when **Allow this customer to cancel** is on for that agreement.
-
----
-
-## Update schedule
-
-On an enrolled agreement, **Update schedule** can change:
-
-- **Amount**
-- **Frequency** (not while paused)
-- **Next payment** (not while paused)
-- **End date**
-
-Catalog items stay the same. Click **Save schedule**.
+You cannot change the amount, frequency, or dates after enrollment. That needs a new customer authorization. Create a new agreement if the plan must change.
 
 ---
 
@@ -265,8 +255,8 @@ Click **Save Recurring Payment Settings**.
 
 Customers do not log in to Taliup HQ.
 
-- **Checkout link** — one-time page to pay today or authorize a card for a free trial. They must check **I authorize {merchant} to charge my card…**
-- **Customer manage link** — does not expire. Customers can view the schedule, charge history, and **Update payment method**. **Cancel payment** appears only if you allowed it.
+- **Checkout link** — one-time page to pay today, or to save a card when the first charge is later or a trial is on. The page follows the entity language. Customers can switch to English, French, or Mexican Spanish. They must check **I authorize {merchant} to charge my card…**
+- **Customer manage link** — does not expire. Customers can view the schedule, charge history, and **Update payment method**. **Cancel recurring payment** appears only if you allowed it. They confirm in a sheet, then can go back. The page uses the same language dropdown.
 
 Share either link from the agreement page. The manage link is also in customer emails after enrollment.
 
@@ -276,10 +266,9 @@ Share either link from the agreement page. The manage link is also in customer e
 
 | Email | When it sends |
 |---|---|
-| Checkout invitation | When you create an agreement, and when you click **Resend email** |
+| Checkout invitation | When you create an agreement, and when you click **Resend email**. It says whether they pay today or only authorize a card. |
 | Receipt | After a successful cycle or Charge now |
 | Payment declined | After the latest charge fails — sent to you and the customer |
-| Schedule updated | When you change amount, frequency, or dates |
 
 Ask the customer to check junk if an invitation is missing. Confirm the client email on the agreement before you resend.
 
@@ -318,9 +307,17 @@ The agreement must be **Past due** or **Grace period**, and checkout must have a
 
 Updating the card does not collect the missed payment. Use **Charge now**, or wait for the next scheduled charge.
 
+### Enrollment failed
+
+**Failed** agreements sit under **Closed**. The customer may need a new agreement and a new checkout link.
+
+### Customer wants a different amount or frequency
+
+You cannot change the schedule after enrollment. Cancel the current agreement if needed, then create a new one.
+
 ### Customer wants to stop billing
 
-Use **Cancel agreement**, or ask them to cancel from the manage page if you allowed it. Pause if you only need to stop charges temporarily.
+Use **Cancel agreement**, or ask them to tap **Cancel recurring payment** on the manage page if you allowed it. Pause if you only need to stop charges temporarily.
 
 ---
 

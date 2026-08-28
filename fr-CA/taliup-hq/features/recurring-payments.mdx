@@ -46,8 +46,8 @@ flowchart LR
   create --> invite --> enroll --> bill --> manage
 ```
 
-- Sans essai gratuit, le paiement encaisse le premier cycle aujourd'hui et démarre le calendrier.
-- Avec un essai gratuit, le paiement enregistre seulement la carte. Les prélèvements commencent à la fin de l'essai.
+- Si le premier prélèvement est aujourd'hui et qu'il n'y a pas d'essai, le paiement encaisse ce cycle et démarre le calendrier.
+- Si le premier prélèvement est plus tard, ou si vous offrez un essai gratuit, le paiement enregistre seulement la carte. Les prélèvements commencent à la date du premier prélèvement.
 - Les cycles suivants sont encaissés par Converge. Taliup HQ synchronise le statut, la prochaine date et l'historique.
 
 ---
@@ -63,12 +63,14 @@ Onglets :
 | Onglet | Contenu |
 |---|---|
 | **All** | Accords actifs et en attente |
-| **Needs attention** | En souffrance, période de grâce, en pause, échec de configuration, lien expiré, ou carte bientôt expirée |
+| **Needs attention** | En souffrance, période de grâce, en pause, lien expiré, ou carte bientôt expirée |
 | **Active** | Accords en cours de facturation |
 | **Pending** | En attente que le client termine le paiement |
-| **Closed** | Terminés ou annulés |
+| **Closed** | Terminés, annulés, ou échec de configuration |
 
-Recherchez par nom de client, puis **Apply**. Cliquez une ligne pour ouvrir l'accord. **Copy link** copie le lien de paiement (en attente) ou le lien de gestion client (après inscription).
+Recherchez par nom de client, courriel ou montant (`100` ou `$100`), puis **Apply**. Les accords les plus récents apparaissent en premier. **Reset** efface la recherche et garde l'onglet en cours.
+
+Cliquez une ligne pour ouvrir l'accord. **Copy link** copie le lien de paiement (en attente) ou le lien de gestion client (après inscription).
 
 S'il y a quelque chose à traiter, la liste s'ouvre sur **Needs attention**.
 
@@ -77,7 +79,7 @@ S'il y a quelque chose à traiter, la liste s'ouvre sur **Needs attention**.
 ## Créer un accord
 
 <Frame caption="Le formulaire New recurring agreement avec client, articles, calendrier et total par cycle.">
-  ![New recurring agreement pour Jane Doe avec un article Subscription Fee, fréquence Monthly et total de 17,52 $ CA par cycle](/images/taliup-hq/recurring-payments/create.png)
+  ![New recurring agreement pour Jane Doe avec un article Subscription Fee, fréquence Annually, un essai gratuit de 7 jours et un total de 113,00 $ CA par cycle](/images/taliup-hq/recurring-payments/create.png)
 </Frame>
 
 <Steps>
@@ -91,7 +93,7 @@ S'il y a quelque chose à traiter, la liste s'ouvre sur **Needs attention**.
     Cherchez des produits et services, ou **Add custom item**. Réglez la quantité et les options. Les taxes suivent l'emplacement choisi.
   </Step>
   <Step title="Définir le calendrier">
-    Choisissez la fréquence. Offrez au besoin un essai gratuit et une date de fin.
+    Choisissez la fréquence, puis définissez le premier prélèvement ou offrez un essai gratuit. Ajoutez au besoin une date de fin.
   </Step>
   <Step title="Create agreement">
     Vérifiez le **Per-cycle total**, puis cliquez sur **Create agreement**. Taliup envoie le lien de paiement au client.
@@ -103,31 +105,30 @@ S'il y a quelque chose à traiter, la liste s'ouvre sur **Needs attention**.
 | Réglage | Description |
 |---|---|
 | **Client** | Obligatoire. Doit avoir un courriel. |
-| **Location** | L'emplacement dont la passerelle Converge encaisse les prélèvements. |
+| **Location** | L'emplacement dont la passerelle Converge encaisse les prélèvements. Masqué si l'entité n'a qu'un emplacement. |
 | **Allow this customer to cancel** | Lorsque c'est activé, le client peut annuler depuis sa page de gestion. Vous pouvez toujours annuler depuis HQ. La valeur par défaut vient des Settings. |
 
 ### Articles du forfait
 
 Cherchez dans le catalogue ou ajoutez un article personnalisé. Les articles avec options ouvrent le sélecteur d'options. Les articles personnalisés peuvent avoir leurs propres taxes.
 
-Vous ne pouvez pas changer les articles du catalogue après la création. Changez le montant plus tard dans **Update schedule**.
+Vous ne pouvez pas changer les articles du catalogue ni le calendrier après la création. Créez un nouvel accord si le forfait doit changer.
 
 ### Calendrier
 
 | Réglage | Description |
 |---|---|
-| **Frequency** | **Daily**, **Weekly**, **Biweekly**, **Monthly** ou **Annually**. La valeur par défaut des Settings préremplit ce champ. |
-| **Offer a free trial** | Le client autorise une carte maintenant. Les prélèvements commencent après l'essai. |
+| **Frequency** | **Daily**, **Weekly**, **Biweekly**, **Monthly** ou **Annually**. Chaque cycle est prélevé au début de la période. La valeur par défaut des Settings préremplit ce champ. |
+| **Offer a free trial** | Le client autorise une carte maintenant. Les prélèvements commencent après l'essai. Masque **First charge**. |
 | **Trial length** | 1 à 90 jours. Le formulaire affiche la date du premier prélèvement. |
+| **First charge** | Affiché lorsque l'essai est désactivé. Aujourd'hui encaisse la carte au paiement. Une date plus tard enregistre la carte et prélève ensuite. |
 | **End date** | Facultatif. Laissez vide pour facturer jusqu'à annulation. |
 
 L'expiration du lien de paiement (7 jours par défaut) s'affiche sur ce formulaire. Modifiez-la dans Settings.
 
-Sans essai gratuit, le paiement encaisse aujourd'hui. La date du premier prélèvement n'est un champ distinct que si l'essai est activé.
-
 ### Total par cycle
 
-La barre latérale affiche le sous-total, les taxes et le total de chaque cycle. C'est le montant que Converge prélève après l'inscription (et au paiement s'il n'y a pas d'essai).
+La barre latérale affiche le sous-total, les taxes et le total de chaque cycle. C'est le montant que Converge prélève après l'inscription (et au paiement si le premier prélèvement est aujourd'hui et qu'il n'y a pas d'essai).
 
 ---
 
@@ -135,8 +136,8 @@ La barre latérale affiche le sous-total, les taxes et le total de chaque cycle.
 
 L'accord commence en **Pending**.
 
-<Frame caption="La page Agreement avec statut, carte, lien de gestion client, calendrier, articles et prélèvements.">
-  ![Accord Active pour Jane Doe montrant 17,52 $ CA par mois, VISA se terminant par 0002, lien de gestion client, Update schedule et un prélèvement capturé](/images/taliup-hq/recurring-payments/show.png)
+<Frame caption="La page Agreement avec statut, premier prélèvement, carte, lien de gestion client, articles et prélèvements.">
+  ![Accord Active pour Jane Doe montrant 20,00 $ CA par mois, dates de premier prélèvement et de prochain paiement, VISA se terminant par 0002, lien de gestion client et un prélèvement capturé](/images/taliup-hq/recurring-payments/show.png)
 </Frame>
 
 | Action | Quand elle apparaît |
@@ -149,9 +150,11 @@ Le lien de paiement expire après la fenêtre d'invitation et ne peut servir qu'
 
 Après le paiement :
 
-- Un prélèvement apparaît sous **Charges** (ou la carte est enregistrée s'il s'agit d'un essai gratuit).
+- Un prélèvement apparaît sous **Charges** lorsque le premier prélèvement est aujourd'hui. Si le premier prélèvement est plus tard, ou s'il s'agit d'un essai gratuit, la carte est enregistrée et rien n'est prélevé.
 - Le statut passe à **Active**.
-- Le **Customer manage link** apparaît. Il n'expire pas. Les clients l'utilisent pour voir l'historique et mettre à jour leur carte.
+- Le **Customer manage link** apparaît. Il n'expire pas. Les clients l'utilisent pour voir l'historique, mettre à jour leur carte et annuler si vous l'avez autorisé.
+
+Si le client annule, ou si vous annulez depuis HQ, l'accord affiche **Cancelled** et qui a annulé : **Customer**, le nom du commerçant, ou **Automatically**.
 
 ---
 
@@ -223,22 +226,9 @@ La bannière reste jusqu'à ce que :
 | **Resume** | Disponible sur Suspended. Les prélèvements planifiés reprennent. |
 | **Cancel agreement** | Arrête les prélèvements futurs. Les prélèvements passés restent capturés. Une annulation en attente désactive seulement le lien de paiement. |
 
-Vous ne pouvez pas changer la fréquence ni la prochaine date de paiement pendant une pause. Reprenez d'abord.
+Les clients peuvent annuler depuis la page de gestion seulement si **Allow this customer to cancel** est activé pour cet accord. Ils confirment dans une feuille, puis la page indique qui a annulé.
 
-Les clients peuvent annuler depuis la page de gestion seulement si **Allow this customer to cancel** est activé pour cet accord.
-
----
-
-## Update schedule
-
-Sur un accord inscrit, **Update schedule** peut modifier :
-
-- **Amount**
-- **Frequency** (pas pendant une pause)
-- **Next payment** (pas pendant une pause)
-- **End date**
-
-Les articles du catalogue restent les mêmes. Cliquez sur **Save schedule**.
+Vous ne pouvez pas changer le montant, la fréquence ni les dates après l'inscription. Cela exige une nouvelle autorisation du client. Créez un nouvel accord si le forfait doit changer.
 
 ---
 
@@ -265,8 +255,8 @@ Cliquez sur **Save Recurring Payment Settings**.
 
 Les clients ne se connectent pas à Taliup HQ.
 
-- **Checkout link** — page à usage unique pour payer aujourd'hui ou autoriser une carte pour un essai gratuit. Ils doivent cocher **I authorize {merchant} to charge my card…**
-- **Customer manage link** — n'expire pas. Les clients voient le calendrier, l'historique et **Update payment method**. **Cancel payment** n'apparaît que si vous l'avez autorisé.
+- **Checkout link** — page à usage unique pour payer aujourd'hui, ou pour enregistrer une carte si le premier prélèvement est plus tard ou si un essai est activé. La page suit la langue de l'entité. Les clients peuvent passer à l'anglais, au français ou à l'espagnol du Mexique. Ils doivent cocher **I authorize {merchant} to charge my card…**
+- **Customer manage link** — n'expire pas. Les clients voient le calendrier, l'historique et **Update payment method**. **Cancel recurring payment** n'apparaît que si vous l'avez autorisé. Ils confirment dans une feuille, puis peuvent revenir. La page utilise le même sélecteur de langue.
 
 Partagez l'un ou l'autre lien depuis la page de l'accord. Le lien de gestion figure aussi dans les courriels client après l'inscription.
 
@@ -276,10 +266,9 @@ Partagez l'un ou l'autre lien depuis la page de l'accord. Le lien de gestion fig
 
 | Courriel | Moment d'envoi |
 |---|---|
-| Invitation de paiement | À la création, et quand vous cliquez sur **Resend email** |
+| Invitation de paiement | À la création, et quand vous cliquez sur **Resend email**. Elle indique s'ils paient aujourd'hui ou s'ils autorisent seulement une carte. |
 | Reçu | Après un cycle réussi ou un Charge now |
 | Paiement refusé | Après l'échec du dernier prélèvement — envoyé à vous et au client |
-| Calendrier mis à jour | Quand vous changez le montant, la fréquence ou les dates |
 
 Demandez au client de vérifier les indésirables si l'invitation manque. Confirmez le courriel du client sur l'accord avant de renvoyer.
 
@@ -318,9 +307,17 @@ L'accord doit être **Past due** ou **Grace period**, et le paiement doit déjà
 
 Mettre à jour la carte n'encaisse pas le paiement manqué. Utilisez **Charge now**, ou attendez le prochain prélèvement prévu.
 
+### L'inscription a échoué
+
+Les accords **Failed** se trouvent sous **Closed**. Le client peut avoir besoin d'un nouvel accord et d'un nouveau lien de paiement.
+
+### Le client veut un autre montant ou une autre fréquence
+
+Vous ne pouvez pas changer le calendrier après l'inscription. Annulez l'accord en cours au besoin, puis créez-en un nouveau.
+
 ### Le client veut arrêter la facturation
 
-Utilisez **Cancel agreement**, ou demandez-lui d'annuler depuis la page de gestion si vous l'avez autorisé. Utilisez Pause pour arrêter les prélèvements temporairement.
+Utilisez **Cancel agreement**, ou demandez-lui d'appuyer sur **Cancel recurring payment** sur la page de gestion si vous l'avez autorisé. Utilisez Pause pour arrêter les prélèvements temporairement.
 
 ---
 
