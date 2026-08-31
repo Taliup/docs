@@ -59,7 +59,8 @@
                 "pages": [
                   "taliup-hq/devices/pax/index",
                   "taliup-hq/devices/pax/paxstore",
-                  "taliup-hq/devices/pax/add-devices"
+                  "taliup-hq/devices/pax/add-devices",
+                  "taliup-hq/devices/pax/switch-mev-to-pos"
                 ]
               },
               {
@@ -318,7 +319,8 @@
                     "pages": [
                       "fr-CA/taliup-hq/devices/pax/index",
                       "fr-CA/taliup-hq/devices/pax/paxstore",
-                      "fr-CA/taliup-hq/devices/pax/add-devices"
+                      "fr-CA/taliup-hq/devices/pax/add-devices",
+                      "fr-CA/taliup-hq/devices/pax/switch-mev-to-pos"
                     ]
                   },
                   {

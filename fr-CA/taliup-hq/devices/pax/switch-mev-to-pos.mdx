@@ -1,0 +1,73 @@
+---
+title: "Passer un marchand de Taliup MEV à Taliup POS"
+sidebarTitle: "Migrer depuis MEV"
+description: "Faire passer un marchand PAX A920 Pro de l'application autonome Taliup MEV à Taliup POS, terminal par terminal, dans PaxStore."
+keywords: ["MEV", "migration", "passer", "Taliup MEV", "Taliup POS", "PaxStore", "WEB-SRM", "MEV-WEB", "A920 Pro"]
+---
+
+Taliup POS inclut maintenant le support du WEB-SRM (MEV-WEB), le marchand n'a donc plus besoin de l'application autonome **Taliup MEV** sur son terminal. Utilisez cette page pour retirer Taliup MEV et installer Taliup POS à sa place.
+
+<Note>
+  Taliup MEV fonctionne seulement sur le **PAX A920 Pro**. Répétez cette procédure une fois pour chaque terminal du marchand qui a encore Taliup MEV installé.
+</Note>
+
+## Avant de commencer
+
+- Accès à **PaxStore** avec le bon **Administrator Center** et le compte **Reseller**.
+- Le terminal allumé et connecté à Internet.
+- Confirmez que le Reseller ou le Merchant est **abonné** à **Taliup POS** dans le marketplace PaxStore avant de le pousser.
+- Si le marchand n'est pas déjà configuré pour le WEB-SRM dans Taliup HQ, terminez d'abord les [Paramètres MEV-WEB](/fr-CA/taliup-hq/onboarding/web-srm). Taliup POS affiche **This business has no WEB-SRM configuration from Taliup HQ** à la connexion tant que ce n'est pas fait.
+
+## Étapes
+
+<Steps>
+  <Step title="Se connecter à PaxStore">
+    Connectez-vous à PaxStore avec vos identifiants administrateur.
+  </Step>
+  <Step title="Trouver le marchand">
+    Dans **Terminal Management**, cherchez le marchand (ou son Reseller) pour ouvrir sa liste de terminaux.
+  </Step>
+  <Step title="Ouvrir le terminal concerné">
+    Dans la liste de terminaux, cliquez sur le terminal qui a encore Taliup MEV installé pour ouvrir ses **Terminal Details**.
+  </Step>
+  <Step title="Aller à App & Firmware">
+    Cliquez sur l'onglet **App & Firmware**.
+  </Step>
+  <Step title="Désinstaller Taliup MEV">
+    Sous **Installed Apps**, trouvez **Taliup MEV** et cliquez sur l'icône de poubelle sous **Type & Action** pour le désinstaller.
+  </Step>
+  <Step title="Installer Taliup POS">
+    Poussez **Taliup POS** sur le terminal. Suivez l'ordre de poussée des applications pour l'**A920 Pro** dans [Configuration PaxStore](/fr-CA/taliup-hq/devices/pax/paxstore#3-pax-a920-pro-pousser-les-applications) — **BroadPOS Manager**, puis l'application BroadPOS de l'acquéreur, puis **Taliup POS**, en confirmant que chaque **Push Task** affiche **Success** avant de continuer.
+
+    <Tip>
+      Si BroadPOS Manager et l'application BroadPOS de l'acquéreur sont déjà installés et fonctionnels depuis la configuration Taliup MEV, il suffit de pousser **Taliup POS**.
+    </Tip>
+  </Step>
+  <Step title="Répéter pour chaque terminal concerné">
+    Répétez les étapes 3 à 6 pour chaque autre terminal du marchand qui a encore Taliup MEV installé.
+  </Step>
+</Steps>
+
+## Vérification
+
+| Vérification | Résultat attendu |
+|---|---|
+| Installed Apps | **Taliup MEV** a disparu; **Taliup POS** affiche une Push Task **Success** |
+| Première connexion sur le terminal | L'écran de connexion des employés s'affiche sans erreur de configuration WEB-SRM |
+| Inscription WEB-SRM | **Inscrire cet appareil** s'affiche et se termine avec succès |
+
+## Dépannage
+
+| Problème | Quoi essayer |
+|---|---|
+| Aucune icône de poubelle à côté de Taliup MEV | L'application est peut-être un **System App**, qui ne peut pas être retiré des Installed Apps. Confirmez que vous regardez la bonne ligne sous **Type & Action** — seules les entrées **App Store** et **Third Party** sont amovibles. |
+| La poussée de Taliup POS ne se termine jamais | Confirmez que le terminal est en ligne dans PaxStore, vérifiez le statut du **Push Task**, confirmez que **Taliup POS** est abonné dans le marketplace, puis redémarrez le terminal et réessayez. |
+| Pas d'invite carte après la bascule | BroadPOS manque ou est mal configuré. Repoussez **BroadPOS Manager**, puis l'application BroadPOS de l'acquéreur avec les paramètres VAR, puis **Taliup POS** — dans cet ordre. |
+| **This business has no WEB-SRM configuration from Taliup HQ** à la première connexion | Terminez les [Paramètres MEV-WEB](/fr-CA/taliup-hq/onboarding/web-srm) dans Taliup HQ, puis déconnectez-vous et reconnectez-vous sur le terminal. |
+
+## Suite
+
+Une fois Taliup POS installé, le personnel peut se connecter pour la première fois sur le terminal et l'inscrire au WEB-SRM.
+
+- [Première connexion →](/fr-CA/taliup-pos/first-login)
+- [Inscrire Taliup POS au WEB-SRM →](/fr-CA/taliup-pos/web-srm)
