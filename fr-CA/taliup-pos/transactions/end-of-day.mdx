@@ -1,0 +1,81 @@
+---
+title: "Rapport de fin de journée"
+sidebarTitle: "Fin de journée"
+description: "Prévisualiser, générer et imprimer un rapport de fin de journée pour un ou plusieurs appareils et utilisateurs."
+keywords: ["fin de journée", "rapport quotidien", "rapprochement", "réimpression"]
+---
+
+**Fin de journée** imprime un rapport de documentation marchand pour une date commerciale. Utilisez-le pour rapprocher les ventes, les paiements, les déboursements et les articles les plus vendus.
+
+<Warning>
+Ce rapport ne clôture **pas** les lots de cartes et ne règle pas le terminal. Il sert uniquement à la documentation.
+</Warning>
+
+## Comment y accéder
+
+Accueil → **Transactions** → **Fin de journée**.
+
+Le bouton s'affiche lorsque la fonction **End of Day Report** est activée sur le plan. Ouvrir **Transactions** exige toujours la permission de gérer les transactions.
+
+Vous pouvez aussi générer ce rapport dans Taliup HQ. Voir [Fin de journée dans Taliup HQ](/fr-CA/taliup-hq/features/end-of-day).
+
+## Configuration du rapport
+
+**Appareils** et **Utilisateurs** sont par défaut **Tous les appareils** et **Tous les utilisateurs**. Cela inclut chaque appareil activé et chaque utilisateur du personnel de l'entité.
+
+Appuyez sur **Modifier** sur une ligne pour restreindre le rapport.
+
+| Réglage | Ce qu'il inclut |
+|---|---|
+| **Appareils** | Terminaux activés. Sélectionnez-en un ou plusieurs. |
+| **Utilisateurs** | Utilisateurs du personnel. Sélectionnez-en un ou plusieurs. |
+| **Date commerciale** | Aujourd'hui, ou n'importe quel jour des 3 derniers mois |
+
+Vous devez garder au moins un appareil et un utilisateur sélectionnés.
+
+<Tip>
+Laissez les deux listes sur **Tous** pour un rapport de tout le magasin. Restreignez les listes si vous n'avez besoin que d'une caisse ou d'un caissier.
+</Tip>
+
+## Générer et imprimer
+
+<Steps>
+  <Step title="Confirmer la portée">
+    Dans **Configuration du rapport**, vérifiez **Appareils**, **Utilisateurs** et **Date commerciale**.
+  </Step>
+  <Step title="Ouvrir l'aperçu">
+    Appuyez sur **Générer et imprimer**. Taliup POS affiche **Vérifier le rapport marchand** avec un aperçu de type reçu.
+  </Step>
+  <Step title="Générer">
+    Appuyez sur **Générer**. Le rapport s'imprime sur l'imprimante de reçus choisie dans [Imprimantes](/fr-CA/taliup-pos/settings/printers).
+  </Step>
+</Steps>
+
+Le rapport imprimé liste les **Appareils** et **Utilisateurs** sélectionnés par nom. Suivent les totaux, le mix de paiements, les sources de ventes, les statuts, les articles les plus vendus et qui a initié les paiements.
+
+## Historique de fin de journée
+
+Ouvrez l'onglet **Historique de fin de journée** pour réimprimer un rapport déjà généré.
+
+Chaque ligne affiche la date commerciale, le total, les appareils et les utilisateurs. Appuyez sur **Réimprimer** pour imprimer de nouveau ce rapport enregistré.
+
+<Note>
+Les rapports plus anciens, générés avant cette mise à jour, sont recalculés à la réimpression. Les nouveaux rapports réimpriment l'instantané enregistré au moment de la génération.
+</Note>
+
+## Dépannage
+
+| Situation | À vérifier |
+|---|---|
+| Pas de bouton **Fin de journée** | Activez **End of Day Report** sur le plan du marchand dans Taliup HQ |
+| Sélectionnez au moins un appareil ou utilisateur | Gardez au moins une case cochée dans chaque liste |
+| Date non autorisée | Choisissez aujourd'hui ou une date dans les 3 derniers mois |
+| L'impression échoue | Connexion de l'imprimante dans [Imprimantes](/fr-CA/taliup-pos/settings/printers) |
+| Aucun historique | Confirmez la plage de dates et appuyez sur **Actualiser** |
+
+## Voir aussi
+
+- [Transactions](/fr-CA/taliup-pos/transactions)
+- [Réimprimer un reçu](/fr-CA/taliup-pos/transactions/reprint)
+- [Réglages → Imprimantes](/fr-CA/taliup-pos/settings/printers)
+- [Fin de journée dans Taliup HQ](/fr-CA/taliup-hq/features/end-of-day)

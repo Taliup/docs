@@ -111,7 +111,8 @@
                   "taliup-hq/features/hosted-payments",
                   "taliup-hq/features/invoicing",
                   "taliup-hq/features/clients",
-                  "taliup-hq/features/scale-items"
+                  "taliup-hq/features/scale-items",
+                  "taliup-hq/features/end-of-day"
                 ]
               }
             ]
@@ -187,7 +188,8 @@
                   "taliup-pos/transactions/details",
                   "taliup-pos/transactions/void",
                   "taliup-pos/transactions/refund",
-                  "taliup-pos/transactions/reprint"
+                  "taliup-pos/transactions/reprint",
+                  "taliup-pos/transactions/end-of-day"
                 ]
               },
               {
@@ -370,7 +372,8 @@
                       "fr-CA/taliup-hq/features/hosted-payments",
                       "fr-CA/taliup-hq/features/invoicing",
                       "fr-CA/taliup-hq/features/clients",
-                      "fr-CA/taliup-hq/features/scale-items"
+                      "fr-CA/taliup-hq/features/scale-items",
+                      "fr-CA/taliup-hq/features/end-of-day"
                     ]
                   }
                 ]
@@ -446,7 +449,8 @@
                       "fr-CA/taliup-pos/transactions/details",
                       "fr-CA/taliup-pos/transactions/void",
                       "fr-CA/taliup-pos/transactions/refund",
-                      "fr-CA/taliup-pos/transactions/reprint"
+                      "fr-CA/taliup-pos/transactions/reprint",
+                      "fr-CA/taliup-pos/transactions/end-of-day"
                     ]
                   },
                   {
