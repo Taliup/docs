@@ -1,0 +1,140 @@
+---
+title: "Articles de balance"
+sidebarTitle: "Articles de balance"
+description: "Réglez le SKU, Produit pesé et l'unité dans Taliup HQ pour que Caisse puisse scanner une étiquette de balance ou accepter un poids saisi."
+---
+
+Préparez les produits du catalogue pour une balance de comptoir. Taliup HQ conserve le **SKU**, le **prix unitaire** et l'option **Produit pesé**. Taliup POS lit l'étiquette imprimée (ou un poids saisi) dans Caisse.
+
+Les caissiers scannent et saisissent le poids sur le terminal. Voir [Codes-barres de balance](/fr-CA/taliup-pos/register/scale-barcodes).
+
+<Note>
+  Vous n'avez pas à jumeler la balance à Taliup HQ. Programmez le même PLU à 5 chiffres sur la balance et dans le **SKU** du produit.
+</Note>
+
+---
+
+## Prérequis
+
+- La fonction **Catalogue** est activée sur le plan de l'entité. Demandez à votre admin ISO de l'activer dans [Plans et fonctionnalités](/fr-CA/taliup-hq/onboarding/plans-features) si vous ne voyez pas **Catalogues** dans la barre latérale.
+- Le produit est dans le catalogue utilisé par le terminal. Un produit qui existe mais n'est pas dans ce catalogue renvoie **Produit introuvable** au scan.
+
+---
+
+## Deux types d'étiquettes
+
+| Étiquette | Ce que la balance imprime | Réglage du produit dans HQ |
+|---|---|---|
+| **Prix** | Produit + un montant | Réglez le **SKU**. Laissez **Produit pesé** désactivé. Le **Prix** catalogue n'est qu'un secours — le prix de l'étiquette l'emporte au scan. |
+| **Poids** | Produit + un poids mesuré | Réglez le **SKU**, activez **Produit pesé**, choisissez **kg**, **g**, **lb** ou **oz**, et définissez le **Prix** catalogue comme tarif par unité. |
+
+Les étiquettes de poids et **Saisir le poids** sur le POS exigent un prix catalogue par unité. **Prix personnalisé** et **Produit pesé** ne peuvent pas être activés ensemble.
+
+---
+
+## Où régler Produit pesé
+
+| Endroit | Ce que vous pouvez régler |
+|---|---|
+| **Catalogues** ou une catégorie → ajouter un produit | **SKU**, **Produit pesé** et **Unité** |
+| **Produits** → modifier → **Vendu par** | **Produit pesé** et **Unité**. La quantité en stock est en lecture seule ici. |
+| **Inventaire** → ouvrir un produit | **Produit pesé**, **Unité** et stock |
+| Import Excel **Produits** | Colonnes **Weighable** et **Unit** (après **Product SKU**) |
+| **Inventaire → Unités** | Bibliothèque d'unités seulement. N'envoyez pas les marchands dans Paramètres. |
+
+Le titre de la carte est **Vendu par**. Le libellé de l'interrupteur est **Produit pesé**. Texte d'aide : *Vendu au poids; le prix provient d'un code-barres avec poids intégré.*
+
+---
+
+## Configurer une étiquette de prix
+
+<Steps>
+  <Step title="Faire correspondre le PLU">
+    Ouvrez **Produits**, créez ou modifiez l'article, et réglez le **SKU** exactement sur le PLU à 5 chiffres de la balance. Aucun caractère en plus.
+  </Step>
+  <Step title="Laisser Produit pesé désactivé">
+    N'activez pas **Produit pesé**. Mettez le **Prix** catalogue de votre choix — Caisse utilise le montant imprimé lorsque le caissier scanne.
+  </Step>
+  <Step title="L'ajouter au catalogue">
+    Ajoutez le produit au catalogue assigné au terminal.
+  </Step>
+</Steps>
+
+---
+
+## Configurer une étiquette de poids
+
+<Steps>
+  <Step title="Faire correspondre le PLU">
+    Réglez le **SKU** sur le PLU à 5 chiffres imprimé par la balance.
+  </Step>
+  <Step title="Définir le prix unitaire">
+    Entrez le **Prix** comme tarif pour une unité (par exemple `8.00` si l'unité est le kg).
+  </Step>
+  <Step title="Activer Produit pesé">
+    Dans **Vendu par** (modification du produit), **Inventaire**, ou à la création depuis un catalogue ou une catégorie, activez **Produit pesé** et choisissez une unité dont l'abréviation est **kg**, **g**, **lb** ou **oz**.
+  </Step>
+  <Step title="L'ajouter au catalogue">
+    Ajoutez le produit au catalogue utilisé par le terminal.
+  </Step>
+</Steps>
+
+Si **Prix personnalisé** est activé, Taliup désactive **Produit pesé**. Désactivez d'abord **Prix personnalisé**.
+
+Si le sélecteur d'unité est vide, ouvrez **Inventaire → Unités**. Taliup crée **Kilogramme (`kg`)**, **Gramme (`g`)**, **Livre (`lb`)** et **Once (`oz`)** à la création de l'entité et la première fois que quelqu'un ouvre le catalogue, un produit ou Unités.
+
+---
+
+## Comment la balance et Taliup s'accordent
+
+L'abréviation de l'unité indique à Caisse où placer la décimale dans les cinq chiffres de poids de l'étiquette.
+
+| Abréviation | Décimales | `01234` imprimé signifie |
+|---|---|---|
+| **kg** | 3 | `1.234 kg` |
+| **g** | 0 | `1234 g` |
+| **lb** | 2 | `12.34 lb` |
+| **oz** | 1 | `123.4 oz` |
+
+Utilisez la même unité que celle programmée sur la balance. D'autres abréviations conviennent aux articles emballés. Elles sont refusées lorsque **Produit pesé** est activé.
+
+---
+
+## Import en masse
+
+Dans **Produits**, téléchargez un nouveau modèle (ou un export) avant de charger. Les anciens fichiers n'ont pas ces colonnes.
+
+Sur la feuille **Products**, juste après **Product SKU** :
+
+| Colonne | Quoi entrer |
+|---|---|
+| **Product SKU** | Le PLU à 5 chiffres |
+| **Weighable** | `Yes` / `Y` / `1` pour les articles au poids. `No` ou vide pour les étiquettes de prix |
+| **Unit** | Nom ou abréviation. Obligatoire si Weighable est Yes. Accepte `kg`, `g`, `lb`, `oz` et des noms comme `Kilograms` ou `lbs` |
+
+- Si l'unité n'existe pas, l'import la crée pour ce marchand.
+- Weighable Yes avec une unité non pondérale arrête cette ligne. L'unité n'est pas créée.
+- Une ligne à prix personnalisé (**Price** vide) reste à prix personnalisé. L'import désactive **Produit pesé** même si la cellule dit Yes.
+- **Weighable** manquant laisse le produit non pesé. Les feuilles sans ces colonnes s'importent encore.
+
+---
+
+## Après la vente
+
+| Surface | Ce que vous voyez |
+|---|---|
+| Détails de commande HQ | Les lignes de poids affichent `0.450 kg`, pas `1` |
+| Rapports Commandes et Articles | La même quantité formatée. Deux soupes de `0.450 kg` comptent `0.900 kg` |
+| Fin de journée et Profit | La quantité vendue et le coût utilisent le poids scanné ou saisi |
+| Inventaire | Le stock baisse de ce poids. Un remboursement remet le même poids |
+| Courriel de stock bas | La quantité en main inclut l'unité (par exemple `4.500 kg`) |
+
+Supprimer une unité utilisée par un produit pesé désactive **Produit pesé** sur ce produit. Réassignez une unité de poids et réactivez **Produit pesé**.
+
+---
+
+## Voir aussi
+
+- [Codes-barres de balance](/fr-CA/taliup-pos/register/scale-barcodes) — scan et saisie du poids sur le terminal
+- [Inventaire](/fr-CA/taliup-pos/catalog/inventory) — Pesable et unité sur le POS
+- [Plans et fonctionnalités](/fr-CA/taliup-hq/onboarding/plans-features)

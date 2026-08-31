@@ -1,7 +1,7 @@
 ---
 title: "Inventaire"
 sidebarTitle: "Inventaire"
-description: "Gérer le stock des produits, les matières premières et les unités de mesure."
+description: "Gérer le stock, Vendu par / Pesable, les matières premières et les unités de mesure."
 ---
 
 **Inventaire** suit le stock des produits à vendre et, lorsque c'est activé, les matières premières et les unités. L'accès exige la fonction inventaire.
@@ -20,20 +20,46 @@ Accueil → **Menu** / **Catalogue** → **Inventaire**.
 |---|---|
 | **Products** | Toujours (dans Inventaire) |
 | **Raw Materials** | Habituellement restaurants; peut exiger un add-on inventaire |
-| **Units** | Lorsque la fonction unités est activée |
+| **Unités** | Lorsque la fonction unités est activée |
 
 ## Products
 
 Colonnes : **Name**, **SKU**, **QTY.** Recherchez par nom, SKU ou prix.
 
-Ouvrez un produit pour modifier l'inventaire :
+Ouvrez un produit pour modifier l'inventaire. L'en-tête affiche le nom, le **SKU**, le **Prix** et le **stock total** (avec l'abréviation d'unité lorsqu'il y en a une).
 
 - Quantité en main
 - **RP.** (seuil de réapprovisionnement) lorsque c'est activé
-- **Vendu par** facultatif (unité + quantité déduite par vente) lorsque les unités sont activées
-- **Pesable** plus une unité **kg**, **g**, **lb** ou **oz** lorsque le produit est vendu au poids (étiquette de balance ou saisie du poids) — voir [Codes-barres de balance](/fr-CA/taliup-pos/register/scale-barcodes). Pesable ne peut pas être combiné avec le prix personnalisé.
+- **Vendu par** — unité et **Pesable** (voir ci-dessous)
 
-Les options peuvent inclure la synchronisation de l'inventaire avec les produits. Enregistrez ou annulez vos changements.
+Appuyez sur **Enregistrer** pour écrire le stock et Vendu par ensemble, ou **Annuler**. Les options peuvent inclure la synchronisation de l'inventaire avec les produits.
+
+### Vendu par
+
+La carte **Vendu par** est sur l'écran d'inventaire du produit.
+
+Texte d'aide : *Unité de ce produit. Activez Pesable pour les étiquettes de balance; le stock est déduit selon le poids scanné.*
+
+| Contrôle | Rôle |
+|---|---|
+| **Pesable** | Vendu au poids via un code-barres de balance ou [Saisir le poids](/fr-CA/taliup-pos/settings/general). Le prix est le tarif catalogue × le poids. |
+| **Unité** | Unité de mesure. Obligatoire lorsque Pesable est activé. |
+| **Quantité déduite par vente** | Quantité de stock à retirer pour une vente emballée. Masqué lorsque Pesable est activé. |
+
+**Lorsque Pesable est désactivé**
+
+- **Unité** peut être **Par article (défaut)** ou n'importe quelle unité de la liste.
+- Si la fonction unités est activée, la liste inclut **+ Ajouter une unité personnalisée**.
+- Réglez **Quantité déduite par vente** (par exemple `250` si chaque vente utilise 250 g).
+
+**Lorsque Pesable est activé**
+
+- **Unité** n'affiche que **kg**, **g**, **lb** et **oz**. Choisissez-en une avant d'enregistrer.
+- **Quantité déduite par vente** est masqué. Texte d'aide : *Le poids scanné est déduit de l'inventaire à la caisse.*
+- **+ Ajouter une unité personnalisée** n'apparaît pas dans cette liste. Créez d'abord une unité de poids sous **Unités** (ou dans Taliup HQ).
+- S'il n'existe aucune unité de poids, Taliup affiche : *Ajoutez une unité kg, g, lb ou oz dans HQ Inventaire > Unités avant de marquer ce produit pesable.*
+
+Pesable exige un prix catalogue par unité. **Prix personnalisé** et **Pesable** ne peuvent pas être activés ensemble — désactivez d'abord le prix personnalisé dans Taliup HQ. Voir [Codes-barres de balance](/fr-CA/taliup-pos/register/scale-barcodes) et [Articles de balance](/fr-CA/taliup-hq/features/scale-items).
 
 ## Raw materials
 
@@ -48,19 +74,26 @@ Titre **Raw Materials**. Appuyez sur **Add Raw Material** ou modifiez une ligne.
 
 Recherchez par nom. La suppression est disponible à l'édition.
 
-## Units
+## Unités
 
-Titre **Units**. Appuyez sur **Add Custom Unit** ou modifiez une ligne.
+Titre **Unités**. Recherchez par nom ou abréviation. Appuyez sur **Ajouter une unité personnalisée** ou ouvrez une ligne pour modifier.
 
 | Champ | Notes |
 |---|---|
-| **Name** | Nom de l'unité |
-| **Abbreviation** | Par exemple kg |
-| **Precision** | Précision décimale |
+| **Nom** | Nom de l'unité |
+| **Abréviation** | Code court affiché dans Caisse et sur les reçus. Utilisez **kg**, **g**, **lb** ou **oz** si cette unité servira à un produit pesable. |
+| **Précision** | Nombre de décimales à afficher |
 
-Recherchez par nom ou abréviation.
+Taliup HQ crée **Kilogramme (`kg`)**, **Gramme (`g`)**, **Livre (`lb`)** et **Once (`oz`)** pour les nouveaux marchands. Vous pouvez ajouter d'autres unités ici pour les articles emballés.
+
+Un produit pesable n'accepte que ces quatre abréviations. Les autres unités restent dans le sélecteur lorsque **Pesable** est désactivé. Après avoir ajouté `kg` / `g` / `lb` / `oz`, elles apparaissent dans la liste **Unité** filtrée de **Vendu par**.
+
+<Warning>
+  Supprimer une unité utilisée par un produit pesable désactive **Pesable** sur ce produit. Réassignez une unité de poids et réactivez **Pesable**.
+</Warning>
 
 ## Connexe
 
 - [Produits / Articles](/fr-CA/taliup-pos/catalog/products)
 - [Codes-barres de balance](/fr-CA/taliup-pos/register/scale-barcodes)
+- [Articles de balance](/fr-CA/taliup-hq/features/scale-items)

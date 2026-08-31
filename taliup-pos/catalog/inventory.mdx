@@ -1,7 +1,7 @@
 ---
 title: "Inventory"
 sidebarTitle: "Inventory"
-description: "Manage product stock, raw materials, and units of measure."
+description: "Manage product stock, Sold by / Weighable, raw materials, and units of measure."
 ---
 
 **Inventory** tracks stock for sellable products and, when enabled, raw materials and units. Access requires the inventory feature.
@@ -26,14 +26,40 @@ Home → **Menu** / **Catalog** → **Inventory**.
 
 List columns: **Name**, **SKU**, **QTY.** Search by name, SKU, or price.
 
-Open a product to edit inventory:
+Open a product to edit inventory. The header shows name, **SKU**, **Price**, and **Total Stock** (with the unit abbreviation when one is set).
 
 - Quantity on hand
 - **RP.** (reorder point) when enabled
-- Optional **Sold by** (unit + quantity deducted per sale) when units are enabled
-- **Weighable** plus a **kg**, **g**, **lb**, or **oz** unit when the product is sold by weight (scale sticker or typed weight) — see [Scale barcodes](/taliup-pos/register/scale-barcodes). Weighable cannot be combined with Custom price.
+- **Sold by** — unit and **Weighable** (see below)
 
-Options may include syncing inventory with products. Save or cancel your changes.
+Tap **Save** to write stock and Sold by together, or **Cancel**. Options may include syncing inventory with products.
+
+### Sold by
+
+The **Sold by** card is on the product inventory screen.
+
+Help text: *Unit for this product. Turn on Weighable for scale labels; stock deducts by the scanned weight.*
+
+| Control | What it does |
+|---|---|
+| **Weighable** | Sold by weight from a scale barcode or [Enter weight](/taliup-pos/settings/general). Price is catalog `$/unit ×` weight. |
+| **Unit** | Measurement unit. Required when Weighable is on. |
+| **Quantity Deducted per Sale** | How much stock to remove for one packaged sale. Hidden when Weighable is on. |
+
+**When Weighable is off**
+
+- **Unit** can be **Per Item (default)** or any unit in the list.
+- If the units feature is on, the list includes **+ Add Custom Unit**.
+- Set **Quantity Deducted per Sale** (for example `250` if each sale uses 250 g).
+
+**When Weighable is on**
+
+- **Unit** lists only **kg**, **g**, **lb**, and **oz**. Pick one before you save.
+- **Quantity Deducted per Sale** is hidden. Help text: *The scanned weight is deducted from inventory at checkout.*
+- **+ Add Custom Unit** is not in this list. Create a weight unit under **Units** (or in Taliup HQ) first.
+- If no weight unit exists, Taliup shows: *Add a kg, g, lb, or oz unit in HQ Inventory > Units before marking this product weighable.*
+
+Weighable needs a catalog price per unit. **Custom price** and **Weighable** cannot be on together — turn Custom price off in Taliup HQ first. See [Scale barcodes](/taliup-pos/register/scale-barcodes) and [Scale items](/taliup-hq/features/scale-items).
 
 ## Raw materials
 
@@ -50,17 +76,24 @@ Search by name. Delete is available when editing.
 
 ## Units
 
-Title **Units**. Tap **Add Custom Unit** or edit a row.
+Title **Units**. Search by name or abbreviation. Tap **Add Custom Unit** or open a row to edit.
 
 | Field | Notes |
 |---|---|
 | **Name** | Unit name |
-| **Abbreviation** | For example kg |
-| **Precision** | Decimal precision |
+| **Abbreviation** | Short code shown on Register and receipts. Use **kg**, **g**, **lb**, or **oz** if this unit will back a weighable product. |
+| **Precision** | How many decimal places to display |
 
-Search by name or abbreviation.
+Taliup HQ creates **Kilogram (`kg`)**, **Gram (`g`)**, **Pound (`lb`)**, and **Ounce (`oz`)** for new merchants. You can add more units here for packaged items.
+
+A weighable product only accepts those four abbreviations. Other units stay in the picker when **Weighable** is off. After you add `kg` / `g` / `lb` / `oz`, they appear in the weight-only **Unit** list on **Sold by**.
+
+<Warning>
+  Deleting a unit that a weighable product uses turns **Weighable** off on that product. Reassign a weight unit and turn **Weighable** back on.
+</Warning>
 
 ## Related
 
 - [Products / Items](/taliup-pos/catalog/products)
 - [Scale barcodes](/taliup-pos/register/scale-barcodes)
+- [Scale items](/taliup-hq/features/scale-items)
