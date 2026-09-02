@@ -1,7 +1,7 @@
 ---
 title: "Take payment"
 sidebarTitle: "Take payment"
-description: "Collect Pay Full or Split Amount payments with card, cash, tip prompts, and receipt options."
+description: "Collect Pay Full or Split Amount payments with card, cash, tip prompts, and customer receipt choices."
 ---
 
 From the cart (or Open Sale **Pay**), Taliup POS opens the payment screen so you can collect the balance.
@@ -37,7 +37,7 @@ On **Split Amount**, choose a preset such as **Full Amount**, **N Ways**, or **C
     Follow the on-device prompts. If tips are enabled in Taliup HQ, the customer may see **Add a Tip** with presets, **No Tip**, or **Custom**.
   </Step>
   <Step title="Finish">
-    Wait for approval. Taliup POS posts the payment and may prompt for receipts (see below).
+    Wait for approval. Taliup POS posts the payment and may ask how the customer should get a receipt.
   </Step>
 </Steps>
 
@@ -70,19 +70,22 @@ When enabled for the merchant, the payment screen may also show:
 
 ## After payment
 
-Depending on settings and order type, you may see prompts such as:
+Depending on settings and order type, you may see:
 
-1. **Send Order To Kitchen** — send items to kitchen printers. Set those printers up under [Settings → Printers](/taliup-pos/settings/printers).
-2. **Customer Copy** — **Print Customer Copy Receipt?**
-3. **Order Fully Paid** — print the order receipt
-4. **Guest Fully Paid** — print that guest’s receipt
+1. **Send To Kitchen Printer** — send items to kitchen printers. Set those printers up under [Settings → Printers](/taliup-pos/settings/printers). When **Send order to external printer after payment** is on, this happens automatically.
+2. **Choose customer receipt** — **No Receipt**, **Paper**, or **Email**. See [Customer receipt](/taliup-pos/register/customer-receipt).
+3. On a split sale, **Choose full order customer receipt** after the last payment.
+4. On some table orders, **Order Fully Paid** or **Guest Fully Paid** print prompts, unless **Skip Fully Paid Receipt Prompts** is on.
 
-Receipt behavior is also controlled by [General settings](/taliup-pos/settings/general) (auto-print, skip merchant copy, skip fully paid prompts).
+The merchant copy still prints unless **Skip Merchant Receipt Copy** is on.
+
+Receipt behavior is also controlled by [General settings](/taliup-pos/settings/general).
 
 Completed payments appear under [Transactions](/taliup-pos/transactions).
 
 ## Related
 
+- [Customer receipt](/taliup-pos/register/customer-receipt)
 - [Cart](/taliup-pos/register/cart)
 - [Options side menu](/taliup-pos/register/options) — Create Auth, Create Refund, print bill
 - [Void](/taliup-pos/transactions/void) · [Refund](/taliup-pos/transactions/refund)

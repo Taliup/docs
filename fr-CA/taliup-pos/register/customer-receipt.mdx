@@ -1,0 +1,117 @@
+---
+title: "Reçu client"
+sidebarTitle: "Reçu client"
+description: "Choisir Aucun reçu, Papier ou Courriel après une vente, y compris les paiements partagés et le reçu de commande complète."
+keywords: ["reçu", "reçu client", "courriel", "papier", "paiement partagé", "impression automatique"]
+---
+
+Après un paiement réussi, Taliup POS demande comment le client doit recevoir un reçu.
+
+Le titre de l'invite est **Choisir le reçu client**. La question est **Comment le client doit-il recevoir ce reçu?**
+
+<Info>
+  La copie marchand s'imprime toujours automatiquement, sauf si [**Ignorer le reçu de copie du commerçant**](/fr-CA/taliup-pos/settings/general) est activé. La copie marchand n'est pas un des choix client.
+</Info>
+
+## Choix
+
+| Choix | Ce qui se passe |
+|---|---|
+| **Aucun reçu** | Rien n'est imprimé ni envoyé pour cette copie client. |
+| **Papier** | Imprime la copie client sur l'[imprimante de reçus](/fr-CA/taliup-pos/settings/printers). |
+| **Courriel** | Envoie le reçu au client. Affiché seulement lorsqu'un courriel est disponible ou peut être saisi. |
+
+## Quand Courriel est disponible
+
+| Commande | **Courriel** |
+|---|---|
+| Un [client est associé](/fr-CA/taliup-pos/clients/attach-from-register) et a un courriel | **Courriel** est affiché. Taliup POS envoie à cette adresse. |
+| Un client est associé et n'a pas de courriel | **Courriel** est masqué. Ajoutez le courriel au client avant la vente s'il veut un reçu numérique. |
+| Aucun client | **Courriel** est affiché. Appuyez dessus et saisissez une **Adresse courriel**. Utilisez **Retour** pour revenir aux choix. |
+
+Si vous saisissez un courriel et qu'aucun client n'est sur la commande, Taliup peut créer un client à partir de cette adresse et l'associer à la commande.
+
+## Un seul paiement
+
+Lorsque vous encaissez le solde en un paiement, vous voyez **Choisir le reçu client** une seule fois.
+
+1. Encaissez. Voir [Encaisser](/fr-CA/taliup-pos/register/take-payment).
+2. Choisissez **Aucun reçu**, **Papier** ou **Courriel** (lorsqu'il est affiché).
+3. La vente est terminée.
+
+Activez **Imprimer automatiquement le reçu client** dans les [Paramètres généraux](/fr-CA/taliup-pos/settings/general) pour imprimer la copie client et ignorer cette invite.
+
+## Paiements partagés
+
+Une vente partagée utilise deux types de reçu client.
+
+<Steps>
+  <Step title="Chaque paiement">
+    Après chaque paiement partiel, vous voyez **Choisir le reçu client**.
+
+    Le montant affiché est celui de ce paiement seulement (par exemple `22,61 $` d'une vente de `67,82 $`).
+
+    Les choix sont **Papier** et **Aucun reçu**. **Courriel** est masqué à ces étapes.
+
+    **Papier** imprime ce paiement seulement.
+  </Step>
+  <Step title="Après le dernier paiement">
+    Après Papier ou Aucun reçu sur le dernier paiement, Taliup POS affiche **Choisir le reçu client de la commande complète**.
+
+    Le montant est la vente entière. Les choix sont **Papier**, **Courriel** (lorsqu'il est disponible) et **Aucun reçu**.
+
+    **Papier** imprime toute la commande : tous les articles et tous les paiements. **Courriel** envoie le même reçu de commande complète.
+  </Step>
+</Steps>
+
+<Note>
+  **Ignorer les invitations de reçu entièrement payé** ignore les invites d'impression « commande entièrement payée » et « invité entièrement payé ». Elle n'ignore pas **Choisir le reçu client** ni **Choisir le reçu client de la commande complète**.
+</Note>
+
+## Contenu du courriel
+
+Le reçu par courriel affiche le nom de l'entreprise, les articles, les taxes, les frais, les rabais et le total.
+
+Il affiche aussi ces lignes lorsqu'elles s'appliquent :
+
+- Surcharge
+- **Card Price Adjustment** (prix double)
+- Pourboire
+
+Sur une vente partagée, le courriel liste d'abord la commande complète, puis chaque paiement (méthode et montant).
+
+## Écran client
+
+Sur un appareil avec un écran côté client, le client choisit sur son écran.
+
+Le personnel voit **Le client choisit un reçu…** avec :
+
+| Contrôle | Ce qu'il fait |
+|---|---|
+| **Prendre le contrôle** | Déplace le sélecteur vers l'écran du personnel. |
+| **Aucun reçu** | Termine l'invite sans copie client. |
+
+Sur certains appareils, l'écran client utilise les options de reçu intégrées. Les choix restent les mêmes : **Aucun reçu**, **Papier** et **Courriel** lorsqu'il est disponible.
+
+## Tickets cuisine
+
+Si l'impression cuisine est configurée, vous pouvez encore voir **Envoyer à l'imprimante de cuisine** après le paiement.
+
+Lorsque **Envoyer la commande à l'imprimante externe après paiement** est activé dans les [Paramètres généraux](/fr-CA/taliup-pos/settings/general), Taliup POS envoie les tickets cuisine automatiquement et ne demande pas.
+
+## WEB-SRM Québec
+
+Sur un appareil inscrit au [WEB-SRM](/fr-CA/taliup-pos/web-srm), Taliup POS demande **Le client souhaite-t-il un reçu papier?** au lieu de **Aucun reçu** / **Papier** / **Courriel**. Cette invite fiscale reste inchangée.
+
+**Imprimer automatiquement le reçu client** et **Ignorer les invitations de reçu entièrement payé** sont masqués sur ces appareils.
+
+## Imprimer une copie plus tard
+
+Pour imprimer de nouveau plus tard, ouvrez [Détails de la transaction](/fr-CA/taliup-pos/transactions/reprint) et choisissez **Imprimer la copie du client** ou **Imprimer la copie du commerçant**. Ce parcours imprime seulement sur papier.
+
+## Connexe
+
+- [Encaisser](/fr-CA/taliup-pos/register/take-payment)
+- [Paramètres → Général](/fr-CA/taliup-pos/settings/general)
+- [Associer un client](/fr-CA/taliup-pos/clients/attach-from-register)
+- [Réimprimer un reçu](/fr-CA/taliup-pos/transactions/reprint)

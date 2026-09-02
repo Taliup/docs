@@ -146,6 +146,7 @@
                   "taliup-pos/register/add-items",
                   "taliup-pos/register/cart",
                   "taliup-pos/register/take-payment",
+                  "taliup-pos/register/customer-receipt",
                   "taliup-pos/register/options"
                 ]
               },
@@ -403,6 +404,7 @@
                       "fr-CA/taliup-pos/register/add-items",
                       "fr-CA/taliup-pos/register/cart",
                       "fr-CA/taliup-pos/register/take-payment",
+                      "fr-CA/taliup-pos/register/customer-receipt",
                       "fr-CA/taliup-pos/register/options"
                     ]
                   },

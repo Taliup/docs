@@ -1,0 +1,117 @@
+---
+title: "Customer receipt"
+sidebarTitle: "Customer receipt"
+description: "Choose No Receipt, Paper, or Email after a sale, including split payments and emailed full-order receipts."
+keywords: ["receipt", "customer receipt", "email receipt", "paper receipt", "split payment", "auto-print"]
+---
+
+After a successful payment, Taliup POS asks how the customer should get a receipt.
+
+The prompt title is **Choose customer receipt**. The question is **How should the customer get this receipt?**
+
+<Info>
+  The merchant copy still prints on its own unless [**Skip Merchant Receipt Copy**](/taliup-pos/settings/general) is on. Merchant copy is not one of the customer choices.
+</Info>
+
+## Choices
+
+| Choice | What happens |
+|---|---|
+| **No Receipt** | Nothing is printed or emailed for this customer copy. |
+| **Paper** | Prints the customer copy on the [receipt printer](/taliup-pos/settings/printers). |
+| **Email** | Sends the receipt to the customer. Shown only when an email is available or can be collected. |
+
+## When Email is available
+
+| Order | **Email** |
+|---|---|
+| A [client is attached](/taliup-pos/clients/attach-from-register) and has an email | **Email** is shown. Taliup POS sends to that address. |
+| A client is attached and has no email | **Email** is hidden. Add the email on the client before the sale if they want a digital receipt. |
+| No client | **Email** is shown. Tap it and enter an **Email address**. Use **Go Back** to return to the choices. |
+
+If you enter an email and no client is on the order, Taliup may create a client from that address and attach it to the order.
+
+## One payment
+
+When you collect the full balance in one payment, you see **Choose customer receipt** once.
+
+1. Take payment. See [Take payment](/taliup-pos/register/take-payment).
+2. Choose **No Receipt**, **Paper**, or **Email** (when shown).
+3. The sale is done.
+
+Turn on **Auto-Print Customer Receipt** in [General settings](/taliup-pos/settings/general) to print the customer copy and skip this prompt.
+
+## Split payments
+
+A split sale uses two kinds of customer receipt.
+
+<Steps>
+  <Step title="Each payment">
+    After every split tender you see **Choose customer receipt**.
+
+    The amount on the prompt is that payment only (for example `$22.61` of a `$67.82` sale).
+
+    Choices are **Paper** and **No Receipt**. **Email** is hidden on these steps.
+
+    **Paper** prints that tender only.
+  </Step>
+  <Step title="After the last payment">
+    After you choose Paper or No Receipt on the last tender, Taliup POS shows **Choose full order customer receipt**.
+
+    The amount is the full sale. Choices are **Paper**, **Email** (when available), and **No Receipt**.
+
+    **Paper** prints the whole order: all items and all payments. **Email** sends that same full-order receipt.
+  </Step>
+</Steps>
+
+<Note>
+  **Skip Fully Paid Receipt Prompts** skips extra “order fully paid” and “guest fully paid” print prompts. It does not skip **Choose customer receipt** or **Choose full order customer receipt**.
+</Note>
+
+## What the email includes
+
+The emailed receipt shows the business name, line items, taxes, fees, discounts, and the total.
+
+It also shows these lines when they apply:
+
+- Surcharge
+- **Card Price Adjustment** (dual pricing)
+- Tip
+
+On a split sale, the email lists the full order first, then each payment (method and amount).
+
+## Customer-facing display
+
+On a terminal with a customer-facing display, the customer chooses on their screen.
+
+Staff see **Customer is choosing a receipt…** with:
+
+| Control | What it does |
+|---|---|
+| **Take over** | Moves the chooser to the staff screen. |
+| **No Receipt** | Ends the prompt with no customer copy. |
+
+On some terminals the customer-facing display uses the device’s built-in receipt options. The choices stay the same: **No Receipt**, **Paper**, and **Email** when available.
+
+## Kitchen tickets
+
+If kitchen printing is set up, you may still see **Send To Kitchen Printer** after payment.
+
+When **Send order to external printer after payment** is on in [General settings](/taliup-pos/settings/general), Taliup POS sends kitchen tickets automatically and does not ask.
+
+## Québec WEB-SRM
+
+On a device enrolled with [WEB-SRM](/taliup-pos/web-srm), Taliup POS asks **Does the customer want a paper receipt?** instead of **No Receipt** / **Paper** / **Email**. That fiscal prompt is unchanged.
+
+**Auto-Print Customer Receipt** and **Skip Fully Paid Receipt Prompts** are hidden on those devices.
+
+## Print a copy later
+
+To print again later, open [Transaction Details](/taliup-pos/transactions/reprint) and choose **Print Customer Copy** or **Print Merchant Copy**. That path prints paper only.
+
+## Related
+
+- [Take payment](/taliup-pos/register/take-payment)
+- [Settings → General](/taliup-pos/settings/general)
+- [Attach a client](/taliup-pos/clients/attach-from-register)
+- [Reprint a receipt](/taliup-pos/transactions/reprint)
