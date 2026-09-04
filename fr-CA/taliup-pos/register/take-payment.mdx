@@ -1,7 +1,7 @@
 ---
 title: "Encaisser"
 sidebarTitle: "Encaisser"
-description: "Encaisser Payer en totalité ou Montant partagé par carte, espèces, pourboires et options de reçu."
+description: "Encaisser Payer en totalité ou Montant partagé par carte, espèces, pourboires et choix de reçu client."
 ---
 
 Depuis le panier (ou **Payer** en Vente ouverte), Taliup POS ouvre l'écran de paiement pour encaisser le solde.
@@ -37,7 +37,7 @@ Sur **Montant partagé**, choisissez un préréglage comme **Montant total**, **
     Suivez les invites à l'écran. Si les pourboires sont activés dans Taliup HQ, le client peut voir **Ajouter un pourboire** avec des préréglages, **Aucun pourboire** ou **Personnaliser**.
   </Step>
   <Step title="Terminer">
-    Attendez l'approbation. Taliup POS enregistre le paiement et peut demander des reçus (voir ci-dessous).
+    Attendez l'approbation. Taliup POS enregistre le paiement et peut demander comment le client doit recevoir un reçu.
   </Step>
 </Steps>
 
@@ -70,19 +70,22 @@ Lorsque c'est activé pour le marchand, l'écran de paiement peut aussi afficher
 
 ## Après le paiement
 
-Selon les paramètres et le type de commande, vous pouvez voir des invites comme :
+Selon les paramètres et le type de commande, vous pouvez voir :
 
-1. **Envoyer la commande à la cuisine** — envoyer les articles aux imprimantes de cuisine
-2. **Exemplaire client** — **Imprimer le reçu de copie du client ?**
-3. **Commande entièrement payée** — imprimer le reçu de la commande
-4. **Invité entièrement payé** — imprimer le reçu de cet invité
+1. **Envoyer à l'imprimante de cuisine** — envoyer les articles aux imprimantes de cuisine. Lorsque **Envoyer la commande à l'imprimante externe après paiement** est activé, cela se fait automatiquement.
+2. **Choisir le reçu client** — **Aucun reçu**, **Papier** ou **Courriel**. Voir [Reçu client](/fr-CA/taliup-pos/register/customer-receipt).
+3. Sur une vente partagée, **Choisir le reçu client de la commande complète** après le dernier paiement.
+4. Sur certaines commandes de table, des invites **Commande entièrement payée** ou **Invité entièrement payé**, sauf si **Ignorer les invitations de reçu entièrement payé** est activé.
 
-Le comportement des reçus est aussi contrôlé par les [Paramètres généraux](/fr-CA/taliup-pos/settings/general) (impression automatique, ignorer la copie marchand, ignorer les invites de paiement complet).
+La copie marchand s'imprime toujours, sauf si **Ignorer le reçu de copie du commerçant** est activé.
+
+Le comportement des reçus est aussi contrôlé par les [Paramètres généraux](/fr-CA/taliup-pos/settings/general).
 
 Les paiements terminés apparaissent sous [Transactions](/fr-CA/taliup-pos/transactions).
 
 ## Connexe
 
+- [Reçu client](/fr-CA/taliup-pos/register/customer-receipt)
 - [Panier](/fr-CA/taliup-pos/register/cart)
 - [Menu Options](/fr-CA/taliup-pos/register/options) — Créer une autorisation, Créer un remboursement, imprimer la facture
 - [Annulation](/fr-CA/taliup-pos/transactions/void) · [Remboursement](/fr-CA/taliup-pos/transactions/refund)

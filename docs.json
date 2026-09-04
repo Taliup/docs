@@ -150,6 +150,7 @@
                   "taliup-pos/register/scale-barcodes",
                   "taliup-pos/register/cart",
                   "taliup-pos/register/take-payment",
+                  "taliup-pos/register/customer-receipt",
                   "taliup-pos/register/options"
                 ]
               },
@@ -412,6 +413,7 @@
                       "fr-CA/taliup-pos/register/scale-barcodes",
                       "fr-CA/taliup-pos/register/cart",
                       "fr-CA/taliup-pos/register/take-payment",
+                      "fr-CA/taliup-pos/register/customer-receipt",
                       "fr-CA/taliup-pos/register/options"
                     ]
                   },
