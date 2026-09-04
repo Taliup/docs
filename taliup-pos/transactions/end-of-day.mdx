@@ -1,0 +1,81 @@
+---
+title: "End of Day report"
+sidebarTitle: "End of Day"
+description: "Preview, generate, and print a merchant End of Day report for one or more devices and users."
+keywords: ["end of day", "EOD", "daily report", "reconciliation", "reprint"]
+---
+
+**End of Day** prints a merchant documentation report for a business date. Use it to reconcile sales, payments, payouts, and top items.
+
+<Warning>
+This report does **not** close card batches or settle the terminal. It is documentation only.
+</Warning>
+
+## How to get here
+
+Home → **Transactions** → **End Of Day**.
+
+The button appears when the **End of Day Report** feature is on the merchant plan. Opening **Transactions** still needs the manage-transactions permission.
+
+You can also generate this report in Taliup HQ. See [End of Day in Taliup HQ](/taliup-hq/features/end-of-day).
+
+## Report Setup
+
+**Devices** and **Users** default to **All devices** and **All users**. That includes every activated device and every staff user on the entity.
+
+Tap **Change** on a row to narrow the report.
+
+| Setting | What it includes |
+|---|---|
+| **Devices** | Activated terminals. Select one or more. |
+| **Users** | Staff users. Select one or more. |
+| **Business Date** | Today, or any day in the last 3 months |
+
+You must keep at least one device and one user selected.
+
+<Tip>
+Leave both pickers on **All** when you want a store-wide closeout. Narrow the lists when you only need one station or one cashier.
+</Tip>
+
+## Generate and print
+
+<Steps>
+  <Step title="Confirm the scope">
+    On **Report Setup**, review **Devices**, **Users**, and **Business Date**.
+  </Step>
+  <Step title="Open the preview">
+    Tap **Generate & Print**. Taliup POS shows **Review Merchant Report** with a receipt-style preview.
+  </Step>
+  <Step title="Generate">
+    Tap **Generate**. The report prints on the receipt printer selected in [Printers](/taliup-pos/settings/printers).
+  </Step>
+</Steps>
+
+The printed report lists the selected **Devices** and **Users** by name. Totals, payment mix, sales sources, status, top items, and who initiated payments follow.
+
+## EOD History
+
+Open the **EOD History** tab to reprint a report you already generated.
+
+Each row shows the business date, total, devices, and users. Tap **Reprint** to print that saved report again.
+
+<Note>
+Older reports that were generated before this update reprint from a fresh calculation. New reports reprint the snapshot that was saved when you generated them.
+</Note>
+
+## Troubleshooting
+
+| Situation | What to check |
+|---|---|
+| No **End Of Day** button | Enable **End of Day Report** on the merchant plan in Taliup HQ |
+| Select at least one device or user | Keep one or more checkboxes on in each picker |
+| Date not allowed | Choose today or a date within the last 3 months |
+| Print fails | Printer connection in [Printers](/taliup-pos/settings/printers) |
+| No history | Confirm the date range and tap **Refresh** |
+
+## Related
+
+- [Transactions](/taliup-pos/transactions)
+- [Reprint a receipt](/taliup-pos/transactions/reprint)
+- [Settings → Printers](/taliup-pos/settings/printers)
+- [End of Day in Taliup HQ](/taliup-hq/features/end-of-day)

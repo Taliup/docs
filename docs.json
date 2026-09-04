@@ -110,7 +110,9 @@
                 "pages": [
                   "taliup-hq/features/hosted-payments",
                   "taliup-hq/features/invoicing",
-                  "taliup-hq/features/clients"
+                  "taliup-hq/features/clients",
+                  "taliup-hq/features/scale-items",
+                  "taliup-hq/features/end-of-day"
                 ]
               }
             ]
@@ -144,6 +146,7 @@
                   "taliup-pos/register/index",
                   "taliup-pos/register/open-sale",
                   "taliup-pos/register/add-items",
+                  "taliup-pos/register/scale-barcodes",
                   "taliup-pos/register/cart",
                   "taliup-pos/register/take-payment",
                   "taliup-pos/register/options"
@@ -185,7 +188,8 @@
                   "taliup-pos/transactions/details",
                   "taliup-pos/transactions/void",
                   "taliup-pos/transactions/refund",
-                  "taliup-pos/transactions/reprint"
+                  "taliup-pos/transactions/reprint",
+                  "taliup-pos/transactions/end-of-day"
                 ]
               },
               {
@@ -367,7 +371,9 @@
                     "pages": [
                       "fr-CA/taliup-hq/features/hosted-payments",
                       "fr-CA/taliup-hq/features/invoicing",
-                      "fr-CA/taliup-hq/features/clients"
+                      "fr-CA/taliup-hq/features/clients",
+                      "fr-CA/taliup-hq/features/scale-items",
+                      "fr-CA/taliup-hq/features/end-of-day"
                     ]
                   }
                 ]
@@ -401,6 +407,7 @@
                       "fr-CA/taliup-pos/register/index",
                       "fr-CA/taliup-pos/register/open-sale",
                       "fr-CA/taliup-pos/register/add-items",
+                      "fr-CA/taliup-pos/register/scale-barcodes",
                       "fr-CA/taliup-pos/register/cart",
                       "fr-CA/taliup-pos/register/take-payment",
                       "fr-CA/taliup-pos/register/options"
@@ -442,7 +449,8 @@
                       "fr-CA/taliup-pos/transactions/details",
                       "fr-CA/taliup-pos/transactions/void",
                       "fr-CA/taliup-pos/transactions/refund",
-                      "fr-CA/taliup-pos/transactions/reprint"
+                      "fr-CA/taliup-pos/transactions/reprint",
+                      "fr-CA/taliup-pos/transactions/end-of-day"
                     ]
                   },
                   {

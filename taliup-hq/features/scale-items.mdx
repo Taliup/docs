@@ -1,0 +1,140 @@
+---
+title: "Scale items"
+sidebarTitle: "Scale items"
+description: "Set SKU, Weighable, and unit in Taliup HQ so Register can scan scale labels or accept a typed weight."
+---
+
+Prepare catalog products for a counter scale. Taliup HQ stores the **SKU**, **price per unit**, and **Weighable** flag. Taliup POS reads the printed sticker (or a typed weight) at Register.
+
+Cashiers scan and type weight on the terminal. See [Scale barcodes](/taliup-pos/register/scale-barcodes).
+
+<Note>
+  You do not pair the scale to Taliup HQ. Program the same 5-digit PLU on the scale and in the product **SKU**.
+</Note>
+
+---
+
+## Prerequisites
+
+- The **Catalog** feature is on the entity plan. Ask your ISO admin to enable it in [Plans & Features](/taliup-hq/onboarding/plans-features) if you do not see **Catalogs** in the sidebar.
+- The product is on the catalog the terminal uses. A product that exists but is not on that catalog returns **Product not found** on scan.
+
+---
+
+## Two kinds of scale labels
+
+| Label | What the scale prints | Product setup in HQ |
+|---|---|---|
+| **Price** | Product + a dollar amount | Set **SKU**. Leave **Weighable** off. Catalog **Price** is a fallback — the sticker price wins at scan. |
+| **Weight** | Product + a measured weight | Set **SKU**, turn **Weighable** on, pick **kg**, **g**, **lb**, or **oz**, and set catalog **Price** as the rate per unit. |
+
+Weight labels and **Enter weight** on POS both need a catalog price per unit. **Custom price** and **Weighable** cannot be on together.
+
+---
+
+## Where to set Weighable
+
+| Place | What you can set |
+|---|---|
+| **Catalogs** or a category → add product | **SKU**, **Weighable**, and **Unit** |
+| **Products** → edit → **Sold by** | **Weighable** and **Unit**. Quantity on hand is read-only here. |
+| **Inventory** → open a product | **Weighable**, **Unit**, and stock |
+| **Products** bulk-upload Excel | **Weighable** and **Unit** columns (after **Product SKU**) |
+| **Inventory → Units** | Unit library only. Do not send merchants to Settings. |
+
+The **Sold by** card title is **Sold by**. The toggle label is **Weighable**. Help text: *Sold by weight; price comes from a scale-embedded barcode.*
+
+---
+
+## Set up a price label
+
+<Steps>
+  <Step title="Match the PLU">
+    Open **Products**, create or edit the item, and set **SKU** to the exact 5-digit PLU on the scale. No extra characters.
+  </Step>
+  <Step title="Leave Weighable off">
+    Do not turn on **Weighable**. Set any catalog **Price** you want — Register uses the printed amount when the cashier scans.
+  </Step>
+  <Step title="Put it on the catalog">
+    Add the product to the catalog assigned to the terminal.
+  </Step>
+</Steps>
+
+---
+
+## Set up a weight label
+
+<Steps>
+  <Step title="Match the PLU">
+    Set **SKU** to the 5-digit PLU the scale prints.
+  </Step>
+  <Step title="Set the per-unit price">
+    Enter **Price** as the rate for one unit (for example `8.00` if the unit is kg).
+  </Step>
+  <Step title="Turn on Weighable">
+    On **Sold by** (product edit), **Inventory**, or catalog/category create, turn **Weighable** on and choose a unit whose abbreviation is **kg**, **g**, **lb**, or **oz**.
+  </Step>
+  <Step title="Put it on the catalog">
+    Add the product to the catalog the terminal uses.
+  </Step>
+</Steps>
+
+If **Custom price** is on, Taliup disables **Weighable**. Turn **Custom price** off first.
+
+If the unit picker is empty, open **Inventory → Units**. Taliup creates **Kilogram (`kg`)**, **Gram (`g`)**, **Pound (`lb`)**, and **Ounce (`oz`)** when the entity is created and the first time someone opens catalog, product, or Units.
+
+---
+
+## How the scale and Taliup agree
+
+The unit abbreviation tells Register where the decimal goes in the five weight digits on the sticker.
+
+| Abbreviation | Decimals | Printed `01234` means |
+|---|---|---|
+| **kg** | 3 | `1.234 kg` |
+| **g** | 0 | `1234 g` |
+| **lb** | 2 | `12.34 lb` |
+| **oz** | 1 | `123.4 oz` |
+
+Use the same unit the scale is programmed for. Other abbreviations are fine for packaged items. They are rejected when **Weighable** is on.
+
+---
+
+## Bulk upload
+
+On **Products**, download a fresh template (or export) before you upload. Older files do not have these columns.
+
+On the **Products** sheet, immediately after **Product SKU**:
+
+| Column | What to enter |
+|---|---|
+| **Product SKU** | The 5-digit PLU |
+| **Weighable** | `Yes` / `Y` / `1` for weight items. `No` or blank for price labels |
+| **Unit** | Name or abbreviation. Required when Weighable is Yes. Accepts `kg`, `g`, `lb`, `oz` and names such as `Kilograms` or `lbs` |
+
+- If the unit does not exist, import creates it for this merchant.
+- Weighable Yes with a non-weight unit stops that row. The unit is not created.
+- A custom-priced row (blank **Price**) stays custom-priced. Import turns **Weighable** off even if the cell says Yes.
+- Missing **Weighable** leaves the product not weighable. Sheets without these columns still import.
+
+---
+
+## After the sale
+
+| Surface | What you see |
+|---|---|
+| HQ order details | Weight lines show `0.450 kg`, not `1` |
+| Orders and Items reports | Same formatted quantity. Two `0.450 kg` soups count as `0.900 kg` |
+| End of Day and Profit | Quantity sold and cost use the scanned or typed weight |
+| Inventory | Stock drops by that weight. A refund puts the same weight back |
+| Low-stock email | On-hand includes the unit (for example `4.500 kg`) |
+
+Deleting a unit that a weighable product uses turns **Weighable** off on that product. Reassign a weight unit and turn **Weighable** back on.
+
+---
+
+## Related
+
+- [Scale barcodes](/taliup-pos/register/scale-barcodes) — scan and Enter weight on the terminal
+- [Inventory](/taliup-pos/catalog/inventory) — Weighable and unit on POS
+- [Plans & Features](/taliup-hq/onboarding/plans-features)

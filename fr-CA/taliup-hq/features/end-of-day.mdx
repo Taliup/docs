@@ -1,0 +1,65 @@
+---
+title: "Rapport de fin de journée"
+sidebarTitle: "Fin de journée"
+description: "Générer un document de fin de journée dans Taliup HQ pour un ou plusieurs terminaux et employés."
+keywords: ["fin de journée", "rapports", "document quotidien"]
+---
+
+**Fin de journée** dans Taliup HQ est le même document quotidien marchand que vous pouvez imprimer depuis Taliup POS. Consultez la journée dans le navigateur, puis générez un PDF.
+
+<Warning>
+Ce document ne clôture **pas** les lots de cartes et ne règle pas les terminaux. Il sert uniquement à la documentation.
+</Warning>
+
+Vous pouvez aussi générer et imprimer ce rapport sur un terminal. Voir [Fin de journée dans Taliup POS](/fr-CA/taliup-pos/transactions/end-of-day).
+
+## Comment y accéder
+
+Dans le menu latéral marchand, ouvrez **Fin de journée**.
+
+Vous avez besoin de la fonction **End of Day Report** sur le plan et de la permission **Consulter les rapports**.
+
+## Filtres
+
+Les filtres incluent par défaut tous les terminaux et tous les employés. Restreignez-les si vous n'avez besoin que d'une partie du magasin.
+
+| Filtre | Ce qu'il inclut |
+|---|---|
+| **Date commerciale** | La journée à documenter |
+| **Emplacement** | Un emplacement, ou **Tous les emplacements** |
+| **Terminal** | Ouvrez **Filtrer les terminaux** et choisissez un ou plusieurs appareils activés. **Sélectionner tous les terminaux** est le défaut. |
+| **Employé** | Ouvrez **Filtrer les employés** et choisissez un ou plusieurs utilisateurs du personnel. **Sélectionner tous les employés** est le défaut. |
+
+Sélectionnez au moins un terminal et un employé, puis appuyez sur **Appliquer les filtres** pour actualiser le résumé à l'écran.
+
+<Tip>
+Laissez **Tous les terminaux** et **Tous les employés** sélectionnés pour un document de tout le magasin.
+</Tip>
+
+## Générer un document
+
+<Steps>
+  <Step title="Définir la date et la portée">
+    Choisissez la **Date commerciale**, puis confirmez l'emplacement, les terminaux et les employés.
+  </Step>
+  <Step title="Appliquer les filtres">
+    Appuyez sur **Appliquer les filtres** pour charger le résumé de cette portée.
+  </Step>
+  <Step title="Générer">
+    Appuyez sur **Générer le document**. Taliup HQ enregistre un PDF que vous pouvez consulter, télécharger ou imprimer.
+  </Step>
+</Steps>
+
+Le document liste les terminaux et employés sélectionnés par nom lorsque vous n'avez pas tout choisi.
+
+## Documents générés
+
+La liste affiche les documents précédents de cette entité. Utilisez **Voir**, **Télécharger le PDF** ou **Imprimer le rapport** sur une ligne.
+
+Les nouveaux documents conservent les filtres utilisés à la génération. Les documents plus anciens sans instantané enregistré sont recalculés à l'ouverture.
+
+## Voir aussi
+
+- [Fin de journée dans Taliup POS](/fr-CA/taliup-pos/transactions/end-of-day)
+- [Permissions](/fr-CA/taliup-hq/manage/permissions)
+- [Plans et fonctions](/fr-CA/taliup-hq/onboarding/plans-features)

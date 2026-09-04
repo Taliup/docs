@@ -1,13 +1,13 @@
 ---
 title: "General settings"
 sidebarTitle: "General"
-description: "Tips indicator, receipt behavior, default Register view, assigned catalog, printers, and clear application data."
+description: "Tips indicator, receipt behavior, default Register view, weighable entry, assigned catalog, printers, and clear application data."
 ---
 
 **General** controls day-to-day terminal behavior for receipts, Register defaults, and linked hardware settings.
 
-<Frame caption="General settings toggles and Assigned Catalog.">
-  ![General settings toggles and Assigned Catalog](/images/taliup-pos/settings/general.png)
+<Frame caption="General settings with Weighable items set to Enter weight.">
+  ![General settings showing Default Screen After Login, Default Register View, and Weighable items set to Enter weight](/images/taliup-pos/settings/general.png)
 </Frame>
 
 ## How to get here
@@ -38,6 +38,15 @@ When catalog selling is available, **Default Register View** lets you choose:
 - **Catalog** or **Menu** (restaurant label)
 
 This controls which view Register opens first. See [Open a sale](/taliup-pos/register/open-sale).
+
+## Weighable items
+
+When this terminal has a catalog, **Weighable items** chooses how cashiers add items sold by weight:
+
+- **Scale labels** (default) — scan the printed sticker. Tapping the item does not add quantity 1.
+- **Enter weight** — tap the item, type the weight, and Register computes catalog `$/unit × weight`.
+
+This setting stays on this terminal. See [Scale barcodes](/taliup-pos/register/scale-barcodes) and [Scale items](/taliup-hq/features/scale-items) for product setup in Taliup HQ.
 
 ## Printer and device shortcuts
 
