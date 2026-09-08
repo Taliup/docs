@@ -11,7 +11,7 @@ hidden: true
 | What | Where | In one sentence |
 |---|---|---|
 | **Choose customer receipt** | Taliup POS | After a sale, staff or the customer picks **No Receipt**, **Paper**, or **Email**. |
-| **Default screen after login** | Taliup POS | Each terminal can open **Home** or **Register** after a passcode. |
+| **Default screen after login** | Taliup POS | Each terminal can open **Home** or **Register** after a passcode. New terminals open **Home**. |
 | **Scale barcodes and weighable items** | Taliup POS + Taliup HQ | Scan a scale sticker, or type a weight, instead of adding quantity 1. |
 | **End of Day** | Taliup POS + Taliup HQ | Run the daily report for all devices and staff, or pick specific ones. |
 | **Recurring Payments** | Taliup HQ | Set up a schedule, send a checkout link, and collect payments in the portal. |
@@ -61,7 +61,7 @@ Reprint later from Transaction Details is paper only. Email is only at sale time
 
 ## Default screen after login
 
-After a staff member enters their passcode, the terminal can open **Home** or **Register**.
+After a staff member enters their passcode, the terminal can open **Home** or **Register**. New terminals open **Home**.
 
 1. Home → **Settings** → **General**.
 2. Find **Default Screen After Login**.
@@ -96,7 +96,7 @@ Custom price and Weighable cannot be on together.
 **Type a weight instead**
 
 1. Settings → **General** → **Weighable items**.
-2. Choose **Enter weight** (default is **Scale labels**).
+2. **Enter weight** is the default. Switch to **Scale labels** if cashiers scan stickers instead.
 3. Tap the item, type the weight, confirm.
 
 In **Scale labels** mode, tapping a weighable item does **not** add 1. Scan, or switch the setting.
