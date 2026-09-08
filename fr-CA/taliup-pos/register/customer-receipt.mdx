@@ -43,7 +43,7 @@ Activez **Imprimer automatiquement le reçu client** dans les [Paramètres gén�
 
 ## Paiements partagés
 
-Une vente partagée utilise deux types de reçu client.
+Une vente partagée utilise deux types de reçu client. Ce parcours s'applique à une vente ouverte, une commande enregistrée ou une table que vous **partagez par montant, sans paiement par invité**.
 
 <Steps>
   <Step title="Chaque paiement">
@@ -64,8 +64,25 @@ Une vente partagée utilise deux types de reçu client.
   </Step>
 </Steps>
 
+**Choisir le reçu client de la commande complète** n'apparaît pas après un paiement par invité, ni après le paiement du reste d'une table qui a déjà un invité payé.
+
+## Paiements par invité
+
+Lorsque vous encaissez **un invité** sur une table :
+
+| Comment vous encaissez | Ce que vous voyez | Ce qui s'imprime ou s'envoie |
+|---|---|---|
+| **Payer le total** pour cet invité | **Choisir le reçu client**, avec **Courriel** même si la table est encore ouverte | Les articles de cet invité et ce paiement. Pas d'**Invité entièrement payé**. Pas de sélecteur de commande complète. |
+| **Partager** cet invité | **Papier** / **Aucun reçu** après chaque paiement (bordereau seulement). Après le dernier paiement de l'invité, **Invité entièrement payé** avec Papier, Courriel et Aucun reçu | Les bordereaux n'ont pas d'articles. **Invité entièrement payé** liste les articles de cet invité et tous ses paiements. |
+
+## Reste de la table
+
+Après qu'un ou plusieurs invités ont payé, le paiement du reste de la table affiche **Choisir le reçu client** avec **Courriel**.
+
+Le reçu liste seulement les articles non payés. Le pourboire porte sur le montant restant, pas sur le total original de la table. Il n'y a pas d'invite **Invité entièrement payé** ni **Choisir le reçu client de la commande complète**.
+
 <Note>
-  **Ignorer les invitations de reçu entièrement payé** ignore les invites d'impression « commande entièrement payée » et « invité entièrement payé ». Elle n'ignore pas **Choisir le reçu client** ni **Choisir le reçu client de la commande complète**.
+  **Ignorer les invitations de reçu entièrement payé** ignore **Invité entièrement payé**. Elle n'ignore pas **Choisir le reçu client** ni **Choisir le reçu client de la commande complète**.
 </Note>
 
 ## Contenu du courriel
@@ -78,7 +95,9 @@ Il affiche aussi ces lignes lorsqu'elles s'appliquent :
 - **Card Price Adjustment** (prix double)
 - Pourboire
 
-Sur une vente partagée, le courriel liste d'abord la commande complète, puis chaque paiement (méthode et montant).
+Sur une vente partagée par montant sans paiement par invité, le courriel de commande complète liste d'abord toute la commande, puis chaque paiement (méthode et montant).
+
+Un courriel **Invité entièrement payé** liste les articles de cet invité et tous ses paiements. Le total est la somme de ces paiements.
 
 ## Écran client
 

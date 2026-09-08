@@ -43,7 +43,7 @@ Turn on **Auto-Print Customer Receipt** in [General settings](/taliup-pos/settin
 
 ## Split payments
 
-A split sale uses two kinds of customer receipt.
+A split sale uses two kinds of customer receipt. This path is for an Open Sale, saved order, or table that you **amount-split with no guest payments**.
 
 <Steps>
   <Step title="Each payment">
@@ -64,8 +64,25 @@ A split sale uses two kinds of customer receipt.
   </Step>
 </Steps>
 
+**Choose full order customer receipt** does not appear after a guest payment, or after you pay the rest of a table that already has a paid guest.
+
+## Guest payments
+
+When you pay **one guest** on a table:
+
+| How you pay | What you see | What prints or emails |
+|---|---|---|
+| **Pay Full** for that guest | **Choose customer receipt**, with **Email** even if the table is still open | That guest’s items and that one payment. No **Guest Fully Paid**. No full-order chooser. |
+| **Split** that guest | **Paper** / **No Receipt** after each tender (payment slip only). After the last guest tender, **Guest Fully Paid** with Paper, Email, and No Receipt | Tender slips have no items. **Guest Fully Paid** lists that guest’s items and every payment that guest made. |
+
+## Rest of the table
+
+After one or more guests have paid, paying the remaining table shows **Choose customer receipt** with **Email**.
+
+The receipt lists unpaid items only. Tip is on the remaining amount, not the original table total. There is no **Guest Fully Paid** prompt and no **Choose full order customer receipt**.
+
 <Note>
-  **Skip Fully Paid Receipt Prompts** skips extra “order fully paid” and “guest fully paid” print prompts. It does not skip **Choose customer receipt** or **Choose full order customer receipt**.
+  **Skip Fully Paid Receipt Prompts** skips **Guest Fully Paid**. It does not skip **Choose customer receipt** or **Choose full order customer receipt**.
 </Note>
 
 ## What the email includes
@@ -78,7 +95,9 @@ It also shows these lines when they apply:
 - **Card Price Adjustment** (dual pricing)
 - Tip
 
-On a split sale, the email lists the full order first, then each payment (method and amount).
+On an amount-split sale with no guest payments, the full-order email lists the whole order first, then each payment (method and amount).
+
+A **Guest Fully Paid** email lists that guest’s items and every payment that guest made. The total is the sum of those payments.
 
 ## Customer-facing display
 

@@ -291,6 +291,26 @@
             ]
           }
         ]
+      },
+      {
+        "product": "Changelog",
+        "icon": "clock-rotate-left",
+        "description": "What shipped, and when",
+        "tabs": [
+          {
+            "tab": "Changelog",
+            "groups": [
+              {
+                "group": "Releases",
+                "pages": [
+                  "changelog/index",
+                  "changelog/2026-09",
+                  "changelog/2026-08"
+                ]
+              }
+            ]
+          }
+        ]
       }
     ]
       },
@@ -503,6 +523,26 @@
                     "pages": [
                       "fr-CA/taliup-pos/web-srm/index",
                       "fr-CA/taliup-pos/web-srm/switch-live-merchant"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "product": "Journal des changements",
+            "icon": "clock-rotate-left",
+            "description": "Ce qui a \u00e9t\u00e9 livr\u00e9, et quand",
+            "tabs": [
+              {
+                "tab": "Journal des changements",
+                "groups": [
+                  {
+                    "group": "Versions",
+                    "pages": [
+                      "fr-CA/changelog/index",
+                      "fr-CA/changelog/2026-09",
+                      "fr-CA/changelog/2026-08"
                     ]
                   }
                 ]
