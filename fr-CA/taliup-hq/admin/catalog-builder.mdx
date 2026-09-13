@@ -1,0 +1,215 @@
+---
+title: "Catalog Builder"
+sidebarTitle: "Catalog Builder"
+description: "Créez le menu ou le catalogue d'un marchand à partir d'un chiffrier ou de votre assistant IA, révisez chaque ligne, puis publiez-le dans son compte en une seule étape."
+icon: "wand-magic-sparkles"
+---
+
+**Catalog Builder** transforme le menu existant d'un marchand en catalogue Taliup. Vous fournissez une source — un chiffrier Taliup rempli, ou une photo ou un PDF de menu remis à votre assistant IA — et l'outil produit une **ébauche** que vous révisez ligne par ligne avant que quoi que ce soit ne soit écrit dans le compte du marchand.
+
+Rien n'atteint le catalogue actif du marchand tant que vous n'avez pas cliqué sur **Commit**.
+
+<Frame caption="La page Catalog Builder avec la carte du connecteur IA, la carte de téléversement du gabarit et la liste des constructions récentes.">
+  ![Page Catalog Builder de Taliup HQ avec une carte connecteur à gauche, une carte de téléversement de chiffrier à droite et une liste Recent builds en dessous](/images/taliup-hq/catalog-builder/index.png)
+</Frame>
+
+## Comment y accéder
+
+**Entities** → ouvrez un marchand → onglet **Catalog Builder**.
+
+## Accès
+
+| Exigence | Détail |
+|---|---|
+| Rôle | Tout rôle ayant accès à l'administration Taliup HQ |
+| Portée | Le marchand doit appartenir à votre ISO ou à un ISO descendant |
+| Fonction | La fonction **Catalog** doit être activée dans le forfait du marchand |
+
+Si le marchand est hors de votre portée ou n'a pas la fonction Catalog, l'onglet vous ramène à **Entities** avec une explication.
+
+## Les deux façons de démarrer
+
+<CardGroup cols={2}>
+  <Card title="Depuis votre assistant IA" icon="robot" href="/fr-CA/taliup-hq/admin/catalog-builder-connector">
+    Déposez une photo de menu, un PDF ou un chiffrier non standard dans Claude et demandez-lui de construire le menu. Idéal pour les marchands qui remettent un menu imprimé ou photographié.
+  </Card>
+  <Card title="Depuis le gabarit Taliup" icon="file-excel">
+    Remplissez le chiffrier de produits Taliup et téléversez-le ici. Idéal lorsque le marchand a déjà des données propres.
+  </Card>
+</CardGroup>
+
+Les deux chemins produisent la même ébauche et utilisent le même écran de révision.
+
+### Téléverser le gabarit Taliup
+
+<Steps>
+  <Step title="Téléchargez le gabarit">
+    Cliquez sur **Download template** pour obtenir `BulkUploadTemplate.xlsx`. Il contient une feuille **Guidelines** ainsi que les feuilles **Products**, **Attributes** et **Tags**.
+  </Step>
+  <Step title="Remplissez-le">
+    Complétez les feuilles. La référence des colonnes est la même que celle des marchands — voir [Bulk Import](/fr-CA/taliup-hq/merchant/catalogs/bulk-import).
+  </Step>
+  <Step title="Téléversez">
+    Glissez le fichier sur la carte de téléversement ou cliquez sur **Choose Excel file**. Nommez la construction pour la reconnaître plus tard, puis cliquez sur **Create draft**.
+  </Step>
+  <Step title="Attendez l'ébauche">
+    Le fichier est lu en arrière-plan. La construction passe à **Ready for review** et ouvre l'écran de révision.
+  </Step>
+</Steps>
+
+<Note>
+  Seul le gabarit Taliup est accepté à ce téléversement. Pour un menu sous toute autre forme — une photo, un PDF, l'export d'un concurrent — utilisez plutôt le [connecteur IA](/fr-CA/taliup-hq/admin/catalog-builder-connector).
+</Note>
+
+## Statuts de construction
+
+| Statut | Signification |
+|---|---|
+| **Uploaded** / **Staged** | La source est arrivée et est en file d'attente |
+| **Reading source** | Le chiffrier est lu et comparé aux enregistrements existants du marchand |
+| **Ready for review** | L'ébauche vous attend |
+| **Committing** | Les enregistrements sont écrits dans le catalogue du marchand |
+| **Committed** | Terminé |
+| **Failed** | La source n'a pas pu être lue — la raison est affichée sur la construction |
+| **Cancelled** | Vous avez annulé la construction, ou elle est restée 30 jours sans être touchée |
+
+## Réviser l'ébauche
+
+L'écran de révision est l'endroit où tout se joue. Il montre l'ensemble du catalogue proposé et vous permet de tout corriger avant la publication.
+
+<Frame caption="L'écran de révision de Catalog Builder avec la bannière de validation, les onglets et l'arborescence des catégories et articles.">
+  ![Écran de révision Catalog Builder montrant une bannière de validation, les onglets Menu / Attributes / Taxes / Tags / Units et une arborescence déplaçable de catégories contenant des articles](/images/taliup-hq/catalog-builder/review.png)
+</Frame>
+
+### Onglets
+
+| Onglet | Contenu |
+|---|---|
+| **Menu** | Les catalogues, leurs catégories et les articles de chacune |
+| **Attributes** | Les groupes d'options comme Size ou Add-ons, avec leurs valeurs et écarts de prix |
+| **Taxes** | Les taxes trouvées dans la source |
+| **Tags** | Les étiquettes de produits trouvées dans la source |
+| **Units** | Les unités de mesure, utilisées par les articles vendus au poids |
+
+### Décider du sort de chaque ligne
+
+Chaque ligne — article, catégorie, attribut, taxe et étiquette — porte une action.
+
+| Action | Effet à la publication |
+|---|---|
+| **Create new** | Ajoute un nouvel enregistrement au catalogue du marchand |
+| **Link existing** | Utilise l'enregistrement existant du marchand sans le modifier |
+| **Update existing** | Applique les valeurs de l'ébauche à l'enregistrement existant |
+| **Skip** | Ignore complètement la ligne |
+
+Catalog Builder compare chaque ligne à ce que le marchand possède déjà et suggère une correspondance. Une pastille de couleur à côté de l'action indique le niveau de confiance.
+
+| Pastille | Confiance | Action par défaut |
+|---|---|---|
+| Verte | 95 % et plus | Passe automatiquement à **Link existing** |
+| Ambre | 80 % à 94 % | Reste à **Create new**, avec la correspondance proposée |
+| Aucune | Moins de 80 % | Reste à **Create new** |
+
+Cliquez sur la pastille pour ouvrir le sélecteur, chercher vous-même dans le catalogue du marchand et choisir un autre enregistrement. Une correspondance choisie à la main est verrouillée et ne sera pas remplacée par un appariement ultérieur.
+
+<Warning>
+  **Update existing** modifie les données actives du marchand. L'action ne touche que les champs réellement portés par l'ébauche, et ajoute les attributs et taxes plutôt que de les remplacer — mais le nom, la description et le prix seront écrasés. Utilisez **Link existing** si vous voulez seulement réutiliser un enregistrement.
+</Warning>
+
+### Modifier les articles
+
+Cliquez sur un article pour ouvrir son éditeur. Vous pouvez changer le nom, la description, le prix, le SKU, le coût, le type, les taxes, l'étiquette, les attributs et l'URL de l'image.
+
+- Activez **Custom price** pour les articles à prix du marché. Le champ de prix se vide et l'article est vendu à un prix saisi sur le PDV.
+- **Sold by weight** exige une unité kg, g, lb ou oz, et ne peut pas être combiné au prix personnalisé.
+- Passer un article à **Service** révèle les champs de durée et de réservation.
+
+Glissez la poignée d'une catégorie pour réordonner les sections. Glissez un article d'une catégorie à l'autre pour le déplacer. L'ordre que vous établissez est celui que voit le marchand.
+
+### Corriger les problèmes avant de publier
+
+La bannière du haut compte deux types de problème.
+
+| Type | Effet |
+|---|---|
+| **Erreurs** | Bloquent la publication. Une ligne en erreur affiche une pastille rouge — survolez-la pour voir pourquoi. |
+| **Avertissements** | Ne bloquent pas. Ils signalent des points à vérifier, comme un doublon possible ou un article qui générerait un très grand nombre de combinaisons d'inventaire. |
+
+Les erreurs fréquentes sont un prix manquant sur un article qui n'est pas à prix personnalisé, un attribut sans valeur, et une ligne réglée à **Link existing** sans enregistrement choisi.
+
+Utilisez **Only rows with issues** pour filtrer l'arborescence et ne garder que les lignes à traiter.
+
+### Actions groupées
+
+Cochez des articles pour faire apparaître la barre d'actions groupées : réglez l'action sur tous, ajoutez une taxe, déplacez-les vers une autre catégorie ou ignorez-les. Le menu à côté de **Commit** applique **Link all confident matches** ou **Create all as new** à toute l'ébauche.
+
+### Enregistrement
+
+Les modifications s'enregistrent automatiquement quelques secondes après que vous cessez de taper, et **Save draft** force l'enregistrement. L'indicateur à côté du bouton montre l'état actuel.
+
+<Note>
+  Si quelqu'un d'autre enregistre la même ébauche pendant que vous l'avez ouverte — un autre administrateur, ou votre assistant IA qui met à jour — vous serez averti que l'ébauche a changé et invité à recharger. Recharger abandonne vos modifications non enregistrées : enregistrez tôt.
+</Note>
+
+## Publier
+
+Quand le nombre d'erreurs est à zéro et que tout est enregistré, cliquez sur **Commit to catalog**. Une confirmation détaille exactement combien d'enregistrements seront créés, liés, mis à jour et ignorés.
+
+<Frame caption="La confirmation de publication avec la répartition des créations, liens, mises à jour et exclusions par type d'enregistrement.">
+  ![Boîte de dialogue de confirmation avec un tableau Catalogs, Categories, Items, Attributes, Taxes et Tags croisé avec Create, Link, Update et Skip](/images/taliup-hq/catalog-builder/commit.png)
+</Frame>
+
+<Warning>
+  Si l'ébauche met à jour un catalogue déjà assigné à des terminaux PDV, la confirmation nomme le catalogue et le nombre de terminaux, et vous devez cocher une case pour continuer. Ces appareils reçoivent le changement dès la publication. Pour l'éviter, laissez la ligne du catalogue à **Create new** afin que la construction aboutisse dans un nouveau catalogue.
+</Warning>
+
+Les enregistrements sont écrits en arrière-plan. À la fin, vous obtenez un sommaire de ce qui a été créé, lié, mis à jour et ignoré.
+
+### Si certaines lignes échouent
+
+La construction revient à **Ready for review** avec les échecs indiqués sur les lignes fautives. Corrigez ces lignes et publiez de nouveau — les lignes déjà réussies sont ignorées, donc rien n'est dupliqué.
+
+## Constructions récentes
+
+La liste de la page Catalog Builder montre les 25 dernières constructions du marchand avec leur statut, la source, qui les a lancées et les décomptes. Ouvrez une construction pour voir son ébauche ou son sommaire de publication. Les constructions en cours se rafraîchissent d'elles-mêmes.
+
+Annulez depuis la liste une construction dont vous ne voulez plus. L'annulation abandonne l'ébauche.
+
+<Note>
+  Les constructions terminées conservent leur ébauche 7 jours puis sont effacées, et le chiffrier téléversé est supprimé dès la publication. Une construction laissée en révision 30 jours est annulée automatiquement.
+</Note>
+
+## Configuration initiale
+
+<Info>
+  Cette section s'adresse à qui déploie Taliup HQ. Les administrateurs qui utilisent la fonction n'en ont pas besoin.
+</Info>
+
+Catalog Builder fonctionne dès que la version est déployée et que les migrations ont été exécutées. Le connecteur IA est désactivé par défaut et exige trois choses.
+
+<Steps>
+  <Step title="Exécutez les migrations">
+    `php artisan migrate` crée la table de suivi des constructions et les tables OAuth du connecteur.
+  </Step>
+  <Step title="Générez les clés OAuth">
+    `php artisan passport:keys` sur chaque environnement. Les clés ne sont pas conservées dans le dépôt.
+  </Step>
+  <Step title="Activez le connecteur">
+    Réglez `CATALOG_BUILDER_MCP_ENABLED` à vrai, et listez les clients IA autorisés dans `MCP_REDIRECT_DOMAINS`. Laisser l'indicateur désactivé masque la carte du connecteur et désactive ses points d'accès.
+  </Step>
+</Steps>
+
+Le traitement en arrière-plan utilise une file dédiée `catalog-builder`, que le worker doit inclure :
+
+```bash
+php artisan queue:work --queue=catalog-builder,default
+```
+
+Une tâche planifiée, `catalog-builder:prune`, efface les vieilles ébauches et expire les révisions abandonnées. Elle s'exécute quotidiennement avec le planificateur normal.
+
+## Voir aussi
+
+- [Connecteur IA](/fr-CA/taliup-hq/admin/catalog-builder-connector)
+- [Bulk Import](/fr-CA/taliup-hq/merchant/catalogs/bulk-import)
+- [Catalogues](/fr-CA/taliup-hq/merchant/catalogs/index)
+- [Entités](/fr-CA/taliup-hq/admin/entities)

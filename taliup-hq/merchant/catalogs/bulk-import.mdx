@@ -1,0 +1,127 @@
+---
+title: "Bulk Import"
+sidebarTitle: "Bulk Import"
+description: "Load a merchant's whole product list at once from the Taliup Excel template, and export the current catalog back out."
+icon: "file-import"
+---
+
+**Bulk Upload** loads a merchant's product list from a spreadsheet instead of adding items one at a time. Download the Taliup template, fill it in, upload it.
+
+## How to get here
+
+**Catalogs** (or **Menus**) → **Products** (or **Items**) → **Bulk Upload**.
+
+<Frame caption="The Bulk Upload page with the template download, the file picker, and the Submit button.">
+  ![Bulk Upload Your Products page showing a Download Template button, an Upload File control and a Submit button](/images/taliup-hq/catalogs/bulk-upload.png)
+</Frame>
+
+## Import products
+
+<Steps>
+  <Step title="Download the template">
+    Click **Download Template**. The file is an Excel workbook named `BulkUploadTemplate.xlsx`.
+  </Step>
+  <Step title="Fill in the sheets">
+    Complete **Attributes** and **Tags** first if you plan to reference them, then **Products**. Column details are below.
+  </Step>
+  <Step title="Upload the file">
+    Click **Upload File** and choose your completed workbook. The file name appears once it is selected.
+  </Step>
+  <Step title="Submit">
+    Click **Submit**. The import runs immediately and you land back on the products list with a confirmation.
+  </Step>
+</Steps>
+
+<Warning>
+  The import writes straight to the catalog. There is no review step and no undo — check the spreadsheet before uploading. If you want to see the result before it goes live, use [Catalog Builder](/taliup-hq/admin/catalog-builder) from Taliup HQ admin instead.
+</Warning>
+
+## What is in the template
+
+| Sheet | Purpose |
+|---|---|
+| **Guidelines** | Notes on filling the workbook |
+| **Products** | One row per product or item |
+| **Attributes** | Option groups and their values |
+| **Tags** | Product tags and their colours |
+
+### Products sheet
+
+| Column | Notes |
+|---|---|
+| **Product Name** | Required. A row with no name is skipped |
+| **Product Supplier** | Created if it does not exist yet |
+| **Product Cost** | What the merchant pays |
+| **Mark Up (%)** | Calculated from cost and price when left blank |
+| **Price** | Leave blank for a market-price item — it becomes custom priced |
+| **Product SKU** | |
+| **Weighable** | `Yes` or `No`. Requires a **Unit** and cannot be used with a blank price |
+| **Unit** | `kg`, `g`, `lb` or `oz` |
+| **Product Description** | |
+| **Type** | `Product` or `Service`. Defaults to Product |
+| **Catalog** | Created if it does not exist yet |
+| **Category** | Separate several with commas to put one item in more than one category |
+| **Tag** | A tag name, or an ID from the Tags sheet |
+| **Attribute** | Repeated column. Each must already exist, or be defined on the Attributes sheet |
+| **Tax** | Repeated column. Must match an existing tax by name |
+
+<Note>
+  Taxes are matched by name and are not created by the import. Set them up under **Taxes** first, or attach them at the catalog level afterwards so they cascade to every item.
+</Note>
+
+### Attributes sheet
+
+| Column | Notes |
+|---|---|
+| **Attribute Name** | Required |
+| **Is Required** | Whether the customer must choose a value |
+| **Selection Type** | `Single` or `Multiple` |
+| **Minimum # of Values Selectable** | |
+| **Maximum # of Values Selectable** | Sets the cap when the type is Multiple |
+| **Value** / **Price** | Repeated pair. The price is the difference this value adds to the item |
+
+### Tags sheet
+
+| Column | Notes |
+|---|---|
+| **Tag ID** | Optional. Use it to reference the tag from the Products sheet |
+| **Tag Name** | Required |
+| **Color Code** | Hex colour, for example `#2E7D32` |
+
+## Updating existing products
+
+Export the catalog first, edit the rows you want, and upload the file again. Rows that carry a **Product ID** update that product instead of creating a new one. Rows with no ID always create.
+
+## Export the catalog
+
+From the products list, click **Export Products**. The export is prepared in the background and a download link appears when it is ready — you can leave the page and come back.
+
+**Export Attributes** produces a separate CSV of option groups and their values.
+
+## If the import fails
+
+The whole upload is applied together or not at all, so a failure leaves the catalog untouched. Validation problems come back listed by row number; a problem such as a missing attribute reports the single value that could not be found. The usual causes are:
+
+| Message | Cause |
+|---|---|
+| Modifier not found | An **Attribute** column names an option group that does not exist yet |
+| Tag not found | The **Tag** column names a tag that does not exist |
+| Product not found | A **Product ID** does not belong to this merchant |
+| A unit is required | **Weighable** is `Yes` but **Unit** is empty |
+
+Fix the spreadsheet and upload again.
+
+<Tip>
+  Importing a large catalogue? Ask your ISO to run it from Taliup HQ admin instead. The admin-side import processes in the background in batches and gives you a downloadable file of just the rows that failed, so you can fix and re-upload those alone.
+</Tip>
+
+## Item order
+
+Items imported into a category keep the order they appear in the spreadsheet. Reordering rows in the file and re-importing does not reshuffle items that already exist.
+
+## Related
+
+- [Catalogs](/taliup-hq/merchant/catalogs/index)
+- [Catalog Builder](/taliup-hq/admin/catalog-builder)
+- [Products / Items on the POS](/taliup-pos/catalog/products)
+- [Attributes / Modifiers on the POS](/taliup-pos/catalog/attributes)

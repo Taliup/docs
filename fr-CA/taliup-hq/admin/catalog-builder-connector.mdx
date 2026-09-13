@@ -1,0 +1,145 @@
+---
+title: "Connecteur IA Catalog Builder"
+sidebarTitle: "Connecteur IA"
+description: "Reliez Taliup HQ à votre assistant IA pour transformer une photo de menu, un PDF ou un chiffrier non standard en ébauche de catalogue révisable."
+icon: "robot"
+---
+
+Le **connecteur IA** vous permet de remettre le menu d'un marchand à votre propre assistant IA — photo, PDF, capture d'écran ou chiffrier de n'importe quelle forme — et de lui faire construire une ébauche de catalogue Taliup. L'ébauche aboutit dans [Catalog Builder](/fr-CA/taliup-hq/admin/catalog-builder) dans Taliup HQ, où vous la révisez et la publiez comme d'habitude.
+
+C'est la réponse au marchand qui vous envoie la photo d'un menu imprimé.
+
+<Frame caption="La carte du connecteur sur la page Catalog Builder, avec l'URL du connecteur et un bouton de copie.">
+  ![Carte connecteur intitulée Build from any menu with your AI assistant, avec un champ d'URL en lecture seule et un bouton Copy](/images/taliup-hq/catalog-builder/connector-card.png)
+</Frame>
+
+## Comment ça fonctionne
+
+Votre assistant IA fait la lecture. Taliup HQ fait l'écriture.
+
+<Steps>
+  <Step title="Vous joignez le menu dans votre assistant IA">
+    Le fichier reste dans votre assistant. Il n'est jamais téléversé vers Taliup.
+  </Step>
+  <Step title="L'assistant demande les règles à Taliup">
+    Il récupère le format de catalogue ainsi que les catalogues, attributs, taxes et étiquettes existants du marchand afin de les réutiliser au lieu de créer des doublons.
+  </Step>
+  <Step title="L'assistant dépose une ébauche">
+    Il envoie des données structurées à Taliup HQ et reçoit un lien de révision, ainsi que tout ce qui a échoué à la validation pour pouvoir se corriger.
+  </Step>
+  <Step title="Vous révisez et publiez dans Taliup HQ">
+    Exactement comme pour une construction par chiffrier.
+  </Step>
+</Steps>
+
+<Warning>
+  Le connecteur peut lire les données de catalogue d'un marchand et déposer des ébauches. Il **ne peut pas** publier, annuler ni supprimer quoi que ce soit. Toute modification d'un catalogue actif passe par l'écran de révision dans Taliup HQ, par une personne.
+</Warning>
+
+## Ce que ça coûte
+
+Rien du côté de Taliup. La lecture est faite par votre propre assistant IA, sur votre propre abonnement. Il vous faut donc un forfait qui prend en charge les connecteurs personnalisés.
+
+## Connecter votre assistant
+
+Il vous faut l'URL du connecteur, affichée dans l'onglet **Catalog Builder** de n'importe quel marchand. C'est la même URL pour tous les marchands — vous choisissez le marchand dans la conversation, pas dans le connecteur.
+
+<Tabs>
+  <Tab title="Claude Desktop / claude.ai">
+    <Steps>
+      <Step title="Copiez l'URL du connecteur">
+        Ouvrez l'onglet **Catalog Builder** d'un marchand et cliquez sur **Copy** sur la carte du connecteur.
+      </Step>
+      <Step title="Ajoutez le connecteur">
+        Dans Claude, allez à **Settings** → **Connectors** → **Add custom connector**, et collez l'URL.
+      </Step>
+      <Step title="Connectez-vous">
+        Claude vous envoie vers une page de connexion Taliup HQ. Connectez-vous avec votre compte Taliup HQ habituel, vérifiez ce que le connecteur a le droit de faire, puis cliquez sur **Authorize**.
+      </Step>
+      <Step title="Vérifiez qu'il est disponible">
+        Le connecteur Taliup HQ Catalog Builder apparaît maintenant dans votre liste de connecteurs et ses outils sont disponibles en conversation.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Forfaits Team et Enterprise">
+    Sur les forfaits Team et Enterprise, seul un propriétaire peut ajouter un connecteur pour l'organisation, sous **Organization settings** → **Connectors**. Une fois ajouté, chaque membre l'autorise individuellement avec son propre compte Taliup HQ.
+  </Tab>
+</Tabs>
+
+<Note>
+  Le connecteur vous autorise **vous**, pas votre organisation. Il ne voit que les marchands que vous pouviez déjà ouvrir dans Taliup HQ et hérite de votre portée ISO. Un compte non administrateur qui l'autorise n'obtient aucun outil.
+</Note>
+
+## Construire un menu
+
+Joignez le menu du marchand à une nouvelle conversation et demandez ce que vous voulez. Par exemple :
+
+```text
+Build a Taliup menu for Bistro Lafayette from the attached PDF.
+```
+
+Une invite enregistrée nommée **Build menu from source** est disponible dans la liste d'invites de votre assistant. Elle guide l'assistant à travers toute la séquence et constitue la façon la plus fiable de commencer.
+
+L'assistant nomme le marchand qu'il a retenu, ou vous demande lequel si plusieurs correspondent. À la fin, il répond avec un lien de révision et un sommaire de ce qu'il a déposé.
+
+### Obtenir une bonne ébauche
+
+<Tip>
+  Dites d'emblée ce que vous voulez. « Only pages 1 and 2 », « this is the brunch menu », « add it to the existing Dinner Menu catalog » et « taxes are already set up, don't create any » fonctionnent tous et vous évitent un aller-retour de correction.
+</Tip>
+
+L'assistant reçoit la consigne de convertir les menus comme Taliup s'y attend :
+
+| Dans le menu | Dans Taliup |
+|---|---|
+| Le menu lui-même | Un catalogue |
+| Une section ou un titre | Une catégorie, dans l'ordre imprimé |
+| Un article | Un produit |
+| « Choose your size », suppléments, accompagnements | Un attribut avec des valeurs |
+| Un article au prix selon le format | Un prix de base plus un attribut Size portant les écarts |
+| « Market price » ou un prix vide | Un article à prix personnalisé |
+| Un service minuté, comme un massage de 60 minutes | Un service avec une durée |
+
+Il lui est demandé de ne pas inventer d'articles ni de prix, de ne pas traduire les noms, et de signaler ce qui est ambigu plutôt que de deviner. Ces notes apparaissent en haut de l'écran de révision.
+
+### Corriger une ébauche déposée
+
+Si la validation signale des problèmes, l'assistant peut les corriger et redéposer sans votre intervention. Vous pouvez aussi lui demander de changer quelque chose après coup — « make all the salads tax exempt », « the wine list should be its own catalog » — tant que vous n'avez pas lancé la publication.
+
+<Note>
+  Si vous modifiez l'ébauche dans Taliup HQ en même temps, celui qui enregistre en second est averti que l'ébauche a changé et doit recharger. Terminez à un endroit avant de passer à l'autre.
+</Note>
+
+## Sécurité
+
+| Enjeu | Traitement |
+|---|---|
+| Connexion | OAuth. Votre assistant ne voit jamais votre mot de passe Taliup HQ, et vous pouvez révoquer l'accès en tout temps |
+| Portée | Le connecteur ne voit que les marchands de votre portée ISO, et seulement ceux ayant la fonction Catalog |
+| Écritures | Aucun outil ne peut publier, annuler ou supprimer. Au maximum, il dépose une ébauche à réviser |
+| Fichiers du marchand | Les pièces jointes restent dans votre assistant IA. Seule l'ébauche structurée atteint Taliup |
+| Contenu des menus | Le texte d'un menu téléversé est traité comme des données. Les instructions cachées dans un document sont ignorées |
+| Taille | Les ébauches surdimensionnées sont refusées, afin qu'une mauvaise extraction ne puisse pas inonder un catalogue |
+
+## Dépannage
+
+<AccordionGroup>
+  <Accordion title="La carte du connecteur indique qu'il n'est pas activé">
+    Le connecteur est désactivé dans cet environnement. Voir la section de configuration de la page [Catalog Builder](/fr-CA/taliup-hq/admin/catalog-builder).
+  </Accordion>
+  <Accordion title="La connexion réussit mais l'assistant n'a aucun outil">
+    Le compte utilisé pour autoriser n'a pas accès à l'administration Taliup HQ. Déconnectez le connecteur et reconnectez-vous avec votre compte administrateur.
+  </Accordion>
+  <Accordion title="L'assistant ne trouve pas le marchand">
+    Il ne voit que les marchands de votre portée ISO ayant la fonction Catalog activée. Vérifiez les deux sur la fiche **Entities** du marchand, puis demandez à l'assistant de lister les marchands qu'il voit.
+  </Accordion>
+  <Accordion title="Il manque une partie du menu dans l'ébauche">
+    Les menus longs ou peu contrastés peuvent être lus partiellement. Demandez à l'assistant quelles pages il a utilisées, puis faites-lui redéposer la section manquante. Une photo nette d'une page vaut mieux qu'une photo floue de six.
+  </Accordion>
+</AccordionGroup>
+
+## Voir aussi
+
+- [Catalog Builder](/fr-CA/taliup-hq/admin/catalog-builder)
+- [Bulk Import](/fr-CA/taliup-hq/merchant/catalogs/bulk-import)
+- [Entités](/fr-CA/taliup-hq/admin/entities)

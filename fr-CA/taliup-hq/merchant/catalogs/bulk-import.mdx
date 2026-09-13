@@ -1,0 +1,127 @@
+---
+title: "Bulk Import"
+sidebarTitle: "Bulk Import"
+description: "Chargez toute la liste de produits d'un marchand d'un coup à partir du gabarit Excel Taliup, et exportez le catalogue courant."
+icon: "file-import"
+---
+
+**Bulk Upload** charge la liste de produits d'un marchand depuis un chiffrier plutôt qu'un article à la fois. Téléchargez le gabarit Taliup, remplissez-le, téléversez-le.
+
+## Comment y accéder
+
+**Catalogs** (ou **Menus**) → **Products** (ou **Items**) → **Bulk Upload**.
+
+<Frame caption="La page Bulk Upload avec le téléchargement du gabarit, le sélecteur de fichier et le bouton Submit.">
+  ![Page Bulk Upload Your Products avec un bouton Download Template, un contrôle Upload File et un bouton Submit](/images/taliup-hq/catalogs/bulk-upload.png)
+</Frame>
+
+## Importer des produits
+
+<Steps>
+  <Step title="Téléchargez le gabarit">
+    Cliquez sur **Download Template**. Le fichier est un classeur Excel nommé `BulkUploadTemplate.xlsx`.
+  </Step>
+  <Step title="Remplissez les feuilles">
+    Complétez d'abord **Attributes** et **Tags** si vous prévoyez d'y faire référence, puis **Products**. Le détail des colonnes est plus bas.
+  </Step>
+  <Step title="Téléversez le fichier">
+    Cliquez sur **Upload File** et choisissez votre classeur rempli. Le nom du fichier s'affiche une fois sélectionné.
+  </Step>
+  <Step title="Soumettez">
+    Cliquez sur **Submit**. L'import s'exécute immédiatement et vous revenez à la liste des produits avec une confirmation.
+  </Step>
+</Steps>
+
+<Warning>
+  L'import écrit directement dans le catalogue. Il n'y a ni étape de révision ni annulation — vérifiez le chiffrier avant de téléverser. Pour voir le résultat avant qu'il ne devienne actif, utilisez plutôt [Catalog Builder](/fr-CA/taliup-hq/admin/catalog-builder) depuis l'administration Taliup HQ.
+</Warning>
+
+## Contenu du gabarit
+
+| Feuille | Rôle |
+|---|---|
+| **Guidelines** | Notes sur le remplissage du classeur |
+| **Products** | Une ligne par produit ou article |
+| **Attributes** | Les groupes d'options et leurs valeurs |
+| **Tags** | Les étiquettes de produits et leurs couleurs |
+
+### Feuille Products
+
+| Colonne | Notes |
+|---|---|
+| **Product Name** | Obligatoire. Une ligne sans nom est ignorée |
+| **Product Supplier** | Créé s'il n'existe pas encore |
+| **Product Cost** | Ce que le marchand paie |
+| **Mark Up (%)** | Calculé à partir du coût et du prix si laissé vide |
+| **Price** | Laissez vide pour un article à prix du marché — il devient à prix personnalisé |
+| **Product SKU** | |
+| **Weighable** | `Yes` ou `No`. Exige une **Unit** et ne peut pas être utilisé avec un prix vide |
+| **Unit** | `kg`, `g`, `lb` ou `oz` |
+| **Product Description** | |
+| **Type** | `Product` ou `Service`. Product par défaut |
+| **Catalog** | Créé s'il n'existe pas encore |
+| **Category** | Séparez-en plusieurs par des virgules pour placer un article dans plus d'une catégorie |
+| **Tag** | Un nom d'étiquette, ou un identifiant de la feuille Tags |
+| **Attribute** | Colonne répétée. Chaque valeur doit déjà exister, ou être définie sur la feuille Attributes |
+| **Tax** | Colonne répétée. Doit correspondre à une taxe existante par son nom |
+
+<Note>
+  Les taxes sont appariées par nom et ne sont pas créées par l'import. Configurez-les d'abord sous **Taxes**, ou attachez-les au niveau du catalogue par la suite pour qu'elles se propagent à tous les articles.
+</Note>
+
+### Feuille Attributes
+
+| Colonne | Notes |
+|---|---|
+| **Attribute Name** | Obligatoire |
+| **Is Required** | Si le client doit choisir une valeur |
+| **Selection Type** | `Single` ou `Multiple` |
+| **Minimum # of Values Selectable** | |
+| **Maximum # of Values Selectable** | Fixe le maximum quand le type est Multiple |
+| **Value** / **Price** | Paire répétée. Le prix est l'écart que cette valeur ajoute à l'article |
+
+### Feuille Tags
+
+| Colonne | Notes |
+|---|---|
+| **Tag ID** | Facultatif. Sert à référencer l'étiquette depuis la feuille Products |
+| **Tag Name** | Obligatoire |
+| **Color Code** | Couleur hexadécimale, par exemple `#2E7D32` |
+
+## Mettre à jour des produits existants
+
+Exportez d'abord le catalogue, modifiez les lignes voulues, puis téléversez le fichier de nouveau. Les lignes qui portent un **Product ID** mettent ce produit à jour au lieu d'en créer un nouveau. Les lignes sans identifiant créent toujours.
+
+## Exporter le catalogue
+
+Depuis la liste des produits, cliquez sur **Export Products**. L'export est préparé en arrière-plan et un lien de téléchargement apparaît lorsqu'il est prêt — vous pouvez quitter la page et revenir.
+
+**Export Attributes** produit un CSV distinct des groupes d'options et de leurs valeurs.
+
+## Si l'import échoue
+
+Tout le téléversement est appliqué ensemble ou pas du tout : un échec laisse donc le catalogue intact. Les problèmes de validation sont retournés par numéro de ligne; un problème comme un attribut manquant signale la seule valeur introuvable. Les causes habituelles sont :
+
+| Message | Cause |
+|---|---|
+| Modifier not found | Une colonne **Attribute** nomme un groupe d'options qui n'existe pas encore |
+| Tag not found | La colonne **Tag** nomme une étiquette qui n'existe pas |
+| Product not found | Un **Product ID** n'appartient pas à ce marchand |
+| A unit is required | **Weighable** est à `Yes` mais **Unit** est vide |
+
+Corrigez le chiffrier et téléversez de nouveau.
+
+<Tip>
+  Vous importez un gros catalogue ? Demandez à votre ISO de le lancer depuis l'administration Taliup HQ. L'import côté administration traite en arrière-plan par lots et fournit un fichier téléchargeable des seules lignes en échec, pour ne corriger et retéléverser que celles-là.
+</Tip>
+
+## Ordre des articles
+
+Les articles importés dans une catégorie conservent l'ordre dans lequel ils apparaissent dans le chiffrier. Réordonner les lignes du fichier et réimporter ne réorganise pas les articles qui existent déjà.
+
+## Voir aussi
+
+- [Catalogues](/fr-CA/taliup-hq/merchant/catalogs/index)
+- [Catalog Builder](/fr-CA/taliup-hq/admin/catalog-builder)
+- [Produits / Articles sur le PDV](/fr-CA/taliup-pos/catalog/products)
+- [Attributs / Modificateurs sur le PDV](/fr-CA/taliup-pos/catalog/attributes)
