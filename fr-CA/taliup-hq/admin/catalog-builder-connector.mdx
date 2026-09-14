@@ -131,6 +131,21 @@ Taliup ne récupère une page que si toutes ces conditions sont réunies :
   Beaucoup de sites de restaurants affichent leur menu en JavaScript, et certains le publient en image. Taliup signale qu'une page récupérée ne contient presque aucun prix, et l'assistant a pour consigne de le dire plutôt que d'inventer des articles. Le cas échéant, envoyez plutôt une capture d'écran ou le PDF.
 </Note>
 
+#### Photos des articles
+
+Une page récupérée renvoie aussi les photos qu'elle contient, placées à côté de l'article auquel elles appartiennent, pour que l'assistant associe la bonne image au bon plat.
+
+Deux traitements sont appliqués automatiquement :
+
+- **Les éléments décoratifs sont écartés** — logos, boutons de réseaux sociaux, flèches, pixels de suivi, et tout ce que la page déclare elle-même sous 60 pixels.
+- **Les vignettes sont ramenées au fichier d'origine.** Les créateurs de sites servent la photo à la taille affichée, souvent 150 pixels de côté. Taliup rétablit l'image pleine grandeur avant de la stocker.
+
+Les images sont téléchargées et réhébergées sur le stockage de Taliup à la publication : le catalogue du marchand ne dépend donc pas du maintien en ligne de son ancien site.
+
+<Warning>
+  L'assistant ne doit utiliser que les URL d'images renvoyées par la récupération. Une adresse construite ou devinée échoue en silence — l'article est publié sans image et rien ne le signale. Si vous avez demandé les images et n'en avez obtenu aucune, c'est que la page n'en contenait aucune de lisible : demandez plutôt une capture d'écran que de le laisser improviser.
+</Warning>
+
 ### Corriger une ébauche déposée
 
 Si la validation signale des problèmes, l'assistant peut les corriger et redéposer sans votre intervention. Vous pouvez aussi lui demander de changer quelque chose après coup — « make all the salads tax exempt », « the wine list should be its own catalog » — tant que vous n'avez pas lancé la publication.

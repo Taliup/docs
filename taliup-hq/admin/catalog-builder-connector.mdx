@@ -131,6 +131,21 @@ Taliup will only fetch a page when every one of these holds:
   Many restaurant sites render their menu with JavaScript, and some publish it as an image. Taliup reports when a fetched page carries almost no prices, and the assistant is told to say so rather than invent items. If that happens, send a screenshot or the PDF instead.
 </Note>
 
+#### Item photos
+
+A fetched page also hands back the item photos it carries, positioned next to the item they belong to, so the assistant can attach the right picture to the right dish.
+
+Two things happen to each one automatically:
+
+- **Site furniture is dropped** — logos, social buttons, arrows, tracking pixels, and anything the page itself declares smaller than 60 pixels.
+- **Thumbnails are unwound to the original upload.** Site builders serve a menu photo at whatever size the page displays it, often 150 pixels square. Taliup restores the full-size file before storing it.
+
+Images are downloaded and re-hosted on Taliup's own storage at commit, so the merchant's catalog does not depend on their old website staying up.
+
+<Warning>
+  The assistant must only use image URLs the fetch returned. A constructed or guessed address fails quietly — the item commits with no picture and nothing reports it. If you asked for images and got none, the page had none Taliup could read; ask for a screenshot rather than letting it improvise.
+</Warning>
+
 ### Correcting a staged draft
 
 If validation reports problems, the assistant can fix them and restage without your involvement. You can also ask it to change something after the fact — "make all the salads tax exempt", "the wine list should be its own catalog" — as long as you have not started committing.
