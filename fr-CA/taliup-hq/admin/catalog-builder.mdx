@@ -127,8 +127,14 @@ Catalog Builder compare chaque ligne à ce que le marchand possède déjà et su
 Cliquez sur la pastille pour ouvrir le sélecteur, chercher vous-même dans le catalogue du marchand et choisir un autre enregistrement. Une correspondance choisie à la main est verrouillée et ne sera pas remplacée par un appariement ultérieur.
 
 <Warning>
-  **Update existing** modifie les données actives du marchand. L'action ne touche que les champs réellement portés par l'ébauche, et ajoute les attributs et taxes plutôt que de les remplacer — mais le nom, la description et le prix seront écrasés. Utilisez **Link existing** si vous voulez seulement réutiliser un enregistrement.
+  **Update existing** modifie les données actives du marchand. L'action ne touche que les champs réellement portés par l'ébauche, et ajoute les attributs, les taxes et les images plutôt que de les remplacer — mais le nom, la description et le prix seront écrasés. Utilisez **Link existing** si vous voulez seulement réutiliser un enregistrement.
 </Warning>
+
+<Note>
+  Cela compte pour les photos. **Link existing** n'écrit rien du tout : une image portée par l'ébauche est donc abandonnée — la ligne vous avertit lorsque c'est le cas. **Update existing** ajoute la photo à un article qui n'en a pas, et laisse intacte une photo existante à moins que vous ne saisissiez vous-même l'URL de l'image dans l'écran de révision.
+
+  Réimporter un menu que le marchand possède déjà produit surtout des lignes link et update : c'est donc le cas courant quand on ajoute des photos à un catalogue construit plus tôt.
+</Note>
 
 ### Modifier les articles
 

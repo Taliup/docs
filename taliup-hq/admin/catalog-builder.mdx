@@ -127,8 +127,14 @@ Catalog Builder compares every row against what the merchant already has and sug
 Click the match badge to open the picker, search the merchant's catalog yourself, and choose a different record. A match you pick by hand is locked and will not be overwritten by later matching.
 
 <Warning>
-  **Update existing** changes the merchant's live data. It only touches fields the draft actually carries, and it adds attributes and taxes rather than replacing them — but the name, description and price will be overwritten. Use **Link existing** when you only want to reuse a record.
+  **Update existing** changes the merchant's live data. It only touches fields the draft actually carries, and it adds attributes, taxes and images rather than replacing them — but the name, description and price will be overwritten. Use **Link existing** when you only want to reuse a record.
 </Warning>
+
+<Note>
+  This matters for photos. **Link existing** writes nothing at all, so an item image in the draft is discarded — the row warns you when that would happen. **Update existing** adds the photo to an item that has none, and leaves an existing photo alone unless you set the image URL yourself in the review screen.
+
+  Re-importing a menu the merchant already has is mostly link and update rows, so this is the usual case when adding photos to a catalog built earlier.
+</Note>
 
 ### Edit items
 
