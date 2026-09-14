@@ -78,6 +78,8 @@ Attach the merchant's menu to a new conversation and ask for what you want. For 
 Build a Taliup menu for Bistro Lafayette from the attached PDF.
 ```
 
+Name the merchant in the message — that is how the assistant knows which account to build for. The connector card in Taliup HQ shows a ready-made line with the merchant's name already in it, so you can copy it from the merchant you are looking at.
+
 A saved prompt called **Build menu from source** is available in your assistant's prompt list. It walks the assistant through the whole sequence and is the most reliable way to start.
 
 The assistant will name the merchant it picked, or ask you which one if several match. When it finishes it replies with a review link and a summary of what it staged.
@@ -102,6 +104,33 @@ The assistant is told to map menus the way Taliup expects:
 
 It is told not to invent items or prices, not to translate names, and to note anything ambiguous rather than guess. Those notes appear at the top of the review screen.
 
+### Build from the merchant's website
+
+If the merchant publishes their menu on their own site, you can point the assistant at the page instead of chasing a photo:
+
+```text
+Build a Taliup menu for Bistro Lafayette from https://bistrolafayette.example/menu
+```
+
+The assistant fetches the page through Taliup, which returns the readable text, and builds the draft from that. Nothing about the page reaches the merchant's catalog until you commit.
+
+Taliup will only fetch a page when every one of these holds:
+
+| Rule | Detail |
+|---|---|
+| `https` only | Plain `http` is refused |
+| A public address | Internal, loopback and private-network addresses are refused, and every redirect is re-checked |
+| An allowlisted domain | The domain must be added by whoever runs Taliup HQ. A domain covers its subdomains, matched on a dot boundary, so a lookalike such as `example.com.evil.test` is refused |
+| A web page | A menu published as a PDF or an image is refused — attach it to the conversation instead |
+
+<Warning>
+  Do not use a delivery marketplace listing — Uber Eats, DoorDash, SkipTheDishes. Those prices are marked up to cover the platform's commission, so a catalog built from them overcharges the merchant's own walk-in and POS customers. Those domains are not allowlisted, and should not be.
+</Warning>
+
+<Note>
+  Many restaurant sites render their menu with JavaScript, and some publish it as an image. Taliup reports when a fetched page carries almost no prices, and the assistant is told to say so rather than invent items. If that happens, send a screenshot or the PDF instead.
+</Note>
+
 ### Correcting a staged draft
 
 If validation reports problems, the assistant can fix them and restage without your involvement. You can also ask it to change something after the fact — "make all the salads tax exempt", "the wine list should be its own catalog" — as long as you have not started committing.
@@ -118,7 +147,8 @@ If validation reports problems, the assistant can fix them and restage without y
 | Scope | The connector sees only merchants inside your ISO scope, and only merchants with the Catalog feature |
 | Writes | No tool can commit, cancel or delete. The most it can do is stage a draft for review |
 | Merchant files | Attachments stay in your AI assistant. Only the structured draft reaches Taliup |
-| Menu contents | Text inside an uploaded menu is treated as data. Instructions hidden in a document are ignored |
+| Menu contents | Text inside an uploaded menu, or on a fetched page, is treated as data. Instructions hidden in a document or a web page are ignored |
+| Fetching web pages | Only `https`, only public addresses, only allowlisted domains, re-checked on every redirect, with the response capped in size |
 | Size | Oversized drafts are rejected, so a bad extraction cannot flood a merchant's catalog |
 
 ## Troubleshooting
@@ -132,6 +162,12 @@ If validation reports problems, the assistant can fix them and restage without y
   </Accordion>
   <Accordion title="The assistant cannot find the merchant">
     It only sees merchants in your ISO scope that have the Catalog feature enabled. Confirm both on the merchant's **Entities** record, then ask the assistant to list the merchants it can see.
+  </Accordion>
+  <Accordion title="It will not fetch the merchant's menu URL">
+    The domain is not on the allowlist, or no domains are allowlisted at all. The assistant's message names the host it was refused. Ask whoever runs Taliup HQ to add it to `MENU_FETCH_ALLOWED_DOMAINS`. In the meantime, paste the menu text into the conversation or attach a screenshot.
+  </Accordion>
+  <Accordion title="The page was fetched but almost nothing came back">
+    The menu is probably drawn by JavaScript, or published as a PDF or an image, so there is no text on the page to read. Attach the PDF or a screenshot instead.
   </Accordion>
   <Accordion title="The draft is missing part of the menu">
     Long or low-contrast menus can be read partially. Ask the assistant which pages it used, then have it restage the missing section. A sharper photo of one page beats a blurry photo of six.

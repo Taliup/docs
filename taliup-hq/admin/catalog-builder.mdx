@@ -61,6 +61,20 @@ Both paths produce the same draft and use the same review screen.
   Only the Taliup template is accepted on this upload. For a menu in any other shape — a photo, a PDF, a competitor's export — use the [AI connector](/taliup-hq/admin/catalog-builder-connector) instead.
 </Note>
 
+#### Size limits
+
+The upload card states both limits: **20 MB** and **2,000 items**. A workbook is counted before it is stored, so an oversized file is refused straight away rather than failing later in the queue.
+
+| Refused | Why |
+|---|---|
+| More than 2,000 product rows | The review screen loads the whole draft at once, so a catalogue that size cannot be reviewed |
+| Larger than 20 MB, or not `.xlsx` / `.xls` | Not a Taliup template upload |
+| No product rows at all | Nothing to build |
+
+<Tip>
+  A catalogue over 2,000 items belongs in [Bulk Import](/taliup-hq/merchant/catalogs/bulk-import). It processes in batches, survives a restart, and hands back a spreadsheet of just the rows that failed. Catalog Builder is for menus you intend to read line by line.
+</Tip>
+
 ## Build statuses
 
 | Status | Meaning |
@@ -118,9 +132,10 @@ Click the match badge to open the picker, search the merchant's catalog yourself
 
 ### Edit items
 
-Click any item to expand its editor. You can change the name, description, price, SKU, cost, type, taxes, tag, attributes and image URL.
+Click any item to expand its editor. You can change the name, description, price, SKU, cost, supplier, mark up, type, taxes, tag, attributes and image URL.
 
 - Turn on **Custom price** for market-price items. The price field clears and the item is sold at a price entered on the POS.
+- **Supplier** is created for the merchant if the name is new. **Mark up (%)** is worked out from cost and price when you leave it blank.
 - **Sold by weight** requires a unit of kg, g, lb or oz, and cannot be combined with custom price.
 - Switching an item to **Service** reveals duration and booking fields.
 
@@ -137,11 +152,24 @@ The banner at the top counts two kinds of problem.
 
 Common errors are a missing price on an item that is not custom-priced, an attribute with no values, and a row set to **Link existing** with no record chosen.
 
+#### Items with no price
+
+A source that gives no price at all — a menu photo where the column was cut off, say — produces a **custom price** item, which means the cashier types the price at the till on every sale. That is a real decision made on your behalf, so the row carries a warning saying so.
+
+Clear it either way:
+
+- type the price, or
+- confirm the item really is priced at the till, by ticking **Custom price** on the item or using the **Mark as custom price** bulk action.
+
+An item whose source says "market price" is custom-priced deliberately and does not warn. A price of **0** is a free item, not a missing one, and does not warn either.
+
 Use **Only rows with issues** to filter the tree down to rows that need attention.
 
 ### Bulk actions
 
-Select items with their checkboxes to reveal the bulk bar: set the action on all of them, add a tax, move them to another category, or skip them. The overflow menu beside **Commit** applies **Link all confident matches** or **Create all as new** across the whole draft.
+Select items with their checkboxes to reveal the bulk bar: set the action on all of them, add a tax, move them to another category, mark them as custom price, or skip them. The overflow menu beside **Commit** applies **Link all confident matches** or **Create all as new** across the whole draft.
+
+**Mark as custom price** is the quick way to accept a whole section that is genuinely priced at the till. It clears each item's price, turns off **Sold by weight**, and resolves the missing-price warning on every row it touches.
 
 ### Saving
 
@@ -198,6 +226,12 @@ Catalog Builder itself works as soon as the release is deployed and migrations h
     Set `CATALOG_BUILDER_MCP_ENABLED` to true, and list the AI clients allowed to connect in `MCP_REDIRECT_DOMAINS`. Leaving the flag off hides the connector card and disables its endpoints.
   </Step>
 </Steps>
+
+To let the connector read a merchant's menu **from their website**, list the domains it may fetch in `MENU_FETCH_ALLOWED_DOMAINS`, comma separated. The list is empty by default, which switches the feature off. A domain covers its subdomains, so `example.com` also permits `www.example.com` and `order.example.com`.
+
+<Warning>
+  Never allowlist a delivery marketplace such as Uber Eats, DoorDash or SkipTheDishes. Their listed prices include commission and are simply the wrong prices for a POS catalog, quite apart from their terms of use.
+</Warning>
 
 Background work runs on a dedicated `catalog-builder` queue, so the queue worker must include it:
 

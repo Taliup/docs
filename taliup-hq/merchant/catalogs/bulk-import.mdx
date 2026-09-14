@@ -53,7 +53,7 @@ icon: "file-import"
 | **Product Supplier** | Created if it does not exist yet |
 | **Product Cost** | What the merchant pays |
 | **Mark Up (%)** | Calculated from cost and price when left blank |
-| **Price** | Leave blank for a market-price item — it becomes custom priced |
+| **Price** | Leave blank for a market-price item — it becomes custom priced. `0` means the item is free, not missing |
 | **Product SKU** | |
 | **Weighable** | `Yes` or `No`. Requires a **Unit** and cannot be used with a blank price |
 | **Unit** | `kg`, `g`, `lb` or `oz` |
@@ -87,6 +87,10 @@ icon: "file-import"
 | **Tag ID** | Optional. Use it to reference the tag from the Products sheet |
 | **Tag Name** | Required |
 | **Color Code** | Hex colour, for example `#2E7D32` |
+
+<Note>
+  A blank **Price** and a **Price** of `0` are different things. Blank means the cashier enters the price at the till; `0` creates a genuinely free item, such as a complimentary side. Both the merchant import and [Catalog Builder](/taliup-hq/admin/catalog-builder) read the column the same way.
+</Note>
 
 ## Updating existing products
 

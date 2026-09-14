@@ -61,6 +61,20 @@ Les deux chemins produisent la même ébauche et utilisent le même écran de r�
   Seul le gabarit Taliup est accepté à ce téléversement. Pour un menu sous toute autre forme — une photo, un PDF, l'export d'un concurrent — utilisez plutôt le [connecteur IA](/fr-CA/taliup-hq/admin/catalog-builder-connector).
 </Note>
 
+#### Limites de taille
+
+La carte de téléversement affiche les deux limites : **20 Mo** et **2 000 articles**. Le classeur est compté avant d'être stocké, donc un fichier trop gros est refusé immédiatement plutôt que d'échouer plus tard dans la file.
+
+| Refusé | Pourquoi |
+|---|---|
+| Plus de 2 000 lignes de produits | L'écran de révision charge toute l'ébauche d'un coup : un catalogue de cette taille ne peut pas être révisé |
+| Plus de 20 Mo, ou pas un `.xlsx` / `.xls` | Ce n'est pas un téléversement de gabarit Taliup |
+| Aucune ligne de produit | Rien à construire |
+
+<Tip>
+  Un catalogue de plus de 2 000 articles relève de [Bulk Import](/fr-CA/taliup-hq/merchant/catalogs/bulk-import) : le traitement se fait par lots, survit à un redémarrage, et vous rend un fichier des seules lignes en échec. Catalog Builder sert aux menus que vous comptez relire ligne par ligne.
+</Tip>
+
 ## Statuts de construction
 
 | Statut | Signification |
@@ -118,9 +132,10 @@ Cliquez sur la pastille pour ouvrir le sélecteur, chercher vous-même dans le c
 
 ### Modifier les articles
 
-Cliquez sur un article pour ouvrir son éditeur. Vous pouvez changer le nom, la description, le prix, le SKU, le coût, le type, les taxes, l'étiquette, les attributs et l'URL de l'image.
+Cliquez sur un article pour ouvrir son éditeur. Vous pouvez changer le nom, la description, le prix, le SKU, le coût, le fournisseur, la majoration, le type, les taxes, l'étiquette, les attributs et l'URL de l'image.
 
 - Activez **Custom price** pour les articles à prix du marché. Le champ de prix se vide et l'article est vendu à un prix saisi sur le PDV.
+- Le **fournisseur** est créé pour le marchand si le nom est nouveau. La **majoration (%)** est calculée à partir du coût et du prix si vous la laissez vide.
 - **Sold by weight** exige une unité kg, g, lb ou oz, et ne peut pas être combiné au prix personnalisé.
 - Passer un article à **Service** révèle les champs de durée et de réservation.
 
@@ -137,11 +152,24 @@ La bannière du haut compte deux types de problème.
 
 Les erreurs fréquentes sont un prix manquant sur un article qui n'est pas à prix personnalisé, un attribut sans valeur, et une ligne réglée à **Link existing** sans enregistrement choisi.
 
+#### Articles sans prix
+
+Une source qui ne donne aucun prix — une photo de menu dont la colonne est coupée, par exemple — produit un article à **prix personnalisé**, ce qui oblige la caissière à saisir le prix à chaque vente. C'est une décision prise à votre place : la ligne porte donc un avertissement qui le dit.
+
+Pour le retirer, au choix :
+
+- saisissez le prix, ou
+- confirmez que l'article se facture bel et bien à la caisse, en cochant **Custom price** sur l'article ou avec l'action groupée **Mark as custom price**.
+
+Un article dont la source indique « prix du marché » est à prix personnalisé délibérément et n'avertit pas. Un prix de **0** est un article gratuit, pas un prix manquant, et n'avertit pas non plus.
+
 Utilisez **Only rows with issues** pour filtrer l'arborescence et ne garder que les lignes à traiter.
 
 ### Actions groupées
 
-Cochez des articles pour faire apparaître la barre d'actions groupées : réglez l'action sur tous, ajoutez une taxe, déplacez-les vers une autre catégorie ou ignorez-les. Le menu à côté de **Commit** applique **Link all confident matches** ou **Create all as new** à toute l'ébauche.
+Cochez des articles pour faire apparaître la barre d'actions groupées : réglez l'action sur tous, ajoutez une taxe, déplacez-les vers une autre catégorie, passez-les en prix personnalisé ou ignorez-les. Le menu à côté de **Commit** applique **Link all confident matches** ou **Create all as new** à toute l'ébauche.
+
+**Mark as custom price** est le moyen rapide d'accepter toute une section réellement facturée à la caisse. L'action vide le prix de chaque article, désactive **Sold by weight**, et lève l'avertissement de prix manquant sur chaque ligne touchée.
 
 ### Enregistrement
 
@@ -198,6 +226,12 @@ Catalog Builder fonctionne dès que la version est déployée et que les migrati
     Réglez `CATALOG_BUILDER_MCP_ENABLED` à vrai, et listez les clients IA autorisés dans `MCP_REDIRECT_DOMAINS`. Laisser l'indicateur désactivé masque la carte du connecteur et désactive ses points d'accès.
   </Step>
 </Steps>
+
+Pour que le connecteur puisse lire le menu d'un marchand **depuis son site web**, listez les domaines qu'il peut récupérer dans `MENU_FETCH_ALLOWED_DOMAINS`, séparés par des virgules. La liste est vide par défaut, ce qui désactive la fonction. Un domaine couvre ses sous-domaines : `exemple.com` autorise donc aussi `www.exemple.com` et `commande.exemple.com`.
+
+<Warning>
+  N'autorisez jamais une plateforme de livraison comme Uber Eats, DoorDash ou SkipTheDishes. Les prix affichés incluent la commission et sont tout simplement les mauvais prix pour un catalogue PDV, indépendamment de leurs conditions d'utilisation.
+</Warning>
 
 Le traitement en arrière-plan utilise une file dédiée `catalog-builder`, que le worker doit inclure :
 

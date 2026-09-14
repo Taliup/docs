@@ -53,7 +53,7 @@ icon: "file-import"
 | **Product Supplier** | Créé s'il n'existe pas encore |
 | **Product Cost** | Ce que le marchand paie |
 | **Mark Up (%)** | Calculé à partir du coût et du prix si laissé vide |
-| **Price** | Laissez vide pour un article à prix du marché — il devient à prix personnalisé |
+| **Price** | Laissez vide pour un article à prix du marché — il devient à prix personnalisé. `0` signifie que l'article est gratuit, pas que le prix manque |
 | **Product SKU** | |
 | **Weighable** | `Yes` ou `No`. Exige une **Unit** et ne peut pas être utilisé avec un prix vide |
 | **Unit** | `kg`, `g`, `lb` ou `oz` |
@@ -87,6 +87,10 @@ icon: "file-import"
 | **Tag ID** | Facultatif. Sert à référencer l'étiquette depuis la feuille Products |
 | **Tag Name** | Obligatoire |
 | **Color Code** | Couleur hexadécimale, par exemple `#2E7D32` |
+
+<Note>
+  Un **Price** vide et un **Price** à `0` sont deux choses différentes. Vide signifie que la caissière saisit le prix à la caisse ; `0` crée un article réellement gratuit, comme un accompagnement offert. L'import marchand et [Catalog Builder](/fr-CA/taliup-hq/admin/catalog-builder) lisent la colonne de la même façon.
+</Note>
 
 ## Mettre à jour des produits existants
 

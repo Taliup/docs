@@ -78,6 +78,8 @@ Joignez le menu du marchand à une nouvelle conversation et demandez ce que vous
 Build a Taliup menu for Bistro Lafayette from the attached PDF.
 ```
 
+Nommez le marchand dans le message — c'est ainsi que l'assistant sait pour quel compte construire. La carte du connecteur dans Taliup HQ affiche une phrase toute faite contenant déjà le nom du marchand : vous pouvez la copier depuis la fiche que vous consultez.
+
 Une invite enregistrée nommée **Build menu from source** est disponible dans la liste d'invites de votre assistant. Elle guide l'assistant à travers toute la séquence et constitue la façon la plus fiable de commencer.
 
 L'assistant nomme le marchand qu'il a retenu, ou vous demande lequel si plusieurs correspondent. À la fin, il répond avec un lien de révision et un sommaire de ce qu'il a déposé.
@@ -102,6 +104,33 @@ L'assistant reçoit la consigne de convertir les menus comme Taliup s'y attend :
 
 Il lui est demandé de ne pas inventer d'articles ni de prix, de ne pas traduire les noms, et de signaler ce qui est ambigu plutôt que de deviner. Ces notes apparaissent en haut de l'écran de révision.
 
+### Construire à partir du site web du marchand
+
+Si le marchand publie son menu sur son propre site, vous pouvez diriger l'assistant vers la page plutôt que de courir après une photo :
+
+```text
+Build a Taliup menu for Bistro Lafayette from https://bistrolafayette.example/menu
+```
+
+L'assistant récupère la page via Taliup, qui en renvoie le texte lisible, et construit l'ébauche à partir de là. Rien de la page n'atteint le catalogue du marchand tant que vous n'avez pas publié.
+
+Taliup ne récupère une page que si toutes ces conditions sont réunies :
+
+| Règle | Détail |
+|---|---|
+| `https` uniquement | Le `http` simple est refusé |
+| Une adresse publique | Les adresses internes, de bouclage et de réseau privé sont refusées, et chaque redirection est revérifiée |
+| Un domaine autorisé | Le domaine doit être ajouté par qui exploite Taliup HQ. Un domaine couvre ses sous-domaines, avec correspondance sur la limite du point : un sosie comme `exemple.com.evil.test` est donc refusé |
+| Une page web | Un menu publié en PDF ou en image est refusé — joignez-le plutôt à la conversation |
+
+<Warning>
+  N'utilisez pas une fiche de plateforme de livraison — Uber Eats, DoorDash, SkipTheDishes. Ces prix sont majorés pour couvrir la commission de la plateforme : un catalogue bâti là-dessus surfacture les clients au comptoir et au PDV du marchand. Ces domaines ne sont pas autorisés, et ne devraient pas l'être.
+</Warning>
+
+<Note>
+  Beaucoup de sites de restaurants affichent leur menu en JavaScript, et certains le publient en image. Taliup signale qu'une page récupérée ne contient presque aucun prix, et l'assistant a pour consigne de le dire plutôt que d'inventer des articles. Le cas échéant, envoyez plutôt une capture d'écran ou le PDF.
+</Note>
+
 ### Corriger une ébauche déposée
 
 Si la validation signale des problèmes, l'assistant peut les corriger et redéposer sans votre intervention. Vous pouvez aussi lui demander de changer quelque chose après coup — « make all the salads tax exempt », « the wine list should be its own catalog » — tant que vous n'avez pas lancé la publication.
@@ -118,7 +147,8 @@ Si la validation signale des problèmes, l'assistant peut les corriger et redép
 | Portée | Le connecteur ne voit que les marchands de votre portée ISO, et seulement ceux ayant la fonction Catalog |
 | Écritures | Aucun outil ne peut publier, annuler ou supprimer. Au maximum, il dépose une ébauche à réviser |
 | Fichiers du marchand | Les pièces jointes restent dans votre assistant IA. Seule l'ébauche structurée atteint Taliup |
-| Contenu des menus | Le texte d'un menu téléversé est traité comme des données. Les instructions cachées dans un document sont ignorées |
+| Contenu des menus | Le texte d'un menu téléversé, ou d'une page récupérée, est traité comme des données. Les instructions cachées dans un document ou une page web sont ignorées |
+| Récupération de pages web | `https` seulement, adresses publiques seulement, domaines autorisés seulement, revérifiés à chaque redirection, avec une réponse plafonnée en taille |
 | Taille | Les ébauches surdimensionnées sont refusées, afin qu'une mauvaise extraction ne puisse pas inonder un catalogue |
 
 ## Dépannage
@@ -132,6 +162,12 @@ Si la validation signale des problèmes, l'assistant peut les corriger et redép
   </Accordion>
   <Accordion title="L'assistant ne trouve pas le marchand">
     Il ne voit que les marchands de votre portée ISO ayant la fonction Catalog activée. Vérifiez les deux sur la fiche **Entities** du marchand, puis demandez à l'assistant de lister les marchands qu'il voit.
+  </Accordion>
+  <Accordion title="Il refuse de récupérer l'URL du menu du marchand">
+    Le domaine n'est pas sur la liste d'autorisation, ou aucun domaine n'y figure. Le message de l'assistant nomme l'hôte refusé. Demandez à qui exploite Taliup HQ de l'ajouter à `MENU_FETCH_ALLOWED_DOMAINS`. En attendant, collez le texte du menu dans la conversation ou joignez une capture d'écran.
+  </Accordion>
+  <Accordion title="La page a été récupérée mais presque rien n'en est ressorti">
+    Le menu est probablement dessiné en JavaScript, ou publié en PDF ou en image : il n'y a donc aucun texte à lire sur la page. Joignez plutôt le PDF ou une capture d'écran.
   </Accordion>
   <Accordion title="Il manque une partie du menu dans l'ébauche">
     Les menus longs ou peu contrastés peuvent être lus partiellement. Demandez à l'assistant quelles pages il a utilisées, puis faites-lui redéposer la section manquante. Une photo nette d'une page vaut mieux qu'une photo floue de six.
