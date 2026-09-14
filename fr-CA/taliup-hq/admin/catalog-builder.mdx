@@ -233,6 +233,8 @@ Pour que le connecteur puisse lire le menu d'un marchand **depuis son site web**
   N'autorisez jamais une plateforme de livraison comme Uber Eats, DoorDash ou SkipTheDishes. Les prix affichés incluent la commission et sont tout simplement les mauvais prix pour un catalogue PDV, indépendamment de leurs conditions d'utilisation.
 </Warning>
 
+Les photos d'articles importées sont stockées à 1 200 pixels de large au maximum. `CATALOG_BUILDER_IMAGE_MAX_WIDTH` modifie cette limite.
+
 Le traitement en arrière-plan utilise une file dédiée `catalog-builder`, que le worker doit inclure :
 
 ```bash

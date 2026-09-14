@@ -138,7 +138,7 @@ A fetched page also hands back the item photos it carries, positioned next to th
 Two things happen to each one automatically:
 
 - **Site furniture is dropped** — logos, social buttons, arrows, tracking pixels, and anything the page itself declares smaller than 60 pixels.
-- **Thumbnails are unwound to the original upload.** Site builders serve a menu photo at whatever size the page displays it, often 150 pixels square. Taliup restores the full-size file before storing it.
+- **Thumbnails are replaced with a display-sized copy.** Site builders serve a menu photo at whatever size the page happens to show it, often 150 pixels square, which is too small for a POS tile. Taliup asks the site for a copy up to 1,200 pixels wide instead, and narrows anything still larger after downloading. The originals are frequently several megabytes, and every till pays for that on every catalog load.
 
 Images are downloaded and re-hosted on Taliup's own storage at commit, so the merchant's catalog does not depend on their old website staying up.
 

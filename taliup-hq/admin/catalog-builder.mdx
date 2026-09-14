@@ -233,6 +233,8 @@ To let the connector read a merchant's menu **from their website**, list the dom
   Never allowlist a delivery marketplace such as Uber Eats, DoorDash or SkipTheDishes. Their listed prices include commission and are simply the wrong prices for a POS catalog, quite apart from their terms of use.
 </Warning>
 
+Imported item photos are stored no wider than 1,200 pixels. `CATALOG_BUILDER_IMAGE_MAX_WIDTH` changes that.
+
 Background work runs on a dedicated `catalog-builder` queue, so the queue worker must include it:
 
 ```bash

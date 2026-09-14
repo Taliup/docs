@@ -138,7 +138,7 @@ Une page récupérée renvoie aussi les photos qu'elle contient, placées à cô
 Deux traitements sont appliqués automatiquement :
 
 - **Les éléments décoratifs sont écartés** — logos, boutons de réseaux sociaux, flèches, pixels de suivi, et tout ce que la page déclare elle-même sous 60 pixels.
-- **Les vignettes sont ramenées au fichier d'origine.** Les créateurs de sites servent la photo à la taille affichée, souvent 150 pixels de côté. Taliup rétablit l'image pleine grandeur avant de la stocker.
+- **Les vignettes sont remplacées par une copie à la bonne taille.** Les créateurs de sites servent la photo à la taille affichée sur leur page, souvent 150 pixels de côté, ce qui est trop petit pour une tuile de PDV. Taliup demande plutôt une copie d'au plus 1 200 pixels de large, et réduit après téléchargement tout ce qui dépasse encore. Les fichiers d'origine font souvent plusieurs mégaoctets, et chaque caisse les paie à chaque chargement du catalogue.
 
 Les images sont téléchargées et réhébergées sur le stockage de Taliup à la publication : le catalogue du marchand ne dépend donc pas du maintien en ligne de son ancien site.
 
