@@ -241,11 +241,15 @@ Pour que le connecteur puisse lire le menu d'un marchand **depuis son site web**
 
 Les photos d'articles importées sont stockées à 1 200 pixels de large au maximum. `CATALOG_BUILDER_IMAGE_MAX_WIDTH` modifie cette limite.
 
-Le traitement en arrière-plan utilise une file dédiée `catalog-builder`, que le worker doit inclure :
+Le traitement en arrière-plan — y compris la récupération des photos d'articles — utilise une file dédiée `catalog-builder`, que le worker doit inclure :
 
 ```bash
 php artisan queue:work --queue=catalog-builder,default
 ```
+
+<Warning>
+  Donnez à Catalog Builder son propre worker plutôt que de compter sur la file `default`. Lorsque plusieurs sites partagent une base de données, tous leurs workers interrogent `default`, et un déploiement qui n'a pas les classes de tâche de cette version en prendra une et la fera échouer aussitôt. Rien n'apparaît dans le journal de cette application, puisque rien n'y a été exécuté : regardez dans `failed_jobs`, où la trace nomme le site qui l'a prise.
+</Warning>
 
 Une tâche planifiée, `catalog-builder:prune`, efface les vieilles ébauches et expire les révisions abandonnées. Elle s'exécute quotidiennement avec le planificateur normal.
 

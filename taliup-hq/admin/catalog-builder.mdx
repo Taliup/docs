@@ -199,6 +199,8 @@ When the error count is zero and everything is saved, click **Commit to catalog*
 
 Records are written in the background. When it finishes you get a summary of what was created, linked, updated and skipped.
 
+Item photos are listed separately, because they are fetched after the records are written. The summary says how many are being downloaded, how many items already had a picture and kept it, how many were dropped because the row was set to **Link existing**, and how many carried an address that could not be used. Reload a product a minute later to see its photo.
+
 ### If some rows fail
 
 The build returns to **Ready for review** with the failures listed against the rows that caused them. Fix those rows and commit again — rows that already succeeded are skipped, so nothing is duplicated.
@@ -241,11 +243,15 @@ To let the connector read a merchant's menu **from their website**, list the dom
 
 Imported item photos are stored no wider than 1,200 pixels. `CATALOG_BUILDER_IMAGE_MAX_WIDTH` changes that.
 
-Background work runs on a dedicated `catalog-builder` queue, so the queue worker must include it:
+Background work — including fetching item photos — runs on a dedicated `catalog-builder` queue, so the queue worker must include it:
 
 ```bash
 php artisan queue:work --queue=catalog-builder,default
 ```
+
+<Warning>
+  Give Catalog Builder its own worker rather than relying on the `default` queue. Where several sites share one database, every one of their workers polls `default`, and a deployment that does not have this release's job classes will pick a job up and fail it immediately. Nothing appears in this application's log, because nothing in this application ran — look in `failed_jobs`, where the stack trace names the site that took it.
+</Warning>
 
 A scheduled task, `catalog-builder:prune`, clears old drafts and expires abandoned reviews. It runs daily as part of the normal scheduler.
 
