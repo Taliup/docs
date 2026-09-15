@@ -10,6 +10,8 @@ hidden: true
 
 | What | Where | In one sentence |
 |---|---|---|
+| **Past favorites** | Taliup POS | After you attach a client, add items they ordered in the last 3 months (**Show past favorites** in Settings → General). |
+| **Find client** | Taliup POS | Search, create from a no-match query, change or remove the attached client from the cart. |
 | **Choose customer receipt** | Taliup POS | After a sale, staff or the customer picks **No Receipt**, **Paper**, or **Email**. |
 | **Default screen after login** | Taliup POS | Each terminal can open **Home** or **Register** after a passcode. New terminals open **Home**. |
 | **Scale barcodes and weighable items** | Taliup POS + Taliup HQ | Scan a scale sticker, or type a weight, instead of adding quantity 1. |
@@ -19,6 +21,21 @@ hidden: true
 | **View all terminal transactions** | Taliup HQ permission + POS | A role can see every terminal’s payments, not only this device. |
 | **Orders list** | Taliup POS | The terminal shows the last **60 days**. Older orders stay in Taliup HQ. |
 | **Demo mode** | Taliup POS | A sale cannot go over **$1.00**. |
+
+---
+
+## Past favorites
+
+Turn on **Show past favorites** in Home → **Settings** → **General**.
+
+1. From Register, tap the client control and open **Find client**.
+2. Pick or create a client.
+3. **Past favorites** lists items from the last 3 months. Set a quantity to add, then **Continue to order**.
+4. With a client already attached, tap **Client Attached** → **Past favorites** to reopen the list.
+
+When the setting is off, attaching a client only associates them with the order.
+
+Full merchant docs: [Attach from Register](/taliup-pos/clients/attach-from-register) · [General settings](/taliup-pos/settings/general).
 
 ---
 

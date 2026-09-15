@@ -1,10 +1,10 @@
 ---
 title: "Associer un client depuis Caisse"
 sidebarTitle: "Associer depuis Caisse"
-description: "Associer, changer ou retirer un client sur une commande de Caisse."
+description: "Trouver ou créer un client sur une commande de Caisse, et utiliser les favoris passés lorsque ce réglage est activé."
 ---
 
-Vous pouvez associer un client à la commande Caisse en cours lorsque la fonction Clients est disponible.
+Vous pouvez associer un client à la commande Caisse en cours lorsque la fonction **Clients** est disponible.
 
 <Frame caption="feuille Associer un client dans Caisse.">
   ![feuille Associer un client dans Caisse](/images/taliup-pos/clients/attach-register.png)
@@ -13,25 +13,32 @@ Vous pouvez associer un client à la commande Caisse en cours lorsque la fonctio
 ## Associer un client
 
 <Steps>
-  <Step title="Ouvrir Associer un client">
-    Depuis le panier de Caisse, appuyez sur le contrôle d'association (icône personne). Le titre de la feuille est **Associer un client** avec l'indication **Facultatif pour les commandes en caisse.**
+  <Step title="Ouvrir Trouver un client">
+    Depuis le panier ou la barre d'application de Caisse, appuyez sur le contrôle client (icône personne). Le titre de la feuille est **Trouver un client**.
   </Step>
   <Step title="Trouver ou créer">
-    Utilisez **Search clients**, choisissez une ligne, ou appuyez sur **Ajouter nouveau** pour créer sur place (**First name**, **Last name**, **Email**, **Phone**).
+    Cherchez par **Nom, téléphone ou courriel**, ou parcourez **Commandent habituellement à cette heure**, **Clients récents** et **Clients**.
+
+    Touchez un client pour l'associer, **Sans client** pour passer, ou **Nouveau client** pour en créer un.
+
+    Si la recherche n'a aucun résultat, touchez **Créer « … »** pour ouvrir **Nouveau client** avec le nom, le courriel ou le téléphone déjà remplis. Les champs obligatoires sont **Prénom**, **Nom** et **E-mail**. Le téléphone est facultatif et attend un format américain valide (par exemple `+1XXXXXXXXXX`).
   </Step>
   <Step title="Confirmer">
-    Appuyez sur **Associer un client**. Le panier affiche **Client Attached**.
+    Après avoir choisi ou créé un client, le panier affiche **Client associé**.
+
+    Si **Afficher les favoris passés** est activé dans [Paramètres généraux](/fr-CA/taliup-pos/settings/general), **Favoris passés** s'ouvre ensuite. Réglez les quantités pour les articles des 3 derniers mois, puis **Continuer vers la commande**.
   </Step>
 </Steps>
 
-## Changer ou retirer
+## Actions Client associé
+
+Touchez **Client associé** sur le panier pour ouvrir les actions client :
 
 | Action | Libellé |
 |---|---|
-| Changer de client | **Change Client** |
-| Retirer de la commande | **Remove Client** → toast **Client removed from order.** |
-| Voir les détails | **View** / **Tap to view client details** |
-
-La validation du téléphone à la création sur place attend un format valide (par exemple `+1XXXXXXXXXX`). Un courriel invalide ou des champs obligatoires manquants affichent des erreurs en ligne.
+| Changer de client | **Changer le client** |
+| Rouvrir les favoris | **Favoris passés** (lorsque **Afficher les favoris passés** est activé) |
+| Retirer de la commande | **Retirer le client** → toast **Client retiré de la commande.** |
+| Voir les détails | **Voir** / **Touchez pour voir les détails du client** |
 
 Après le paiement, Taliup POS peut envoyer le reçu à l'adresse du client associé. Si le client n'a pas de courriel, **Courriel** est masqué sur le sélecteur de reçu. Voir [Reçu client](/fr-CA/taliup-pos/register/customer-receipt).

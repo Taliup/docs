@@ -1,10 +1,10 @@
 ---
 title: "Paramètres généraux"
 sidebarTitle: "Général"
-description: "Indicateur de pourboires, comportement des reçus, vue Caisse par défaut, saisie des articles pesés, catalogue assigné, imprimantes et effacement des données."
+description: "Indicateur de pourboires, comportement des reçus, favoris passés, vue Caisse par défaut, saisie des articles pesés, catalogue assigné, imprimantes et effacement des données."
 ---
 
-**Général** contrôle le comportement quotidien de l'appareil pour les reçus, les défauts de Caisse et le matériel lié.
+**Général** contrôle le comportement quotidien de l'appareil pour les reçus, les défauts de Caisse, les favoris passés et le matériel lié.
 
 <Frame caption="Paramètres généraux avec Articles pesés réglé sur Saisir le poids.">
   ![Paramètres généraux montrant l'écran après connexion, la vue Caisse par défaut et Articles pesés réglé sur Saisir le poids](/images/taliup-pos/settings/general.png)
@@ -46,6 +46,17 @@ Cela contrôle la vue que Caisse ouvre en premier. Voir [Ouvrir une vente](/fr-C
 **Écran par défaut après la connexion** choisit **Accueil** ou **Caisse** après la saisie du code. Les nouveaux terminaux ouvrent **Accueil**. Les marchands vente ouverte seulement arrivent toujours en Caisse et ne voient pas ce réglage.
 
 C'est différent de **Vue du registre par défaut**, qui s'applique seulement une fois Caisse déjà ouverte.
+
+## Afficher les favoris passés
+
+Lorsque la fonction **Clients** est disponible, **Afficher les favoris passés** contrôle si Taliup POS propose les articles qu'un client a commandés au cours des 3 derniers mois.
+
+| Lorsque c'est activé | Ce qui se passe |
+|---|---|
+| Vous associez un client depuis Caisse | Après le choix du client, **Favoris passés** s'ouvre pour régler les quantités et ajouter ces articles avant de continuer |
+| Un client est déjà sur la commande | **Client associé** inclut **Favoris passés** pour rouvrir cette liste |
+
+Lorsque le réglage est désactivé, associer un client l'attache seulement à la commande. Voir [Associer depuis Caisse](/fr-CA/taliup-pos/clients/attach-from-register).
 
 ## Articles pesés
 

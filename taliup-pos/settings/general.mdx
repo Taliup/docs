@@ -1,10 +1,10 @@
 ---
 title: "General settings"
 sidebarTitle: "General"
-description: "Tips indicator, receipt behavior, default Register view, weighable entry, assigned catalog, printers, and clear application data."
+description: "Tips indicator, receipt behavior, past favorites, default Register view, weighable entry, assigned catalog, printers, and clear application data."
 ---
 
-**General** controls day-to-day terminal behavior for receipts, Register defaults, and linked hardware settings.
+**General** controls day-to-day terminal behavior for receipts, Register defaults, past favorites, and linked hardware settings.
 
 <Frame caption="General settings with Weighable items set to Enter weight.">
   ![General settings showing Default Screen After Login, Default Register View, and Weighable items set to Enter weight](/images/taliup-pos/settings/general.png)
@@ -46,6 +46,17 @@ This controls which view Register opens first. See [Open a sale](/taliup-pos/reg
 **Default Screen After Login** chooses **Home** or **Register** after a passcode. New terminals open **Home**. Open Sale–only merchants always land in Register and do not see this setting.
 
 This is different from **Default Register View**, which only applies after Register is already open.
+
+## Show past favorites
+
+When the **Clients** feature is available, **Show past favorites** controls whether Taliup POS offers items a client ordered in the last 3 months.
+
+| When it is on | What happens |
+|---|---|
+| You attach a client from Register | After you pick the client, **Past favorites** opens so you can set quantities and add those items before continuing |
+| A client is already on the order | **Client Attached** includes **Past favorites** so you can reopen that list |
+
+When the setting is off, attaching a client only associates them with the order. See [Attach from Register](/taliup-pos/clients/attach-from-register).
 
 ## Weighable items
 
