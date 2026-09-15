@@ -142,10 +142,21 @@ Click any item to expand its editor. You can change the name, description, price
 
 - Turn on **Custom price** for market-price items. The price field clears and the item is sold at a price entered on the POS.
 - **Supplier** is created for the merchant if the name is new. **Mark up (%)** is worked out from cost and price when you leave it blank.
+- **Image** takes either a web address or a file from your own machine — see below.
 - **Sold by weight** requires a unit of kg, g, lb or oz, and cannot be combined with custom price.
 - Switching an item to **Service** reveals duration and booking fields.
 
 Drag the handle on a category to reorder sections. Drag an item between categories to move it. The order you set is the order the merchant sees.
+
+#### Item photos
+
+Paste a web address into **Image** and Taliup downloads the picture and stores it on Taliup's own storage — the merchant's catalog never links to anyone else's site, so it is unaffected if theirs goes away. Photos are stored at up to 1,200 pixels wide.
+
+Some websites refuse to serve pictures to Taliup's servers even though they load perfectly in your browser. Wix is one. When that happens, click **Upload a file instead** and choose the picture from your own machine: your browser can fetch what the server cannot, and the file ends up in exactly the same place.
+
+<Note>
+  The commit summary counts photos separately from records, and says which ones were downloaded, which you uploaded, which items kept a picture they already had, and which could not be fetched because the hosting site refused Taliup. Photos arrive a minute or so after the commit finishes — reload the product to see them.
+</Note>
 
 ### Fix issues before committing
 
