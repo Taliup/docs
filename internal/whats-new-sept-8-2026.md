@@ -55,7 +55,7 @@ Reprint later from Transaction Details is paper only. Email is only at sale time
 
 **Choose full order customer receipt** is only for a table or saved order that was split by amount with **no guest payments**. It does not appear after a guest pays, or after you pay the rest of the table.
 
-**Skip Fully Paid Receipt Prompts** skips **Guest Fully Paid**. It does not skip **Choose customer receipt** or **Choose full order customer receipt**.
+**Skip Fully Paid Receipt Prompts** skips **Guest Fully Paid** and **Choose full order customer receipt**. It does not skip **Choose customer receipt**.
 
 ---
 
