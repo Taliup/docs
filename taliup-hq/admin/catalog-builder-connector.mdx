@@ -140,11 +140,13 @@ Two things happen to each one automatically:
 - **Site furniture is dropped** — logos, social buttons, arrows, tracking pixels, and anything the page itself declares smaller than 60 pixels.
 - **Thumbnails are replaced with a display-sized copy.** Site builders serve a menu photo at whatever size the page happens to show it, often 150 pixels square, which is too small for a POS tile. Taliup asks the site for a copy up to 1,200 pixels wide instead, and narrows anything still larger after downloading. The originals are frequently several megabytes, and every till pays for that on every catalog load.
 
-Images are downloaded and re-hosted on Taliup's own storage at commit, so the merchant's catalog does not depend on their old website staying up.
+Images are downloaded and re-hosted on Taliup's own storage at commit, so the merchant's catalog does not depend on their old website staying up. Nothing in the catalog ever links to the merchant's site or their CDN.
 
 <Warning>
-  The assistant must only use image URLs the fetch returned. A constructed or guessed address fails quietly — the item commits with no picture and nothing reports it. If you asked for images and got none, the page had none Taliup could read; ask for a screenshot rather than letting it improvise.
+  The assistant must only use image URLs the fetch returned. A constructed or guessed address cannot be downloaded, and the commit summary will say so. If you asked for images and got none, the page had none Taliup could read; ask for a screenshot rather than letting it improvise.
 </Warning>
+
+Some sites serve their pictures perfectly to your browser and refuse Taliup's servers — Wix is one. Taliup checks before committing and tells you rather than failing forty downloads afterwards. When that happens, add the photos in the review screen with **Upload a file instead**: your browser fetches what the server cannot, and the picture ends up in exactly the same place. See [Item photos](/taliup-hq/admin/catalog-builder) on the Catalog Builder page.
 
 ### Correcting a staged draft
 
@@ -183,6 +185,9 @@ If validation reports problems, the assistant can fix them and restage without y
   </Accordion>
   <Accordion title="The page was fetched but almost nothing came back">
     The menu is probably drawn by JavaScript, or published as a PDF or an image, so there is no text on the page to read. Attach the PDF or a screenshot instead.
+  </Accordion>
+  <Accordion title="The items arrived but the photos did not">
+    Check the commit summary: it counts photos separately and names the reason. The usual one is that the site hosting the pictures refuses requests from Taliup's servers even though they load in your browser. Add those photos in the review screen with **Upload a file instead**.
   </Accordion>
   <Accordion title="The draft is missing part of the menu">
     Long or low-contrast menus can be read partially. Ask the assistant which pages it used, then have it restage the missing section. A sharper photo of one page beats a blurry photo of six.

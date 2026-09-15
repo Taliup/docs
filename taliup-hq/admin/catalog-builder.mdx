@@ -138,7 +138,7 @@ Click the match badge to open the picker, search the merchant's catalog yourself
 
 ### Edit items
 
-Click any item to expand its editor. You can change the name, description, price, SKU, cost, supplier, mark up, type, taxes, tag, attributes and image URL.
+Click any item to expand its editor. You can change the name, description, price, SKU, cost, supplier, mark up, type, taxes, tag, attributes and image.
 
 - Turn on **Custom price** for market-price items. The price field clears and the item is sold at a price entered on the POS.
 - **Supplier** is created for the merchant if the name is new. **Mark up (%)** is worked out from cost and price when you leave it blank.
@@ -184,7 +184,7 @@ Use **Only rows with issues** to filter the tree down to rows that need attentio
 
 ### Bulk actions
 
-Select items with their checkboxes to reveal the bulk bar: set the action on all of them, add a tax, move them to another category, mark them as custom price, or skip them. The overflow menu beside **Commit** applies **Link all confident matches** or **Create all as new** across the whole draft.
+Select items with their checkboxes to reveal the bulk bar: set them all to **Link existing** or **Create new**, add a tax, move them to another category, mark them as custom price, or skip them. The overflow menu beside **Commit** applies **Link all confident matches** or **Create all as new** across the whole draft.
 
 **Mark as custom price** is the quick way to accept a whole section that is genuinely priced at the till. It clears each item's price, turns off **Sold by weight**, and resolves the missing-price warning on every row it touches.
 
@@ -252,7 +252,7 @@ To let the connector read a merchant's menu **from their website**, list the dom
   Never allowlist a delivery marketplace such as Uber Eats, DoorDash or SkipTheDishes. Their listed prices include commission and are simply the wrong prices for a POS catalog, quite apart from their terms of use.
 </Warning>
 
-Imported item photos are stored no wider than 1,200 pixels. `CATALOG_BUILDER_IMAGE_MAX_WIDTH` changes that.
+Imported item photos are stored no wider than 1,200 pixels (`CATALOG_BUILDER_IMAGE_MAX_WIDTH`), and a photo uploaded in the review screen may be up to 10 MB (`CATALOG_BUILDER_IMAGE_UPLOAD_MAX_MB`).
 
 Background work — including fetching item photos — runs on a dedicated `catalog-builder` queue, so the queue worker must include it:
 
@@ -264,7 +264,33 @@ php artisan queue:work --queue=catalog-builder,default
   Give Catalog Builder its own worker rather than relying on the `default` queue. Where several sites share one database, every one of their workers polls `default`, and a deployment that does not have this release's job classes will pick a job up and fail it immediately. Nothing appears in this application's log, because nothing in this application ran — look in `failed_jobs`, where the stack trace names the site that took it.
 </Warning>
 
-A scheduled task, `catalog-builder:prune`, clears old drafts and expires abandoned reviews. It runs daily as part of the normal scheduler.
+A scheduled task, `catalog-builder:prune`, clears old drafts, expires abandoned reviews, and removes photos uploaded during review that were never committed. It runs daily as part of the normal scheduler.
+
+### When photos do not arrive
+
+Photos are fetched after the records are written, so several separate things can stop one without stopping the build. Two read-only scripts in the application root answer it in order, rather than by guesswork:
+
+```bash
+php artisan tinker --execute="require 'catalog-builder-image-diagnostic.php';"
+```
+
+Reports whether the deployed code is current, what the last commit's photo counts were, what the draft rows look like, whether the jobs were queued or failed, and how many media rows landed.
+
+```bash
+php artisan tinker --execute="require 'catalog-builder-image-probe.php';"
+```
+
+Walks one photo through every step the job takes — environment, product lookup, download, resize — and prints each outcome.
+
+```bash
+php artisan tinker --execute="require 'catalog-builder-egress-probe.php';"
+```
+
+Fetches several hosts with several header sets, so a site that refuses this server is distinguishable from a server that cannot reach the internet.
+
+<Note>
+  A photo that cannot be downloaded leaves a failed job and a warning in the log naming the URL and the reason. It is not silent.
+</Note>
 
 ## Related
 

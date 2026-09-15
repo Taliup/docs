@@ -138,7 +138,7 @@ Cliquez sur la pastille pour ouvrir le sélecteur, chercher vous-même dans le c
 
 ### Modifier les articles
 
-Cliquez sur un article pour ouvrir son éditeur. Vous pouvez changer le nom, la description, le prix, le SKU, le coût, le fournisseur, la majoration, le type, les taxes, l'étiquette, les attributs et l'URL de l'image.
+Cliquez sur un article pour ouvrir son éditeur. Vous pouvez changer le nom, la description, le prix, le SKU, le coût, le fournisseur, la majoration, le type, les taxes, l'étiquette, les attributs et l'image.
 
 - Activez **Custom price** pour les articles à prix du marché. Le champ de prix se vide et l'article est vendu à un prix saisi sur le PDV.
 - Le **fournisseur** est créé pour le marchand si le nom est nouveau. La **majoration (%)** est calculée à partir du coût et du prix si vous la laissez vide.
@@ -184,7 +184,7 @@ Utilisez **Only rows with issues** pour filtrer l'arborescence et ne garder que 
 
 ### Actions groupées
 
-Cochez des articles pour faire apparaître la barre d'actions groupées : réglez l'action sur tous, ajoutez une taxe, déplacez-les vers une autre catégorie, passez-les en prix personnalisé ou ignorez-les. Le menu à côté de **Commit** applique **Link all confident matches** ou **Create all as new** à toute l'ébauche.
+Cochez des articles pour faire apparaître la barre d'actions groupées : passez-les tous à **Link existing** ou **Create new**, ajoutez une taxe, déplacez-les vers une autre catégorie, passez-les en prix personnalisé ou ignorez-les. Le menu à côté de **Commit** applique **Link all confident matches** ou **Create all as new** à toute l'ébauche.
 
 **Mark as custom price** est le moyen rapide d'accepter toute une section réellement facturée à la caisse. L'action vide le prix de chaque article, désactive **Sold by weight**, et lève l'avertissement de prix manquant sur chaque ligne touchée.
 
@@ -250,7 +250,7 @@ Pour que le connecteur puisse lire le menu d'un marchand **depuis son site web**
   N'autorisez jamais une plateforme de livraison comme Uber Eats, DoorDash ou SkipTheDishes. Les prix affichés incluent la commission et sont tout simplement les mauvais prix pour un catalogue PDV, indépendamment de leurs conditions d'utilisation.
 </Warning>
 
-Les photos d'articles importées sont stockées à 1 200 pixels de large au maximum. `CATALOG_BUILDER_IMAGE_MAX_WIDTH` modifie cette limite.
+Les photos d'articles importées sont stockées à 1 200 pixels de large au maximum (`CATALOG_BUILDER_IMAGE_MAX_WIDTH`), et une photo téléversée dans l'écran de révision peut atteindre 10 Mo (`CATALOG_BUILDER_IMAGE_UPLOAD_MAX_MB`).
 
 Le traitement en arrière-plan — y compris la récupération des photos d'articles — utilise une file dédiée `catalog-builder`, que le worker doit inclure :
 
@@ -262,7 +262,33 @@ php artisan queue:work --queue=catalog-builder,default
   Donnez à Catalog Builder son propre worker plutôt que de compter sur la file `default`. Lorsque plusieurs sites partagent une base de données, tous leurs workers interrogent `default`, et un déploiement qui n'a pas les classes de tâche de cette version en prendra une et la fera échouer aussitôt. Rien n'apparaît dans le journal de cette application, puisque rien n'y a été exécuté : regardez dans `failed_jobs`, où la trace nomme le site qui l'a prise.
 </Warning>
 
-Une tâche planifiée, `catalog-builder:prune`, efface les vieilles ébauches et expire les révisions abandonnées. Elle s'exécute quotidiennement avec le planificateur normal.
+Une tâche planifiée, `catalog-builder:prune`, efface les vieilles ébauches, expire les révisions abandonnées et supprime les photos téléversées pendant la révision qui n'ont jamais été publiées. Elle s'exécute quotidiennement avec le planificateur normal.
+
+### Quand les photos n'arrivent pas
+
+Les photos sont récupérées après l'écriture des enregistrements : plusieurs causes distinctes peuvent donc en bloquer une sans bloquer la construction. Deux scripts en lecture seule, à la racine de l'application, y répondent dans l'ordre plutôt qu'au jugé :
+
+```bash
+php artisan tinker --execute="require 'catalog-builder-image-diagnostic.php';"
+```
+
+Indique si le code déployé est à jour, quels étaient les compteurs de photos de la dernière publication, à quoi ressemblent les lignes de l'ébauche, si les tâches ont été mises en file ou ont échoué, et combien d'enregistrements média ont abouti.
+
+```bash
+php artisan tinker --execute="require 'catalog-builder-image-probe.php';"
+```
+
+Fait passer une photo par chaque étape de la tâche — environnement, recherche du produit, téléchargement, redimensionnement — et affiche le résultat de chacune.
+
+```bash
+php artisan tinker --execute="require 'catalog-builder-egress-probe.php';"
+```
+
+Récupère plusieurs hôtes avec plusieurs jeux d'en-têtes, pour distinguer un site qui refuse ce serveur d'un serveur incapable d'atteindre Internet.
+
+<Note>
+  Une photo qui ne peut pas être téléchargée laisse une tâche en échec et un avertissement dans le journal, avec l'URL et la raison. Ce n'est pas silencieux.
+</Note>
 
 ## Voir aussi
 

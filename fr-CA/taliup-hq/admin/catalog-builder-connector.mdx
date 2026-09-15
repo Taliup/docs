@@ -140,11 +140,13 @@ Deux traitements sont appliqués automatiquement :
 - **Les éléments décoratifs sont écartés** — logos, boutons de réseaux sociaux, flèches, pixels de suivi, et tout ce que la page déclare elle-même sous 60 pixels.
 - **Les vignettes sont remplacées par une copie à la bonne taille.** Les créateurs de sites servent la photo à la taille affichée sur leur page, souvent 150 pixels de côté, ce qui est trop petit pour une tuile de PDV. Taliup demande plutôt une copie d'au plus 1 200 pixels de large, et réduit après téléchargement tout ce qui dépasse encore. Les fichiers d'origine font souvent plusieurs mégaoctets, et chaque caisse les paie à chaque chargement du catalogue.
 
-Les images sont téléchargées et réhébergées sur le stockage de Taliup à la publication : le catalogue du marchand ne dépend donc pas du maintien en ligne de son ancien site.
+Les images sont téléchargées et réhébergées sur le stockage de Taliup à la publication : le catalogue du marchand ne dépend donc pas du maintien en ligne de son ancien site. Rien dans le catalogue ne pointe jamais vers le site du marchand ni vers son CDN.
 
 <Warning>
-  L'assistant ne doit utiliser que les URL d'images renvoyées par la récupération. Une adresse construite ou devinée échoue en silence — l'article est publié sans image et rien ne le signale. Si vous avez demandé les images et n'en avez obtenu aucune, c'est que la page n'en contenait aucune de lisible : demandez plutôt une capture d'écran que de le laisser improviser.
+  L'assistant ne doit utiliser que les URL d'images renvoyées par la récupération. Une adresse construite ou devinée ne peut pas être téléchargée, et le sommaire de publication le signalera. Si vous avez demandé les images et n'en avez obtenu aucune, c'est que la page n'en contenait aucune de lisible : demandez plutôt une capture d'écran que de le laisser improviser.
 </Warning>
+
+Certains sites servent leurs photos parfaitement à votre navigateur et refusent les serveurs de Taliup — Wix en fait partie. Taliup le vérifie avant la publication et vous le dit, plutôt que d'échouer quarante téléchargements après coup. Le cas échéant, ajoutez les photos dans l'écran de révision avec **Upload a file instead** : votre navigateur récupère ce que le serveur ne peut pas, et la photo aboutit exactement au même endroit. Voir [Photos des articles](/fr-CA/taliup-hq/admin/catalog-builder) sur la page Catalog Builder.
 
 ### Corriger une ébauche déposée
 
@@ -183,6 +185,9 @@ Si la validation signale des problèmes, l'assistant peut les corriger et redép
   </Accordion>
   <Accordion title="La page a été récupérée mais presque rien n'en est ressorti">
     Le menu est probablement dessiné en JavaScript, ou publié en PDF ou en image : il n'y a donc aucun texte à lire sur la page. Joignez plutôt le PDF ou une capture d'écran.
+  </Accordion>
+  <Accordion title="Les articles sont arrivés mais pas les photos">
+    Consultez le sommaire de publication : il compte les photos séparément et en donne la raison. La plus courante est que le site qui héberge les images refuse les requêtes des serveurs de Taliup, même si elles s'affichent dans votre navigateur. Ajoutez ces photos dans l'écran de révision avec **Upload a file instead**.
   </Accordion>
   <Accordion title="Il manque une partie du menu dans l'ébauche">
     Les menus longs ou peu contrastés peuvent être lus partiellement. Demandez à l'assistant quelles pages il a utilisées, puis faites-lui redéposer la section manquante. Une photo nette d'une page vaut mieux qu'une photo floue de six.
