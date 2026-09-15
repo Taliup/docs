@@ -1,0 +1,70 @@
+---
+title: "Catalogues"
+sidebarTitle: "Catalogues"
+description: "Où les menus, articles, attributs et taxes sont gérés dans le portail marchand Taliup HQ, et comment ils atteignent le PDV."
+icon: "book-open"
+---
+
+**Catalogs** est l'endroit où le marchand construit ce qu'il vend. Tout ce qui est défini ici se rend au PDV, à la commande en ligne et à tout appareil auquel le catalogue est assigné.
+
+Les restaurants voient cette section sous **Menus**, avec **Items** et **Modifiers**. Le commerce de détail et les autres industries voient **Catalogs**, avec **Products** et **Attributes**. Les écrans sont les mêmes.
+
+## Comment y accéder
+
+Connectez-vous à Taliup HQ comme le marchand, ou ouvrez le marchand depuis **Entities** et utilisez **View As Merchant**. Choisissez ensuite **Catalogs** (ou **Menus**) dans la barre latérale.
+
+## Ce qu'on y trouve
+
+| Section | Contenu |
+|---|---|
+| **Catalogs** / **Menus** | Les menus eux-mêmes, leurs catégories, articles en vedette, taxes, heures de disponibilité et les appareils qui les utilisent |
+| **Products** / **Items** | Chaque produit vendable, avec prix, SKU, attributs, taxes et images |
+| **Product Tags** | Des étiquettes comme Vegetarian ou Seasonal, pour regrouper les articles |
+| **Attributes** / **Modifiers** | Les groupes d'options comme Size ou Add-ons, avec leurs valeurs et écarts de prix |
+| **Taxes** | Les définitions de taxes et leurs taux, attachables à un catalogue ou à un article |
+| **Services** | Des offres minutées et réservables, là où la fonction Services est activée |
+
+## Comment un catalogue est bâti
+
+Un catalogue est un contenant. Les catégories s'y trouvent et contiennent les articles, et un même article peut apparaître dans plus d'une catégorie.
+
+<Steps>
+  <Step title="Créez le catalogue">
+    Depuis **Catalogs**, cliquez sur **Create Catalog** et donnez-lui un nom.
+  </Step>
+  <Step title="Ajoutez des catégories">
+    Ouvrez le catalogue et créez les sections que les clients verront. Glissez-les avec **Sort Categories** pour établir l'ordre.
+  </Step>
+  <Step title="Ajoutez des articles">
+    Ajoutez de nouveaux articles ou rattachez des articles existants à chaque catégorie.
+  </Step>
+  <Step title="Attachez les taxes">
+    Les taxes ajoutées au niveau du catalogue se propagent à tous ses articles. Ajoutez une taxe à un article précis pour remplacer ce comportement.
+  </Step>
+  <Step title="Assignez-le aux appareils">
+    Utilisez **Assign to devices** pour choisir les terminaux qui utilisent ce catalogue. Un terminal utilise un seul catalogue à la fois.
+  </Step>
+</Steps>
+
+## Ordre des articles dans une catégorie
+
+Les articles conservent maintenant un ordre d'affichage enregistré à l'intérieur de chaque catégorie, et la commande en ligne les présente dans cet ordre plutôt que dans celui où ils ont été ajoutés.
+
+<Note>
+  Les catalogues bâtis avec [Catalog Builder](/fr-CA/taliup-hq/admin/catalog-builder) portent l'ordre du menu source, de sorte qu'un menu imprimé garde sa séquence. Les catalogues bâtis à la main ou par chiffrier conservent l'ordre d'ajout des articles, exactement comme avant.
+</Note>
+
+## Remplir un catalogue rapidement
+
+| Situation | À utiliser |
+|---|---|
+| Le marchand a des données de produits propres | [Bulk Import](/fr-CA/taliup-hq/merchant/catalogs/bulk-import) |
+| Le marchand a envoyé une photo ou un PDF de menu | [Catalog Builder](/fr-CA/taliup-hq/admin/catalog-builder), depuis l'administration Taliup HQ |
+| Une poignée d'articles | Ajoutez-les à la main |
+
+## Voir aussi
+
+- [Bulk Import](/fr-CA/taliup-hq/merchant/catalogs/bulk-import)
+- [Catalog Builder](/fr-CA/taliup-hq/admin/catalog-builder)
+- [Menu / Catalogue sur le PDV](/fr-CA/taliup-pos/catalog/index)
+- [Produits / Articles sur le PDV](/fr-CA/taliup-pos/catalog/products)

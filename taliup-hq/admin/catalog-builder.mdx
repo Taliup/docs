@@ -1,0 +1,300 @@
+---
+title: "Catalog Builder"
+sidebarTitle: "Catalog Builder"
+description: "Build a merchant's menu or catalog from a spreadsheet or from your AI assistant, review every row, then commit it to their account in one step."
+icon: "wand-magic-sparkles"
+---
+
+**Catalog Builder** turns a merchant's existing menu into a Taliup catalog. You give it a source — a filled Taliup spreadsheet, or a menu photo or PDF handed to your AI assistant — and it produces a **draft** you review line by line before anything is written to the merchant's account.
+
+Nothing reaches the merchant's live catalog until you press **Commit**.
+
+<Frame caption="The Catalog Builder page showing the AI connector card, the template upload card, and the list of recent builds.">
+  ![Taliup HQ Catalog Builder page with a connector card on the left, a spreadsheet upload card on the right, and a Recent builds list below](/images/taliup-hq/catalog-builder/index.png)
+</Frame>
+
+## How to get here
+
+**Entities** → open a merchant → **Catalog Builder** tab.
+
+## Access
+
+| Requirement | Detail |
+|---|---|
+| Role | Any role with Taliup HQ admin access |
+| Scope | The merchant must belong to your ISO or one of its descendant ISOs |
+| Feature | The merchant must have the **Catalog** feature enabled in their plan |
+
+If the merchant is outside your scope or does not have the Catalog feature, the tab returns you to **Entities** with an explanation.
+
+## The two ways to start a build
+
+<CardGroup cols={2}>
+  <Card title="From your AI assistant" icon="robot" href="/taliup-hq/admin/catalog-builder-connector">
+    Drop a menu photo, PDF or unfamiliar spreadsheet into Claude and ask it to build the menu. Best for merchants who hand you a printed or photographed menu.
+  </Card>
+  <Card title="From the Taliup template" icon="file-excel">
+    Fill the standard Taliup product spreadsheet and upload it here. Best when the merchant already has clean product data.
+  </Card>
+</CardGroup>
+
+Both paths produce the same draft and use the same review screen.
+
+### Upload the Taliup template
+
+<Steps>
+  <Step title="Download the template">
+    Click **Download template** to get `BulkUploadTemplate.xlsx`. It contains a **Guidelines** sheet plus **Products**, **Attributes** and **Tags** sheets.
+  </Step>
+  <Step title="Fill it in">
+    Complete the sheets. The column reference is the same one merchants use — see [Bulk Import](/taliup-hq/merchant/catalogs/bulk-import).
+  </Step>
+  <Step title="Upload">
+    Drag the file onto the upload card or click **Choose Excel file**. Give the build a name so you can recognise it later, then click **Create draft**.
+  </Step>
+  <Step title="Wait for the draft">
+    The file is read in the background. The build moves to **Ready for review** and opens the review screen.
+  </Step>
+</Steps>
+
+<Note>
+  Only the Taliup template is accepted on this upload. For a menu in any other shape — a photo, a PDF, a competitor's export — use the [AI connector](/taliup-hq/admin/catalog-builder-connector) instead.
+</Note>
+
+#### Size limits
+
+The upload card states both limits: **20 MB** and **2,000 items**. A workbook is counted before it is stored, so an oversized file is refused straight away rather than failing later in the queue.
+
+| Refused | Why |
+|---|---|
+| More than 2,000 product rows | The review screen loads the whole draft at once, so a catalogue that size cannot be reviewed |
+| Larger than 20 MB, or not `.xlsx` / `.xls` | Not a Taliup template upload |
+| No product rows at all | Nothing to build |
+
+<Tip>
+  A catalogue over 2,000 items belongs in [Bulk Import](/taliup-hq/merchant/catalogs/bulk-import). It processes in batches, survives a restart, and hands back a spreadsheet of just the rows that failed. Catalog Builder is for menus you intend to read line by line.
+</Tip>
+
+## Build statuses
+
+| Status | Meaning |
+|---|---|
+| **Uploaded** / **Staged** | The source has arrived and is queued |
+| **Reading source** | The spreadsheet is being read and matched against the merchant's existing records |
+| **Ready for review** | The draft is waiting for you |
+| **Committing** | Records are being written to the merchant's catalog |
+| **Committed** | Finished |
+| **Failed** | The source could not be read — the reason is shown on the build |
+| **Cancelled** | You cancelled the build, or it sat in review untouched for 30 days |
+
+## Review the draft
+
+The review screen is where the real work happens. It shows the whole proposed catalog and lets you correct anything before committing.
+
+<Frame caption="The Catalog Builder review screen with the validation banner, tabs, and the menu tree of categories and items.">
+  ![Catalog Builder review screen showing a validation banner, Menu / Attributes / Taxes / Tags / Units tabs, and a draggable tree of categories containing items](/images/taliup-hq/catalog-builder/review.png)
+</Frame>
+
+### Tabs
+
+| Tab | Contents |
+|---|---|
+| **Menu** | Catalogs, their categories, and the items inside each one |
+| **Attributes** | Option groups such as Size or Add-ons, with their values and price differences |
+| **Taxes** | Taxes found in the source |
+| **Tags** | Product tags found in the source |
+| **Units** | Units of measure, used by items sold by weight |
+
+### Decide what happens to each row
+
+Every row — every item, category, attribute, tax and tag — carries an action.
+
+| Action | What it does on commit |
+|---|---|
+| **Create new** | Adds a brand new record to the merchant's catalog |
+| **Link existing** | Uses the merchant's existing record instead, leaving it unchanged |
+| **Update existing** | Applies the draft's values to the merchant's existing record |
+| **Skip** | Ignores the row entirely |
+
+Catalog Builder compares every row against what the merchant already has and suggests a match. A coloured badge next to the action shows how confident the match is.
+
+| Badge | Confidence | Default action |
+|---|---|---|
+| Green | 95% and above | Set to **Link existing** automatically |
+| Amber | 80% to 94% | Left as **Create new**, with the match offered |
+| None | Below 80% | Left as **Create new** |
+
+Click the match badge to open the picker, search the merchant's catalog yourself, and choose a different record. A match you pick by hand is locked and will not be overwritten by later matching.
+
+<Warning>
+  **Update existing** changes the merchant's live data. It only touches fields the draft actually carries, and it adds attributes, taxes and images rather than replacing them — but the name, description and price will be overwritten. Use **Link existing** when you only want to reuse a record.
+</Warning>
+
+<Note>
+  This matters for photos. **Link existing** writes nothing at all, so an item image in the draft is discarded — the row warns you when that would happen. **Update existing** adds the photo to an item that has none, and leaves an existing photo alone unless you set the image URL yourself in the review screen.
+
+  Re-importing a menu the merchant already has is mostly link and update rows, so this is the usual case when adding photos to a catalog built earlier.
+</Note>
+
+### Edit items
+
+Click any item to expand its editor. You can change the name, description, price, SKU, cost, supplier, mark up, type, taxes, tag, attributes and image.
+
+- Turn on **Custom price** for market-price items. The price field clears and the item is sold at a price entered on the POS.
+- **Supplier** is created for the merchant if the name is new. **Mark up (%)** is worked out from cost and price when you leave it blank.
+- **Image** takes either a web address or a file from your own machine — see below.
+- **Sold by weight** requires a unit of kg, g, lb or oz, and cannot be combined with custom price.
+- Switching an item to **Service** reveals duration and booking fields.
+
+Drag the handle on a category to reorder sections. Drag an item between categories to move it. The order you set is the order the merchant sees.
+
+#### Item photos
+
+Paste a web address into **Image** and Taliup downloads the picture and stores it on Taliup's own storage — the merchant's catalog never links to anyone else's site, so it is unaffected if theirs goes away. Photos are stored at up to 1,200 pixels wide.
+
+Some websites refuse to serve pictures to Taliup's servers even though they load perfectly in your browser. Wix is one. When that happens, click **Upload a file instead** and choose the picture from your own machine: your browser can fetch what the server cannot, and the file ends up in exactly the same place.
+
+<Note>
+  The commit summary counts photos separately from records, and says which ones were downloaded, which you uploaded, which items kept a picture they already had, and which could not be fetched because the hosting site refused Taliup. Photos arrive a minute or so after the commit finishes — reload the product to see them.
+</Note>
+
+### Fix issues before committing
+
+The banner at the top counts two kinds of problem.
+
+| Kind | Effect |
+|---|---|
+| **Errors** | Block the commit. A row with an error has a red badge — hover it to see why. |
+| **Warnings** | Do not block. They flag things worth a look, such as a possible duplicate or an item that would generate a very large number of inventory combinations. |
+
+Common errors are a missing price on an item that is not custom-priced, an attribute with no values, and a row set to **Link existing** with no record chosen.
+
+#### Items with no price
+
+A source that gives no price at all — a menu photo where the column was cut off, say — produces a **custom price** item, which means the cashier types the price at the till on every sale. That is a real decision made on your behalf, so the row carries a warning saying so.
+
+Clear it either way:
+
+- type the price, or
+- confirm the item really is priced at the till, by ticking **Custom price** on the item or using the **Mark as custom price** bulk action.
+
+An item whose source says "market price" is custom-priced deliberately and does not warn. A price of **0** is a free item, not a missing one, and does not warn either.
+
+Use **Only rows with issues** to filter the tree down to rows that need attention.
+
+### Bulk actions
+
+Select items with their checkboxes to reveal the bulk bar: set them all to **Link existing** or **Create new**, add a tax, move them to another category, mark them as custom price, or skip them. The overflow menu beside **Commit** applies **Link all confident matches** or **Create all as new** across the whole draft.
+
+**Mark as custom price** is the quick way to accept a whole section that is genuinely priced at the till. It clears each item's price, turns off **Sold by weight**, and resolves the missing-price warning on every row it touches.
+
+### Saving
+
+Edits save automatically a few seconds after you stop typing, and **Save draft** forces a save. The indicator beside the button shows the current state.
+
+<Note>
+  If someone else saves the same draft while you have it open — another admin, or your AI assistant staging an update — you will be told the draft changed elsewhere and asked to reload. Reloading discards your unsaved edits, so save early.
+</Note>
+
+## Commit
+
+When the error count is zero and everything is saved, click **Commit to catalog**. A confirmation lists exactly how many records will be created, linked, updated and skipped.
+
+<Frame caption="The commit confirmation showing a per-record-type breakdown of creates, links, updates and skips.">
+  ![Commit confirmation dialog with a table of Catalogs, Categories, Items, Attributes, Taxes and Tags against Create, Link, Update and Skip columns](/images/taliup-hq/catalog-builder/commit.png)
+</Frame>
+
+<Warning>
+  If the draft updates a catalog that is already assigned to POS terminals, the confirmation names the catalog and the number of terminals, and you must tick a box to continue. Those devices pick up the change as soon as it is committed. To avoid that, leave the catalog row set to **Create new** so the build lands in a fresh catalog.
+</Warning>
+
+Records are written in the background. When it finishes you get a summary of what was created, linked, updated and skipped.
+
+Item photos are listed separately, because they are fetched after the records are written. The summary says how many are being downloaded, how many items already had a picture and kept it, how many were dropped because the row was set to **Link existing**, and how many carried an address that could not be used. Reload a product a minute later to see its photo.
+
+### If some rows fail
+
+The build returns to **Ready for review** with the failures listed against the rows that caused them. Fix those rows and commit again — rows that already succeeded are skipped, so nothing is duplicated.
+
+## Recent builds
+
+The list on the Catalog Builder page shows the last 25 builds for the merchant with status, source, who started it, and counts. Open any build to see its draft or its commit summary. Builds still in progress refresh on their own.
+
+Cancel a build you no longer want from the list. Cancelling discards the draft.
+
+<Note>
+  Finished builds keep their draft for 7 days and are then cleared, and the uploaded spreadsheet is deleted as soon as the build commits. A build left in review for 30 days is cancelled automatically.
+</Note>
+
+## One-time setup
+
+<Info>
+  This section is for whoever deploys Taliup HQ. Admins using the feature do not need it.
+</Info>
+
+Catalog Builder itself works as soon as the release is deployed and migrations have run. The AI connector is off by default and needs three things.
+
+<Steps>
+  <Step title="Run migrations">
+    `php artisan migrate` creates the build tracking table and the OAuth tables used by the connector.
+  </Step>
+  <Step title="Generate OAuth keys">
+    `php artisan passport:keys` on each environment. The keys are not kept in source control.
+  </Step>
+  <Step title="Enable the connector">
+    Set `CATALOG_BUILDER_MCP_ENABLED` to true, and list the AI clients allowed to connect in `MCP_REDIRECT_DOMAINS`. Leaving the flag off hides the connector card and disables its endpoints.
+  </Step>
+</Steps>
+
+To let the connector read a merchant's menu **from their website**, list the domains it may fetch in `MENU_FETCH_ALLOWED_DOMAINS`, comma separated. The list is empty by default, which switches the feature off. A domain covers its subdomains, so `example.com` also permits `www.example.com` and `order.example.com`.
+
+<Warning>
+  Never allowlist a delivery marketplace such as Uber Eats, DoorDash or SkipTheDishes. Their listed prices include commission and are simply the wrong prices for a POS catalog, quite apart from their terms of use.
+</Warning>
+
+Imported item photos are stored no wider than 1,200 pixels (`CATALOG_BUILDER_IMAGE_MAX_WIDTH`), and a photo uploaded in the review screen may be up to 10 MB (`CATALOG_BUILDER_IMAGE_UPLOAD_MAX_MB`).
+
+Background work — including fetching item photos — runs on a dedicated `catalog-builder` queue, so the queue worker must include it:
+
+```bash
+php artisan queue:work --queue=catalog-builder,default
+```
+
+<Warning>
+  Give Catalog Builder its own worker rather than relying on the `default` queue. Where several sites share one database, every one of their workers polls `default`, and a deployment that does not have this release's job classes will pick a job up and fail it immediately. Nothing appears in this application's log, because nothing in this application ran — look in `failed_jobs`, where the stack trace names the site that took it.
+</Warning>
+
+A scheduled task, `catalog-builder:prune`, clears old drafts, expires abandoned reviews, and removes photos uploaded during review that were never committed. It runs daily as part of the normal scheduler.
+
+### When photos do not arrive
+
+Photos are fetched after the records are written, so several separate things can stop one without stopping the build. Two read-only scripts in the application root answer it in order, rather than by guesswork:
+
+```bash
+php artisan tinker --execute="require 'catalog-builder-image-diagnostic.php';"
+```
+
+Reports whether the deployed code is current, what the last commit's photo counts were, what the draft rows look like, whether the jobs were queued or failed, and how many media rows landed.
+
+```bash
+php artisan tinker --execute="require 'catalog-builder-image-probe.php';"
+```
+
+Walks one photo through every step the job takes — environment, product lookup, download, resize — and prints each outcome.
+
+```bash
+php artisan tinker --execute="require 'catalog-builder-egress-probe.php';"
+```
+
+Fetches several hosts with several header sets, so a site that refuses this server is distinguishable from a server that cannot reach the internet.
+
+<Note>
+  A photo that cannot be downloaded leaves a failed job and a warning in the log naming the URL and the reason. It is not silent.
+</Note>
+
+## Related
+
+- [AI Connector](/taliup-hq/admin/catalog-builder-connector)
+- [Bulk Import](/taliup-hq/merchant/catalogs/bulk-import)
+- [Catalogs](/taliup-hq/merchant/catalogs/index)
+- [Entities](/taliup-hq/admin/entities)

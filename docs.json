@@ -93,6 +93,13 @@
                   "taliup-hq/admin/ui-settings",
                   "taliup-hq/admin/message-center"
                 ]
+              },
+              {
+                "group": "Catalog Builder",
+                "pages": [
+                  "taliup-hq/admin/catalog-builder",
+                  "taliup-hq/admin/catalog-builder-connector"
+                ]
               }
             ]
           },
@@ -103,6 +110,13 @@
                 "group": "Getting Started",
                 "pages": [
                   "taliup-hq/merchant/dashboard"
+                ]
+              },
+              {
+                "group": "Catalogs",
+                "pages": [
+                  "taliup-hq/merchant/catalogs/index",
+                  "taliup-hq/merchant/catalogs/bulk-import"
                 ]
               },
               {
@@ -378,6 +392,13 @@
                       "fr-CA/taliup-hq/admin/ui-settings",
                       "fr-CA/taliup-hq/admin/message-center"
                     ]
+                  },
+                  {
+                    "group": "Catalog Builder",
+                    "pages": [
+                      "fr-CA/taliup-hq/admin/catalog-builder",
+                      "fr-CA/taliup-hq/admin/catalog-builder-connector"
+                    ]
                   }
                 ]
               },
@@ -387,6 +408,13 @@
                   {
                     "group": "Pour commencer",
                     "pages": ["fr-CA/taliup-hq/merchant/dashboard"]
+                  },
+                  {
+                    "group": "Catalogues",
+                    "pages": [
+                      "fr-CA/taliup-hq/merchant/catalogs/index",
+                      "fr-CA/taliup-hq/merchant/catalogs/bulk-import"
+                    ]
                   },
                   {
                     "group": "Fonctions",

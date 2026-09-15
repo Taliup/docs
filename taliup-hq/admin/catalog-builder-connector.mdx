@@ -1,0 +1,201 @@
+---
+title: "Catalog Builder AI Connector"
+sidebarTitle: "AI Connector"
+description: "Connect Taliup HQ to your AI assistant so you can turn a menu photo, PDF or unfamiliar spreadsheet into a reviewable catalog draft."
+icon: "robot"
+---
+
+The **AI connector** lets you hand a merchant's menu to your own AI assistant — as a photo, a PDF, a screenshot or a spreadsheet in any layout — and have it build a Taliup catalog draft for you. The draft lands in [Catalog Builder](/taliup-hq/admin/catalog-builder) in Taliup HQ, where you review and commit it as usual.
+
+It is the answer to the merchant who emails you a photo of a printed menu.
+
+<Frame caption="The connector card on the Catalog Builder page, showing the connector URL and a copy button.">
+  ![Connector card titled Build from any menu with your AI assistant, with a read-only connector URL field and a Copy button](/images/taliup-hq/catalog-builder/connector-card.png)
+</Frame>
+
+## How it works
+
+Your AI assistant does the reading. Taliup HQ does the writing.
+
+<Steps>
+  <Step title="You attach the menu in your AI assistant">
+    The file stays in your assistant. It is never uploaded to Taliup.
+  </Step>
+  <Step title="The assistant asks Taliup for the rules">
+    It fetches the catalog format and the merchant's existing catalogs, attributes, taxes and tags so it can reuse them instead of creating duplicates.
+  </Step>
+  <Step title="The assistant stages a draft">
+    It sends structured catalog data to Taliup HQ and gets back a review link, along with anything that failed validation so it can correct itself.
+  </Step>
+  <Step title="You review and commit in Taliup HQ">
+    Exactly as with a spreadsheet build.
+  </Step>
+</Steps>
+
+<Warning>
+  The connector can read merchant catalog data and stage drafts. It **cannot** commit, cancel or delete anything. Every change to a live catalog goes through the review screen in Taliup HQ, by a person.
+</Warning>
+
+## What it costs
+
+Nothing on the Taliup side. The reading is done by your own AI assistant on your own subscription, so you need a plan that supports custom connectors.
+
+## Connect your assistant
+
+You need the connector URL, shown on the **Catalog Builder** tab of any merchant. It is the same URL for every merchant — you choose the merchant in conversation, not in the connector.
+
+<Tabs>
+  <Tab title="Claude Desktop / claude.ai">
+    <Steps>
+      <Step title="Copy the connector URL">
+        Open any merchant's **Catalog Builder** tab and click **Copy** on the connector card.
+      </Step>
+      <Step title="Add the connector">
+        In Claude, go to **Settings** → **Connectors** → **Add custom connector**, and paste the URL.
+      </Step>
+      <Step title="Sign in">
+        Claude sends you to a Taliup HQ sign-in page. Sign in with your normal Taliup HQ account, review what the connector is allowed to do, and click **Authorize**.
+      </Step>
+      <Step title="Confirm it is available">
+        The Taliup HQ Catalog Builder connector now appears in your connector list and its tools are available in conversation.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Team and Enterprise plans">
+    On Team and Enterprise plans only an Owner can add a connector for the organization, under **Organization settings** → **Connectors**. Once it is added, each member authorizes it individually with their own Taliup HQ account.
+  </Tab>
+</Tabs>
+
+<Note>
+  The connector authorizes **you**, not your organization. It can only see merchants you could already open in Taliup HQ, and it inherits your ISO scope. A non-admin account that authorizes it gets no tools at all.
+</Note>
+
+## Build a menu
+
+Attach the merchant's menu to a new conversation and ask for what you want. For example:
+
+```text
+Build a Taliup menu for Bistro Lafayette from the attached PDF.
+```
+
+Name the merchant in the message — that is how the assistant knows which account to build for. The connector card in Taliup HQ shows a ready-made line with the merchant's name already in it, so you can copy it from the merchant you are looking at.
+
+A saved prompt called **Build menu from source** is available in your assistant's prompt list. It walks the assistant through the whole sequence and is the most reliable way to start.
+
+The assistant will name the merchant it picked, or ask you which one if several match. When it finishes it replies with a review link and a summary of what it staged.
+
+### Getting a good draft
+
+<Tip>
+  Say what you want up front. "Only pages 1 and 2", "this is the brunch menu", "add it to the existing Dinner Menu catalog" and "taxes are already set up, don't create any" all work, and save a correction round trip.
+</Tip>
+
+The assistant is told to map menus the way Taliup expects:
+
+| In the menu | In Taliup |
+|---|---|
+| The menu itself | A catalog |
+| A section or heading | A category, in the printed order |
+| An item | A product |
+| "Choose your size", add-ons, sides | An attribute with values |
+| An item priced by size | A base price plus a Size attribute holding the differences |
+| "Market price" or a blank price | An item marked custom price |
+| A timed service, like a 60 minute massage | A service with a duration |
+
+It is told not to invent items or prices, not to translate names, and to note anything ambiguous rather than guess. Those notes appear at the top of the review screen.
+
+### Build from the merchant's website
+
+If the merchant publishes their menu on their own site, you can point the assistant at the page instead of chasing a photo:
+
+```text
+Build a Taliup menu for Bistro Lafayette from https://bistrolafayette.example/menu
+```
+
+The assistant fetches the page through Taliup, which returns the readable text, and builds the draft from that. Nothing about the page reaches the merchant's catalog until you commit.
+
+Taliup will only fetch a page when every one of these holds:
+
+| Rule | Detail |
+|---|---|
+| `https` only | Plain `http` is refused |
+| A public address | Internal, loopback and private-network addresses are refused, and every redirect is re-checked |
+| An allowlisted domain | The domain must be added by whoever runs Taliup HQ. A domain covers its subdomains, matched on a dot boundary, so a lookalike such as `example.com.evil.test` is refused |
+| A web page | A menu published as a PDF or an image is refused — attach it to the conversation instead |
+
+<Warning>
+  Do not use a delivery marketplace listing — Uber Eats, DoorDash, SkipTheDishes. Those prices are marked up to cover the platform's commission, so a catalog built from them overcharges the merchant's own walk-in and POS customers. Those domains are not allowlisted, and should not be.
+</Warning>
+
+<Note>
+  Many restaurant sites render their menu with JavaScript, and some publish it as an image. Taliup reports when a fetched page carries almost no prices, and the assistant is told to say so rather than invent items. If that happens, send a screenshot or the PDF instead.
+</Note>
+
+#### Item photos
+
+A fetched page also hands back the item photos it carries, positioned next to the item they belong to, so the assistant can attach the right picture to the right dish.
+
+Two things happen to each one automatically:
+
+- **Site furniture is dropped** — logos, social buttons, arrows, tracking pixels, and anything the page itself declares smaller than 60 pixels.
+- **Thumbnails are replaced with a display-sized copy.** Site builders serve a menu photo at whatever size the page happens to show it, often 150 pixels square, which is too small for a POS tile. Taliup asks the site for a copy up to 1,200 pixels wide instead, and narrows anything still larger after downloading. The originals are frequently several megabytes, and every till pays for that on every catalog load.
+
+Images are downloaded and re-hosted on Taliup's own storage at commit, so the merchant's catalog does not depend on their old website staying up. Nothing in the catalog ever links to the merchant's site or their CDN.
+
+<Warning>
+  The assistant must only use image URLs the fetch returned. A constructed or guessed address cannot be downloaded, and the commit summary will say so. If you asked for images and got none, the page had none Taliup could read; ask for a screenshot rather than letting it improvise.
+</Warning>
+
+Some sites serve their pictures perfectly to your browser and refuse Taliup's servers — Wix is one. Taliup checks before committing and tells you rather than failing forty downloads afterwards. When that happens, add the photos in the review screen with **Upload a file instead**: your browser fetches what the server cannot, and the picture ends up in exactly the same place. See [Item photos](/taliup-hq/admin/catalog-builder) on the Catalog Builder page.
+
+### Correcting a staged draft
+
+If validation reports problems, the assistant can fix them and restage without your involvement. You can also ask it to change something after the fact — "make all the salads tax exempt", "the wine list should be its own catalog" — as long as you have not started committing.
+
+<Note>
+  If you edit the draft in Taliup HQ at the same time, whoever saves second is told the draft changed and has to reload. Finish in one place before switching to the other.
+</Note>
+
+## Security
+
+| Concern | How it is handled |
+|---|---|
+| Sign-in | OAuth. Your assistant never sees your Taliup HQ password, and you can revoke it from your assistant at any time |
+| Scope | The connector sees only merchants inside your ISO scope, and only merchants with the Catalog feature |
+| Writes | No tool can commit, cancel or delete. The most it can do is stage a draft for review |
+| Merchant files | Attachments stay in your AI assistant. Only the structured draft reaches Taliup |
+| Menu contents | Text inside an uploaded menu, or on a fetched page, is treated as data. Instructions hidden in a document or a web page are ignored |
+| Fetching web pages | Only `https`, only public addresses, only allowlisted domains, re-checked on every redirect, with the response capped in size |
+| Size | Oversized drafts are rejected, so a bad extraction cannot flood a merchant's catalog |
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="The connector card says it is not enabled">
+    The connector is switched off in this environment. See the setup section of the [Catalog Builder](/taliup-hq/admin/catalog-builder) page.
+  </Accordion>
+  <Accordion title="Sign-in succeeds but the assistant has no tools">
+    The account you authorized with does not have Taliup HQ admin access. Sign out of the connector and reconnect with your admin account.
+  </Accordion>
+  <Accordion title="The assistant cannot find the merchant">
+    It only sees merchants in your ISO scope that have the Catalog feature enabled. Confirm both on the merchant's **Entities** record, then ask the assistant to list the merchants it can see.
+  </Accordion>
+  <Accordion title="It will not fetch the merchant's menu URL">
+    The domain is not on the allowlist, or no domains are allowlisted at all. The assistant's message names the host it was refused. Ask whoever runs Taliup HQ to add it to `MENU_FETCH_ALLOWED_DOMAINS`. In the meantime, paste the menu text into the conversation or attach a screenshot.
+  </Accordion>
+  <Accordion title="The page was fetched but almost nothing came back">
+    The menu is probably drawn by JavaScript, or published as a PDF or an image, so there is no text on the page to read. Attach the PDF or a screenshot instead.
+  </Accordion>
+  <Accordion title="The items arrived but the photos did not">
+    Check the commit summary: it counts photos separately and names the reason. The usual one is that the site hosting the pictures refuses requests from Taliup's servers even though they load in your browser. Add those photos in the review screen with **Upload a file instead**.
+  </Accordion>
+  <Accordion title="The draft is missing part of the menu">
+    Long or low-contrast menus can be read partially. Ask the assistant which pages it used, then have it restage the missing section. A sharper photo of one page beats a blurry photo of six.
+  </Accordion>
+</AccordionGroup>
+
+## Related
+
+- [Catalog Builder](/taliup-hq/admin/catalog-builder)
+- [Bulk Import](/taliup-hq/merchant/catalogs/bulk-import)
+- [Entities](/taliup-hq/admin/entities)
