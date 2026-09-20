@@ -420,6 +420,11 @@
                       "fr-CA/taliup-hq/admin/catalog-builder",
                       "fr-CA/taliup-hq/admin/catalog-builder-connector"
                     ]
+                  },
+                  {
+                    "group": "Cartes-cadeaux",
+                    "icon": "gift",
+                    "pages": []
                   }
                 ]
               },
@@ -445,6 +450,7 @@
                       "fr-CA/taliup-hq/features/invoicing",
                       "fr-CA/taliup-hq/features/clients",
                       "fr-CA/taliup-hq/features/scale-items",
+                      "fr-CA/taliup-hq/features/gift-cards",
                       "fr-CA/taliup-hq/features/end-of-day"
                     ]
                   }
@@ -541,6 +547,11 @@
                       "fr-CA/taliup-pos/link-to-pay/create-and-send",
                       "fr-CA/taliup-pos/link-to-pay/manage"
                     ]
+                  },
+                  {
+                    "group": "Cartes-cadeaux",
+                    "icon": "gift",
+                    "pages": []
                   },
                   {
                     "group": "Analytique",
