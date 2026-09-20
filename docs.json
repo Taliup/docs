@@ -240,7 +240,9 @@
                 "pages": [
                   "taliup-pos/gift-cards/index",
                   "taliup-pos/gift-cards/sell",
-                  "taliup-pos/gift-cards/redeem"
+                  "taliup-pos/gift-cards/redeem",
+                  "taliup-pos/gift-cards/balance",
+                  "taliup-pos/gift-cards/void-refund"
                 ]
               },
               {
