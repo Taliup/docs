@@ -100,6 +100,11 @@
                   "taliup-hq/admin/catalog-builder",
                   "taliup-hq/admin/catalog-builder-connector"
                 ]
+              },
+              {
+                "group": "Gift Cards",
+                "icon": "gift",
+                "pages": []
               }
             ]
           },
@@ -127,6 +132,7 @@
                   "taliup-hq/features/invoicing",
                   "taliup-hq/features/clients",
                   "taliup-hq/features/scale-items",
+                  "taliup-hq/features/gift-cards",
                   "taliup-hq/features/end-of-day"
                 ]
               }
@@ -223,6 +229,11 @@
                   "taliup-pos/link-to-pay/create-and-send",
                   "taliup-pos/link-to-pay/manage"
                 ]
+              },
+              {
+                "group": "Gift Cards",
+                "icon": "gift",
+                "pages": []
               },
               {
                 "group": "Analytics",
