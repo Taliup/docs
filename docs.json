@@ -557,7 +557,9 @@
                     "icon": "gift",
                     "pages": [
                       "fr-CA/taliup-pos/gift-cards/index",
-                      "fr-CA/taliup-pos/gift-cards/sell"
+                      "fr-CA/taliup-pos/gift-cards/sell",
+                      "fr-CA/taliup-pos/gift-cards/redeem",
+                      "fr-CA/taliup-pos/gift-cards/balance"
                     ]
                   },
                   {
