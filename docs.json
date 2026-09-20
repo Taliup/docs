@@ -104,7 +104,9 @@
               {
                 "group": "Gift Cards",
                 "icon": "gift",
-                "pages": []
+                "pages": [
+                  "taliup-hq/admin/gift-cards/overview"
+                ]
               }
             ]
           },
