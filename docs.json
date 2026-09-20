@@ -556,7 +556,8 @@
                     "group": "Cartes-cadeaux",
                     "icon": "gift",
                     "pages": [
-                      "fr-CA/taliup-pos/gift-cards/index"
+                      "fr-CA/taliup-pos/gift-cards/index",
+                      "fr-CA/taliup-pos/gift-cards/sell"
                     ]
                   },
                   {
