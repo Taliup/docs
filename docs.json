@@ -105,7 +105,9 @@
                 "group": "Gift Cards",
                 "icon": "gift",
                 "pages": [
-                  "taliup-hq/admin/gift-cards/overview"
+                  "taliup-hq/admin/gift-cards/overview",
+                  "taliup-hq/admin/gift-cards/factor4-hub",
+                  "taliup-hq/admin/gift-cards/troubleshooting"
                 ]
               }
             ]
