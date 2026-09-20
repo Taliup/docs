@@ -424,7 +424,9 @@
                   {
                     "group": "Cartes-cadeaux",
                     "icon": "gift",
-                    "pages": []
+                    "pages": [
+                      "fr-CA/taliup-hq/admin/gift-cards/overview"
+                    ]
                   }
                 ]
               },
