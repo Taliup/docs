@@ -426,7 +426,8 @@
                     "icon": "gift",
                     "pages": [
                       "fr-CA/taliup-hq/admin/gift-cards/overview",
-                      "fr-CA/taliup-hq/admin/gift-cards/factor4-hub"
+                      "fr-CA/taliup-hq/admin/gift-cards/factor4-hub",
+                      "fr-CA/taliup-hq/admin/gift-cards/troubleshooting"
                     ]
                   }
                 ]
@@ -554,7 +555,9 @@
                   {
                     "group": "Cartes-cadeaux",
                     "icon": "gift",
-                    "pages": []
+                    "pages": [
+                      "fr-CA/taliup-pos/gift-cards/index"
+                    ]
                   },
                   {
                     "group": "Analytique",
