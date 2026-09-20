@@ -237,7 +237,11 @@
               {
                 "group": "Gift Cards",
                 "icon": "gift",
-                "pages": []
+                "pages": [
+                  "taliup-pos/gift-cards/index",
+                  "taliup-pos/gift-cards/sell",
+                  "taliup-pos/gift-cards/redeem"
+                ]
               },
               {
                 "group": "Analytics",
