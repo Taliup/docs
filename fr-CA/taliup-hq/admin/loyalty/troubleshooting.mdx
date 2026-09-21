@@ -1,0 +1,100 @@
+---
+title: "Dépannage de la fidélité"
+sidebarTitle: "Dépannage"
+description: "Diagnostiquer les problèmes d'activation, d'inscription, de points et d'échange signalés par les marchands."
+icon: "wrench"
+keywords:
+  - "fidélité"
+  - "dépannage"
+  - "Factor4"
+  - "points"
+---
+
+Partez de la page **Fidélité** du marchand : les états des emplacements et l'erreur de configuration sous **Règles du programme** cernent la plupart des problèmes. L'emplacement Factor4 partagé est visible dans le [Centre des comptes Factor4](/fr-CA/taliup-hq/admin/gift-cards/factor4-hub).
+
+---
+
+## Activation
+
+### L'activation échoue avec « Access denied »
+
+L'API admin de Factor4 a refusé les identifiants client. Vérifiez les trois mêmes points que pour les cartes-cadeaux : le mot de passe admin est dans la variable admin, l'identifiant et le mot de passe d'initiateur correspondent à l'utilisateur Factor4, et l'adresse IP source est permise par Factor4. Le paiement a été annulé; le marchand peut réessayer dès que les identifiants fonctionnent.
+
+### Le programme affiche « failed »
+
+Ouvrez **Règles du programme** sur la page du marchand. La dernière erreur Factor4 y est affichée. Le marchand peut cliquer de nouveau sur **Activer** une fois la cause corrigée; la configuration reprend là où elle s'est arrêtée et réutilise ce qui a déjà été créé.
+
+### L'emplacement est Actif pour les cartes-cadeaux mais en Configuration en cours pour la fidélité
+
+L'emplacement Factor4 partagé existe; c'est l'étape du programme de fidélité, du lien ou du lot de cartes qui a échoué. L'erreur du programme indique laquelle. Reprendre l'activation n'exécute que les étapes manquantes.
+
+---
+
+## Inscription
+
+### Aucun numéro de carte disponible
+
+Le lot est vide. Il est rempli à partir d'un ensemble de cartes Factor4 à l'activation et renouvelé quand une activation ultérieure le trouve sous le seuil bas. Demandez au marchand d'ajouter des numéros sous **Numéros de carte** en attendant, et vérifiez dans le centre que l'ensemble de cartes a été créé. Si le lot ne s'est jamais rempli, l'étape `CardSetAdd` ou `CardsView` a échoué chez Factor4.
+
+### La carte n'a pas pu être vérifiée chez Factor4
+
+L'inscription vérifie le numéro par une consultation avant de créer le membre. Un refus signifie que le numéro n'est pas un compte valide du programme de fidélité du marchand. Pour une carte physique, confirmez qu'elle appartient au programme de fidélité et non au programme de cartes-cadeaux.
+
+### Cette carte est déjà attribuée à un autre membre
+
+Chaque numéro de compte appartient à un seul membre. Retrouvez le membre existant par le numéro masqué dans la liste des membres.
+
+### Conflit de profil sur un membre
+
+Factor4 a refusé d'associer le téléphone ou le courriel du client parce que le téléphone figure déjà sur un autre compte Factor4 du même client. Les points sont quand même attribués. Corrigez le téléphone sur la fiche client s'il est erroné; le marqueur reste jusqu'à ce que le profil soit accepté.
+
+---
+
+## Points
+
+### Les points n'ont pas été attribués
+
+Vérifiez, dans l'ordre : l'emplacement est **Actif** pour la fidélité, le client est inscrit, la vente atteint l'achat minimum, et le montant admissible a produit au moins un point selon la règle d'arrondi. Une vente qui rapporte zéro point n'enregistre rien.
+
+### Les points diffèrent de ce que le marchand attendait
+
+Les points sont calculés sur le sous-total après rabais et avant taxes, jamais sur les pourboires, les frais ou les taxes. Vérifiez l'arrondi; **Vers le bas** est la valeur par défaut.
+
+### Annulation refusée avec « Balance limit 0 exceeded »
+
+Le membre a dépensé une partie des points avant l'annulation, et Factor4 n'autorise pas un solde négatif. C'est le comportement attendu. Si la commande est réellement remboursée, ajustez manuellement les points du membre chez Factor4 ou laissez le solde tel quel.
+
+### Le solde dans HQ diffère de celui de Factor4
+
+HQ met en cache le solde du dernier appel. Une consultation du solde au PDV le rafraîchit. Les échanges sont toujours autorisés par Factor4, donc un cache périmé ne peut pas permettre à un membre de dépenser trop.
+
+---
+
+## Échange
+
+### Les récompenses s'échangent par tranches de N points
+
+Le membre a demandé un montant qui n'est pas une tranche entière. L'échange est arrondi vers le bas à des tranches entières; sous une tranche, rien n'est échangé. C'est voulu.
+
+### Points insuffisants
+
+Le solde en cache est inférieur aux points demandés. Rafraîchissez le solde au PDV; s'il est toujours insuffisant, le membre ne peut pas échanger autant.
+
+### Une récompense a dépassé le total de la commande
+
+Impossible. Le PDV plafonne l'échange au nombre de tranches qui tiennent dans le montant de la commande. Si un marchand signale le contraire, recueillez l'identifiant de commande et l'identifiant de transaction de fidélité.
+
+---
+
+## À recueillir pour le soutien
+
+- L'entité et l'emplacement, et l'environnement (test ou live)
+- L'identifiant d'emplacement Factor4 depuis le centre
+- Pour un problème de points : l'identifiant de commande, le numéro de compte masqué du membre et l'identifiant de transaction de fidélité affiché dans **Activité récente**
+- Le message exact vu par le marchand
+
+## Voir aussi
+
+- [Aperçu de la fidélité](/fr-CA/taliup-hq/admin/loyalty/overview)
+- [Dépannage des cartes-cadeaux](/fr-CA/taliup-hq/admin/gift-cards/troubleshooting)
+- [Centre des comptes Factor4](/fr-CA/taliup-hq/admin/gift-cards/factor4-hub)

@@ -1,0 +1,127 @@
+---
+title: "Aperçu de la fidélité"
+sidebarTitle: "Aperçu"
+description: "Comment Taliup configure le programme de fidélité d'un marchand chez Factor4, comment les points et les récompenses sont calculés, et ce qui est partagé avec les cartes-cadeaux."
+icon: "star"
+keywords:
+  - "fidélité"
+  - "points"
+  - "Factor4"
+  - "configuration"
+  - "lot de cartes"
+---
+
+Les points de fidélité sont détenus par **Factor4**, le fournisseur des cartes-cadeaux. Les marchands activent la fidélité eux-mêmes, un emplacement à la fois, sous forme de module mensuel facturé séparément des cartes-cadeaux. Les admins ne configurent pas les marchands manuellement.
+
+Cette page explique ce qu'une activation crée, comment les points et les récompenses sont calculés, et où la fidélité et les cartes-cadeaux partagent une infrastructure.
+
+---
+
+## Ce que fait une activation
+
+Quand un marchand paie pour un emplacement, Taliup appelle l'API admin de Factor4 et s'assure que cinq choses existent :
+
+<Steps>
+  <Step title="Un emplacement Factor4">
+    Le même emplacement Factor4 que pour les cartes-cadeaux, créé avec l'identifiant de référence `TLP-ENT-{entité}-LOC-{emplacement}` si l'emplacement n'a jamais été configuré pour l'un ou l'autre produit. Ses identifiants d'intégration sont conservés chiffrés pour cet emplacement et cet environnement.
+  </Step>
+  <Step title="Un terminal Factor4 par terminal Taliup">
+    Chaque terminal de l'emplacement est enregistré avec son identifiant Taliup comme identifiant PDV chez Factor4, exactement comme pour les cartes-cadeaux.
+  </Step>
+  <Step title="Le programme de fidélité du marchand">
+    Un marchand n'a **qu'un seul** programme de fidélité, nommé `{entité} Loyalty Program`, de type Loyalty. Le premier emplacement activé le crée; les suivants s'y joignent. C'est un programme distinct du programme de cartes-cadeaux du marchand, de sorte que les dollars-cadeaux et les points sont suivis séparément.
+  </Step>
+  <Step title="Un lien emplacement-programme">
+    Accorde à l'emplacement l'émission et l'échange de points, l'inscription, la consultation, l'ajustement et l'annulation sur le programme.
+  </Step>
+  <Step title="Un lot de numéros de carte virtuels">
+    Un ensemble de cartes est créé sous le programme avec `LOYALTY_CARD_POOL_SIZE` numéros, et ces numéros sont importés dans Taliup comme comptes disponibles. Un membre en reçoit un à l'inscription. Quand le lot passe sous `LOYALTY_CARD_POOL_LOW_WATERMARK`, la prochaine activation crée un nouvel ensemble.
+  </Step>
+</Steps>
+
+La configuration est idempotente. Une activation reprise cherche chaque objet avant de le créer. Un échec marque le programme **failed** avec le message de Factor4, le paiement est annulé et le marchand n'est pas facturé.
+
+Quand la configuration réussit, Taliup accorde la fonction **Fidélité** à l'entité et marque le programme et l'emplacement **actifs**.
+
+---
+
+## Points et récompenses
+
+Factor4 conserve les soldes mais ne les calcule pas. Taliup est propriétaire des règles.
+
+| Étape | Qui | Comment |
+| --- | --- | --- |
+| **Gain** | Taliup | Points = dépense admissible × points par unité, arrondis selon le programme. La dépense admissible est le sous-total de la commande après rabais, avant taxes. Envoyé à Factor4 comme `LoyaltyIssuance` en points entiers |
+| **Échange** | Taliup | Les points s'échangent par tranches entières de `redeem_points_per_reward`, chacune valant `redeem_reward_amount`. Envoyé comme `LoyaltyRedemption`; le PDV applique la récompense comme rabais avant taxes |
+| **Solde** | Factor4 | Le solde `Points` du compte fait foi. Taliup le met en cache sur le membre et le rafraîchit à chaque appel |
+| **Annulation** | Factor4 | Annuler la transaction Factor4 renverse les points |
+
+Aucune **Action** Factor4 n'est configurée sur le programme. Factor4 peut convertir les points en dollars de récompense côté serveur, mais Taliup ne s'y fie pas : la valeur de la récompense est toujours celle que le marchand a définie dans HQ.
+
+### Membres sans carte
+
+Un membre est un **client** Taliup détenant un compte Factor4. L'inscription prend un numéro dans le lot, le confirme par une consultation, puis le conserve haché, masqué et chiffré, comme les numéros de cartes-cadeaux. Le nom, le téléphone et le courriel du client sont transmis à Factor4 avec la première émission de points du membre.
+
+Factor4 impose l'unicité du téléphone d'un client. Si le téléphone figure déjà sur un autre compte Factor4, l'émission est reprise sans le profil pour que les points soient quand même attribués, et le membre est marqué d'un **conflit de profil** visible par le marchand.
+
+---
+
+## Partagé avec les cartes-cadeaux
+
+| Objet | Partagé? |
+| --- | --- |
+| Emplacement et terminaux Factor4 | **Oui.** Un par emplacement Taliup; le premier produit activé le crée |
+| Identifiants d'emplacement | **Oui.** Un jeu par emplacement et environnement |
+| Programme | **Non.** Un programme cadeau et un programme fidélité par marchand |
+| Abonnement | **Non.** Facturés et annulés indépendamment |
+| Fonction | **Non.** `gift_cards` et `loyalty` sont des fonctions distinctes |
+
+Comme l'emplacement est partagé, l'annulation d'un produit ne doit pas casser l'autre. Quand l'abonnement Fidélité ou Cartes-cadeaux d'un emplacement prend fin, Taliup suspend l'emplacement Factor4 **seulement si l'autre produit n'a aucun abonnement actif à cet emplacement**. Sinon l'emplacement reste actif et seul le produit annulé est détaché.
+
+---
+
+## Configuration
+
+| Variable | Rôle |
+| --- | --- |
+| `LOYALTY_ENROLLMENT_AMOUNT` | Prix mensuel par emplacement |
+| `LOYALTY_ENROLLMENT_AMOUNT_CAD` / `_USD` | Prix facultatifs par devise |
+| `LOYALTY_CARD_POOL_SIZE` | Numéros demandés par ensemble de cartes (500 par défaut) |
+| `LOYALTY_CARD_POOL_LOW_WATERMARK` | Niveau du lot qui déclenche un nouvel ensemble (50 par défaut) |
+
+Les identifiants de l'API admin et la politique d'environnement sont ceux documentés pour les [cartes-cadeaux](/fr-CA/taliup-hq/admin/gift-cards/overview). Les mêmes interrupteurs `FACTOR4_ALLOW_LIVE_*` protègent la configuration et les transactions de fidélité.
+
+---
+
+## API de la caisse
+
+Le PDV ne parle jamais à Factor4. Il appelle Taliup HQ, qui exige la fonction `loyalty` ainsi qu'un programme et un emplacement actifs :
+
+| Point d'accès | Rôle |
+| --- | --- |
+| `POST /api/entity/{entity}/loyalty/lookup` | Trouver des clients par téléphone, courriel ou nom, avec leur adhésion |
+| `POST /api/entity/{entity}/loyalty/enroll` | Inscrire un client, sans carte ou avec un numéro de carte physique |
+| `POST /api/entity/{entity}/loyalty/balance` | Lire un membre, avec rafraîchissement facultatif depuis Factor4 |
+| `POST /api/entity/{entity}/loyalty/earn` | Attribuer des points pour un montant admissible |
+| `POST /api/entity/{entity}/loyalty/redeem` | Échanger des points ou un montant de récompense; renvoie le rabais à appliquer |
+| `POST /api/entity/{entity}/loyalty/void` | Renverser un gain ou un échange |
+
+Gain, échange et annulation acceptent une `idempotency_key` : une requête reprise rejoue le résultat conservé au lieu d'appeler Factor4 deux fois. Les refus renvoient HTTP 200 avec `success: false`.
+
+---
+
+## Ce que contrôlent les admins
+
+- Si **Fidélité** est offerte dans le plan du marchand, via [Plans et fonctionnalités](/fr-CA/taliup-hq/admin/plans-features)
+- La tarification et la taille des lots, par configuration
+- La visibilité sur l'emplacement Factor4 partagé, via le [Centre des comptes Factor4](/fr-CA/taliup-hq/admin/gift-cards/factor4-hub)
+
+Les admins ne démarrent pas d'activation, n'encaissent pas de paiement et ne modifient pas les règles d'un marchand depuis le portail admin.
+
+---
+
+## Voir aussi
+
+- [Dépannage](/fr-CA/taliup-hq/admin/loyalty/troubleshooting)
+- [Aperçu des cartes-cadeaux](/fr-CA/taliup-hq/admin/gift-cards/overview)
+- [La vue marchand de la fidélité](/fr-CA/taliup-hq/features/loyalty)

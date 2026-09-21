@@ -1,0 +1,100 @@
+---
+title: "Loyalty troubleshooting"
+sidebarTitle: "Troubleshooting"
+description: "Diagnose loyalty activation, enrolment, points, and redemption problems reported by merchants."
+icon: "wrench"
+keywords:
+  - "loyalty"
+  - "troubleshooting"
+  - "Factor4"
+  - "points"
+---
+
+Start from the merchant's **Loyalty** page: the location states and the setup error under **Program Rules** narrow most problems down. The shared Factor4 location is visible in the [Factor4 Accounts Hub](/taliup-hq/admin/gift-cards/factor4-hub).
+
+---
+
+## Activation
+
+### Activation fails with "Access denied"
+
+The Factor4 admin API refused the client credentials. Check the same three things as for gift cards: the admin password is in the admin variable, the initiator id and password match the Factor4 user, and the source IP is allowed by Factor4. The charge was voided, so the merchant can retry once the credentials work.
+
+### The program shows "failed"
+
+Open **Program Rules** on the merchant's page. The last Factor4 error is shown there. The merchant can click **Activate** again once the cause is fixed; provisioning resumes from where it stopped and reuses anything already created.
+
+### The location shows Active for Gift Cards but Setting up for Loyalty
+
+The shared Factor4 location exists; the loyalty program, link, or card pool step failed. The program error tells you which. Retrying the activation only runs the missing steps.
+
+---
+
+## Enrolment
+
+### No card numbers available
+
+The pool is empty. It is filled from a Factor4 card set at activation and topped up when a later activation finds it below the low watermark. Ask the merchant to add numbers under **Card Numbers** as a stopgap, and check that the card set was created in the hub. If the pool never filled, the `CardSetAdd` or `CardsView` step failed at Factor4.
+
+### Card could not be verified with Factor4
+
+Enrolment checks the number with an Inquiry before creating the member. A decline means the number is not a valid account on the merchant's loyalty program. For a physical card, confirm it belongs to the merchant's program and not to their gift card program.
+
+### This card is already assigned to another member
+
+Each account number belongs to one member. Find the existing member by the masked number in the member list.
+
+### Profile conflict on a member
+
+Factor4 refused to attach the client's phone or email because the phone is already on another Factor4 account under the same client. Points are still awarded. Correct the phone on the client record if it is wrong; the flag stays until the profile is accepted.
+
+---
+
+## Points
+
+### Points were not awarded
+
+Check, in order: the location is **Active** for Loyalty, the client is enrolled, the sale met the minimum purchase, and the eligible amount produced at least one point under the rounding rule. A sale that earns zero points records nothing.
+
+### Points differ from what the merchant expected
+
+Points are computed on the subtotal after discounts and before tax, never on tips, fees, or tax. Check the rounding setting; **Round down** is the default.
+
+### Void refused with "Balance limit 0 exceeded"
+
+The member spent some of the points before the void, and Factor4 does not allow a negative balance. This is expected. If the order really is refunded, adjust the member's points manually with Factor4 or leave the balance as is.
+
+### Balance in HQ differs from Factor4
+
+HQ caches the balance from the last call. A balance check on the POS refreshes it. Redemptions are always authorised by Factor4, so a stale cache cannot let a member overspend.
+
+---
+
+## Redemption
+
+### Rewards are redeemed in blocks of N points
+
+The member asked for an amount that is not a whole reward block. Redemption snaps down to whole blocks; below one block nothing is redeemed. This is by design.
+
+### Insufficient points
+
+The cached balance is below the requested points. Refresh the balance on the POS; if it is still short, the member cannot redeem that much.
+
+### A reward exceeded the order total
+
+It cannot. The POS caps the redemption at the number of blocks that fit within the order amount. If a merchant reports otherwise, collect the order id and the loyalty transaction id.
+
+---
+
+## What to collect for support
+
+- The entity and location, and the environment (test or live)
+- The Factor4 location id from the hub
+- For a points problem, the order id, the member's masked account number, and the loyalty transaction id shown in **Recent activity**
+- The exact message the merchant saw
+
+## Related
+
+- [Loyalty overview](/taliup-hq/admin/loyalty/overview)
+- [Gift Cards troubleshooting](/taliup-hq/admin/gift-cards/troubleshooting)
+- [Factor4 Accounts Hub](/taliup-hq/admin/gift-cards/factor4-hub)

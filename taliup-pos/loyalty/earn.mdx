@@ -1,0 +1,58 @@
+---
+title: "Earn points"
+sidebarTitle: "Earn"
+description: "Attach a loyalty member to an order on Taliup POS so the sale earns points."
+keywords:
+  - "earn points"
+  - "loyalty"
+  - "attach member"
+  - "receipt"
+---
+
+Points are awarded automatically when an order with a member attached is paid. Your only job is to attach the member before taking payment.
+
+## Before you start
+
+- Loyalty must be active for your location.
+- The customer must be enrolled. If not, [enrol them](/taliup-pos/loyalty/enroll) first.
+
+## Attach a member to an order
+
+<Steps>
+  <Step title="Ring up the order">
+    Add items as normal.
+  </Step>
+  <Step title="Open Loyalty">
+    Choose **Loyalty** on the order and search for the member by phone, email, or name.
+  </Step>
+  <Step title="Tap the member">
+    Their balance is shown and the member is attached to the order.
+  </Step>
+  <Step title="Take payment">
+    Finish the sale with any payment method. When payment is approved, the POS awards the points and prints the new balance on the receipt.
+  </Step>
+</Steps>
+
+## How many points
+
+The manager sets the rate in Taliup HQ. Points are computed on the **subtotal after discounts and before tax**, then rounded per the program. Tips, fees, and taxes never earn points. A sale below the program's minimum purchase earns nothing.
+
+If a reward was redeemed on the same order, points are earned on the subtotal **after** the reward discount.
+
+## When the order is voided
+
+Voiding an order that earned points takes those points back automatically. If the member has already spent some of them, the void is refused by the processor because a balance cannot go below zero. Tell a manager so they can adjust the member.
+
+## Troubleshooting
+
+| Situation | What to check |
+| --- | --- |
+| No points on the receipt | The member was not attached before payment, or the sale was below the minimum purchase |
+| Fewer points than expected | Points are based on the pre-tax subtotal after discounts and rounded per the program |
+| "Phone already taken" noted on the member | The processor could not attach the customer's phone to the account. Points are still awarded. Ask a manager to check the phone on the client record |
+| Network dropped after payment | Retry from the order. Points are never awarded twice for the same sale |
+
+## Related
+
+- [Enrol a customer](/taliup-pos/loyalty/enroll)
+- [Redeem points](/taliup-pos/loyalty/redeem)

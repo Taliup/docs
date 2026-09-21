@@ -1,0 +1,127 @@
+---
+title: "Loyalty overview"
+sidebarTitle: "Overview"
+description: "How Taliup provisions a merchant's loyalty program with Factor4, how points and rewards are computed, and what is shared with gift cards."
+icon: "star"
+keywords:
+  - "loyalty"
+  - "points"
+  - "Factor4"
+  - "provisioning"
+  - "card pool"
+---
+
+Loyalty points are held by **Factor4**, the gift card processor. Merchants activate Loyalty themselves, one location at a time, as a monthly add-on billed separately from Gift Cards. Admins do not provision merchants by hand.
+
+This page explains what an activation creates, how points and rewards are computed, and where Loyalty and Gift Cards share infrastructure.
+
+---
+
+## What an activation does
+
+When a merchant pays for a location, Taliup calls the Factor4 admin API and ensures five things exist:
+
+<Steps>
+  <Step title="A Factor4 location">
+    The same Factor4 location Gift Cards uses, created with the cross-reference id `TLP-ENT-{entity}-LOC-{location}` if the location has never been provisioned for either product. Its integration credentials are stored encrypted for that location and environment.
+  </Step>
+  <Step title="A Factor4 terminal per Taliup terminal">
+    Every terminal at the location is registered with its Taliup id as the Factor4 POS id, exactly as for Gift Cards.
+  </Step>
+  <Step title="The merchant's loyalty program">
+    A merchant has **one** loyalty program, named `{entity} Loyalty Program`, of type Loyalty. The first location activated creates it; later locations join it. It is a different program from the merchant's gift card program, so gift dollars and points are tracked apart.
+  </Step>
+  <Step title="A location-program link">
+    Grants the location loyalty issuance, loyalty redemption, enrolment, inquiry, adjustment, and void on the program.
+  </Step>
+  <Step title="A pool of virtual card numbers">
+    A card set is created under the program with `LOYALTY_CARD_POOL_SIZE` numbers, and the numbers are pulled into Taliup as available accounts. Members are assigned one at enrolment. When the pool falls below `LOYALTY_CARD_POOL_LOW_WATERMARK`, the next activation creates another set.
+  </Step>
+</Steps>
+
+Provisioning is idempotent. A retried activation looks each object up before creating it. A failure marks the program **failed** with the Factor4 message, the charge is voided, and the merchant is not billed.
+
+When provisioning succeeds, Taliup grants the **Loyalty** feature to the entity and marks the program and the location **active**.
+
+---
+
+## Points and rewards
+
+Factor4 stores balances but does not compute them. Taliup owns the rules.
+
+| Step | Who does it | How |
+| --- | --- | --- |
+| **Earn** | Taliup | Points = eligible spend × points per unit, rounded per the program. Eligible spend is the order subtotal after discounts, before tax. Sent to Factor4 as a `LoyaltyIssuance` of whole points |
+| **Redeem** | Taliup | Points are redeemed in whole blocks of `redeem_points_per_reward`, each worth `redeem_reward_amount`. Sent as a `LoyaltyRedemption`; the POS applies the reward as a pre-tax discount |
+| **Balance** | Factor4 | The `Points` balance on the account is authoritative. Taliup caches it on the member and refreshes it on every call |
+| **Void** | Factor4 | Voiding the Factor4 transaction reverses the points |
+
+No Factor4 **Action** is configured on the program. Factor4 supports converting points to reward dollars server-side, but Taliup does not rely on it, so the reward value is always what the merchant set in HQ.
+
+### Cardless members
+
+A member is a Taliup **client** holding one Factor4 account. Enrolment takes a number from the pool, confirms it with an Inquiry, and stores it hashed, masked, and encrypted, the same way gift card numbers are stored. The client's name, phone, and email are pushed to Factor4 with the member's first points issuance.
+
+Factor4 keeps a customer's phone unique within the client. If the phone is already attached to another Factor4 account, the issuance is retried without the profile so the points are still awarded, and the member is flagged with a **profile conflict** the merchant can see.
+
+---
+
+## Shared with Gift Cards
+
+| Object | Shared? |
+| --- | --- |
+| Factor4 location and terminals | **Yes.** One per Taliup location, whichever product is activated first creates it |
+| Location credentials | **Yes.** One set per location and environment |
+| Program | **No.** One gift program and one loyalty program per merchant |
+| Subscription | **No.** Billed and cancelled independently |
+| Feature flag | **No.** `gift_cards` and `loyalty` are separate features |
+
+Because the location is shared, cancelling one product must not break the other. When a location's Loyalty or Gift Cards subscription ends, Taliup suspends the Factor4 location **only if the other product has no active subscription at that location**. Otherwise the location stays enabled and only the cancelled product is detached.
+
+---
+
+## Configuration
+
+| Variable | Role |
+| --- | --- |
+| `LOYALTY_ENROLLMENT_AMOUNT` | Monthly price per location |
+| `LOYALTY_ENROLLMENT_AMOUNT_CAD` / `_USD` | Optional per-currency prices |
+| `LOYALTY_CARD_POOL_SIZE` | Numbers requested per card set (default 500) |
+| `LOYALTY_CARD_POOL_LOW_WATERMARK` | Pool level that triggers a new card set (default 50) |
+
+Admin API credentials and the environment policy are the ones documented for [Gift Cards](/taliup-hq/admin/gift-cards/overview). The same `FACTOR4_ALLOW_LIVE_*` switches guard loyalty provisioning and transactions.
+
+---
+
+## Register API
+
+The POS never talks to Factor4. It calls Taliup HQ, which requires the `loyalty` feature and an active program and location:
+
+| Endpoint | Purpose |
+| --- | --- |
+| `POST /api/entity/{entity}/loyalty/lookup` | Find clients by phone, email, or name, with membership |
+| `POST /api/entity/{entity}/loyalty/enroll` | Enrol a client, cardless or with a physical card number |
+| `POST /api/entity/{entity}/loyalty/balance` | Read a member, optionally refreshing from Factor4 |
+| `POST /api/entity/{entity}/loyalty/earn` | Award points for an eligible amount |
+| `POST /api/entity/{entity}/loyalty/redeem` | Redeem points or a reward amount, returns the discount to apply |
+| `POST /api/entity/{entity}/loyalty/void` | Reverse an earn or a redemption |
+
+Earn, redeem, and void accept an `idempotency_key`; a retried request replays the stored outcome instead of hitting Factor4 twice. Declines return HTTP 200 with `success: false`.
+
+---
+
+## What admins control
+
+- Whether **Loyalty** is offered on the merchant's plan, through [Plans & Features](/taliup-hq/admin/plans-features)
+- Pricing and pool sizes, through configuration
+- Visibility into the shared Factor4 location, through the [Factor4 Accounts Hub](/taliup-hq/admin/gift-cards/factor4-hub)
+
+Admins do not start activations, take payments, or change a merchant's rules from the admin portal.
+
+---
+
+## Related
+
+- [Troubleshooting](/taliup-hq/admin/loyalty/troubleshooting)
+- [Gift Cards overview](/taliup-hq/admin/gift-cards/overview)
+- [The merchant view of Loyalty](/taliup-hq/features/loyalty)
