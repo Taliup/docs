@@ -35,7 +35,7 @@ When a merchant pays for a location, Taliup calls the Factor4 admin API and ensu
     Grants the location loyalty issuance, loyalty redemption, enrolment, inquiry, adjustment, and void on the program.
   </Step>
   <Step title="A pool of virtual card numbers">
-    A card set is created under the program with `LOYALTY_CARD_POOL_SIZE` numbers, and the numbers are pulled into Taliup as available accounts. Members are assigned one at enrolment. When the pool falls below `LOYALTY_CARD_POOL_LOW_WATERMARK`, the next activation creates another set.
+    A card set is created under the program with `LOYALTY_CARD_POOL_SIZE` numbers, and the numbers are pulled into Taliup as available accounts. Members are assigned one at enrolment. A daily job (`factor4:replenish-loyalty-card-pools`, 05:15 Toronto time) creates another set for any active program whose pool has fallen below `LOYALTY_CARD_POOL_LOW_WATERMARK`; a later activation does the same check.
   </Step>
 </Steps>
 

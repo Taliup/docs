@@ -35,7 +35,7 @@ Quand un marchand paie pour un emplacement, Taliup appelle l'API admin de Factor
     Accorde à l'emplacement l'émission et l'échange de points, l'inscription, la consultation, l'ajustement et l'annulation sur le programme.
   </Step>
   <Step title="Un lot de numéros de carte virtuels">
-    Un ensemble de cartes est créé sous le programme avec `LOYALTY_CARD_POOL_SIZE` numéros, et ces numéros sont importés dans Taliup comme comptes disponibles. Un membre en reçoit un à l'inscription. Quand le lot passe sous `LOYALTY_CARD_POOL_LOW_WATERMARK`, la prochaine activation crée un nouvel ensemble.
+    Un ensemble de cartes est créé sous le programme avec `LOYALTY_CARD_POOL_SIZE` numéros, et ces numéros sont importés dans Taliup comme comptes disponibles. Un membre en reçoit un à l'inscription. Une tâche quotidienne (`factor4:replenish-loyalty-card-pools`, 5 h 15, heure de Toronto) crée un nouvel ensemble pour tout programme actif dont le lot est passé sous `LOYALTY_CARD_POOL_LOW_WATERMARK`; une activation ultérieure fait la même vérification.
   </Step>
 </Steps>
 

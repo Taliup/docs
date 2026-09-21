@@ -34,7 +34,7 @@ L'emplacement Factor4 partagé existe; c'est l'étape du programme de fidélité
 
 ### Aucun numéro de carte disponible
 
-Le lot est vide. Il est rempli à partir d'un ensemble de cartes Factor4 à l'activation et renouvelé quand une activation ultérieure le trouve sous le seuil bas. Demandez au marchand d'ajouter des numéros sous **Numéros de carte** en attendant, et vérifiez dans le centre que l'ensemble de cartes a été créé. Si le lot ne s'est jamais rempli, l'étape `CardSetAdd` ou `CardsView` a échoué chez Factor4.
+Le lot est vide. Il est rempli à partir d'un ensemble de cartes Factor4 à l'activation et renouvelé par la tâche quotidienne `factor4:replenish-loyalty-card-pools` dès qu'il passe sous le seuil bas. Lancez la commande avec `--dry-run` pour voir ce qu'elle ferait, ou avec `--program=<id>` pour renflouer un programme immédiatement. Demandez au marchand d'ajouter des numéros sous **Numéros de carte** en attendant, et vérifiez dans le centre que l'ensemble de cartes a été créé. Si le lot ne s'est jamais rempli, l'étape `CardSetAdd` ou `CardsView` a échoué chez Factor4.
 
 ### La carte n'a pas pu être vérifiée chez Factor4
 

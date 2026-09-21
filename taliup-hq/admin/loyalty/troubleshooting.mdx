@@ -34,7 +34,7 @@ The shared Factor4 location exists; the loyalty program, link, or card pool step
 
 ### No card numbers available
 
-The pool is empty. It is filled from a Factor4 card set at activation and topped up when a later activation finds it below the low watermark. Ask the merchant to add numbers under **Card Numbers** as a stopgap, and check that the card set was created in the hub. If the pool never filled, the `CardSetAdd` or `CardsView` step failed at Factor4.
+The pool is empty. It is filled from a Factor4 card set at activation and topped up by the daily `factor4:replenish-loyalty-card-pools` job whenever it falls below the low watermark. Run the command with `--dry-run` to see what it would do, or with `--program=<id>` to top up one program now. Ask the merchant to add numbers under **Card Numbers** as a stopgap, and check that the card set was created in the hub. If the pool never filled, the `CardSetAdd` or `CardsView` step failed at Factor4.
 
 ### Card could not be verified with Factor4
 
