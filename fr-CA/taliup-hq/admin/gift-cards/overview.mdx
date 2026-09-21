@@ -28,8 +28,8 @@ Quand un marchand paie pour un emplacement, Taliup appelle l'API admin de Factor
   <Step title="Un terminal Factor4 par terminal Taliup">
     Chaque terminal de l'emplacement est enregistré avec son identifiant Taliup comme identifiant PDV chez Factor4. La correspondance est conservée pour que les transactions soient attribuées correctement.
   </Step>
-  <Step title="Un programme de cartes-cadeaux">
-    Soit un nouveau programme pour le marchand, soit un programme existant auquel l'emplacement se joint.
+  <Step title="Le programme de cartes-cadeaux du marchand">
+    Un marchand n'a **qu'un seul** programme de cartes-cadeaux. Le premier emplacement activé le crée; chaque emplacement activé par la suite s'y joint. C'est ce qui permet d'encaisser une carte vendue à un emplacement dans n'importe quel autre emplacement actif du marchand.
   </Step>
   <Step title="Un lien emplacement-programme">
     Accorde à l'emplacement le droit d'émettre, d'encaisser, de consulter les soldes et d'effectuer les autres opérations.
@@ -38,9 +38,13 @@ Quand un marchand paie pour un emplacement, Taliup appelle l'API admin de Factor
 
 La configuration est idempotente. Une activation reprise cherche chaque objet avant de le créer et le réutilise plutôt que de produire un doublon.
 
-Quand la configuration réussit, Taliup accorde la fonction **Cartes-cadeaux** à l'entité. Quand l'abonnement est annulé et que la période payée se termine, l'emplacement Factor4 est suspendu et la fonction est retirée, sauf si un autre emplacement conserve un abonnement actif.
+Quand la configuration réussit, Taliup accorde la fonction **Cartes-cadeaux** à l'entité. Quand l'abonnement est annulé et que la période payée se termine, l'emplacement Factor4 est suspendu et la fonction est retirée, sauf si un autre emplacement conserve un abonnement actif. Le programme lui-même n'est jamais suspendu tant qu'un emplacement l'utilise.
 
 Si la configuration échoue, le paiement est annulé et rien ne subsiste. Le marchand voit un message d'erreur lisible et n'est pas facturé.
+
+<Note>
+  La fidélité partage le même emplacement Factor4. Quand un marchand exploite les deux produits à un emplacement, l'annulation de l'un laisse l'emplacement Factor4 actif pour l'autre. Voir l'[aperçu de la fidélité](/fr-CA/taliup-hq/admin/loyalty/overview).
+</Note>
 
 ---
 

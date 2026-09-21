@@ -12,7 +12,7 @@ keywords:
 
 Les Cartes-cadeaux vous permettent de vendre et d'encaisser des cartes-cadeaux à votre point de vente. Les cartes sont émises et suivies par Factor4, notre fournisseur de cartes-cadeaux. Taliup HQ vous donne la liste des cartes, les soldes et l'historique d'activité.
 
-Vous activez les Cartes-cadeaux **un emplacement à la fois**, sous forme de module mensuel. Chaque emplacement activé obtient sa propre configuration chez Factor4.
+Vous activez les Cartes-cadeaux **un emplacement à la fois**, sous forme de module mensuel. Votre entreprise dispose d'un seul programme de cartes-cadeaux chez Factor4 : le premier emplacement activé le crée, et chaque emplacement activé par la suite s'y joint.
 
 Ouvrez **Cartes-cadeaux** dans la barre latérale marchand.
 
@@ -48,6 +48,8 @@ flowchart LR
 ```
 
 L'activation est facturée par emplacement. Dès qu'un emplacement est actif, tous ses terminaux peuvent vendre et encaisser des cartes-cadeaux.
+
+Les cartes sont partagées dans toute votre entreprise. Une carte vendue à un emplacement actif peut être encaissée, consultée ou remboursée à n'importe quel autre de vos emplacements actifs. Elle ne peut pas être utilisée chez une autre entreprise.
 
 Les soldes sont détenus par Factor4. Taliup HQ en garde une copie locale pour que la liste et les rapports restent rapides, et la rafraîchit chaque fois que la carte est utilisée ou vérifiée.
 
@@ -142,7 +144,7 @@ Les activations de cartes-cadeaux sont facturées dans votre abonnement aux modu
 | **Changer la carte** | Met à jour la carte utilisée pour les frais mensuels |
 | **Réessayer le paiement** | Encaisse un paiement échoué après la mise à jour de la carte |
 
-L'annulation est différée. À la fin de la période de facturation, l'emplacement est suspendu chez Factor4 et les cartes-cadeaux cessent d'y fonctionner. Les cartes déjà entre les mains des clients conservent leur solde chez Factor4, mais vos terminaux ne peuvent plus les encaisser.
+L'annulation est différée. À la fin de la période de facturation, l'emplacement est suspendu chez Factor4 et les cartes-cadeaux cessent d'y fonctionner. Les cartes déjà entre les mains des clients conservent leur solde chez Factor4 et restent encaissables à vos autres emplacements actifs, mais l'emplacement suspendu ne peut plus les vendre ni les encaisser.
 
 Si des frais mensuels sont refusés, vous conservez l'accès pendant le délai de grâce, le temps de corriger la carte. Si le délai expire, l'emplacement est suspendu.
 
