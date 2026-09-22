@@ -60,6 +60,14 @@ Factor4 a refusé d'associer le téléphone ou le courriel du client parce que l
 
 ## Points
 
+### Émission refusée avec « Value code doesn't match Points »
+
+Le programme Factor4 du marchand n'a pas de type de valeur **Points**. L'activation le crée (étape « Un type de valeur Points sur le programme »); si le programme a été créé avant l'existence de cette étape, relancez l'activation : elle ajoute le type manquant sans toucher au reste.
+
+### Inscription refusée avec « Activation Required »
+
+Les numéros virtuels d'un jeu de cartes sont inertes jusqu'à leur première émission. HQ les active automatiquement par une émission de zéro point lors de l'inscription; voir cette erreur à la caisse signifie que cette émission a elle-même échoué; consultez la transaction de fidélité enregistrée pour la tentative.
+
 ### Les points n'ont pas été attribués
 
 Vérifiez, dans l'ordre : l'emplacement est **Actif** pour la fidélité, le client est inscrit, la vente atteint l'achat minimum, et le montant admissible a produit au moins un point selon la règle d'arrondi. Une vente qui rapporte zéro point n'enregistre rien.

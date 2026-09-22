@@ -60,6 +60,14 @@ Factor4 refused to attach the client's phone or email because the phone is alrea
 
 ## Points
 
+### Earn refused with "Value code doesn't match Points"
+
+The merchant's Factor4 program has no **Points** value type. Activation creates it (step "A Points value type on the program"); if the program was created before that step existed, re-run the activation, which adds the missing type and leaves everything else untouched.
+
+### Enrolment refused with "Activation Required"
+
+Virtual numbers from a card set are inert until their first issuance. HQ activates them automatically with a zero-point issuance during enrolment; seeing this error on the register means that issuance itself failed, so check the loyalty transaction recorded for the attempt.
+
 ### Points were not awarded
 
 Check, in order: the location is **Active** for Loyalty, the client is enrolled, the sale met the minimum purchase, and the eligible amount produced at least one point under the rounding rule. A sale that earns zero points records nothing.

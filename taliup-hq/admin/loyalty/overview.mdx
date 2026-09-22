@@ -34,6 +34,9 @@ When a merchant pays for a location, Taliup calls the Factor4 admin API and ensu
   <Step title="A location-program link">
     Grants the location loyalty issuance, loyalty redemption, enrolment, inquiry, adjustment, and void on the program.
   </Step>
+  <Step title="A Points value type on the program">
+    A new Factor4 program has no value types, so points cannot be issued to it. Activation adds a **Points** type (0 decimals, balance cap `LOYALTY_POINTS_BALANCE_MAX`, per-transaction cap `LOYALTY_POINTS_TRANSACTION_MAX`). The program is owned by Taliup's independent Factor4 location (`FACTOR4_ADMIN_<ENV>_PRIMARY_LOCATION_ID`) because Factor4 only generates card sets for programs on independent locations; the merchant's own (dependent) location is linked to it.
+  </Step>
   <Step title="A pool of virtual card numbers">
     A card set is created under the program with `LOYALTY_CARD_POOL_SIZE` numbers, and the numbers are pulled into Taliup as available accounts. Members are assigned one at enrolment. A daily job (`factor4:replenish-loyalty-card-pools`, 05:15 Toronto time) creates another set for any active program whose pool has fallen below `LOYALTY_CARD_POOL_LOW_WATERMARK`; a later activation does the same check.
   </Step>
@@ -90,6 +93,10 @@ Because the location is shared, cancelling one product must not break the other.
 | `LOYALTY_ENROLLMENT_AMOUNT_CAD` / `_USD` | Optional per-currency prices |
 | `LOYALTY_CARD_POOL_SIZE` | Numbers requested per card set (default 500) |
 | `LOYALTY_CARD_POOL_LOW_WATERMARK` | Pool level that triggers a new card set (default 50) |
+| `LOYALTY_POINTS_BALANCE_MAX` | Maximum points a member may hold at Factor4 (default 10,000,000) |
+| `LOYALTY_POINTS_TRANSACTION_MAX` | Maximum points per issuance or redemption (default 1,000,000) |
+| `FACTOR4_ADMIN_<ENV>_PRIMARY_LOCATION_ID` | Taliup's independent Factor4 location that owns merchant programs |
+| `FACTOR4_TRANSACTION_INITIATOR_TYPE` | Initiator type on register transactions (default `E`) |
 
 Admin API credentials and the environment policy are the ones documented for [Gift Cards](/taliup-hq/admin/gift-cards/overview). The same `FACTOR4_ALLOW_LIVE_*` switches guard loyalty provisioning and transactions.
 
