@@ -95,6 +95,12 @@ Les identifiants de l'API admin et la politique d'environnement sont ceux docume
 
 ---
 
+## Rapports
+
+Les marchands ayant la fonction obtiennent un type de rapport **Fidélité** sous Rapports. Il est généré par la même tâche en file que les autres rapports, rendu en PDF dans la collection de médias `loyalty_report`, et construit à partir de `loyalty_transactions`. Le passif en récompenses est calculé à partir des soldes actuels des membres, en tranches entières.
+
+---
+
 ## API de la caisse
 
 Le PDV ne parle jamais à Factor4. Il appelle Taliup HQ, qui exige la fonction `loyalty` ainsi qu'un programme et un emplacement actifs :
