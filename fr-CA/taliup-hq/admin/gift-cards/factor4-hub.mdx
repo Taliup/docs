@@ -36,8 +36,9 @@ Chaque ligne est un emplacement Factor4, rattaché à l'entité et à l'emplacem
 | **Marchand et emplacement** | L'entité et l'emplacement Taliup, quand la correspondance est possible |
 | **Emplacement Factor4** | L'identifiant détenu par Factor4 |
 | **Statut** | Le statut rapporté par Factor4, par exemple Enabled ou Suspended |
-| **Santé** | Si le compte semble complet : identifiants conservés, terminaux associés, programme lié |
-| **Facturation** | L'état de l'abonnement derrière l'activation |
+| **Santé** | Si le compte semble complet : identifiants conservés, terminaux associés, programme lié, et les accès réellement payés par le magasin (cadeau, fidélité ou les deux) accordés |
+| **Facturation** | L'état de l'abonnement cartes-cadeaux derrière l'activation |
+| **Fidélité** | Si le programme de fidélité du marchand est actif à cet emplacement, avec les membres actifs et les numéros de carte restants dans le lot d'inscription |
 
 La correspondance se fait par l'identifiant de référence que Taliup inscrit à la création. Un emplacement Factor4 créé en dehors de Taliup apparaîtra sans correspondance.
 
@@ -51,6 +52,20 @@ La correspondance se fait par l'identifiant de référence que Taliup inscrit à
 | **Suspendu** | Le paiement a échoué ou la période a pris fin |
 | **Annulé** | Terminé |
 | **Aucun** | Aucun abonnement trouvé pour cet emplacement |
+
+Les cartes-cadeaux et la fidélité sont facturées séparément. La ligne montre la facturation des cartes-cadeaux; le panneau de détails montre les deux.
+
+### États de la fidélité
+
+| État | Signification |
+| --- | --- |
+| **Fidélité active** | L'emplacement est lié au programme de fidélité du marchand et le programme est actif |
+| **Configuration en cours** | Le paiement a réussi, la configuration n'est pas terminée |
+| **Échec de configuration** | La configuration s'est arrêtée sur une erreur Factor4; le panneau de détails l'affiche |
+| **Programme suspendu** | Le programme du marchand est suspendu; aucun emplacement ne peut faire gagner ni échanger de points |
+| **Fidélité suspendue** | L'abonnement fidélité de cet emplacement a pris fin |
+| **Non activée ici** | Le marchand a un programme mais cet emplacement ne l'a jamais joint |
+| **Non activée** | Le marchand n'a jamais activé la fidélité |
 
 ---
 
@@ -70,8 +85,9 @@ Cliquez sur une ligne pour ouvrir le panneau de détails. Il interroge Factor4 e
 
 - **L'emplacement** tel que Factor4 le détient, avec l'adresse et le statut
 - **Les terminaux** enregistrés à l'emplacement, avec leurs identifiants PDV
-- **Les programmes** liés à l'emplacement, et les permissions que le lien accorde
-- **La facturation** de l'abonnement derrière l'activation
+- **Les programmes** liés à l'emplacement, cadeau et fidélité, avec les permissions que chaque lien accorde (Vendre, Encaisser, Solde, Gagner, Dépenser)
+- **La facturation** de l'abonnement cartes-cadeaux
+- **La fidélité** : programme, identifiant de programme Factor4, état de configuration, lien de cet emplacement, règles, nombre de membres, points en circulation et numéros de carte disponibles, plus l'abonnement de **facturation fidélité**
 - **La configuration conservée**, y compris les identifiants que Taliup détient pour l'emplacement
 
 <Warning>
@@ -94,7 +110,8 @@ Utilisez-la après l'activation d'un marchand, ou quand vous vérifiez un change
 | --- | --- |
 | L'activation de ce marchand a-t-elle abouti ? | Santé et statut sur la ligne |
 | Pourquoi ce terminal ne peut-il pas encaisser ? | Les terminaux dans le panneau, en vérifiant l'identifiant PDV |
-| Le marchand paie-t-il encore ? | État de facturation |
+| Le marchand paie-t-il encore ? | État de facturation, et facturation fidélité dans le panneau de détails |
+| Pourquoi un membre ne peut-il pas gagner de points dans ce magasin ? | Colonne Fidélité de la ligne; puces Gagner et Dépenser dans le panneau de détails |
 | Est-ce la configuration test ou production ? | Sélecteur d'environnement |
 | À quel emplacement Taliup ce compte correspond-il ? | Marchand et emplacement sur la ligne |
 

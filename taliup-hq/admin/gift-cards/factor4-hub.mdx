@@ -36,8 +36,9 @@ Each row is one Factor4 location, matched back to the Taliup entity and location
 | **Merchant and location** | The Taliup entity and location, when the Factor4 record can be matched |
 | **Factor4 location** | The location id held by Factor4 |
 | **Status** | The status Factor4 reports, such as Enabled or Suspended |
-| **Health** | Whether the account looks complete: credentials stored, terminals mapped, program linked |
-| **Billing** | The subscription state behind the activation |
+| **Health** | Whether the account looks complete: credentials stored, terminals mapped, program linked, and the access the store actually pays for (gift, loyalty or both) granted |
+| **Billing** | The gift card subscription state behind the activation |
+| **Loyalty** | Whether the merchant's loyalty program is active at this location, with active members and card numbers left in the enrolment pool |
 
 Records are matched by the cross-reference id Taliup sets when it creates the location. A Factor4 location created outside Taliup will appear unmatched.
 
@@ -51,6 +52,20 @@ Records are matched by the cross-reference id Taliup sets when it creates the lo
 | **Suspended** | Payment failed or the period ended |
 | **Cancelled** | Ended |
 | **None** | No subscription found for this location |
+
+Gift cards and loyalty are billed separately. The row shows gift card billing; the detail panel shows both.
+
+### Loyalty states
+
+| State | Meaning |
+| --- | --- |
+| **Loyalty active** | The location is linked to the merchant's loyalty program and the program is active |
+| **Setting up** | Payment succeeded, provisioning has not finished |
+| **Setup failed** | Provisioning stopped on a Factor4 error; the detail panel shows it |
+| **Program suspended** | The merchant's program is suspended, so no location can earn or redeem |
+| **Loyalty suspended** | This location's loyalty subscription ended |
+| **Not activated here** | The merchant has a program but this location never joined it |
+| **Not activated** | The merchant has never activated Loyalty |
 
 ---
 
@@ -70,8 +85,9 @@ Click a row to open the detail panel. It queries Factor4 live and shows:
 
 - **Location** as Factor4 holds it, including address and status
 - **Terminals** registered against the location, with their POS ids
-- **Programs** linked to the location, and the permissions the link grants
-- **Billing** detail for the subscription behind the activation
+- **Programs** linked to the location, gift and loyalty, with the permissions each link grants (Sell, Redeem, Balance, Earn, Spend)
+- **Billing** detail for the gift card subscription
+- **Loyalty** program, Factor4 program id, setup state, this location's link, rules, member counts, points outstanding and card numbers available, plus the **loyalty billing** subscription
 - **Stored configuration**, including the credentials Taliup holds for the location
 
 <Warning>
@@ -94,7 +110,8 @@ Use it after a merchant activates, or when you are checking a change someone jus
 | --- | --- |
 | Did this merchant's activation finish? | Health and status on the row |
 | Why can a cashier not redeem at one terminal? | Terminals in the detail panel, checking the POS id is mapped |
-| Is the merchant still paying for this? | Billing state |
+| Is the merchant still paying for this? | Billing state, and Loyalty billing in the detail panel |
+| Why can a member not earn points at this store? | Loyalty column on the row; Earn and Spend chips in the detail panel |
 | Is this the test or the live setup? | Environment switch |
 | Which Taliup location is this Factor4 account? | Merchant and location on the row |
 
