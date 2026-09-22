@@ -24,6 +24,14 @@ The Factor4 admin API refused the client credentials. Check the same three thing
 
 Open **Program Rules** on the merchant's page. The last Factor4 error is shown there. The merchant can click **Activate** again once the cause is fixed; provisioning resumes from where it stopped and reuses anything already created.
 
+### The program shows "Card set generation is prohibited for dependent locations"
+
+Factor4 only generates card sets for programs owned by an *independent* location. Merchant locations that HQ creates over the admin API are *dependent*, so the program must be owned by Taliup's independent location and the merchant location linked to it. Set `FACTOR4_ADMIN_<ENV>_PRIMARY_LOCATION_ID` to that independent location's id (test: the "Taliup" location) and retry the activation. If a program was already created with the merchant location as primary, move it with a ProgramEdit on `primaryLocationId`; the retry then only runs the card pool step.
+
+### The program shows "is more than 12 characters long (parameter: crossRefId)"
+
+Factor4 caps a card set's `crossRefId` at 12 characters. HQ uses `TLP-L<program>-<set>`; a longer value only appears if it was overridden in the activation payload.
+
 ### The location shows Active for Gift Cards but Setting up for Loyalty
 
 The shared Factor4 location exists; the loyalty program, link, or card pool step failed. The program error tells you which. Retrying the activation only runs the missing steps.

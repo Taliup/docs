@@ -24,6 +24,14 @@ L'API admin de Factor4 a refusé les identifiants client. Vérifiez les trois m�
 
 Ouvrez **Règles du programme** sur la page du marchand. La dernière erreur Factor4 y est affichée. Le marchand peut cliquer de nouveau sur **Activer** une fois la cause corrigée; la configuration reprend là où elle s'est arrêtée et réutilise ce qui a déjà été créé.
 
+### Le programme affiche « Card set generation is prohibited for dependent locations »
+
+Factor4 ne génère des jeux de cartes que pour les programmes appartenant à un emplacement *indépendant*. Les emplacements marchands créés par HQ via l'API d'administration sont *dépendants*; le programme doit donc appartenir à l'emplacement indépendant de Taliup, et l'emplacement marchand y est lié. Définissez `FACTOR4_ADMIN_<ENV>_PRIMARY_LOCATION_ID` à l'identifiant de cet emplacement indépendant (test : l'emplacement « Taliup ») et relancez l'activation. Si un programme a déjà été créé avec l'emplacement marchand comme principal, déplacez-le avec un ProgramEdit sur `primaryLocationId`; la reprise n'exécute alors que l'étape du bassin de cartes.
+
+### Le programme affiche « is more than 12 characters long (parameter: crossRefId) »
+
+Factor4 limite le `crossRefId` d'un jeu de cartes à 12 caractères. HQ utilise `TLP-L<programme>-<jeu>`; une valeur plus longue n'apparaît que si elle a été remplacée dans la charge utile d'activation.
+
 ### L'emplacement est Actif pour les cartes-cadeaux mais en Configuration en cours pour la fidélité
 
 L'emplacement Factor4 partagé existe; c'est l'étape du programme de fidélité, du lien ou du lot de cartes qui a échoué. L'erreur du programme indique laquelle. Reprendre l'activation n'exécute que les étapes manquantes.
