@@ -140,7 +140,7 @@ Dès que le programme existe, la page liste tous les membres inscrits.
 | **Membre** | Le nom du client |
 | **Coordonnées** | Téléphone et courriel de la fiche client |
 | **Compte** | Le numéro de compte Factor4 masqué |
-| **Points** | Le solde à la dernière fois où il a été gagné, échangé ou consulté |
+| **Points** | Le solde à la dernière fois où il a été gagné, échangé, ajusté ou consulté |
 | **Cumul gagné** | Tous les points jamais attribués au membre |
 | **Statut** | Actif, Suspendu ou Fermé |
 
@@ -154,9 +154,11 @@ Le tableau d'activité liste les dernières inscriptions, gains, échanges et an
 
 Les points sont annulés automatiquement quand un caissier annule la commande dont ils proviennent. Un échange peut être annulé de la même façon, ce qui rend les points au membre.
 
-<Warning>
-  Des points gagnés puis dépensés ne peuvent pas être annulés, car un solde ne peut jamais être négatif. Si une commande est remboursée après que ses points ont été échangés, ajustez le membre manuellement avec le soutien.
-</Warning>
+Des points gagnés puis dépensés ne peuvent pas être annulés, car un solde ne peut jamais être négatif. Quand une commande est remboursée après qu'une partie de ses points a été dépensée, Taliup reprend ce qui reste du solde, jusqu'aux points que cette commande a rapportés, et consigne le manque sur le gain. Le tableau d'activité affiche ces lignes comme **Ajustement**.
+
+### Ajuster un membre manuellement
+
+Cliquez sur **Ajuster** sur un membre pour ajouter ou retirer des points avec un motif, par exemple un crédit de bonne volonté ou une correction après un remboursement qui n'a pas tout repris. Retirer plus de points que le membre n'en a est refusé. Chaque ajustement est consigné avec son auteur.
 
 ---
 

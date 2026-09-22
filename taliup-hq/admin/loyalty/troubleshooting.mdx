@@ -62,7 +62,7 @@ Points are computed on the subtotal after discounts and before tax, never on tip
 
 ### Void refused with "Balance limit 0 exceeded"
 
-The member spent some of the points before the void, and Factor4 does not allow a negative balance. This is expected. If the order really is refunded, adjust the member's points manually with Factor4 or leave the balance as is.
+The member spent some of the points before the void, and Factor4 does not allow a negative balance. The register handles this: it reclaims what is left of the balance with a negative adjustment and marks the earn **REVERSED** with the shortfall, so the POS reports `points_recovered` and `points_unrecovered`. If a merchant sees this message directly, the POS sent `allow_adjustment: false`. The merchant can still remove points manually with **Adjust** on the member.
 
 ### Balance in HQ differs from Factor4
 

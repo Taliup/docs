@@ -140,7 +140,7 @@ Once the program exists, the page lists every enrolled member.
 | **Member** | The client's name |
 | **Contact** | Phone and email from the client record |
 | **Account** | The masked Factor4 account number |
-| **Points** | The balance as of the last time it was earned, spent, or checked |
+| **Points** | The balance as of the last time it was earned, spent, adjusted, or checked |
 | **Lifetime earned** | All points ever awarded to the member |
 | **Status** | Active, Suspended, or Closed |
 
@@ -154,9 +154,11 @@ The activity table lists the latest enrolments, earns, redemptions, and voids ac
 
 Points are voided automatically when a cashier voids the order they came from. A redemption can be voided the same way, which returns the points to the member.
 
-<Warning>
-  Points that were earned and then spent cannot be voided, because a balance can never go below zero. If an order is refunded after its points were redeemed, adjust the member manually with support.
-</Warning>
+Points that were earned and then spent cannot be voided, because a balance can never go below zero. When an order is refunded after some of its points were spent, Taliup reclaims whatever balance is left, up to the points that order earned, and records the shortfall on the earn. The activity table shows these as **Adjustment** rows.
+
+### Adjust a member manually
+
+Click **Adjust** on a member to add or remove points with a reason, for example a goodwill credit or a correction after a refund that could not reclaim everything. Removing more points than the member has is refused. Every adjustment is recorded with who made it.
 
 ---
 

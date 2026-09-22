@@ -54,7 +54,9 @@ Factor4 conserve les soldes mais ne les calcule pas. Taliup est propriétaire de
 | **Gain** | Taliup | Points = dépense admissible × points par unité, arrondis selon le programme. La dépense admissible est le sous-total de la commande après rabais, avant taxes. Envoyé à Factor4 comme `LoyaltyIssuance` en points entiers |
 | **Échange** | Taliup | Les points s'échangent par tranches entières de `redeem_points_per_reward`, chacune valant `redeem_reward_amount`. Envoyé comme `LoyaltyRedemption`; le PDV applique la récompense comme rabais avant taxes |
 | **Solde** | Factor4 | Le solde `Points` du compte fait foi. Taliup le met en cache sur le membre et le rafraîchit à chaque appel |
-| **Annulation** | Factor4 | Annuler la transaction Factor4 renverse les points |
+| **Annulation** | Factor4 | Annuler la transaction Factor4 renverse exactement les points |
+| **Reprise après remboursement** | Taliup | Si l'annulation est refusée parce que des points ont déjà été dépensés (erreur 131), Taliup lit le solde et envoie un `Adjustment` négatif pour ce qui reste, jusqu'aux points gagnés. Le gain est marqué REVERSED avec le manque non récupéré |
+| **Ajustement manuel** | Taliup | Les marchands ajoutent ou retirent des points depuis la page Fidélité avec un motif; envoyé comme `Adjustment` signé. Factor4 refuse tout ajustement qui rendrait le solde négatif (erreur 130) |
 
 Aucune **Action** Factor4 n'est configurée sur le programme. Factor4 peut convertir les points en dollars de récompense côté serveur, mais Taliup ne s'y fie pas : la valeur de la récompense est toujours celle que le marchand a définie dans HQ.
 
@@ -104,7 +106,7 @@ Le PDV ne parle jamais à Factor4. Il appelle Taliup HQ, qui exige la fonction `
 | `POST /api/entity/{entity}/loyalty/balance` | Lire un membre, avec rafraîchissement facultatif depuis Factor4 |
 | `POST /api/entity/{entity}/loyalty/earn` | Attribuer des points pour un montant admissible |
 | `POST /api/entity/{entity}/loyalty/redeem` | Échanger des points ou un montant de récompense; renvoie le rabais à appliquer |
-| `POST /api/entity/{entity}/loyalty/void` | Renverser un gain ou un échange |
+| `POST /api/entity/{entity}/loyalty/void` | Renverser un gain ou un échange. Pour un gain, reprend le solde restant quand l'annulation est refusée; `allow_adjustment: false` désactive ce repli. Renvoie `method`, `points_recovered` et `points_unrecovered` |
 
 Gain, échange et annulation acceptent une `idempotency_key` : une requête reprise rejoue le résultat conservé au lieu d'appeler Factor4 deux fois. Les refus renvoient HTTP 200 avec `success: false`.
 

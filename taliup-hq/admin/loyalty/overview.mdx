@@ -54,7 +54,9 @@ Factor4 stores balances but does not compute them. Taliup owns the rules.
 | **Earn** | Taliup | Points = eligible spend × points per unit, rounded per the program. Eligible spend is the order subtotal after discounts, before tax. Sent to Factor4 as a `LoyaltyIssuance` of whole points |
 | **Redeem** | Taliup | Points are redeemed in whole blocks of `redeem_points_per_reward`, each worth `redeem_reward_amount`. Sent as a `LoyaltyRedemption`; the POS applies the reward as a pre-tax discount |
 | **Balance** | Factor4 | The `Points` balance on the account is authoritative. Taliup caches it on the member and refreshes it on every call |
-| **Void** | Factor4 | Voiding the Factor4 transaction reverses the points |
+| **Void** | Factor4 | Voiding the Factor4 transaction reverses the points exactly |
+| **Reclaim after refund** | Taliup | If the void is refused because points were already spent (error 131), Taliup reads the balance and sends a negative `Adjustment` for what remains, up to the points earned. The earn is marked REVERSED with the unrecovered shortfall |
+| **Manual adjustment** | Taliup | Merchants add or remove points from the Loyalty page with a reason; sent as a signed `Adjustment`. Factor4 refuses any adjustment that would go below zero (error 130) |
 
 No Factor4 **Action** is configured on the program. Factor4 supports converting points to reward dollars server-side, but Taliup does not rely on it, so the reward value is always what the merchant set in HQ.
 
@@ -104,7 +106,7 @@ The POS never talks to Factor4. It calls Taliup HQ, which requires the `loyalty`
 | `POST /api/entity/{entity}/loyalty/balance` | Read a member, optionally refreshing from Factor4 |
 | `POST /api/entity/{entity}/loyalty/earn` | Award points for an eligible amount |
 | `POST /api/entity/{entity}/loyalty/redeem` | Redeem points or a reward amount, returns the discount to apply |
-| `POST /api/entity/{entity}/loyalty/void` | Reverse an earn or a redemption |
+| `POST /api/entity/{entity}/loyalty/void` | Reverse an earn or a redemption. For an earn, falls back to reclaiming the remaining balance when the void is refused; `allow_adjustment: false` opts out. Returns `method`, `points_recovered` and `points_unrecovered` |
 
 Earn, redeem, and void accept an `idempotency_key`; a retried request replays the stored outcome instead of hitting Factor4 twice. Declines return HTTP 200 with `success: false`.
 

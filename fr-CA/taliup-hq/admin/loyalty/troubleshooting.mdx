@@ -62,7 +62,7 @@ Les points sont calculés sur le sous-total après rabais et avant taxes, jamais
 
 ### Annulation refusée avec « Balance limit 0 exceeded »
 
-Le membre a dépensé une partie des points avant l'annulation, et Factor4 n'autorise pas un solde négatif. C'est le comportement attendu. Si la commande est réellement remboursée, ajustez manuellement les points du membre chez Factor4 ou laissez le solde tel quel.
+Le membre a dépensé une partie des points avant l'annulation, et Factor4 n'autorise pas un solde négatif. La caisse gère ce cas : elle reprend ce qui reste du solde par un ajustement négatif et marque le gain **REVERSED** avec le manque, de sorte que le PDV rapporte `points_recovered` et `points_unrecovered`. Si un marchand voit ce message directement, le PDV a envoyé `allow_adjustment: false`. Le marchand peut toujours retirer des points manuellement avec **Ajuster** sur le membre.
 
 ### Le solde dans HQ diffère de celui de Factor4
 
