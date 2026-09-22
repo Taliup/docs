@@ -97,6 +97,7 @@ Because the location is shared, cancelling one product must not break the other.
 | `LOYALTY_POINTS_TRANSACTION_MAX` | Maximum points per issuance or redemption (default 1,000,000) |
 | `FACTOR4_ADMIN_<ENV>_PRIMARY_LOCATION_ID` | Taliup's independent Factor4 location that owns merchant programs |
 | `FACTOR4_TRANSACTION_INITIATOR_TYPE` | Initiator type on register transactions (default `E`) |
+| `FACTOR4_TRANSACTION_INITIATOR_ID` / `_PASS` | Employee-style initiator on register transactions (default id `1000`); Factor4 rejects a portal user email here |
 
 Admin API credentials and the environment policy are the ones documented for [Gift Cards](/taliup-hq/admin/gift-cards/overview). The same `FACTOR4_ALLOW_LIVE_*` switches guard loyalty provisioning and transactions.
 

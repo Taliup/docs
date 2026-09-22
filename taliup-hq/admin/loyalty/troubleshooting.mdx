@@ -68,6 +68,10 @@ The merchant's Factor4 program has no **Points** value type. Activation creates 
 
 Virtual numbers from a card set are inert until their first issuance. HQ activates them automatically with a zero-point issuance during enrolment; seeing this error on the register means that issuance itself failed, so check the loyalty transaction recorded for the attempt.
 
+### Every register transaction fails with "Couldnt Be Processed" or "Terminal Invalid"
+
+The location config carries the wrong transaction identity. Register calls must send the location's and terminal's **POS ids** (Factor4 `idPos`), initiator type `E` and an employee-style initiator id; the admin API ids, type `user` and the admin email are refused. Provisioning fills these correctly; for a row configured by hand, check `pos_location_id`, `pos_terminal_id`, `initiator_type` and `initiator_id` on `factor4_location_configs`.
+
 ### Points were not awarded
 
 Check, in order: the location is **Active** for Loyalty, the client is enrolled, the sale met the minimum purchase, and the eligible amount produced at least one point under the rounding rule. A sale that earns zero points records nothing.

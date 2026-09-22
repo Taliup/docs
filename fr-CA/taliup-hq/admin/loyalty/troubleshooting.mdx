@@ -68,6 +68,10 @@ Le programme Factor4 du marchand n'a pas de type de valeur **Points**. L'activat
 
 Les numéros virtuels d'un jeu de cartes sont inertes jusqu'à leur première émission. HQ les active automatiquement par une émission de zéro point lors de l'inscription; voir cette erreur à la caisse signifie que cette émission a elle-même échoué; consultez la transaction de fidélité enregistrée pour la tentative.
 
+### Toutes les transactions de la caisse échouent avec « Couldnt Be Processed » ou « Terminal Invalid »
+
+La configuration de l'emplacement porte la mauvaise identité de transaction. Les appels de la caisse doivent envoyer les **identifiants POS** (`idPos` Factor4) de l'emplacement et du terminal, le type d'initiateur `E` et un identifiant d'initiateur de type employé; les identifiants de l'API d'administration, le type `user` et le courriel administrateur sont refusés. L'activation les remplit correctement; pour une ligne configurée à la main, vérifiez `pos_location_id`, `pos_terminal_id`, `initiator_type` et `initiator_id` dans `factor4_location_configs`.
+
 ### Les points n'ont pas été attribués
 
 Vérifiez, dans l'ordre : l'emplacement est **Actif** pour la fidélité, le client est inscrit, la vente atteint l'achat minimum, et le montant admissible a produit au moins un point selon la règle d'arrondi. Une vente qui rapporte zéro point n'enregistre rien.
