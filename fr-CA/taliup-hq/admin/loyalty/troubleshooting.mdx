@@ -26,7 +26,7 @@ Ouvrez **Règles du programme** sur la page du marchand. La dernière erreur Fac
 
 ### Le programme affiche « Card set generation is prohibited for dependent locations »
 
-Factor4 ne génère des jeux de cartes que pour les programmes appartenant à un emplacement *indépendant*. Les emplacements marchands créés par HQ via l'API d'administration sont *dépendants*; le programme doit donc appartenir à l'emplacement indépendant de Taliup, et l'emplacement marchand y est lié. Définissez `FACTOR4_ADMIN_<ENV>_PRIMARY_LOCATION_ID` à l'identifiant de cet emplacement indépendant (test : l'emplacement « Taliup ») et relancez l'activation. Si un programme a déjà été créé avec l'emplacement marchand comme principal, déplacez-le avec un ProgramEdit sur `primaryLocationId`; la reprise n'exécute alors que l'étape du bassin de cartes.
+Factor4 ne génère des jeux de cartes que pour les programmes appartenant à un emplacement *indépendant*. Les emplacements marchands créés par HQ via l'API d'administration sont *dépendants*; le programme doit donc appartenir à l'emplacement indépendant de Taliup, et l'emplacement marchand y est lié. HQ trouve lui-même cet emplacement indépendant (ou utilise `FACTOR4_ADMIN_<ENV>_PRIMARY_LOCATION_ID` s'il est défini); si l'erreur persiste, le client n'a aucun emplacement indépendant chez Factor4, et le soutien Factor4 doit le créer. Si un programme a déjà été créé avec l'emplacement marchand comme principal, déplacez-le avec un ProgramEdit sur `primaryLocationId`; la reprise n'exécute alors que l'étape du bassin de cartes.
 
 ### Le programme affiche « is more than 12 characters long (parameter: crossRefId) »
 

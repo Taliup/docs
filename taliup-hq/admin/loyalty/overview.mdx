@@ -95,7 +95,7 @@ Because the location is shared, cancelling one product must not break the other.
 | `LOYALTY_CARD_POOL_LOW_WATERMARK` | Pool level that triggers a new card set (default 50) |
 | `LOYALTY_POINTS_BALANCE_MAX` | Maximum points a member may hold at Factor4 (default 10,000,000) |
 | `LOYALTY_POINTS_TRANSACTION_MAX` | Maximum points per issuance or redemption (default 1,000,000) |
-| `FACTOR4_ADMIN_<ENV>_PRIMARY_LOCATION_ID` | Taliup's independent Factor4 location that owns merchant programs |
+| `FACTOR4_ADMIN_<ENV>_PRIMARY_LOCATION_ID` | Optional. Taliup's independent Factor4 location that owns merchant programs; when unset, HQ finds the client's Independent location itself |
 | `FACTOR4_TRANSACTION_INITIATOR_TYPE` | Initiator type on register transactions (default `E`) |
 | `FACTOR4_TRANSACTION_INITIATOR_ID` / `_PASS` | Employee-style initiator on register transactions (default id `1000`); Factor4 rejects a portal user email here |
 

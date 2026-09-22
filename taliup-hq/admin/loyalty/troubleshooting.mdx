@@ -26,7 +26,7 @@ Open **Program Rules** on the merchant's page. The last Factor4 error is shown t
 
 ### The program shows "Card set generation is prohibited for dependent locations"
 
-Factor4 only generates card sets for programs owned by an *independent* location. Merchant locations that HQ creates over the admin API are *dependent*, so the program must be owned by Taliup's independent location and the merchant location linked to it. Set `FACTOR4_ADMIN_<ENV>_PRIMARY_LOCATION_ID` to that independent location's id (test: the "Taliup" location) and retry the activation. If a program was already created with the merchant location as primary, move it with a ProgramEdit on `primaryLocationId`; the retry then only runs the card pool step.
+Factor4 only generates card sets for programs owned by an *independent* location. Merchant locations that HQ creates over the admin API are *dependent*, so the program must be owned by Taliup's independent location and the merchant location linked to it. HQ finds that independent location itself (or takes `FACTOR4_ADMIN_<ENV>_PRIMARY_LOCATION_ID` when set); if this error still appears, the client has no Independent location at Factor4, which Factor4 support must create. If a program was already created with the merchant location as primary, move it with a ProgramEdit on `primaryLocationId`; the retry then only runs the card pool step.
 
 ### The program shows "is more than 12 characters long (parameter: crossRefId)"
 
