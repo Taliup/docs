@@ -37,6 +37,10 @@ Le message nomme les champs manquants. Remplissez-les pour cet environnement et 
 
 La configuration en production est désactivée dans cet environnement. C'est voulu en préproduction. Voir [les environnements](/fr-CA/taliup-hq/admin/gift-cards/overview#environnements-test-et-live).
 
+### Émission refusée avec « Value code doesn't match CAD » (ou USD)
+
+Le programme Factor4 du marchand n'a pas de type de valeur Devise dans cette devise. L'activation le crée; pour un programme créé avant l'existence de cette étape, relancez l'activation : elle ajoute le type manquant sans toucher au reste.
+
 ### Le marchand a été facturé mais n'a pas de cartes-cadeaux
 
 Cela ne devrait pas arriver. Un échec de configuration annule le paiement dans la même requête. Si un marchand le signale, cherchez dans le centre un emplacement sans santé, puis vérifiez l'état de son abonnement avant d'émettre tout remboursement.

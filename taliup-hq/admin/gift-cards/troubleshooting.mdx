@@ -37,6 +37,10 @@ The error names the missing fields. Fill them in for that environment and have t
 
 Live provisioning is switched off in this environment. That is deliberate on staging. See [environments](/taliup-hq/admin/gift-cards/overview#test-and-live-environments).
 
+### Issuance refused with "Value code doesn't match CAD" (or USD)
+
+The merchant's Factor4 program has no Currency value type in that currency. Activation creates it; for a program created before that step existed, re-run the activation, which adds the missing type and leaves everything else in place.
+
 ### The merchant was charged but has no gift cards
 
 This should not happen. A provisioning failure reverses the charge in the same request. If a merchant reports it, check the hub for a location with no health, then check their subscription state before issuing any refund.
