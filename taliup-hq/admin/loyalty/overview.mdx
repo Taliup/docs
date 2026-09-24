@@ -63,6 +63,10 @@ Factor4 stores balances but does not compute them. Taliup owns the rules.
 
 No Factor4 **Action** is configured on the program. Factor4 supports converting points to reward dollars server-side, but Taliup does not rely on it, so the reward value is always what the merchant set in HQ.
 
+### One person, several merchants
+
+Clients belong to a merchant and each merchant has its own program, so the same person enrolled at two Taliup merchants holds two independent memberships and balances. Points never cross merchants, and Factor4 imposes no link between the two accounts.
+
 ### Cardless members
 
 A member is a Taliup **client** holding one Factor4 account. Enrolment takes a number from the pool, confirms it with an Inquiry, and stores it hashed, masked, and encrypted, the same way gift card numbers are stored. The client's name, phone, and email are pushed to Factor4 with the member's first points issuance.
