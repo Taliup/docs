@@ -35,7 +35,7 @@ When a merchant pays for a location, Taliup calls the Factor4 admin API and crea
     A new Factor4 program has no value types, so nothing can be loaded onto a card. Activation adds a **Currency** type in the location's currency as Factor4 records it (balance cap `GIFT_CARD_BALANCE_MAX`, per-transaction cap `GIFT_CARD_TRANSACTION_MAX`), and the location's default value code follows that currency. The program is owned by Taliup's independent Factor4 location; the merchant's own location is linked to it.
   </Step>
   <Step title="A location-program link">
-    Grants the location the right to issue, redeem, check balances, and run the other operations on the program.
+    Grants the location the right to issue, redeem, refund back onto a card, take tips, void, check balances and read history on the program. Re-running an activation compares the link's permissions with this list and grants any that are missing, so a link created by an older release is repaired by the next activation.
   </Step>
 </Steps>
 

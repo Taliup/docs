@@ -35,7 +35,7 @@ Quand un marchand paie pour un emplacement, Taliup appelle l'API admin de Factor
     Un nouveau programme Factor4 n'a aucun type de valeur; rien ne peut donc être chargé sur une carte. L'activation ajoute un type **Currency** dans la devise de l'emplacement telle que Factor4 l'enregistre (plafond de solde `GIFT_CARD_BALANCE_MAX`, plafond par transaction `GIFT_CARD_TRANSACTION_MAX`), et le code de valeur par défaut de l'emplacement suit cette devise. Le programme appartient à l'emplacement Factor4 indépendant de Taliup; l'emplacement du marchand y est lié.
   </Step>
   <Step title="Un lien emplacement-programme">
-    Accorde à l'emplacement le droit d'émettre, d'encaisser, de consulter les soldes et d'effectuer les autres opérations.
+    Accorde à l'emplacement le droit d'émettre, d'encaisser, de rembourser sur une carte, d'accepter des pourboires, d'annuler, de consulter les soldes et de lire l'historique sur le programme. Relancer une activation compare les permissions du lien à cette liste et accorde celles qui manquent; un lien créé par une version antérieure est ainsi réparé à la prochaine activation.
   </Step>
 </Steps>
 
