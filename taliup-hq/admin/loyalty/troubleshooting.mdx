@@ -1,0 +1,124 @@
+---
+title: "Loyalty troubleshooting"
+sidebarTitle: "Troubleshooting"
+description: "Diagnose loyalty activation, enrolment, points, and redemption problems reported by merchants."
+icon: "wrench"
+keywords:
+  - "loyalty"
+  - "troubleshooting"
+  - "Factor4"
+  - "points"
+---
+
+Start from the merchant's **Loyalty** page: the location states and the setup error under **Program Rules** narrow most problems down. The shared Factor4 location is visible in the [Factor4 Accounts Hub](/taliup-hq/admin/gift-cards/factor4-hub).
+
+---
+
+## Activation
+
+### Activation fails with "Access denied"
+
+The Factor4 admin API refused the client credentials. Check the same three things as for gift cards: the admin password is in the admin variable, the initiator id and password match the Factor4 user, and the source IP is allowed by Factor4. The charge was voided, so the merchant can retry once the credentials work.
+
+### The program shows "failed"
+
+Open **Program Rules** on the merchant's page. The last Factor4 error is shown there. The merchant can click **Activate** again once the cause is fixed; provisioning resumes from where it stopped and reuses anything already created.
+
+### The program shows "Card set generation is prohibited for dependent locations"
+
+Factor4 only generates card sets for programs owned by an *independent* location. Merchant locations that HQ creates over the admin API are *dependent*, so the program must be owned by Taliup's independent location and the merchant location linked to it. HQ finds that independent location itself (or takes `FACTOR4_ADMIN_<ENV>_PRIMARY_LOCATION_ID` when set); if this error still appears, the client has no Independent location at Factor4, which Factor4 support must create. If a program was already created with the merchant location as primary, move it with a ProgramEdit on `primaryLocationId`; the retry then only runs the card pool step.
+
+### The program shows "is more than 12 characters long (parameter: crossRefId)"
+
+Factor4 caps a card set's `crossRefId` at 12 characters. HQ uses `TLP-L<program>-<set>`; a longer value only appears if it was overridden in the activation payload.
+
+### The location shows Active for Gift Cards but Setting up for Loyalty
+
+The shared Factor4 location exists; the loyalty program, link, or card pool step failed. The program error tells you which. Retrying the activation only runs the missing steps.
+
+---
+
+## Enrolment
+
+### No card numbers available
+
+The pool is empty. It is filled from a Factor4 card set at activation and topped up by the daily `factor4:replenish-loyalty-card-pools` job whenever it falls below the low watermark. Run the command with `--dry-run` to see what it would do, or with `--program=<id>` to top up one program now. Ask the merchant to add numbers under **Card Numbers** as a stopgap, and check that the card set was created in the hub. If the pool never filled, the `CardSetAdd` or `CardsView` step failed at Factor4.
+
+### Card could not be verified with Factor4
+
+Enrolment checks the number with an Inquiry before creating the member. A decline means the number is not a valid account on the merchant's loyalty program. For a physical card, confirm it belongs to the merchant's program and not to their gift card program.
+
+### This card is already assigned to another member
+
+Each account number belongs to one member. Find the existing member by the masked number in the member list.
+
+### Profile conflict on a member
+
+Factor4 refused to attach the client's phone because that phone is already on another account **in the same merchant's program**: usually the same person was enrolled twice under two client records, or two clients share a phone. Points are still awarded. The rule is per program, so the same person being a member at several Taliup merchants never causes it. Merge or correct the client records; the flag stays until the profile is accepted.
+
+---
+
+## Points
+
+### Earn refused with "Value code doesn't match Points"
+
+The merchant's Factor4 program has no **Points** value type. Activation creates it (step "A Points value type on the program"); if the program was created before that step existed, re-run the activation, which adds the missing type and leaves everything else untouched.
+
+### Enrolment refused with "Activation Required"
+
+Virtual numbers from a card set are inert until their first issuance. HQ activates them automatically with a zero-point issuance during enrolment; seeing this error on the register means that issuance itself failed, so check the loyalty transaction recorded for the attempt.
+
+### Every register transaction fails with "Couldnt Be Processed" or "Terminal Invalid"
+
+The location config carries the wrong transaction identity. Register calls must send the location's and terminal's **POS ids** (Factor4 `idPos`), initiator type `E` and an employee-style initiator id; the admin API ids, type `user` and the admin email are refused. Provisioning fills these correctly; for a row configured by hand, check `pos_location_id`, `pos_terminal_id`, `initiator_type` and `initiator_id` on `factor4_location_configs`.
+
+### Points were not awarded
+
+Check, in order: the location is **Active** for Loyalty, the client is enrolled, the sale met the minimum purchase, and the eligible amount produced at least one point under the rounding rule. A sale that earns zero points records nothing.
+
+### Points differ from what the merchant expected
+
+Points are computed on the subtotal after discounts and before tax, never on tips, fees, or tax. Check the rounding setting; **Round down** is the default.
+
+### Void refused with "Balance limit 0 exceeded"
+
+The member spent some of the points before the void, and Factor4 does not allow a negative balance. The register handles this: it reclaims what is left of the balance with a negative adjustment and marks the earn **REVERSED** with the shortfall, so the POS reports `points_recovered` and `points_unrecovered`. If a merchant sees this message directly, the POS sent `allow_adjustment: false`. The merchant can still remove points manually with **Adjust** on the member.
+
+### Adjust refused with "does not match expected value for note (NOTE)"
+
+Factor4 accepts at most 50 characters in an adjustment note. HQ truncates the reason it sends and the merchant form is limited to 50, so this only appears from older code or a hand-built call; the full reason is still stored on the loyalty transaction.
+
+### Balance in HQ differs from Factor4
+
+HQ caches the balance from the last call. A balance check on the POS refreshes it. Redemptions are always authorised by Factor4, so a stale cache cannot let a member overspend.
+
+---
+
+## Redemption
+
+### Rewards are redeemed in blocks of N points
+
+The member asked for an amount that is not a whole reward block. Redemption snaps down to whole blocks; below one block nothing is redeemed. This is by design.
+
+### Insufficient points
+
+The cached balance is below the requested points. Refresh the balance on the POS; if it is still short, the member cannot redeem that much.
+
+### A reward exceeded the order total
+
+It cannot. The POS caps the redemption at the number of blocks that fit within the order amount. If a merchant reports otherwise, collect the order id and the loyalty transaction id.
+
+---
+
+## What to collect for support
+
+- The entity and location, and the environment (test or live)
+- The Factor4 location id from the hub
+- For a points problem, the order id, the member's masked account number, and the loyalty transaction id shown in **Recent activity**
+- The exact message the merchant saw
+
+## Related
+
+- [Loyalty overview](/taliup-hq/admin/loyalty/overview)
+- [Gift Cards troubleshooting](/taliup-hq/admin/gift-cards/troubleshooting)
+- [Factor4 Accounts Hub](/taliup-hq/admin/gift-cards/factor4-hub)

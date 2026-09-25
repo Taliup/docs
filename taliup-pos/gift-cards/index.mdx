@@ -1,0 +1,72 @@
+---
+title: "Gift Cards"
+sidebarTitle: "Overview"
+description: "Sell, redeem, check and refund gift cards on Taliup POS, and what a cashier needs before starting."
+keywords:
+  - "gift cards"
+  - "sell"
+  - "redeem"
+  - "balance"
+---
+
+Taliup POS sells physical gift cards, takes them as payment, shows what is left on one, and returns money to a card when a sale paid with it is refunded.
+
+<Note>
+  Gift card support requires a Taliup POS release that includes it. If you do not see gift card options on your device, it is on an earlier version.
+</Note>
+
+---
+
+## Before you start
+
+- Gift cards must be **active for your location**. A manager activates them in Taliup HQ. See [Gift Cards in the merchant portal](/taliup-hq/features/gift-cards).
+- Your device must be registered for gift cards. Terminals added after activation are registered automatically.
+- You need the physical card in hand. Cards can be scanned with the device's scanner or camera, or keyed in.
+
+If the feature is on but the location is not activated yet, the payment screen says so under **Other** instead of offering the gift card. If nothing gift-related appears at all, the feature is not enabled for the merchant.
+
+---
+
+## Where to find it
+
+| Where | What |
+| --- | --- |
+| Register → **Options** → **Gift Cards** | **Sell gift card**, **Gift card balance**, and **Retry gift card load** when a load is still owed |
+| Payment screen → **Other** → **Gift card** | Pay with a gift card |
+| Home → **Transactions** → the gift card sale → **Return** | Refund onto the card that paid |
+
+The Options entries are on the Menu and Cart tabs, not on the Open Sale keypad tab. In Open Sale Only mode the gift card is available as a payment method, but cards cannot be sold there.
+
+---
+
+## What you can do
+
+| Action | When you use it |
+| --- | --- |
+| [Sell a gift card](/taliup-pos/gift-cards/sell) | A customer is buying or reloading a gift card |
+| [Redeem a gift card](/taliup-pos/gift-cards/redeem) | A customer is paying with a gift card |
+| [Check a balance](/taliup-pos/gift-cards/balance) | A customer asks what is left on a card |
+| [Refund onto a gift card](/taliup-pos/gift-cards/void-refund) | A sale paid with a gift card is being refunded |
+
+---
+
+## How gift cards behave
+
+**Selling and redeeming are different.** Selling a card is an ordinary sale that the customer pays for with cash or a bank card. Redeeming is using a gift card as the payment method on a sale.
+
+**A card is loaded only after the customer pays.** When you sell a gift card, the value goes on once the sale is paid, never before. The receipt says whether the load went through.
+
+**A gift card cannot buy a gift card.** While a gift card line is in the cart, the gift card payment method is hidden and a note under **Other** says why.
+
+**A gift card can cover part of a sale.** If the balance is less than the amount due, the POS takes what is there and continues as a split payment for the rest.
+
+**Balances live with the processor.** The balance you see is read live when you use or check the card, so it is accurate even if the card was used at another one of your locations. The receipt prints the balance left after each gift card payment.
+
+**A retry is safe.** If the network drops and you are not sure whether something went through, retrying does not load or charge a card twice.
+
+---
+
+## Related
+
+- [Gift Cards in the merchant portal](/taliup-hq/features/gift-cards)
+- [Transactions](/taliup-pos/transactions/index)

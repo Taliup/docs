@@ -1,0 +1,126 @@
+---
+title: "Gift Cards overview"
+sidebarTitle: "Overview"
+description: "How Taliup provisions merchants with Factor4 for gift cards, which credentials live where, and how the test and live environments are controlled."
+icon: "gift"
+keywords:
+  - "gift cards"
+  - "Factor4"
+  - "provisioning"
+  - "environments"
+  - "credentials"
+---
+
+Gift cards are processed by **Factor4**. Merchants activate gift cards themselves, one location at a time, as a monthly add-on. Admins do not provision merchants by hand.
+
+This page explains what happens behind that activation, what you control, and what to check when something goes wrong.
+
+---
+
+## What an activation does
+
+When a merchant pays for a location, Taliup calls the Factor4 admin API and creates four things:
+
+<Steps>
+  <Step title="A Factor4 location">
+    Created with a deterministic cross-reference id, `TLP-ENT-{entity}-LOC-{location}`, so the Factor4 record always maps back to the Taliup location. If a suspended location already exists for that id, it is re-enabled instead of duplicated.
+  </Step>
+  <Step title="A Factor4 terminal per Taliup terminal">
+    Every terminal at the location is registered with its Taliup id as the Factor4 POS id. The mapping is stored so transactions are attributed to the right device.
+  </Step>
+  <Step title="The merchant's gift card program">
+    A merchant has **one** gift card program. The first location activated creates it; every location activated afterwards joins it. This is what lets a card sold at one location be redeemed at any of the merchant's other active locations.
+  </Step>
+  <Step title="A Currency value type on the program">
+    A new Factor4 program has no value types, so nothing can be loaded onto a card. Activation adds a **Currency** type in the location's currency as Factor4 records it (balance cap `GIFT_CARD_BALANCE_MAX`, per-transaction cap `GIFT_CARD_TRANSACTION_MAX`), and the location's default value code follows that currency. The program is owned by Taliup's independent Factor4 location; the merchant's own location is linked to it.
+  </Step>
+  <Step title="A location-program link">
+    Grants the location the right to issue, redeem, refund back onto a card, take tips, void, check balances and read history on the program. Re-running an activation compares the link's permissions with this list and grants any that are missing, so a link created by an older release is repaired by the next activation.
+  </Step>
+</Steps>
+
+Provisioning is idempotent. A retried activation looks each object up before creating it and reuses what it finds rather than producing duplicates.
+
+When provisioning succeeds, Taliup grants the **Gift Cards** feature to the entity. When the subscription is cancelled and the paid period ends, the Factor4 location is suspended and the feature is removed, unless another location still holds an active subscription. The program itself is never suspended while any location uses it.
+
+If provisioning fails, the charge is voided and nothing is kept. The merchant sees a readable error and is not billed.
+
+<Note>
+  Loyalty shares the same Factor4 location. When a merchant runs both products at a location, cancelling one leaves the Factor4 location enabled for the other. See the [Loyalty overview](/taliup-hq/admin/loyalty/overview).
+</Note>
+
+---
+
+## Credentials
+
+There are two sets, from different places.
+
+| Credential set | Used for | Held in |
+| --- | --- | --- |
+| **Admin API** | Creating locations, terminals and programs | Environment configuration only |
+| **Location API** | Running transactions at one location | The database, encrypted, written during provisioning |
+
+Admins never type location credentials. Factor4 issues them when the location is created and Taliup stores them encrypted for that location and environment.
+
+### Environment configuration
+
+| Variable | Role |
+| --- | --- |
+| `FACTOR4_ADMIN_TEST_*` | Admin credentials for the test client |
+| `FACTOR4_ADMIN_LIVE_*` | Admin credentials for the production client |
+| `GIFT_CARD_ENROLLMENT_AMOUNT` | Monthly price per location |
+| `GIFT_CARD_ENROLLMENT_AMOUNT_CAD` / `_USD` | Optional per-currency prices |
+| `GIFT_CARD_BALANCE_MAX` / `GIFT_CARD_TRANSACTION_MAX` | Caps of the Currency value type created on the merchant's program (defaults 10,000 and 5,000) |
+
+Each admin set needs a client id, an integration account and password, and an initiator type, id and password. If any one is blank, activation fails before Factor4 is contacted.
+
+---
+
+## Test and live environments
+
+Taliup tags every configuration **test** or **live**. Both reach Factor4 at the same address; the difference is which client credentials are used.
+
+| Variable | Effect |
+| --- | --- |
+| `FACTOR4_DEFAULT_ENVIRONMENT` | The environment new activations and transactions use |
+| `FACTOR4_ALLOWED_ENVIRONMENTS` | The environments permitted at all |
+| `FACTOR4_ALLOW_LIVE_ADMIN_ACTIVATION` | Blocks production provisioning when off |
+| `FACTOR4_ALLOW_LIVE_TRANSACTIONS` | Blocks production transactions when off |
+| `FACTOR4_LIVE_ONLY_HOSTS` | Forces production behaviour on the named hosts |
+
+The last two switches are the real guard rail. For a staging environment that must never touch real cards, set the default to test and turn both off.
+
+<Warning>
+  A location is provisioned per environment. A location set up in test is a different Factor4 location from the same location set up in live, with its own credentials and its own cards.
+</Warning>
+
+---
+
+## Terminals
+
+Terminals and gift cards are linked, so terminal changes matter.
+
+| Event | What happens |
+| --- | --- |
+| **Terminal added** | Registered with Factor4 for every active configuration at its location. A failure is reported in the confirmation message and logged, but never blocks the terminal being created |
+| **Terminal deleted** | Its Factor4 terminal is suspended first. If that call fails, the deletion is blocked so the two systems do not drift apart |
+
+When a terminal is deleted, its mapping is removed and another terminal at the location becomes the primary one.
+
+---
+
+## What admins control
+
+- Whether **Gift Cards** is offered on the merchant's plan, through [Plans & Features](/taliup-hq/admin/plans-features)
+- The environment policy and pricing, through configuration
+- Visibility into every provisioned account, through the [Factor4 Accounts Hub](/taliup-hq/admin/gift-cards/factor4-hub)
+
+Admins do not start activations, take payments, or edit Factor4 credentials from the portal.
+
+---
+
+## Related
+
+- [Factor4 Accounts Hub](/taliup-hq/admin/gift-cards/factor4-hub)
+- [Troubleshooting](/taliup-hq/admin/gift-cards/troubleshooting)
+- [The merchant view of Gift Cards](/taliup-hq/features/gift-cards)

@@ -1,0 +1,123 @@
+---
+title: "Factor4 Accounts Hub"
+sidebarTitle: "Factor4 Accounts Hub"
+description: "A read-only view of every Factor4 gift card account provisioned through Taliup, with terminals, programs, billing state, and health."
+icon: "table-list"
+keywords:
+  - "Factor4 hub"
+  - "gift cards"
+  - "accounts"
+  - "health"
+  - "sync"
+---
+
+The Factor4 Accounts Hub is the single place to see every gift card account Taliup has provisioned. Use it to confirm a merchant is set up correctly, to see why an activation looks wrong, and to check what Factor4 currently holds.
+
+Open **Factor4 Hub** in the admin sidebar.
+
+<Note>
+  The hub is read-only. It reads from Factor4 and from Taliup, and changes nothing in either. Merchants activate and cancel gift cards themselves.
+</Note>
+
+---
+
+## Access
+
+The hub requires the **Factor4Hub** permission, which is granted to super administrators. What you can see is scoped to your organization, so an ISO admin sees only their own merchants.
+
+---
+
+## Reading the list
+
+Each row is one Factor4 location, matched back to the Taliup entity and location it belongs to.
+
+| Column | What it tells you |
+| --- | --- |
+| **Merchant and location** | The Taliup entity and location, when the Factor4 record can be matched |
+| **Factor4 location** | The location id held by Factor4 |
+| **Status** | The status Factor4 reports, such as Enabled or Suspended |
+| **Health** | Whether the account looks complete: credentials stored, terminals mapped, program linked, and the access the store actually pays for (gift, loyalty or both) granted |
+| **Billing** | The gift card subscription state behind the activation |
+| **Loyalty** | Whether the merchant's loyalty program is active at this location, with active members and card numbers left in the enrolment pool |
+
+Records are matched by the cross-reference id Taliup sets when it creates the location. A Factor4 location created outside Taliup will appear unmatched.
+
+### Billing states
+
+| State | Meaning |
+| --- | --- |
+| **Active** | A paid subscription is running |
+| **Cancellation scheduled** | Cancelled, still working until the paid period ends |
+| **Pending** | A checkout was started but not completed |
+| **Suspended** | Payment failed or the period ended |
+| **Cancelled** | Ended |
+| **None** | No subscription found for this location |
+
+Gift cards and loyalty are billed separately. The row shows gift card billing; the detail panel shows both.
+
+### Loyalty states
+
+| State | Meaning |
+| --- | --- |
+| **Loyalty active** | The location is linked to the merchant's loyalty program and the program is active |
+| **Setting up** | Payment succeeded, provisioning has not finished |
+| **Setup failed** | Provisioning stopped on a Factor4 error; the detail panel shows it |
+| **Program suspended** | The merchant's program is suspended, so no location can earn or redeem |
+| **Loyalty suspended** | This location's loyalty subscription ended |
+| **Not activated here** | The merchant has a program but this location never joined it |
+| **Not activated** | The merchant has never activated Loyalty |
+
+---
+
+## Environment switch
+
+The hub shows one environment at a time. Switch between **test** and **live** at the top of the page.
+
+A location set up in both environments appears once per environment, with different Factor4 ids and different cards. If a merchant reports missing cards, check that you are looking at the right environment before anything else.
+
+Environments blocked by the platform policy are not selectable. See [Overview](/taliup-hq/admin/gift-cards/overview#test-and-live-environments).
+
+---
+
+## Account details
+
+Click a row to open the detail panel. It queries Factor4 live and shows:
+
+- **Location** as Factor4 holds it, including address and status
+- **Terminals** registered against the location, with their POS ids
+- **Programs** linked to the location, gift and loyalty, with the permissions each link grants (Sell, Redeem, Balance, Earn, Spend)
+- **Billing** detail for the gift card subscription
+- **Loyalty** program, Factor4 program id, setup state, this location's link, rules, member counts, points outstanding and card numbers available, plus the **loyalty billing** subscription
+- **Stored configuration**, including the credentials Taliup holds for the location
+
+<Warning>
+  The detail panel can reveal the stored location credentials. Treat them as production secrets and do not copy them out of the hub.
+</Warning>
+
+---
+
+## Sync
+
+The list is cached for a few minutes so the page stays fast. **Sync** forces a fresh read from Factor4.
+
+Use it after a merchant activates, or when you are checking a change someone just made on the Factor4 side. Each sync makes several calls to Factor4, so avoid running it repeatedly.
+
+---
+
+## What the hub is good for
+
+| Question | Where to look |
+| --- | --- |
+| Did this merchant's activation finish? | Health and status on the row |
+| Why can a cashier not redeem at one terminal? | Terminals in the detail panel, checking the POS id is mapped |
+| Is the merchant still paying for this? | Billing state, and Loyalty billing in the detail panel |
+| Why can a member not earn points at this store? | Loyalty column on the row; Earn and Spend chips in the detail panel |
+| Is this the test or the live setup? | Environment switch |
+| Which Taliup location is this Factor4 account? | Merchant and location on the row |
+
+---
+
+## Related
+
+- [Gift Cards overview](/taliup-hq/admin/gift-cards/overview)
+- [Troubleshooting](/taliup-hq/admin/gift-cards/troubleshooting)

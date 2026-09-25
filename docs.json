@@ -100,6 +100,23 @@
                   "taliup-hq/admin/catalog-builder",
                   "taliup-hq/admin/catalog-builder-connector"
                 ]
+              },
+              {
+                "group": "Gift Cards",
+                "icon": "gift",
+                "pages": [
+                  "taliup-hq/admin/gift-cards/overview",
+                  "taliup-hq/admin/gift-cards/factor4-hub",
+                  "taliup-hq/admin/gift-cards/troubleshooting"
+                ]
+              },
+              {
+                "group": "Loyalty",
+                "icon": "star",
+                "pages": [
+                  "taliup-hq/admin/loyalty/overview",
+                  "taliup-hq/admin/loyalty/troubleshooting"
+                ]
               }
             ]
           },
@@ -127,6 +144,8 @@
                   "taliup-hq/features/invoicing",
                   "taliup-hq/features/clients",
                   "taliup-hq/features/scale-items",
+                  "taliup-hq/features/gift-cards",
+                  "taliup-hq/features/loyalty",
                   "taliup-hq/features/end-of-day"
                 ]
               }
@@ -222,6 +241,27 @@
                   "taliup-pos/link-to-pay/index",
                   "taliup-pos/link-to-pay/create-and-send",
                   "taliup-pos/link-to-pay/manage"
+                ]
+              },
+              {
+                "group": "Gift Cards",
+                "icon": "gift",
+                "pages": [
+                  "taliup-pos/gift-cards/index",
+                  "taliup-pos/gift-cards/sell",
+                  "taliup-pos/gift-cards/redeem",
+                  "taliup-pos/gift-cards/balance",
+                  "taliup-pos/gift-cards/void-refund"
+                ]
+              },
+              {
+                "group": "Loyalty",
+                "icon": "star",
+                "pages": [
+                  "taliup-pos/loyalty/index",
+                  "taliup-pos/loyalty/enroll",
+                  "taliup-pos/loyalty/earn",
+                  "taliup-pos/loyalty/redeem"
                 ]
               },
               {
@@ -399,6 +439,23 @@
                       "fr-CA/taliup-hq/admin/catalog-builder",
                       "fr-CA/taliup-hq/admin/catalog-builder-connector"
                     ]
+                  },
+                  {
+                    "group": "Cartes-cadeaux",
+                    "icon": "gift",
+                    "pages": [
+                      "fr-CA/taliup-hq/admin/gift-cards/overview",
+                      "fr-CA/taliup-hq/admin/gift-cards/factor4-hub",
+                      "fr-CA/taliup-hq/admin/gift-cards/troubleshooting"
+                    ]
+                  },
+                  {
+                    "group": "Fidélité",
+                    "icon": "star",
+                    "pages": [
+                      "fr-CA/taliup-hq/admin/loyalty/overview",
+                      "fr-CA/taliup-hq/admin/loyalty/troubleshooting"
+                    ]
                   }
                 ]
               },
@@ -424,6 +481,8 @@
                       "fr-CA/taliup-hq/features/invoicing",
                       "fr-CA/taliup-hq/features/clients",
                       "fr-CA/taliup-hq/features/scale-items",
+                      "fr-CA/taliup-hq/features/gift-cards",
+                      "fr-CA/taliup-hq/features/loyalty",
                       "fr-CA/taliup-hq/features/end-of-day"
                     ]
                   }
@@ -519,6 +578,27 @@
                       "fr-CA/taliup-pos/link-to-pay/index",
                       "fr-CA/taliup-pos/link-to-pay/create-and-send",
                       "fr-CA/taliup-pos/link-to-pay/manage"
+                    ]
+                  },
+                  {
+                    "group": "Cartes-cadeaux",
+                    "icon": "gift",
+                    "pages": [
+                      "fr-CA/taliup-pos/gift-cards/index",
+                      "fr-CA/taliup-pos/gift-cards/sell",
+                      "fr-CA/taliup-pos/gift-cards/redeem",
+                      "fr-CA/taliup-pos/gift-cards/balance",
+                      "fr-CA/taliup-pos/gift-cards/void-refund"
+                    ]
+                  },
+                  {
+                    "group": "Fidélité",
+                    "icon": "star",
+                    "pages": [
+                      "fr-CA/taliup-pos/loyalty/index",
+                      "fr-CA/taliup-pos/loyalty/enroll",
+                      "fr-CA/taliup-pos/loyalty/earn",
+                      "fr-CA/taliup-pos/loyalty/redeem"
                     ]
                   },
                   {

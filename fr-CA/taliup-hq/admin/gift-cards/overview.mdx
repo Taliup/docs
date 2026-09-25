@@ -1,0 +1,126 @@
+---
+title: "Aperçu des cartes-cadeaux"
+sidebarTitle: "Aperçu"
+description: "Comment Taliup configure les marchands chez Factor4, où résident les identifiants, et comment sont contrôlés les environnements test et live."
+icon: "gift"
+keywords:
+  - "cartes-cadeaux"
+  - "Factor4"
+  - "configuration"
+  - "environnements"
+  - "identifiants"
+---
+
+Les cartes-cadeaux sont traitées par **Factor4**. Les marchands activent les cartes-cadeaux eux-mêmes, un emplacement à la fois, sous forme de module mensuel. Les admins ne configurent pas les marchands manuellement.
+
+Cette page explique ce qui se produit derrière cette activation, ce que vous contrôlez, et quoi vérifier en cas de problème.
+
+---
+
+## Ce que fait une activation
+
+Quand un marchand paie pour un emplacement, Taliup appelle l'API admin de Factor4 et crée quatre choses :
+
+<Steps>
+  <Step title="Un emplacement Factor4">
+    Créé avec un identifiant de référence déterministe, `TLP-ENT-{entité}-LOC-{emplacement}`, pour que l'enregistrement Factor4 corresponde toujours à l'emplacement Taliup. Si un emplacement suspendu existe déjà pour cet identifiant, il est réactivé plutôt que dupliqué.
+  </Step>
+  <Step title="Un terminal Factor4 par terminal Taliup">
+    Chaque terminal de l'emplacement est enregistré avec son identifiant Taliup comme identifiant PDV chez Factor4. La correspondance est conservée pour que les transactions soient attribuées correctement.
+  </Step>
+  <Step title="Le programme de cartes-cadeaux du marchand">
+    Un marchand n'a **qu'un seul** programme de cartes-cadeaux. Le premier emplacement activé le crée; chaque emplacement activé par la suite s'y joint. C'est ce qui permet d'encaisser une carte vendue à un emplacement dans n'importe quel autre emplacement actif du marchand.
+  </Step>
+  <Step title="Un type de valeur Devise sur le programme">
+    Un nouveau programme Factor4 n'a aucun type de valeur; rien ne peut donc être chargé sur une carte. L'activation ajoute un type **Currency** dans la devise de l'emplacement telle que Factor4 l'enregistre (plafond de solde `GIFT_CARD_BALANCE_MAX`, plafond par transaction `GIFT_CARD_TRANSACTION_MAX`), et le code de valeur par défaut de l'emplacement suit cette devise. Le programme appartient à l'emplacement Factor4 indépendant de Taliup; l'emplacement du marchand y est lié.
+  </Step>
+  <Step title="Un lien emplacement-programme">
+    Accorde à l'emplacement le droit d'émettre, d'encaisser, de rembourser sur une carte, d'accepter des pourboires, d'annuler, de consulter les soldes et de lire l'historique sur le programme. Relancer une activation compare les permissions du lien à cette liste et accorde celles qui manquent; un lien créé par une version antérieure est ainsi réparé à la prochaine activation.
+  </Step>
+</Steps>
+
+La configuration est idempotente. Une activation reprise cherche chaque objet avant de le créer et le réutilise plutôt que de produire un doublon.
+
+Quand la configuration réussit, Taliup accorde la fonction **Cartes-cadeaux** à l'entité. Quand l'abonnement est annulé et que la période payée se termine, l'emplacement Factor4 est suspendu et la fonction est retirée, sauf si un autre emplacement conserve un abonnement actif. Le programme lui-même n'est jamais suspendu tant qu'un emplacement l'utilise.
+
+Si la configuration échoue, le paiement est annulé et rien ne subsiste. Le marchand voit un message d'erreur lisible et n'est pas facturé.
+
+<Note>
+  La fidélité partage le même emplacement Factor4. Quand un marchand exploite les deux produits à un emplacement, l'annulation de l'un laisse l'emplacement Factor4 actif pour l'autre. Voir l'[aperçu de la fidélité](/fr-CA/taliup-hq/admin/loyalty/overview).
+</Note>
+
+---
+
+## Identifiants
+
+Il y en a deux jeux, de provenances différentes.
+
+| Jeu d'identifiants | Sert à | Conservé dans |
+| --- | --- | --- |
+| **API admin** | Créer emplacements, terminaux et programmes | La configuration d'environnement seulement |
+| **API emplacement** | Traiter les transactions à un emplacement | La base de données, chiffré, écrit lors de la configuration |
+
+Les admins ne saisissent jamais les identifiants d'emplacement. Factor4 les émet à la création de l'emplacement et Taliup les conserve chiffrés pour cet emplacement et cet environnement.
+
+### Configuration d'environnement
+
+| Variable | Rôle |
+| --- | --- |
+| `FACTOR4_ADMIN_TEST_*` | Identifiants admin du client de test |
+| `FACTOR4_ADMIN_LIVE_*` | Identifiants admin du client de production |
+| `GIFT_CARD_ENROLLMENT_AMOUNT` | Prix mensuel par emplacement |
+| `GIFT_CARD_ENROLLMENT_AMOUNT_CAD` / `_USD` | Prix facultatifs par devise |
+| `GIFT_CARD_BALANCE_MAX` / `GIFT_CARD_TRANSACTION_MAX` | Plafonds du type de valeur Devise créé sur le programme du marchand (10 000 et 5 000 par défaut) |
+
+Chaque jeu admin exige un identifiant client, un compte et un mot de passe d'intégration, ainsi qu'un type, un identifiant et un mot de passe d'initiateur. Si un seul est vide, l'activation échoue avant même de contacter Factor4.
+
+---
+
+## Environnements test et live
+
+Taliup étiquette chaque configuration **test** ou **live**. Les deux joignent Factor4 à la même adresse ; la différence est le jeu d'identifiants client utilisé.
+
+| Variable | Effet |
+| --- | --- |
+| `FACTOR4_DEFAULT_ENVIRONMENT` | L'environnement utilisé par les nouvelles activations et les transactions |
+| `FACTOR4_ALLOWED_ENVIRONMENTS` | Les environnements permis |
+| `FACTOR4_ALLOW_LIVE_ADMIN_ACTIVATION` | Bloque la configuration en production lorsque désactivé |
+| `FACTOR4_ALLOW_LIVE_TRANSACTIONS` | Bloque les transactions en production lorsque désactivé |
+| `FACTOR4_LIVE_ONLY_HOSTS` | Force le comportement production sur les hôtes nommés |
+
+Les deux derniers interrupteurs sont la véritable protection. Pour un environnement de préproduction qui ne peut jamais toucher de vraies cartes, mettez la valeur par défaut à test et désactivez les deux.
+
+<Warning>
+  Un emplacement est configuré par environnement. Un emplacement configuré en test est un emplacement Factor4 différent du même emplacement configuré en production, avec ses propres identifiants et ses propres cartes.
+</Warning>
+
+---
+
+## Terminaux
+
+Terminaux et cartes-cadeaux sont liés, donc les changements de terminaux comptent.
+
+| Événement | Ce qui se passe |
+| --- | --- |
+| **Terminal ajouté** | Enregistré chez Factor4 pour chaque configuration active à son emplacement. Un échec est signalé dans le message de confirmation et journalisé, mais n'empêche jamais la création du terminal |
+| **Terminal supprimé** | Son terminal Factor4 est d'abord suspendu. Si cet appel échoue, la suppression est bloquée pour que les deux systèmes ne divergent pas |
+
+Quand un terminal est supprimé, sa correspondance est retirée et un autre terminal de l'emplacement devient le terminal principal.
+
+---
+
+## Ce que contrôlent les admins
+
+- Si **Cartes-cadeaux** est offert dans le plan du marchand, via [Plans et fonctionnalités](/fr-CA/taliup-hq/admin/plans-features)
+- La politique d'environnement et la tarification, par configuration
+- La visibilité sur chaque compte configuré, via le [Centre des comptes Factor4](/fr-CA/taliup-hq/admin/gift-cards/factor4-hub)
+
+Les admins ne démarrent pas d'activation, n'encaissent pas de paiement et ne modifient pas les identifiants Factor4 depuis le portail.
+
+---
+
+## Voir aussi
+
+- [Centre des comptes Factor4](/fr-CA/taliup-hq/admin/gift-cards/factor4-hub)
+- [Dépannage](/fr-CA/taliup-hq/admin/gift-cards/troubleshooting)
+- [La vue marchand des cartes-cadeaux](/fr-CA/taliup-hq/features/gift-cards)
