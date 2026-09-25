@@ -84,6 +84,10 @@ Les points sont calculés sur le sous-total après rabais et avant taxes, jamais
 
 Le membre a dépensé une partie des points avant l'annulation, et Factor4 n'autorise pas un solde négatif. La caisse gère ce cas : elle reprend ce qui reste du solde par un ajustement négatif et marque le gain **REVERSED** avec le manque, de sorte que le PDV rapporte `points_recovered` et `points_unrecovered`. Si un marchand voit ce message directement, le PDV a envoyé `allow_adjustment: false`. Le marchand peut toujours retirer des points manuellement avec **Ajuster** sur le membre.
 
+### Ajustement refusé avec « does not match expected value for note (NOTE) »
+
+Factor4 accepte au plus 50 caractères dans la note d'un ajustement. HQ tronque la raison envoyée et le formulaire marchand est limité à 50, donc ce message ne vient que d'un ancien code ou d'un appel construit à la main; la raison complète reste enregistrée sur la transaction de fidélité.
+
 ### Le solde dans HQ diffère de celui de Factor4
 
 HQ met en cache le solde du dernier appel. Une consultation du solde au PDV le rafraîchit. Les échanges sont toujours autorisés par Factor4, donc un cache périmé ne peut pas permettre à un membre de dépenser trop.

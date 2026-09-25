@@ -84,6 +84,10 @@ Points are computed on the subtotal after discounts and before tax, never on tip
 
 The member spent some of the points before the void, and Factor4 does not allow a negative balance. The register handles this: it reclaims what is left of the balance with a negative adjustment and marks the earn **REVERSED** with the shortfall, so the POS reports `points_recovered` and `points_unrecovered`. If a merchant sees this message directly, the POS sent `allow_adjustment: false`. The merchant can still remove points manually with **Adjust** on the member.
 
+### Adjust refused with "does not match expected value for note (NOTE)"
+
+Factor4 accepts at most 50 characters in an adjustment note. HQ truncates the reason it sends and the merchant form is limited to 50, so this only appears from older code or a hand-built call; the full reason is still stored on the loyalty transaction.
+
 ### Balance in HQ differs from Factor4
 
 HQ caches the balance from the last call. A balance check on the POS refreshes it. Redemptions are always authorised by Factor4, so a stale cache cannot let a member overspend.
