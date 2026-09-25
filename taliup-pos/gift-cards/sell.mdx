@@ -1,38 +1,41 @@
 ---
 title: "Sell a gift card"
 sidebarTitle: "Sell"
-description: "Load value onto a new gift card and take payment for it on Taliup POS."
+description: "Load value onto a gift card and take payment for it on Taliup POS."
 keywords:
   - "sell gift card"
-  - "activate"
+  - "reload"
   - "load value"
 ---
 
-Selling a gift card is an ordinary sale. The customer pays for the card, and the value goes on once that payment is approved.
+Selling a gift card is an ordinary sale. The gift card goes into the cart as a line, the customer pays for it, and the value is loaded once the sale is paid.
 
 ## Before you start
 
 - Gift cards must be active for your location.
-- You need the physical card the customer is buying.
-- The customer pays with cash or a card. A gift card cannot buy another gift card.
+- You need the physical card the customer is buying, or the card they want to reload.
+- The customer pays with cash or a bank card. A gift card cannot buy another gift card.
 
 ## Sell a card
 
 <Steps>
-  <Step title="Start the gift card sale">
-    Choose the gift card option from the register.
+  <Step title="Open the sell sheet">
+    On the Menu or Cart tab, tap **Options** → **Gift Cards** → **Sell gift card**.
   </Step>
-  <Step title="Enter the amount">
-    Set the value the customer is buying.
+  <Step title="Choose the amount">
+    Pick **$25**, **$50** or **$100**, or **Other amount** for anything from $5 to $500.
   </Step>
   <Step title="Enter the card">
-    Swipe, scan, or key the card number.
+    Scan the card with the device's scanner or the camera icon, or key the card number.
+  </Step>
+  <Step title="Add it to the sale">
+    Tap **Add … gift card**. A line called **Gift card ****1234** appears in the cart, with no tax. You can add other items to the same sale.
   </Step>
   <Step title="Take payment">
-    Collect payment the way you normally would. Nothing is loaded onto the card until this is approved.
+    Collect payment with cash or a bank card. The gift card payment method is not offered for this sale. Nothing is loaded onto the card until the payment is approved.
   </Step>
   <Step title="Hand over the card and receipt">
-    Once the payment is approved the card is loaded. Give the customer the card and their receipt.
+    Once the sale is paid the card is loaded. The receipt shows **Gift card ****1234 loaded** with the amount. Give the customer the card and their receipt.
   </Step>
 </Steps>
 
@@ -40,30 +43,37 @@ Selling a gift card is an ordinary sale. The customer pays for the card, and the
   No tax is charged on a gift card itself. Tax applies later, when the customer spends it.
 </Note>
 
+### Reloading a card
+
+Selling value onto a card that already has a balance adds to it. The receipt then shows the amount loaded and the new balance.
+
 ## If loading the card fails
 
-If the customer's payment is approved but the card does not load, the POS tells you and offers to try again. The customer has paid, so do not send them away with an unloaded card.
+The load happens right after the sale is paid. If the processor cannot be reached or refuses the card, the POS tells you and keeps the load for a retry. The customer has paid, so do not send them away with an unloaded card.
 
 <Steps>
   <Step title="Retry">
-    Use the retry option. Retrying is safe and will not load the card twice or charge again.
+    Tap **Options** → **Gift Cards** → **Retry gift card load**. Retrying is safe and will not load the card twice.
   </Step>
   <Step title="Check the balance">
     If you are unsure whether it worked, [check the balance](/taliup-pos/gift-cards/balance) on the card.
   </Step>
   <Step title="If it still fails">
-    Refund the customer's payment and try a different card. Tell a manager, who can check the card in Taliup HQ.
+    Refund the customer's payment from **Transactions** and try a different card. Tell a manager, who can check the card in Taliup HQ.
   </Step>
 </Steps>
+
+A receipt printed before the load answered says **Pending** on the gift card line; one printed after a failed load says **Not loaded**.
 
 ## Troubleshooting
 
 | Situation | What to check |
 | --- | --- |
-| No gift card option | Gift cards are not active for your location, or the device is not registered |
-| Card rejected | Confirm the number. A card already active cannot be sold again as new |
-| Payment approved, card not loaded | Use retry, then check the balance before letting the customer leave |
-| Customer wants to pay with a gift card | Not allowed. Take cash or a card instead |
+| No **Gift Cards** section in Options | Gift cards are not active for your location, or you are on the Open Sale keypad tab |
+| Card rejected | Confirm the number. It must be a card from your own gift card stock |
+| Payment approved, card not loaded | Use **Retry gift card load**, then check the balance before letting the customer leave |
+| Customer wants to pay with a gift card | Not allowed for a gift card sale. Take cash or a bank card instead |
+| Gift card line removed from the cart | Nothing is loaded; add it again if the customer still wants the card |
 
 ## Related
 

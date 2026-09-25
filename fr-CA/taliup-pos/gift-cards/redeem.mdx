@@ -1,54 +1,54 @@
 ---
 title: "Encaisser une carte-cadeau"
 sidebarTitle: "Encaisser"
-description: "Accepter une carte-cadeau en paiement sur Taliup POS, y compris quand le solde ne couvre qu'une partie de la commande."
+description: "Accepter une carte-cadeau en paiement sur Taliup POS, y compris quand le solde ne couvre qu'une partie de la vente."
 keywords:
   - "encaisser"
-  - "paiement"
-  - "carte-cadeau"
+  - "paiement par carte-cadeau"
   - "paiement partiel"
+  - "fractionné"
 ---
 
-Une carte-cadeau est un mode de paiement, comme le comptant ou une carte bancaire. Vous la choisissez au moment d'encaisser une commande.
+Une carte-cadeau est un mode de paiement, comme le comptant ou la carte bancaire. Vous la choisissez sous **Autre** au moment d'encaisser une vente.
 
 ## Avant de commencer
 
-- Les cartes-cadeaux doivent être actives pour votre emplacement.
-- Vous avez besoin de la carte, ou du code d'une carte reçue par courriel.
+- Les cartes-cadeaux doivent être actives pour votre emplacement. Si la fonction est activée mais pas l'emplacement, une note sous **Autre** le dit à la place du bouton.
+- Vous avez besoin de la carte physique.
 
 ## Prendre un paiement par carte-cadeau
 
 <Steps>
   <Step title="Aller au paiement">
-    Saisissez la commande normalement et passez à l'écran de paiement.
+    Enregistrez la vente comme d'habitude et touchez **Payer**.
   </Step>
-  <Step title="Choisir carte-cadeau">
-    Sélectionnez l'option de paiement par carte-cadeau.
+  <Step title="Choisir Carte-cadeau">
+    Sous **Autre**, touchez **Carte-cadeau**. Une feuille s'ouvre avec le montant dû.
   </Step>
   <Step title="Saisir la carte">
-    Glissez, scannez ou saisissez le numéro. Si le client a une carte reçue par courriel, scannez son code ou tapez le code court.
+    Lisez la carte avec le lecteur de l'appareil ou l'icône de caméra, ou saisissez le numéro, puis touchez **Vérifier le solde**.
   </Step>
-  <Step title="Confirmer le montant">
-    Confirmez le montant à prélever sur la carte.
+  <Step title="Lire le solde">
+    La feuille affiche le solde de la carte. S'il couvre moins que la vente, elle indique aussi ce qu'il restera à payer.
   </Step>
-  <Step title="Terminer la vente">
-    Le PDV applique le paiement et imprime le reçu. S'il reste un montant dû, poursuivez avec un autre mode de paiement.
+  <Step title="Appliquer">
+    Touchez **Appliquer**. Le montant est pris sur la carte et la vente se poursuit. Le reçu imprime le solde restant sur la carte.
   </Step>
 </Steps>
 
-## Quand la carte ne couvre pas la commande
+## Quand la carte ne couvre pas la vente
 
-Si le solde est inférieur au montant dû, le PDV prélève ce qui est sur la carte et laisse le reste à payer. La commande reste ouverte jusqu'au paiement du solde.
+Si le solde est inférieur au montant dû, le PDV prend ce qu'il y a sur la carte et la vente se poursuit en paiement fractionné.
 
 <Steps>
   <Step title="Appliquer la carte">
-    Prenez le paiement par carte-cadeau. Le PDV applique le solde disponible.
+    Touchez **Appliquer** pour le solde disponible.
   </Step>
-  <Step title="Vérifier ce qui reste">
-    L'écran de paiement affiche le montant restant dû.
+  <Step title="Voir ce qu'il reste">
+    L'écran de paiement affiche le montant payé cette fois et le solde restant.
   </Step>
   <Step title="Prendre le reste">
-    Encaissez le reste comptant, par carte bancaire ou avec une autre carte-cadeau.
+    Touchez **Paiement suivant** et prenez le reste comptant, par carte bancaire ou avec une autre carte-cadeau.
   </Step>
 </Steps>
 
@@ -56,17 +56,23 @@ Si le solde est inférieur au montant dû, le PDV prélève ce qui est sur la ca
   Si un client ne sait pas combien il reste sur sa carte, [vérifiez le solde](/fr-CA/taliup-pos/gift-cards/balance) avant de commencer la vente.
 </Tip>
 
+## En mode Vente libre seulement
+
+Le mode Vente offre le même bouton **Carte-cadeau** sous **Autre**. Saisissez le montant, touchez **Payer** et suivez les étapes ci-dessus. On ne peut pas vendre de cartes dans ce mode.
+
 ## Dépannage
 
 | Situation | Quoi vérifier |
 | --- | --- |
+| Pas de bouton **Carte-cadeau** | Les cartes-cadeaux ne sont pas activées pour l'emplacement, l'appareil est hors ligne, ou la vente contient une carte-cadeau |
+| « Une carte-cadeau ne peut pas payer une carte-cadeau » | Le panier contient une carte-cadeau en vente. Prenez comptant ou carte bancaire pour cette vente |
 | Carte refusée | La carte est peut-être vide ou inactive. Vérifiez le solde |
-| Moins prélevé que prévu | La carte n'avait pas assez. Encaissez le reste autrement |
-| Code courriel non reconnu | Retapez le code court avec soin, ou scannez de nouveau |
+| Moins que prévu a été pris | La carte n'avait pas assez. Prenez le reste autrement |
+| La lecture ne fait rien | Assurez-vous que la feuille de carte-cadeau est ouverte; une lecture faite quand elle est fermée est ignorée pendant le paiement |
 | Réseau coupé pendant le paiement | Réessayez. La carte ne sera pas débitée deux fois |
-| Le client change d'avis après avoir payé | [Annulez le paiement par carte-cadeau](/fr-CA/taliup-pos/gift-cards/void-refund) |
+| Le client change d'avis après avoir payé | [Remboursez la vente sur la carte](/fr-CA/taliup-pos/gift-cards/void-refund) |
 
 ## Voir aussi
 
 - [Vérifier un solde](/fr-CA/taliup-pos/gift-cards/balance)
-- [Annuler ou rembourser](/fr-CA/taliup-pos/gift-cards/void-refund)
+- [Rembourser sur une carte-cadeau](/fr-CA/taliup-pos/gift-cards/void-refund)

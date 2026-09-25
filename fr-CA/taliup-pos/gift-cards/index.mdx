@@ -1,7 +1,7 @@
 ---
 title: "Cartes-cadeaux"
 sidebarTitle: "Aperçu"
-description: "Vendre, encaisser et vérifier des cartes-cadeaux sur Taliup POS, et ce qu'il faut avant de commencer."
+description: "Vendre, encaisser, vérifier et rembourser des cartes-cadeaux sur Taliup POS, et ce qu'il faut avant de commencer."
 keywords:
   - "cartes-cadeaux"
   - "vendre"
@@ -9,7 +9,7 @@ keywords:
   - "solde"
 ---
 
-Taliup POS peut vendre des cartes-cadeaux, les accepter en paiement, vérifier ce qu'il reste sur une carte, et annuler un paiement par carte-cadeau quand une commande change.
+Taliup POS vend des cartes-cadeaux physiques, les accepte en paiement, affiche ce qu'il reste sur une carte, et remet l'argent sur la carte quand une vente payée avec elle est remboursée.
 
 <Note>
   Les cartes-cadeaux exigent une version de Taliup POS qui les prend en charge. Si vous ne voyez pas les options de cartes-cadeaux sur votre appareil, il est sur une version antérieure.
@@ -21,9 +21,21 @@ Taliup POS peut vendre des cartes-cadeaux, les accepter en paiement, vérifier c
 
 - Les cartes-cadeaux doivent être **actives pour votre emplacement**. Un gestionnaire les active dans Taliup HQ. Voir [Cartes-cadeaux dans le portail marchand](/fr-CA/taliup-hq/features/gift-cards).
 - Votre appareil doit être enregistré pour les cartes-cadeaux. Les terminaux ajoutés après l'activation le sont automatiquement.
-- Vous avez besoin de la carte physique pour la plupart des actions.
+- Vous avez besoin de la carte physique. Elle se lit avec le lecteur de l'appareil ou la caméra, ou se saisit au clavier.
 
-Si les options manquent, l'emplacement n'est pas encore actif ou votre appareil n'est pas enregistré. Un gestionnaire peut vérifier les deux dans Taliup HQ.
+Si la fonction est activée mais que l'emplacement ne l'est pas encore, l'écran de paiement l'indique sous **Autre** au lieu d'offrir la carte-cadeau. Si rien n'apparaît du tout, la fonction n'est pas activée pour le marchand.
+
+---
+
+## Où la trouver
+
+| Où | Quoi |
+| --- | --- |
+| Caisse → **Options** → **Cartes-cadeaux** | **Vendre une carte-cadeau**, **Solde de carte-cadeau**, et **Réessayer le chargement** quand un chargement est en attente |
+| Écran de paiement → **Autre** → **Carte-cadeau** | Payer avec une carte-cadeau |
+| Accueil → **Transactions** → la vente par carte-cadeau → **Retour** | Rembourser sur la carte qui a payé |
+
+Les entrées d'Options sont sur les onglets Menu et Panier, pas sur le clavier de vente libre. En mode Vente libre seulement, la carte-cadeau est offerte comme mode de paiement, mais on ne peut pas y vendre de cartes.
 
 ---
 
@@ -31,24 +43,24 @@ Si les options manquent, l'emplacement n'est pas encore actif ou votre appareil 
 
 | Action | Quand l'utiliser |
 | --- | --- |
-| [Vendre une carte-cadeau](/fr-CA/taliup-pos/gift-cards/sell) | Un client achète une carte-cadeau |
+| [Vendre une carte-cadeau](/fr-CA/taliup-pos/gift-cards/sell) | Un client achète ou recharge une carte-cadeau |
 | [Encaisser une carte-cadeau](/fr-CA/taliup-pos/gift-cards/redeem) | Un client paie avec une carte-cadeau |
 | [Vérifier un solde](/fr-CA/taliup-pos/gift-cards/balance) | Un client demande ce qu'il reste sur sa carte |
-| [Annuler ou rembourser](/fr-CA/taliup-pos/gift-cards/void-refund) | Une commande a changé après l'usage d'une carte |
+| [Rembourser sur une carte-cadeau](/fr-CA/taliup-pos/gift-cards/void-refund) | Une vente payée par carte-cadeau est remboursée |
 
 ---
 
 ## Comment se comportent les cartes-cadeaux
 
-Quelques points utiles à connaître avant de les utiliser au comptoir.
+**Vendre et encaisser sont deux choses différentes.** Vendre une carte est une vente ordinaire que le client paie comptant ou par carte bancaire. L'encaisser, c'est utiliser la carte-cadeau comme mode de paiement sur une vente.
 
-**Vendre et encaisser sont deux choses différentes.** Vendre une carte est une vente ordinaire que le client paie comptant ou par carte. L'encaisser, c'est utiliser la carte-cadeau comme mode de paiement sur la commande de quelqu'un d'autre.
+**Une carte n'est chargée qu'après le paiement du client.** Quand vous vendez une carte-cadeau, la valeur y est placée une fois la vente payée, jamais avant. Le reçu indique si le chargement a réussi.
 
-**Une carte n'est chargée qu'après le paiement du client.** Quand vous vendez une carte-cadeau, la valeur y est placée une fois le paiement approuvé, jamais avant.
+**Une carte-cadeau ne peut pas acheter une carte-cadeau.** Tant qu'une ligne de carte-cadeau est dans le panier, le mode de paiement carte-cadeau est masqué et une note sous **Autre** l'explique.
 
-**Une carte-cadeau peut couvrir une partie d'une commande.** Si le solde est inférieur au montant dû, le PDV applique ce qui est disponible et laisse le reste à un autre mode de paiement.
+**Une carte-cadeau peut couvrir une partie d'une vente.** Si le solde est inférieur au montant dû, le PDV prend ce qui est disponible et poursuit en paiement fractionné pour le reste.
 
-**Les soldes sont détenus par le fournisseur.** Le solde affiché est lu en direct lors de l'utilisation ou de la vérification : il est donc exact même si la carte a servi à un autre de vos emplacements.
+**Les soldes sont détenus par le fournisseur.** Le solde affiché est lu en direct lors de l'utilisation ou de la vérification : il est donc exact même si la carte a servi à un autre de vos emplacements. Le reçu imprime le solde restant après chaque paiement par carte-cadeau.
 
 **Réessayer est sécuritaire.** Si le réseau tombe et que vous ne savez pas si l'opération a passé, réessayer ne charge ni ne débite une carte deux fois.
 

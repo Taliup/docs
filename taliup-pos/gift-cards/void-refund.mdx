@@ -1,79 +1,43 @@
 ---
-title: "Void or refund a gift card"
-sidebarTitle: "Void and refund"
-description: "Reverse a gift card payment, or put value back on a card when a customer returns something."
+title: "Refund onto a gift card"
+sidebarTitle: "Refund"
+description: "Return money to the gift card that paid for a sale when the sale is refunded."
 keywords:
-  - "void"
   - "refund"
   - "return"
+  - "void"
   - "gift card"
 ---
 
-There are two ways to move value back onto a gift card, and they are not interchangeable.
-
-| Action | Use it when |
-| --- | --- |
-| **Void** | Undoing a gift card payment you just took, before the day is closed |
-| **Refund** | A customer is returning goods and you are putting the value back on a card |
-
-A void cancels a payment that should not have happened. A refund is a new movement of money that records the return properly.
+A sale paid with a gift card is refunded like any other sale, from **Transactions**. The money goes back onto the card that paid. You do not need the card in hand.
 
 ---
 
-## Void a gift card payment
-
-Use this when the order was wrong, the customer changed their mind, or another payment on the same order failed.
+## Refund a gift card payment
 
 <Steps>
   <Step title="Open the payment">
-    Go to Home → **Transactions**, find the gift card payment, and open it.
+    Go to Home → **Transactions**, find the **GIFT CARD** payment, and open it.
   </Step>
-  <Step title="Void it">
-    Choose **Void** and confirm.
+  <Step title="Choose Return">
+    Tap **Return**, then **Refund all** or **Refund amount** for a partial refund.
   </Step>
-  <Step title="Check the balance">
-    The value goes back on the card straight away. [Check the balance](/taliup-pos/gift-cards/balance) if the customer wants to see it.
+  <Step title="Confirm">
+    The value goes back onto the same card straight away and the refund receipt prints. The card's new balance is shown on screen.
   </Step>
 </Steps>
 
 <Note>
-  A void puts the money back on the same card it came from. To give the value to a different card, refund instead.
+  A refund always returns to the card that paid. Putting the value on a different card, or refunding a cash sale onto a gift card, is not supported.
 </Note>
 
 ---
 
-## Refund onto a gift card
+## What the POS enforces
 
-Use this when the customer is bringing goods back.
-
-<Steps>
-  <Step title="Start the return">
-    Open the original order or start a return as you normally would.
-  </Step>
-  <Step title="Choose gift card">
-    Pick the gift card as where the refund goes.
-  </Step>
-  <Step title="Enter the card">
-    Swipe, scan, or key the card. It can be the card they paid with or a different one.
-  </Step>
-  <Step title="Confirm">
-    Confirm the amount. The value goes onto the card and the receipt prints.
-  </Step>
-</Steps>
-
----
-
-## Which one to use
-
-| Situation | Use |
-| --- | --- |
-| Rang up the wrong order, nothing has left the store | Void |
-| The card paid part of an order and the rest failed | Void |
-| Customer returns an item days later | Refund |
-| Customer wants a refund put on a gift card instead of their bank card | Refund |
-| The day has already been closed | Refund |
-
-If you are unsure, a void is the safer choice while the payment is recent, because it undoes the original rather than adding a second record.
+- A sale cannot be refunded for more than the gift card paid. After a full refund, **Return** is no longer offered on that payment; after a partial one, only the remainder can be refunded.
+- A sale paid partly by gift card and partly another way is refunded payment by payment: refund the gift card payment onto the card, and the other payment the way it was taken.
+- Refunding a sale that sold a gift card takes the customer's cash or bank card payment back; it does not unload the card. Tell a manager, who can adjust the card in Taliup HQ.
 
 ---
 
@@ -81,11 +45,10 @@ If you are unsure, a void is the safer choice while the payment is recent, becau
 
 | Situation | What to check |
 | --- | --- |
-| No **Void** option | The payment may be too old. Refund instead |
-| Void declined | Check the balance, then refund instead and tell a manager |
-| Refund declined | Confirm the card is active and not deactivated |
-| Voided but the customer says the balance is unchanged | Check the balance again. It is read live and is the accurate figure |
-| Not sure whether the void went through | Check the balance before trying again |
+| No **Return** option | The payment was already refunded in full |
+| Refund declined | Confirm the card is still active. A manager can check it in Taliup HQ |
+| Customer says the balance is unchanged | [Check the balance](/taliup-pos/gift-cards/balance). It is read live and is the accurate figure |
+| Not sure whether the refund went through | Open the payment again. A refunded payment is marked **Refunded** in the list |
 
 ---
 

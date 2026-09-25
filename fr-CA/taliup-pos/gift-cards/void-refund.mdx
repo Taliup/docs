@@ -1,79 +1,43 @@
 ---
-title: "Annuler ou rembourser une carte-cadeau"
-sidebarTitle: "Annulation et remboursement"
-description: "Annuler un paiement par carte-cadeau, ou remettre une valeur sur une carte lors d'un retour."
+title: "Rembourser sur une carte-cadeau"
+sidebarTitle: "Rembourser"
+description: "Remettre l'argent sur la carte-cadeau qui a payé une vente quand cette vente est remboursée."
 keywords:
-  - "annuler"
   - "rembourser"
   - "retour"
+  - "annuler"
   - "carte-cadeau"
 ---
 
-Il y a deux façons de remettre une valeur sur une carte-cadeau, et elles ne sont pas interchangeables.
-
-| Action | Quand l'utiliser |
-| --- | --- |
-| **Annulation** | Défaire un paiement par carte-cadeau que vous venez de prendre, avant la fermeture de la journée |
-| **Remboursement** | Un client retourne de la marchandise et vous remettez la valeur sur une carte |
-
-Une annulation efface un paiement qui n'aurait pas dû avoir lieu. Un remboursement est un nouveau mouvement d'argent qui consigne correctement le retour.
+Une vente payée par carte-cadeau se rembourse comme toute autre vente, depuis **Transactions**. L'argent retourne sur la carte qui a payé. Vous n'avez pas besoin de la carte en main.
 
 ---
 
-## Annuler un paiement par carte-cadeau
-
-À utiliser quand la commande était erronée, que le client a changé d'avis, ou qu'un autre paiement sur la même commande a échoué.
+## Rembourser un paiement par carte-cadeau
 
 <Steps>
   <Step title="Ouvrir le paiement">
-    Allez à Accueil → **Transactions**, trouvez le paiement par carte-cadeau et ouvrez-le.
+    Allez à Accueil → **Transactions**, trouvez le paiement **CARTE-CADEAU** et ouvrez-le.
   </Step>
-  <Step title="Annuler">
-    Choisissez **Annuler** et confirmez.
+  <Step title="Choisir Retour">
+    Touchez **Retour**, puis **Tout rembourser** ou **Rembourser un montant** pour un remboursement partiel.
   </Step>
-  <Step title="Vérifier le solde">
-    La valeur retourne immédiatement sur la carte. [Vérifiez le solde](/fr-CA/taliup-pos/gift-cards/balance) si le client veut le voir.
+  <Step title="Confirmer">
+    La valeur retourne immédiatement sur la même carte et le reçu de remboursement s'imprime. Le nouveau solde de la carte s'affiche à l'écran.
   </Step>
 </Steps>
 
 <Note>
-  Une annulation remet l'argent sur la même carte que celle d'où il provenait. Pour remettre la valeur sur une autre carte, faites plutôt un remboursement.
+  Un remboursement retourne toujours sur la carte qui a payé. Placer la valeur sur une autre carte, ou rembourser une vente comptant sur une carte-cadeau, n'est pas pris en charge.
 </Note>
 
 ---
 
-## Rembourser sur une carte-cadeau
+## Ce que le PDV impose
 
-À utiliser quand le client rapporte de la marchandise.
-
-<Steps>
-  <Step title="Démarrer le retour">
-    Ouvrez la commande d'origine ou démarrez un retour comme à l'habitude.
-  </Step>
-  <Step title="Choisir carte-cadeau">
-    Sélectionnez la carte-cadeau comme destination du remboursement.
-  </Step>
-  <Step title="Saisir la carte">
-    Glissez, scannez ou saisissez la carte. Ce peut être celle qui a servi au paiement ou une autre.
-  </Step>
-  <Step title="Confirmer">
-    Confirmez le montant. La valeur est placée sur la carte et le reçu s'imprime.
-  </Step>
-</Steps>
-
----
-
-## Laquelle choisir
-
-| Situation | À utiliser |
-| --- | --- |
-| Mauvaise commande saisie, rien n'a quitté le commerce | Annulation |
-| La carte a payé une partie et le reste a échoué | Annulation |
-| Le client rapporte un article quelques jours plus tard | Remboursement |
-| Le client veut son remboursement sur une carte-cadeau plutôt que sur sa carte bancaire | Remboursement |
-| La journée est déjà fermée | Remboursement |
-
-En cas de doute, l'annulation est le choix le plus sûr tant que le paiement est récent, car elle défait l'original au lieu d'ajouter une seconde écriture.
+- Une vente ne peut pas être remboursée pour plus que ce que la carte-cadeau a payé. Après un remboursement complet, **Retour** n'est plus offert sur ce paiement; après un remboursement partiel, seul le reste peut être remboursé.
+- Une vente payée en partie par carte-cadeau et en partie autrement se rembourse paiement par paiement : le paiement par carte-cadeau sur la carte, et l'autre paiement de la façon dont il a été pris.
+- Rembourser une vente qui a vendu une carte-cadeau reprend le paiement comptant ou par carte bancaire du client; cela ne décharge pas la carte. Avisez un gestionnaire, qui peut ajuster la carte dans Taliup HQ.
 
 ---
 
@@ -81,11 +45,10 @@ En cas de doute, l'annulation est le choix le plus sûr tant que le paiement est
 
 | Situation | Quoi vérifier |
 | --- | --- |
-| Aucune option **Annuler** | Le paiement est peut-être trop ancien. Faites un remboursement |
-| Annulation refusée | Vérifiez le solde, faites plutôt un remboursement et avisez un gestionnaire |
-| Remboursement refusé | Confirmez que la carte est active et non désactivée |
-| Annulé mais le client dit que le solde n'a pas changé | Vérifiez le solde de nouveau. Il est lu en direct et fait foi |
-| Incertain que l'annulation soit passée | Vérifiez le solde avant de réessayer |
+| Pas d'option **Retour** | Le paiement a déjà été remboursé en entier |
+| Remboursement refusé | Vérifiez que la carte est toujours active. Un gestionnaire peut la vérifier dans Taliup HQ |
+| Le client dit que le solde n'a pas changé | [Vérifiez le solde](/fr-CA/taliup-pos/gift-cards/balance). Il est lu en direct et fait foi |
+| Pas certain que le remboursement a passé | Rouvrez le paiement. Un paiement remboursé est marqué **Remboursé** dans la liste |
 
 ---
 
