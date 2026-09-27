@@ -120,6 +120,7 @@ Le PDV ne parle jamais à Factor4. Il appelle Taliup HQ, qui exige la fonction `
 | Point d'accès | Rôle |
 | --- | --- |
 | `POST /api/entity/{entity}/loyalty/lookup` | Trouver des clients par téléphone, courriel ou nom, avec leur adhésion |
+| `POST /api/entity/{entity}/loyalty/identify` | Ce qu'est un code lu : `member`, `card` (carte du lot non attribuée), `retired_card`, `gift_card` ou `unknown`. Les préfixes et séparateurs du lecteur sont retirés; les numéros cadeau et fidélité sont distingués par les registres de HQ |
 | `POST /api/entity/{entity}/loyalty/enroll` | Inscrire un client, sans carte ou avec un numéro de carte physique |
 | `POST /api/entity/{entity}/loyalty/balance` | Lire un membre, avec rafraîchissement facultatif depuis Factor4 |
 | `POST /api/entity/{entity}/loyalty/earn` | Attribuer des points pour un montant admissible |

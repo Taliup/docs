@@ -120,6 +120,7 @@ The POS never talks to Factor4. It calls Taliup HQ, which requires the `loyalty`
 | Endpoint | Purpose |
 | --- | --- |
 | `POST /api/entity/{entity}/loyalty/lookup` | Find clients by phone, email, or name, with membership |
+| `POST /api/entity/{entity}/loyalty/identify` | What a scanned code is: `member`, `card` (unassigned pool card), `retired_card`, `gift_card`, or `unknown`. Scanner prefixes and separators are stripped; gift and loyalty numbers are told apart by HQ's records |
 | `POST /api/entity/{entity}/loyalty/enroll` | Enrol a client, cardless or with a physical card number |
 | `POST /api/entity/{entity}/loyalty/balance` | Read a member, optionally refreshing from Factor4 |
 | `POST /api/entity/{entity}/loyalty/earn` | Award points for an eligible amount |
