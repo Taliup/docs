@@ -119,6 +119,8 @@ Members get a public card page at `/loyalty/card/{token}` and, when the platform
 | `APPLE_WWDR_CERTIFICATE_PATH` | Apple's WWDR G4 intermediate as PEM; default `storage/app/wallet/AppleWWDRCAG4.pem` |
 | `GOOGLE_WALLET_ISSUER_ID` | The issuer id from the Google Pay & Wallet Console |
 | `GOOGLE_WALLET_SERVICE_ACCOUNT_PATH` | JSON key of a service account with the Wallet API enabled and added to the issuer; default `storage/app/wallet/google-service-account.json` |
+| `POSTMARK_LOYALTY_CARD_TEMPLATE_ID` | The Postmark template that renders the "Your card" email (default `48046711`, alias `loyalty-card`) |
+| `POSTMARK_GIFT_CARD_TEMPLATE_ID` | The Postmark template that renders the gift card email (default `48046712`, alias `gift-card-issued`) |
 
 Without the Apple or Google settings the card page simply omits that wallet's button. Both passes follow the balance: Google objects are updated through the Wallet API after each earn, redemption or adjustment; Apple passes register with HQ's pass web service (`/api/passes/v1/…`) when added, receive a silent push over APNs when the balance changes, and fetch the fresh pass. Apple only registers with an HTTPS web service, so on a development HQ served over HTTP the phone needs Settings › Developer › PassKit Testing › Allow HTTP Services. The pass uses the merchant's HQ logo when it has one, Taliup's otherwise. New Google issuer accounts start in demo mode: only the account's own users and listed testers can save a pass until Google grants publishing access. The QR on the card page and on both passes is the card page URL: a phone camera opens the card, the register reads the token inside it.
 
