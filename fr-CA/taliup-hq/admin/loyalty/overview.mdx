@@ -37,8 +37,8 @@ Quand un marchand paie pour un emplacement, Taliup appelle l'API admin de Factor
   <Step title="Un type de valeur Points sur le programme">
     Un nouveau programme Factor4 n'a aucun type de valeur; aucun point ne peut donc y être émis. L'activation ajoute un type **Points** (0 décimale, plafond de solde `LOYALTY_POINTS_BALANCE_MAX`, plafond par transaction `LOYALTY_POINTS_TRANSACTION_MAX`). Le programme appartient à l'emplacement Factor4 indépendant de Taliup (`FACTOR4_ADMIN_<ENV>_PRIMARY_LOCATION_ID`), car Factor4 ne génère des jeux de cartes que pour les programmes d'emplacements indépendants; l'emplacement (dépendant) du marchand y est lié.
   </Step>
-  <Step title="Un lot de numéros de carte virtuels">
-    Un ensemble de cartes est créé sous le programme avec `LOYALTY_CARD_POOL_SIZE` numéros, et ces numéros sont importés dans Taliup comme comptes disponibles. Un membre en reçoit un à l'inscription. Une tâche quotidienne (`factor4:replenish-loyalty-card-pools`, 5 h 15, heure de Toronto) crée un nouvel ensemble pour tout programme actif dont le lot est passé sous `LOYALTY_CARD_POOL_LOW_WATERMARK`; une activation ultérieure fait la même vérification.
+  <Step title="Un lot de numéros de carte numériques">
+    Un jeu de cartes nommé « … Loyalty Digital N » est créé sous le programme avec `LOYALTY_CARD_POOL_SIZE` numéros, importés dans Taliup comme comptes numériques (`source = virtual`). Les inscriptions sans carte en prennent un; ils ne sont jamais imprimés. Une tâche quotidienne (`factor4:replenish-loyalty-card-pools`, 5 h 15 heure de Toronto) crée un autre jeu pour tout programme actif dont le lot numérique est passé sous `LOYALTY_CARD_POOL_LOW_WATERMARK`; une activation ultérieure fait la même vérification. Les cartes imprimées forment un jeu distinct (« … Loyalty Cards N », `source = card_set`) commandé explicitement pour impression par Factor4; ces numéros ne sont attribués que lorsqu'une caisse en lit un.
   </Step>
 </Steps>
 

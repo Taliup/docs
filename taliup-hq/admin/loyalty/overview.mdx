@@ -37,8 +37,8 @@ When a merchant pays for a location, Taliup calls the Factor4 admin API and ensu
   <Step title="A Points value type on the program">
     A new Factor4 program has no value types, so points cannot be issued to it. Activation adds a **Points** type (0 decimals, balance cap `LOYALTY_POINTS_BALANCE_MAX`, per-transaction cap `LOYALTY_POINTS_TRANSACTION_MAX`). The program is owned by Taliup's independent Factor4 location (`FACTOR4_ADMIN_<ENV>_PRIMARY_LOCATION_ID`) because Factor4 only generates card sets for programs on independent locations; the merchant's own (dependent) location is linked to it.
   </Step>
-  <Step title="A pool of virtual card numbers">
-    A card set is created under the program with `LOYALTY_CARD_POOL_SIZE` numbers, and the numbers are pulled into Taliup as available accounts. Members are assigned one at enrolment. A daily job (`factor4:replenish-loyalty-card-pools`, 05:15 Toronto time) creates another set for any active program whose pool has fallen below `LOYALTY_CARD_POOL_LOW_WATERMARK`; a later activation does the same check.
+  <Step title="A pool of digital card numbers">
+    A card set named "… Loyalty Digital N" is created under the program with `LOYALTY_CARD_POOL_SIZE` numbers, and the numbers are pulled into Taliup as digital accounts (`source = virtual`). Cardless enrolments take one of these; they are never printed. A daily job (`factor4:replenish-loyalty-card-pools`, 05:15 Toronto time) creates another set for any active program whose digital pool has fallen below `LOYALTY_CARD_POOL_LOW_WATERMARK`; a later activation does the same check. Printed cards are a separate card set ("… Loyalty Cards N", `source = card_set`) ordered explicitly for Factor4 to print; those numbers are assigned only when a register scans one.
   </Step>
 </Steps>
 

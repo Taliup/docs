@@ -123,11 +123,12 @@ The preview line under the form shows what a 100.00 purchase earns under your cu
 
 ## Card numbers
 
-Every member needs a Factor4 account number. Taliup requests a batch of numbers from Factor4 when the program is created and tops the pool up automatically as it runs low, so cardless enrolment normally needs nothing from you.
+Every member needs a Factor4 account number, and Taliup keeps two kinds apart:
 
-If you hand out physical loyalty cards, add their numbers under **Card Numbers**, one per line, as `number` or `number:pin`. Numbers already in the pool or already held by a member are skipped.
+- **Printed cards** are the plastic in your drawer. They are only ever assigned when a cashier scans or keys one at enrolment, so a card can never be bound to a member who did not receive it. Factor4 prints these from a card set Taliup orders for you; numbers you add yourself under **Cards** (one per line, as `number` or `number:pin`) count as printed stock too. Numbers already in the pool or already held by a member are skipped.
+- **Digital numbers** go to members who do not take a card. Taliup requests a batch from Factor4 when the program is created and tops them up automatically as they run low, so digital enrolment needs nothing from you. A digital member still gets the card page, the email and the wallet passes.
 
-A cashier can also link a specific physical card during enrolment by entering its number.
+The **Printed cards in stock** tile shows how many cards are left to hand out, with the digital count beneath it.
 
 ---
 
