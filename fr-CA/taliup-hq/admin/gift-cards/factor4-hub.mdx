@@ -1,0 +1,123 @@
+---
+title: "Centre des comptes Factor4"
+sidebarTitle: "Centre des comptes Factor4"
+description: "Une vue en lecture seule de chaque compte de cartes-cadeaux Factor4 configuré par Taliup, avec terminaux, programmes, facturation et santé."
+icon: "table-list"
+keywords:
+  - "Factor4"
+  - "comptes"
+  - "cartes-cadeaux"
+  - "santé"
+  - "synchronisation"
+---
+
+Le Centre des comptes Factor4 est l'endroit unique pour voir chaque compte de cartes-cadeaux configuré par Taliup. Servez-vous-en pour confirmer qu'un marchand est bien configuré, comprendre pourquoi une activation semble incorrecte, et vérifier ce que Factor4 détient actuellement.
+
+Ouvrez **Factor4 Hub** dans la barre latérale admin.
+
+<Note>
+  Le centre est en lecture seule. Il lit chez Factor4 et dans Taliup, et ne modifie rien ni d'un côté ni de l'autre. Les marchands activent et annulent eux-mêmes.
+</Note>
+
+---
+
+## Accès
+
+Le centre exige la permission **Factor4Hub**, accordée aux super administrateurs. Ce que vous voyez est limité à votre organisation : un admin ISO ne voit que ses propres marchands.
+
+---
+
+## Lire la liste
+
+Chaque ligne est un emplacement Factor4, rattaché à l'entité et à l'emplacement Taliup correspondants.
+
+| Colonne | Ce qu'elle indique |
+| --- | --- |
+| **Marchand et emplacement** | L'entité et l'emplacement Taliup, quand la correspondance est possible |
+| **Emplacement Factor4** | L'identifiant détenu par Factor4 |
+| **Statut** | Le statut rapporté par Factor4, par exemple Enabled ou Suspended |
+| **Santé** | Si le compte semble complet : identifiants conservés, terminaux associés, programme lié, et les accès réellement payés par le magasin (cadeau, fidélité ou les deux) accordés |
+| **Facturation** | L'état de l'abonnement cartes-cadeaux derrière l'activation |
+| **Fidélité** | Si le programme de fidélité du marchand est actif à cet emplacement, avec les membres actifs et les numéros de carte restants dans le lot d'inscription |
+
+La correspondance se fait par l'identifiant de référence que Taliup inscrit à la création. Un emplacement Factor4 créé en dehors de Taliup apparaîtra sans correspondance.
+
+### États de facturation
+
+| État | Signification |
+| --- | --- |
+| **Actif** | Un abonnement payé est en cours |
+| **Annulation planifiée** | Annulé, fonctionne jusqu'à la fin de la période payée |
+| **En attente** | Un paiement a été amorcé mais non complété |
+| **Suspendu** | Le paiement a échoué ou la période a pris fin |
+| **Annulé** | Terminé |
+| **Aucun** | Aucun abonnement trouvé pour cet emplacement |
+
+Les cartes-cadeaux et la fidélité sont facturées séparément. La ligne montre la facturation des cartes-cadeaux; le panneau de détails montre les deux.
+
+### États de la fidélité
+
+| État | Signification |
+| --- | --- |
+| **Fidélité active** | L'emplacement est lié au programme de fidélité du marchand et le programme est actif |
+| **Configuration en cours** | Le paiement a réussi, la configuration n'est pas terminée |
+| **Échec de configuration** | La configuration s'est arrêtée sur une erreur Factor4; le panneau de détails l'affiche |
+| **Programme suspendu** | Le programme du marchand est suspendu; aucun emplacement ne peut faire gagner ni échanger de points |
+| **Fidélité suspendue** | L'abonnement fidélité de cet emplacement a pris fin |
+| **Non activée ici** | Le marchand a un programme mais cet emplacement ne l'a jamais joint |
+| **Non activée** | Le marchand n'a jamais activé la fidélité |
+
+---
+
+## Sélecteur d'environnement
+
+Le centre affiche un environnement à la fois. Basculez entre **test** et **live** en haut de la page.
+
+Un emplacement configuré dans les deux environnements apparaît une fois par environnement, avec des identifiants Factor4 et des cartes distincts. Si un marchand signale des cartes manquantes, vérifiez d'abord que vous regardez le bon environnement.
+
+Les environnements bloqués par la politique de la plateforme ne sont pas sélectionnables. Voir [Aperçu](/fr-CA/taliup-hq/admin/gift-cards/overview#environnements-test-et-live).
+
+---
+
+## Détails d'un compte
+
+Cliquez sur une ligne pour ouvrir le panneau de détails. Il interroge Factor4 en direct et affiche :
+
+- **L'emplacement** tel que Factor4 le détient, avec l'adresse et le statut
+- **Les terminaux** enregistrés à l'emplacement, avec leurs identifiants PDV
+- **Les programmes** liés à l'emplacement, cadeau et fidélité, avec les permissions que chaque lien accorde (Vendre, Encaisser, Solde, Gagner, Dépenser)
+- **La facturation** de l'abonnement cartes-cadeaux
+- **La fidélité** : programme, identifiant de programme Factor4, état de configuration, lien de cet emplacement, règles, nombre de membres, points en circulation et numéros de carte disponibles, plus l'abonnement de **facturation fidélité**
+- **La configuration conservée**, y compris les identifiants que Taliup détient pour l'emplacement
+
+<Warning>
+  Le panneau de détails peut révéler les identifiants conservés. Traitez-les comme des secrets de production et ne les copiez pas hors du centre.
+</Warning>
+
+---
+
+## Synchronisation
+
+La liste est mise en cache quelques minutes pour que la page reste rapide. **Sync** force une relecture chez Factor4.
+
+Utilisez-la après l'activation d'un marchand, ou quand vous vérifiez un changement fait à l'instant du côté Factor4. Chaque synchronisation déclenche plusieurs appels : évitez de la répéter.
+
+---
+
+## À quoi sert le centre
+
+| Question | Où regarder |
+| --- | --- |
+| L'activation de ce marchand a-t-elle abouti ? | Santé et statut sur la ligne |
+| Pourquoi ce terminal ne peut-il pas encaisser ? | Les terminaux dans le panneau, en vérifiant l'identifiant PDV |
+| Le marchand paie-t-il encore ? | État de facturation, et facturation fidélité dans le panneau de détails |
+| Pourquoi un membre ne peut-il pas gagner de points dans ce magasin ? | Colonne Fidélité de la ligne; puces Gagner et Dépenser dans le panneau de détails |
+| Est-ce la configuration test ou production ? | Sélecteur d'environnement |
+| À quel emplacement Taliup ce compte correspond-il ? | Marchand et emplacement sur la ligne |
+
+---
+
+## Voir aussi
+
+- [Aperçu des cartes-cadeaux](/fr-CA/taliup-hq/admin/gift-cards/overview)
+- [Dépannage](/fr-CA/taliup-hq/admin/gift-cards/troubleshooting)

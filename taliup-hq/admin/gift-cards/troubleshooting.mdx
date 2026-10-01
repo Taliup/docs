@@ -1,0 +1,104 @@
+---
+title: "Gift Cards troubleshooting"
+sidebarTitle: "Troubleshooting"
+description: "Diagnose failed gift card activations, credential errors, terminal registration problems, and environment mismatches."
+icon: "wrench"
+keywords:
+  - "gift cards"
+  - "Factor4"
+  - "access denied"
+  - "activation failed"
+  - "troubleshooting"
+---
+
+Start in the [Factor4 Accounts Hub](/taliup-hq/admin/gift-cards/factor4-hub). It tells you whether the account exists, which environment it is in, and whether terminals and programs are linked.
+
+---
+
+## Activation failures
+
+### Access denied
+
+Factor4 rejected the admin credentials. Provisioning stopped, the merchant's payment was reversed, and nothing was created.
+
+Check, in order:
+
+1. **The right password is in the right variable.** There are two integration passwords on a Factor4 account. The admin one belongs with the client-level integration auth. Putting the location-level password here produces exactly this error.
+2. **All six admin credentials are set** for the environment being used. A blank value fails before the call is made.
+3. **The Admin API is enabled** for the client and your outbound address is permitted. Factor4 can allow transaction access while withholding admin access, which looks identical from our side.
+
+To separate our configuration from the account itself, have engineering call the Admin API directly with the same credentials. If a direct call is denied too, it is an account matter for Factor4, not a Taliup problem.
+
+### Credentials are incomplete
+
+The error names the missing fields. Fill them in for that environment and have the merchant retry.
+
+### Activation is blocked by policy
+
+Live provisioning is switched off in this environment. That is deliberate on staging. See [environments](/taliup-hq/admin/gift-cards/overview#test-and-live-environments).
+
+### Issuance refused with "Value code doesn't match CAD" (or USD)
+
+The merchant's Factor4 program has no Currency value type in that currency. Activation creates it; for a program created before that step existed, re-run the activation, which adds the missing type and leaves everything else in place.
+
+### The merchant was charged but has no gift cards
+
+This should not happen. A provisioning failure reverses the charge in the same request. If a merchant reports it, check the hub for a location with no health, then check their subscription state before issuing any refund.
+
+---
+
+## Terminal problems
+
+### A cashier cannot transact at one terminal
+
+Open the account detail in the hub and check the terminal list. Every Taliup terminal at the location should appear with its id as the Factor4 POS id.
+
+A terminal added after activation registers automatically, but a registration failure is only surfaced at the moment the terminal is created. If the terminal is missing, it needs to be registered again.
+
+### A terminal cannot be deleted
+
+Deletion is blocked when Factor4 will not suspend the matching terminal. This is intentional, so the two systems cannot drift apart. Resolve the Factor4 error, then delete again.
+
+---
+
+## Environment mismatches
+
+### The merchant sees no cards
+
+Confirm which environment their location is provisioned in, then confirm the same environment is selected in the hub. Cards issued in test do not exist in live.
+
+### A location appears twice
+
+A location provisioned in both environments has one record per environment. That is expected.
+
+---
+
+## Merchant-side symptoms
+
+| Symptom | Likely cause |
+| --- | --- |
+| Gift Cards missing from the sidebar | The feature is not on their plan |
+| Activate greyed out | The location has no terminal |
+| Stuck on Provisioning | Setup failed; check the hub for the account |
+| Card list empty after activating | Cards appear once they are issued; an empty list is normal at first |
+| Balance looks stale | Balances refresh when the card is used or checked |
+
+---
+
+## Escalating to Factor4
+
+Have this ready:
+
+- The Factor4 location id and the environment
+- The client id in use
+- The operation that failed and the exact message
+- The time of the attempt
+
+The hub gives you the first two. Engineering can pull the rest from the gift card transaction records, which store the outcome of every call including failures. Card numbers and passwords are redacted in those records, so they are safe to share.
+
+---
+
+## Related
+
+- [Gift Cards overview](/taliup-hq/admin/gift-cards/overview)
+- [Factor4 Accounts Hub](/taliup-hq/admin/gift-cards/factor4-hub)

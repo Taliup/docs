@@ -1,0 +1,124 @@
+---
+title: "Dépannage de la fidélité"
+sidebarTitle: "Dépannage"
+description: "Diagnostiquer les problèmes d'activation, d'inscription, de points et d'échange signalés par les marchands."
+icon: "wrench"
+keywords:
+  - "fidélité"
+  - "dépannage"
+  - "Factor4"
+  - "points"
+---
+
+Partez de la page **Fidélité** du marchand : les états des emplacements et l'erreur de configuration sous **Règles du programme** cernent la plupart des problèmes. L'emplacement Factor4 partagé est visible dans le [Centre des comptes Factor4](/fr-CA/taliup-hq/admin/gift-cards/factor4-hub).
+
+---
+
+## Activation
+
+### L'activation échoue avec « Access denied »
+
+L'API admin de Factor4 a refusé les identifiants client. Vérifiez les trois mêmes points que pour les cartes-cadeaux : le mot de passe admin est dans la variable admin, l'identifiant et le mot de passe d'initiateur correspondent à l'utilisateur Factor4, et l'adresse IP source est permise par Factor4. Le paiement a été annulé; le marchand peut réessayer dès que les identifiants fonctionnent.
+
+### Le programme affiche « failed »
+
+Ouvrez **Règles du programme** sur la page du marchand. La dernière erreur Factor4 y est affichée. Le marchand peut cliquer de nouveau sur **Activer** une fois la cause corrigée; la configuration reprend là où elle s'est arrêtée et réutilise ce qui a déjà été créé.
+
+### Le programme affiche « Card set generation is prohibited for dependent locations »
+
+Factor4 ne génère des jeux de cartes que pour les programmes appartenant à un emplacement *indépendant*. Les emplacements marchands créés par HQ via l'API d'administration sont *dépendants*; le programme doit donc appartenir à l'emplacement indépendant de Taliup, et l'emplacement marchand y est lié. HQ trouve lui-même cet emplacement indépendant (ou utilise `FACTOR4_ADMIN_<ENV>_PRIMARY_LOCATION_ID` s'il est défini); si l'erreur persiste, le client n'a aucun emplacement indépendant chez Factor4, et le soutien Factor4 doit le créer. Si un programme a déjà été créé avec l'emplacement marchand comme principal, déplacez-le avec un ProgramEdit sur `primaryLocationId`; la reprise n'exécute alors que l'étape du bassin de cartes.
+
+### Le programme affiche « is more than 12 characters long (parameter: crossRefId) »
+
+Factor4 limite le `crossRefId` d'un jeu de cartes à 12 caractères. HQ utilise `TLP-L<programme>-<jeu>`; une valeur plus longue n'apparaît que si elle a été remplacée dans la charge utile d'activation.
+
+### L'emplacement est Actif pour les cartes-cadeaux mais en Configuration en cours pour la fidélité
+
+L'emplacement Factor4 partagé existe; c'est l'étape du programme de fidélité, du lien ou du lot de cartes qui a échoué. L'erreur du programme indique laquelle. Reprendre l'activation n'exécute que les étapes manquantes.
+
+---
+
+## Inscription
+
+### Aucun numéro de carte disponible
+
+Le lot est vide. Il est rempli à partir d'un ensemble de cartes Factor4 à l'activation et renouvelé par la tâche quotidienne `factor4:replenish-loyalty-card-pools` dès qu'il passe sous le seuil bas. Lancez la commande avec `--dry-run` pour voir ce qu'elle ferait, ou avec `--program=<id>` pour renflouer un programme immédiatement. Demandez au marchand d'ajouter des numéros sous **Numéros de carte** en attendant, et vérifiez dans le centre que l'ensemble de cartes a été créé. Si le lot ne s'est jamais rempli, l'étape `CardSetAdd` ou `CardsView` a échoué chez Factor4.
+
+### La carte n'a pas pu être vérifiée chez Factor4
+
+L'inscription vérifie le numéro par une consultation avant de créer le membre. Un refus signifie que le numéro n'est pas un compte valide du programme de fidélité du marchand. Pour une carte physique, confirmez qu'elle appartient au programme de fidélité et non au programme de cartes-cadeaux.
+
+### Cette carte est déjà attribuée à un autre membre
+
+Chaque numéro de compte appartient à un seul membre. Retrouvez le membre existant par le numéro masqué dans la liste des membres.
+
+### Conflit de profil sur un membre
+
+Factor4 a refusé d'associer le téléphone du client parce que ce numéro figure déjà sur un autre compte **du programme du même marchand** : en général la même personne a été inscrite deux fois sous deux fiches client, ou deux clients partagent un numéro. Les points sont quand même attribués. La règle s'applique par programme; la même personne membre chez plusieurs marchands Taliup ne la déclenche jamais. Fusionnez ou corrigez les fiches client; le marqueur reste jusqu'à ce que le profil soit accepté.
+
+---
+
+## Points
+
+### Émission refusée avec « Value code doesn't match Points »
+
+Le programme Factor4 du marchand n'a pas de type de valeur **Points**. L'activation le crée (étape « Un type de valeur Points sur le programme »); si le programme a été créé avant l'existence de cette étape, relancez l'activation : elle ajoute le type manquant sans toucher au reste.
+
+### Inscription refusée avec « Activation Required »
+
+Les numéros virtuels d'un jeu de cartes sont inertes jusqu'à leur première émission. HQ les active automatiquement par une émission de zéro point lors de l'inscription; voir cette erreur à la caisse signifie que cette émission a elle-même échoué; consultez la transaction de fidélité enregistrée pour la tentative.
+
+### Toutes les transactions de la caisse échouent avec « Couldnt Be Processed » ou « Terminal Invalid »
+
+La configuration de l'emplacement porte la mauvaise identité de transaction. Les appels de la caisse doivent envoyer les **identifiants POS** (`idPos` Factor4) de l'emplacement et du terminal, le type d'initiateur `E` et un identifiant d'initiateur de type employé; les identifiants de l'API d'administration, le type `user` et le courriel administrateur sont refusés. L'activation les remplit correctement; pour une ligne configurée à la main, vérifiez `pos_location_id`, `pos_terminal_id`, `initiator_type` et `initiator_id` dans `factor4_location_configs`.
+
+### Les points n'ont pas été attribués
+
+Vérifiez, dans l'ordre : l'emplacement est **Actif** pour la fidélité, le client est inscrit, la vente atteint l'achat minimum, et le montant admissible a produit au moins un point selon la règle d'arrondi. Une vente qui rapporte zéro point n'enregistre rien.
+
+### Les points diffèrent de ce que le marchand attendait
+
+Les points sont calculés sur le sous-total après rabais et avant taxes, jamais sur les pourboires, les frais ou les taxes. Vérifiez l'arrondi; **Vers le bas** est la valeur par défaut.
+
+### Annulation refusée avec « Balance limit 0 exceeded »
+
+Le membre a dépensé une partie des points avant l'annulation, et Factor4 n'autorise pas un solde négatif. La caisse gère ce cas : elle reprend ce qui reste du solde par un ajustement négatif et marque le gain **REVERSED** avec le manque, de sorte que le PDV rapporte `points_recovered` et `points_unrecovered`. Si un marchand voit ce message directement, le PDV a envoyé `allow_adjustment: false`. Le marchand peut toujours retirer des points manuellement avec **Ajuster** sur le membre.
+
+### Ajustement refusé avec « does not match expected value for note (NOTE) »
+
+Factor4 accepte au plus 50 caractères dans la note d'un ajustement. HQ tronque la raison envoyée et le formulaire marchand est limité à 50, donc ce message ne vient que d'un ancien code ou d'un appel construit à la main; la raison complète reste enregistrée sur la transaction de fidélité.
+
+### Le solde dans HQ diffère de celui de Factor4
+
+HQ met en cache le solde du dernier appel. Une consultation du solde au PDV le rafraîchit. Les échanges sont toujours autorisés par Factor4, donc un cache périmé ne peut pas permettre à un membre de dépenser trop.
+
+---
+
+## Échange
+
+### Les récompenses s'échangent par tranches de N points
+
+Le membre a demandé un montant qui n'est pas une tranche entière. L'échange est arrondi vers le bas à des tranches entières; sous une tranche, rien n'est échangé. C'est voulu.
+
+### Points insuffisants
+
+Le solde en cache est inférieur aux points demandés. Rafraîchissez le solde au PDV; s'il est toujours insuffisant, le membre ne peut pas échanger autant.
+
+### Une récompense a dépassé le total de la commande
+
+Impossible. Le PDV plafonne l'échange au nombre de tranches qui tiennent dans le montant de la commande. Si un marchand signale le contraire, recueillez l'identifiant de commande et l'identifiant de transaction de fidélité.
+
+---
+
+## À recueillir pour le soutien
+
+- L'entité et l'emplacement, et l'environnement (test ou live)
+- L'identifiant d'emplacement Factor4 depuis le centre
+- Pour un problème de points : l'identifiant de commande, le numéro de compte masqué du membre et l'identifiant de transaction de fidélité affiché dans **Activité récente**
+- Le message exact vu par le marchand
+
+## Voir aussi
+
+- [Aperçu de la fidélité](/fr-CA/taliup-hq/admin/loyalty/overview)
+- [Dépannage des cartes-cadeaux](/fr-CA/taliup-hq/admin/gift-cards/troubleshooting)
+- [Centre des comptes Factor4](/fr-CA/taliup-hq/admin/gift-cards/factor4-hub)

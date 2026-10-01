@@ -1,0 +1,104 @@
+---
+title: "Dépannage des cartes-cadeaux"
+sidebarTitle: "Dépannage"
+description: "Diagnostiquer les échecs d'activation, les erreurs d'identifiants, les problèmes d'enregistrement de terminaux et les erreurs d'environnement."
+icon: "wrench"
+keywords:
+  - "cartes-cadeaux"
+  - "Factor4"
+  - "accès refusé"
+  - "échec d'activation"
+  - "dépannage"
+---
+
+Commencez par le [Centre des comptes Factor4](/fr-CA/taliup-hq/admin/gift-cards/factor4-hub). Il vous dit si le compte existe, dans quel environnement il se trouve, et si les terminaux et programmes sont bien liés.
+
+---
+
+## Échecs d'activation
+
+### Accès refusé
+
+Factor4 a rejeté les identifiants admin. La configuration s'est arrêtée, le paiement du marchand a été annulé et rien n'a été créé.
+
+Vérifiez, dans l'ordre :
+
+1. **Le bon mot de passe est dans la bonne variable.** Un compte Factor4 comporte deux mots de passe d'intégration. Celui de l'admin va avec le compte d'intégration de niveau client. Mettre celui de l'emplacement ici produit exactement cette erreur.
+2. **Les six identifiants admin sont remplis** pour l'environnement utilisé. Une valeur vide fait échouer l'appel avant même qu'il parte.
+3. **L'API admin est activée** pour le client et votre adresse sortante est autorisée. Factor4 peut permettre les transactions tout en refusant l'accès admin, ce qui est indiscernable de notre côté.
+
+Pour distinguer notre configuration du compte lui-même, demandez à l'équipe technique d'appeler l'API admin directement avec les mêmes identifiants. Si un appel direct est refusé aussi, c'est une question de compte à régler avec Factor4, pas un problème Taliup.
+
+### Identifiants incomplets
+
+Le message nomme les champs manquants. Remplissez-les pour cet environnement et demandez au marchand de réessayer.
+
+### Activation bloquée par la politique
+
+La configuration en production est désactivée dans cet environnement. C'est voulu en préproduction. Voir [les environnements](/fr-CA/taliup-hq/admin/gift-cards/overview#environnements-test-et-live).
+
+### Émission refusée avec « Value code doesn't match CAD » (ou USD)
+
+Le programme Factor4 du marchand n'a pas de type de valeur Devise dans cette devise. L'activation le crée; pour un programme créé avant l'existence de cette étape, relancez l'activation : elle ajoute le type manquant sans toucher au reste.
+
+### Le marchand a été facturé mais n'a pas de cartes-cadeaux
+
+Cela ne devrait pas arriver. Un échec de configuration annule le paiement dans la même requête. Si un marchand le signale, cherchez dans le centre un emplacement sans santé, puis vérifiez l'état de son abonnement avant d'émettre tout remboursement.
+
+---
+
+## Problèmes de terminaux
+
+### Le personnel ne peut pas transiger sur un terminal
+
+Ouvrez les détails du compte dans le centre et vérifiez la liste des terminaux. Chaque terminal Taliup de l'emplacement devrait y apparaître avec son identifiant comme identifiant PDV Factor4.
+
+Un terminal ajouté après l'activation s'enregistre automatiquement, mais un échec n'est signalé qu'au moment de la création du terminal. Si le terminal manque, il doit être enregistré de nouveau.
+
+### Impossible de supprimer un terminal
+
+La suppression est bloquée quand Factor4 refuse de suspendre le terminal correspondant. C'est intentionnel, pour que les deux systèmes ne divergent pas. Réglez l'erreur Factor4, puis supprimez de nouveau.
+
+---
+
+## Erreurs d'environnement
+
+### Le marchand ne voit aucune carte
+
+Confirmez dans quel environnement son emplacement est configuré, puis que le même environnement est sélectionné dans le centre. Les cartes émises en test n'existent pas en production.
+
+### Un emplacement apparaît deux fois
+
+Un emplacement configuré dans les deux environnements a un enregistrement par environnement. C'est normal.
+
+---
+
+## Symptômes côté marchand
+
+| Symptôme | Cause probable |
+| --- | --- |
+| Cartes-cadeaux absent de la barre latérale | La fonction n'est pas dans son plan |
+| Activer grisé | L'emplacement n'a aucun terminal |
+| Bloqué en Configuration en cours | La configuration a échoué ; vérifiez le compte dans le centre |
+| Liste de cartes vide après activation | Les cartes apparaissent une fois émises ; une liste vide est normale au début |
+| Solde qui semble périmé | Les soldes se rafraîchissent à l'utilisation ou à la vérification |
+
+---
+
+## Escalader à Factor4
+
+Ayez ceci sous la main :
+
+- L'identifiant d'emplacement Factor4 et l'environnement
+- L'identifiant client utilisé
+- L'opération qui a échoué et le message exact
+- L'heure de la tentative
+
+Le centre vous donne les deux premiers. L'équipe technique peut tirer le reste des enregistrements de transactions de cartes-cadeaux, qui conservent le résultat de chaque appel, y compris les échecs. Les numéros de carte et les mots de passe y sont masqués : ces enregistrements peuvent donc être partagés sans risque.
+
+---
+
+## Voir aussi
+
+- [Aperçu des cartes-cadeaux](/fr-CA/taliup-hq/admin/gift-cards/overview)
+- [Centre des comptes Factor4](/fr-CA/taliup-hq/admin/gift-cards/factor4-hub)

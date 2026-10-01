@@ -1,0 +1,67 @@
+---
+title: "Redeem points"
+sidebarTitle: "Redeem"
+description: "Apply a loyalty reward as a discount on an order in Taliup POS."
+keywords:
+  - "redeem points"
+  - "loyalty reward"
+  - "discount"
+---
+
+A reward is a discount taken off the order before tax. The customer pays the rest as usual.
+
+## Before you start
+
+- Loyalty must be active for your location.
+- The member must have enough points for at least one reward block.
+
+## Redeem a reward
+
+<Steps>
+  <Step title="Attach the member">
+    Open **Loyalty** on the order and pick the member. Their balance and the rewards available are shown.
+  </Step>
+  <Step title="Choose the reward">
+    Pick how many reward blocks to use, or enter the discount amount you want. The POS rounds down to whole blocks and never exceeds the order total.
+  </Step>
+  <Step title="Confirm">
+    The processor deducts the points and the discount appears on the order. Tax is recalculated on the reduced subtotal.
+  </Step>
+  <Step title="Take payment">
+    Take the remaining amount by cash, bank card, or gift card.
+  </Step>
+</Steps>
+
+## Reward blocks
+
+Rewards come in fixed blocks set by your manager, for example 100 points for 5.00. A member with 250 points can redeem 100 or 200 points. The remaining 50 stay on their account.
+
+If the order is smaller than a reward, the POS offers only the blocks that fit. It will not create a negative total.
+
+<Tip>
+  A member can redeem and earn on the same order. Points for the sale are computed on the subtotal after the reward discount.
+</Tip>
+
+## On the receipt
+
+The reward appears among the order discounts as **Loyalty reward (N pts)**, where N is the number of points spent. The **Points balance** line under the total reflects the redemption and any points earned on the same sale.
+
+## Undo a redemption
+
+If the order is voided, or the customer changes their mind before paying, remove the reward from the order. The POS voids the redemption and the points return to the member's balance immediately.
+
+## Troubleshooting
+
+| Situation | What to check |
+| --- | --- |
+| Redeem is unavailable | The member has fewer points than one reward block, or is below the program minimum |
+| "Insufficient points" | The balance is lower than requested. Check the balance and choose fewer blocks |
+| "Rewards are redeemed in blocks of N points" | The amount requested is less than one block |
+| The discount is smaller than requested | The reward was capped so it does not exceed the order total |
+| Declined by the processor | The member's account may be suspended. Ask a manager to check the member in Taliup HQ |
+
+## Related
+
+- [Earn points](/taliup-pos/loyalty/earn)
+- [Enrol a customer](/taliup-pos/loyalty/enroll)
+- [Redeem a gift card](/taliup-pos/gift-cards/redeem)
