@@ -89,6 +89,12 @@ Comme l'emplacement est partagé, l'annulation d'un produit ne doit pas casser l
 
 ---
 
+## Réinitialisation de test
+
+`factor4:replenish-loyalty-card-pools` maintient le lot numérique (voir plus haut). Pour les environnements de test, `php artisan factor4:loyalty-reset-members {entity} [--keep=<id de membre>]... [--dry-run]` désinscrit les membres d'un programme pour que leurs cartes retournent au lot et puissent être remises de nouveau; les points restant sur une carte sont d'abord remis à zéro chez Factor4. La commande refuse de s'exécuter en production sans `--force`.
+
+---
+
 ## Configuration
 
 | Variable | Rôle |

@@ -89,6 +89,12 @@ Because the location is shared, cancelling one product must not break the other.
 
 ---
 
+## Test reset
+
+`factor4:replenish-loyalty-card-pools` keeps the digital pool topped up (see above). For test environments, `php artisan factor4:loyalty-reset-members {entity} [--keep=<member id>]... [--dry-run]` un-enrols a program's members so their cards return to the pool and can be handed out again; points still on a card are zeroed at Factor4 first. It refuses to run in production unless `--force` is passed.
+
+---
+
 ## Configuration
 
 | Variable | Role |
