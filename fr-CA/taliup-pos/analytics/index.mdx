@@ -1,13 +1,13 @@
 ---
 title: "Analytique"
 sidebarTitle: "Aperçu"
-description: "Consulter les graphiques des ventes totales, détaillées et par employé dans Taliup POS."
+description: "Consulter les ventes, les pourboires, les articles populaires, les modes de paiement et un résumé des ventes dans Taliup POS, et partager le sommaire en PDF."
 ---
 
-**Analytique** affiche les graphiques de performance des ventes pour ce marchand.
+**Analytique** affiche la performance des ventes pour ce marchand et permet de partager le sommaire en PDF.
 
-<Frame caption="Analytique avec Total Sales, Itemized Sales et Employee Sales.">
-  ![Analytique avec Total Sales, Itemized Sales et Employee Sales](/images/taliup-pos/analytics/overview.png)
+<Frame caption="Analytique dans Taliup POS.">
+  ![Analytique dans Taliup POS](/images/taliup-pos/analytics/overview.png)
 </Frame>
 
 ## Comment y arriver
@@ -21,17 +21,37 @@ Deux vérifications s'appliquent :
 1. **Permission de rôle** — exige view-analytics. Refus : **Permission denied** — *You do not have permission to access Analytics.*
 2. **Droit de fonction** — la fonction Rapports / analytique doit être activée sur le compte. Sinon, un message d'accès pointe vers Taliup HQ / Marketplace.
 
-## Graphiques
+## Période
 
-| Graphique | Type | Contrôles |
-|---|---|---|
-| **Total Sales** | Ligne | Intervalle **Week** / **Month** / **Year** |
-| **Itemized Sales** | Camembert | Meilleurs articles par ventes |
-| **Employee Sales** | Barres | Employés sur l'axe X |
+Choisissez **Aujourd'hui**, **Semaine**, **Mois** ou **Année**. Utilisez **Précédent** et **Suivant** pour passer d'une période à l'autre. Chaque chiffre est comparé à la période précédente.
 
-Les étiquettes d'axe semaine utilisent les jours (**Mon**–**Sun**). L'année utilise les mois (**Jan**–**Dec**).
+## Ce que vous voyez
 
-Il n'y a pas de sélecteur de plage personnalisée ni de filtre d'emplacement sur cet écran.
+| Section | Ce qu'elle affiche |
+|---|---|
+| **Ventes nettes**, **Transactions**, **Panier moyen**, **Pourboires** | Les chiffres clés de la période |
+| **Ventes par heure** / **jour** / **semaine** / **mois** | Les ventes sur la période, avec la meilleure mise en évidence |
+| **Heures les plus achalandées** / **Jours les plus achalandés** | Les moments de pointe |
+| **Articles populaires** | Les meilleurs vendeurs par revenu |
+| **Modes de paiement** | Carte, espèces et autres |
+| **Résumé** | Ventes brutes, remboursements, annulations, sorties de caisse, total net, taxes et chaque mode de paiement. Les montants incluent les taxes et les pourboires |
+| **Ventes par employé** | Ventes et pourboires par employé |
+
+Les pourboires comptent sauf si la vente a été annulée ou remboursée au complet. Un remboursement partiel conserve son pourboire.
+
+Il n'y a pas de filtre d'emplacement sur cet écran.
+
+## Partager le sommaire
+
+<Steps>
+  <Step title="Ouvrir Partager">
+    Appuyez sur **Partager** en haut d'Analytique. **Partager le sommaire** s'ouvre.
+  </Step>
+  <Step title="Choisir comment">
+    - **Balayer le code QR** — balayez-le avec votre téléphone pour ouvrir le sommaire en PDF. Le code est valide 15 minutes.
+    - **Courriel** — saisissez une adresse courriel et envoyez. Taliup POS affiche **Sommaire envoyé à [courriel]**.
+  </Step>
+</Steps>
 
 ## Dépannage
 

@@ -1,7 +1,7 @@
 ---
 title: "Tables"
 sidebarTitle: "Aperçu"
-description: "Asseoir les clients, démarrer des commandes de table et gérer les tables occupées dans Taliup POS."
+description: "Asseoir les clients, démarrer des commandes de table, gérer les tables occupées et disposer les tables en plans de salle dans Taliup POS."
 ---
 
 **Tables** apparaît sur Accueil lorsque la gestion des tables est activée pour le marchand. Utilisez-la pour voir la salle, démarrer des commandes et continuer le service dans Caisse.
@@ -81,17 +81,57 @@ Annuler une commande ouverte demande de confirmer : **Please confirm you want to
 
 Plusieurs de ces outils apparaissent aussi dans Caisse sous [Options](/fr-CA/taliup-pos/register/options) lorsqu'une commande de table est ouverte.
 
-## Modifier le plan de salle
+## Plans de salle
 
-Utilisez le contrôle crayon sur **Tables** pour gérer la disposition.
+Regroupez les tables par pièce avec des plans de salle, par exemple **Terrasse**, **Bar** ou **Salle privée**. Chaque plan de salle est un onglet. Balayez ou touchez les onglets pour changer de pièce.
 
-- **Create Table** / **Edit Table**
-- Champs : **Table name**, **Capacity (optional)**, **Width**, **Height**, **Shape** (**Rectangle** / **Square** / **Circle**), préréglages de taille (**Small** / **Medium** / **Large**), **Description (optional)**
-- **Delete Table** — seules les tables **Available** peuvent être modifiées ou supprimées
+Passez d'une vue à l'autre en haut de **Tables** :
 
-<Frame caption="formulaire Create/Edit Table.">
-  ![formulaire Create/Edit Table](/images/taliup-pos/tables/edit-table.png)
-</Frame>
+| Vue | Utilisez-la pour |
+|---|---|
+| **Plan de salle** | Voir les tables là où elles sont dans la pièce |
+| **Liste** | Voir les tables en liste, dans l'ordre de votre choix |
+
+Les tables qui ne sont dans aucun plan apparaissent sous **Non groupées**.
+
+En mode paysage, une commande de table dans Caisse a une fiche **Actions de table** avec les outils de la table. Une fois la commande de table terminée, Taliup POS revient à l'écran Tables d'où vous veniez.
+
+### Gérer les plans de salle
+
+Appuyez sur **Gérer les plans de salle** pour ajouter, renommer, réordonner, désactiver ou supprimer des plans. Appuyez sur un plan pour ouvrir **Paramètres du plan de salle** :
+
+| Paramètre | Ce qu'il fait |
+|---|---|
+| **Tables de ce plan** | Cochez des tables pour les déplacer dans ce plan. Glissez-les pour changer leur ordre dans la vue liste |
+| **Désactiver le plan** | Bloque les nouvelles commandes et réservations sur ses tables. Les commandes existantes peuvent être terminées. Toutes ses tables doivent d'abord être libres |
+| **Supprimer le plan** | Ses tables passent sous **Non groupées**. Elles ne sont pas supprimées |
+
+### Modifier la disposition
+
+<Steps>
+  <Step title="Commencer la modification">
+    Sur un plan de salle, appuyez sur **Modifier la disposition**. Une grille d'alignement apparaît sur le canevas.
+  </Step>
+  <Step title="Disposer les tables">
+    Glissez une table pour la déplacer. Pincez pour la redimensionner, ou tournez deux doigts pour la faire pivoter. La rotation s'aligne par pas de 45°. Utilisez **Propriétés de la table** pour une rotation précise par pas de 15°.
+  </Step>
+  <Step title="Ajouter des tables">
+    Utilisez **Ajouter une table** pour une nouvelle table, ou **Ajouter une table existante** pour en amener une d'un autre plan.
+  </Step>
+  <Step title="Enregistrer">
+    Appuyez sur **Enregistrer le plan**. Appuyez sur **Abandonner** pour annuler les changements.
+  </Step>
+</Steps>
+
+Les tables ne peuvent pas se chevaucher. Si c'est le cas, Taliup POS les met en évidence pour que vous les sépariez avant d'enregistrer de nouveau.
+
+### Ajouter ou modifier une table
+
+Le formulaire de table contient **Nom**, **Places**, **Forme et taille** (avec un aperçu) et **Plan de salle**. Sans plan de salle, la table va sous **Non groupées**.
+
+Seules les tables libres peuvent être supprimées ou déplacées vers un autre plan. Une table avec une commande ouverte ou une réservation doit d'abord être libérée. Les ventes passées ne sont pas touchées.
+
+Vous pouvez aussi gérer les plans de salle dans Taliup HQ sous **Gestion de table**.
 
 ## Connexe
 

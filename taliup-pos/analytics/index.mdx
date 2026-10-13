@@ -1,13 +1,13 @@
 ---
 title: "Analytics"
 sidebarTitle: "Overview"
-description: "View total sales, itemized sales, and employee sales charts in Taliup POS."
+description: "View sales, tips, top items, payment mix, and a sales summary in Taliup POS, and share the summary as a PDF."
 ---
 
-**Analytics** shows sales performance charts for this merchant.
+**Analytics** shows sales performance for this merchant, and lets you share the summary as a PDF.
 
-<Frame caption="Analytics with Total Sales, Itemized Sales, and Employee Sales.">
-  ![Analytics with Total Sales, Itemized Sales, and Employee Sales](/images/taliup-pos/analytics/overview.png)
+<Frame caption="Analytics on Taliup POS.">
+  ![Analytics on Taliup POS](/images/taliup-pos/analytics/overview.png)
 </Frame>
 
 ## How to get here
@@ -21,17 +21,37 @@ Two checks apply:
 1. **Role permission** — needs view-analytics. Denied: **Permission denied** — *You do not have permission to access Analytics.*
 2. **Feature entitlement** — Reports / analytics feature must be enabled on the account. Otherwise you see a feature access message pointing you to Taliup HQ / Marketplace.
 
-## Charts
+## Period
 
-| Chart | Type | Controls |
-|---|---|---|
-| **Total Sales** | Line | Range toggle **Week** / **Month** / **Year** |
-| **Itemized Sales** | Pie | Top items by sales |
-| **Employee Sales** | Bar | Employees on the X-axis |
+Choose **Today**, **Week**, **Month**, or **Year**. Use **Previous** and **Next** to step through periods. Each figure is compared with the previous period.
 
-Week axis labels use weekdays (**Mon**–**Sun**). Year uses months (**Jan**–**Dec**).
+## What you see
 
-There is no custom date-range picker or location filter on this screen.
+| Section | What it shows |
+|---|---|
+| **Net sales**, **Transactions**, **Avg ticket**, **Tips** | Headline figures for the period |
+| **Sales by hour** / **day** / **week** / **month** | Sales over the period, with the best one marked |
+| **Busiest hours** / **Busiest days** | When sales peak |
+| **Top items** | Best sellers by revenue |
+| **Payment mix** | Card, cash, and other |
+| **Summary** | Gross sales, refunds, voids, payouts, net total, taxes, and each payment method. Amounts include taxes and tips |
+| **Sales by employee** | Sales and tips per employee |
+
+Tips count unless the sale was voided or fully refunded. A partial refund keeps its tip.
+
+There is no location filter on this screen.
+
+## Share the summary
+
+<Steps>
+  <Step title="Open Share">
+    Tap **Share** at the top of Analytics. **Share summary** opens.
+  </Step>
+  <Step title="Choose how">
+    - **Scan QR code** — scan it with your phone to open the summary as a PDF. The code works for 15 minutes.
+    - **Email** — type an email address and send. Taliup POS shows **Summary sent to [email]**.
+  </Step>
+</Steps>
 
 ## Troubleshooting
 

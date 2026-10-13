@@ -1,0 +1,110 @@
+---
+title: "Loyalty"
+sidebarTitle: "Loyalty"
+description: "Activate Loyalty per location, set the points rules and welcome bonus, manage cards, and look after members."
+keywords: ["loyalty", "points", "rewards", "welcome bonus", "loyalty card", "Loyalty report"]
+---
+
+Reward repeat customers with points they redeem at the register. Taliup HQ holds the program: which locations take part, how points are earned and redeemed, the card stock, and the members.
+
+Staff enrol clients, earn, and redeem on the terminal. See [Loyalty on Taliup POS](/taliup-pos/register/loyalty).
+
+## How to get here
+
+Sidebar → **Loyalty**. You need the **Loyalty** feature and the **View Transactions** permission.
+
+## Activate a location
+
+Loyalty is billed per location, per month, and activated through secure checkout.
+
+<Steps>
+  <Step title="Find the location">
+    Under **Locations**, find the store. A location needs at least one terminal. Otherwise you see **Add a terminal first**.
+  </Step>
+  <Step title="Activate">
+    Click **Activate**. Secure checkout opens in a new window. Allow pop-ups if the browser blocks it.
+  </Step>
+  <Step title="Pay">
+    Complete payment. The status moves from **Checkout pending** to **Setting up**, then **Active**.
+  </Step>
+</Steps>
+
+If you close checkout early, click **Resume checkout**. Use **Manage Subscriptions** to review or cancel the subscription.
+
+## Program rules
+
+Under **Program Rules**, set how members earn and redeem. Taliup computes points on the order subtotal after discounts, before tax. Rewards apply as a pre-tax discount.
+
+| Field | What it does |
+|---|---|
+| **Program name** | Shown on the member card page and wallet pass |
+| **Points per 1.00 spent** | `1` = one point per dollar. `0.5` = one point per two dollars |
+| **Minimum purchase to earn** | Optional. Leave blank if every purchase earns |
+| **Rounding** | **Round down**, **Round to nearest**, or **Round up** |
+| **Points per reward** | How many points make one reward |
+| **Reward value** | What one reward is worth |
+| **Minimum points to redeem** | Optional. Leave blank if any reward can be redeemed |
+| **Bonus points for new members** | Optional welcome bonus, added when a new member's card is issued |
+
+The preview under the form shows an example, such as *A $50.00 purchase earns 50 points. Every 100 points are worth $5.00.* Click **Save rules**.
+
+The welcome bonus applies to members who join after you set it.
+
+## Cards
+
+Members carry either a printed card or a digital card number.
+
+| Card | How it is used |
+|---|---|
+| **Printed** | You hand the card over and staff scan it at enrolment. It is assigned only when scanned |
+| **Digital** | Assigned to members who do not take a printed card. The card page and wallet pass are emailed |
+
+The summary shows **Printed Cards in Stock** and how many digital numbers are ready.
+
+**Add card numbers** adds a batch of printed card numbers. Pick a **Quantity**, then **Add numbers**. Your card on file is charged per number before they are added.
+
+**Automatic refill of digital numbers** tops up digital numbers when they run low:
+
+1. Turn on **Refill digital numbers automatically**.
+2. Set **Minimum digital numbers left** and **Digital numbers to add**. The minimum must be lower than the number added.
+3. Click **Save automatic refill** and confirm. Each refill charges your card on file. Physical cards are not ordered.
+
+## Members
+
+**Members** lists everyone enrolled, with points and lifetime earned. Search by name, email, phone, or card.
+
+| Action | What it does |
+|---|---|
+| **Adjust** | Add or remove points with a reason. Use a negative number to remove. The balance cannot go below zero |
+| **Send card** | Emails the card page and wallet pass to the member |
+| **Replace card** | Moves the points to a new card. Scan or key the new card, or leave it empty to assign the next card from stock (lost card). The old number stops working |
+
+**Recent Activity** lists the latest earns, redemptions, voids, enrolments, adjustments, and welcome bonuses.
+
+A client's record in **Clients** also has a **Loyalty** tab with their points history.
+
+## Member card page and wallet passes
+
+Each member gets a card page with their points and a QR code to show at the counter. From the page, they can add the card to Apple Wallet or Google Wallet.
+
+The card page and passes use the merchant's brand colour and logo.
+
+## Rewards signup page
+
+Customers can join on their own from a public **Join rewards** page. They enter their name, phone, and email, and their card arrives by email. Members can use **Email me my card** to get it again.
+
+Terminals can print a signup code that links to this page on the sale receipt. See **Print rewards signup** in [General settings](/taliup-pos/settings/general).
+
+## Loyalty report
+
+In **Reports**, generate a **Loyalty** report for a date range, location, terminal, or employee. It shows:
+
+- **Points Earned**, **Points Redeemed**, **Reward Value**, **Eligible Sales**, and **Net Points Change**
+- **Membership**: active and new members, points outstanding, reward liability, voids, adjustments, and declines
+- Breakdowns **By Location**, **By Employee**, and **By Day**, plus **Top Members**
+
+## Related
+
+- [Loyalty on Taliup POS](/taliup-pos/register/loyalty)
+- [Gift Cards](/taliup-hq/features/gift-cards)
+- [Clients](/taliup-hq/features/clients)

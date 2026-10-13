@@ -1,20 +1,20 @@
 ---
 title: "Rendez-vous"
 sidebarTitle: "Rendez-vous"
-description: "Créer, modifier et supprimer des rendez-vous du calendrier dans Taliup POS."
+description: "Créer, modifier et supprimer des rendez-vous du calendrier dans Taliup POS, et gérer les conflits d'horaire."
 ---
 
 ## Créer un rendez-vous
 
 <Steps>
   <Step title="Ouvrir un jour">
-    Depuis **Calendrier**, appuyez sur un jour, puis sur **Nouveau rendez-vous**.
+    Depuis **Calendrier**, appuyez sur un jour, puis commencez un nouveau rendez-vous.
   </Step>
   <Step title="Remplir les détails">
     Dans **Nouveau rendez-vous**, complétez les champs ci-dessous.
   </Step>
   <Step title="Enregistrer">
-    Appuyez sur **Ajouter nouveau**.
+    Appuyez sur **Créer le rendez-vous**.
   </Step>
 </Steps>
 
@@ -26,26 +26,36 @@ description: "Créer, modifier et supprimer des rendez-vous du calendrier dans T
 
 | Champ | Notes |
 |---|---|
-| **Location** | Emplacement obligatoire du rendez-vous |
-| **Title** | Obligatoire |
-| **Date** | Date du rendez-vous |
-| **Starts** / **Ends** | Le début doit précéder la fin |
-| **Note** | Facultatif |
-| **Client** | **Select Client** |
-| **Service** | **Select service** (exige Services / `catalog_services`) |
-| **Employee** | Sélecteur incluant **None** |
-| **Send Reminder?** | **YES** / **NO** |
-| **Allow Client To Confirm The Appointment?** | **YES** / **NO** |
-| **Allow Client To Cancel The Appointment?** | **YES** / **NO** |
+| **Emplacement** | L'emplacement du rendez-vous. Taliup POS enregistre l'emplacement choisi |
+| **Titre** | Obligatoire. Choisir un service remplit ce champ; vous pouvez toujours le modifier |
+| **Début** / **Fin** | La fin doit être après le début. Avec un service, l'heure de fin suit la durée du service |
+| **Client** | Sélectionner un client |
+| **Service · facultatif** | Exige Services / `catalog_services` |
+| **Employé · facultatif** | Sélectionner un employé, ou le laisser non attribué |
+| **Note · facultative** | Tout ce que l'équipe doit savoir |
+| **Envoyer un rappel** | Activé / désactivé |
+| **Le client peut confirmer** | Activé / désactivé |
+| **Le client peut annuler** | Activé / désactivé |
+
+Les services peuvent durer jusqu'à 8 heures. Réglez la durée du service dans Taliup HQ.
+
+## Conflits d'horaire
+
+À l'enregistrement, Taliup POS vérifie si l'employé a déjà un rendez-vous à cette heure. Si c'est le cas, **Conflit d'horaire** s'ouvre :
+
+| Choix | Ce qui se passe |
+|---|---|
+| **Modifier l'heure** | Revenir choisir une autre heure |
+| **Réserver quand même** | Enregistrer. Les deux rendez-vous se chevauchent dans la vue du jour |
 
 ## Modifier ou supprimer
 
-Appuyez sur une puce de rendez-vous pour ouvrir **Appointment** (mêmes champs que la création).
+Appuyez sur un rendez-vous pour l'ouvrir.
 
 | Action | Comment |
 |---|---|
-| Enregistrer | Appuyez sur **Save** |
-| Supprimer | Appuyez sur **Delete Appointment** → confirmer **Please confirm you want to delete this appointment?** |
+| Enregistrer des changements | Modifiez le rendez-vous, puis appuyez sur **Enregistrer les modifications** |
+| Supprimer | Supprimez-le, puis confirmez. Le client n'est pas avisé automatiquement |
 
 ## Connexe
 

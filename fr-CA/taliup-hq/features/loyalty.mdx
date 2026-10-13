@@ -1,0 +1,110 @@
+---
+title: "Fidélité"
+sidebarTitle: "Fidélité"
+description: "Activer la fidélité par emplacement, régler les règles de points et la prime de bienvenue, gérer les cartes et les membres."
+keywords: ["fidélité", "points", "récompenses", "prime de bienvenue", "carte de fidélité", "rapport Fidélité"]
+---
+
+Récompensez vos clients fidèles avec des points échangeables à la caisse. Taliup HQ contient le programme : les emplacements participants, la façon de gagner et d'échanger des points, le stock de cartes et les membres.
+
+Le personnel inscrit les clients, fait gagner et échanger des points sur le terminal. Voir [Fidélité dans Taliup POS](/fr-CA/taliup-pos/register/loyalty).
+
+## Comment y arriver
+
+Barre latérale → **Fidélité**. Il faut la fonction **Fidélité** et la permission **View Transactions**.
+
+## Activer un emplacement
+
+La fidélité est facturée par emplacement, chaque mois, et activée par un paiement sécurisé.
+
+<Steps>
+  <Step title="Trouver l'emplacement">
+    Sous **Emplacements**, trouvez le magasin. Un emplacement exige au moins un terminal. Sinon, vous voyez **Ajoutez d'abord un terminal**.
+  </Step>
+  <Step title="Activer">
+    Cliquez sur **Activer**. Le paiement sécurisé s'ouvre dans une nouvelle fenêtre. Autorisez les fenêtres surgissantes si le navigateur la bloque.
+  </Step>
+  <Step title="Payer">
+    Terminez le paiement. Le statut passe de **Paiement en attente** à **Configuration en cours**, puis **Actif**.
+  </Step>
+</Steps>
+
+Si vous fermez le paiement trop tôt, cliquez sur **Reprendre le paiement**. Utilisez **Gérer les abonnements** pour consulter ou annuler l'abonnement.
+
+## Règles du programme
+
+Sous **Règles du programme**, réglez comment les membres gagnent et échangent. Taliup calcule les points sur le sous-total après rabais, avant taxes. Les récompenses s'appliquent comme rabais avant taxes.
+
+| Champ | Ce qu'il fait |
+|---|---|
+| **Nom du programme** | Affiché sur la page de carte du membre et le laissez-passer de portefeuille |
+| **Points par 1,00 $ dépensé** | `1` = un point par dollar. `0,5` = un point par deux dollars |
+| **Achat minimum pour gagner** | Facultatif. Laissez vide si chaque achat rapporte des points |
+| **Arrondi** | **Arrondir vers le bas**, **Arrondir au plus près** ou **Arrondir vers le haut** |
+| **Points par récompense** | Nombre de points pour une récompense |
+| **Valeur de la récompense** | Valeur d'une récompense |
+| **Points minimum pour échanger** | Facultatif. Laissez vide si toute récompense peut être échangée |
+| **Points bonis pour les nouveaux membres** | Prime de bienvenue facultative, ajoutée dès l'émission de la carte d'un nouveau membre |
+
+L'aperçu sous le formulaire donne un exemple, comme *Un achat de 50,00 $ rapporte 50 points. Chaque tranche de 100 points vaut 5,00 $.* Cliquez sur **Enregistrer les règles**.
+
+La prime de bienvenue s'applique aux membres inscrits après son activation.
+
+## Cartes
+
+Les membres ont soit une carte imprimée, soit un numéro de carte numérique.
+
+| Carte | Utilisation |
+|---|---|
+| **Imprimée** | Vous remettez la carte et le personnel la lit à l'inscription. Elle n'est attribuée qu'une fois lue |
+| **Numérique** | Attribuée aux membres qui ne prennent pas de carte imprimée. La page de carte et le laissez-passer sont envoyés par courriel |
+
+Le sommaire affiche **Cartes imprimées en stock** et le nombre de numéros numériques prêts.
+
+**Ajouter des numéros de carte** ajoute un lot de numéros de cartes imprimées. Choisissez une **Quantité**, puis **Ajouter les numéros**. Votre carte au dossier est débitée par numéro avant l'ajout.
+
+**Réapprovisionnement automatique des numéros numériques** ajoute des numéros numériques lorsqu'il en reste peu :
+
+1. Activez **Réapprovisionner automatiquement les numéros numériques**.
+2. Réglez **Minimum de numéros numériques restants** et **Numéros numériques à ajouter**. Le minimum doit être inférieur au nombre ajouté.
+3. Cliquez sur **Enregistrer le réapprovisionnement automatique** et confirmez. Chaque réapprovisionnement débite votre carte au dossier. Aucune carte physique n'est commandée.
+
+## Membres
+
+**Membres** liste toutes les personnes inscrites, avec leurs points et leur cumul gagné. Cherchez par nom, courriel, téléphone ou carte.
+
+| Action | Ce qu'elle fait |
+|---|---|
+| **Ajuster** | Ajoute ou retire des points avec un motif. Utilisez un nombre négatif pour retirer. Le solde ne peut pas devenir négatif |
+| **Envoyer la carte** | Envoie par courriel la page de carte et le laissez-passer au membre |
+| **Remplacer la carte** | Transfère les points sur une nouvelle carte. Lisez ou saisissez la nouvelle carte, ou laissez vide pour attribuer la prochaine carte du stock (carte perdue). L'ancien numéro cesse de fonctionner |
+
+**Activité récente** liste les derniers gains, échanges, annulations, inscriptions, ajustements et primes de bienvenue.
+
+Le dossier d'un client dans **Clients** a aussi un onglet **Fidélité** avec son historique de points.
+
+## Page de carte et laissez-passer de portefeuille
+
+Chaque membre reçoit une page de carte avec ses points et un code QR à présenter au comptoir. Depuis la page, il peut ajouter la carte à Apple Wallet ou à Google Wallet.
+
+La page de carte et les laissez-passer utilisent la couleur et le logo de la marque du marchand.
+
+## Page d'inscription aux récompenses
+
+Les clients peuvent s'inscrire eux-mêmes depuis une page publique. Ils saisissent leur nom, leur téléphone et leur courriel, et reçoivent leur carte par courriel. Les membres peuvent demander de recevoir leur carte de nouveau.
+
+Les terminaux peuvent imprimer sur le reçu de vente un code d'inscription menant à cette page. Voir **Imprimer l'inscription aux récompenses** dans les [Paramètres généraux](/fr-CA/taliup-pos/settings/general).
+
+## Rapport Fidélité
+
+Dans **Rapports**, générez un rapport **Fidélité** pour une période, un emplacement, un terminal ou un employé. Il affiche :
+
+- Les points gagnés, les points échangés, la valeur des récompenses, les ventes admissibles et la variation nette des points
+- L'adhésion : membres actifs et nouveaux, points en circulation, passif des récompenses, annulations, ajustements et refus
+- Des ventilations par emplacement, par employé et par jour, ainsi que les meilleurs membres
+
+## Connexe
+
+- [Fidélité dans Taliup POS](/fr-CA/taliup-pos/register/loyalty)
+- [Cartes-cadeaux](/fr-CA/taliup-hq/features/gift-cards)
+- [Clients](/fr-CA/taliup-hq/features/clients)

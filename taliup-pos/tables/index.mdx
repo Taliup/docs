@@ -1,7 +1,7 @@
 ---
 title: "Tables"
 sidebarTitle: "Overview"
-description: "Seat guests, start table orders, and manage occupied tables in Taliup POS."
+description: "Seat guests, start table orders, manage occupied tables, and arrange tables in floor plans in Taliup POS."
 ---
 
 **Tables** appears on Home when table management is enabled for the merchant. Use it to see the floor, start orders, and continue seating work in Register.
@@ -81,17 +81,57 @@ Canceling an open order asks you to confirm: **Please confirm you want to cancel
 
 Many of the same table tools also appear in Register under [Options](/taliup-pos/register/options) while a table order is open.
 
-## Edit the floor plan
+## Floor plans
 
-Use the edit (pencil) control on **Tables** to manage the layout.
+Group tables by room with floor plans, for example **Patio**, **Bar**, or **Private room**. Each floor plan is a tab. Swipe or tap the tabs to switch rooms.
 
-- **Create Table** / **Edit Table**
-- Fields: **Table name**, **Capacity (optional)**, **Width**, **Height**, **Shape** (**Rectangle** / **Square** / **Circle**), size presets (**Small** / **Medium** / **Large**), **Description (optional)**
-- **Delete Table** — only **Available** tables can be edited or deleted
+Switch between two views at the top of **Tables**:
 
-<Frame caption="Create/Edit Table form.">
-  ![Create/Edit Table form](/images/taliup-pos/tables/edit-table.png)
-</Frame>
+| View | Use it to |
+|---|---|
+| **Floor plan** | See tables where they sit in the room |
+| **List** | See tables as a list, in an order you choose |
+
+Tables that are not in a floor plan appear under **Ungrouped**.
+
+In landscape, a table order in Register has a **Table actions** sheet with the table's tools. After you finish a table order, Taliup POS returns to the Tables screen you came from.
+
+### Manage floor plans
+
+Tap **Manage floor plans** to add, rename, reorder, disable, or delete plans. Tap a plan to open **Floor plan settings**:
+
+| Setting | What it does |
+|---|---|
+| **Tables in this plan** | Tick tables to move them into this plan. Drag them to change their order in the list view |
+| **Disable plan** | Stops new orders and reservations on its tables. Existing orders can still be completed. All its tables must be free first |
+| **Delete plan** | Its tables move to **Ungrouped**. They are not deleted |
+
+### Edit the layout
+
+<Steps>
+  <Step title="Start editing">
+    On a floor plan, tap **Edit layout**. An alignment grid appears on the canvas.
+  </Step>
+  <Step title="Arrange tables">
+    Drag a table to move it. Pinch to resize it, or twist to rotate it. Rotation snaps to 45°. Use **Table properties** for exact rotation in 15° steps.
+  </Step>
+  <Step title="Add tables">
+    Use **Add table** for a new table, or **Add existing table** to bring one in from another plan.
+  </Step>
+  <Step title="Save">
+    Tap **Save layout**. Tap **Discard** to throw the changes away.
+  </Step>
+</Steps>
+
+Tables cannot overlap. If they do, Taliup POS highlights them so you can move them apart and save again.
+
+### Add or edit a table
+
+The table form has **Name**, **Seats**, **Shape & size** (with a preview), and **Floor plan**. Without a floor plan, the table goes to **Ungrouped**.
+
+Only free tables can be deleted or moved to another plan. A table with an open order or a reservation must be cleared first. Past sales are not affected.
+
+You can also manage floor plans in Taliup HQ under **Table Management**.
 
 ## Related
 

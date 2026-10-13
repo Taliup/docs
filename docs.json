@@ -126,6 +126,8 @@
                   "taliup-hq/features/recurring-payments",
                   "taliup-hq/features/invoicing",
                   "taliup-hq/features/clients",
+                  "taliup-hq/features/loyalty",
+                  "taliup-hq/features/gift-cards",
                   "taliup-hq/features/scale-items",
                   "taliup-hq/features/end-of-day"
                 ]
@@ -165,6 +167,8 @@
                   "taliup-pos/register/cart",
                   "taliup-pos/register/take-payment",
                   "taliup-pos/register/customer-receipt",
+                  "taliup-pos/register/gift-cards",
+                  "taliup-pos/register/loyalty",
                   "taliup-pos/register/options"
                 ]
               },
@@ -318,6 +322,7 @@
                 "group": "Releases",
                 "pages": [
                   "changelog/index",
+                  "changelog/2026-10",
                   "changelog/2026-09",
                   "changelog/2026-08"
                 ]
@@ -423,6 +428,8 @@
                       "fr-CA/taliup-hq/features/recurring-payments",
                       "fr-CA/taliup-hq/features/invoicing",
                       "fr-CA/taliup-hq/features/clients",
+                      "fr-CA/taliup-hq/features/loyalty",
+                      "fr-CA/taliup-hq/features/gift-cards",
                       "fr-CA/taliup-hq/features/scale-items",
                       "fr-CA/taliup-hq/features/end-of-day"
                     ]
@@ -462,6 +469,8 @@
                       "fr-CA/taliup-pos/register/cart",
                       "fr-CA/taliup-pos/register/take-payment",
                       "fr-CA/taliup-pos/register/customer-receipt",
+                      "fr-CA/taliup-pos/register/gift-cards",
+                      "fr-CA/taliup-pos/register/loyalty",
                       "fr-CA/taliup-pos/register/options"
                     ]
                   },
@@ -569,6 +578,7 @@
                     "group": "Versions",
                     "pages": [
                       "fr-CA/changelog/index",
+                      "fr-CA/changelog/2026-10",
                       "fr-CA/changelog/2026-09",
                       "fr-CA/changelog/2026-08"
                     ]

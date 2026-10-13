@@ -1,51 +1,61 @@
 ---
 title: "Appointments"
 sidebarTitle: "Appointments"
-description: "Create, edit, and delete calendar appointments in Taliup POS."
+description: "Create, edit, and delete calendar appointments in Taliup POS, and handle time conflicts."
 ---
 
 ## Create an appointment
 
 <Steps>
   <Step title="Open a day">
-    From **Calendar**, tap a day, then tap **New Appointment**.
+    From **Calendar**, tap a day, then start a new appointment.
   </Step>
   <Step title="Fill in details">
-    On **New Appointment**, complete the fields below.
+    On **New appointment**, complete the fields below.
   </Step>
   <Step title="Save">
-    Tap **Add New**.
+    Tap **Create appointment**.
   </Step>
 </Steps>
 
-<Frame caption="New Appointment form.">
-  ![New Appointment form](/images/taliup-pos/calendar/new-appointment.png)
+<Frame caption="New appointment form.">
+  ![New appointment form](/images/taliup-pos/calendar/new-appointment.png)
 </Frame>
 
 ### Fields
 
 | Field | Notes |
 |---|---|
-| **Location** | Required location for the appointment |
-| **Title** | Required |
-| **Date** | Appointment date |
-| **Starts** / **Ends** | Start must be before end |
-| **Note** | Optional |
-| **Client** | **Select Client** |
-| **Service** | **Select service** (needs Services / `catalog_services`) |
-| **Employee** | Spinner including **None** |
-| **Send Reminder?** | **YES** / **NO** |
-| **Allow Client To Confirm The Appointment?** | **YES** / **NO** |
-| **Allow Client To Cancel The Appointment?** | **YES** / **NO** |
+| **Location** | The location for the appointment. Taliup POS saves the location you pick |
+| **Title** | Required. Picking a service fills it in; you can still edit it |
+| **Starts** / **Ends** | End must be after the start. With a service, the end time follows the service duration |
+| **Client** | **Select client** |
+| **Service · optional** | Needs Services / `catalog_services` |
+| **Employee · optional** | **Select employee**, or **Leave unassigned** |
+| **Note · optional** | Anything the staff should know |
+| **Send reminder** | On / off |
+| **Client can confirm** | On / off |
+| **Client can cancel** | On / off |
+
+Services can last up to 8 hours. Set the duration on the service in Taliup HQ.
+
+## Time conflicts
+
+When you save, Taliup POS checks whether the employee already has an appointment at that time. If they do, **Time conflict** opens:
+
+| Choice | What happens |
+|---|---|
+| **Change time** | Go back and pick another time |
+| **Book anyway** | Save it. Both appointments overlap on the day view |
 
 ## Edit or delete
 
-Tap an appointment chip to open **Appointment** (same fields as create).
+Tap an appointment to open it.
 
 | Action | How |
 |---|---|
-| Save changes | Tap **Save** |
-| Delete | Tap **Delete Appointment** → confirm **Please confirm you want to delete this appointment?** |
+| Save changes | Tap **Edit appointment**, change the fields, then **Save changes** |
+| Delete | Tap delete, then confirm **Delete this appointment?** The client is not notified automatically |
 
 ## Related
 

@@ -55,6 +55,20 @@ Si la fonction n'est pas incluse au plan, Taliup POS indique que l'accès est bl
 | **Ouvrir le tiroir-caisse** | Ouvre le tiroir-caisse | Toujours |
 | **Ouvrir le scanneur** | Ouvre le scanneur de codes-barres. Aussi pour les [codes-barres de balance](/fr-CA/taliup-pos/register/scale-barcodes) | Pas sur Vente ouverte |
 
+## Cartes-cadeaux
+
+Affichée lorsque les cartes-cadeaux sont activées pour l'emplacement.
+
+| Option | Ce qu'elle fait | Quand elle apparaît |
+|---|---|---|
+| **Vendre une carte-cadeau** | Ajoute une nouvelle carte physique ou numérique à la vente | Pas en Vente ouverte; pas sur les commandes de table |
+| **Charger un lot** | Ajoute plusieurs cartes du même montant | Pas en Vente ouverte; pas sur les commandes de table |
+| **Recharger une carte-cadeau** | Ajoute de la valeur à une carte active | Pas en Vente ouverte; pas sur les commandes de table |
+| **Solde de carte-cadeau** | Vérifie le solde d'une carte sans la débiter | Toujours |
+| **Réessayer le chargement de la carte-cadeau** | Charge les cartes payées qui n'ont pas pu être chargées | Lorsqu'un chargement a échoué |
+
+Voir [Cartes-cadeaux](/fr-CA/taliup-pos/register/gift-cards).
+
 ## Conseils de permission pour le soutien
 
 - **Créer une autorisation** / **Créer un remboursement** apparaissent mais peuvent être désactivés sans la permission de rôle — le personnel voit un message de permission lorsqu'il appuie dessus.
@@ -64,6 +78,7 @@ Si la fonction n'est pas incluse au plan, Taliup POS indique que l'accès est bl
 ## Connexe
 
 - [Panier](/fr-CA/taliup-pos/register/cart)
+- [Cartes-cadeaux](/fr-CA/taliup-pos/register/gift-cards)
 - [Codes-barres de balance](/fr-CA/taliup-pos/register/scale-barcodes)
 - [Encaisser](/fr-CA/taliup-pos/register/take-payment)
 - [Tables](/fr-CA/taliup-pos/tables)

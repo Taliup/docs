@@ -55,6 +55,20 @@ If the feature is not entitled, Taliup POS explains that access is blocked inste
 | **Open Cash Drawer** | Opens the cash drawer | Always |
 | **Open Scanner** | Opens the barcode scanner. Also used for [scale barcodes](/taliup-pos/register/scale-barcodes) | Not on Open Sale |
 
+## Gift cards
+
+Shown when gift cards are activated for the location.
+
+| Option | What it does | When it appears |
+|---|---|---|
+| **Sell gift card** | Adds a new physical or digital card to the sale | Not on Open Sale; not on table orders |
+| **Load a batch** | Adds several cards with the same amount | Not on Open Sale; not on table orders |
+| **Reload gift card** | Adds value to an active card | Not on Open Sale; not on table orders |
+| **Gift card balance** | Checks a card's balance without charging it | Always |
+| **Retry gift card load** | Loads paid cards that could not be loaded | When a load failed |
+
+See [Gift cards](/taliup-pos/register/gift-cards).
+
 ## Permission tips for support
 
 - **Create Auth** / **Create Refund** appear but may be disabled without the right role permission — staff see a permission message when they tap them.
@@ -64,6 +78,7 @@ If the feature is not entitled, Taliup POS explains that access is blocked inste
 ## Related
 
 - [Cart](/taliup-pos/register/cart)
+- [Gift cards](/taliup-pos/register/gift-cards)
 - [Scale barcodes](/taliup-pos/register/scale-barcodes)
 - [Take payment](/taliup-pos/register/take-payment)
 - [Tables](/taliup-pos/tables)

@@ -1,0 +1,112 @@
+---
+title: "Loyalty"
+sidebarTitle: "Loyalty"
+description: "Enrol clients in loyalty, earn points on paid sales, and redeem rewards at the Register."
+keywords: ["loyalty", "points", "rewards", "loyalty card", "wallet pass", "welcome bonus"]
+---
+
+Loyalty lets customers earn points on every paid sale and spend them as a discount on a later order. Points live on a loyalty card: a printed card you hand over, or a digital card sent by email.
+
+The program is set up in Taliup HQ: earning and redeeming rules, the welcome bonus, and card stock. See [Loyalty in Taliup HQ](/taliup-hq/features/loyalty).
+
+<Note>
+  Loyalty needs the location to be activated in Taliup HQ and a connection to Taliup HQ. If Loyalty options are missing, ask a manager to check **Loyalty** in Taliup HQ.
+</Note>
+
+## Enrol a client
+
+You can enrol a client from three places:
+
+| Where | How |
+|---|---|
+| **New client** form | Turn on **Join loyalty**. The card is set up after you save. |
+| Register cart | Tap the attached client, then **Enrol in loyalty**. |
+| **Clients** | Open the client, then **Enrol in loyalty**. |
+
+<Steps>
+  <Step title="Choose a card">
+    **Enrol [client name]** opens. A digital card is the default: the card page and wallet pass are emailed to the client.
+
+    To hand over a printed card instead, tap **Scan a printed card**, then scan or key the card. It becomes theirs.
+  </Step>
+  <Step title="Confirm">
+    Tap **Enrol digitally** or **Enrol with this card**. Taliup POS shows **[name] is now a loyalty member**.
+  </Step>
+</Steps>
+
+**Enrol digitally** needs an email address on the client. Add one first if you see **Add an email on this client before enrolling digitally.**
+
+### Scan a card at the Register
+
+Scan a loyalty card while you build an order:
+
+| Card | What happens |
+|---|---|
+| Belongs to a member | The member is attached to the order with their points balance |
+| Not assigned yet, client attached | The attached client is enrolled with that card |
+| Not assigned yet, no client | Taliup POS asks you to attach a client first |
+| Replaced card | Refused. The member now uses their new card |
+| Gift card | Taliup POS tells you to pay with it from the payment screen instead |
+
+On **Clients**, you can also search by scanning or typing a loyalty card number.
+
+## Welcome bonus
+
+When Taliup HQ sets a welcome bonus, new members get those points as soon as their card is issued. The bonus shows on the receipt as **Welcome bonus**.
+
+If the bonus cannot be added right away, Taliup POS shows **Welcome bonus delayed** and keeps trying. Anything still owing is added with the member's first purchase.
+
+## Earn points
+
+Points are earned when a payment is approved. Taliup POS shows how many points were earned and the new balance.
+
+Taliup HQ computes points on the order subtotal after discounts, before tax.
+
+## Redeem a reward
+
+<Steps>
+  <Step title="Open the client">
+    With a member attached, tap the client on the cart. The sheet shows their points and rewards available.
+  </Step>
+  <Step title="Choose a reward">
+    Tap **Redeem points**. Pick how many points to use, then tap **Apply [amount] off**.
+  </Step>
+  <Step title="Take payment">
+    The cart shows **Loyalty reward** as a pre-tax discount. Points are taken when the sale is paid.
+  </Step>
+</Steps>
+
+To undo it, tap the client again, then **Remove reward**.
+
+- If the member does not have enough points for a reward, Taliup POS shows when rewards start.
+- An order with a reward cannot be saved for later. Pay it now.
+- Loyalty rewards are not supported with Link To Pay. The reward is removed and no points are redeemed.
+- If you change the attached client, the reward is removed.
+
+## Voids and refunds
+
+When you void an order or fully refund it, Taliup POS reverses the points earned and gives back points redeemed. If the member already spent the points earned, the points that cannot be taken back are shown.
+
+## Receipts
+
+Sale receipts show a **Rewards** block for members: **Points earned**, **Points used**, and **Points balance**. The reward appears as **Loyalty reward**.
+
+Turn on **Print rewards signup** in [General settings](/taliup-pos/settings/general) to print a signup code on the receipt when the customer is not a member. The customer scans it, joins online, and gets their card by email.
+
+## Member card and wallet passes
+
+Each member gets a card page with a QR code to show at the counter. From that page, they can tap **Add to Apple Wallet** or **Add to Google Wallet**.
+
+To resend the card, open the client and tap **Send card**. The client needs an email address.
+
+## Client profile
+
+A member's profile on **Clients** shows their points, rewards available, points earned and redeemed, member since, and card. The points history lists each earn, redeem, reversal, and adjustment.
+
+Deleting a client ends their loyalty membership and removes their points. Gift cards they hold keep working.
+
+## Related
+
+- [Loyalty in Taliup HQ](/taliup-hq/features/loyalty)
+- [Attach from Register](/taliup-pos/clients/attach-from-register)
+- [Gift cards](/taliup-pos/register/gift-cards)

@@ -1,0 +1,112 @@
+---
+title: "Fidélité"
+sidebarTitle: "Fidélité"
+description: "Inscrire des clients à la fidélité, gagner des points sur les ventes payées et échanger des récompenses dans Caisse."
+keywords: ["fidélité", "points", "récompenses", "carte de fidélité", "portefeuille", "prime de bienvenue"]
+---
+
+La fidélité permet aux clients de gagner des points sur chaque vente payée et de les utiliser comme rabais sur une commande suivante. Les points sont liés à une carte de fidélité : une carte imprimée que vous remettez, ou une carte numérique envoyée par courriel.
+
+Le programme se configure dans Taliup HQ : règles de gain et d'échange, prime de bienvenue et stock de cartes. Voir [Fidélité dans Taliup HQ](/fr-CA/taliup-hq/features/loyalty).
+
+<Note>
+  La fidélité exige que l'emplacement soit activé dans Taliup HQ et une connexion à Taliup HQ. Si les options de fidélité n'apparaissent pas, demandez à un gestionnaire de vérifier **Fidélité** dans Taliup HQ.
+</Note>
+
+## Inscrire un client
+
+Vous pouvez inscrire un client à trois endroits :
+
+| Où | Comment |
+|---|---|
+| Formulaire **Nouveau client** | Activez **Inscrire à la fidélité**. La carte est configurée après l'enregistrement. |
+| Panier de Caisse | Appuyez sur le client associé, puis sur **Inscrire à la fidélité**. |
+| **Clients** | Ouvrez le client, puis **Inscrire à la fidélité**. |
+
+<Steps>
+  <Step title="Choisir une carte">
+    **Inscrire [nom du client]** s'ouvre. Une carte numérique est proposée par défaut : la page de la carte et le laissez-passer de portefeuille sont envoyés par courriel au client.
+
+    Pour remettre une carte imprimée à la place, appuyez sur **Lire une carte imprimée**, puis lisez ou saisissez la carte. Elle devient la sienne.
+  </Step>
+  <Step title="Confirmer">
+    Appuyez sur **Inscrire numériquement** ou **Inscrire avec cette carte**. Taliup POS confirme que le client est maintenant membre.
+  </Step>
+</Steps>
+
+**Inscrire numériquement** exige une adresse courriel au dossier du client. Ajoutez-en une d'abord si Taliup POS le demande.
+
+### Lire une carte dans Caisse
+
+Lisez une carte de fidélité pendant que vous montez une commande :
+
+| Carte | Ce qui se passe |
+|---|---|
+| Appartient à un membre | Le membre est associé à la commande avec son solde de points |
+| Pas encore attribuée, client associé | Le client associé est inscrit avec cette carte |
+| Pas encore attribuée, aucun client | Taliup POS vous demande d'abord d'associer un client |
+| Carte remplacée | Refusée. Le membre utilise maintenant sa nouvelle carte |
+| Carte-cadeau | Taliup POS vous indique de payer avec elle depuis l'écran de paiement |
+
+Dans **Clients**, vous pouvez aussi chercher en lisant ou en saisissant un numéro de carte de fidélité.
+
+## Prime de bienvenue
+
+Lorsque Taliup HQ définit une prime de bienvenue, les nouveaux membres reçoivent ces points dès l'émission de leur carte. La prime apparaît sur le reçu sous **Prime de bienvenue**.
+
+Si la prime ne peut pas être ajoutée tout de suite, Taliup POS l'indique et continue d'essayer. Ce qui reste dû est ajouté au premier achat du membre.
+
+## Gagner des points
+
+Les points sont gagnés lorsqu'un paiement est approuvé. Taliup POS affiche les points gagnés et le nouveau solde.
+
+Taliup HQ calcule les points sur le sous-total de la commande après rabais, avant taxes.
+
+## Échanger une récompense
+
+<Steps>
+  <Step title="Ouvrir le client">
+    Avec un membre associé, appuyez sur le client dans le panier. La fiche affiche ses points et les récompenses disponibles.
+  </Step>
+  <Step title="Choisir une récompense">
+    Appuyez sur **Échanger des points**. Choisissez combien de points utiliser, puis appliquez le rabais.
+  </Step>
+  <Step title="Encaisser">
+    Le panier affiche **Récompense fidélité** comme rabais avant taxes. Les points sont retirés lorsque la vente est payée.
+  </Step>
+</Steps>
+
+Pour annuler, appuyez de nouveau sur le client, puis sur **Retirer la récompense**.
+
+- Si le membre n'a pas assez de points, Taliup POS indique à partir de combien de points les récompenses commencent.
+- Une commande avec récompense ne peut pas être enregistrée pour plus tard. Encaissez-la maintenant.
+- Les récompenses de fidélité ne sont pas prises en charge avec Lien Pour Payer. La récompense est retirée et aucun point n'est échangé.
+- Si vous changez le client associé, la récompense est retirée.
+
+## Annulations et remboursements
+
+Lorsque vous annulez une commande ou la remboursez au complet, Taliup POS annule les points gagnés et redonne les points échangés. Si le membre a déjà dépensé les points gagnés, Taliup POS indique les points qui n'ont pas pu être repris.
+
+## Reçus
+
+Les reçus de vente affichent un bloc **Programme fidélité** pour les membres : **Points gagnés**, **Points utilisés** et **Solde de points**. La récompense apparaît sous **Récompense fidélité**.
+
+Activez **Imprimer l'inscription aux récompenses** dans les [Paramètres généraux](/fr-CA/taliup-pos/settings/general) pour imprimer un code d'inscription sur le reçu lorsque le client n'est pas membre. Le client le balaie, s'inscrit en ligne et reçoit sa carte par courriel.
+
+## Carte de membre et laissez-passer de portefeuille
+
+Chaque membre reçoit une page de carte avec un code QR à présenter au comptoir. Depuis cette page, il peut ajouter la carte à Apple Wallet ou à Google Wallet.
+
+Pour renvoyer la carte, ouvrez le client et appuyez sur **Envoyer la carte**. Le client doit avoir une adresse courriel.
+
+## Dossier client
+
+Le dossier d'un membre dans **Clients** affiche ses points, les récompenses disponibles, les points gagnés et échangés, la date d'adhésion et la carte. L'historique des points liste chaque gain, échange, annulation et ajustement.
+
+Supprimer un client met fin à son adhésion et retire ses points. Ses cartes-cadeaux, s'il en a, continuent de fonctionner.
+
+## Connexe
+
+- [Fidélité dans Taliup HQ](/fr-CA/taliup-hq/features/loyalty)
+- [Associer depuis Caisse](/fr-CA/taliup-pos/clients/attach-from-register)
+- [Cartes-cadeaux](/fr-CA/taliup-pos/register/gift-cards)
