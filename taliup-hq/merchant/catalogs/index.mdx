@@ -1,0 +1,70 @@
+---
+title: "Catalogs"
+sidebarTitle: "Catalogs"
+description: "Where menus, items, attributes and taxes are managed in the Taliup HQ merchant portal, and how they reach the POS."
+icon: "book-open"
+---
+
+**Catalogs** is where a merchant builds what they sell. Everything defined here flows to the POS, to online ordering, and to any device the catalog is assigned to.
+
+Restaurants see this section as **Menus**, with **Items** and **Modifiers**. Retail and other industries see **Catalogs**, with **Products** and **Attributes**. The screens are the same.
+
+## How to get here
+
+Sign in to Taliup HQ as the merchant, or open the merchant from **Entities** and use **View As Merchant**. Then choose **Catalogs** (or **Menus**) in the sidebar.
+
+## What lives here
+
+| Section | What it holds |
+|---|---|
+| **Catalogs** / **Menus** | The menus themselves, their categories, featured items, taxes, availability hours, and which devices use them |
+| **Products** / **Items** | Every sellable product, with price, SKU, attributes, taxes and images |
+| **Product Tags** | Labels such as Vegetarian or Seasonal, used to group items |
+| **Attributes** / **Modifiers** | Option groups such as Size or Add-ons, with their values and price differences |
+| **Taxes** | Tax definitions and rates, attachable to a catalog or to individual items |
+| **Services** | Bookable, timed offerings, where the Services feature is enabled |
+
+## How a catalog is put together
+
+A catalog is a container. Categories sit inside it and hold items, and the same item can appear in more than one category.
+
+<Steps>
+  <Step title="Create the catalog">
+    From **Catalogs**, click **Create Catalog** and give it a name.
+  </Step>
+  <Step title="Add categories">
+    Open the catalog and create the sections customers will see. Drag them with **Sort Categories** to set the order.
+  </Step>
+  <Step title="Add items">
+    Add new items or attach existing ones to each category.
+  </Step>
+  <Step title="Attach taxes">
+    Taxes added at the catalog level cascade to every item in it. Add a tax to a single item to override that.
+  </Step>
+  <Step title="Assign it to devices">
+    Use **Assign to devices** to choose which terminals use this catalog. A terminal uses one catalog at a time.
+  </Step>
+</Steps>
+
+## Item order inside a category
+
+Items now keep a saved display order inside each category, and online ordering shows them in that order rather than the order they happened to be added.
+
+<Note>
+  Catalogs built with [Catalog Builder](/taliup-hq/admin/catalog-builder) carry the order from the source menu, so a printed menu keeps its sequence. Catalogs built by hand or by spreadsheet keep the order items were added in, exactly as before.
+</Note>
+
+## Filling a catalog quickly
+
+| Situation | Use |
+|---|---|
+| The merchant has clean product data | [Bulk Import](/taliup-hq/merchant/catalogs/bulk-import) |
+| The merchant sent a menu photo or PDF | [Catalog Builder](/taliup-hq/admin/catalog-builder), from Taliup HQ admin |
+| A handful of items | Add them by hand |
+
+## Related
+
+- [Bulk Import](/taliup-hq/merchant/catalogs/bulk-import)
+- [Catalog Builder](/taliup-hq/admin/catalog-builder)
+- [Menu / Catalog on the POS](/taliup-pos/catalog/index)
+- [Products / Items on the POS](/taliup-pos/catalog/products)
