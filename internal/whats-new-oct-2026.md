@@ -20,6 +20,14 @@ hidden: true
 | **Payment screen** | Taliup POS | Tender keys show the charge amount; three distinct cash suggestions; fourth tip preset. |
 | **Calendar** | Taliup POS + Taliup HQ | **Time conflict** → **Change time** / **Book anyway**; services up to 8 hours. |
 | **Past favorites** | Taliup POS | Shipped in September, first listed in October. |
+| **Helped by** | Taliup POS + Taliup HQ | Credit the employee who served the customer. Tips and Sales by employee follow them. |
+| **Half-and-half options** | Taliup POS + Taliup HQ | Left half / Whole / Right half on Combination modifiers when **Half Pizza Toppings** is on. |
+| **Receipt barcode** | Taliup POS + Taliup HQ | Off by default. HQ **Settings → Receipts**. Scan or search the token. |
+| **Getting started** | Taliup POS | First-run checklist. Reopen from **Settings → Tools → Getting started**. |
+| **Taliup HQ sync** | Taliup POS | Settings → General. **Sync now**. Clear Application Data warns if HQ has not received the sales. |
+| **Physical gift cards** | Taliup HQ | CAD merchants order printed cards, approve a proof, and track shipment. |
+| **Gift card page** | Taliup HQ | Email **Check your balance** opens the live-balance card page. |
+| **Brand Hub** | Taliup HQ | Merchant logo, favicon, and mobile background moved here from Business settings. |
 
 ---
 
@@ -72,6 +80,32 @@ Full docs: [Gift cards on POS](/taliup-pos/register/gift-cards) · [Gift Cards i
 
 ---
 
+## Helped by
+
+Register → **Order actions** → **Adjust** → **Helped by**. Cart block above totals. Receipts print **Helped by:** except the WEB-SRM fiscal receipt. Tips and Sales by employee follow that employee. An employee's Orders list includes orders they helped on; they only see their own payments on those orders.
+
+---
+
+## Half-and-half options
+
+Restaurant + ecommerce + **Half Pizza Toppings** in HQ online ordering **Preferences**. Each modifier value has **Sides**. Register add-to-cart: **Left half**, **Whole**, **Right half**. Combination groups only.
+
+---
+
+## Receipt barcode
+
+Off by default. HQ **Settings → Receipts** → **Receipt barcode**. Scan from Register, or search the token on Orders / Transactions. Open Sale Only cannot open a catalog/table order receipt.
+
+---
+
+## Getting started and Taliup HQ sync
+
+**Getting started** opens on first login. Reopen from **Settings → Tools → Getting started**. The first sale step is a real sale.
+
+**Taliup HQ sync** is under Settings → General. **Sync now** pushes waiting sales, open/cancelled orders, and WEB-SRM records. Clear Application Data lists anything HQ has not received and requires an acknowledgement before **Clear application data anyway**.
+
+---
+
 ## A short demo path
 
 1. HQ: activate Loyalty on a location and save rules with a welcome bonus.
@@ -84,3 +118,8 @@ Full docs: [Gift cards on POS](/taliup-pos/register/gift-cards) · [Gift Cards i
 8. Tables: create a second floor plan, move a table into it, edit the layout, and save.
 9. Analytics → **Share** → scan the QR code.
 10. Settings → tap the version to reopen **What's new**.
+11. Register → **Order actions** → **Helped by** → pick an employee. Pay, then confirm the name on the receipt and in Sales by employee.
+12. HQ **Settings → Receipts** → turn on **Receipt barcode**. Pay a sale, scan the barcode, and confirm the order or transaction opens.
+13. Settings → **Taliup HQ sync**. If anything is waiting, tap **Sync now**.
+14. Settings → **Tools** → **Getting started** and walk the first two setup steps.
+15. HQ Gift Cards → **Order physical cards** (CAD only) or open a sold digital card email and tap **Check your balance**.

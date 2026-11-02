@@ -38,12 +38,12 @@ After you log in, **Enrol this device** blocks **Register**, **Tables**, and **M
     </Frame>
   </Step>
   <Step title="Open the certificate request">
-    On **Enrol this device**, tap **Request a certificate**.
+    On **Welcome to Taliup POS**, tap **Request a certificate**.
 
-    Step 2, **Register your user**, stays locked until the device is enrolled.
+    Step 2, **Employee registration**, stays locked until the device is enrolled. Taliup POS records the signed-in employee with Revenu Québec on its own after that.
 
-    <Frame caption="Set up this terminal. Step 1 is Enrol this device. Step 2 is locked until the certificate is installed.">
-      ![Set up this terminal modal with Enrol this device active and Register your user locked](/images/taliup-pos/web-srm/setup-terminal.png)
+    <Frame caption="Welcome to Taliup POS. Step 1 is Enrol this device. Step 2, Employee registration, stays locked until the certificate is installed.">
+      ![Welcome to Taliup POS sheet with Enrol this device active and Employee registration locked](/images/taliup-pos/web-srm/setup-terminal.png)
     </Frame>
   </Step>
   <Step title="Name the certificate">
@@ -66,10 +66,10 @@ After you log in, **Enrol this device** blocks **Register**, **Tables**, and **M
       ![WEB-SRM Certificate screen showing Certificate installed with Renew certificate and Delete certificate actions](/images/taliup-pos/web-srm/certificate-installed.png)
     </Frame>
   </Step>
-  <Step title="Register your user">
-    Return to the WEB-SRM setup sheet. Step 2 is now available. Tap **Register** to record the signed-in employee with the WEB-SRM.
+  <Step title="Employee registration">
+    Return to Home. **Employee registration** runs on its own once the certificate is installed. Taliup POS records the signed-in employee with Revenu Québec.
 
-    The device can bill only after this step succeeds.
+    The device can bill only after this step succeeds. If it fails, the sheet explains why and offers **Try again**, or **Switch employee or sign out**.
   </Step>
 </Steps>
 
@@ -143,16 +143,16 @@ Delete only when you are decommissioning the device or starting enrolment over.
   </Step>
 </Steps>
 
-After deletion, the WEB-SRM setup sheet returns. Request a new certificate, then register the signed-in user.
+After deletion, the WEB-SRM setup sheet returns. Request a new certificate. Employee registration runs on its own after the new certificate is installed.
 
 ## Troubleshooting
 
 | Problem | What to try |
 |---|---|
 | **This business has no WEB-SRM configuration from Taliup HQ** | Enable WEB-SRM and save credentials in Taliup HQ. See [WEB-SRM settings](/taliup-hq/onboarding/web-srm). |
-| **Register**, **Tables**, and **Menu** stay greyed out | Finish both enrolment steps. Step 2 stays locked until the certificate is installed. |
+| **Register**, **Tables**, and **Menu** stay greyed out | Finish enrolment. **Employee registration** stays locked until the certificate is installed, then runs on its own. |
 | Certificate request failed | Confirm the device is online and HQ credentials are correct, then tap **Request a certificate** again. The nickname must be 8 to 32 characters. |
-| User registration did not complete | Tap **Register** again. The employee is recorded with the WEB-SRM only after this step succeeds. |
+| Employee registration did not complete | Tap **Try again**. The employee is recorded with the WEB-SRM only after this step succeeds. |
 | Certificate renewal did not complete | Confirm the device is online, then tap **Renew certificate** again. |
 | Device cannot bill after delete | Expected. Enrol the device and register the signed-in user again. |
 | Restoring a previously enrolled device | On the certificate form, tap **Yes** and enter the existing device identifier as `XXXX-XXXX-XXXX`. |

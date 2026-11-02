@@ -18,7 +18,7 @@ Dans Caisse, utilisez l'onglet **Menu** ou **Catalogue** pour parcourir les arti
 Si cet onglet est absent, le marchand n'a pas la vente catalogue activée dans Caisse. Utilisez [Ouvrir une vente](/fr-CA/taliup-pos/register/open-sale) à la place, ou demandez à votre ISO/partenaire d'activer les fonctions catalogue.
 
 <Warning>
-  Passer de Vente ouverte à Menu/Catalogue (ou l'inverse) alors que le panier contient déjà des articles affiche un avertissement : le **panier sera vidé**.
+  Passer de Vente ouverte à Menu/Catalogue (ou l'inverse) alors que le panier contient déjà des articles affiche un avertissement : le **panier sera vidé**. Changer d'onglet efface aussi le client associé.
 </Warning>
 
 ## Parcourir et ajouter des articles
@@ -51,6 +51,20 @@ Si cet onglet est absent, le marchand n'a pas la vente catalogue activée dans C
 </Frame>
 
 Pour ajouter une étiquette de charcuterie, boucherie ou fruits et légumes imprimée par une balance, scannez-la dans Caisse. Voir [Codes-barres de balance](/fr-CA/taliup-pos/register/scale-barcodes).
+
+## Options moitié-moitié (côtés)
+
+Les restaurants peuvent placer une option sur une moitié d'un article, par exemple du pepperoni sur la moitié gauche d'une pizza.
+
+Lorsque vous sélectionnez une option qui accepte les côtés, un sélecteur s'affiche dessous : **Moitié gauche**, **Entier** ou **Moitié droite**. Les nouvelles sélections commencent à **Entier**.
+
+Le panier, les billets de cuisine et les reçus affichent le côté après l'option, par exemple `Pepperoni (Moitié gauche)`. Si le nom est trop long, le côté s'imprime à la ligne suivante.
+
+Les côtés s'affichent seulement si toutes ces conditions sont remplies :
+
+- Le commerçant est un restaurant avec la commande en ligne, et **Garnitures demi-pizza** est activé dans les **Préférences** de commande en ligne de Taliup HQ.
+- L'option a **Côtés** activé. Voir [Attributs / Modificateurs](/fr-CA/taliup-pos/catalog/attributes#côtés).
+- Le groupe de modificateurs est **Combination**, pas **Exactly One**.
 
 ## Commandes de table
 

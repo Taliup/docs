@@ -1,7 +1,7 @@
 ---
 title: "General settings"
 sidebarTitle: "General"
-description: "Tips indicator, receipt behavior, past favorites, default Register view, weighable entry, assigned catalog, printers, and clear application data."
+description: "Tips indicator, receipt behavior, past favorites, default Register view, weighable entry, assigned catalog, Taliup HQ sync, printers, and clear application data."
 ---
 
 **General** controls day-to-day terminal behavior for receipts, Register defaults, past favorites, and linked hardware settings.
@@ -75,9 +75,35 @@ This setting stays on this terminal. See [Scale barcodes](/taliup-pos/register/s
 | **Printer Settings** | [Printers](/taliup-pos/settings/printers) |
 | **Device Settings** | [Device](/taliup-pos/settings/device) — only when this payment setup supports device settings |
 
+## Taliup HQ sync
+
+**Taliup HQ sync** lists sales and orders stored on this register while Taliup HQ could not be reached. They are sent automatically when the connection returns. **Sync now** sends them right away.
+
+Home → **Settings** → **Tools** → **Taliup HQ sync**.
+
+<Frame caption="Taliup HQ sync when nothing is waiting on this register.">
+  ![Taliup HQ sync showing completed sales, open and cancelled orders, and Sync now](/images/taliup-pos/settings/hq-sync.png)
+</Frame>
+
+| Row | What it counts |
+|---|---|
+| **Completed sales** | Paid sales that have not reached Taliup HQ |
+| **Open and cancelled orders** | Open or cancelled orders still waiting to upload |
+| **WEB-SRM records** | Fiscal records queued for HQ, shown only for WEB-SRM merchants |
+
+When nothing is waiting, Taliup POS shows **Everything on this register has reached Taliup HQ.**
+
+If some records cannot be sent, they stay on the register and are retried automatically.
+
+MEV's **Pending sync** screen also links here.
+
 ## Clear application data
 
 **Clear Application Data** wipes local app data on this terminal after you confirm. Use only when directed by support — you will need to sign in again.
+
+If completed transactions have not been sent to Taliup HQ yet, a sheet titled **Transactions not yet sent to Taliup HQ** lists them by type and links to **Taliup HQ sync**. **Clear application data anyway** stays disabled until you acknowledge that those sales will be deleted from this register and will not appear on Taliup HQ.
+
+Clearing is not blocked. Sync first unless support tells you to clear anyway.
 
 ## Exit demo mode
 

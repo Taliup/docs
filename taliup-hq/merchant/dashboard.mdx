@@ -78,10 +78,12 @@ The table is organized into the following rows:
 | — Credit Card Sales | Card-present credit transactions; click the chevron to expand by card type (Visa, Mastercard, Amex, etc.) |
 | — Debit Card Sales | Debit card transactions |
 | — EBT Sales | EBT transactions (shown when applicable) |
+| — Other Sales | Sales tendered as **Other** at the terminal (shown when applicable) |
 | **Refunds** | Refunded transactions (negative values) |
 | — Cash Refunds | Refunds applied to cash tender |
 | — Credit Card Refunds | Refunds applied to credit cards |
 | — Debit Card Refunds | Refunds applied to debit cards |
+| — Other Refunds | Refunds of **Other** sales (shown when applicable) |
 | **Payouts** | Cash payouts recorded at the terminal (negative values) |
 | **Voids** | Voided transactions (negative values) |
 | **Net Total** | Gross Sales minus Refunds, Payouts, and Voids |
@@ -161,6 +163,8 @@ Use the **Date Range** picker to filter the tips table by a custom start and end
 | **Total Sales Amount** | Gross revenue from this employee's transactions |
 | **Total Tips** | Total tips received by this employee |
 | **Average Ticket** | Average transaction value (Total Sales Amount ÷ Total Sales) |
+
+A sale with a [Helped by](/taliup-pos/register/helped-by) employee counts for that employee: its sales, amount, and tip. Without one, it counts for the employee who took the payment. The **Tips** report's employee filter follows the same rule.
 
 ---
 

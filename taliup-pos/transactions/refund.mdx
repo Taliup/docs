@@ -4,73 +4,78 @@ sidebarTitle: "Refund"
 description: "Issue a full refund or partial return from Transaction Details using Return."
 ---
 
-In Transaction Details, refunds start with **Return**. You can refund the full amount, selected items, or a custom amount — depending on the original order.
+In Transaction Details, refunds start with **Return**. You can refund the full amount, a custom amount, or selected items — depending on the original sale.
 
-<Frame caption="Refund options — Full Refund, Partial Refund (Itemized), Partial Refund (Enter Amount).">
-  ![Refund options — Full Refund, Partial Refund (Itemized), Partial Refund (Enter Amount)](/images/taliup-pos/transactions/refund-options.png)
+<Frame caption="Refund. Amount lets you enter any amount up to the remaining total. Full refund sends the whole amount back to the original tender.">
+  ![Refund screen asking How do you want to refund, with Amount and Full refund tiles](/images/taliup-pos/transactions/refund-options.png)
 </Frame>
 
 ## Before you start
 
 - You need permission to manage transactions.
-- **Return** appears when the payment is eligible (for example settled/captured with a remaining refundable amount, or partially refunded already).
-- Partial refund options are hidden for table orders — use **Full Refund** in that case.
+- **Return** appears when the payment is eligible (for example settled/captured with a remaining refundable amount, or already partially refunded).
+- Partial options are hidden for table orders — use **Full refund** in that case.
+- On a [WEB-SRM](/taliup-pos/web-srm) device, **Amount** is replaced by **Items** so the fiscal credit note can list the returned lines.
 - If **Return** is missing, the payment may already be fully refunded/voided, or your role cannot manage transactions.
 
 ## Start a return
 
 <Steps>
   <Step title="Open the payment">
-    Go to Home → **Transactions** and open **Transaction Details**.
+    Go to Home → **Transactions** and open the sale.
   </Step>
   <Step title="Tap Return">
     Tap **Return**.
   </Step>
-  <Step title="Choose a refund option">
-    On **Please select a refund option:** choose one of the paths below.
+  <Step title="Choose how to refund">
+    On **How do you want to refund?**, choose one of the paths below.
   </Step>
 </Steps>
 
 ## Full refund
 
-1. Tap **Full Refund**.
-2. On the **Customer** screen, enter the customer’s name when prompted.
+1. Tap **Full refund**. The tile shows the remaining amount and the original tender (for example **$57.49 back to Cash**).
+2. On **Confirm refund**, enter the **Name on receipt** when asked.
 3. Tap **Refund** and complete any terminal prompts.
 4. Taliup POS processes the return and typically reprints a merchant copy before returning to the list.
 
-## Partial refund (itemized)
+## Partial refund (amount)
 
-Available when the linked order has line items (and is not a table order).
+Shown when the sale is not on WEB-SRM.
 
 <Steps>
-  <Step title="Choose Partial Refund(Itemized)">
-    Tap **Partial Refund(Itemized)**.
+  <Step title="Choose Amount">
+    Tap **Amount**. The tile shows **Enter any amount up to** the remaining refundable total.
   </Step>
-  <Step title="Select items">
-    Use **Select All** or select individual items, then tap **Next**.
+  <Step title="Enter the amount">
+    Enter an amount greater than zero and not more than the remaining total. Tap **Next**.
   </Step>
-  <Step title="Enter customer and refund">
-    Enter the customer name on the **Customer** screen, then tap **Refund**.
+  <Step title="Confirm">
+    Enter the **Name on receipt** when asked, then tap **Refund**.
   </Step>
 </Steps>
 
-<Frame caption="Itemized refund item picker with Select All.">
-  ![Itemized refund item picker with Select All](/images/taliup-pos/transactions/refund-itemized.png)
+## Partial refund (items)
+
+Shown on WEB-SRM when the linked order has line items (and is not a table order).
+
+<Frame caption="Refund on WEB-SRM. Items replaces Amount so you can pick lines from the order.">
+  ![Refund screen asking How do you want to refund, with Items and Full refund tiles](/images/taliup-pos/transactions/refund-options-items.png)
 </Frame>
 
-## Partial refund (enter amount)
-
-Shown when itemized refund is not available (for example no line items).
-
 <Steps>
-  <Step title="Choose Partial Refund(Enter Amount)">
-    Tap **Partial Refund(Enter Amount)**.
+  <Step title="Choose Items">
+    Tap **Items**.
   </Step>
-  <Step title="Enter the amount">
-    Enter an amount greater than zero and not more than the remaining refundable total. The helper shows **Transaction Amount**; the amount turns red if it is too high. Tap **Next**.
+  <Step title="Select items">
+    On **Select items to refund**, tap **Select all** or choose individual lines, then tap **Next**.
+
+    <Frame caption="Select items to refund. Select all or pick lines, then Next.">
+      ![Select items to refund with Soft Drink and Bruschetta selected](/images/taliup-pos/transactions/refund-itemized.png)
+    </Frame>
   </Step>
-  <Step title="Enter customer and refund">
-    Enter the customer name, then tap **Refund**.
+  <Step title="Confirm">
+    WEB-SRM requires a **Name on receipt** for the fiscal credit note. Enter it, then tap **Refund**.
   </Step>
 </Steps>
 
@@ -83,7 +88,7 @@ Shown when itemized refund is not available (for example no line items).
 
 | Situation | What to check |
 |---|---|
-| Only **Full Refund** is available | Table orders do not offer partial return options in this flow |
+| Only **Full refund** is available | Table orders do not offer **Amount** or **Items** |
 | **Next** disabled on amount entry | Amount must be &gt; 0 and ≤ remaining refundable amount |
 | No **Return** button | Not eligible, already fully returned, or missing manage-transactions permission |
 | Permission message | Ask a manager or update the role in Taliup HQ |

@@ -4,73 +4,78 @@ sidebarTitle: "Remboursement"
 description: "Émettre un remboursement complet ou un retour partiel depuis Détails de la transaction avec Retour."
 ---
 
-Dans Détails de la transaction, les remboursements commencent par **Retour**. Vous pouvez rembourser le montant complet, des articles sélectionnés ou un montant personnalisé — selon la commande d'origine.
+Dans Détails de la transaction, les remboursements commencent par **Retour**. Vous pouvez rembourser le montant complet, un montant personnalisé ou des articles sélectionnés — selon la vente d'origine.
 
-<Frame caption="options de remboursement — Tout rembourser, Rembourser des articles, Rembourser un montant.">
-  ![options de remboursement — Tout rembourser, Rembourser des articles, Rembourser un montant](/images/taliup-pos/transactions/refund-options.png)
+<Frame caption="Remboursement. Montant permet de saisir n'importe quel montant jusqu'au total restant. Remboursement complet renvoie le tout sur le mode de paiement d'origine.">
+  ![écran Remboursement avec les tuiles Montant et Remboursement complet](/images/taliup-pos/transactions/refund-options.png)
 </Frame>
 
 ## Avant de commencer
 
 - Vous avez besoin de la permission de gérer les transactions.
 - **Retour** apparaît lorsque le paiement est admissible (par exemple réglé/capturé avec un montant encore remboursable, ou déjà partiellement remboursé).
-- Les options de remboursement partiel sont masquées pour les commandes de table — utilisez **Tout rembourser** dans ce cas.
+- Les options partielles sont masquées pour les commandes de table — utilisez **Remboursement complet** dans ce cas.
+- Sur un appareil [WEB-SRM](/fr-CA/taliup-pos/web-srm), **Montant** est remplacé par **Articles** pour que la note de crédit fiscale puisse lister les lignes retournées.
 - Si **Retour** est absent, le paiement est peut-être déjà entièrement remboursé/annulé, ou votre rôle ne peut pas gérer les transactions.
 
 ## Démarrer un retour
 
 <Steps>
   <Step title="Ouvrir le paiement">
-    Allez à Accueil → **Transactions** et ouvrez **Transaction Details**.
+    Allez à Accueil → **Transactions** et ouvrez la vente.
   </Step>
   <Step title="Appuyer sur Retour">
     Appuyez sur **Retour**.
   </Step>
-  <Step title="Choisir une option de remboursement">
-    Sur **Veuillez sélectionner une option de remboursement :** choisissez l'un des parcours ci-dessous.
+  <Step title="Choisir comment rembourser">
+    Sur **Comment voulez-vous rembourser ?**, choisissez l'un des parcours ci-dessous.
   </Step>
 </Steps>
 
 ## Remboursement complet
 
-1. Appuyez sur **Tout rembourser**.
-2. Sur l'écran **Customer**, saisissez le nom du client lorsque demandé.
-3. Appuyez sur **Refund** et terminez les invites de l'appareil.
+1. Appuyez sur **Remboursement complet**. La tuile affiche le montant restant et le mode de paiement d'origine (par exemple **57,49 $ retourné sur Cash**).
+2. Sur **Confirmer le remboursement**, saisissez le **Nom sur le reçu** lorsque demandé.
+3. Appuyez sur **Rembourser** et terminez les invites de l'appareil.
 4. Taliup POS traite le retour et réimprime habituellement une copie marchand avant de revenir à la liste.
 
-## Remboursement partiel (articles)
+## Remboursement partiel (montant)
 
-Disponible lorsque la commande liée a des lignes (et n'est pas une commande de table).
+Affiché lorsque la vente n'est pas sur WEB-SRM.
 
 <Steps>
-  <Step title="Choisir Rembourser des articles">
-    Appuyez sur **Rembourser des articles**.
+  <Step title="Choisir Montant">
+    Appuyez sur **Montant**. La tuile affiche **Entrez un montant jusqu'à** le total encore remboursable.
   </Step>
-  <Step title="Sélectionner les articles">
-    Utilisez **Select All** ou sélectionnez des articles individuels, puis appuyez sur **Next**.
+  <Step title="Saisir le montant">
+    Saisissez un montant supérieur à zéro et pas plus élevé que le total restant. Appuyez sur **Suivant**.
   </Step>
-  <Step title="Saisir le client et rembourser">
-    Saisissez le nom du client sur l'écran **Customer**, puis appuyez sur **Refund**.
+  <Step title="Confirmer">
+    Saisissez le **Nom sur le reçu** lorsque demandé, puis appuyez sur **Rembourser**.
   </Step>
 </Steps>
 
-<Frame caption="sélecteur d'articles pour remboursement avec Select All.">
-  ![sélecteur d'articles pour remboursement avec Select All](/images/taliup-pos/transactions/refund-itemized.png)
+## Remboursement partiel (articles)
+
+Affiché sur WEB-SRM lorsque la commande liée a des lignes (et n'est pas une commande de table).
+
+<Frame caption="Remboursement sur WEB-SRM. Articles remplace Montant pour choisir des lignes de la commande.">
+  ![écran Remboursement avec les tuiles Articles et Remboursement complet](/images/taliup-pos/transactions/refund-options-items.png)
 </Frame>
 
-## Remboursement partiel (saisir un montant)
-
-Affiché lorsque le remboursement par articles n'est pas disponible (par exemple aucune ligne).
-
 <Steps>
-  <Step title="Choisir Rembourser un montant">
-    Appuyez sur **Rembourser un montant**.
+  <Step title="Choisir Articles">
+    Appuyez sur **Articles**.
   </Step>
-  <Step title="Saisir le montant">
-    Saisissez un montant supérieur à zéro et pas plus élevé que le total encore remboursable. L'aide affiche **Montant de la transaction**; le montant devient rouge s'il est trop élevé. Appuyez sur **Next**.
+  <Step title="Sélectionner les articles">
+    Sur **Articles à rembourser**, appuyez sur **Tout sélectionner** ou choisissez des lignes individuelles, puis appuyez sur **Suivant**.
+
+    <Frame caption="Articles à rembourser. Tout sélectionner ou choisir des lignes, puis Suivant.">
+      ![sélecteur d'articles pour remboursement avec Soft Drink et Bruschetta sélectionnés](/images/taliup-pos/transactions/refund-itemized.png)
+    </Frame>
   </Step>
-  <Step title="Saisir le client et rembourser">
-    Saisissez le nom du client, puis appuyez sur **Refund**.
+  <Step title="Confirmer">
+    Le WEB-SRM exige un **Nom sur le reçu** pour la note de crédit fiscale. Saisissez-le, puis appuyez sur **Rembourser**.
   </Step>
 </Steps>
 
@@ -83,8 +88,8 @@ Affiché lorsque le remboursement par articles n'est pas disponible (par exemple
 
 | Situation | Quoi vérifier |
 |---|---|
-| Seulement **Tout rembourser** est disponible | Les commandes de table n'offrent pas de retour partiel dans ce flux |
-| **Next** désactivé à la saisie du montant | Le montant doit être &gt; 0 et ≤ le montant encore remboursable |
+| Seulement **Remboursement complet** est disponible | Les commandes de table n'offrent pas **Montant** ni **Articles** |
+| **Suivant** désactivé à la saisie du montant | Le montant doit être &gt; 0 et ≤ le montant encore remboursable |
 | Pas de bouton **Retour** | Non admissible, déjà entièrement retourné, ou permission de gérer les transactions manquante |
 | Message de permission | Demandez à un gestionnaire ou mettez à jour le rôle dans Taliup HQ |
 

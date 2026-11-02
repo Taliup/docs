@@ -1,0 +1,43 @@
+---
+title: "Code-barres du reçu"
+sidebarTitle: "Code-barres du reçu"
+description: "Imprimer un code-barres Code 128 sur les reçus, puis le balayer ou chercher le jeton pour ouvrir la commande ou la transaction."
+keywords: ["code-barres du reçu", "jeton de reçu", "balayer le reçu", "Code 128"]
+---
+
+Lorsque **Code-barres sur le reçu** est activé, les reçus papier et courriel incluent un code-barres Code 128. Balayez-le sur l'appareil, ou saisissez le jeton dans la recherche de **Commandes** ou **Transactions**, pour ouvrir cette vente.
+
+Le réglage est désactivé par défaut.
+
+## L'activer
+
+Dans Taliup HQ, ouvrez **Paramètres** → **Reçus**. Activez **Code-barres sur le reçu**, puis **Enregistrer les modifications**. L'aperçu du reçu sur cette page montre où le code-barres s'imprimera.
+
+## Balayer un reçu
+
+<Steps>
+  <Step title="Balayer le code-barres">
+    Depuis Caisse, balayez le code-barres avec le lecteur intégré ou **Ouvrir le scanner**. Un lecteur en mode clavier fonctionne de la même façon.
+  </Step>
+  <Step title="Ouvrir la vente">
+    Taliup POS cherche le jeton et ouvre la commande ou la transaction correspondante.
+  </Step>
+</Steps>
+
+En **Vente ouverte seulement**, un reçu qui appartient à une commande catalogue ou de table ne peut pas être ouvert. Balayez-le depuis un appareil qui a **Commandes**.
+
+Si Taliup HQ n'est pas joignable, Taliup POS affiche que la recherche du reçu a échoué.
+
+## Chercher par jeton
+
+Sur **Commandes** ou **Transactions**, appuyez sur la recherche et saisissez le jeton imprimé sous le code-barres. La liste trouve cette vente, y compris les paiements sans commande.
+
+## Où il s'imprime
+
+Le code-barres s'imprime sur les copies client et marchand après une vente, et sur les reçus d'annulation et de remboursement imprimés depuis les détails de la transaction. Le reçu envoyé par courriel l'inclut aussi.
+
+## Voir aussi
+
+- [Reçu client](/fr-CA/taliup-pos/register/customer-receipt)
+- [Trouver et rouvrir une commande](/fr-CA/taliup-pos/orders/find-and-reopen)
+- [Recherche et filtres](/fr-CA/taliup-pos/transactions/search-and-filters)

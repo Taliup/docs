@@ -38,12 +38,12 @@ Après la connexion, **Inscrire cet appareil** bloque **Caisse**, **Tables** et 
     </Frame>
   </Step>
   <Step title="Ouvrir la demande de certificat">
-    Dans **Inscrire cet appareil**, appuyez sur **Demander un certificat**.
+    Sur **Bienvenue dans Taliup POS**, appuyez sur **Demander un certificat**.
 
-    L'étape 2, l'enregistrement de l'employé, reste verrouillée jusqu'à ce que l'appareil soit inscrit.
+    L'étape 2, **Enregistrement de l'employé**, reste verrouillée jusqu'à ce que l'appareil soit inscrit. Taliup POS enregistre ensuite l'employé connecté auprès de Revenu Québec tout seul.
 
-    <Frame caption="Feuille d'inscription WEB-SRM. L'étape 1 est Inscrire cet appareil. L'étape 2 est verrouillée jusqu'à l'installation du certificat.">
-      ![Set up this terminal modal with Enrol this device active and Register your user locked](/images/taliup-pos/web-srm/setup-terminal.png)
+    <Frame caption="Bienvenue dans Taliup POS. L'étape 1 est Inscrire cet appareil. L'étape 2, Enregistrement de l'employé, reste verrouillée jusqu'à l'installation du certificat.">
+      ![feuille Bienvenue dans Taliup POS avec Inscrire cet appareil actif et Enregistrement de l'employé verrouillé](/images/taliup-pos/web-srm/setup-terminal.png)
     </Frame>
   </Step>
   <Step title="Nommer le certificat">
@@ -66,10 +66,10 @@ Après la connexion, **Inscrire cet appareil** bloque **Caisse**, **Tables** et 
       ![WEB-SRM Certificate screen showing Certificate installed with Renew certificate and Delete certificate actions](/images/taliup-pos/web-srm/certificate-installed.png)
     </Frame>
   </Step>
-  <Step title="Enregistrer l'employé">
-    Revenez à la feuille d'inscription WEB-SRM. L'étape 2 est maintenant disponible. Appuyez sur **Enregistrer** pour inscrire l'employé connecté auprès du WEB-SRM.
+  <Step title="Enregistrement de l'employé">
+    Revenez à Accueil. **Enregistrement de l'employé** se lance tout seul une fois le certificat installé. Taliup POS inscrit l'employé connecté auprès de Revenu Québec.
 
-    L'appareil ne peut facturer qu'après la réussite de cette étape.
+    L'appareil ne peut facturer qu'après la réussite de cette étape. En cas d'échec, la feuille explique pourquoi et propose **Réessayer**, ou **Changer d'employé ou se déconnecter**.
   </Step>
 </Steps>
 
@@ -143,16 +143,16 @@ Supprimez seulement lorsque vous mettez l'appareil hors service ou que vous reco
   </Step>
 </Steps>
 
-Après la suppression, la feuille d'inscription WEB-SRM réapparaît. Demandez un nouveau certificat, puis enregistrez l'employé connecté.
+Après la suppression, la feuille d'inscription WEB-SRM réapparaît. Demandez un nouveau certificat. L'enregistrement de l'employé se lance tout seul après l'installation du nouveau certificat.
 
 ## Dépannage
 
 | Problème | Que faire |
 |---|---|
 | **This business has no WEB-SRM configuration from Taliup HQ** | Activez MEV-WEB et enregistrez les identifiants dans Taliup HQ. Voir [Paramètres MEV-WEB](/fr-CA/taliup-hq/onboarding/web-srm). |
-| **Caisse**, **Tables** et **Menu** restent grisés | Terminez les deux étapes d'inscription. L'étape 2 reste verrouillée jusqu'à l'installation du certificat. |
+| **Caisse**, **Tables** et **Menu** restent grisés | Terminez l'inscription. **Enregistrement de l'employé** reste verrouillé jusqu'à l'installation du certificat, puis se lance tout seul. |
 | La demande de certificat a échoué | Confirmez que l'appareil est en ligne et que les identifiants HQ sont exacts, puis appuyez de nouveau sur **Demander un certificat**. Le surnom doit compter de 8 à 32 caractères. |
-| L'enregistrement de l'employé n'est pas terminé | Appuyez de nouveau sur **Enregistrer**. L'employé n'est inscrit auprès du WEB-SRM qu'après la réussite de cette étape. |
+| L'enregistrement de l'employé n'est pas terminé | Appuyez sur **Réessayer**. L'employé n'est inscrit auprès du WEB-SRM qu'après la réussite de cette étape. |
 | Le renouvellement n'est pas terminé | Confirmez que l'appareil est en ligne, puis appuyez de nouveau sur **Renouveler le certificat**. |
 | L'appareil ne peut pas facturer après une suppression | Attendu. Inscrivez l'appareil et enregistrez l'employé connecté de nouveau. |
 | Restauration d'un appareil déjà inscrit | Dans le formulaire de certificat, appuyez sur **Oui** et saisissez l'identifiant existant au format `XXXX-XXXX-XXXX`. |

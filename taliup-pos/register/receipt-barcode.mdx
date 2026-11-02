@@ -1,0 +1,43 @@
+---
+title: "Receipt barcode"
+sidebarTitle: "Receipt barcode"
+description: "Print a Code 128 barcode on receipts, then scan it or search the token to open the order or transaction."
+keywords: ["receipt barcode", "receipt token", "scan receipt", "Code 128"]
+---
+
+When **Receipt barcode** is on, paper and emailed receipts include a Code 128 barcode. Scan it on the terminal, or type the token in **Orders** or **Transactions** search, to open that sale.
+
+The setting is off by default.
+
+## Turn it on
+
+In Taliup HQ, open **Settings** → **Receipts**. Turn on **Receipt barcode**, then **Save changes**. The receipt preview on that page shows where the barcode will print.
+
+## Scan a receipt
+
+<Steps>
+  <Step title="Scan the barcode">
+    From Register, scan the barcode with the built-in scanner or **Open Scanner**. A wedge scanner works the same way.
+  </Step>
+  <Step title="Open the sale">
+    Taliup POS looks up the token and opens the matching order or transaction.
+  </Step>
+</Steps>
+
+On **Open Sale Only**, a receipt that belongs to a catalog or table order cannot be opened. Scan it from a terminal that has **Orders**.
+
+If Taliup HQ cannot be reached, Taliup POS shows **Couldn't look up the receipt. Check the connection and try again.**
+
+## Search by token
+
+On **Orders** or **Transactions**, tap search and type the token printed under the barcode. The list matches that sale, including payments that have no order.
+
+## Where it prints
+
+The barcode prints on customer and merchant copies after a sale, and on void and refund receipts printed from Transaction Details. The emailed receipt includes it too.
+
+## Related
+
+- [Customer receipt](/taliup-pos/register/customer-receipt)
+- [Find and reopen an order](/taliup-pos/orders/find-and-reopen)
+- [Search and filters](/taliup-pos/transactions/search-and-filters)

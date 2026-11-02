@@ -27,6 +27,10 @@ In Register, open **Order actions**. The **Gift Cards** section lists:
 
 ## Sell a gift card
 
+<Frame caption="Sell gift card with Physical card, amount presets, and Add gift card.">
+  ![Sell gift card sheet with Physical card and Digital card, amount chips, and Add $50 gift card](/images/taliup-pos/register/sell-gift-card.png)
+</Frame>
+
 <Steps>
   <Step title="Open Sell gift card">
     From **Order actions**, tap **Sell gift card**.
@@ -48,7 +52,15 @@ In Register, open **Order actions**. The **Gift Cards** section lists:
 
 - A gift card cannot pay for a gift card. Use another payment method for that sale.
 - A sale with a gift card cannot be saved for later. Pay it now.
-- If a physical card is already active, Taliup POS asks you to use a new card.
+
+As soon as you enter a physical card number, Taliup POS checks it with Taliup HQ. **Add** stays disabled until the card is a blank card from this store's program. Taliup POS shows the reason when it refuses the card:
+
+| Message | What to do |
+|---|---|
+| **This card is already active. Use “Reload gift card” to add value to it.** | Reload instead of selling |
+| **This card belongs to another store and can't be sold here.** | Use a card from this merchant's program |
+| **This card isn't part of this store's gift card program.** | Scan a different card |
+| **Can't check this card right now.** | Check the connection and try again |
 
 ### Load a batch
 
@@ -103,7 +115,17 @@ Receipts show the gift card used and its remaining balance. When a card is sold 
 
 ## If a card was not loaded
 
-If the sale is paid but a card could not be loaded (for example, Taliup HQ could not be reached), the sale is still complete. Open **Order actions**, tap **Retry gift card load**, then **Retry now**.
+If the sale is paid but a card could not be loaded (for example, Taliup HQ could not be reached), the sale is still complete. Open **Order actions**, tap **Retry gift card load**. The list comes from Taliup HQ and covers the last 30 days.
+
+| Status | What you can do |
+|---|---|
+| Still loading | **Retry now**. HQ also finishes pending loads on its own |
+| Declined or cancelled | **Refund** — the customer is owed the card amount back |
+| **Refund pending** | Finish the refund for that card |
+
+A pending card shows **HQ hasn’t finished loading this card yet.** The customer has already paid. The receipt prints once the card is settled.
+
+Gift cards need a connection. Offline, Taliup POS shows **Connect to the internet to sell, reload, check or refund gift cards.**
 
 ## Related
 

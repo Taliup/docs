@@ -109,7 +109,8 @@
               {
                 "group": "Getting Started",
                 "pages": [
-                  "taliup-hq/merchant/dashboard"
+                  "taliup-hq/merchant/dashboard",
+                  "taliup-hq/merchant/brand-hub"
                 ]
               },
               {
@@ -169,6 +170,8 @@
                   "taliup-pos/register/customer-receipt",
                   "taliup-pos/register/gift-cards",
                   "taliup-pos/register/loyalty",
+                  "taliup-pos/register/helped-by",
+                  "taliup-pos/register/receipt-barcode",
                   "taliup-pos/register/options"
                 ]
               },
@@ -244,6 +247,7 @@
                 "pages": [
                   "taliup-pos/settings/index",
                   "taliup-pos/settings/general",
+                  "taliup-pos/settings/getting-started",
                   "taliup-pos/settings/printers",
                   "taliup-pos/settings/device"
                 ]
@@ -322,7 +326,7 @@
                 "group": "Releases",
                 "pages": [
                   "changelog/index",
-                  "changelog/2026-10",
+                  "changelog/2026-11",
                   "changelog/2026-09",
                   "changelog/2026-08"
                 ]
@@ -412,7 +416,10 @@
                 "groups": [
                   {
                     "group": "Pour commencer",
-                    "pages": ["fr-CA/taliup-hq/merchant/dashboard"]
+                    "pages": [
+                      "fr-CA/taliup-hq/merchant/dashboard",
+                      "fr-CA/taliup-hq/merchant/brand-hub"
+                    ]
                   },
                   {
                     "group": "Catalogues",
@@ -471,6 +478,8 @@
                       "fr-CA/taliup-pos/register/customer-receipt",
                       "fr-CA/taliup-pos/register/gift-cards",
                       "fr-CA/taliup-pos/register/loyalty",
+                      "fr-CA/taliup-pos/register/helped-by",
+                      "fr-CA/taliup-pos/register/receipt-barcode",
                       "fr-CA/taliup-pos/register/options"
                     ]
                   },
@@ -546,6 +555,7 @@
                     "pages": [
                       "fr-CA/taliup-pos/settings/index",
                       "fr-CA/taliup-pos/settings/general",
+                      "fr-CA/taliup-pos/settings/getting-started",
                       "fr-CA/taliup-pos/settings/printers",
                       "fr-CA/taliup-pos/settings/device"
                     ]
@@ -578,7 +588,7 @@
                     "group": "Versions",
                     "pages": [
                       "fr-CA/changelog/index",
-                      "fr-CA/changelog/2026-10",
+                      "fr-CA/changelog/2026-11",
                       "fr-CA/changelog/2026-09",
                       "fr-CA/changelog/2026-08"
                     ]

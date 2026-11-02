@@ -27,6 +27,10 @@ Dans Caisse, ouvrez **Actions de commande**. La section **Cartes-cadeaux** conti
 
 ## Vendre une carte-cadeau
 
+<Frame caption="Vendre une carte-cadeau avec Carte physique, montants prédéfinis et Ajouter une carte-cadeau.">
+  ![Feuille Vendre une carte-cadeau avec Carte physique et Carte numérique, pastilles de montant, et Ajouter une carte-cadeau de 50 $](/images/taliup-pos/register/sell-gift-card.png)
+</Frame>
+
 <Steps>
   <Step title="Ouvrir Vendre une carte-cadeau">
     Depuis **Actions de commande**, appuyez sur **Vendre une carte-cadeau**.
@@ -48,7 +52,15 @@ Dans Caisse, ouvrez **Actions de commande**. La section **Cartes-cadeaux** conti
 
 - Une carte-cadeau ne peut pas payer une carte-cadeau. Utilisez un autre mode de paiement pour cette vente.
 - Une vente avec une carte-cadeau ne peut pas être enregistrée pour plus tard. Encaissez-la maintenant.
-- Si une carte physique est déjà active, Taliup POS vous demande d'utiliser une nouvelle carte.
+
+Dès que vous saisissez un numéro de carte physique, Taliup POS le vérifie auprès de Taliup HQ. **Ajouter** reste désactivé tant que la carte n'est pas une carte vierge de ce magasin. Taliup POS affiche la raison lorsqu'il refuse la carte :
+
+| Message | Que faire |
+|---|---|
+| **This card is already active. Use “Reload gift card” to add value to it.** | Rechargez plutôt que de vendre |
+| **This card belongs to another store and can't be sold here.** | Utilisez une carte du programme de ce marchand |
+| **This card isn't part of this store's gift card program.** | Balayez une autre carte |
+| **Can't check this card right now.** | Vérifiez la connexion et réessayez |
 
 ### Charger un lot
 
@@ -103,7 +115,17 @@ Les reçus affichent la carte-cadeau utilisée et son solde restant. Lorsqu'une 
 
 ## Si une carte n'a pas été chargée
 
-Si la vente est payée mais qu'une carte n'a pas pu être chargée (par exemple, Taliup HQ était injoignable), la vente est quand même terminée. Ouvrez **Actions de commande**, appuyez sur **Réessayer le chargement de la carte-cadeau**, puis **Réessayer maintenant**.
+Si la vente est payée mais qu'une carte n'a pas pu être chargée (par exemple, Taliup HQ était injoignable), la vente est quand même terminée. Ouvrez **Actions de commande**, appuyez sur **Réessayer le chargement de la carte-cadeau**. La liste vient de Taliup HQ et couvre les 30 derniers jours.
+
+| Statut | Ce que vous pouvez faire |
+|---|---|
+| Encore en chargement | **Réessayer maintenant**. HQ termine aussi les chargements en attente tout seul |
+| Refusée ou annulée | **Rembourser** — le client a droit au montant de la carte |
+| **Refund pending** | Terminez le remboursement de cette carte |
+
+Une carte en attente indique que HQ n'a pas encore fini de la charger. Le client a déjà payé. Le reçu s'imprime une fois la carte réglée.
+
+Les cartes-cadeaux exigent une connexion. Hors ligne, Taliup POS demande de se connecter pour vendre, recharger, vérifier ou rembourser.
 
 ## Connexe
 

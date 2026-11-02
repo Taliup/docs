@@ -1,7 +1,7 @@
 ---
 title: "Paramètres généraux"
 sidebarTitle: "Général"
-description: "Indicateur de pourboires, comportement des reçus, favoris passés, vue Caisse par défaut, saisie des articles pesés, catalogue assigné, imprimantes et effacement des données."
+description: "Indicateur de pourboires, comportement des reçus, favoris passés, vue Caisse par défaut, saisie des articles pesés, catalogue assigné, synchronisation Taliup HQ, imprimantes et effacement des données."
 ---
 
 **Général** contrôle le comportement quotidien de l'appareil pour les reçus, les défauts de Caisse, les favoris passés et le matériel lié.
@@ -75,9 +75,35 @@ Ce réglage reste sur ce terminal. Voir [Codes-barres de balance](/fr-CA/taliup-
 | **Paramètres de l'imprimante** | [Imprimantes](/fr-CA/taliup-pos/settings/printers) |
 | **Paramètres de l'appareil** | [Appareil](/fr-CA/taliup-pos/settings/device) — seulement lorsque cette configuration de paiement prend en charge les paramètres d'appareil |
 
+## Synchronisation Taliup HQ
+
+**Taliup HQ sync** liste les ventes et commandes stockées sur cette caisse pendant que Taliup HQ était injoignable. Elles sont envoyées automatiquement lorsque la connexion revient. **Sync now** les envoie tout de suite.
+
+Accueil → **Paramètres** → **Outils** → **Taliup HQ sync**.
+
+<Frame caption="Taliup HQ sync lorsque rien n'attend sur cette caisse.">
+  ![Taliup HQ sync montrant les ventes terminées, les commandes ouvertes ou annulées, et Sync now](/images/taliup-pos/settings/hq-sync.png)
+</Frame>
+
+| Ligne | Ce qu'elle compte |
+|---|---|
+| **Completed sales** | Ventes payées qui n'ont pas atteint Taliup HQ |
+| **Open and cancelled orders** | Commandes ouvertes ou annulées encore en attente de téléversement |
+| **WEB-SRM records** | Dossiers fiscaux en file pour HQ, affichés seulement pour les marchands WEB-SRM |
+
+Lorsque rien n'attend, Taliup POS indique que tout sur cette caisse a atteint Taliup HQ.
+
+Si certains dossiers ne peuvent pas être envoyés, ils restent sur la caisse et sont réessayés automatiquement.
+
+L'écran **Pending sync** de MEV pointe aussi ici.
+
 ## Effacer les données de l'application
 
 **Effacer les données** efface les données locales de l'application sur cet appareil après confirmation. Utilisez seulement lorsque le soutien vous le demande — vous devrez vous reconnecter.
+
+Si des transactions terminées n'ont pas encore été envoyées à Taliup HQ, une fiche **Transactions not yet sent to Taliup HQ** les liste par type et pointe vers **Taliup HQ sync**. **Clear application data anyway** reste désactivé jusqu'à ce que vous confirmiez que ces ventes seront supprimées de cet appareil et n'apparaîtront pas dans Taliup HQ.
+
+L'effacement n'est pas bloqué. Synchronisez d'abord, sauf si le soutien vous demande d'effacer quand même.
 
 ## Quitter le mode démo
 

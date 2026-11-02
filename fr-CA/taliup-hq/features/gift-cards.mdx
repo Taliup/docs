@@ -1,8 +1,8 @@
 ---
 title: "Cartes-cadeaux"
 sidebarTitle: "Cartes-cadeaux"
-description: "Activer les cartes-cadeaux par emplacement, garder des numéros numériques prêts et consulter les cartes vendues et leur activité."
-keywords: ["carte-cadeau", "carte-cadeau numérique", "Apple Wallet", "Google Wallet", "réapprovisionnement"]
+description: "Activer les cartes-cadeaux par emplacement, garder des numéros numériques prêts, commander des cartes physiques et consulter les cartes vendues et leur activité."
+keywords: ["carte-cadeau", "carte-cadeau numérique", "cartes-cadeaux physiques", "Apple Wallet", "Google Wallet", "réapprovisionnement"]
 ---
 
 Activez les cartes-cadeaux pour chaque emplacement, gardez des numéros numériques prêts et consultez les cartes vendues. Un marchand a un seul programme de cartes-cadeaux partagé entre tous ses emplacements : une carte vendue dans un magasin fonctionne dans les autres.
@@ -51,6 +51,42 @@ Cliquez sur **Voir** pour ouvrir **Détails de la carte-cadeau** :
 
 **Désactiver** empêche l'utilisation d'une carte.
 
+## Page de la carte
+
+Le courriel d'une carte numérique inclut **Check your balance**. Ce lien ouvre la page publique de la carte : solde en direct, 4 derniers chiffres, un code QR à balayer à la caisse, et les boutons Apple Wallet ou Google Wallet. La page utilise les couleurs du [Centre de marque](/fr-CA/taliup-hq/merchant/brand-hub).
+
+## Commander des cartes physiques
+
+Les marchands en dollars canadiens peuvent commander des cartes physiques personnalisées depuis la page Cartes-cadeaux. Cliquez sur **Order physical cards**. Le bouton est masqué si la devise n'est pas le dollar canadien, ou si la commande n'est pas encore ouverte.
+
+<Steps>
+  <Step title="Design de la carte">
+    Téléversez un JPG ou un PNG pour le **Card front**, ou gardez le modèle par défaut (logo et nom d'entreprise). Faites glisser pour positionner et zoomer. Tout ce qui dépasse la carte est coupé. Le **Card back** est toujours le verso standard de l'imprimeur : blanc avec texte noir, le numéro de chaque carte et un code QR.
+  </Step>
+  <Step title="Quantité et vitesse">
+    Choisissez **Quantity** et **Production speed** (**Standard**, **Rush**, **Super rush** ou **Max rush**). Le délai de production commence une fois l'illustration approuvée.
+  </Step>
+  <Step title="Livraison">
+    Confirmez l'adresse de livraison (Canada ou États-Unis). Ajoutez des **Notes for production** facultatives — elles ne sont pas imprimées sur la carte.
+  </Step>
+  <Step title="Payer">
+    Vérifiez le **Order summary**, puis **Continue to payment**. Vous payez le total (cartes, production et livraison) à la page suivante.
+  </Step>
+</Steps>
+
+Activez les cartes-cadeaux pour un emplacement avant de commander. Sinon, Taliup HQ l'indique.
+
+### Suivre une commande
+
+**Physical card orders** liste chaque commande. Les statuts passent par **Submitted**, **Paid**, **Proof ready**, **Proof approved**, **Printing** et **Shipped**.
+
+| Statut | Ce que vous faites |
+|---|---|
+| **Waiting for payment** | **Pay**, ou **Cancel order** (vous n'avez pas été débité) |
+| **Proof ready** | **Review proof** sur le site de l'imprimeur, puis **I've approved my proof** |
+| **Shipped** | **Track shipment** |
+| **Cancelled** | Voir la raison. Si vous avez déjà payé, le remboursement affiche **Refund on its way** ou **Refunded** |
+
 ## Rapports
 
 Les rapports de ventes affichent les achats et les remboursements de cartes-cadeaux.
@@ -59,3 +95,4 @@ Les rapports de ventes affichent les achats et les remboursements de cartes-cade
 
 - [Cartes-cadeaux dans Taliup POS](/fr-CA/taliup-pos/register/gift-cards)
 - [Fidélité](/fr-CA/taliup-hq/features/loyalty)
+- [Centre de marque](/fr-CA/taliup-hq/merchant/brand-hub)

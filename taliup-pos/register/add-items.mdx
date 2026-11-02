@@ -18,7 +18,7 @@ In Register, use the **Menu** or **Catalog** tab to browse sellable items and ad
 If this tab is missing, the merchant does not have catalog selling enabled in Register. Use [Open a sale](/taliup-pos/register/open-sale) instead, or ask your ISO/partner to enable catalog features.
 
 <Warning>
-  Switching between Open Sale and Menu/Catalog while the cart already has items shows a warning that the **cart will be cleared**.
+  Switching between Open Sale and Menu/Catalog while the cart already has items shows a warning that the **cart will be cleared**. Switching tabs also clears the attached client.
 </Warning>
 
 ## Browse and add items
@@ -51,6 +51,20 @@ If this tab is missing, the merchant does not have catalog selling enabled in Re
 </Frame>
 
 To add a deli, butcher, or produce sticker from a barcode-printing scale, scan it in Register. See [Scale barcodes](/taliup-pos/register/scale-barcodes).
+
+## Half-and-half options (sides)
+
+Restaurants can put an option on one half of an item, such as pepperoni on the left half of a pizza.
+
+When you select an option that takes sides, a side picker appears under it: **Left half**, **Whole**, or **Right half**. New selections start on **Whole**.
+
+The cart, kitchen tickets, and receipts show the side after the option, for example `Pepperoni (Left half)`. When the name is too long, the side prints on the next line.
+
+Sides appear only when all of these are true:
+
+- The merchant is a restaurant with online ordering, and **Half Pizza Toppings** is on in Taliup HQ online ordering **Preferences**.
+- The option has **Sides** turned on. See [Attributes / Modifiers](/taliup-pos/catalog/attributes#sides).
+- The modifier group is **Combination**, not **Exactly One**.
 
 ## Table orders
 
