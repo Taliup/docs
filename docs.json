@@ -263,6 +263,22 @@
                   "taliup-pos/web-srm/index",
                   "taliup-pos/web-srm/switch-live-merchant"
                 ]
+              },
+              {
+                "group": "Daily use",
+                "pages": [
+                  "taliup-pos/web-srm/billing",
+                  "taliup-pos/web-srm/cancel-and-correct",
+                  "taliup-pos/web-srm/offline"
+                ]
+              },
+              {
+                "group": "Management",
+                "pages": [
+                  "taliup-pos/web-srm/employees",
+                  "taliup-pos/web-srm/user-report",
+                  "taliup-pos/web-srm/settings"
+                ]
               }
             ]
           }
@@ -570,6 +586,22 @@
                     "pages": [
                       "fr-CA/taliup-pos/web-srm/index",
                       "fr-CA/taliup-pos/web-srm/switch-live-merchant"
+                    ]
+                  },
+                  {
+                    "group": "Utilisation quotidienne",
+                    "pages": [
+                      "fr-CA/taliup-pos/web-srm/billing",
+                      "fr-CA/taliup-pos/web-srm/cancel-and-correct",
+                      "fr-CA/taliup-pos/web-srm/offline"
+                    ]
+                  },
+                  {
+                    "group": "Gestion",
+                    "pages": [
+                      "fr-CA/taliup-pos/web-srm/employees",
+                      "fr-CA/taliup-pos/web-srm/user-report",
+                      "fr-CA/taliup-pos/web-srm/settings"
                     ]
                   }
                 ]
