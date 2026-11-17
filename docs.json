@@ -230,6 +230,7 @@
               {
                 "group": "Help",
                 "pages": [
+                  "index",
                   "taliup-pos/help/assistant",
                   "taliup-pos/help/troubleshooting",
                   "taliup-pos/offline",
@@ -648,6 +649,7 @@
                   {
                     "group": "Aide",
                     "pages": [
+                      "fr-CA/index",
                       "fr-CA/taliup-pos/help/assistant",
                       "fr-CA/taliup-pos/help/troubleshooting",
                       "fr-CA/taliup-pos/offline",

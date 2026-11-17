@@ -131,9 +131,9 @@ Write every Settings path the same way: Home → **Settings** → section → co
   **General** / **WEB-SRM** tabs are present; landscape uses the section navigation on the left. Explain this
   once, on `taliup-pos/settings/index`, and link to it rather than repeating it.
 - In Open Sale Only, the entry path is **Options** → **Open Settings**, then the same section and control.
-- Register hides the auto-settlement Settings entry on every channel, and no Taliup HQ merchant screen
-  shows or changes automatic settlement. Do not document either as a merchant workflow. Closing a batch
-  in the app is a different task; questions about automatic settlement go to support.
+- Register hides the auto-settlement Settings entry on every channel. A linked HQ account with **Manage Settings**
+  can ask the assistant for the enabled status returned by HQ Business settings. Refer schedule changes to support.
+  Closing a batch in the app is a separate task.
 
 ### Support contacts
 

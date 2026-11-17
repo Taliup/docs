@@ -4,10 +4,9 @@ Engineering checklist for Phase 1 P2 (plan Part A). Not published (drafts/ is in
 assistant's knowledge base, which reads only tagged pages. Updated 2026-11-17.
 
 - **Released?** `app main` = merged to the app's origin/main; `YYYY-MM release` = in that changelog; `HQ feature/ai-assistant` =
-  live on the HQ branch these docs ship with (the redesigned HQ UI is not on HQ master yet); `release branch only` = not
-  released, so not documented as available.
-- **Verification**: `code-checked` = written or reviewed against the code; nothing in this pass was checked on a device or
-  live HQ screen. `not checked` = gap not researched yet.
+  checked against the integration branch (production release unconfirmed). Branch presence alone does not establish a shipment.
+  `release branch only` = awaiting release confirmation.
+- **Verification**: `code-checked` = written or reviewed against the code; an explicit device note identifies workflows also exercised on hardware. `not checked` = gap not researched yet.
 
 Counts: covered 88, partial 0, missing 0, deferred-unreleased 6, total 94 (2026-11-17, after the batch A/B pages).
 
@@ -23,7 +22,7 @@ Counts: covered 88, partial 0, missing 0, deferred-unreleased 6, total 94 (2026-
 | Getting started | Working offline | App | app main | taliup-pos/offline | covered | code-checked |
 | Getting started | Permissions reference | App | app main | taliup-pos/permissions | covered | code-checked |
 | Help | Support contacts, troubleshooting | App | n/a | taliup-pos/help/support, taliup-pos/help/troubleshooting | covered | code-checked |
-| Help | AI assistant | App | ships with Phase 1 | taliup-pos/help/assistant | covered | code-checked |
+| Help | AI assistant | App | ships with Phase 1 | taliup-pos/help/assistant | covered | A920Pro walkthroughs below |
 | Register | Open Sale (custom amount) | App | app main | taliup-pos/register/open-sale | covered | code-checked |
 | Register | Add items, scan, weighable items | App | app main | taliup-pos/register/add-items, taliup-pos/register/scale-barcodes | covered | code-checked |
 | Register | Cart: items, guests, save, attach client | App | app main | taliup-pos/register/cart | covered | code-checked |
@@ -108,10 +107,26 @@ Counts: covered 88, partial 0, missing 0, deferred-unreleased 6, total 94 (2026-
 | HQ settings | WEB-SRM settings in HQ | HQ | 2026-08 release | taliup-hq/merchant/settings/web-srm | covered | code-checked |
 | HQ settings | Your profile (user settings) | HQ | HQ feature/ai-assistant | taliup-hq/merchant/profile | covered | code-checked |
 
+## A920Pro walkthroughs
+
+- Opened the assistant from Home in English, Canadian French and Spanish. Sent the suggested refund question in each language. The French response cited the French article and the Spanish response cited the English fallback. The local provider fixture always answers in English. Answer-language quality still needs a live model evaluation.
+- Opened the assistant from the Register's order actions and returned to the uncharged $1.00 amount. Opened it from Open Sale Only, typed with the keyboard visible, sent a hardware digit to the draft and returned to the sale.
+- Started a new conversation and verified the offline notice on disconnecting Wi-Fi.
+
 ## Next steps
 
 All released workflows in this list now have a page. Still open:
-1. Device and live-HQ verification: every row is code-checked only.
+1. Confirm the remaining UI workflows on the corresponding devices and live HQ screens.
 2. Deferred-unreleased rows (appointment cancel/no-show/deposits/payment links, Packages, Memberships, Pay by QR) get pages
    with their release; the HQ calendar page must then gain the payment parts it leaves out today.
 3. HQ pages describe the redesigned HQ on feature/ai-assistant and must go live with that HQ release.
+
+## Storage and privacy before launch
+
+HQ stores employee conversations in its existing database. The `intelligence_conversations` table records ownership, and `intelligence_runs` holds each question, answer and its limited context. After 90 days a turn drops out of model history. The next successful daily `intelligence:prune` scrubs its content and employee and terminal references. Usage and cost metrics remain.
+
+The default HQ log stack sends diagnostics to daily Laravel files under `storage/logs`, the host's syslog and Flare. The daily file channel keeps 14 days. Assistant exception handling and telemetry filters keep conversation text out of these destinations and Nightwatch. Verify the effective destinations, forwarding, retention and filters in the deployed environment.
+
+Before publishing the final employee notice, confirm the production database and replica regions, where backups and copies are held, and when they expire. The 90-day live cleanup does not remove a message from an earlier backup. The production infrastructure settings establish the maximum additional time a backed-up message can remain.
+
+The configured Canada Bedrock profile handles inference. Before the pilot, verify the account's model access, regional provider-retention settings and invocation logging, then run the full help evaluation against that profile.
