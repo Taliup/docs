@@ -76,9 +76,6 @@ Before configuring the connection, bring both apps to the foreground:
     | **USB Preferred** (default) | Tries PAX LinkUp first, then falls back to Raw TCP/IP. Both devices must be on the same Wi-Fi network for PAX LinkUp to work. No IP address required if you are using PAX LinkUp only. |
     | **TCP Only** | Wi-Fi/LAN only. Requires both devices on the same network and an IP address entered below. |
 
-    <Frame caption="Device Settings on the L1400, showing the Connection Mode selector and IPv4 Address field.">
-      ![Device Settings screen on L1400 showing Connection Mode set to USB Preferred, IPv4 Address field, and Port field](/images/taliup-pos/elys-device-settings.png)
-    </Frame>
   </Step>
   <Step title="Find the A3700 IP address (TCP transport)">
     If you are using **TCP Only**, or want Raw TCP/IP available as a fallback in **USB Preferred** mode, find the A3700's IP address:
@@ -86,10 +83,6 @@ Before configuring the connection, bring both apps to the foreground:
     1. With **Taliup Companion** showing the idle screen on the A3700, **double-tap** or **long-press** anywhere on the screen.
     2. The IP address and port appear briefly in the top-left corner for about 5 seconds. Double-tap again to show them once more.
     3. Note the IP address. The port is **12345** unless your deployment uses a different value.
-
-    <Frame caption="Taliup Companion on the A3700 showing the IP address and port in the top-left corner after a double-tap.">
-      ![A3700 Companion idle screen with IP address and port number displayed in the top-left corner](/images/taliup-pos/companion-ip-display.png)
-    </Frame>
 
     If you are using **USB Preferred** mode with PAX LinkUp only, skip this step.
   </Step>
@@ -133,10 +126,6 @@ When Taliup Elys and Taliup Companion lose their link, the L1400 shows a **yello
 - **Connection Diagnosis** (in the banner) and **Diagnose Companion Connection** (in Device Settings) run the same step-by-step connection test.
 - When Companion comes back online, the apps typically reconnect within about **10 seconds** and the banner clears automatically.
 - During an active card payment (tip, surcharge, or processing), the banner may be hidden even if the connection dropped. If the payment fails, check the connection after the payment finishes.
-
-<Frame caption="The yellow connection banner on the L1400 Register screen, with the Connection Diagnosis button.">
-  ![L1400 Register screen showing the yellow Companion display disconnected banner at the top with a Connection Diagnosis button](/images/taliup-pos/elys-connection-banner.png)
-</Frame>
 
 ## Rules for reliable operation
 

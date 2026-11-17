@@ -2,7 +2,7 @@
   "$schema": "https://mintlify.com/docs.json",
   "name": "Taliup",
   "theme": "luma",
-  "favicon": "https://media.brand.dev/51b56c8c-cbe7-40ed-91a2-086e62e64d7c.png",
+  "favicon": "/favicon.png",
   "colors": {
     "primary": "#371B58",
     "light": "#C3B1E1",

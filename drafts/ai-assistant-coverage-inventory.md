@@ -112,6 +112,14 @@ Counts: covered 88, partial 0, missing 0, deferred-unreleased 6, total 94 (2026-
 - Opened the assistant from Home in English, Canadian French and Spanish. Sent the suggested refund question in each language. The French response cited the French article and the Spanish response cited the English fallback. The local provider fixture always answers in English. Answer-language quality still needs a live model evaluation.
 - Opened the assistant from the Register's order actions and returned to the uncharged $1.00 amount. Opened it from Open Sale Only, typed with the keyboard visible, sent a hardware digit to the draft and returned to the sale.
 - Started a new conversation and verified the offline notice on disconnecting Wi-Fi.
+- On the connected A920Pro, retried a failed refund question after restoring connectivity to local HQ. The same question received a sourced answer. Repeated the Home-to-answer flow with the updated Elavon debug build.
+
+## Local verification on 2026-11-17
+
+- All seven `:app` and both `:app-pax` debug variants compiled. The 26 conversation, repository and network tests passed. The updated French assistant screen fit a 1600 × 1000 landscape emulator, including all four suggestions, the privacy notice and the composer.
+- The local HQ endpoint returned sourced answers for Poynt, Elys, AiOne, Castles and Paynuity request fixtures. Each run recorded the expected channel and payment SDK. Physical walkthroughs for those five families are still open.
+- Mintlify rendered the English and French assistant guides and reported zero broken links across the site. The knowledge sync validated 149 English pages and 149 French mirrors, including 135 merchant pages in each language. A transaction-scoped run of `fr-fallback-overview` cited the French overview with its mirror present and the English overview after temporarily removing the mirror. The transaction restored the original corpus.
+- HQ exercised 73 synthetic scenarios across 81 turns with a local model fixture. The single refund smoke checked that the evaluation judge received the retrieved article, its applicability, current employee context and resolved support channel. Local checks also exercised access changes, ISO contacts, card-number redaction, daily pruning, the 100,000-token price boundary and the 50-second request deadline.
 
 ## Next steps
 
@@ -129,4 +137,6 @@ The default HQ log stack sends diagnostics to daily Laravel files under `storage
 
 Before publishing the final employee notice, confirm the production database and replica regions, where backups and copies are held, and when they expire. The 90-day live cleanup does not remove a message from an earlier backup. The production infrastructure settings establish the maximum additional time a backed-up message can remain.
 
-The configured Canada Bedrock profile handles inference. Before the pilot, verify the account's model access, regional provider-retention settings and invocation logging, then run the full help evaluation against that profile.
+Before the pilot, verify the Canada Bedrock endpoint, inference profile, destination IAM access, applicable prices, regional provider-retention settings and invocation logging in the deployed account. Verify that the production proxy, web server and PHP process allow the full 50-second request.
+
+Run the full 73-case evaluation against the approved profile with a separately configured judge. The pilot requires all 31 security and support cases and at least 38 of the 42 other cases to pass. Record the actual cost, per-turn p95 latency, cold and warm cache usage, and largest prompt. Include a measurement with six loaded articles and ten completed turns. The local fixture supplies its own answers, timings and token counts and cannot establish these results.
