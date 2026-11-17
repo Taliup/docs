@@ -1,15 +1,22 @@
 ---
 title: "Void a transaction"
 sidebarTitle: "Void"
-description: "Void an unsettled captured payment or void an authorization from Transaction Details."
+description: "Void an unsettled captured payment, or void an authorization that was not captured, from Transaction Details."
+keywords: ["void a sale", "cancel a payment", "void a transaction", "void an authorization", "undo a card payment", "void before settlement"]
+applies_to:
+  audience: merchant
+  product: pos
+  permissions:
+    guard: appUser
+    any: ["Manage Transactions"]
 ---
 
 Use **Void** to cancel a payment that is still eligible (typically unsettled and captured). Use **Void Auth** (or **Delete Auth** on some setups) for an authorization that has not been captured.
 
 ## Before you start
 
-- You need permission to manage transactions.
-- The payment must still be eligible (for example unsettled and in a voidable status). Settled payments are usually refunded with **Return** instead — see [Refund](/taliup-pos/transactions/refund).
+- Your role needs the **Manage Transactions** permission.
+- The payment must still be eligible (for example unsettled and in a voidable status). Settled payments are usually refunded instead, with **Refund** or **Return** — see [Refund](/taliup-pos/transactions/refund).
 - If **Void** is not shown, the payment is not eligible or your role cannot manage transactions.
 
 ## Void a captured payment

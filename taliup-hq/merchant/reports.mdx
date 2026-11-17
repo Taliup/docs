@@ -1,0 +1,69 @@
+---
+title: "Reports"
+sidebarTitle: "Reports"
+description: "Generate transactions, orders, items, tips, profit, payouts, loyalty or WEB-SRM user reports for a period in Taliup HQ, then open, print or download them."
+keywords: ["generate a sales report", "items sold report", "tips by employee", "profit report", "download report PDF", "WEB-SRM user report"]
+applies_to:
+  audience: merchant
+  product: hq
+  features: [reports]
+  permissions:
+    guard: web
+    any: ["View Reports"]
+---
+
+**Reports** builds a report for any period and keeps it in a list, so you can open, print or download it later.
+
+## Before you start
+
+- Your business needs the **Reports** feature, and your Taliup HQ account the **View Reports** permission.
+- Generating a report needs **Manage Reports**. Deleting one needs **Delete Reports**. Without them you can only open reports that already exist.
+
+## How to get here
+
+In Taliup HQ, select **Reports** in the sidebar (under the insights group).
+
+## Report types
+
+| Report | What it covers | When it is offered |
+|---|---|---|
+| **Transactions report** | Sales, refunds, voids and authorizations by payment method, with taxes and tips | Always |
+| **Orders report** | Every order with its items, discounts, fees, tax and tips | Always |
+| **Items report** | What sold, how many, and its sales, item discounts and tax | Always |
+| **Tips report** | Tips collected by payment type and by employee | Always |
+| **Profit report** | Revenue, cost and profit for products that have a cost | Always |
+| **Payouts report** | Cash paid out of the till, by type, device, employee and location | Your business has the **Payout** feature |
+| **Loyalty report** | Points earned and redeemed, rewards and members | Your business has the **Loyalty** feature |
+| **WEB-SRM user report** | The year's sales summary for Revenu Québec mandatory billing | Your business is set up for WEB-SRM |
+
+## Generate a report
+
+<Steps>
+  <Step title="Start a report">
+    Select **New report**, or use **Generate a report** at the top of the page.
+  </Step>
+  <Step title="Choose the report and its scope">
+    Choose the report type. Then choose the **Location**, the **Devices** and the **Employees** it covers, or keep **All locations**, **All devices** and **All employees**.
+  </Step>
+  <Step title="Choose the period">
+    Pick **Today**, **Yesterday**, **This week**, **Last week**, **This month**, **Last month** or **Custom**, then adjust **Starts** and **Ends** if needed. The end must be on or after the start. The WEB-SRM user report always covers January 1 of this year to now.
+  </Step>
+  <Step title="Generate">
+    Select **Generate**. The report is built in the background and appears in **Generated reports** when it is ready. You can keep working in the meantime.
+  </Step>
+</Steps>
+
+## Open, print or download
+
+In **Generated reports**, search with **Search reports** or filter the list, then:
+
+- Select a report, or **View report**, to open it.
+- Use **Print**, or the PDF icon to open the PDF.
+- Use the row's **Actions** menu → **Delete** to remove a report and its PDF. You can generate it again anytime.
+
+## Related
+
+- [End of Day](/taliup-hq/features/end-of-day)
+- [Dashboard](/taliup-hq/merchant/dashboard)
+- [Analytics in Taliup POS](/taliup-pos/analytics)
+- [WEB-SRM user report on the device](/taliup-pos/web-srm/user-report)

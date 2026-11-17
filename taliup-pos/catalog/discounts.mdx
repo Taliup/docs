@@ -1,14 +1,26 @@
 ---
 title: "Discounts"
 sidebarTitle: "Discounts"
-description: "Create order-level or item-level discounts for the catalog."
+description: "Create, edit and delete the discounts staff can apply in Register, as a percentage or fixed amount, on the order or on items."
+keywords: ["create a discount", "discount code", "percentage discount", "item level discount", "edit a discount", "delete a discount"]
+applies_to:
+  audience: merchant
+  product: pos
+  features: [catalog, catalog_discounts]
+  permissions:
+    guard: appUser
+    any: ["View Discounts"]
 ---
 
-Use **Discounts** to define discounts staff can apply during a sale. Access requires the catalog discounts feature.
+Use **Discounts** to define discounts staff can apply during a sale.
 
 <Frame caption="Discounts list with Disc. Code, Value, Applied To.">
   ![Discounts list with Disc. Code, Value, Applied To](/images/taliup-pos/catalog/discounts.png)
 </Frame>
+
+## Before you start
+
+Requires the **Catalogs** and **Discounts** features and the **View Discounts** permission. Creating or editing needs **Manage Discounts**, and deleting needs **Delete Discounts**.
 
 ## How to get here
 
@@ -36,4 +48,4 @@ Home → **Menu** / **Catalog** → **Discounts**.
 
 List columns: **Disc. Code**, **Value**, **Applied To**.
 
-Open a discount to edit or **Delete**. Apply discounts on an order from Register [Options](/taliup-pos/register/options) → **Add Order Discounts**.
+Open a discount to edit or **Delete**. To use one in a sale, see [Apply discounts](/taliup-pos/register/apply-discounts).

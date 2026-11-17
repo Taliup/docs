@@ -1,8 +1,25 @@
 ---
 title: "Create and edit a client"
 sidebarTitle: "Create and edit"
-description: "Add a new client, update details, review activity, and delete a client."
+description: "Add a new client, update their details and notes, review their transactions, appointments and invoices, or delete them."
+keywords: ["add a client", "create a customer", "edit client details", "delete a client", "client notes", "client transactions"]
+applies_to:
+  audience: merchant
+  product: pos
+  features: [clients]
 ---
+
+## Before you start
+
+The **Clients** feature must be enabled for the business in Taliup HQ. Each action also needs a role permission, set in Taliup HQ:
+
+| Action | Permission |
+|---|---|
+| Open a client record | **View Clients** |
+| Add a client, edit details or notes | **Manage Clients** |
+| Delete a client | **Delete Clients** |
+
+The **Transactions**, **Appointments** and **Invoices** activity on a record also needs the **Transaction History** feature.
 
 ## Create a client
 
@@ -32,7 +49,7 @@ description: "Add a new client, update details, review activity, and delete a cl
 
 ## Client record
 
-Tap a client to open their record beside the list. **Edit** changes name, contact, and address.
+Tap a client to open their record beside the list. **Edit** changes name, contact, address, and **Notes**. For everything on the record, see [Client record](/taliup-pos/clients/client-record).
 
 <Frame caption="Client record with Loyalty and Transactions, Appointments, and Invoices.">
   ![Client record showing Loyalty enrolment and Transactions, Appointments, Invoices](/images/taliup-pos/clients/detail.png)
@@ -46,6 +63,8 @@ Tap a client to open their record beside the list. **Edit** changes name, contac
 | **Invoices** | Link to Pay invoices |
 
 Empty sections say no records were found for this client.
+
+To delete a client, open **Edit**, tap **Delete**, then confirm **Delete this client?** This can't be undone in Taliup POS.
 
 If you delete a client in **Taliup HQ** and add them again with the same email, HQ asks to [restore the previous client](/taliup-hq/features/clients#restore-a-deleted-client) so invoices and other history come back.
 

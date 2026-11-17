@@ -1,12 +1,24 @@
 ---
 title: "Clients"
 sidebarTitle: "Overview"
-description: "Create and manage customer records, view activity, and attach clients to Register orders."
+description: "Find customer records in the Clients list, open a client's details and activity, and add new clients."
+keywords: ["client list", "find a customer", "customer records", "search clients", "add a new client", "customer history"]
+applies_to:
+  audience: merchant
+  product: pos
+  features: [clients]
+  permissions:
+    guard: appUser
+    any: ["View Clients"]
 ---
 
 **Clients** stores customer records you can attach to Register orders and review later.
 
-Requires the **Clients** feature. If it is not enabled, Taliup POS shows a feature access message — enable it in Taliup HQ or contact your ISO/partner.
+## Before you start
+
+- The **Clients** feature must be enabled for the business in Taliup HQ. If it is not, Taliup POS shows a feature access message.
+- Your role needs the **View Clients** permission to see the list. Adding or changing clients needs **Manage Clients**.
+- Clients load from Taliup HQ, so the device must be online.
 
 <Frame caption="Clients list. Tap a name to open the record.">
   ![Clients list with a Select a client empty detail pane](/images/taliup-pos/clients/list.png)

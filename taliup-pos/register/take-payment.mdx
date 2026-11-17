@@ -1,96 +1,104 @@
 ---
 title: "Take payment"
 sidebarTitle: "Take payment"
-description: "Collect Pay Full or Split Amount payments with card, cash, tip prompts, and customer receipt choices."
+description: "Charge an order with the Register tender keys: card, cash, split and other methods, with dual pricing, surcharge and tip prompts."
+keywords: ["take a card payment", "pay with cash", "split the bill", "credit or debit key", "dual pricing card price", "credit card surcharge", "more payment types", "manual card entry"]
+applies_to:
+  audience: merchant
+  product: pos
 ---
 
-From the cart (or Open Sale **Pay**), Taliup POS opens the payment screen so you can collect the balance.
+When the order is ready, charge it with the tender keys at the bottom of Register. Each key shows the amount it will charge, for example **Card: $24.15**.
 
 <Frame caption="Payment screen with Pay Full / Split Amount and card/cash options.">
   ![Payment screen with Pay Full / Split Amount and card/cash options](/images/taliup-pos/register/take-payment.png)
 </Frame>
 
-## How to get here
+## Tender keys
 
-1. Build an order in Register (Open Sale or Menu/Catalog).
-2. Tap **Pay**.
-3. Or, on a table order, open a guest’s options and tap **Pay** to collect that guest’s balance only.
+The bar shows **Cash**, the card key and, when there is room, **Split**. Everything else is under **More** (**More payment types**).
 
-Available methods depend on what the merchant enabled (for example cash, credit, debit, EBT, Link to Pay, gift card).
-
-Each tender key shows the amount it will charge, for example **Card: $24.15**. Methods that do not fit open from **More payment types**.
-
-## Pay Full or Split Amount
-
-| Tab | Use it when |
+| Key | When it appears |
 |---|---|
-| **Pay Full** | Collecting the full remaining balance |
-| **Split Amount** | Collecting part of the balance now |
+| **Cash** | Your business accepts cash. The amount is rounded to the nearest 5¢, except on Poynt |
+| **Card**, **Credit**, **Debit** | Your business accepts cards. See [Card keys](#card-keys) |
+| **Split** | Not on WEB-SRM registers |
+| **Gift card** | Gift cards are activated for this location. Not when the sale loads a gift card |
+| **EBT** | Your business accepts EBT. Not when the sale loads a gift card |
+| **Other** | WEB-SRM registers only |
+| **L2P** (Link To Pay) | Your business uses [Link to Pay](/taliup-pos/link-to-pay). Not when paying one guest |
+| **Manual entry** | Elavon card readers (Link 2500, Lane 3600): key the card number on the reader. Added in [November 2026](/changelog/2026-11) |
 
-On **Split Amount**, choose a preset such as **Full Amount**, **N Ways**, or **Custom**, then take payment for the selected portion. After a successful split payment you can take the **Next Payment**, or **Pay More Later**.
+## Card keys
+
+Which card keys you see depends on how your business is set up in Taliup HQ:
+
+| Setup | Card keys |
+|---|---|
+| The terminal detects credit or debit automatically | One **Card** key |
+| The terminal detects automatically, and a credit card surcharge is on without dual pricing | **Credit** and **Debit** |
+| Any other setup | **Credit** and **Debit**, for the types your business accepts |
+
+**Dual pricing** shows a card price that includes a non-cash adjustment. The **Credit** key always includes it. **Debit** includes it only when your business applies dual pricing to debit.
+
+A **credit card surcharge** applies to credit only, and only when dual pricing is off. The **Credit** key shows the total with the surcharge.
 
 ## Card payment
 
 <Steps>
-  <Step title="Choose card">
-    Tap the card charge option shown for your merchant (for example charge on **Card**, **Credit**, or **Debit**).
+  <Step title="Tap the card key">
+    Tap **Card**, **Credit**, **Debit** or **Manual entry**.
   </Step>
-  <Step title="Complete on the terminal">
-    Follow the on-device prompts. If tips are enabled in Taliup HQ, the customer sees **Add a tip?** with up to four presets, **No tip**, and **Custom** below them.
+  <Step title="The customer answers the prompts">
+    Depending on your setup, in this order:
+    1. Dual pricing: **How would you like to pay?** The customer taps **Pay [amount] by card**, or **Cash** to stop and pay cash instead.
+    2. Tip: **Add a tip?** See [Tips](/taliup-pos/register/tips).
+    3. Surcharge: **Credit Card Surcharge** with the **Total to be charged**. The customer taps **Agree & pay [amount]**, or **Pay With Debit** to avoid it. **Pay With Debit** is not offered with **Manual entry** or when the terminal detects the card type automatically.
+  </Step>
+  <Step title="Present the card">
+    Follow the card reader: **Tap, insert or swipe card on the reader**.
   </Step>
   <Step title="Finish">
-    Wait for approval. Taliup POS posts the payment and may ask how the customer should get a receipt.
+    After approval, Taliup POS records the payment and may ask how the customer wants a receipt.
   </Step>
 </Steps>
 
-Tip options are configured in Taliup HQ. See [Tips](/taliup-hq/onboarding/tips).
+The prompts appear where the tip prompt does: on a customer display, on a separate PAX payment terminal, or on the Taliup POS screen.
 
 ## Cash payment
 
-<Steps>
-  <Step title="Choose cash">
-    In the **Cash** section, pick a tender preset or tap **Custom**. Taliup POS always offers three different cash suggestions.
-  </Step>
-  <Step title="Enter cash received (custom)">
-    On the custom keypad, confirm total sale amount, cash received, and **Change Due**. Use **Exact** for exact tender if needed, then **Pay Cash**.
-  </Step>
-  <Step title="Confirm">
-    Confirm the cash payment when prompted (**Confirm Cash Payment** / **Confirm Payment**).
-  </Step>
-</Steps>
+Tap **Cash**. On Poynt, the cash payment is recorded right away. On other devices the payment screen opens:
+
+1. In the **CASH** section, select one of the three suggested amounts and tap **Pay Cash**, or tap **Custom**.
+2. With **Custom**, type the cash received or tap a suggestion such as **Exact**, then tap **Pay cash · [amount]**. The change is shown.
+3. On **Confirm Cash Payment**, tap **Confirm · [amount]**.
 
 <Frame caption="Cash tender screen showing change due.">
   ![Cash tender screen showing change due](/images/taliup-pos/register/cash-payment.png)
 </Frame>
 
-## Other methods
+## Split a payment
 
-When enabled for the merchant, the payment screen may also show:
+Tap **Split** to open the payment screen on **Split Amount**. Choose **Remaining**, a number of ways such as **2 ways**, or **Custom**, then **Charge this portion** and pick the tender. After each portion, take the **Next payment** or tap **Pay later** to save the rest. **Pay Full** charges the whole remaining balance.
 
-- **EBT**
-- **Link To Pay**
-- **Gift card** — scan or type the card and apply its balance. See [Gift cards](/taliup-pos/register/gift-cards).
-- **Manual entry** — key the card details on the card reader instead of tapping, inserting, or swiping. The key shows the amount, for example **Manual: $24.15**. Only shown when the card reader accepts keyed card details.
+On a table order, open a guest's options and tap **Pay** to charge only that guest's balance.
 
 ## After payment
 
-Depending on settings and order type, you may see:
+Depending on settings and the order:
 
-1. **Send To Kitchen Printer** — send items to kitchen printers. Set those printers up under [Settings → Printers](/taliup-pos/settings/printers). When **Send order to external printer after payment** is on, this happens automatically.
-2. **Choose customer receipt** — **No Receipt**, **Paper**, or **Email**. See [Customer receipt](/taliup-pos/register/customer-receipt).
+1. **Send To Kitchen Printer** — send items to kitchen printers. It happens automatically when **Send order to external printer after payment** is on. See [Printers](/taliup-pos/settings/printers).
+2. **Choose customer receipt** — **No Receipt**, **Paper** or **Email**. See [Customer receipt](/taliup-pos/register/customer-receipt).
 3. On a split sale, **Choose full order customer receipt** after the last payment.
 4. On some table orders, **Order Fully Paid** or **Guest Fully Paid** print prompts, unless **Skip Fully Paid Receipt Prompts** is on.
 
-The merchant copy still prints unless **Skip Merchant Receipt Copy** is on.
+The merchant copy prints unless **Skip Merchant Receipt Copy** is on. See [General settings](/taliup-pos/settings/general).
 
-Receipt behavior is also controlled by [General settings](/taliup-pos/settings/general).
-
-Completed payments appear under [Transactions](/taliup-pos/transactions).
+Completed payments appear in [Transactions](/taliup-pos/transactions).
 
 ## Related
 
-- [Customer receipt](/taliup-pos/register/customer-receipt)
-- [Cart](/taliup-pos/register/cart)
-- [Options side menu](/taliup-pos/register/options) — Create Auth, Create Refund, print bill
+- [Tips](/taliup-pos/register/tips)
+- [Open Sale Only](/taliup-pos/register/open-sale-only)
 - [Gift cards](/taliup-pos/register/gift-cards) · [Loyalty](/taliup-pos/register/loyalty)
 - [Void](/taliup-pos/transactions/void) · [Refund](/taliup-pos/transactions/refund)

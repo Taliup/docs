@@ -1,0 +1,57 @@
+---
+title: "Raw materials"
+sidebarTitle: "Raw materials"
+description: "Track ingredients and supplies in Taliup HQ: add raw materials with a unit, stock and reorder point, and set how much each attribute option uses."
+keywords: ["track ingredients", "add a raw material", "ingredient stock", "raw material reorder point", "attribute option uses ingredient", "low stock ingredient"]
+applies_to:
+  audience: merchant
+  product: hq
+  features: [inventory, inventory_raw_materials]
+  permissions:
+    guard: web
+    any: ["Manage Inventory"]
+---
+
+**Raw materials** are the ingredients and supplies your products use up as they sell, like flour, cheese or cups. Each has its stock and a reorder point.
+
+## Before you start
+
+- Raw materials are for restaurants. Your business needs the **Inventory** and **Raw Materials** features, and your Taliup HQ account the **Manage Inventory** permission.
+- A raw material is measured in a unit. You can add units from the raw material form, or on the [Units](/taliup-hq/merchant/units) page when your business has the **Units** feature.
+
+## How to get here
+
+In Taliup HQ, open the **Inventory** group in the sidebar and select **Raw materials**. Filter by **Status** (**In stock**, **Low stock**, **Out of stock**) or **Search raw materials**.
+
+## Add a raw material
+
+<Steps>
+  <Step title="Open the form">
+    Select **Add raw material**.
+  </Step>
+  <Step title="Describe it">
+    Enter the **Name** (for example Mozzarella) and choose the **Unit** it is measured in. **Per item** counts whole pieces.
+  </Step>
+  <Step title="Set the stock">
+    Enter how much is **In stock**, and an optional **Reorder point**. When stock falls to the reorder point, it shows as **Low stock**.
+  </Step>
+  <Step title="Save">
+    Select **Save**.
+  </Step>
+</Steps>
+
+## Use it on products
+
+Raw materials are used up through attribute options. On a product's page, edit one of its attributes and, for each value, choose the **Raw material** it **Uses**, the **Quantity used** and **Track stock**. See [Attributes](/taliup-hq/merchant/catalogs/attributes).
+
+The list shows how many attribute options use each raw material, or **Not used yet**.
+
+## Edit or delete a raw material
+
+Open the **More** menu on its row and select **Edit** or **Delete**. Deleting cannot be undone, and the attribute options that used it stop using it up as they sell.
+
+## Related
+
+- [Inventory](/taliup-hq/merchant/inventory)
+- [Units](/taliup-hq/merchant/units)
+- [Attributes](/taliup-hq/merchant/catalogs/attributes)

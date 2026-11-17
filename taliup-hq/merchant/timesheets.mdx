@@ -1,0 +1,64 @@
+---
+title: "Timesheets"
+sidebarTitle: "Timesheets"
+description: "Review the hours employees clocked on Taliup POS, fix a missed clock-out, add a forgotten shift and export timesheets to CSV in Taliup HQ."
+keywords: ["fix a missed clock-out", "add a forgotten shift", "employee hours worked", "labour cost", "export timesheets", "who is clocked in"]
+applies_to:
+  audience: merchant
+  product: hq
+  features: [timesheets]
+  permissions:
+    guard: web
+    any: ["Manage Employees"]
+---
+
+**Timesheets** shows the hours employees clocked on Taliup POS. Use it to fix a missed clock-out or add a shift someone forgot to clock.
+
+## Before you start
+
+- Your business needs the **Timesheets** feature, and your Taliup HQ account the **Manage Employees** permission.
+- Employees clock in and out on the device. See [Clock in and out](/taliup-pos/clock-in-out).
+- Labour cost uses each employee's hourly rate, set on the employee. See [Employees](/taliup-hq/merchant/employees).
+
+## How to get here
+
+In Taliup HQ, open **Timesheets** in the team group of the sidebar.
+
+## Review hours
+
+Pick **Dates** (**This week**, **Last week**, **This month**, **Last month** or **Custom dates**) and an **Employee** or **Everyone**. The page shows:
+
+- **Hours worked** (finished shifts only), **Labour cost**, **Shifts** and who is **Clocked in now**.
+- **Shifts**: each shift with its clock-in and clock-out times, hours, labour cost and status.
+- **Totals by employee**: shifts, hours, hourly rate and labour cost per employee.
+
+A shift without an hourly rate has no labour cost. Shifts still running count once they end.
+
+## Fix a missed clock-out
+
+<Steps>
+  <Step title="Open the shift">
+    Select the shift that is still **Clocked in**.
+  </Step>
+  <Step title="Set the clock-out">
+    Choose **Now** or **At another time**, for example when they left. For a shift past midnight, pick the next day.
+  </Step>
+  <Step title="Save">
+    Select **Save shift**. The page previews the hours and labour cost before you save.
+  </Step>
+</Steps>
+
+## Add or change a shift
+
+- Select **Add shift**, choose the employee, then the **Clocked in** and **Clocked out** date and time, and select **Save shift**.
+- Select any shift to edit its times, or **Delete shift** to remove it.
+
+## Export
+
+Select **Export CSV** to download the timesheets for the dates and employee you picked.
+
+## Related
+
+- [Clock in and out](/taliup-pos/clock-in-out)
+- [Employees](/taliup-hq/merchant/employees)
+- [Reports](/taliup-hq/merchant/reports)

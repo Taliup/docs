@@ -1,54 +1,75 @@
 ---
 title: "Transactions"
 sidebarTitle: "Overview"
-description: "Find payments in Taliup POS and void, return (refund), reprint receipts, or run End of Day."
+description: "Find payments in Taliup POS, open their details, and void, refund, reprint, close the batch or run End of Day."
+keywords: ["find a transaction", "transaction list", "search payments", "permission denied transactions", "close batch", "end of day report"]
+applies_to:
+  audience: merchant
+  product: pos
+  permissions:
+    guard: appUser
+    any: ["Manage Transactions"]
 ---
 
-**Transactions** is where you look up completed payments and take follow-up actions such as void, return (refund), reprint, or End of Day.
+**Transactions** lists payments, refunds and payouts. From here you open a payment to void, refund or reprint it, close the batch, or run End of Day.
 
-Opening **Transactions** from Home requires the **manage transactions** permission. Without it, staff see **Permission denied** — *You do not have permission to access Transactions.*
+## Before you start
+
+- Opening **Transactions** needs the **Manage Transactions** permission. Without it, Taliup POS shows a permission message instead. Ask a manager to change your role in Taliup HQ.
+- The list shows the transactions taken on this terminal. With the **View All Terminal Transactions** permission, it shows every terminal of your business.
+- The list comes from Taliup HQ, so it needs a connection.
+
+## Open Transactions
+
+- From Home, tap **Transactions**.
+- On the [Open Sale Only](/taliup-pos/register/open-sale-only) screen, tap **Options** → **View Transactions**.
 
 <Frame caption="Transactions list with ID, Date/Time, and Total columns.">
   ![Transactions list with ID, Date/Time, and Total columns](/images/taliup-pos/transactions/list.png)
 </Frame>
 
-## What’s on the list
+## What the list shows
 
-| Column | Shows |
-|---|---|
-| **ID** | Short payment reference |
-| **Date/Time** | When the payment was taken |
-| **Total** | Payment amount |
+Each row shows:
 
-Each row also indicates payment method (cash vs card) and uses status coloring (for example captured, authorized, voided, refunded).
+- A short payment reference. On WEB-SRM registers it is the transaction number printed on the receipt.
+- The tender, such as the card type and last four digits, **CASH** or **GIFT CARD ····1234**.
+- The date and time, and the amount. A voided payment's amount is struck through.
+- An icon for the payment method, coloured by status (for example captured, authorized, voided or refunded).
 
-### Search and filters
+In landscape, the list and the selected payment's details appear side by side. Choose a payment to see its details. In portrait, tapping a payment opens [Transaction details](/taliup-pos/transactions/details).
 
-- Tap search to filter the list by typing.
-- Tap filter to open **Filter Transactions** (date range, status, type, payment method, settlement status). See [Search and filters](/taliup-pos/transactions/search-and-filters).
+## Search and filter
 
-Tap a row to open [Transaction details](/taliup-pos/transactions/details).
+- Tap the search icon and type a reference, card or amount.
+- Tap the filter icon to open **Filter Transactions** (date range, **Status**, **Transaction Type**, **Payment Method**, **Settlement Status**). See [Search and filters](/taliup-pos/transactions/search-and-filters).
+
+## Actions on this screen
+
+| Action | Where | Guide |
+|---|---|---|
+| **Close batch** | Bottom of the list in portrait, app bar in landscape | [Close a batch](/taliup-pos/transactions/close-batch) |
+| **End Of Day** | Next to **Close batch** | [End of Day](/taliup-pos/transactions/end-of-day) |
 
 ## Common follow-ups
 
 <CardGroup cols={2}>
   <Card title="Void" href="/taliup-pos/transactions/void">
-    Cancel an unsettled captured payment or void an authorization.
+    Cancel an unsettled captured payment.
   </Card>
   <Card title="Refund (Return)" href="/taliup-pos/transactions/refund">
-    Full or partial return on an eligible payment.
+    Full or partial refund of a settled payment.
   </Card>
   <Card title="Reprint" href="/taliup-pos/transactions/reprint">
-    Print merchant or customer copy again.
+    Print the merchant or customer copy again.
   </Card>
   <Card title="Details" href="/taliup-pos/transactions/details">
-    Status, history, terminal info, and available actions.
+    Status, history, terminal and the actions available.
+  </Card>
+  <Card title="Close a batch" href="/taliup-pos/transactions/close-batch">
+    Settle the open card batch.
   </Card>
   <Card title="End of Day" href="/taliup-pos/transactions/end-of-day">
-    Preview, generate, and print a merchant daily report for one or more devices.
+    Preview, generate and print a daily report for one or more devices.
   </Card>
 </CardGroup>
-
-<Info>
-  Settlement / close-batch workflows are not covered here yet. Filter chips may still mention settlement status.
-</Info>

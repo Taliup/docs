@@ -1,0 +1,67 @@
+---
+title: "Vente ouverte seulement"
+sidebarTitle: "Vente ouverte seulement"
+description: "Utiliser Taliup POS lorsque votre emplacement est en Vente ouverte seulement : un écran de vente au clavier avec un menu Options au lieu d'Accueil."
+keywords: ["vente ouverte seulement", "caisse au clavier seulement", "pas d'écran d'accueil", "où est l'écran d'accueil", "ouvrir les paramètres en vente ouverte seulement", "menu options vente ouverte seulement"]
+---
+
+**Vente ouverte seulement** est un paramètre d'emplacement dans Taliup HQ. Lorsqu'il est activé, Taliup POS saute l'écran Accueil et ouvre un écran de vente au clavier après la connexion. Vous encaissez des montants sans articles du catalogue, et tout le reste se trouve dans le menu **Options**.
+
+## Avant de commencer
+
+- Vente ouverte seulement est activé ou désactivé pour votre emplacement dans Taliup HQ, habituellement par votre partenaire. Vous ne pouvez pas le changer dans l'application. Si vous avez besoin de l'écran Accueil, demandez à votre administrateur ou à votre partenaire.
+- Tant qu'il est activé, le paramètre **Écran par défaut après la connexion** n'a aucun effet : chaque connexion ouvre l'écran Vente ouverte seulement.
+
+## Ce qui est à l'écran
+
+| Zone | Rôle |
+|---|---|
+| Clavier | Saisir le montant de la vente. **SUP** efface le dernier chiffre |
+| Interrupteur **Taxe** | Ajoute les taxes de vente ouverte de l'emplacement au montant. L'icône d'information à côté liste les taxes |
+| **Payer** | Ouvre l'écran de paiement pour le montant |
+| **Options** | Ouvre le menu Options (en haut à droite) |
+| Icône de profil | Ouvre votre profil |
+| Icônes d'imprimante et de lecteur de carte | Montrent l'état de connexion. Touchez-en une pour la vérifier |
+
+L'interrupteur **Taxe** reste désactivé tant que les taxes de vente ouverte ne sont pas configurées. Pour les choisir, allez à **Options** → **Ouvrir les paramètres** → **Caisse**. Elles peuvent aussi être configurées dans Taliup HQ sous **Paramètres** → **Paiements**.
+
+## Encaisser une vente
+
+<Steps>
+  <Step title="Saisir le montant">
+    Tapez le montant au clavier. Activez **Taxe** si le montant doit inclure la taxe.
+  </Step>
+  <Step title="Payer">
+    Touchez **Payer**. L'écran de paiement s'ouvre avec **Payer en totalité** et, sauf si votre entreprise utilise le WEB-SRM, **Montant partagé**.
+  </Step>
+  <Step title="Encaisser le paiement">
+    Choisissez les espèces, une touche de carte ou un autre mode offert. Voir [Encaisser](/fr-CA/taliup-pos/register/take-payment).
+  </Step>
+</Steps>
+
+**Lien de paiement** n'est pas offert sur l'écran Vente ouverte seulement.
+
+## Le menu Options
+
+| Section | Option | Notes |
+|---|---|---|
+| **Facture** | **Créer une autorisation** | Préautoriser une carte. Exige **Pre-Authorization**. Non affichée sur les caisses WEB-SRM. Voir [Préautorisations](/fr-CA/taliup-pos/register/pre-auth) |
+| **Facture** | **Créer un remboursement** | Rembourser un montant sans vente d'origine. Exige **Non-Ref Refunds** |
+| **Facture** | **Créer un paiement en espèces** | Sortir de l'argent du tiroir. Voir [Paiements en espèces](/fr-CA/taliup-pos/register/cash-payouts) |
+| **Appareil** | **Ouvrir le tiroir-caisse** | Ouvre le tiroir-caisse |
+| **Appareil** | **Ouvrir le scanneur** | Ouvre le lecteur de codes-barres |
+| **Plus d'options** | **Voir les transactions** | Ouvre [Transactions](/fr-CA/taliup-pos/transactions). Exige **Manage Transactions** |
+| **Plus d'options** | **Ouvrir les paramètres** | Ouvre les [Paramètres](/fr-CA/taliup-pos/settings) |
+| **Plus d'options** | **Voir le profil** | Ouvre votre profil, où vous pouvez pointer et **Se déconnecter** |
+
+Lorsque vous touchez une option que vous n'avez pas la permission d'utiliser, Taliup POS affiche un message au lieu de l'ouvrir. Demandez à un gestionnaire de modifier votre rôle dans Taliup HQ.
+
+## Chemins des paramètres
+
+Les guides des paramètres partent d'Accueil → **Paramètres**. Sur l'écran Vente ouverte seulement, ouvrez plutôt **Options** → **Ouvrir les paramètres**, puis suivez la même section et le même contrôle. Par exemple, Accueil → **Paramètres** → **Général** devient **Options** → **Ouvrir les paramètres** → **Général**.
+
+## Connexe
+
+- [Ouvrir une vente](/fr-CA/taliup-pos/register/open-sale)
+- [Encaisser](/fr-CA/taliup-pos/register/take-payment)
+- [Transactions](/fr-CA/taliup-pos/transactions)

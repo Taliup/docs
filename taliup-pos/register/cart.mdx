@@ -1,20 +1,24 @@
 ---
 title: "Cart"
 sidebarTitle: "Cart"
-description: "Review line items, guests, discounts, fees, and totals in the Register cart before payment."
+description: "Review the items, guests, discounts, fees and totals in the Register cart, edit or remove items, and save or pay the order."
+keywords: ["review the cart", "remove an item", "edit a cart item", "save an order", "order total", "split items between guests"]
+applies_to:
+  audience: merchant
+  product: pos
 ---
 
 The **Cart** shows everything on the current order before you take payment.
 
-<Frame caption="Register cart with line items, totals, Save, and Pay.">
-  ![Register cart with line items, totals, Save, and Pay](/images/taliup-pos/register/cart.png)
+<Frame caption="Register cart with line items and totals.">
+  ![Register cart with line items and totals](/images/taliup-pos/register/cart.png)
 </Frame>
 
 ## How to get here
 
-- Portrait: tap **Cart** in the Register bottom navigation (badge shows item count).
+- Portrait: tap the strip above the tender keys, which shows the item count and total.
 - Landscape: the cart panel is often already visible beside Open Sale or Menu/Catalog.
-- After adding items, review the cart before tapping **Pay**.
+- After adding items, review the cart before you charge the order.
 
 ## What the cart shows
 
@@ -50,17 +54,16 @@ On table orders, use the guest header to open guest options:
 
 If you try to act on a guest with no items, Taliup POS shows that the guest has no items.
 
-Paying a single guest opens the same payment screen scoped to that guest’s balance. See [Take payment](/taliup-pos/register/take-payment).
+Paying a single guest opens the same payment screen scoped to that guest’s balance. See [Take payment](/taliup-pos/register/take-payment). For step-by-step moving, splitting and individual bills, see [Split a table bill by guest](/taliup-pos/register/guests-and-bills).
 
-## Bottom actions
+## Charge, save or change the order
 
-| Control | Purpose |
-|---|---|
-| **Save** | Save the open order without taking payment |
-| Attach client (person icon) | Attach a client when the Clients feature is available |
-| **Pay** | Continue to payment (enabled when the cart has items) |
+- The tender keys at the bottom (**Cash**, the card key, **Split**, **More**) charge the order. See [Take payment](/taliup-pos/register/take-payment).
+- To keep the order and finish it later, open **Order actions** → **Save Order**.
+- To take money off the order or an item, see [Apply discounts](/taliup-pos/register/apply-discounts).
+- To attach a client, see [Attach a client from Register](/taliup-pos/clients/attach-from-register).
 
-For print, discounts, kitchen, cancel, and other tools, open **Options**. See [Options side menu](/taliup-pos/register/options).
+For bills, kitchen, cancel and other tools, see [Order actions](/taliup-pos/register/options).
 
 ## Related
 

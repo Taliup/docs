@@ -1,0 +1,52 @@
+---
+title: "Fermer le lot"
+sidebarTitle: "Fermer le lot"
+description: "Régler le lot de cartes ouvert depuis Transactions avec Fermer le lot, et en quoi cela varie selon le terminal et diffère du règlement automatique."
+keywords: ["fermer le lot", "régler le lot", "règlement", "règlement de fin de journée", "le lot ne se ferme pas", "rapport de règlement", "règlement automatique"]
+---
+
+Fermer le lot règle les paiements par carte pris depuis le dernier règlement, afin que les fonds soient envoyés pour dépôt. Une fois réglé, un paiement ne peut plus être annulé ni voir son pourboire ajusté. Il peut seulement être remboursé.
+
+## Avant de commencer
+
+- Ouvrir **Transactions** exige la permission **Manage Transactions**. **Fermer le lot** exige aussi **Manage Settlements**. Sans elle, Taliup POS affiche un message de permission.
+- Taliup POS vérifie votre permission auprès de Taliup HQ : fermez le lot pendant que l'appareil est en ligne.
+- Ajustez d'abord les pourboires et capturez les préautorisations. Voir [Pourboires](/fr-CA/taliup-pos/register/tips) et [Préautorisations](/fr-CA/taliup-pos/register/pre-auth).
+
+## Fermer le lot
+
+<Steps>
+  <Step title="Ouvrir Transactions">
+    Depuis Accueil, touchez **Transactions**. Sur l'écran [Vente ouverte seulement](/fr-CA/taliup-pos/register/open-sale-only), touchez **Options** → **Voir les transactions**.
+  </Step>
+  <Step title="Toucher Fermer le lot">
+    En mode portrait, le bouton est au bas de la liste. En mode paysage, il est dans la barre d'application.
+  </Step>
+  <Step title="Confirmer">
+    La suite dépend du terminal de paiement. Voir le tableau ci-dessous.
+  </Step>
+</Steps>
+
+| Terminal de paiement | Ce que fait Fermer le lot |
+|---|---|
+| Terminaux PAX et Castles | Demande **Fermer le lot ?** : cela règle le lot de cartes ouvert sur ce terminal, et les autorisations non capturées sont abandonnées. Touchez **Fermer le lot** pour confirmer. Le terminal fait le règlement, Taliup POS envoie le résultat à Taliup HQ et imprime un rapport de règlement |
+| Lecteurs de carte Elavon (Link 2500, Lane 3600) | Ouvre un écran de révision avec les **Totaux du lot ouvert**. Il règle le lot ouvert de tous les terminaux du compte de cet emplacement, pas seulement de cet appareil. Touchez **Fermer le lot**, attendez **Lot réglé**, puis touchez **Terminé**. Un rapport de règlement s'imprime |
+| Poynt | Ouvre l'application Poynt Settlements. Faites le règlement à cet endroit |
+
+S'il n'y a rien à régler avec un lecteur de carte Elavon, l'écran de révision affiche **Aucun lot ouvert**.
+
+## Fermer le lot ou règlement automatique
+
+**Fermer le lot** règle maintenant, depuis cet appareil. Certaines entreprises voient aussi leur lot réglé automatiquement à une heure fixe chaque jour. Les marchands ne peuvent ni voir ni modifier le règlement automatique dans Taliup POS ou Taliup HQ. Si vous ne savez pas comment vos lots sont réglés, communiquez avec le [soutien](/fr-CA/taliup-pos/help/support).
+
+Fermer le lot n'est pas la même chose que le [rapport de fin de journée](/fr-CA/taliup-pos/transactions/end-of-day), qui résume les ventes sans les régler.
+
+## Après la fermeture
+
+Les paiements réglés affichent **Réglée** dans les [Détails de la transaction](/fr-CA/taliup-pos/transactions/details). Utilisez le filtre **Statut de règlement** dans [Recherche et filtres](/fr-CA/taliup-pos/transactions/search-and-filters) pour trouver les paiements pas encore réglés.
+
+## Connexe
+
+- [Transactions](/fr-CA/taliup-pos/transactions)
+- [Annuler une transaction](/fr-CA/taliup-pos/transactions/void) · [Rembourser une transaction](/fr-CA/taliup-pos/transactions/refund)
+- [Rapport de fin de journée](/fr-CA/taliup-pos/transactions/end-of-day)

@@ -2,7 +2,15 @@
 title: "End of Day report"
 sidebarTitle: "End of Day"
 description: "Generate a merchant End of Day document in Taliup HQ for one or more terminals and employees."
-keywords: ["end of day", "EOD", "reports", "daily document"]
+keywords: ["end of day report", "EOD", "daily document", "generate end of day", "end of day for several terminals"]
+applies_to:
+  audience: merchant
+  product: hq
+  features: [end_of_day_report]
+  permissions:
+    guard: web
+    any: ["View Reports"]
+  since: "2026-09"
 ---
 
 **End of Day** in Taliup HQ is the same merchant daily document you can print from Taliup POS. Use it to review the day in the browser, then generate a PDF.
@@ -13,11 +21,14 @@ This document does **not** close card batches or settle terminals. It is documen
 
 You can also generate and print this report on a terminal. See [End of Day in Taliup POS](/taliup-pos/transactions/end-of-day).
 
+## Before you start
+
+- Your plan includes the **End of Day Report** feature.
+- You need **View Reports** to open the page. Generating a document needs **Manage Reports**. Deleting generated documents needs **Delete Reports**.
+
 ## How to get here
 
-In the merchant sidebar, open **End of Day**.
-
-You need the **End of Day Report** feature on the plan and the **View Reports** permission.
+In the sidebar, open **End of day**, under **Insights**.
 
 ## Filters
 
@@ -50,7 +61,7 @@ Leave **All terminals** and **All employees** selected for a store-wide document
   </Step>
 </Steps>
 
-The document lists the selected terminals and employees by name when you did not choose all of them.
+Generating needs the **Manage Reports** permission. The document lists the selected terminals and employees by name when you did not choose all of them.
 
 ## Generated documents
 

@@ -1,0 +1,71 @@
+---
+title: "Inventory"
+sidebarTitle: "Inventory"
+description: "Track stock in Taliup HQ: sync products, adjust stock per product or variant, set reorder points, get low-stock emails and update stock in bulk."
+keywords: ["adjust stock in HQ", "low stock products", "out of stock list", "set a reorder point", "update stock with a spreadsheet", "low-stock email"]
+applies_to:
+  audience: merchant
+  product: hq
+  features: [inventory]
+  permissions:
+    guard: web
+    any: ["Manage Inventory"]
+---
+
+**Inventory** shows how much of each product you have, and when it is time to reorder. Stock goes down as products sell on Taliup POS.
+
+## Before you start
+
+- Your business needs the **Inventory** feature, and your Taliup HQ account the **Manage Inventory** permission.
+- Reorder points need the **ReOrder Point** feature. Raw materials and units are separate pages under Inventory, with their own features.
+- Each sale uses the **Stock used per sale** set on the product. See [Products](/taliup-hq/merchant/catalogs/products).
+
+## How to get here
+
+In Taliup HQ, select **Inventory** in the sidebar.
+
+## Start tracking products
+
+Select **Sync products**. Products added since the last sync start being tracked at 0 in stock. Stock you have already set does not change.
+
+## Find products
+
+Use the **Stock** filter (**All**, **Low stock**, **Out of stock**), **Search by name or SKU**, and **Sort** by name or stock. A product is **Out of stock** when no variant has any left, and **Low stock** when a variant is at or under its reorder point.
+
+## Adjust stock
+
+<Steps>
+  <Step title="Open the product">
+    Select a product, or **Adjust stock** from its row.
+  </Step>
+  <Step title="Set the numbers">
+    Enter the stock for the product, or for each variant. With the ReOrder Point feature, also set the **Reorder point**: when stock falls to it, the product shows as low stock and a low-stock email is sent.
+  </Step>
+  <Step title="Save">
+    Select **Save**. **Total in stock** adds up the variants.
+  </Step>
+</Steps>
+
+## Low-stock emails
+
+A notice at the top says whether low-stock emails are on and who receives them. Select **Turn on** or **Change** to set them up.
+
+## Update stock in bulk
+
+<Steps>
+  <Step title="Download your stock">
+    Select **Update in bulk**, then **Download CSV**. It lists every product and variant with its stock and reorder point.
+  </Step>
+  <Step title="Change the numbers">
+    Edit the Quantity and Reorder Point columns. Do not remove columns or change the Combination IDs.
+  </Step>
+  <Step title="Upload the file">
+    **Choose a CSV file**, then **Import**. Stock is updated for every row in the file.
+  </Step>
+</Steps>
+
+## Related
+
+- [Products](/taliup-hq/merchant/catalogs/products)
+- [Inventory in Taliup POS](/taliup-pos/catalog/inventory)
+- [Reports](/taliup-hq/merchant/reports)

@@ -1,25 +1,32 @@
 ---
 title: "Analytics"
 sidebarTitle: "Overview"
-description: "View sales, tips, top items, payment mix, and a sales summary in Taliup POS, and share the summary as a PDF."
+description: "See net sales, tips, top items, payment mix and sales by employee for this location, and share the summary as a PDF."
+keywords: ["sales today", "view analytics", "top selling items", "sales by employee", "tips report", "share sales summary", "payment mix"]
+applies_to:
+  audience: merchant
+  product: pos
+  features: [reports]
+  permissions:
+    guard: appUser
+    any: ["View Analytics"]
 ---
 
-**Analytics** shows sales performance for this merchant, and lets you share the summary as a PDF.
+**Analytics** shows sales performance for the location this device belongs to, and lets you share the summary as a PDF.
 
 <Frame caption="Analytics on Taliup POS.">
   ![Analytics on Taliup POS](/images/taliup-pos/analytics/overview.png)
 </Frame>
 
+## Before you start
+
+- The **Reports** feature must be enabled for the business in Taliup HQ. Without it, Taliup POS shows a feature access message.
+- Your role needs the **View Analytics** permission. Without it, you see *You do not have permission to access Analytics.*
+- Analytics loads from Taliup HQ, so the device must be online.
+
 ## How to get here
 
 From Home, tap **Analytics**.
-
-### Access requirements
-
-Two checks apply:
-
-1. **Role permission** — needs view-analytics. Denied: **Permission denied** — *You do not have permission to access Analytics.*
-2. **Feature entitlement** — Reports / analytics feature must be enabled on the account. Otherwise you see a feature access message pointing you to Taliup HQ / Marketplace.
 
 ## Period
 
@@ -41,7 +48,7 @@ Tips count unless the sale was voided or fully refunded. A partial refund keeps 
 
 **Sales by employee** credits each sale and its tip to the sale's [Helped by](/taliup-pos/register/helped-by) employee. Without one, sales go to the cashier and tips to the employee who took the payment.
 
-There is no location filter on this screen.
+The figures cover the location this device is assigned to (the whole business when the device has no location). There is no location filter on this screen.
 
 ## Share the summary
 
@@ -59,6 +66,6 @@ There is no location filter on this screen.
 
 | Situation | What to check |
 |---|---|
-| Permission denied | Update the staff role in Taliup HQ |
-| Feature access message | Enable Reports/analytics for the merchant plan |
-| **Something went wrong** | Retry; check network; contact support if it persists |
+| Permission denied | Ask a manager to add **View Analytics** to your role in Taliup HQ |
+| Feature access message | The **Reports** feature is not enabled for the business — see [Get help](/taliup-pos/help/support) |
+| **Something went wrong** | Retry; check the network; [get help](/taliup-pos/help/support) if it persists |

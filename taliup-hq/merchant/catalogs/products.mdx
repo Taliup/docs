@@ -1,0 +1,74 @@
+---
+title: "Products"
+sidebarTitle: "Products"
+description: "Add, edit and delete products in Taliup HQ: price, SKU, cost, taxes, attributes, images, stock use, tags and availability."
+keywords: ["add a product in HQ", "change a product price", "product SKU or PLU", "mark a product sold out", "product images", "delete a product"]
+applies_to:
+  audience: merchant
+  product: hq
+  features: [catalog]
+  permissions:
+    guard: web
+    any: ["View Catalogs"]
+---
+
+**Products** lists everything you sell at the register and online. Restaurants see the same page as **Items**.
+
+## Before you start
+
+- Your business needs the **Catalogs** feature. Opening the page needs **View Catalogs**; adding and changing products need **Manage Catalogs**; deleting them needs **Delete Catalogs**.
+- A product shows on a device only once it is in a catalog assigned to that device. See [Catalogs](/taliup-hq/merchant/catalogs).
+
+## Find a product
+
+In Taliup HQ, open **Products** in the catalog group of the sidebar. Use **Search by name or SKU**, filter by **Tag**, or **Sort** by name, price or newest first.
+
+## Add a product
+
+<Steps>
+  <Step title="Open the form">
+    Select **Add product**.
+  </Step>
+  <Step title="Fill in the basics">
+    Enter the name and **Price**, or turn on **Price set at sale** so staff enter the price on the register each time. Add the **SKU or PLU** if you scan or look it up by code.
+  </Step>
+  <Step title="Choose how it is sold">
+    Under **Sold by**, choose **Per item** or a **Unit** and the **Stock used per sale**. Choose **Sold by weight** when the price comes from a scale barcode; it cannot be combined with **Price set at sale**. See [Scale items](/taliup-hq/features/scale-items).
+  </Step>
+  <Step title="Add taxes and attributes">
+    Tick the taxes to add. A catalog adds its own taxes when the product goes into it. Add attributes (such as size) that staff pick on the register.
+  </Step>
+  <Step title="Save">
+    Select **Add product**. Images and stock counts are set on the product page.
+  </Step>
+</Steps>
+
+## Edit a product
+
+Select a product to open its page. Change what you need, then select **Save changes** (or **Discard**):
+
+| Section | What you can change |
+|---|---|
+| **Basics** | Name, description, **Price** or **Price set at sale**, **SKU or PLU**, and **Cost** (what you pay, used by the profit report) |
+| **Taxes** | The taxes added when it sells, or **Tax exempt** so no tax is added, even from its catalog |
+| **Attributes** | **Add attribute** to offer choices on the register; remove one from this product only |
+| **Selling and stock** | Unit, stock used per sale, **Sold by weight**, and **In stock** with a link to **Adjust in Inventory** |
+| **Images** | **Upload images** or **Choose from library**. The first image shows on the register and online |
+| **Availability** | Turn **Available** off to show the product as sold out |
+| **Organize** | The **Tag**, which groups products in reports and decides which kitchen printer they print on, and the catalogs it is **In** |
+| **Shipping size** | Length, width and height, for online store shipping |
+
+## Delete a product
+
+Open the product's **More actions** menu (or select several in the list) and choose **Delete product**. It is removed from every catalog and category, and from the registers at their next sync. Past sales keep it.
+
+## Import or export
+
+Use **Import** to add many products from a spreadsheet, or **Export** to download them. See [Bulk import](/taliup-hq/merchant/catalogs/bulk-import).
+
+## Related
+
+- [Catalogs](/taliup-hq/merchant/catalogs)
+- [Taxes, discounts and fees](/taliup-hq/merchant/catalogs/taxes-discounts-fees)
+- [Inventory](/taliup-hq/merchant/inventory)
+- [Products in Taliup POS](/taliup-pos/catalog/products)

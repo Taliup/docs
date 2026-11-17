@@ -1,0 +1,46 @@
+---
+title: "Paiements en espèces"
+sidebarTitle: "Paiements en espèces"
+description: "Sortir de l'argent du tiroir pour un gain de loterie, un fournisseur, une consigne ou la petite caisse, et imprimer un reçu de paiement."
+keywords: ["paiement en espèces", "sortir de l'argent du tiroir", "petite caisse", "paiement de loterie", "paiement fournisseur", "remboursement de consigne", "créer un paiement en espèces grisé"]
+---
+
+Un paiement en espèces enregistre l'argent que vous remettez depuis le tiroir et qui n'est pas un remboursement : un gain de loterie, un paiement à un fournisseur ou la petite caisse, par exemple. Taliup POS ouvre le tiroir-caisse et imprime un reçu de paiement.
+
+## Avant de commencer
+
+- La fonctionnalité **Payout** doit être activée pour votre entreprise. Sans elle, **Créer un paiement en espèces** indique que la fonctionnalité n'est pas offerte. Les caisses WEB-SRM (Revenu Québec) n'affichent pas du tout l'option.
+- Votre rôle doit avoir la permission **Manage Payouts**. Sans elle, l'option est grisée et la toucher affiche **Vous n'avez pas la permission de créer des paiements en espèces.**
+- Cet appareil doit être configuré comme l'un des terminaux de votre entreprise dans Taliup HQ. Sinon, toucher l'option affiche **Cet appareil n'est pas attribué à un terminal de paiement.**
+- Les paiements en espèces exigent une connexion à Taliup HQ.
+
+## Créer un paiement en espèces
+
+<Steps>
+  <Step title="Ouvrir Créer un paiement en espèces">
+    Dans Caisse, touchez **Actions de commande** (l'icône de menu), puis **Créer un paiement en espèces** dans la section **Facture**. Sur l'écran [Vente ouverte seulement](/fr-CA/taliup-pos/register/open-sale-only), touchez **Options** → **Créer un paiement en espèces**.
+  </Step>
+  <Step title="Choisir le type">
+    Dans la fiche **Paiement en espèces**, choisissez le **Type** : **Lottery Payout**, **Vendor Payment**, **Miscellaneous Payment**, **Bottle Deposit Payment** ou **Petty Cash**. Ces types s'affichent en anglais.
+  </Step>
+  <Step title="Saisir le montant">
+    Tapez le **Montant**. Il doit être supérieur à zéro et d'au plus 999 999,99 $.
+  </Step>
+  <Step title="Ajouter une référence et une note (facultatif)">
+    Laissez **Référence** vide pour utiliser celle suggérée, affichée avec **(auto)**, ou tapez la vôtre (120 caractères au maximum). Ajoutez une **Note** au besoin.
+  </Step>
+  <Step title="Payer">
+    Touchez **Payer [montant]**. Taliup POS confirme le paiement, ouvre le tiroir-caisse et imprime le reçu. Remettez l'argent.
+  </Step>
+</Steps>
+
+Si le paiement échoue, Taliup POS en affiche la raison et rien n'est enregistré. Vérifiez la connexion et réessayez.
+
+## Trouver ou réimprimer un paiement en espèces
+
+Les paiements en espèces apparaissent dans [Transactions](/fr-CA/taliup-pos/transactions) avec les autres paiements. Ouvrez-en un et touchez **Imprimer le reçu** pour l'imprimer de nouveau. Ouvrir Transactions exige la permission **Manage Transactions**.
+
+## Connexe
+
+- [Actions de commande](/fr-CA/taliup-pos/register/options)
+- [Réimprimer un reçu](/fr-CA/taliup-pos/transactions/reprint)

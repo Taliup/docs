@@ -1,0 +1,62 @@
+---
+title: "Activer un appareil"
+sidebarTitle: "Activer un appareil"
+description: "Reliez un appareil neuf ou réinstallé à votre entreprise avec son ID, choisissez le lecteur de cartes et terminez la configuration avant la connexion."
+keywords: ["activer un appareil", "saisir l'ID de l'appareil", "choisir le lecteur de cartes", "réinstaller Taliup POS", "ID d'appareil déjà utilisé", "configurer un nouveau terminal", "mode démo"]
+---
+
+La première fois que Taliup POS s'ouvre sur un appareil, il relie l'appareil à votre entreprise dans Taliup HQ. Ensuite, l'appareil s'ouvre sur l'écran de connexion.
+
+## Avant de commencer
+
+- L'appareil a été ajouté à votre entreprise dans Taliup HQ. Votre ISO ou partenaire s'en charge habituellement.
+- Vous connaissez l'**ID de l'appareil**. Il figure dans Taliup HQ sous **Paramètres** → **Appareils**, ou votre ISO ou partenaire peut vous le donner.
+- L'appareil est connecté à Internet.
+
+## Activer l'appareil
+
+<Steps>
+  <Step title="Ouvrir Taliup POS">
+    Ouvrez l'application sur l'appareil.
+  </Step>
+  <Step title="Saisir l'ID de l'appareil">
+    Si **Saisissez l’ID de l’appareil pour l’activer** s'affiche, tapez l'**ID de l’appareil** exactement comme dans Taliup HQ et touchez **Suivant**. **Activation de cet appareil…** s'affiche pendant que Taliup HQ le vérifie.
+  </Step>
+  <Step title="Choisir le lecteur de cartes">
+    Dans **Sélectionnez votre lecteur de cartes**, choisissez le lecteur qui sert à accepter les cartes : **PAX A920Pro**, **Elys**, **Link 2500**, **Lane 3600**, **S1P2** ou **S1F4 PRO**. Touchez **Suivant**. Vous pourrez le changer plus tard dans les [paramètres de l'appareil](/fr-CA/taliup-pos/settings/device).
+  </Step>
+  <Step title="Terminer la configuration si on vous le demande">
+    Certains forfaits demandent à l'entreprise d'accepter des conditions et de s'abonner avant la première connexion. Dans **Conditions générales**, cochez **J'ai lu et j'accepte** et touchez **Accepter et continuer**. Dans **Abonnement logiciel requis**, balayez le code QR avec votre téléphone, effectuez le paiement, puis touchez **J'ai payé — Vérifier et continuer**.
+  </Step>
+  <Step title="Se connecter">
+    L'écran de connexion s'ouvre. Voir [Se connecter et se déconnecter](/fr-CA/taliup-pos/sign-in-and-out).
+  </Step>
+</Steps>
+
+### Appareils qui sautent des étapes
+
+- **Les terminaux PAX installés au moyen de PAXSTORE** lisent l'ID de l'appareil sur le terminal; l'écran de l'ID ne s'affiche donc pas. Vous choisissez quand même le lecteur de cartes.
+- **Les terminaux Poynt** prennent leur identité du terminal. Ils sautent l'écran de l'ID et celui du lecteur de cartes.
+
+## Essayer l'application en mode démo
+
+Dans les écrans de configuration, **Accéder au mode démo** permet d'essayer Taliup POS avec un code d'accès fourni par votre ISO ou partenaire. Les paiements en mode démo ne peuvent pas dépasser 1,00 $. Pour en sortir, allez à l'Accueil → **Paramètres** → **Outils** → **Quitter le mode démo**.
+
+## Réinstaller sur le même appareil
+
+Si vous réinstallez Taliup POS ou effacez ses données, saisissez le même ID sur le même appareil. Taliup HQ reconnaît l'appareil et le reconnecte. Le guide Bien démarrer n'est pas proposé de nouveau après une reconnexion.
+
+## Si l'activation échoue
+
+| Message | Quoi faire |
+|---|---|
+| **Device not found** | Vérifiez l'ID de l'appareil dans Taliup HQ → **Paramètres** → **Appareils** et saisissez-le exactement. |
+| **This device identifier is already in use on a different device** | Cet ID est actif sur un autre appareil. Utilisez l'ID propre à cet appareil, ou [joignez le soutien](/fr-CA/taliup-pos/help/support). |
+| **Le serveur est actuellement indisponible.** ou une erreur réseau | Vérifiez la connexion Internet et réessayez. |
+
+Les deux premiers messages proviennent de Taliup HQ et s'affichent en anglais.
+
+## Voir aussi
+
+- [Première connexion](/fr-CA/taliup-pos/first-login)
+- [Bien démarrer](/fr-CA/taliup-pos/settings/getting-started)

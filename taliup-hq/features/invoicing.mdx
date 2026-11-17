@@ -1,7 +1,15 @@
 ---
 title: "Invoicing"
 sidebarTitle: "Invoicing"
-description: "Create, send, update, and manage invoices from the merchant portal — including restore-client, update and resend, inventory on delete, and email troubleshooting."
+description: "Create, send, update and manage invoices in the merchant portal, including restoring a client, resending, stock on delete and email troubleshooting."
+keywords: ["create an invoice", "send an invoice", "edit a sent invoice", "invoice pay link", "invoice email not received", "refund an invoice"]
+applies_to:
+  audience: merchant
+  product: hq
+  features: [invoicing]
+  permissions:
+    guard: web
+    any: ["View Invoices"]
 ---
 
 Invoicing lets you create professional invoices, email them to clients, optionally include an online payment link, and track payment from Taliup HQ.
@@ -10,7 +18,7 @@ Open **Invoices** in the merchant sidebar to get started.
 
 ---
 
-## Prerequisites
+## Before you start
 
 <Steps>
   <Step title="Invoicing feature enabled">
@@ -23,6 +31,8 @@ Open **Invoices** in the merchant sidebar to get started.
     To include a **Pay** link on the invoice, enable **Link To Pay** / online payments for your entity and configure an online payment gateway on the location. If Online Payment shows as **Disabled**, customers can still receive the invoice but cannot pay online from the email.
   </Step>
 </Steps>
+
+You need **View Invoices** to open **Invoices**. Creating, editing and sending invoices need **Manage Invoices**. Deleting an invoice needs **Delete Invoices**.
 
 ---
 
@@ -126,13 +136,13 @@ Choose payment frequency and whether customers can pay online from the invoice.
 Control whether and how the invoice is emailed.
 
 <Frame caption="Communication settings for email delivery, reply-to, and support message.">
-  ![Communication section with Email delivery Immediate badge and toggle on, validation messages to select a client, Reply to Email tech@taliup.ca, and Support Message text area](/images/taliup-hq/invoicing/invoice-communication.png)
+  ![Communication section with Email delivery Immediate badge and toggle on, validation messages to select a client, a Reply to Email address, and Support Message text area](/images/taliup-hq/invoicing/invoice-communication.png)
 </Frame>
 
 | Setting | Description |
 |---|---|
 | **Email delivery** | Master toggle for sending the invoice by email. The **Immediate** badge appears when send-immediately is active. |
-| **Reply to Email** | Where customer replies are directed. Configured in Invoice Settings when available. |
+| **Reply to Email** | Where customer replies are directed. The default comes from **Reply-to email** in [Invoice settings](#invoice-settings). |
 | **Support Message** | Footer text on the invoice email (for example how to contact your team). |
 
 If email delivery is on but no client is selected, Taliup shows validation such as **Please select a client** and notes that email is required for immediate delivery.
@@ -177,20 +187,15 @@ You can edit an invoice after it has been sent, as long as it is not paid.
 
 ---
 
-## Return stock when you delete an invoice
+## Invoice settings
 
-When you delete an unpaid invoice that held inventory, Taliup can put those quantities back into stock.
+Open **Settings** → **Invoices** (in the **Features** section). This needs the **Manage Settings** permission. Select **Save changes** when you are done.
 
-Set the default in **Settings → Invoice Settings → Inventory**:
-
-| Setting | What happens |
+| Setting | What it does |
 |---|---|
-| **Always return stock** (toggle on) | Stock is returned automatically when you delete an unpaid invoice. |
-| **Ask** (toggle off) | Each delete asks whether to **Return stock to inventory**. |
-
-<Frame caption="Invoice Settings Inventory section with Return stock on invoice delete.">
-  ![Invoice Settings showing Email, Reminders, and Inventory with Return stock on invoice delete turned on](/images/taliup-hq/invoicing/invoice-settings-inventory.png)
-</Frame>
+| **Reply-to email** | Customers' replies to invoice emails go here. Empty: your business email. |
+| **Remind customers when an invoice is past due** | Sends one reminder email after the due date. Set **Send it after**, in days. |
+| **Put its items back in stock** (under **Deleting an invoice**) | **Always** returns the stock automatically when you delete an unpaid invoice; **Ask each time** asks on each delete whether to **Return stock to inventory**. Only for items you track stock for. |
 
 <Frame caption="Delete invoice confirmation with Return stock to inventory.">
   ![Confirmation modal asking to delete an invoice for Ava Bennett, with Return stock to inventory turned on](/images/taliup-hq/invoicing/invoice-return-stock.png)
@@ -239,7 +244,7 @@ An invoice email is sent only when all of the following are true:
 | Client has a valid email | Client is selected and the client record includes an email |
 | Timing is ready | **Send Invoice Immediately** is on, or the scheduled **Send Date** has been reached |
 | Address can receive mail | Taliup is not blocked from delivering to that address (you see a clear error if send is blocked) |
-| Reply-To (optional) | If Invoice Settings include a reply-to address, customer replies go there |
+| Reply-To (optional) | If **Reply-to email** is set in [Invoice settings](#invoice-settings), customer replies go there |
 
 <Info>
   Immediate delivery always requires a client email. If you see **Email is required for immediate delivery**, select or create a client with an email before creating the invoice.
@@ -276,4 +281,4 @@ Use the customer payment page **Download Receipt** / PDF download. The invoice e
 
 ### Wrong reply destination
 
-Update **Reply to Email** in Invoice Settings so customer replies go to the correct mailbox.
+Update **Reply-to email** in [Invoice settings](#invoice-settings) so customer replies go to the correct mailbox.

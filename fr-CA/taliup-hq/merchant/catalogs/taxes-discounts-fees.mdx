@@ -1,0 +1,71 @@
+---
+title: "Taxes, rabais et frais"
+sidebarTitle: "Taxes, rabais et frais"
+description: "Configurer les taxes de vente, les rabais de caisse et les frais automatiques dans Taliup HQ, pour toute la commande ou une catégorie d'articles."
+keywords: ["ajouter une taxe de vente", "changer un taux de taxe", "créer un code de rabais", "ajouter des frais de sac", "rabais avant les taxes", "frais sur une catégorie"]
+---
+
+Les taxes, les rabais et les frais ont chacun leur page dans le groupe du catalogue de la barre latérale de Taliup HQ.
+
+## Avant de commencer
+
+- Votre entreprise a besoin de la fonctionnalité **Catalogs**.
+- **Taxes** : ouvrir exige **View Catalogs**, ajouter ou modifier exige **Manage Catalogs**, supprimer exige **Delete Catalogs**.
+- **Rabais** : exige la fonctionnalité **Discounts**, et **View Discounts**, **Manage Discounts** ou **Delete Discounts**.
+- **Frais** : exige la fonctionnalité **Fees**, et **View Fees**, **Manage Fees** ou **Delete Fees**.
+- Les rabais et frais font partie d'un catalogue; créez d'abord un [catalogue](/fr-CA/taliup-hq/merchant/catalogs).
+
+## Taxes
+
+Les taxes s'ajoutent aux produits par leur catalogue, ou un produit à la fois.
+
+<Steps>
+  <Step title="Ajouter la taxe">
+    Dans **Taxes**, sélectionnez **Nouvelle taxe**. Saisissez son nom (par exemple TVH) et une description facultative que le personnel voit en choisissant les taxes.
+  </Step>
+  <Step title="Régler le taux">
+    Sous **Taux**, choisissez **Pourcentage** ou **Montant fixe** et saisissez le taux. Utilisez **Ajouter un taux** seulement lorsqu'une taxe comporte plusieurs parties.
+  </Step>
+  <Step title="Enregistrer et l'appliquer">
+    Sélectionnez **Ajouter la taxe**. Ajoutez-la ensuite à un catalogue (elle s'applique à tout ce qu'il contient) ou à des produits sur leur page.
+  </Step>
+</Steps>
+
+Supprimer une taxe la retire de tous les catalogues et produits. Lorsque le WEB-SRM (MEV) est configuré, les taxes en proviennent et ne peuvent pas être modifiées ici. Lorsque QuickBooks est connecté, les taxes synchronisées se gèrent dans QuickBooks.
+
+## Rabais
+
+Les rabais sont des offres que le personnel applique à la caisse.
+
+<Steps>
+  <Step title="Créer le rabais">
+    Dans **Rabais**, sélectionnez **Nouveau rabais** et choisissez le catalogue.
+  </Step>
+  <Step title="Choisir à quoi il s'applique">
+    **Rabais sur la commande** (**Toute la commande**) ou **Rabais sur des articles** (**Articles d’une catégorie**, puis la **Catégorie**).
+  </Step>
+  <Step title="Régler le montant">
+    Saisissez un montant ou un pourcentage de rabais, et un **Code**, le nom sous lequel le personnel le choisit (par exemple BIENVENUE10). Activez **Retirer avant les taxes** pour calculer les taxes sur le prix réduit.
+  </Step>
+  <Step title="Enregistrer">
+    Enregistrez-le. Le personnel peut l'appliquer à la caisse : voir [Appliquer des rabais](/fr-CA/taliup-pos/register/apply-discounts).
+  </Step>
+</Steps>
+
+## Frais
+
+Les frais s'ajoutent automatiquement aux commandes, comme des frais de sac.
+
+1. Dans **Frais**, sélectionnez **Nouveaux frais** et choisissez le catalogue.
+2. Choisissez **Frais sur la commande** (**Toute la commande**) ou **Frais sur des articles** (**Articles d’une catégorie**).
+3. Saisissez le nom et le montant. Activez **Ajouter avant les taxes** pour que les taxes s'appliquent aussi aux frais.
+4. Enregistrez-les.
+
+Supprimer des frais arrête leur ajout aux commandes. Supprimer un rabais empêche le personnel de l'appliquer.
+
+## Connexe
+
+- [Produits](/fr-CA/taliup-hq/merchant/catalogs/products)
+- [Catalogues](/fr-CA/taliup-hq/merchant/catalogs)
+- [Rabais dans Taliup POS](/fr-CA/taliup-pos/catalog/discounts)
+- [Frais dans Taliup POS](/fr-CA/taliup-pos/catalog/fees)

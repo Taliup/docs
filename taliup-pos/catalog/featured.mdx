@@ -1,7 +1,15 @@
 ---
 title: "Featured"
 sidebarTitle: "Featured"
-description: "Manage featured products or menu items shown for quick access in Register."
+description: "Choose which products or menu items appear in the Featured list in Register, add new ones, or remove them from Featured."
+keywords: ["featured items", "quick access items", "add to featured", "remove from featured", "favourite products in register"]
+applies_to:
+  audience: merchant
+  product: pos
+  features: [catalog]
+  permissions:
+    guard: appUser
+    any: ["View Catalogs"]
 ---
 
 Use **Featured** to choose which products or menu items appear in the featured list used from Register.
@@ -9,6 +17,10 @@ Use **Featured** to choose which products or menu items appear in the featured l
 <Frame caption="Featured list with Name and Price.">
   ![Featured list with Name and Price](/images/taliup-pos/catalog/featured.png)
 </Frame>
+
+## Before you start
+
+Requires the **Catalogs** feature and the **View Catalogs** permission. Adding or removing featured items also needs **Update Catalogs**; creating a new product needs **Add Products**.
 
 ## How to get here
 

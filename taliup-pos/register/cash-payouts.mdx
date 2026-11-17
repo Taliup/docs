@@ -1,0 +1,53 @@
+---
+title: "Cash payouts"
+sidebarTitle: "Cash payouts"
+description: "Pay cash out of the drawer for lottery wins, vendors, bottle deposits or petty cash, and print a payout receipt."
+keywords: ["cash payout", "pay out cash from drawer", "petty cash", "lottery payout", "vendor payment", "bottle deposit refund", "create cash payout greyed out"]
+applies_to:
+  audience: merchant
+  product: pos
+  features: [payout]
+  permissions:
+    guard: appUser
+    any: ["Manage Payouts"]
+---
+
+A cash payout records cash you hand out of the drawer that is not a refund, such as a lottery win, a vendor payment or petty cash. Taliup POS opens the cash drawer and prints a payout receipt.
+
+## Before you start
+
+- The **Payout** feature must be on for your business. Without it, **Create Cash Payout** explains that the feature is not available. WEB-SRM (Revenu Québec) registers do not show the option at all.
+- Your role needs the **Manage Payouts** permission. Without it, the option is greyed out and tapping it shows **You do not have permission to create payouts.**
+- This device must be set up as one of your business's terminals in Taliup HQ. Otherwise tapping the option shows **This device is not assigned to a payout terminal.**
+- Payouts need a connection to Taliup HQ.
+
+## Create a payout
+
+<Steps>
+  <Step title="Open Create Cash Payout">
+    In Register, tap **Order actions** (the menu icon), then **Create Cash Payout** in the **Bill** section. On the [Open Sale Only](/taliup-pos/register/open-sale-only) screen, tap **Options** → **Create Cash Payout**.
+  </Step>
+  <Step title="Choose the type">
+    In the **Cash payout** sheet, choose the **Type**: **Lottery Payout**, **Vendor Payment**, **Miscellaneous Payment**, **Bottle Deposit Payment** or **Petty Cash**.
+  </Step>
+  <Step title="Enter the amount">
+    Type the **Amount**. It must be more than zero and at most $999,999.99.
+  </Step>
+  <Step title="Add a reference and note (optional)">
+    Leave **Reference** blank to use the suggested one, shown with **(auto)**, or type your own (up to 120 characters). Add a **Note** if needed.
+  </Step>
+  <Step title="Pay out">
+    Tap **Pay out [amount]**. Taliup POS confirms the payout, opens the cash drawer and prints the payout receipt. Hand the cash over.
+  </Step>
+</Steps>
+
+If the payout fails, Taliup POS shows the reason and nothing is recorded. Check the connection and try again.
+
+## Find or reprint a payout
+
+Payouts appear in [Transactions](/taliup-pos/transactions) with the other payments. Open one and tap **Print Receipt** to print it again. Opening Transactions needs the **Manage Transactions** permission.
+
+## Related
+
+- [Order actions](/taliup-pos/register/options)
+- [Reprint a receipt](/taliup-pos/transactions/reprint)

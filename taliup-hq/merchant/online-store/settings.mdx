@@ -1,0 +1,69 @@
+---
+title: "Online store settings"
+sidebarTitle: "Online store settings"
+description: "Choose what your online store offers in Taliup HQ: online orders and bookings, order types, alerts, preparation time, delivery fees, shipping and Uber Direct."
+keywords: ["turn on online ordering", "offer delivery", "delivery fee by distance", "set up shipping boxes", "connect Uber Direct", "accept online orders automatically"]
+applies_to:
+  audience: merchant
+  product: hq
+  features: [ecommerce]
+  permissions:
+    guard: web
+    any: ["Manage Settings"]
+---
+
+Four pages in the **Online store** section of **Settings** decide how your online store works: **Online ordering**, **Delivery**, **Shipping** and **Uber Direct**.
+
+## Before you start
+
+- Your business needs the **Ecommerce** feature, and your Taliup HQ account the **Manage Settings** permission.
+- **Shipping** needs the **Shipping** feature, and **Uber Direct** the **Uber Direct** feature.
+- Online ordering and booking follow your **Hours of operation**. See [Business details, hours and receipts](/taliup-hq/merchant/settings/business).
+
+## Online ordering
+
+Open **Settings** → **Online ordering**.
+
+| Setting | What it does |
+|---|---|
+| **Take orders online** | Customers can order from your online store. |
+| **Take bookings online** | Customers can book appointments from your online store. |
+| **Order types** | **Pickup**, **Delivery** (**You deliver them yourself** or **Delivered by Uber Direct**), **Room service** and **Shipping**. |
+| **Alert me about orders left waiting** | Emails or texts you when an order isn't accepted in time. Set **Alert after**, an **Email**, a **Phone** or both. |
+| **Preparation time** | How long an order usually takes; customers see when it will be ready. |
+| **Accept orders automatically** | New orders are accepted without you confirming them. |
+| **Print order tickets automatically** | New orders print in the kitchen as they come in. |
+| **Collapse item options** | An item's option groups start closed for customers. |
+| **Half-pizza toppings** | Customers can put toppings on half a pizza (restaurants). |
+
+Select **Save changes**.
+
+**Shipping** stays locked under **Order types** until you add at least one shipping box and one courier pickup day.
+
+## Delivery
+
+Open **Settings** → **Delivery**.
+
+- **Minimum order**: smaller orders can't be delivered. 0 means no minimum.
+- **Free delivery**: turn on and set **Free on orders over**.
+- **Charges by distance**: select **Add a range**, then set **From**, **To** (kilometres from your business) and the **Charge**.
+
+With Uber Direct, Uber's quote sets the delivery charge for each order; the minimum and free delivery still apply.
+
+## Shipping
+
+Open **Settings** → **Shipping**.
+
+1. Under **Boxes**, select **Add a box** and enter its **Name**, **Size (L × W × H)** in centimetres and **Maximum weight**. Taliup picks the right box for each order.
+2. Under **Courier pickup**, choose the days and times the courier can pick up, within your opening hours.
+3. Optionally turn on **Offer free shipping** for larger orders.
+4. Turn on **Shipping** in **Online ordering**.
+
+## Uber Direct
+
+Open **Settings** → **Uber Direct** and select **Connect Uber Direct**. Enter the **Customer ID**, **Client ID** and **Client secret** from your Uber Direct dashboard, under Developer. Taliup checks them with Uber before saving. Customers can then choose Uber delivery at checkout. **Turn off** stops offering it and keeps your credentials.
+
+## Related
+
+- [Online orders](/taliup-hq/merchant/online-store/orders)
+- [Website](/taliup-hq/merchant/online-store/website)

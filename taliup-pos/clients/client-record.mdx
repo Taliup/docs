@@ -1,0 +1,54 @@
+---
+title: "Client record"
+sidebarTitle: "Client record"
+description: "Open a client's record in Taliup POS to see their contact details, loyalty points, transactions, appointments and invoices, and edit their address and notes."
+keywords: ["view a client record", "client purchase history", "client notes", "client loyalty points", "client appointments", "client invoices"]
+applies_to:
+  audience: merchant
+  product: pos
+  features: [clients]
+  permissions:
+    guard: appUser
+    any: ["View Clients"]
+---
+
+A client record gathers everything about one client: their contact details, loyalty membership and their history with your business.
+
+## Before you start
+
+- Your business needs the **Clients** feature, and your role the **View Clients** permission. Editing the record needs **Manage Clients**.
+- **Transactions**, **Appointments** and **Invoices** on the record need the **Transaction History** feature.
+- The loyalty card and **Points** need Loyalty to be active at this location. See [Loyalty](/taliup-pos/register/loyalty).
+
+## Open a record
+
+From Home, tap **Clients**, then tap a client. On a tablet in landscape, the record opens beside the list.
+
+## What the record shows
+
+| Part | What it shows and what you can do |
+|---|---|
+| Header | Name, email and phone, with **Edit** |
+| **Loyalty** | **Member** with **Member since**, the points earned and redeemed, and **Send card**. A client who is not a member shows **Not a loyalty member** and **Enrol in loyalty** |
+| Tabs | **Transactions**, **Points** (members only), **Appointments** and **Invoices**, each with a count |
+
+**Edit** opens **Edit client**, with the client's details, **Address** (tap **Add address** or **Edit address** to show the fields, **Hide address** to fold them) and **Notes**. See [Create and edit](/taliup-pos/clients/create-and-edit).
+
+**Send card** emails the client their loyalty card. It needs an email on the client: otherwise Taliup POS asks you to **Add an email on this client before the card can be sent.**
+
+## Look at a past visit
+
+Tap an entry in a tab to open it:
+
+- A transaction opens **Order details**: the items, discounts, fees, taxes, tip and total, and how it was paid.
+- An appointment opens **Appointment**: the date and time, the staff member and the services booked.
+- An invoice opens **Invoice**: its items, totals, due date and status, and how it was sent.
+- **Points** lists every loyalty change, such as points earned on a sale, redeemed, adjusted or the welcome bonus. **No points activity yet.** means nothing has happened yet.
+
+A tab with nothing in it says no records were found for this client.
+
+## Related
+
+- [Clients](/taliup-pos/clients)
+- [Create and edit a client](/taliup-pos/clients/create-and-edit)
+- [Attach a client in Register](/taliup-pos/clients/attach-from-register)

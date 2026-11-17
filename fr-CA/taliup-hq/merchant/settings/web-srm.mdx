@@ -1,0 +1,52 @@
+---
+title: "MEV WEB dans Taliup HQ"
+sidebarTitle: "MEV WEB"
+description: "Activer le MEV WEB pour votre entreprise du Québec dans Taliup HQ, entrer vos renseignements de Revenu Québec, puis inscrire chaque terminal, ou le désactiver."
+keywords: ["activer le MEV WEB", "renseignements de Revenu Québec", "enregistrement des ventes au Québec", "numéros de TPS et de TVQ", "inscrire un terminal auprès de Revenu Québec", "désactiver le MEV WEB"]
+---
+
+Les entreprises du Québec doivent enregistrer leurs ventes auprès de Revenu Québec. Quand le MEV WEB est activé, les ventes sont validées, conservées et transmises à Revenu Québec. Ouvrez **Paramètres** → **MEV WEB** (dans la section **Connexions**).
+
+## Avant de commencer
+
+- Votre entreprise a besoin de la fonctionnalité **Web-SRM**, et vous devez avoir le rôle **Admin** dans Taliup HQ.
+- Ayez en main vos cinq renseignements de Revenu Québec : **Numéro d’identification de l’utilisateur**, **Code d’autorisation de l’utilisateur**, **Numéro de TVQ**, **Numéro de TPS** et **Numéro de dossier de facturation**.
+
+## Activer le MEV WEB
+
+<Warning>
+  Activer le MEV WEB crée la TPS (5 %) et la TVQ (9,975 %), les ajoute à tous vos catalogues et retire toutes les autres taxes. Vous pourrez encore ajuster les taxes ensuite.
+</Warning>
+
+<Steps>
+  <Step title="L'activer">
+    Sous **Revenu Québec**, activez **Utiliser le MEV WEB**.
+  </Step>
+  <Step title="Entrer vos renseignements">
+    Sous **Vos renseignements de Revenu Québec**, remplissez les cinq champs.
+  </Step>
+  <Step title="Enregistrer et confirmer">
+    Enregistrez vos changements, puis confirmez **Activer le MEV WEB?** avec **Activer le MEV WEB**.
+  </Step>
+</Steps>
+
+## Ensuite, sur chaque terminal
+
+Les paramètres de HQ n'inscrivent pas les terminaux à eux seuls. Sur chaque terminal, une fois l'employé connecté :
+
+1. Sur **Bienvenue dans Taliup POS**, appuyez sur **Demander un certificat**.
+2. Entrez un **surnom de certificat (SN)** de 8 à 32 caractères.
+3. Pour une première inscription, appuyez sur **Non — laisser Revenu Québec en attribuer un**.
+4. Appuyez sur **Demander un certificat** et attendez **Certificat installé**.
+5. Répétez sur chaque autre terminal.
+
+Voir [Inscrire Taliup POS au WEB-SRM](/fr-CA/taliup-pos/web-srm). Si vos terminaux prennent déjà des ventes, suivez [Commencer à utiliser le WEB-SRM chez un marchand existant](/fr-CA/taliup-pos/web-srm/switch-live-merchant).
+
+## Désactiver le MEV WEB
+
+Désactivez **Utiliser le MEV WEB** et confirmez **Désactiver le MEV WEB?** avec **Désactiver**. Vos renseignements de Revenu Québec sont retirés et les ventes ne sont plus transmises. Vos taxes restent telles quelles.
+
+## Voir aussi
+
+- [Inscrire Taliup POS au WEB-SRM](/fr-CA/taliup-pos/web-srm)
+- [Paramètres WEB-SRM (partenaires et migration du MEV)](/fr-CA/taliup-hq/onboarding/web-srm)

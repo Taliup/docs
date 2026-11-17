@@ -1,0 +1,71 @@
+---
+title: "Pre-authorizations"
+sidebarTitle: "Pre-authorizations"
+description: "Hold an amount on a card with Create Auth, then capture it with Post Auth or release it with Void Auth or Delete Auth."
+keywords: ["pre-authorize a card", "create auth", "capture a pre-authorization", "post auth", "void auth", "delete auth", "hold amount on card"]
+applies_to:
+  audience: merchant
+  product: pos
+---
+
+A pre-authorization holds an amount on the customer's card without charging it. You capture it later with **Post Auth**, or release it.
+
+## Before you start
+
+- Creating a pre-authorization needs the **Pre-Authorization** permission. Capturing one needs **Post-Authorization**. Voiding one needs **Manage Transactions**.
+- Pre-authorizations are not available on WEB-SRM (Revenu Québec) registers. **Create Auth** is not shown there.
+- A pre-authorization is for a typed amount, not catalog items.
+
+## Create a pre-authorization
+
+<Steps>
+  <Step title="Open Create Auth">
+    In Register, go to the **Open Sale** tab, tap **Order actions** (the menu icon), then **Create Auth** in the **Bill** section. On the [Open Sale Only](/taliup-pos/register/open-sale-only) screen, tap **Options** → **Create Auth**.
+  </Step>
+  <Step title="Enter Auth mode">
+    On **Switch to Auth Mode**, tap **Enter Auth Mode**. If the cart has items, they are cleared. An **Auth** banner shows you are in Auth mode.
+  </Step>
+  <Step title="Enter the amount">
+    Type the **Auth amount** on the keypad.
+  </Step>
+  <Step title="Tap the card key">
+    Tap **Card** or **Credit**, or **Manual entry** on Elavon card readers. If your business uses dual pricing or a credit card surcharge, the customer confirms it. There is no tip prompt.
+  </Step>
+  <Step title="Present the card">
+    Follow the card reader. The approved pre-authorization appears in [Transactions](/taliup-pos/transactions) as **Authorized**.
+  </Step>
+</Steps>
+
+To return to normal sales, tap **Exit** in the **Auth** banner, then **Enter Payment Mode**.
+
+If **Create Auth** is greyed out, tapping it shows **You do not have permission to create pre-authorizations.**
+
+## Capture a pre-authorization
+
+<Steps>
+  <Step title="Open the authorization">
+    Go to Home → **Transactions** and tap the **Authorized** payment.
+  </Step>
+  <Step title="Tap Post Auth">
+    **Capture this authorization?** shows the amount and card.
+  </Step>
+  <Step title="Confirm">
+    Tap **Capture [amount]**. The amount is charged and included in the next batch.
+  </Step>
+</Steps>
+
+## Release a pre-authorization
+
+From the authorization's details, tap **Void Auth** and confirm **Void [amount]**. On Elavon card readers (Link 2500, Lane 3600) the button is **Delete Auth** instead, confirmed with **Delete [amount]**. Neither can be undone.
+
+## Things to know
+
+- **Post Auth**, **Void Auth** and **Delete Auth** work only on the terminal that took the pre-authorization. On another device, Taliup POS tells you which terminal to use.
+- Capture before you close the batch. On PAX and Castles terminals, [closing the batch](/taliup-pos/transactions/close-batch) drops authorizations that have not been captured.
+- On Poynt, the available actions come from the live status on the Poynt terminal. If it cannot be read, the details show **Live Poynt status unavailable.**
+
+## Related
+
+- [Transaction details](/taliup-pos/transactions/details)
+- [Close a batch](/taliup-pos/transactions/close-batch)
+- [Order actions](/taliup-pos/register/options)

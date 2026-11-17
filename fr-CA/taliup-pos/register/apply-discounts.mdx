@@ -1,0 +1,54 @@
+---
+title: "Appliquer des rabais"
+sidebarTitle: "Appliquer des rabais"
+description: "Ajouter un rabais prédéfini ou personnalisé à toute la commande depuis les Actions de commande de Caisse, et le retirer du panier."
+keywords: ["appliquer un rabais", "réduction sur la commande", "rabais personnalisé", "pourcentage de rabais", "retirer un rabais", "rabais introuvable"]
+---
+
+Dans Caisse, les rabais s'appliquent à toute la commande. Vous pouvez choisir un ou plusieurs rabais prédéfinis de votre catalogue, ou saisir un rabais personnalisé.
+
+## Avant de commencer
+
+- La fonctionnalité **Discounts** doit être activée pour votre entreprise. Sans elle, Taliup POS indique que la fonctionnalité n'est pas offerte au lieu d'ouvrir la fiche.
+- Les rabais s'ajoutent dans l'onglet **Menu** ou **Catalogue** : cet appareil doit donc avoir un catalogue. Ils ne sont pas offerts dans l'onglet **Vente ouverte**, sur les commandes de table ni sur l'écran [Vente ouverte seulement](/fr-CA/taliup-pos/register/open-sale-only).
+- Les rabais prédéfinis viennent du catalogue attribué à cet appareil. Pour les voir, il faut la permission **View Discounts**. Sans elle, la liste **Préréglé** est vide, mais vous pouvez quand même ajouter un rabais **Personnalisé**.
+- Ajoutez d'abord au moins un article. Sinon, Taliup POS affiche **Vous devez d'abord ajouter un élément.**
+
+## Ajouter un rabais
+
+<Steps>
+  <Step title="Ouvrir les Actions de commande">
+    Dans Caisse, touchez **Actions de commande** (l'icône de menu dans la barre d'application).
+  </Step>
+  <Step title="Choisir Ajouter des réductions à la commande">
+    Dans la section **Ajuster**, touchez **Ajouter des réductions à la commande**. La fiche **Ajouter un rabais** s'ouvre.
+  </Step>
+  <Step title="Choisir des rabais prédéfinis ou saisir un rabais personnalisé">
+    - **Préréglé** — touchez chaque rabais à appliquer. Chaque ligne montre sa valeur et s'il est **Avant impôt** ou **Après impôts**. Touchez de nouveau une ligne choisie pour la retirer.
+    - **Personnalisé** — choisissez **Pourcentage** ou **Fixe**, puis **Avant impôt** ou **Après impôts**, et tapez la valeur.
+  </Step>
+  <Step title="L'ajouter">
+    Le bouton montre de combien le total change, par exemple **Ajouter −5,00 $**. Touchez-le pour appliquer le rabais.
+  </Step>
+</Steps>
+
+Un rabais **Avant impôt** réduit le montant taxable. Un rabais **Après impôts** est retiré après les taxes.
+
+Le rabais ne peut pas faire passer le total sous zéro. Si c'était le cas, Taliup POS vous demande d'ajuster le montant.
+
+## Retirer un rabais
+
+Les rabais apparaissent dans le [panier](/fr-CA/taliup-pos/register/cart) sous les articles, chacun sur une ligne **Réduction**. Touchez la commande de suppression de la ligne pour le retirer.
+
+Si vous retirez ou modifiez un article et que le rabais devient plus grand que la commande, Taliup POS vous avertit que les rabais de la commande seront aussi retirés.
+
+## Autres rabais sur une commande
+
+- **Récompense fidélité** — échanger des points de fidélité ajoute un rabais **Récompense fidélité**. Voir [Fidélité](/fr-CA/taliup-pos/register/loyalty).
+- **Frais** — **Ajouter des frais à la commande**, dans la même section **Ajuster**, fonctionne de la même façon pour les frais. Il exige la fonctionnalité **Fees**.
+
+## Connexe
+
+- [Actions de commande](/fr-CA/taliup-pos/register/options)
+- [Panier](/fr-CA/taliup-pos/register/cart)
+- [Rabais dans le catalogue](/fr-CA/taliup-pos/catalog/discounts)

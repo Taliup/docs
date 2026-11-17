@@ -1,85 +1,83 @@
 ---
-title: "Menu Options"
-sidebarTitle: "Menu Options"
-description: "Menu Options de Caisse pour les factures et paiements, rabais et frais, actions de commande, cuisine, notes, tiroir-caisse et scanneur."
+title: "Actions de commande"
+sidebarTitle: "Actions de commande"
+description: "Toutes les options du menu Actions de commande de Caisse : factures, cartes-cadeaux, rabais et frais, outils de commande, tiroir-caisse et scanneur."
+keywords: ["menu actions de commande", "options de caisse", "imprimer la facture", "ajouter un article personnalisé", "enregistrer la commande", "ouvrir le tiroir-caisse", "option absente du menu"]
 ---
 
-Appuyez sur **Options** dans la barre d'application de Caisse pour ouvrir le menu latéral. Les sections vides sont masquées. Ce que vous voyez dépend de Vente ouverte vs Menu/Catalogue, commande de table vs hors table, permissions du rôle et fonctions du plan.
+Touchez **Actions de commande** (l'icône de menu dans la barre d'application de Caisse) pour ouvrir le menu. En mode portrait, les options sont en liste; en mode paysage, chaque section est une colonne. Les sections sans option sont masquées.
 
-<Frame caption="menu Options de Caisse entièrement déployé.">
-  ![menu Options de Caisse entièrement déployé](/images/taliup-pos/register/options.png)
-</Frame>
+Ce que vous voyez dépend de l'onglet de Caisse (**Vente ouverte** ou **Menu** / **Catalogue**), du fait que la commande soit liée à une table, des permissions de votre rôle et des fonctionnalités de votre entreprise. Un point rouge sur l'icône signale un élément à vérifier, comme une carte-cadeau qui n'a pas été chargée.
 
-## Factures et paiements
+## Facture
 
 | Option | Ce qu'elle fait | Quand elle apparaît |
 |---|---|---|
-| **Imprimer la facture complète** | Imprime la facture de toute la commande | Pas sur l'onglet Vente ouverte |
-| **Imprimer les factures individuelles** | Ouvre l'impression de facture par invité | Commandes de table |
-| **Créer une autorisation** | Passe Caisse en mode autorisation (préautorisation) | Commandes hors table; exige la permission de préautorisation |
-| **Créer un remboursement** | Passe Caisse en mode remboursement | Commandes hors table; exige la permission de remboursement |
-| **Créer un paiement en espèces** | Démarre un paiement en espèces (payout) | Lorsque la fonction payout est disponible (ou affiche un état de mise à niveau / refus) |
+| **Imprimer la facture complète** | Imprime la facture de toute la commande | Pas dans l'onglet **Vente ouverte** |
+| **Imprimer les factures individuelles** | Imprime une facture par invité | Commandes de table |
+| **Créer une autorisation** | Passe en mode Autorisation pour préautoriser une carte. Voir [Préautorisations](/fr-CA/taliup-pos/register/pre-auth) | Onglet **Vente ouverte**, hors table, pas sur les caisses WEB-SRM. Grisée sans **Pre-Authorization** |
+| **Créer un remboursement** | Passe en mode Remboursement pour rembourser un montant sans vente d'origine. Consultez [Rembourser sans vente](/fr-CA/taliup-pos/register/non-referenced-refund) | Onglet **Vente ouverte**, hors table. Grisée sans **Non-Ref Refunds** |
+| **Créer un paiement en espèces** | Sort de l'argent du tiroir. Voir [Paiements en espèces](/fr-CA/taliup-pos/register/cash-payouts) | Lorsque la fonctionnalité **Payout** est activée, ou pour indiquer comment l'obtenir. Pas sur les caisses WEB-SRM qui ne l'ont pas |
 
-Lorsque Caisse est en mode **Autorisation** ou **Remboursement**, le menu latéral affiche **Annuler l'autorisation** ou **Annuler le remboursement** pour revenir au mode paiement normal. Le titre de la barre d'application devient **Auth** ou **Refund**.
-
-## Rabais et frais
-
-Affichés pour les commandes hors table lorsque vous n'êtes pas sur l'onglet Vente ouverte.
-
-| Option | Ce qu'elle fait | Notes |
-|---|---|---|
-| **Ajouter des réductions à la commande** | Appliquer des rabais au niveau de la commande | Exige la fonction rabais |
-| **Ajouter des frais à la commande** | Appliquer des frais au niveau de la commande | Exige la fonction frais |
-
-Si la fonction n'est pas incluse au plan, Taliup POS indique que l'accès est bloqué au lieu d'appliquer le rabais ou les frais.
-
-## Commandes et serveurs
-
-| Option | Ce qu'elle fait | Quand elle apparaît |
-|---|---|---|
-| **Ajouter un élément personnalisé** | Ajoute une ligne à prix personnalisé | Pas sur Vente ouverte |
-| **Enregistrer commande** | Enregistre la commande ouverte en cours | Pas sur Vente ouverte |
-| **Terminer la commande** | Termine une commande de table (confirmation requise) | Commandes de table |
-| **Annuler la commande** | Annule la commande en cours (confirmation requise) | Pas sur Vente ouverte |
-| **Déplacer la commande** | Déplace la commande vers une autre table | Commandes de table |
-
-## Plus d'options
-
-| Option | Ce qu'elle fait | Quand elle apparaît |
-|---|---|---|
-| **Envoyer à l'imprimante de cuisine** | Ouvre l'impression cuisine pour la commande | Restaurants; pas sur Vente ouverte |
-| **Combiner les articles** | Combine les commandes de table | Commandes de table |
-| **Augmenter la taille du groupe** | Augmente les invités sur la commande de table | Commandes de table |
-| **Ajouter une note** | Ajoute une note de commande | Toujours |
-| **Aidé par** | Attribue la vente à l'employé qui a servi le client. Voir [Aidé par](/fr-CA/taliup-pos/register/helped-by) | Pas sur Vente ouverte |
-| **Ajouter un nom de commande personnalisé** | Nomme la commande | Restaurants; pas sur Vente ouverte |
-| **Ouvrir le tiroir-caisse** | Ouvre le tiroir-caisse | Toujours |
-| **Ouvrir le scanneur** | Ouvre le scanneur de codes-barres. Aussi pour les [codes-barres de balance](/fr-CA/taliup-pos/register/scale-barcodes) | Pas sur Vente ouverte |
+En mode Autorisation ou Remboursement, une bannière affiche **Auth** ou **Remboursement**. Touchez **Quitter** dans la bannière pour revenir aux ventes habituelles.
 
 ## Cartes-cadeaux
 
-Affichée lorsque les cartes-cadeaux sont activées pour l'emplacement.
+Affichée lorsque les cartes-cadeaux sont activées pour cet emplacement. Chaque option exige une connexion. Voir [Cartes-cadeaux](/fr-CA/taliup-pos/register/gift-cards).
+
+| Option | Quand elle apparaît |
+|---|---|
+| **Vendre une carte-cadeau** | Pas dans l'onglet **Vente ouverte**, hors table |
+| **Recharger une carte-cadeau** | Pas dans l'onglet **Vente ouverte**, hors table |
+| **Solde de carte-cadeau** | Toujours |
+| **Réessayer le chargement de la carte-cadeau** | Lorsqu'une carte payée n'a pas pu être chargée. Indique combien sont en attente |
+
+## Ajuster
 
 | Option | Ce qu'elle fait | Quand elle apparaît |
 |---|---|---|
-| **Vendre une carte-cadeau** | Ajoute une nouvelle carte physique ou numérique à la vente | Pas en Vente ouverte; pas sur les commandes de table |
-| **Charger un lot** | Ajoute plusieurs cartes du même montant | Pas en Vente ouverte; pas sur les commandes de table |
-| **Recharger une carte-cadeau** | Ajoute de la valeur à une carte active | Pas en Vente ouverte; pas sur les commandes de table |
-| **Solde de carte-cadeau** | Vérifie le solde d'une carte sans la débiter | Toujours |
-| **Réessayer le chargement de la carte-cadeau** | Charge les cartes payées qui n'ont pas pu être chargées | Lorsqu'un chargement a échoué |
+| **Ajouter des réductions à la commande** | Ajoute des rabais prédéfinis ou personnalisés. Voir [Appliquer des rabais](/fr-CA/taliup-pos/register/apply-discounts) | Pas dans l'onglet **Vente ouverte**, hors table. Exige la fonctionnalité **Discounts** |
+| **Ajouter des frais à la commande** | Ajoute des frais prédéfinis ou personnalisés | Pas dans l'onglet **Vente ouverte**, hors table. Exige la fonctionnalité **Fees** |
+| **Ajouter un article personnalisé** | Ajoute un article dont vous tapez le nom et le prix | Pas dans l'onglet **Vente ouverte** |
+| **Remarque** | Ajoute une note à la commande | Toujours |
+| **Aidé par** | Attribue la vente à l'employé qui a servi le client. Voir [Aidé par](/fr-CA/taliup-pos/register/helped-by) | Pas dans l'onglet **Vente ouverte** |
+| **Ajouter un nom de commande personnalisé** | Nomme la commande | Restaurants, pas dans l'onglet **Vente ouverte** |
+| **Table #** et **# de clients** | Inscrit le numéro de table et le nombre de clients | Commandes au comptoir WEB-SRM lorsque Table Management est désactivé |
 
-Voir [Cartes-cadeaux](/fr-CA/taliup-pos/register/gift-cards).
+## Commande
 
-## Conseils de permission pour le soutien
+| Option | Ce qu'elle fait | Quand elle apparaît |
+|---|---|---|
+| **Envoyer à la cuisine** | Envoie les articles aux imprimantes de cuisine | Restaurants, pas dans l'onglet **Vente ouverte** |
+| **Enregistrer commande** | Enregistre la commande pour la terminer plus tard | Pas dans l'onglet **Vente ouverte**. Grisée tant que la commande charge une carte-cadeau ou utilise une récompense fidélité : payez ces ventes tout de suite |
+| **Annuler la commande** | Annule la commande après confirmation | Pas dans l'onglet **Vente ouverte** |
+| **Tables** | Ouvre le plan de salle | Table Management est activé |
+| **Terminer la commande** | Termine une commande de table après confirmation | Commandes de table |
+| **Déplacer la commande** | Déplace la commande vers une autre table | Commandes de table avec Table Management |
+| **Combiner les articles** | Combine les commandes de cette table | Commandes de table avec Table Management |
+| **Augmenter la taille du groupe** | Ajoute des invités à la table | Commandes de table avec Table Management |
 
-- **Créer une autorisation** / **Créer un remboursement** apparaissent mais peuvent être désactivés sans la permission de rôle — le personnel voit un message de permission lorsqu'il appuie dessus.
-- Les rabais, frais, clients et payouts peuvent être limités par le plan même si l'entrée de menu est visible ou tentée.
-- Plusieurs entrées Options disparaissent sur **Vente ouverte**; passez à Menu/Catalogue ou ouvrez une commande enregistrée / de table si un outil manque.
+## Appareil
+
+| Option | Quand elle apparaît |
+|---|---|
+| **Ouvrir le tiroir-caisse** | Toujours |
+| **Ouvrir le scanneur** | Pas dans l'onglet **Vente ouverte**. Sert aussi aux [codes-barres de balance](/fr-CA/taliup-pos/register/scale-barcodes) |
+| **Assistant IA** | Votre entreprise a la fonctionnalité **AI Assistant**. Voir [Assistant IA](/fr-CA/taliup-pos/help/assistant) |
+
+## Corriger une commande WEB-SRM
+
+Pendant la correction d'une commande payée sur une caisse WEB-SRM, le menu n'affiche que **Ajuster** et **Appareil**, plus **Annuler la correction** sous **Corriger la commande**. Voir [Annuler, corriger et rembourser avec le WEB-SRM](/fr-CA/taliup-pos/web-srm/cancel-and-correct).
+
+## Si une option est absente
+
+- Passez de l'onglet **Vente ouverte** à **Menu** ou **Catalogue** : la plupart des outils de commande sont masqués dans **Vente ouverte**.
+- Les options grisées expliquent pourquoi lorsque vous les touchez, par exemple une permission manquante. Demandez à un gestionnaire de modifier votre rôle dans Taliup HQ.
+- Les fonctionnalités que votre entreprise n'a pas indiquent ce qu'il faut au lieu de s'ouvrir.
+- Sur l'écran [Vente ouverte seulement](/fr-CA/taliup-pos/register/open-sale-only), le menu **Options** a sa propre liste, plus courte.
 
 ## Connexe
 
 - [Panier](/fr-CA/taliup-pos/register/cart)
-- [Cartes-cadeaux](/fr-CA/taliup-pos/register/gift-cards)
-- [Codes-barres de balance](/fr-CA/taliup-pos/register/scale-barcodes)
 - [Encaisser](/fr-CA/taliup-pos/register/take-payment)
 - [Tables](/fr-CA/taliup-pos/tables)

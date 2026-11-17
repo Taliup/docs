@@ -1,14 +1,16 @@
 ---
 title: "Codes-barres de balance"
 sidebarTitle: "Codes-barres de balance"
-description: "Scanner une étiquette de prix ou de poids depuis une balance de comptoir vers le panier de Caisse."
+description: "Balayer les étiquettes de prix ou de poids d'une balance de comptoir dans le panier de Caisse et configurer les produits pesables."
+keywords: ["balayer une étiquette de balance", "code-barres de balance", "étiquette de poids", "étiquette de prix", "article pesable", "code PLU"]
 ---
 
 Utilisez une balance qui imprime une étiquette (charcuterie, boucherie, fruits et légumes) et scannez l'autocollant dans **Caisse**. Taliup lit le produit et le prix ou le poids imprimé. Vous n'avez pas à jumeler la balance au terminal.
 
-<Note>
-  Le **SKU** du produit dans Taliup doit correspondre au PLU à 5 chiffres programmé sur la balance. L'article doit être dans le catalogue utilisé par ce terminal.
-</Note>
+## Avant de commencer
+
+- Le balayage se fait dans l'onglet **Menu** / **Catalogue** de Caisse, qui exige la fonction **Catalogs**.
+- Le **SKU** du produit dans Taliup doit correspondre au PLU à 5 chiffres programmé sur la balance. L'article doit être dans le catalogue utilisé par ce terminal.
 
 ## Deux types d'étiquettes
 
@@ -44,7 +46,7 @@ Si plusieurs produits partagent le même SKU, choisissez le bon dans la liste.
 
 ## Si la balance n'imprime pas d'étiquette
 
-Certaines balances affichent seulement le poids. **Saisir le poids** est le défaut sur un nouveau terminal. S'il a été passé à **Étiquettes**, ouvrez **Paramètres → Général** et remettez **Articles pesés** sur **Saisir le poids**.
+Certaines balances affichent seulement le poids. **Saisir le poids** est le défaut sur un nouveau terminal. S'il a été passé à **Étiquettes**, allez à Accueil → **Paramètres** → **Général** → **Articles pesés** et choisissez **Saisir le poids**.
 
 Touchez ensuite l'article pesé dans Caisse, entrez le poids, puis confirmez. Caisse multiplie le prix catalogue par unité par ce poids. S'il y a des attributs ou des modificateurs, choisissez-les ensuite.
 

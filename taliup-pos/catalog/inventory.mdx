@@ -1,14 +1,27 @@
 ---
 title: "Inventory"
 sidebarTitle: "Inventory"
-description: "Manage product stock, Sold by / Weighable, raw materials, and units of measure."
+description: "Track stock for products, set reorder points, sell by weight with Weighable, and manage raw materials and units of measure."
+keywords: ["check stock", "update inventory", "stock quantity", "reorder point", "sell by weight", "raw materials", "units of measure"]
+applies_to:
+  audience: merchant
+  product: pos
+  features: [catalog, inventory]
+  permissions:
+    guard: appUser
+    any: ["View Inventory"]
 ---
 
-**Inventory** tracks stock for sellable products and, when enabled, raw materials and units. Access requires the inventory feature.
+**Inventory** tracks stock for sellable products and, when enabled, raw materials and units.
 
 <Frame caption="Inventory products list with Name, SKU, QTY.">
   ![Inventory products list with Name, SKU, QTY](/images/taliup-pos/catalog/inventory.png)
 </Frame>
+
+## Before you start
+
+- Requires the **Catalogs** and **Inventory** features and the **View Inventory** permission. Changing stock, **Sold by**, raw materials or units needs **Edit Inventory**.
+- **Raw Materials** needs the **Raw Materials** feature, **Units** needs the **Units** feature, and **RP.** (reorder point) needs the **ReOrder Point** feature.
 
 ## How to get here
 
@@ -19,8 +32,8 @@ Home → **Menu** / **Catalog** → **Inventory**.
 | Section | Availability |
 |---|---|
 | **Products** | Always (within Inventory) |
-| **Raw Materials** | Typically restaurants; may require an inventory add-on |
-| **Units** | When units feature is enabled |
+| **Raw Materials** | When the **Raw Materials** feature is enabled |
+| **Units** | When the **Units** feature is enabled |
 
 ## Products
 

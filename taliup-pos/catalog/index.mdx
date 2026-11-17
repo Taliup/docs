@@ -1,7 +1,12 @@
 ---
 title: "Menu / Catalog"
 sidebarTitle: "Overview"
-description: "Manage featured items, categories, products or menu items, taxes, discounts, fees, and inventory."
+description: "Open the Menu or Catalog section to manage featured items, categories, products, taxes, discounts, fees and inventory."
+keywords: ["edit the menu", "manage the catalog", "catalog sections", "rename the catalog", "menu vs catalog", "add products to the menu"]
+applies_to:
+  audience: merchant
+  product: pos
+  features: [catalog]
 ---
 
 **Menu** (restaurants) and **Catalog** (other industry types) are the same Home section with different labels. Use it to build and maintain what you sell. Selling happens in [Register](/taliup-pos/register).
@@ -9,6 +14,13 @@ description: "Manage featured items, categories, products or menu items, taxes, 
 <Frame caption="Menu/Catalog home grid with all section buttons.">
   ![Menu/Catalog home grid with all section buttons](/images/taliup-pos/catalog/catalog.png)
 </Frame>
+
+## Before you start
+
+- The **Catalogs** feature must be enabled for the business in Taliup HQ. Without it, Taliup POS shows a feature access message when you tap **Menu** / **Catalog**.
+- **Services**, **Discounts**, **Fees** and **Inventory** each need their own feature (**Services**, **Discounts**, **Fees**, **Inventory**). A section whose feature is off shows that the feature is not available.
+- Each section also needs role permissions, listed on its page. Renaming the menu or catalog needs **Update Catalogs**.
+- The Menu / Catalog section loads from Taliup HQ, so the device must be online.
 
 ## How to get here
 
@@ -43,6 +55,3 @@ These match the buttons on the Menu/Catalog grid:
 | Options on items | Attributes | Modifiers |
 | Applied spinner | Applied Catalog | Applied Menu |
 
-## Feature access
-
-Some sections require plan features (Services, Discounts, Fees, Inventory). If a section is locked, Taliup POS shows that the feature is not available — ask your ISO/partner or enable it in Taliup HQ.

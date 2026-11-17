@@ -1,0 +1,94 @@
+---
+title: "Employee permissions"
+sidebarTitle: "Permissions"
+description: "What each employee permission lets you do in Taliup POS, and what to do when you see a permission message."
+keywords: ["permission denied", "employee permissions", "role permissions", "Manage Transactions", "Owner role", "what can my role do"]
+applies_to:
+  audience: merchant
+  product: pos
+---
+
+Each employee has a role, such as **Owner**, **Manager**, **Employee**, or a custom role your business created. The role's permissions decide what the employee can do in Taliup POS. Roles and their permissions are set in Taliup HQ. See [Permissions in Taliup HQ](/taliup-hq/manage/permissions).
+
+A permission only helps when the business also has the feature. For example, **Manage Payouts** has no effect unless **Payout** is on.
+
+## When you don't have a permission
+
+Taliup POS tells you, for example **You do not have permission to access Transactions.** or **You do not have permission to process refunds.** Ask an owner or manager to update your role in Taliup HQ. Permission changes made in Taliup HQ can take a few moments to apply.
+
+## Permissions used in Taliup POS
+
+Names are shown exactly as they appear in Taliup HQ.
+
+### Transactions and payments
+
+| Permission | What it allows in Taliup POS |
+|---|---|
+| **Manage Transactions** | Open **Transactions** from Home. Void a payment or refund it from its details. Generate the End of Day report. |
+| **View All Terminal Transactions** | See transactions from every device in **Transactions**. Without it, you see this device's transactions only. |
+| **Non-Ref Refunds** | Use **Create Refund** on the Register to refund without an original transaction. |
+| **Pre-Authorization** | Use **Create Auth** on the Register. Not offered on WEB-SRM devices. |
+| **Post-Authorization** | Capture a pre-authorization from its transaction details. |
+| **Manage Settlements** | Close the batch from **Transactions**. See [Close a batch](/taliup-pos/transactions/close-batch). |
+| **Manage Payouts** | Record cash payouts from the Register. Needs the **Payout** feature. See [Cash payouts](/taliup-pos/register/cash-payouts). |
+
+### Reports
+
+| Permission | What it allows in Taliup POS |
+|---|---|
+| **View Analytics** | Open **Analytics** (needs the **Reports** feature) and view End of Day reports (needs the **End of Day Report** feature). |
+
+### Catalog or Menu
+
+Taliup HQ checks these when Taliup POS loads or saves catalog data.
+
+| Permission | What it allows |
+|---|---|
+| **View Catalogs** | Load catalogs, their categories and items, including the items shown on the Register. |
+| **Add Catalogs** | Create a catalog. |
+| **Update Catalogs** | Change a catalog: its categories, the items and taxes in it, and category order. |
+| **View Products** | See items, modifiers and services. |
+| **Add Products** | Create items. |
+| **Update Products** | Edit items, modifiers and services. |
+| **Delete Products** | Delete items. |
+| **View Taxes**, **Add Taxes**, **Update Taxes**, **Delete Taxes** | See taxes; create them; change them; delete them. **Update Taxes** also covers Open Sale taxes. |
+| **View Discounts**, **Manage Discounts**, **Delete Discounts** | See discounts; create or change them; delete them. |
+| **View Fees**, **Manage Fees**, **Delete Fees** | See fees; create or change them; delete them. |
+| **View Inventory**, **Edit Inventory** | See stock, or change it. |
+
+### Clients and Link To Pay
+
+| Permission | What it allows |
+|---|---|
+| **View Clients**, **Manage Clients**, **Delete Clients** | See clients; add or edit them; delete them. |
+| **View Link to Pay**, **Manage Link to Pay**, **Delete Link to Pay** | See payment links and invoices; create, send or change them; delete them. |
+
+### Tables
+
+| Permission | What it allows |
+|---|---|
+| **View Floor Plan TM** | See tables and floor plans. |
+| **Create Tables TM** | Add tables and floor plans. |
+| **Manage Tables TM** | Rename, arrange and reorder tables and floor plans. |
+| **Delete Tables TM** | Delete tables and floor plans. |
+| **View Table Orders TM** | See orders on tables. |
+| **Manage Table Orders TM** | Split and combine table orders. |
+
+### Employees
+
+| Permission | What it allows |
+|---|---|
+| **View Employees** | See the employee list in **Manage Employees**. |
+| **Manage Employees** | Add employees and edit their details and PIN. |
+| **Delete Employees** | Delete employees. |
+
+Managing employees in Taliup POS also requires the **Owner** role. Permissions alone are not enough. See [Manage employees](/taliup-pos/settings/employees).
+
+## Taliup HQ permissions
+
+Taliup HQ accounts have their own permissions, separate from the employee role used in Taliup POS. See [Permissions in Taliup HQ](/taliup-hq/manage/permissions).
+
+## Related
+
+- [Sign in and out](/taliup-pos/sign-in-and-out)
+- [Troubleshooting](/taliup-pos/help/troubleshooting)

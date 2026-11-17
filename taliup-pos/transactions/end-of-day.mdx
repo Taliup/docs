@@ -1,21 +1,32 @@
 ---
 title: "End of Day report"
 sidebarTitle: "End of Day"
-description: "Preview, generate, and print a merchant End of Day report for one or more devices and users."
-keywords: ["end of day", "EOD", "daily report", "reconciliation", "reprint"]
+description: "Preview, generate and print the merchant End of Day report for one or more devices and users, and reprint past reports."
+keywords: ["end of day report", "close out the day", "daily sales report", "print end of day", "reprint end of day", "EOD report"]
+applies_to:
+  audience: merchant
+  product: pos
+  features: [end_of_day_report]
+  permissions:
+    guard: appUser
+    all: ["Manage Transactions", "View Analytics"]
 ---
 
 **End of Day** prints a merchant documentation report for a business date. Use it to reconcile sales, payments, payouts, and top items.
 
 <Warning>
-This report does **not** close card batches or settle the terminal. It is documentation only.
+This report does **not** close card batches or settle the terminal. It is documentation only. To close the card batch, see [Close a batch](/taliup-pos/transactions/close-batch).
 </Warning>
+
+## Before you start
+
+- The **End of Day Report** feature must be enabled for the business in Taliup HQ. Without it, the **End Of Day** button is not shown.
+- Your role needs **Manage Transactions** to open **Transactions** and generate the report, and **View Analytics** to load the preview and **EOD History**.
+- The report is built in Taliup HQ, so the device must be online.
 
 ## How to get here
 
 Home → **Transactions** → **End Of Day**.
-
-The button appears when the **End of Day Report** feature is on the merchant plan. Opening **Transactions** still needs the manage-transactions permission.
 
 You can also generate this report in Taliup HQ. See [End of Day in Taliup HQ](/taliup-hq/features/end-of-day).
 

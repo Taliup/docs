@@ -1,12 +1,18 @@
 ---
 title: "Tables"
 sidebarTitle: "Aperçu"
-description: "Asseoir les clients, démarrer des commandes de table, gérer les tables occupées et disposer les tables en plans de salle dans Taliup POS."
+description: "Asseoir des clients, démarrer et poursuivre des commandes de table, réserver, déplacer, diviser ou fusionner, et disposer les plans de salle."
+keywords: ["démarrer une commande de table", "asseoir une table", "réserver une table", "plan de salle", "déplacer une commande de table", "diviser l'addition", "fusionner des tables", "modifier la disposition"]
 ---
 
 **Tables** apparaît sur Accueil lorsque la gestion des tables est activée pour le marchand. Utilisez-la pour voir la salle, démarrer des commandes et continuer le service dans Caisse.
 
-Si la gestion des tables n'est pas activée, l'écran indique que la gestion des tables n'est pas activée pour cette entité.
+## Avant de commencer
+
+- La fonction **Table Management** (Gestion des tables) doit être activée pour l'entreprise dans Taliup HQ. Sinon, **Tables** n'apparaît pas sur Accueil.
+- Votre rôle doit avoir **View Floor Plan TM** pour voir les tables. Ajouter des tables ou des plans de salle exige **Create Tables TM**, renommer et disposer exige **Manage Tables TM**, et supprimer exige **Delete Tables TM**.
+- Les [plans de salle](#plans-de-salle) sont offerts lorsque Taliup HQ a passé l'entreprise au modèle de plan de salle (la fonction **Floor Plans**).
+- Les tables se chargent depuis Taliup HQ : l'appareil doit être en ligne.
 
 <Frame caption="grille de salle Tables avec cartes Available / Occupied.">
   ![grille de salle Tables avec cartes Available / Occupied](/images/taliup-pos/tables/floor.png)
@@ -83,7 +89,7 @@ Plusieurs de ces outils apparaissent aussi dans Caisse sous [Options](/fr-CA/tal
 
 ## Plans de salle
 
-Regroupez les tables par pièce avec des plans de salle, par exemple **Terrasse**, **Bar** ou **Salle privée**. Chaque plan de salle est un onglet. Balayez ou touchez les onglets pour changer de pièce.
+Ajouté dans la version de [novembre 2026](/fr-CA/changelog/2026-11). Regroupez les tables par pièce avec des plans de salle, par exemple **Terrasse**, **Bar** ou **Salle privée**. Chaque plan de salle est un onglet. Balayez ou touchez les onglets pour changer de pièce.
 
 Passez d'une vue à l'autre en haut de **Tables** :
 

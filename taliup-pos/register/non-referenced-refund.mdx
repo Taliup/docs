@@ -1,0 +1,48 @@
+---
+title: "Refund without a sale"
+sidebarTitle: "Refund without a sale"
+description: "Refund an amount to a card with Create Refund when there is no original sale to refund from Transactions."
+keywords: ["refund without receipt", "non-referenced refund", "create refund", "refund mode", "refund an amount to a card", "standalone refund"]
+applies_to:
+  audience: merchant
+  product: pos
+  permissions:
+    guard: appUser
+    any: ["Non-Ref Refunds"]
+---
+
+**Create Refund** puts the Register in Refund mode, so you can refund a typed amount to a card without an original sale. When the original sale is in Transactions, refund it from there instead; see [Refund a transaction](/taliup-pos/transactions/refund).
+
+## Before you start
+
+- Your role needs the **Non-Ref Refunds** permission. Without it, **Create Refund** is greyed out and tapping it shows **You do not have permission to process refunds.**
+- Refund mode refunds to a card only. The keys depend on your payment setup.
+- On a WEB-SRM (Revenu Québec) register, the refund produces a credit note.
+
+## Refund an amount
+
+<Steps>
+  <Step title="Open Create Refund">
+    In Register, go to the **Open Sale** tab, tap **Order actions** (the menu icon), then **Create Refund** in the **Bill** section. On the [Open Sale Only](/taliup-pos/register/open-sale-only) screen, tap **Options** → **Create Refund**.
+  </Step>
+  <Step title="Enter Refund mode">
+    On **Switch to Refund Mode**, tap **Enter Refund Mode**. The cart and any entered amount are cleared. A **Refund** banner shows you are in Refund mode.
+  </Step>
+  <Step title="Enter the amount">
+    Type the amount before tax on the keypad. Taxes selected with the **Tax** switch are added on top.
+  </Step>
+  <Step title="Tap a card key">
+    Tap **Credit** or **Debit**, or **Debit/Credit** when your terminal detects the card type. **EBT** appears when your business accepts it, and **Manual entry** on Elavon card readers. There is no tip, surcharge or dual pricing on a refund.
+  </Step>
+  <Step title="Present the card">
+    Follow the card reader. The refund appears in [Transactions](/taliup-pos/transactions).
+  </Step>
+</Steps>
+
+To return to normal sales, tap **Exit** in the **Refund** banner, then **Enter Payment Mode**.
+
+## Related
+
+- [Refund a transaction](/taliup-pos/transactions/refund)
+- [Order actions](/taliup-pos/register/options)
+- [Permissions](/taliup-pos/permissions)

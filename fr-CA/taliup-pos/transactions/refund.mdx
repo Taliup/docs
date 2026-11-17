@@ -1,10 +1,11 @@
 ---
 title: "Rembourser une transaction"
 sidebarTitle: "Remboursement"
-description: "Émettre un remboursement complet ou un retour partiel depuis Détails de la transaction avec Retour."
+description: "Rembourser un paiement en totalité, par montant ou par articles depuis Détails de la transaction avec Remboursement ou Retour, puis suivre le terminal."
+keywords: ["rembourser une vente", "rembourser un paiement par carte", "remboursement partiel", "retourner des articles", "rendre l'argent au client", "rembourser sur la carte d'origine"]
 ---
 
-Dans Détails de la transaction, les remboursements commencent par **Retour**. Vous pouvez rembourser le montant complet, un montant personnalisé ou des articles sélectionnés — selon la vente d'origine.
+Dans Détails de la transaction, un remboursement commence par **Remboursement** pour un paiement par carte, ou **Retour** pour un paiement en espèces ou Autre. Vous pouvez rembourser le montant complet, un montant personnalisé ou des articles sélectionnés — selon la vente d'origine.
 
 <Frame caption="Remboursement. Montant permet de saisir n'importe quel montant jusqu'au total restant. Remboursement complet renvoie le tout sur le mode de paiement d'origine.">
   ![écran Remboursement avec les tuiles Montant et Remboursement complet](/images/taliup-pos/transactions/refund-options.png)
@@ -12,11 +13,11 @@ Dans Détails de la transaction, les remboursements commencent par **Retour**. V
 
 ## Avant de commencer
 
-- Vous avez besoin de la permission de gérer les transactions.
-- **Retour** apparaît lorsque le paiement est admissible (par exemple réglé/capturé avec un montant encore remboursable, ou déjà partiellement remboursé).
+- Votre rôle doit avoir la permission **Manage Transactions**.
+- **Remboursement** / **Retour** apparaît lorsque le paiement est admissible (par exemple réglé/capturé avec un montant encore remboursable, ou déjà partiellement remboursé).
 - Les options partielles sont masquées pour les commandes de table — utilisez **Remboursement complet** dans ce cas.
 - Sur un appareil [WEB-SRM](/fr-CA/taliup-pos/web-srm), **Montant** est remplacé par **Articles** pour que la note de crédit fiscale puisse lister les lignes retournées.
-- Si **Retour** est absent, le paiement est peut-être déjà entièrement remboursé/annulé, ou votre rôle ne peut pas gérer les transactions.
+- Si le bouton est absent, le paiement est peut-être déjà entièrement remboursé/annulé, ou votre rôle ne peut pas gérer les transactions.
 
 ## Démarrer un retour
 
@@ -24,8 +25,8 @@ Dans Détails de la transaction, les remboursements commencent par **Retour**. V
   <Step title="Ouvrir le paiement">
     Allez à Accueil → **Transactions** et ouvrez la vente.
   </Step>
-  <Step title="Appuyer sur Retour">
-    Appuyez sur **Retour**.
+  <Step title="Appuyer sur Remboursement ou Retour">
+    Appuyez sur **Remboursement** (carte) ou **Retour** (espèces ou Autre).
   </Step>
   <Step title="Choisir comment rembourser">
     Sur **Comment voulez-vous rembourser ?**, choisissez l'un des parcours ci-dessous.
@@ -90,7 +91,7 @@ Affiché sur WEB-SRM lorsque la commande liée a des lignes (et n'est pas une co
 |---|---|
 | Seulement **Remboursement complet** est disponible | Les commandes de table n'offrent pas **Montant** ni **Articles** |
 | **Suivant** désactivé à la saisie du montant | Le montant doit être &gt; 0 et ≤ le montant encore remboursable |
-| Pas de bouton **Retour** | Non admissible, déjà entièrement retourné, ou permission de gérer les transactions manquante |
+| Pas de bouton **Remboursement** ni **Retour** | Non admissible, déjà entièrement retourné, ou permission de gérer les transactions manquante |
 | Message de permission | Demandez à un gestionnaire ou mettez à jour le rôle dans Taliup HQ |
 
 ## Connexe

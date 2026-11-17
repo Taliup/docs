@@ -1,10 +1,11 @@
 ---
 title: "Détails de la transaction"
 sidebarTitle: "Détails"
-description: "Consulter les détails du paiement et les actions disponibles comme Annuler, Retour, Post Autorisation, Ajuster le pourboire et réimprimer."
+description: "Lire le statut, la carte, le terminal, le lot et l'historique d'un paiement, puis l'imprimer, ajuster le pourboire, l'annuler, le rembourser ou le capturer."
+keywords: ["détails de la transaction", "bouton annuler absent", "rembourser un paiement", "post autorisation", "ajuster le pourboire", "réglée ou non réglée", "message autre terminal"]
 ---
 
-Ouvrez n'importe quelle ligne de la liste Transactions pour voir **Transaction Details**.
+Touchez un paiement dans [Transactions](/fr-CA/taliup-pos/transactions) pour ouvrir **Détails de la transaction**. En mode paysage, les détails s'affichent à côté de la liste.
 
 <Frame caption="Détails de la transaction avec statut, montant et boutons d'action.">
   ![Détails de la transaction avec statut, montant et boutons d'action](/images/taliup-pos/transactions/details.png)
@@ -14,36 +15,43 @@ Ouvrez n'importe quelle ligne de la liste Transactions pour voir **Transaction D
 
 | Champ | Description |
 |---|---|
-| Type / référence de transaction | Libellé de type avec la référence du paiement |
-| **Status** | Statut actuel (code couleur) |
-| **Amount** | Montant du paiement |
-| **Payment Method** | Espèces, ou marque / titulaire / quatre derniers chiffres de la carte |
-| **Date** / **Time** | Quand le paiement a été pris |
-| **Employee** | Membre du personnel, ou N/A |
-| **Terminal Model** / **Terminal SN** | Infos de l'appareil lorsque disponibles |
-| **History** | Historique de statut/montant dépliable |
-| **Batch #** / **Trans. #** | Références du processeur lorsque disponibles |
-| **Settlement** | **Réglée** ou **Non Réglée** |
+| Type et référence | Le type de transaction et sa référence de paiement |
+| **statut** | Le statut actuel, avec un code de couleur |
+| **Montant** | Le montant. Les paiements en espèces affichent aussi **Remis** et **Monnaie** |
+| **Mode de paiement** | Espèces ou Autre, ou le type de carte, le titulaire et les quatre derniers chiffres. Les cartes-cadeaux affichent **CARTE-CADEAU** |
+| **Date** / **Temps** | Quand le paiement a été pris |
+| **Employé** | Qui l'a pris |
+| **Terminal** | Modèle et numéro de série du terminal, lorsqu'ils sont connus |
+| **Lot #** / **Trans. #** | Références du processeur, lorsqu'elles sont offertes |
+| **Règlement** | **Réglée** ou **Non Réglée** |
+| **Code d'autorisation** / **Commande** | En mode paysage, lorsqu'ils sont offerts |
+| **Historique** | Touchez pour déployer les changements de statut et de montant |
 
 ## Actions
 
-Les actions apparaissent en bas de l'écran seulement lorsque le paiement est admissible. Le personnel sans permission de gérer les transactions ne voit pas **Annuler**, **Annulation d'autorisation** ni **Retour**.
+Les boutons du bas n'apparaissent que si le paiement les permet.
 
-| Bouton | Usage typique |
-|---|---|
-| **Annuler** | Annuler un paiement capturé non réglé |
-| **Annulation d'autorisation** | Annuler une autorisation non réglée qui n'a pas été capturée |
-| **Supprimer l'autorisation** | Retirer une préautorisation sur certains lecteurs de carte |
-| **Retour** | Démarrer un flux de remboursement / retour |
-| **Post Autorisation** | Capturer une autorisation non réglée (permission requise) |
-| **Ajuster le pourboire** | Modifier le pourboire sur un paiement carte non réglé admissible lorsque l'ajustement est activé |
+| Bouton | Ce qu'il fait | Quand il apparaît |
+|---|---|---|
+| **Imprimer** | Imprime la **Copie du marchand** ou la **Copie du client**. Les [paiements en espèces](/fr-CA/taliup-pos/register/cash-payouts) (sorties de caisse) affichent **Imprimer le reçu** | Toujours |
+| **Ajuster le pourboire** | Modifie le pourboire. Voir [Pourboires](/fr-CA/taliup-pos/register/tips#ajuster-un-pourboire) | Paiements par carte (sauf EBT) non réglés, avec la fonctionnalité **Tip Adjust**, sur les terminaux PAX, Castles ou Poynt |
+| **Annuler** | Renverse le paiement avant le règlement. Voir [Annuler une transaction](/fr-CA/taliup-pos/transactions/void) | Paiements capturés non réglés. Exige **Manage Transactions** |
+| **Remboursement** / **Retour** | Rembourse tout ou partie du paiement. **Retour** est le libellé pour Espèces et Autre. Voir [Rembourser une transaction](/fr-CA/taliup-pos/transactions/refund) | Paiements réglés avec un montant restant à rembourser. Exige **Manage Transactions** |
+| **Post Autorisation** | Capture une préautorisation. Voir [Préautorisations](/fr-CA/taliup-pos/register/pre-auth) | Autorisations non réglées. Exige **Post-Authorization** |
+| **Annulation d'autorisation** | Libère une préautorisation | Autorisations non réglées, sauf avec les lecteurs de carte Elavon. Exige **Manage Transactions** |
+| **Supprimer l’autorisation** | Supprime une préautorisation | Lecteurs de carte Elavon (Link 2500, Lane 3600) |
 
-Voir [Annulation](/fr-CA/taliup-pos/transactions/void) et [Remboursement](/fr-CA/taliup-pos/transactions/refund) pour les étapes.
+**Annuler**, **Post Autorisation**, **Annulation d'autorisation** et **Supprimer l’autorisation** demandent d'abord une confirmation, par exemple **Annuler cette transaction ?**. Les annulations et les autorisations libérées ne peuvent pas être défaites.
 
-### Réimprimer depuis les détails
+## À savoir
 
-Appuyez sur l'icône d'impression dans la barre d'application, puis choisissez **Imprimer la copie du commerçant** ou **Imprimer la copie du client** (les payouts peuvent n'afficher que **Imprimer le reçu**). Voir [Réimprimer](/fr-CA/taliup-pos/transactions/reprint). Le courriel est offert au moment de la vente — voir [Reçu client](/fr-CA/taliup-pos/register/customer-receipt).
+- **Les actions sur carte restent sur le terminal qui a pris le paiement.** Les annulations, remboursements, ajustements de pourboire et captures d'autorisation se font dans l'application de paiement de ce terminal. Sur un autre appareil, Taliup POS indique quel terminal a traité le paiement.
+- **Poynt** lit le statut en direct sur le terminal Poynt. S'il n'y arrive pas, les détails affichent **Statut Poynt en direct indisponible.** et aucune action sur carte.
+- Si le paiement ne peut pas être chargé, vous voyez **Transaction indisponible**. Revenez en arrière et réessayez.
+
+Pour réimprimer ou envoyer un reçu par courriel, voir [Réimprimer un reçu](/fr-CA/taliup-pos/transactions/reprint) et [Reçu client](/fr-CA/taliup-pos/register/customer-receipt).
 
 ## Connexe
 
 - [Recherche et filtres](/fr-CA/taliup-pos/transactions/search-and-filters)
+- [Fermer le lot](/fr-CA/taliup-pos/transactions/close-batch)

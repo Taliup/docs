@@ -1,12 +1,25 @@
 ---
 title: "Tables"
 sidebarTitle: "Overview"
-description: "Seat guests, start table orders, manage occupied tables, and arrange tables in floor plans in Taliup POS."
+description: "Seat guests, start and continue table orders, reserve, move, split or merge tables, and arrange tables in floor plans."
+keywords: ["start a table order", "seat a table", "reserve a table", "floor plan", "move a table order", "split a table bill", "merge tables", "edit table layout"]
+applies_to:
+  audience: merchant
+  product: pos
+  features: [table_management]
+  permissions:
+    guard: appUser
+    any: ["View Floor Plan TM"]
 ---
 
 **Tables** appears on Home when table management is enabled for the merchant. Use it to see the floor, start orders, and continue seating work in Register.
 
-If table management is not enabled, the screen shows that table management is not enabled for this entity.
+## Before you start
+
+- The **Table Management** feature must be enabled for the business in Taliup HQ. Without it, **Tables** is not on Home.
+- Your role needs **View Floor Plan TM** to see the tables. Adding tables or floor plans needs **Create Tables TM**, renaming and arranging needs **Manage Tables TM**, and deleting needs **Delete Tables TM**.
+- [Floor plans](#floor-plans) are available when Taliup HQ has switched the business to the floor plan model (the **Floor Plans** feature).
+- Tables load from Taliup HQ, so the device must be online.
 
 <Frame caption="Tables floor grid with Available / Occupied cards.">
   ![Tables floor grid with Available / Occupied cards](/images/taliup-pos/tables/floor.png)
@@ -83,7 +96,7 @@ Many of the same table tools also appear in Register under [Options](/taliup-pos
 
 ## Floor plans
 
-Group tables by room with floor plans, for example **Patio**, **Bar**, or **Private room**. Each floor plan is a tab. Swipe or tap the tabs to switch rooms.
+Introduced in the [November 2026](/changelog/2026-11) release. Group tables by room with floor plans, for example **Patio**, **Bar**, or **Private room**. Each floor plan is a tab. Swipe or tap the tabs to switch rooms.
 
 Switch between two views at the top of **Tables**:
 

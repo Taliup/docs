@@ -1,26 +1,24 @@
 ---
 title: "Cartes-cadeaux"
 sidebarTitle: "Cartes-cadeaux"
-description: "Vendre, recharger et vérifier des cartes-cadeaux dans Caisse, et accepter une carte-cadeau comme paiement."
-keywords: ["carte-cadeau", "carte-cadeau numérique", "recharger", "solde", "mode de paiement"]
+description: "Vendre, recharger et vérifier des cartes-cadeaux physiques ou numériques dans Caisse, payer avec une carte-cadeau et réessayer les chargements échoués."
+keywords: ["vendre une carte-cadeau", "carte-cadeau numérique", "recharger une carte-cadeau", "vérifier le solde d'une carte-cadeau", "payer avec une carte-cadeau", "réessayer le chargement", "cartes-cadeaux non activées"]
 ---
 
 Vendez des cartes-cadeaux physiques ou numériques, rechargez-les, vérifiez un solde et acceptez une carte-cadeau comme paiement. Un seul programme de cartes-cadeaux couvre tous les emplacements d'un marchand : une carte vendue dans un magasin fonctionne dans les autres.
 
-Les cartes-cadeaux s'activent par emplacement dans Taliup HQ. Voir [Cartes-cadeaux dans Taliup HQ](/fr-CA/taliup-hq/features/gift-cards).
+## Avant de commencer
 
-<Note>
-  Les cartes-cadeaux exigent une connexion à Taliup HQ et ne sont pas offertes hors ligne. Si l'emplacement n'est pas activé, Taliup POS l'indique et un gestionnaire peut l'activer dans Taliup HQ sous **Cartes-cadeaux**.
-</Note>
+- La fonctionnalité **Gift Cards** doit être activée pour votre entreprise, et les cartes-cadeaux doivent être activées pour cet emplacement dans Taliup HQ. Voir [Cartes-cadeaux dans Taliup HQ](/fr-CA/taliup-hq/features/gift-cards). Sinon, Taliup POS l'indique et un gestionnaire peut les activer dans Taliup HQ sous **Cartes-cadeaux**.
+- Les cartes-cadeaux exigent une connexion à Taliup HQ et ne sont pas offertes hors ligne.
 
 ## Où trouver les actions de carte-cadeau
 
-Dans Caisse, ouvrez **Actions de commande**. La section **Cartes-cadeaux** contient :
+Dans Caisse, touchez **Actions de commande** (l'icône de menu). La section **Cartes-cadeaux** contient :
 
 | Action | Ce qu'elle fait | Quand elle apparaît |
 |---|---|---|
 | **Vendre une carte-cadeau** | Ajoute une nouvelle carte à la vente | Menu / Catalogue, pas sur les commandes de table |
-| **Charger un lot** | Ajoute plusieurs cartes du même montant | Menu / Catalogue, pas sur les commandes de table |
 | **Recharger une carte-cadeau** | Ajoute de la valeur à une carte active | Menu / Catalogue, pas sur les commandes de table |
 | **Solde de carte-cadeau** | Vérifie le solde d'une carte. Rien n'est débité | Toujours, y compris en Vente ouverte |
 | **Réessayer le chargement de la carte-cadeau** | Charge les cartes payées qui n'ont pas été chargées | Lorsqu'un chargement a échoué |
@@ -62,18 +60,6 @@ Dès que vous saisissez un numéro de carte physique, Taliup POS le vérifie aup
 | **This card isn't part of this store's gift card program.** | Balayez une autre carte |
 | **Can't check this card right now.** | Vérifiez la connexion et réessayez |
 
-### Charger un lot
-
-**Charger un lot** met le même montant sur plusieurs cartes en une seule vente. Choisissez comment les cartes sont identifiées :
-
-| Mode | Comment |
-|---|---|
-| **Chaque carte** | Balayez ou saisissez chaque carte |
-| **Première et dernière** | Balayez la première et la dernière carte. Toutes les cartes entre les deux sont chargées |
-| **Jeu de cartes** | Saisissez le numéro du jeu de cartes |
-
-Les cartes sont chargées une fois la vente payée.
-
 ## Recharger une carte-cadeau
 
 1. Depuis **Actions de commande**, appuyez sur **Recharger une carte-cadeau**.
@@ -91,7 +77,7 @@ Depuis **Actions de commande**, appuyez sur **Solde de carte-cadeau**, puis bala
 
 <Steps>
   <Step title="Choisir Carte-cadeau">
-    Sur l'écran de paiement, appuyez sur **Carte-cadeau**. Si elle n'est pas affichée, ouvrez **Autres modes de paiement**.
+    Dans Caisse, touchez **Plus**, puis **Carte-cadeau** dans **Autres modes de paiement**. Sur l'écran de paiement (par exemple sur l'écran Vente ouverte seulement), touchez **Carte-cadeau** sous **AUTRE**.
   </Step>
   <Step title="Trouver la carte">
     Balayez la carte ou saisissez son numéro, puis appuyez sur **Vérifier le solde**.
@@ -103,7 +89,7 @@ Depuis **Actions de commande**, appuyez sur **Solde de carte-cadeau**, puis bala
 
 Si la carte ne couvre qu'une partie de la vente, le reste se paie avec un autre mode de paiement, comme un paiement partagé.
 
-Le mode de paiement carte-cadeau fonctionne aussi en Vente ouverte, y compris pour les marchands qui utilisent seulement la Vente ouverte.
+Le mode de paiement carte-cadeau fonctionne aussi dans l'onglet **Vente ouverte** et sur l'écran [Vente ouverte seulement](/fr-CA/taliup-pos/register/open-sale-only).
 
 ## Remboursements
 

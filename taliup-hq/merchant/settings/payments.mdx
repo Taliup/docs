@@ -1,0 +1,77 @@
+---
+title: "Payment settings"
+sidebarTitle: "Payments"
+description: "Set tip choices, tip adjustment limits, taxes on open sales and your dual pricing fee, and see the surcharge your administrator set, in Taliup HQ."
+keywords: ["tip choices", "turn on tips", "tip before tax", "tip adjustment limit", "taxes on open sales", "dual pricing fee", "surcharge", "automatic settlement"]
+applies_to:
+  audience: merchant
+  product: hq
+  permissions:
+    guard: web
+    any: ["Manage Settings"]
+---
+
+The **Payments** settings page holds the payment options a merchant can manage in Taliup HQ: tips, tip adjustment, taxes on open sales and dual pricing. It also shows the surcharge your administrator set.
+
+## Before you start
+
+- You need the **Manage Settings** permission.
+- Some sections show only when they apply to your business, as described in each section below. On a business that uses WEB-SRM, only **Tips** is shown.
+
+## How to get here
+
+In the sidebar, open **Settings**, then **Payments** under **Payments**.
+
+Change what you need, then click **Save changes** in the bar at the bottom of the page.
+
+## Tips
+
+1. Turn on **Ask for tips**. Customers pick a tip on the terminal before paying.
+2. Under **Tip type**, choose **Percentage** for a percentage of the bill, or **Amount** for set amounts.
+3. Under **Tip choices**, enter the three choices customers see.
+4. Turn on **Tip on the amount before tax** to work tips out on the subtotal, before taxes. In Québec, Bill 72 requires tips to be worked out on the amount before tax.
+
+To stop asking for tips, turn off **Ask for tips** and save.
+
+On Poynt terminals, tip choices change by request once they are saved. Click **Request a change**, enter the new choices in **Request new tip choices**, and click **Send request**. The page shows when a request is in progress.
+
+## Tip adjustment
+
+Shown when your plan includes **Tip Adjust**. **Limit** sets the most a tip can be raised by after the payment, as a **Percentage** of the subtotal or as an **Amount**. Leave it empty to remove the limit.
+
+## Taxes on open sales
+
+Shown for businesses using PAX, Poynt, Castles or Ingenico terminals. Turn on **Charge taxes on open sales** and select the taxes to apply. Amounts entered on the terminal without an item get these taxes. Choose at least one tax.
+
+## Dual pricing
+
+Shown when your plan includes **Dual Pricing**. Card and cash prices differ by a fee. What you can change depends on how your administrator set it up:
+
+| What the section shows | What it means |
+|---|---|
+| **Turned off by your administrator.** | Dual pricing is off. Only your administrator can turn it on. |
+| **Fee** and **Shown as**, marked **Set by your administrator.** | Dual pricing is on with your administrator's fee. You cannot change it. |
+| **Use my own fee** | Your administrator lets you set the fee. |
+
+When **Use my own fee** is available:
+
+1. Turn it on to replace your administrator's fee. Off, the administrator's fee applies.
+2. Under **Fee**, choose **Percentage** or **Amount** and enter a value above 0.
+3. Turn on **Show it as a cash discount** to present the difference as a discount for cash. Off, it is shown as a surcharge on card payments.
+
+If your administrator has not set a fee, dual pricing has no fee until you set your own. The page then shows **Dual pricing is on without a fee. Turn on “Use my own fee” and set one.**
+
+## Surcharge
+
+Shown when your plan includes **Surcharge**. You can see the surcharge but not change it. The section shows **Turned off by your administrator.**, or the **Fee** your administrator set and the **Locations** it applies to. Dual pricing and surcharge are not used together on the same merchant.
+
+## Automatic settlement
+
+Taliup HQ has no setting for automatic settlement on this page or elsewhere in the merchant portal. To close a batch yourself, see [Close a batch](/taliup-pos/transactions/close-batch). For questions about how your batches settle, contact [support](/taliup-pos/help/support).
+
+## Related
+
+- [Take payment on Taliup POS](/taliup-pos/register/take-payment)
+- [Tips on Taliup POS](/taliup-pos/register/tips)
+- [Dual Pricing setup for partners](/taliup-hq/onboarding/dual-pricing)
+- [Surcharge setup for partners](/taliup-hq/onboarding/surcharge)

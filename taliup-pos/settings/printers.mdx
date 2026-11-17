@@ -2,7 +2,10 @@
 title: "Printers"
 sidebarTitle: "Printers"
 description: "Add a Bluetooth printer, choose where receipts print, and connect a kitchen or other external printer in Taliup POS."
-keywords: ["printers", "Bluetooth", "kitchen printer", "receipt printer", "external printer"]
+keywords: ["add a Bluetooth printer", "receipt printer", "built-in printer", "kitchen printer", "external printer", "product tags routing", "printer not found"]
+applies_to:
+  audience: merchant
+  product: pos
 ---
 
 Use **Printer Settings** to add Bluetooth printers and choose where receipts and kitchen tickets print.
@@ -13,11 +16,9 @@ Use **Printer Settings** to add Bluetooth printers and choose where receipts and
 
 ## How to get here
 
-Home → **Settings** → **General** → **Printer Settings**.
+Home → **Settings** → **Tools** → **Printer Settings**.
 
-<Note>
-If you open this screen from Register with items in the cart, Taliup POS may ask **Continue to printer settings?** The cart is cleared if you continue.
-</Note>
+You can also open it from the printer status sheet. If the cart has items or an Open Sale amount is entered, Taliup POS asks **Continue to printer settings?** first — what you entered is lost if you continue.
 
 ## Before you start
 
@@ -58,6 +59,8 @@ On **Printer Settings**, use the **Receipt Printer** section.
 | **Use built-in printer as receipt printer** is on | Receipts and reports print on the terminal’s built-in printer. This is the usual setup when the terminal has a printer. |
 | **Use built-in printer as receipt printer** is off | Receipts print on the Bluetooth printer selected under **Receipt Printer**. |
 
+With a Link 2500 or Lane 3600 card reader, **Use built-in printer as receipt printer** cannot be turned on. Select a Bluetooth printer under **Receipt Printer**.
+
 To use a Bluetooth receipt printer:
 
 1. Turn off **Use built-in printer as receipt printer**.
@@ -82,7 +85,7 @@ Use **External printers** for a kitchen printer or another station printer.
     Leave **Product tags** empty if this printer should receive the full kitchen ticket. To send only some items here, select those **Product tags**. Turn on **Print non-tagged items to this printer** if this station should also receive items that have no tag. If more than one printer has that option on, untagged items print on all of them.
   </Step>
   <Step title="Save and test">
-    Tap **Save**. In Register, add an item and tap **Options** → **Send To Kitchen**, or complete a sale and send the kitchen ticket when prompted.
+    Tap **Save**. In Register, add an item and tap **Order actions** → **Send To Kitchen**, or complete a sale and send the kitchen ticket when prompted.
   </Step>
 </Steps>
 
@@ -107,7 +110,7 @@ On **My Printers**:
 
 | Setting | Location |
 |---|---|
-| **Send order to kitchen printer after payment** | [General](/taliup-pos/settings/general) |
+| **Send order to external printer after payment** | Home → **Settings** → **Register** — see [General settings](/taliup-pos/settings/general#kitchen-printing-after-payment) |
 | **Send To Kitchen** | [Register → Options](/taliup-pos/register/options). Available for restaurants. Not shown on Open Sale. |
 | Reprint a receipt | [Transactions → Reprint](/taliup-pos/transactions/reprint) |
 
@@ -118,7 +121,7 @@ On **My Printers**:
 | The printer is not in the list | Confirm the printer is on, in range, and discoverable. Tap **Search again**. |
 | A nearby-devices or Bluetooth prompt appeared | Tap **Allow**. If it was denied earlier, allow Taliup POS in the terminal’s app permissions, then open **Add Paired Printer** again. Most terminals never show this prompt. |
 | Receipts print on the wrong printer | Check **Use built-in printer as receipt printer**. When it is on, receipts go to the terminal. When it is off, confirm the selected **Receipt Printer**. |
-| Kitchen tickets do not print | Confirm an **External printers** row exists and **Paired:** shows the correct printer. Send a ticket from **Options** → **Send To Kitchen**. If tags are used, confirm the item’s tag matches or that **Print non-tagged items to this printer** is on. |
+| Kitchen tickets do not print | Confirm an **External printers** row exists and **Paired:** shows the correct printer. Send a ticket from **Order actions** → **Send To Kitchen**. If tags are used, confirm the item’s tag matches or that **Print non-tagged items to this printer** is on. |
 | Print fails or a connect message appears | Open **Printer Settings** and confirm the printer is still assigned. Remove the printer from **My Printers** and add it again if it will not reconnect. |
 
 ## Related

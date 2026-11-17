@@ -1,0 +1,62 @@
+---
+title: "Web users"
+sidebarTitle: "Web users"
+description: "Invite the people who sign in to Taliup HQ, give each a role, resend or delete invites, and set what each web user role can do."
+keywords: ["invite someone to HQ", "add an HQ user", "HQ user role", "resend an invite", "remove HQ access", "web user roles and permissions"]
+applies_to:
+  audience: merchant
+  product: hq
+  permissions:
+    guard: web
+    any: ["View Web Users"]
+---
+
+**Web users** are the people who sign in to Taliup HQ. Each has one role, and the role decides what they can do. Employees who sign in to Taliup POS are a separate list; see [Employees](/taliup-hq/merchant/employees).
+
+## Before you start
+
+- **View Web Users** shows the list. Inviting, editing, deleting and changing role permissions need **Manage Web Users**.
+- Linking a web user to a POS employee account also needs **Manage Employees**.
+- Nobody can change their own role, and the **Admin** role always has every permission.
+
+## How to get here
+
+In Taliup HQ, select **Web users** in the sidebar. Use **Search by name or email** and the status filter (**Active** or **Invited**).
+
+## Invite a user
+
+<Steps>
+  <Step title="Open the invite form">
+    Select **Invite user**.
+  </Step>
+  <Step title="Enter their details">
+    Enter the **First name**, **Last name** and **Sign-in email**, and choose their **Role**.
+  </Step>
+  <Step title="Link a POS employee (optional)">
+    Under **POS employee account**, choose **None**, **Link existing employee** or **Create new employee**.
+  </Step>
+  <Step title="Send the invite">
+    Select **Send invite**. They get an email with a temporary password to sign in.
+  </Step>
+</Steps>
+
+The user shows as **Invited** until they accept. To send a new temporary password, open the menu on their row and select **Resend invite**; the earlier one stops working.
+
+## Edit or delete a user
+
+Open the menu on a user's row:
+
+- **Edit user** changes their name, role and linked employee. Only the person can change their sign-in email.
+- **Delete user** removes their access to Taliup HQ. This cannot be undone. If they are linked to an employee, you can choose **Also delete this employee**.
+
+## Roles and permissions
+
+Open the **Roles and permissions** tab to see what each role can do in Taliup HQ. Pick a role, then turn permissions on or off (**Find a permission**, **Turn all on**, **Turn all off**) and select **Save changes**. The **Admin** role is locked with every permission so your business cannot lock itself out.
+
+Permission changes can take a moment to apply. See [Entity permissions](/taliup-hq/manage/permissions) for what each permission allows.
+
+## Related
+
+- [Employees](/taliup-hq/merchant/employees)
+- [Your profile](/taliup-hq/merchant/profile)
+- [Entity permissions](/taliup-hq/manage/permissions)

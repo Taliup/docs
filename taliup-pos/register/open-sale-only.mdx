@@ -1,0 +1,70 @@
+---
+title: "Open Sale Only"
+sidebarTitle: "Open Sale Only"
+description: "Use Taliup POS when your location is set to Open Sale Only: a keypad-only sale screen with an Options menu instead of Home."
+keywords: ["open sale only", "keypad only register", "no home screen", "where is the home screen", "open settings from open sale only", "options menu open sale only"]
+applies_to:
+  audience: merchant
+  product: pos
+---
+
+**Open Sale Only** is a location setting in Taliup HQ. When it is on, Taliup POS skips the Home screen and opens a keypad sale screen after you sign in. You charge amounts without catalog items, and everything else you can do is in the **Options** menu.
+
+## Before you start
+
+- Open Sale Only is turned on or off for your location in Taliup HQ, usually by your partner. You cannot change it from the App. If you need the Home screen, ask your administrator or partner.
+- While it is on, the **Default Screen After Login** setting has no effect: every sign-in opens the Open Sale Only screen.
+
+## What's on the screen
+
+| Area | Purpose |
+|---|---|
+| Keypad | Enter the sale amount. **DEL** removes the last digit |
+| **Tax** switch | Adds the location's Open Sale taxes to the amount. The info icon beside it lists the taxes |
+| **Pay** | Opens the payment screen for the amount |
+| **Options** | Opens the Options menu (top right) |
+| Profile icon | Opens your profile |
+| Printer and card reader icons | Show the connection status. Tap one to check it |
+
+The **Tax** switch stays off until Open Sale taxes are set up. To choose them, go to **Options** → **Open Settings** → **Register**. They can also be set in Taliup HQ under **Settings** → **Payments**.
+
+## Charge a sale
+
+<Steps>
+  <Step title="Enter the amount">
+    Type the amount on the keypad. Turn on **Tax** if the amount should include tax.
+  </Step>
+  <Step title="Pay">
+    Tap **Pay**. The payment screen opens with **Pay Full** and, unless your business uses WEB-SRM, **Split Amount**.
+  </Step>
+  <Step title="Collect the payment">
+    Choose cash, a card key, or another available method. See [Take payment](/taliup-pos/register/take-payment).
+  </Step>
+</Steps>
+
+**Link To Pay** is not offered on the Open Sale Only screen.
+
+## The Options menu
+
+| Section | Option | Notes |
+|---|---|---|
+| **Bill** | **Create Auth** | Pre-authorize a card. Needs **Pre-Authorization**. Not shown on WEB-SRM registers. See [Pre-authorizations](/taliup-pos/register/pre-auth) |
+| **Bill** | **Create Refund** | Refund an amount without an original sale. Needs **Non-Ref Refunds** |
+| **Bill** | **Create Cash Payout** | Pay cash out of the drawer. See [Cash payouts](/taliup-pos/register/cash-payouts) |
+| **Device** | **Open Cash Drawer** | Opens the cash drawer |
+| **Device** | **Open Scanner** | Opens the barcode scanner |
+| **More Options** | **View Transactions** | Opens [Transactions](/taliup-pos/transactions). Needs **Manage Transactions** |
+| **More Options** | **Open Settings** | Opens [Settings](/taliup-pos/settings) |
+| **More Options** | **View Profile** | Opens your profile, where you can clock in or out and **Log Out** |
+
+When you tap an option you are not permitted to use, Taliup POS shows a message instead of opening it. Ask a manager to change your role in Taliup HQ.
+
+## Settings paths
+
+Settings guides start from Home → **Settings**. On the Open Sale Only screen, open **Options** → **Open Settings** instead, then follow the same section and control. For example, Home → **Settings** → **General** becomes **Options** → **Open Settings** → **General**.
+
+## Related
+
+- [Open a sale](/taliup-pos/register/open-sale)
+- [Take payment](/taliup-pos/register/take-payment)
+- [Transactions](/taliup-pos/transactions)

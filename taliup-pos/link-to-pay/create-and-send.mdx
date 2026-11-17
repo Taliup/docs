@@ -1,8 +1,22 @@
 ---
 title: "Create and send Link To Pay"
 sidebarTitle: "Create and send"
-description: "Send a Link To Pay from Register and understand New Invoice fields."
+description: "Send the current Register sale to a client as a Link To Pay payment link, and know the fields of the New Invoice form."
+keywords: ["send a payment link", "link to pay from register", "pay by link", "email a payment link", "text a payment link", "new invoice"]
+applies_to:
+  audience: merchant
+  product: pos
+  features: [link_to_pay]
+  permissions:
+    guard: appUser
+    any: ["Manage Link to Pay"]
 ---
+
+## Before you start
+
+- The **Link To Pay** feature must be enabled for the business in Taliup HQ, with Link To Pay among the merchant's payment types.
+- Your role needs the **Manage Link to Pay** permission.
+- **Link To Pay** is not offered while a guest payment is in progress on a table order.
 
 ## From Register payment
 

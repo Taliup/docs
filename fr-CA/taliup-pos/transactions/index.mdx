@@ -1,12 +1,22 @@
 ---
 title: "Transactions"
 sidebarTitle: "Aperçu"
-description: "Trouver les paiements dans Taliup POS et annuler, retourner (rembourser), réimprimer les reçus ou lancer la fin de journée."
+description: "Trouver les paiements dans Taliup POS, ouvrir leurs détails, et annuler, rembourser, réimprimer, fermer le lot ou lancer la fin de journée."
+keywords: ["trouver une transaction", "liste des transactions", "rechercher un paiement", "permission refusée transactions", "fermer le lot", "rapport de fin de journée"]
 ---
 
-**Transactions** est l'endroit où vous cherchez les paiements terminés et prenez des actions de suivi comme l'annulation, le retour (remboursement), la réimpression ou la fin de journée.
+**Transactions** liste les paiements, les remboursements et les paiements en espèces. De là, vous ouvrez un paiement pour l'annuler, le rembourser ou le réimprimer, vous fermez le lot ou vous lancez la fin de journée.
 
-Ouvrir **Transactions** depuis Accueil exige la permission **gérer les transactions**. Sans elle, le personnel voit **Permission refusée** — *You do not have permission to access Transactions.*
+## Avant de commencer
+
+- Ouvrir **Transactions** exige la permission **Manage Transactions**. Sans elle, Taliup POS affiche plutôt un message de permission. Demandez à un gestionnaire de modifier votre rôle dans Taliup HQ.
+- La liste affiche les transactions prises sur ce terminal. Avec la permission **View All Terminal Transactions**, elle affiche tous les terminaux de votre entreprise.
+- La liste vient de Taliup HQ : elle exige une connexion.
+
+## Ouvrir Transactions
+
+- Depuis Accueil, touchez **Transactions**.
+- Sur l'écran [Vente ouverte seulement](/fr-CA/taliup-pos/register/open-sale-only), touchez **Options** → **Voir les transactions**.
 
 <Frame caption="liste Transactions avec colonnes ID, Date/heure et Total.">
   ![liste Transactions avec colonnes ID, Date/heure et Total](/images/taliup-pos/transactions/list.png)
@@ -14,41 +24,46 @@ Ouvrir **Transactions** depuis Accueil exige la permission **gérer les transact
 
 ## Ce que la liste affiche
 
-| Colonne | Affiche |
-|---|---|
-| **ID** | Référence courte du paiement |
-| **Date/Time** | Quand le paiement a été pris |
-| **Total** | Montant du paiement |
+Chaque ligne affiche :
 
-Chaque ligne indique aussi la méthode de paiement (espèces vs carte) et utilise un code couleur de statut (par exemple capturé, autorisé, annulé, remboursé).
+- Une courte référence du paiement. Sur les caisses WEB-SRM, c'est le numéro de transaction imprimé sur le reçu.
+- Le mode de paiement, comme le type de carte et ses quatre derniers chiffres, **CASH** ou **CARTE-CADEAU ····1234**.
+- La date et l'heure, et le montant. Le montant d'un paiement annulé est barré.
+- Une icône du mode de paiement, colorée selon le statut (par exemple capturé, autorisé, annulé ou remboursé).
 
-### Recherche et filtres
+En mode paysage, la liste et les détails du paiement choisi s'affichent côte à côte. Choisissez un paiement pour voir ses détails. En mode portrait, toucher un paiement ouvre les [Détails de la transaction](/fr-CA/taliup-pos/transactions/details).
 
-- Appuyez sur la recherche pour filtrer la liste en tapant.
-- Appuyez sur le filtre pour ouvrir **Filtrer les transactions** (plage de dates, statut, type, méthode de paiement, statut de règlement). Voir [Recherche et filtres](/fr-CA/taliup-pos/transactions/search-and-filters).
+## Rechercher et filtrer
 
-Appuyez sur une ligne pour ouvrir [Détails de la transaction](/fr-CA/taliup-pos/transactions/details).
+- Touchez l'icône de recherche et tapez une référence, une carte ou un montant.
+- Touchez l'icône de filtre pour ouvrir **Filtrer les transactions** (plage de dates, **Statut**, **Type de transaction**, **Mode de paiement**, **Statut de règlement**). Voir [Recherche et filtres](/fr-CA/taliup-pos/transactions/search-and-filters).
+
+## Actions sur cet écran
+
+| Action | Où | Guide |
+|---|---|---|
+| **Fermer le lot** | Au bas de la liste en portrait, dans la barre d'application en paysage | [Fermer le lot](/fr-CA/taliup-pos/transactions/close-batch) |
+| **Fin de journée** | À côté de **Fermer le lot** | [Rapport de fin de journée](/fr-CA/taliup-pos/transactions/end-of-day) |
 
 ## Suivis courants
 
 <CardGroup cols={2}>
-  <Card title="Annulation" href="/fr-CA/taliup-pos/transactions/void">
-    Annuler un paiement capturé non réglé ou une autorisation.
+  <Card title="Annuler" href="/fr-CA/taliup-pos/transactions/void">
+    Annuler un paiement capturé non réglé.
   </Card>
-  <Card title="Remboursement (Retour)" href="/fr-CA/taliup-pos/transactions/refund">
-    Retour complet ou partiel sur un paiement admissible.
+  <Card title="Rembourser (retour)" href="/fr-CA/taliup-pos/transactions/refund">
+    Remboursement total ou partiel d'un paiement réglé.
   </Card>
   <Card title="Réimprimer" href="/fr-CA/taliup-pos/transactions/reprint">
-    Imprimer de nouveau la copie marchand ou client.
+    Imprimer de nouveau la copie du marchand ou du client.
   </Card>
   <Card title="Détails" href="/fr-CA/taliup-pos/transactions/details">
-    Statut, historique, infos d'appareil et actions disponibles.
+    Statut, historique, terminal et actions offertes.
+  </Card>
+  <Card title="Fermer le lot" href="/fr-CA/taliup-pos/transactions/close-batch">
+    Régler le lot de cartes ouvert.
   </Card>
   <Card title="Fin de journée" href="/fr-CA/taliup-pos/transactions/end-of-day">
     Prévisualiser, générer et imprimer un rapport quotidien pour un ou plusieurs appareils.
   </Card>
 </CardGroup>
-
-<Info>
-  Les flux de règlement / fermeture de lot ne sont pas encore couverts ici. Les pastilles de filtre peuvent quand même mentionner le statut de règlement.
-</Info>

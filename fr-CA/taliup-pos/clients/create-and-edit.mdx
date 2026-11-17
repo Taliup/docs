@@ -1,8 +1,21 @@
 ---
 title: "Créer et modifier un client"
 sidebarTitle: "Créer et modifier"
-description: "Ajouter un client, mettre à jour les détails, consulter l'activité et supprimer un client."
+description: "Ajouter un client, modifier ses coordonnées et notes, consulter ses transactions, rendez-vous et factures, ou le supprimer."
+keywords: ["ajouter un client", "créer un client", "modifier un client", "supprimer un client", "notes du client", "transactions d'un client"]
 ---
+
+## Avant de commencer
+
+La fonction **Clients** doit être activée pour l'entreprise dans Taliup HQ. Chaque action exige aussi une permission de rôle, définie dans Taliup HQ :
+
+| Action | Permission |
+|---|---|
+| Ouvrir un dossier client | **View Clients** |
+| Ajouter un client, modifier ses détails ou notes | **Manage Clients** |
+| Supprimer un client | **Delete Clients** |
+
+L'activité **Transactions**, **Rendez-vous** et **Factures** d'un dossier exige aussi la fonction **Transaction History** (Historique des transactions).
 
 ## Créer un client
 
@@ -32,7 +45,7 @@ description: "Ajouter un client, mettre à jour les détails, consulter l'activi
 
 ## Dossier client
 
-Appuyez sur un client pour ouvrir son dossier à côté de la liste. **Modifier** change le nom, le contact et l'adresse.
+Appuyez sur un client pour ouvrir son dossier à côté de la liste. **Modifier** change le nom, le contact, l'adresse et les **Notes**. Pour tout ce que montre le dossier, consultez [Dossier client](/fr-CA/taliup-pos/clients/client-record).
 
 <Frame caption="Dossier client avec Fidélité et Transactions, Rendez-vous et Factures.">
   ![Dossier client montrant l'inscription Fidélité et Transactions, Rendez-vous, Factures](/images/taliup-pos/clients/detail.png)
@@ -46,6 +59,8 @@ Appuyez sur un client pour ouvrir son dossier à côté de la liste. **Modifier*
 | **Factures** | Les factures Lien Pour Payer |
 
 Les sections vides indiquent qu'aucun dossier n'a été trouvé pour ce client.
+
+Pour supprimer un client, ouvrez **Modifier**, appuyez sur **Supprimer**, puis confirmez **Supprimer ce client ?** Cette action est irréversible dans Taliup POS.
 
 Si vous supprimez un client dans **Taliup HQ** et le rajoutez avec le même courriel, HQ propose de [restaurer le client précédent](/fr-CA/taliup-hq/features/clients#restaurer-un-client-supprimé) pour que les factures et l'historique reviennent.
 

@@ -1,0 +1,64 @@
+---
+title: "Inventaire"
+sidebarTitle: "Inventaire"
+description: "Suivre le stock dans Taliup HQ : synchroniser les produits, ajuster le stock, régler des seuils, recevoir des alertes de stock bas et mettre à jour en lot."
+keywords: ["ajuster le stock dans HQ", "produits en stock bas", "liste des ruptures de stock", "régler un seuil de réapprovisionnement", "mettre à jour le stock avec un chiffrier", "courriel de stock bas"]
+---
+
+**Inventaire** montre combien vous avez de chaque produit, et quand il est temps de réapprovisionner. Le stock diminue à mesure que les produits se vendent dans Taliup POS.
+
+## Avant de commencer
+
+- Votre entreprise a besoin de la fonctionnalité **Inventory**, et votre compte Taliup HQ de la permission **Manage Inventory**.
+- Les seuils de réapprovisionnement exigent la fonctionnalité **ReOrder Point**. Les matières premières et les unités sont des pages distinctes sous Inventaire, avec leurs propres fonctionnalités.
+- Chaque vente utilise le **Stock utilisé par vente** réglé sur le produit. Voir [Produits](/fr-CA/taliup-hq/merchant/catalogs/products).
+
+## Comment y accéder
+
+Dans Taliup HQ, sélectionnez **Inventaire** dans la barre latérale.
+
+## Commencer le suivi des produits
+
+Sélectionnez **Synchroniser les produits**. Les produits ajoutés depuis la dernière synchronisation commencent à être suivis à 0 en stock. Le stock déjà réglé ne change pas.
+
+## Trouver des produits
+
+Utilisez le filtre **Stock** (tout, **Stock bas**, **Rupture de stock**), **Rechercher par nom ou UGS**, et triez par nom ou par stock. Un produit est en **Rupture de stock** lorsqu'aucune variante n'en a, et en **Stock bas** lorsqu'une variante est à son seuil de réapprovisionnement ou en dessous.
+
+## Ajuster le stock
+
+<Steps>
+  <Step title="Ouvrir le produit">
+    Sélectionnez un produit, ou **Ajuster le stock** depuis sa rangée.
+  </Step>
+  <Step title="Régler les quantités">
+    Saisissez le stock du produit, ou de chaque variante. Avec la fonctionnalité ReOrder Point, réglez aussi le **Seuil de réapprovisionnement** : lorsque le stock l'atteint, le produit s'affiche en stock bas et un courriel de stock bas est envoyé.
+  </Step>
+  <Step title="Enregistrer">
+    Sélectionnez **Enregistrer**. **Total en stock** additionne les variantes.
+  </Step>
+</Steps>
+
+## Courriels de stock bas
+
+Un avis en haut de la page indique si les courriels de stock bas sont activés et qui les reçoit. Sélectionnez **Activer** ou **Modifier** pour les configurer.
+
+## Mise à jour en lot
+
+<Steps>
+  <Step title="Téléchargez votre stock">
+    Sélectionnez **Mise à jour en lot**, puis **Télécharger le CSV**. Il liste chaque produit et variante avec son stock et son seuil.
+  </Step>
+  <Step title="Modifiez les quantités">
+    Modifiez les colonnes Quantity et Reorder Point. Ne retirez pas de colonnes et ne changez pas les identifiants de combinaison.
+  </Step>
+  <Step title="Téléversez le fichier">
+    **Choisir un fichier CSV**, puis **Importer**. Le stock est mis à jour pour chaque rangée du fichier.
+  </Step>
+</Steps>
+
+## Connexe
+
+- [Produits](/fr-CA/taliup-hq/merchant/catalogs/products)
+- [Inventaire dans Taliup POS](/fr-CA/taliup-pos/catalog/inventory)
+- [Rapports](/fr-CA/taliup-hq/merchant/reports)

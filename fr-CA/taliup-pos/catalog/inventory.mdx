@@ -1,14 +1,20 @@
 ---
 title: "Inventaire"
 sidebarTitle: "Inventaire"
-description: "Gérer le stock, Vendu par / Pesable, les matières premières et les unités de mesure."
+description: "Suivre le stock des produits, fixer les points de commande, vendre au poids avec Pesable, et gérer les matières premières et unités de mesure."
+keywords: ["vérifier le stock", "mettre à jour l'inventaire", "quantité en stock", "point de commande", "vendre au poids", "matières premières", "unités de mesure"]
 ---
 
-**Inventaire** suit le stock des produits à vendre et, lorsque c'est activé, les matières premières et les unités. L'accès exige la fonction inventaire.
+**Inventaire** suit le stock des produits à vendre et, lorsque c'est activé, les matières premières et les unités.
 
 <Frame caption="liste Inventory products avec Name, SKU, QTY.">
   ![liste Inventory products avec Name, SKU, QTY](/images/taliup-pos/catalog/inventory.png)
 </Frame>
+
+## Avant de commencer
+
+- Exige les fonctions **Catalogs** et **Inventory** et la permission **View Inventory**. Modifier le stock, **Vendu par**, les matières premières ou les unités exige **Edit Inventory**.
+- **Matières premières** exige la fonction **Raw Materials**, **Unités** exige la fonction **Units**, et **RP.** (point de commande) exige la fonction **ReOrder Point**.
 
 ## Comment y arriver
 
@@ -19,8 +25,8 @@ Accueil → **Menu** / **Catalogue** → **Inventaire**.
 | Section | Disponibilité |
 |---|---|
 | **Products** | Toujours (dans Inventaire) |
-| **Raw Materials** | Habituellement restaurants; peut exiger un add-on inventaire |
-| **Unités** | Lorsque la fonction unités est activée |
+| **Raw Materials** | Lorsque la fonction **Raw Materials** est activée |
+| **Unités** | Lorsque la fonction **Units** est activée |
 
 ## Products
 

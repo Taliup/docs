@@ -1,8 +1,12 @@
 ---
 title: "Work offline with WEB-SRM"
 sidebarTitle: "Work offline"
-description: "Keep selling when the network drops, read the offline banner, and send pending transactions to Revenu Québec."
-keywords: ["WEB-SRM", "Revenu Québec", "offline", "offline mode", "pending sync", "PROBLÈME DE COMMUNICATION", "custom item", "batch", "MEV"]
+description: "Keep selling on a WEB-SRM device when the network drops, read the offline banner, and send pending transactions to Revenu Québec."
+keywords: ["WEB-SRM offline", "offline mode banner", "network unavailable", "send pending transactions", "PROBLÈME DE COMMUNICATION", "sell without internet"]
+applies_to:
+  audience: merchant
+  product: pos
+  features: [web_srm]
 ---
 
 Without a network connection, Taliup POS keeps billing. Each document is signed, printed with **PROBLÈME DE COMMUNICATION**, and held in a batch for Revenu Québec. The batch is sent when the connection returns.
@@ -46,7 +50,7 @@ When the connection returns, the batch is sent with the next document you produc
 
 <Steps>
   <Step title="Open Pending sync">
-    Go to **Settings** → **WEB-SRM** → **Pending sync**. It shows how many transactions haven't been sent to Revenu Québec.
+    Go to Home → **Settings** → **WEB-SRM** → **Pending sync**. It shows how many transactions haven't been sent to Revenu Québec.
   </Step>
   <Step title="Send">
     Tap **SEND**, then **Send** to confirm.

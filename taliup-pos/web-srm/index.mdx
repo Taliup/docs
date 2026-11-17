@@ -1,8 +1,13 @@
 ---
 title: "Enrol Taliup POS with WEB-SRM"
 sidebarTitle: "Enrol a device"
-description: "Enrol Taliup POS as a Revenu Québec SRS: request a certificate, register the signed-in user, then renew or delete the certificate."
-keywords: ["WEB-SRM", "Revenu Québec", "enrolment", "certificate", "IDAPPRL", "SRS", "MEV"]
+description: "Enrol a device with Revenu Québec WEB-SRM: request the certificate, register the signed-in user, then renew or delete the certificate."
+keywords: ["enrol device with WEB-SRM", "request a WEB-SRM certificate", "Revenu Québec certificate", "renew the certificate", "register user with Revenu Québec", "MEV enrolment"]
+applies_to:
+  audience: merchant
+  product: pos
+  features: [web_srm]
+  since: "2026-08"
 ---
 
 Taliup POS acts as a sales recording system (SRS / MEV) for Revenu Québec's WEB-SRM. A Québec merchant cannot bill on a device until that device is enrolled and the signed-in user is registered with the WEB-SRM.
@@ -17,7 +22,7 @@ Revenu Québec requires both steps. Repeat them on every device.
 
 ## Before you start
 
-- The device is set up and staff can log in. See [Taliup POS overview](/taliup-pos/index) and [PAX A920 Pro first setup](/taliup-pos/devices/pax/a920-pro).
+- The device is set up and staff can log in. See [Taliup POS overview](/taliup-pos/index) and [Activate a device](/taliup-pos/activate-device).
 - WEB-SRM is enabled in Taliup HQ with the merchant's Revenu Québec credentials. See [WEB-SRM settings](/taliup-hq/onboarding/web-srm).
 - The device is online. The certificate request is sent to Revenu Québec.
 
@@ -31,10 +36,10 @@ After you log in, **Enrol this device** blocks **Register**, **Tables**, and **M
 
 <Steps>
   <Step title="Log in">
-    Open Taliup POS and enter the employee's six-digit passcode.
+    Open Taliup POS and enter the employee's six-digit PIN.
 
-    <Frame caption="Taliup POS login screen. Select the employee, then enter their passcode.">
-      ![Taliup POS login screen with employee selector, passcode field, and numeric keypad](/images/taliup-pos/web-srm/login.png)
+    <Frame caption="Taliup POS login screen. Select the employee, then enter their PIN.">
+      ![Taliup POS login screen with employee selector, PIN field, and numeric keypad](/images/taliup-pos/web-srm/login.png)
     </Frame>
   </Step>
   <Step title="Open the certificate request">
@@ -86,7 +91,7 @@ After you log in, **Enrol this device** blocks **Register**, **Tables**, and **M
 
 ## Verify enrolment
 
-Go to **Settings** → **WEB-SRM**. The **Overview** card should show:
+Go to Home → **Settings** → **WEB-SRM**. The **Overview** card should show:
 
 | Field | What it means |
 |---|---|
@@ -110,7 +115,7 @@ Renew when Taliup POS warns that the certificate is expiring, or when the WEB-SR
 
 <Steps>
   <Step title="Open Certificate">
-    Go to **Settings** → **WEB-SRM** → **Certificate**.
+    Go to Home → **Settings** → **WEB-SRM** → **Certificate**.
   </Step>
   <Step title="Renew">
     Tap **Renew certificate**.
@@ -136,7 +141,7 @@ Delete only when you are decommissioning the device or starting enrolment over.
 
 <Steps>
   <Step title="Open Certificate">
-    Go to **Settings** → **WEB-SRM** → **Certificate**.
+    Go to Home → **Settings** → **WEB-SRM** → **Certificate**.
   </Step>
   <Step title="Delete">
     Tap **Delete certificate**.

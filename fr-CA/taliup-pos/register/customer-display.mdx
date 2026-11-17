@@ -1,0 +1,38 @@
+---
+title: "Écran client"
+sidebarTitle: "Écran client"
+description: "Ce que le client voit sur l'écran orienté client d'un terminal : la commande et le total, le pourboire, les confirmations de paiement et le choix du reçu."
+keywords: ["écran orienté client", "deuxième écran", "le client voit le total", "pourboire sur l'écran client", "le client choisit son reçu", "écran client vide"]
+---
+
+Sur un terminal muni d'un écran orienté client, Taliup POS montre au client sa commande et lui pose les questions auxquelles il doit répondre. Il n'y a rien à activer : Taliup POS utilise l'écran client automatiquement quand l'appareil en a un.
+
+## Avant de commencer
+
+- Taliup POS utilise l'écran qu'Android signale comme écran client (de présentation) de l'appareil. Les terminaux Poynt utilisent leur propre écran client.
+- Les installations où le paiement par carte se fait dans **Taliup Companion** sur un terminal PAX distinct (par exemple Elys) fonctionnent autrement : le client voit le terminal Companion. Consultez [Paramètres de l'appareil](/fr-CA/taliup-pos/settings/device).
+
+## Ce que voit le client
+
+| Moment | Sur l'écran client |
+|---|---|
+| Aucune commande en cours | Le nom de votre entreprise avec le logo |
+| Pendant l'ajout des articles | Les articles, le nombre d'articles et le total, avec la taxe, le pourboire et les frais de carte s'il y a lieu |
+| Demande de pourboire | **Ajouter un pourboire** avec vos pourcentages prédéfinis, **Personnaliser** et **Aucun pourboire**, puis **Confirmer**. Consultez [Pourboires](/fr-CA/taliup-pos/register/tips) |
+| Double tarification | **Confirmez votre type de paiement** : les prix **Espèces** et **Carte**, au choix |
+| Surcharge carte de crédit | **VÉRIFIER ET CONFIRMER (CRÉDIT)** avec le sous-total, la taxe, le pourboire, la **Surcharge carte de crédit** et le **Montant total à payer**. **Continuer** accepte; **Préférez-vous le débit?** / **Payer par débit** passe au débit quand c'est offert |
+| Après le paiement | **Choisir le reçu client** : **Aucun reçu**, **Papier**, et **Courriel** s'il est offert. Consultez [Reçu client](/fr-CA/taliup-pos/register/customer-receipt) |
+
+Pendant que le client choisit un reçu, votre écran affiche **Le client choisit un reçu…**, avec **Prendre le contrôle** pour choisir à sa place.
+
+## Si l'écran client reste vide ou affiche autre chose
+
+- Vérifiez que l'écran client est branché et allumé, puis redémarrez Taliup POS.
+- Sur Poynt, l'écran client appartient au terminal Poynt; redémarrez le terminal s'il ne se met plus à jour.
+- Toujours vide : consultez [Dépannage](/fr-CA/taliup-pos/help/troubleshooting) ou communiquez avec le [soutien](/fr-CA/taliup-pos/help/support).
+
+## Voir aussi
+
+- [Encaisser](/fr-CA/taliup-pos/register/take-payment)
+- [Pourboires](/fr-CA/taliup-pos/register/tips)
+- [Reçu client](/fr-CA/taliup-pos/register/customer-receipt)

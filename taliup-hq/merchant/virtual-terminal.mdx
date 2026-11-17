@@ -1,0 +1,68 @@
+---
+title: "Virtual terminal"
+sidebarTitle: "Virtual terminal"
+description: "Take a card, cash or other payment from Taliup HQ with the virtual terminal, then look up, add notes to, send receipts for or refund those payments."
+keywords: ["take a payment in HQ", "charge a card from HQ", "virtual terminal refund", "quick sale amount", "itemized virtual terminal sale", "email a payment receipt"]
+applies_to:
+  audience: merchant
+  product: hq
+  features: [virtual_terminal]
+  permissions:
+    guard: web
+    any: ["View Virtual Terminal"]
+---
+
+The **Virtual terminal** takes card, cash and other payments from Taliup HQ, and lists the payments taken there.
+
+## Before you start
+
+- Your business needs the **Virtual Terminal** feature. Your partner sets it up for each location; see [Virtual Terminal setup](/taliup-hq/onboarding/virtual-terminal).
+- Your Taliup HQ account needs **View Virtual Terminal** to see payments, **Take Virtual Terminal Payments** to take payments, add notes and send receipts, and **Refund Virtual Terminal Payments** to refund.
+- Itemized sales need the **Itemized Sale** feature. Adding a client needs the **Clients** feature.
+
+## How to get here
+
+In Taliup HQ, open **Virtual terminal** in the sidebar.
+
+## Take a payment
+
+<Steps>
+  <Step title="Start the payment">
+    Select **New payment** and choose the location.
+  </Step>
+  <Step title="Enter what is being paid">
+    **Quick sale**: enter the **Amount to charge**, and use **Add tax**, **Add discount** or **Add fee** if needed. **Itemized sale**: search for products, or add a **Custom item**.
+  </Step>
+  <Step title="Choose the payment method">
+    **Card** charges a card. A card payment needs a client: use **Add a client** to pick one or create one. Depending on your processor, you enter the card on the page or in your processor's secure window. If asked **How are they paying?**, choose **Credit card** or **Debit card**. **Cash** and **Other** only record a payment taken another way; nothing is charged.
+  </Step>
+  <Step title="Finish">
+    Optionally email a receipt to the client and add notes, then take the payment.
+  </Step>
+</Steps>
+
+## Look up payments
+
+The page shows **Payments**, **Collected**, **Refunded** and **Net** for the period. Use **Search payments or clients** and the location filter, then select a payment to open **Payment details**: the amount, method, items, client, receipt status and **History**. From there you can **Add note**, **Send receipt** or **Add client**.
+
+## Refund a payment
+
+<Steps>
+  <Step title="Open the refund">
+    In **Payment details**, select **Refund**.
+  </Step>
+  <Step title="Choose what to refund">
+    **Full refund**, or **By item** to pick the items and fees. Enter the **Amount to refund** when asked; the page shows how much can still be refunded.
+  </Step>
+  <Step title="Give a reason">
+    Pick a **Reason** (or **Other** and type it), then confirm the refund.
+  </Step>
+</Steps>
+
+Payments taken on Taliup POS are refunded from the device instead. See [Refund a payment](/taliup-pos/transactions/refund).
+
+## Related
+
+- [Transactions in Taliup HQ](/taliup-hq/merchant/transactions)
+- [Clients](/taliup-hq/features/clients)
+- [Entity permissions](/taliup-hq/manage/permissions)

@@ -1,0 +1,71 @@
+---
+title: "Paramètres de paiement"
+sidebarTitle: "Paiements"
+description: "Régler les choix de pourboire, la limite d'ajustement, les taxes sur les ventes libres et vos frais de double tarification, et voir le supplément."
+keywords: ["choix de pourboire", "activer les pourboires", "pourboire avant taxes", "limite d'ajustement du pourboire", "taxes sur les ventes libres", "frais de double tarification", "supplément", "règlement automatique"]
+---
+
+La page de paramètres **Paiements** regroupe les options de paiement qu'un marchand peut gérer dans Taliup HQ : pourboires, ajustement du pourboire, taxes sur les ventes libres et double tarification. Elle affiche aussi le supplément fixé par votre administrateur.
+
+## Avant de commencer
+
+- La permission **Manage Settings** est nécessaire.
+- Certaines sections n'apparaissent que si elles s'appliquent à votre entreprise, comme l'indique chaque section ci-dessous. Pour une entreprise qui utilise le MEV-WEB, seule la section **Pourboires** est affichée.
+
+## Comment y arriver
+
+Dans le menu latéral, ouvrez **Paramètres**, puis **Paiements** sous **Paiements**.
+
+Modifiez ce qu'il faut, puis cliquez sur **Enregistrer** dans la barre au bas de la page.
+
+## Pourboires
+
+1. Activez **Demander un pourboire**. Les clients choisissent un pourboire sur le terminal avant de payer.
+2. Sous **Type de pourboire**, choisissez **Pourcentage** pour un pourcentage de la facture, ou **Montant** pour des montants fixes.
+3. Sous **Choix de pourboire**, entrez les trois choix offerts aux clients.
+4. Activez **Pourboire sur le montant avant taxes** pour calculer le pourboire sur le sous-total, avant les taxes. Au Québec, la loi 72 exige que le pourboire soit calculé sur le montant avant taxes.
+
+Pour ne plus demander de pourboire, désactivez **Demander un pourboire** et enregistrez.
+
+Sur les terminaux Poynt, une fois enregistrés, les choix de pourboire se changent sur demande. Cliquez sur **Demander un changement**, entrez les nouveaux choix dans **Demander de nouveaux choix de pourboire** et cliquez sur **Envoyer la demande**. La page indique quand une demande est en cours.
+
+## Ajustement du pourboire
+
+Affiché lorsque votre forfait comprend **Tip Adjust**. **Limite** fixe le maximum dont un pourboire peut augmenter après le paiement, en **Pourcentage** du sous-total ou en **Montant**. Laissez-la vide pour retirer la limite.
+
+## Taxes sur les ventes libres
+
+Affiché pour les entreprises qui utilisent des terminaux PAX, Poynt, Castles ou Ingenico. Activez **Appliquer des taxes aux ventes libres** et sélectionnez les taxes à appliquer. Les montants saisis au terminal sans article reçoivent ces taxes. Choisissez au moins une taxe.
+
+## Double tarification
+
+Affiché lorsque votre forfait comprend **Dual Pricing**. Les prix par carte et en argent diffèrent de certains frais. Ce que vous pouvez changer dépend de la configuration faite par votre administrateur :
+
+| Ce que la section affiche | Ce que cela signifie |
+|---|---|
+| **Désactivé par votre administrateur.** | La double tarification est désactivée. Seul votre administrateur peut l'activer. |
+| **Frais** et **Affiché comme**, avec **Fixé par votre administrateur.** | La double tarification est active avec les frais de votre administrateur. Vous ne pouvez pas les changer. |
+| **Utiliser mes propres frais** | Votre administrateur vous permet de fixer les frais. |
+
+Lorsque **Utiliser mes propres frais** est offert :
+
+1. Activez-le pour remplacer les frais de votre administrateur. Désactivé, ce sont les frais de l'administrateur qui s'appliquent.
+2. Sous **Frais**, choisissez **Pourcentage** ou **Montant** et entrez une valeur supérieure à 0.
+3. Activez **Afficher comme un rabais en argent** pour présenter la différence comme un rabais au comptant. Désactivé, elle est affichée comme un supplément sur les paiements par carte.
+
+Si votre administrateur n'a pas fixé de frais, la double tarification n'a pas de frais tant que vous n'avez pas fixé les vôtres. La page affiche alors **La double tarification est activée sans frais. Activez « Utiliser mes propres frais » et fixez-les.**
+
+## Supplément
+
+Affiché lorsque votre forfait comprend **Surcharge**. Vous pouvez voir le supplément, mais pas le modifier. La section affiche **Désactivé par votre administrateur.**, ou les **Frais** fixés par votre administrateur et les **Emplacements** où ils s'appliquent. La double tarification et le supplément ne sont pas utilisés ensemble pour un même marchand.
+
+## Règlement automatique
+
+Taliup HQ n'a aucun paramètre de règlement automatique, ni sur cette page ni ailleurs dans le portail marchand. Pour fermer un lot vous-même, consultez [Fermer un lot](/fr-CA/taliup-pos/transactions/close-batch). Pour toute question sur le règlement de vos lots, communiquez avec le [soutien](/fr-CA/taliup-pos/help/support).
+
+## Connexe
+
+- [Encaisser dans Taliup POS](/fr-CA/taliup-pos/register/take-payment)
+- [Pourboires dans Taliup POS](/fr-CA/taliup-pos/register/tips)
+- [Configuration de la double tarification pour les partenaires](/fr-CA/taliup-hq/onboarding/dual-pricing)
+- [Configuration du supplément pour les partenaires](/fr-CA/taliup-hq/onboarding/surcharge)

@@ -1,7 +1,15 @@
 ---
 title: "Taxes"
 sidebarTitle: "Taxes"
-description: "Create and manage tax rates used across the catalog."
+description: "Create, edit and delete the tax rates in the global Taxes library, as a percentage or a fixed amount."
+keywords: ["add a tax", "tax rate", "edit a tax", "delete a tax", "percentage tax", "fixed amount tax"]
+applies_to:
+  audience: merchant
+  product: pos
+  features: [catalog]
+  permissions:
+    guard: appUser
+    any: ["View Taxes"]
 ---
 
 **Taxes** is the global tax library. Assign taxes to a specific menu/catalog from [Menu / Catalog taxes](/taliup-pos/catalog/catalog-taxes), or to individual products from the product editor.
@@ -9,6 +17,10 @@ description: "Create and manage tax rates used across the catalog."
 <Frame caption="Taxes list with Name and Value.">
   ![Taxes list with Name and Value](/images/taliup-pos/catalog/taxes.png)
 </Frame>
+
+## Before you start
+
+Requires the **Catalogs** feature and the **View Taxes** permission. Adding a tax needs **Add Taxes**, editing needs **Update Taxes**, and deleting needs **Delete Taxes**.
 
 ## How to get here
 

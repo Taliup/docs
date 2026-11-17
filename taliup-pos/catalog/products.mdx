@@ -1,7 +1,15 @@
 ---
 title: "Products / Items"
 sidebarTitle: "Products / Items"
-description: "Create and edit products (retail) or items (restaurant) in the catalog."
+description: "Create, edit and delete products (retail) or items (restaurant), including price, SKU, attributes or modifiers, and taxes."
+keywords: ["add a product", "add a menu item", "change a price", "edit a product", "delete a product", "set a SKU", "custom price"]
+applies_to:
+  audience: merchant
+  product: pos
+  features: [catalog]
+  permissions:
+    guard: appUser
+    any: ["View Products"]
 ---
 
 Labeled **Products** or **Items** depending on industry type. This is the main list of sellable goods.
@@ -9,6 +17,10 @@ Labeled **Products** or **Items** depending on industry type. This is the main l
 <Frame caption="Products/Items list with Add New.">
   ![Products/Items list with Add New](/images/taliup-pos/catalog/products.png)
 </Frame>
+
+## Before you start
+
+Requires the **Catalogs** feature and the **View Products** permission. Adding needs **Add Products**, editing (including attributes, modifiers and taxes) needs **Update Products**, and deleting needs **Delete Products**.
 
 ## How to get here
 

@@ -1,0 +1,121 @@
+---
+title: "Employés"
+sidebarTitle: "Employés"
+description: "Ajouter les personnes qui se connectent à Taliup POS, régler leur rôle, leurs appareils et leur code, gérer les rôles PDV et lier un employé à un compte HQ."
+keywords: ["ajouter un employé", "code d'accès employé", "rôles et permissions PDV", "rôle personnalisé", "lier un employé à un compte HQ", "accès HQ", "supprimer un employé"]
+---
+
+Les employés sont les personnes qui se connectent à Taliup POS avec un nom d'utilisateur et un code à 6 chiffres. Les personnes qui se connectent à Taliup HQ sont des **Utilisateurs web**, une liste distincte. Vous pouvez lier un employé à un compte Taliup HQ pour que la même personne ait les deux.
+
+## Avant de commencer
+
+- Votre forfait comprend la fonctionnalité **Employés**.
+- La permission **View Employees** est nécessaire pour ouvrir la liste.
+- Ajouter ou modifier des employés et changer les rôles PDV demandent **Manage Employees**. Supprimer un employé demande **Delete Employees**.
+- Lier un employé à un compte Taliup HQ demande à la fois **Manage Employees** et **Manage Web Users**.
+
+## Comment y arriver
+
+Dans le menu latéral, ouvrez **Employés**. Lorsque votre forfait comprend aussi les feuilles de temps, l'horaire ou les paies, **Employés** se trouve sous **Équipe**.
+
+## Ajouter un employé
+
+<Steps>
+  <Step title="Commencer un nouvel employé">
+    Cliquez sur **Ajouter un employé**.
+  </Step>
+  <Step title="Remplir le profil">
+    Entrez le **Prénom** et le **Nom**. Le **Nom d'utilisateur** est suggéré à partir du nom; l'employé s'en sert pour se connecter au PDV. Le **Courriel (facultatif)** sert à lui envoyer son horaire quand vous le publiez.
+
+    Choisissez un **Rôle**. Le rôle détermine ce que la personne peut faire sur le PDV. Le **Taux horaire (facultatif)** sert à la paie et au coût de main-d'œuvre des feuilles de temps.
+  </Step>
+  <Step title="Définir le code d'accès PDV">
+    Sous **Code d'accès PDV**, entrez 6 chiffres dans **Code**, puis de nouveau dans **Retapez-le**.
+  </Step>
+  <Step title="Choisir les appareils">
+    Sous **Appareils**, sélectionnez les terminaux PDV auxquels la personne peut se connecter. Utilisez **Tout sélectionner** ou **Tout désélectionner** pour changer tous les terminaux d'un coup.
+  </Step>
+  <Step title="Enregistrer">
+    Cliquez sur **Ajouter un employé**.
+  </Step>
+</Steps>
+
+Un nom d'utilisateur ne peut servir qu'une fois dans votre entreprise, y compris ceux des employés supprimés.
+
+**Services offerts** n'apparaît que lorsque la réservation en ligne associe les employés aux services. Sélectionnez les services pour lesquels les clients peuvent réserver cet employé.
+
+## Modifier un employé
+
+Ouvrez l'employé dans la liste, modifiez ce qu'il faut et cliquez sur **Enregistrer**.
+
+- Le code reste le même, sauf si vous cliquez sur **Changer le code** et en entrez un nouveau.
+- La carte **En bref** indique si la personne a enregistré son entrée, ses heures de la semaine, son prochain quart publié et ses taux de commission.
+
+## Supprimer un employé
+
+Ouvrez le menu **Plus d'actions** de l'employé, dans la liste ou sur son profil, et choisissez **Supprimer l'employé**. La personne ne peut plus se connecter au PDV. Les ventes, feuilles de temps et paies passées sont conservées.
+
+Si l'employé est lié à un compte Taliup HQ, la confirmation affiche **Utilisateur Web lié**. Cochez **Supprimer aussi cet utilisateur Web** pour supprimer ce compte aussi. Sinon, le compte HQ est conservé et délié. La case n'apparaît que si vous avez **Manage Web Users** et que le compte lié n'est pas le vôtre.
+
+## Rôles et permissions PDV
+
+Cliquez sur **Rôles et permissions** dans la page **Employés**. Chaque rôle indique ce que les personnes qui l'ont peuvent faire sur le PDV.
+
+- Chaque entreprise commence avec **Owner**, **Manager** et **Employee**. Ces rôles gardent leur nom.
+- **Owner** a toujours toutes les permissions, pour que le propriétaire ne soit jamais bloqué hors du PDV. Les nouvelles permissions lui sont ajoutées automatiquement.
+- Les rôles que vous ajoutez peuvent être renommés ou dupliqués à partir de leur menu **Plus d'actions**.
+- Les groupes de permissions des fonctionnalités absentes de votre forfait sont masqués.
+
+Pour ajouter un rôle :
+
+<Steps>
+  <Step title="Créer le rôle">
+    Cliquez sur **Ajouter un rôle** et entrez un **Nom du rôle**.
+  </Step>
+  <Step title="Choisir un point de départ">
+    Sous **Partir des permissions de**, choisissez un rôle existant à copier, ou **Rien** pour partir de toutes les permissions désactivées.
+  </Step>
+  <Step title="Ajuster et enregistrer">
+    Activez ou désactivez les permissions, ou utilisez **Tout activer** et **Tout désactiver** pour un groupe. Utilisez **Trouver une permission** pour chercher. Cliquez sur **Enregistrer** suivi du nom du rôle pour appliquer les changements.
+  </Step>
+</Steps>
+
+Quand vous retirez une permission d'un rôle, les personnes à qui cette permission avait été donnée directement la perdent aussi.
+
+Les changements s'appliquent à toutes les personnes qui ont le rôle. Taliup HQ met à jour les permissions enregistrées de chaque personne dans une tâche en arrière-plan juste après l'enregistrement, en général en quelques instants. D'ici là, le PDV peut encore utiliser les anciennes permissions.
+
+Pour gérer les employés à partir d'un terminal, consultez [Employés dans Taliup POS](/fr-CA/taliup-pos/settings/employees).
+
+## Lier un employé à un compte Taliup HQ
+
+La carte **Accès HQ** n'apparaît sur le profil de l'employé que si vous avez à la fois **Manage Employees** et **Manage Web Users**.
+
+<Steps>
+  <Step title="Ouvrir l'employé">
+    Ouvrez l'employé, ou commencez-en un nouveau avec **Ajouter un employé**.
+  </Step>
+  <Step title="Choisir l'accès HQ">
+    Sous **Accès HQ**, choisissez :
+
+    - **Aucun** : pas de compte HQ. Ce choix délie un employé déjà lié.
+    - **Lier un utilisateur Web existant** : choisissez le compte dans **Sélectionner un utilisateur Web**. Seuls les comptes qui ne sont pas liés à un autre employé sont proposés.
+    - **Inviter un nouvel utilisateur Web** : entrez l'adresse courriel à inviter et choisissez le rôle du compte sous **Rôles de l'utilisateur**. Le courriel est obligatoire ici, même si le champ s'appelle **Courriel (facultatif)**, et il ne doit pas déjà appartenir à un autre compte Taliup HQ. Taliup HQ envoie une invitation par courriel, avec le prénom et le nom de l'employé.
+  </Step>
+  <Step title="Enregistrer">
+    Cliquez sur **Enregistrer**, ou sur **Ajouter un employé** pour un nouvel employé.
+  </Step>
+</Steps>
+
+Un employé peut être lié à un seul compte HQ, et un compte HQ à un seul employé. Vous pouvez aussi lier de l'autre côté : dans **Utilisateurs web**, modifiez le compte et utilisez **Compte employé PDV** pour **Lier un employé existant**, ou **Créer un nouvel employé** avec un nom d'utilisateur, un rôle et un code à 6 chiffres.
+
+Ce que fait le lien :
+
+- Avec la fonctionnalité Feuilles de temps, la personne liée peut **Enregistrer l’entrée** et **Enregistrer la sortie** à partir de son menu utilisateur dans Taliup HQ.
+- L'assistant IA de Taliup POS utilise les propres permissions Taliup HQ du compte lié pour les questions sur les paramètres offerts seulement dans HQ. Sans lien, il donne seulement des conseils généraux. Consultez [Assistant IA](/fr-CA/taliup-pos/help/assistant).
+- Délier conserve les deux comptes et les feuilles de temps de l'employé.
+
+## Connexe
+
+- [Employés dans Taliup POS](/fr-CA/taliup-pos/settings/employees)
+- [Permissions des employés dans Taliup POS](/fr-CA/taliup-pos/permissions)
+- [Permissions de l'entité](/fr-CA/taliup-hq/manage/permissions)

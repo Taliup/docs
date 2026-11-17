@@ -1,0 +1,46 @@
+---
+title: "Paies et commissions"
+sidebarTitle: "Paies"
+description: "Régler les taux de commission, calculer les heures, commissions et pourboires de chaque employé, finaliser la paie et l'exporter dans Taliup HQ."
+keywords: ["créer une paie", "commissions des employés", "régler les taux de commission", "pourboires versés au personnel", "exporter la paie", "finaliser une paie"]
+---
+
+**Paies et commissions** calcule les heures, les commissions et les pourboires de chaque période de paie, pour que vous puissiez les exporter vers votre système de paie. Ouvrez **Paies et commissions** dans le groupe **Équipe** de la barre latérale.
+
+## Avant de commencer
+
+- Votre entreprise a besoin de la fonctionnalité **Pay Runs and Commissions**, et vous devez avoir le rôle **Admin** dans Taliup HQ.
+- La paie horaire vient des quarts dépointés des [Feuilles de temps](/fr-CA/taliup-hq/merchant/timesheets) et du taux horaire de chaque employé dans son profil. Les quarts encore pointés ne comptent pas.
+
+## Régler les taux de commission
+
+Dans **Taux de commission** :
+
+1. Sous **Taux par défaut de l'entreprise**, indiquez la **Commission sur les services** (sur les services qu'ils effectuent), la **Commission sur les produits** (sur les produits qu'ils vendent) et les **Pourboires versés** (la part de leurs pourboires qui leur est versée).
+2. Ajoutez au besoin des tranches **Taux plus élevé au-delà d'un montant de ventes** avec **Ajouter une tranche**. Chaque taux ne s'applique qu'aux ventes de services comprises dans sa tranche pour une période de paie.
+3. Sous **Employés**, choisissez **Modifier les taux** pour donner des taux propres à quelqu'un, ou **Utiliser les taux par défaut**. Choisissez **Enregistrer les taux**.
+
+## Créer une paie
+
+<Steps>
+  <Step title="Choisir la période">
+    Dans **Paies**, choisissez **Nouvelle paie** et la **Période de paie** : **2 dernières semaines**, **Semaine dernière**, **Mois dernier** ou **Dates personnalisées**.
+  </Step>
+  <Step title="La créer">
+    Choisissez **Créer la paie**. Elle additionne les feuilles de temps, les ventes et les pourboires de ces dates en **Brouillon**.
+  </Step>
+  <Step title="La vérifier">
+    Vérifiez **Paie totale**, **Paie horaire**, **Commissions**, **Pourboires versés** et **Paie par employé**. Choisissez un employé pour voir le détail de sa paie. Après avoir corrigé une feuille de temps ou un remboursement tardif, choisissez **Recalculer**.
+  </Step>
+  <Step title="Finaliser et exporter">
+    Choisissez **Finaliser**, puis **Finaliser la paie**. Les montants sont verrouillés et la paie ne peut plus être supprimée. Choisissez **Exporter en CSV** pour la télécharger.
+  </Step>
+</Steps>
+
+Chaque ligne compte pour l'employé qui l'a effectuée, sinon pour la personne qui a aidé à la vente, sinon pour le caissier. Les ventes de cartes-cadeaux ne donnent pas de commission.
+
+## Voir aussi
+
+- [Feuilles de temps](/fr-CA/taliup-hq/merchant/timesheets)
+- [Employés](/fr-CA/taliup-hq/merchant/employees)
+- [Rapports](/fr-CA/taliup-hq/merchant/reports)

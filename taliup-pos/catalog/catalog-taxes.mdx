@@ -1,7 +1,15 @@
 ---
 title: "Menu taxes / Catalog taxes"
 sidebarTitle: "Menu / Catalog taxes"
-description: "Manage taxes assigned to the current menu or catalog."
+description: "Add or remove the taxes assigned to the current menu or catalog, separate from the global Taxes library."
+keywords: ["menu taxes", "catalog taxes", "add tax to catalog", "remove tax from menu", "sales tax setup"]
+applies_to:
+  audience: merchant
+  product: pos
+  features: [catalog]
+  permissions:
+    guard: appUser
+    any: ["View Catalogs"]
 ---
 
 This section is labeled **Menu Taxes** for restaurants and **Catalog Taxes** otherwise. It manages taxes assigned to the current menu/catalog (separate from the global [Taxes](/taliup-pos/catalog/taxes) library).
@@ -9,6 +17,10 @@ This section is labeled **Menu Taxes** for restaurants and **Catalog Taxes** oth
 <Frame caption="Menu/Catalog Taxes list with Name and Value.">
   ![Menu/Catalog Taxes list with Name and Value](/images/taliup-pos/catalog/catalog-taxes.png)
 </Frame>
+
+## Before you start
+
+Requires the **Catalogs** feature and the **View Catalogs** permission. Adding or removing taxes on the menu or catalog needs **Update Catalogs**. Creating a tax needs **Add Taxes**, editing it **Update Taxes**, and deleting it **Delete Taxes**.
 
 ## How to get here
 

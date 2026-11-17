@@ -1,0 +1,63 @@
+---
+title: "Activate a device"
+sidebarTitle: "Activate a device"
+description: "Connect a new or reinstalled device to your business with its Device ID, choose the card reader, and complete setup before the first sign-in."
+keywords: ["activate device", "enter Device ID", "select card reader", "reinstall Taliup POS", "Device ID already in use", "set up new terminal", "demo mode"]
+applies_to:
+  audience: merchant
+  product: pos
+---
+
+The first time Taliup POS opens on a device, it connects the device to your business in Taliup HQ. After that, the device opens on the sign-in screen.
+
+## Before you start
+
+- The device has been added to your business in Taliup HQ. Your ISO or partner usually does this.
+- You know the device's **Device ID**. It is listed in Taliup HQ under **Settings** → **Devices**, or your ISO or partner can give it to you.
+- The device is connected to the internet.
+
+## Activate the device
+
+<Steps>
+  <Step title="Open Taliup POS">
+    Open the app on the device.
+  </Step>
+  <Step title="Enter the Device ID">
+    If **Enter your Device ID to activate** appears, type the **Device ID** exactly as shown in Taliup HQ and tap **Next**. **Activating this device…** shows while Taliup HQ checks it.
+  </Step>
+  <Step title="Select the card reader">
+    On **Select your card reader**, choose the reader you take cards with: **PAX A920Pro**, **Elys**, **Link 2500**, **Lane 3600**, **S1P2** or **S1F4 PRO**. Tap **Next**. You can change it later in [Device Settings](/taliup-pos/settings/device).
+  </Step>
+  <Step title="Complete setup if asked">
+    Some plans ask the business to accept terms and subscribe before the first sign-in. On **Terms & Conditions**, check **I have read and agree** and tap **Accept & Continue**. On **Software Subscription Required**, scan the QR code with your phone, complete the payment, then tap **I've Paid — Verify & Continue**.
+  </Step>
+  <Step title="Sign in">
+    The sign-in screen opens. See [Sign in and out](/taliup-pos/sign-in-and-out).
+  </Step>
+</Steps>
+
+### Devices that skip steps
+
+- **PAX terminals installed through PAXSTORE** read the Device ID from the terminal, so the Device ID screen does not appear. You still select the card reader.
+- **Poynt terminals** take their identity from the terminal. They skip both the Device ID and card reader screens.
+
+## Try the app in demo mode
+
+On the setup screens, **Enter Demo Mode** lets you try Taliup POS with a passcode from your ISO or partner. Demo payments cannot exceed $1.00. To leave, go to Home → **Settings** → **Tools** → **Exit Demo Mode**.
+
+## Reinstall on the same device
+
+If you reinstall Taliup POS or clear its data, enter the same Device ID on the same device. Taliup HQ recognizes the device and reconnects it. The Getting started guide is not offered again after a reconnect.
+
+## If activation fails
+
+| Message | What to do |
+|---|---|
+| **Device not found** | Check the Device ID in Taliup HQ → **Settings** → **Devices** and enter it exactly. |
+| **This device identifier is already in use on a different device** | That Device ID is active on another device. Use this device's own Device ID, or [contact support](/taliup-pos/help/support). |
+| **Server is currently Unavailable.** or a network error | Check the internet connection and try again. |
+
+## Related
+
+- [First login](/taliup-pos/first-login)
+- [Getting started](/taliup-pos/settings/getting-started)

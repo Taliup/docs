@@ -1,12 +1,13 @@
 ---
 title: "Permissions de l'entité"
 sidebarTitle: "Permissions"
-description: "Référence de l'onglet Permissions sur la page Manage Entity — fonctionnement, Select/Deselect All, liste complète et ce qui se passe à l'enregistrement."
+description: "Référence de l'onglet Permissions de Manage Entity : les 47 permissions web du rôle Admin d'un marchand et le moment où les changements s'appliquent."
+keywords: ["permissions de l'entité", "permissions du rôle Admin", "liste des permissions web", "Update Permissions", "View Business Analytics", "permissions du terminal virtuel", "changement de permission non appliqué"]
 ---
 
-L'onglet **Permissions** contrôle quelles fonctions et actions Taliup HQ sont disponibles pour les utilisateurs admin de l'entité.
+L'onglet **Permissions** contrôle quelles pages et actions Taliup HQ sont disponibles pour le rôle **Admin** du marchand.
 
-<Frame caption="L'onglet Manage Entity — Permissions montrant les 35 permissions disponibles.">
+<Frame caption="L'onglet Permissions de Manage Entity.">
   ![Onglet Permissions avec une liste de cases, un compteur en direct et les contrôles Select All / Deselect All / Update Permissions](/images/taliup-hq/manage-entity-permissions.png)
 </Frame>
 
@@ -14,93 +15,95 @@ L'onglet **Permissions** contrôle quelles fonctions et actions Taliup HQ sont d
   La page Manage Entity a sept onglets : Profile, **Permissions**, Transactions, Orders, Devices, Employees et Settings. Cette page documente seulement l'onglet Permissions.
 </Note>
 
----
+## Comment y arriver
+
+**Entities** → trouvez l'entité → **Manage** → onglet **Permissions**.
 
 ## Comment fonctionnent les permissions
 
-Les permissions sont attribuées au **rôle Admin** de l'entité — pas aux utilisateurs individuels. Chaque utilisateur Taliup HQ qui a le rôle Admin sur cette entité hérite automatiquement de l'ensemble actuel.
+Les permissions sont attribuées au rôle **Admin** de l'entité, pas aux utilisateurs individuels. Chaque utilisateur Taliup HQ qui a le rôle Admin sur cette entité reçoit l'ensemble actuel du rôle. À l'enregistrement, tous sont mis à jour ensemble.
 
-Une entité peut avoir **plusieurs utilisateurs admin**. Lorsque les permissions sont enregistrées, tous sont mis à jour en même temps.
+Cet onglet ne modifie que le rôle Admin. Le marchand gère ses autres rôles HQ dans **Utilisateurs web** → **Rôles et autorisations des utilisateurs**, ce qui demande la permission **Manage Web Users**. Les permissions des employés PDV sont distinctes; consultez [Employés](/fr-CA/taliup-hq/merchant/employees).
 
-Tout admin Taliup HQ avec un accès suffisant peut consulter et modifier cette page.
-
----
+Une permission n'ouvre une page que si le forfait du marchand comprend aussi la fonctionnalité correspondante. Par exemple, **View Invoices** n'affiche **Factures** qu'avec la fonctionnalité **Invoicing**.
 
 ## Barre d'en-tête
 
-Le haut de la carte permissions contient trois contrôles :
-
 | Contrôle | Comportement |
 |---|---|
-| **X of Y permissions selected** | Compteur en direct — se met à jour dès que vous cochez ou décochez. |
-| **Select All** | Coche toutes les permissions. |
-| **Deselect All** | Décoche toutes les permissions. Pour les entités marchandes, toutes les permissions peuvent être décochées. |
+| **X of Y permissions selected** | Compteur en direct. Il se met à jour dès que vous cochez ou décochez. |
+| **Select All** | Coche toutes les permissions de la liste. |
+| **Deselect All** | Décoche toutes les permissions. |
 | **Update Permissions** | Enregistre la sélection actuelle. Désactivé lorsqu'aucune permission n'est cochée. |
-
----
 
 ## Liste des permissions
 
-Chaque ligne affiche :
-
-- Une **case** pour basculer cette permission.
-- Le **nom de la permission** en gras.
-- Une **description** en texte atténué expliquant ce que la permission active dans Taliup HQ.
-
-Les changements ne sont pas enregistrés tant que vous n'avez pas cliqué sur **Update Permissions** — vous pouvez ajuster plusieurs permissions avant d'enregistrer.
+Chaque ligne affiche une case, le nom de la permission en gras et une courte description. Les changements ne sont pas enregistrés tant que vous n'avez pas cliqué sur **Update Permissions**; vous pouvez donc ajuster plusieurs permissions en une fois.
 
 ### Permissions disponibles
 
-Les 35 permissions suivantes peuvent être accordées ou retirées aux utilisateurs admin de l'entité :
+L'onglet présente ces 47 permissions :
 
-| Permission | Ce qu'elle active |
+| Permission | Ce qu'elle permet |
 |---|---|
-| **View Transactions** | Consulter et gérer les transactions dans Taliup HQ. |
-| **Manage Customers** | Modifier les notes clients et gérer les profils clients. |
-| **Manage Inventory** | Gérer l'inventaire dans Taliup HQ. |
-| **Manage Appointments** | Gérer les rendez-vous dans Taliup HQ. |
-| **View Message Center** | Accéder au Message Center. |
-| **Manage Catalogs** | Gérer les catalogues dans Taliup HQ. |
-| **View Clients** | Consulter les clients dans Taliup HQ. |
-| **Manage Clients** | Gérer les clients dans Taliup HQ. |
-| **Delete Clients** | Supprimer définitivement les dossiers clients. |
-| **View Invoices** | Consulter les factures dans Taliup HQ. |
-| **Manage Invoices** | Créer et modifier des factures. |
-| **Delete Invoices** | Supprimer définitivement les factures. |
-| **View Appointments** | Consulter les rendez-vous dans Taliup HQ. |
-| **Delete Appointments** | Supprimer définitivement les rendez-vous. |
-| **View Catalogs** | Consulter les catalogues dans Taliup HQ. |
-| **Delete Catalogs** | Supprimer définitivement les catalogues. |
-| **View Discounts** | Consulter les rabais dans Taliup HQ. |
+| **View Transactions** | Ouvrir **Transactions**, voir les chiffres des produits au tableau de bord, et ouvrir **Fidélité** et **Cartes-cadeaux**. |
+| **Manage Customers** | Ancienne permission transmise à l'application mobile Taliup HQ à la connexion. Aucune page Web de Taliup HQ ne la vérifie; les dossiers clients utilisent les permissions Clients. |
+| **View Orders** | Ouvrir **Commandes**. |
+| **View Reports** | Ouvrir **Rapports**, le détail des rapports et **Fin de journée**. |
+| **Manage Reports** | Générer et télécharger des rapports, et générer des documents de fin de journée. |
+| **Delete Reports** | Supprimer des rapports et des documents de fin de journée générés. |
+| **View Web Users** | Ouvrir **Utilisateurs web**. |
+| **Manage Web Users** | Inviter, modifier et supprimer des utilisateurs web et changer leurs rôles. Avec **Manage Employees**, lier des employés à des comptes HQ. |
+| **Manage Settings** | Ouvrir les sections de paramètres du marchand, comme **Détails de l’entreprise**, **Paiements**, **Reçus** et **Appareils**, et configurer les cartes-cadeaux, la fidélité, les campagnes, les parrainages et les formulaires. |
+| **Manage Quickbooks** | Connecter et utiliser l'intégration QuickBooks. |
+| **Manage Catalogs** | Créer et modifier des catalogues, produits, attributs et taxes, y compris l'importation en lot. |
+| **View Catalogs** | Ouvrir **Catalogues**, **Produits** et les autres pages du catalogue. |
+| **Delete Catalogs** | Supprimer des catalogues, produits, attributs et taxes. |
+| **View Discounts** | Ouvrir **Rabais**. |
 | **Manage Discounts** | Créer et modifier des rabais. |
-| **Delete Discounts** | Supprimer définitivement les rabais. |
-| **View Employees** | Consulter les dossiers d'employés dans Taliup HQ. |
-| **Manage Employees** | Créer et modifier des dossiers d'employés. |
-| **Delete Employees** | Supprimer définitivement les dossiers d'employés. |
-| **View Orders** | Consulter les commandes dans Taliup HQ. |
-| **View Reports** | Consulter les rapports dans Taliup HQ. |
-| **Manage Reports** | Exécuter et gérer les rapports. |
-| **Delete Reports** | Supprimer définitivement les rapports. |
-| **View Web Users** | Consulter les comptes utilisateurs web. |
-| **Manage Web Users** | Créer et modifier des comptes utilisateurs web. |
-| **Manage Settings** | Gérer les paramètres de l'entité dans Taliup HQ. |
-| **Manage Quickbooks** | Configurer et gérer l'intégration QuickBooks. |
-| **View Fees** | Consulter les frais dans Taliup HQ. |
+| **Delete Discounts** | Supprimer des rabais. |
+| **View Fees** | Ouvrir **Frais**. |
 | **Manage Fees** | Créer et modifier des frais. |
-| **Delete Fees** | Supprimer définitivement les frais. |
-| **Merchant UI Settings** | Accéder aux paramètres de personnalisation de l'interface marchand. |
-| **Manage Subscriptions** | Consulter et gérer l'abonnement de l'entité. |
-
----
+| **Delete Fees** | Supprimer des frais. |
+| **View Clients** | Ouvrir **Clients**. |
+| **Manage Clients** | Créer et modifier des clients. |
+| **Delete Clients** | Supprimer des clients. |
+| **View Invoices** | Ouvrir **Factures** et **Lien de paiement**. |
+| **Manage Invoices** | Créer, modifier et envoyer des factures. |
+| **Delete Invoices** | Supprimer des factures. |
+| **View Recurring Payments** | Ouvrir **Paiements récurrents**. |
+| **Manage Recurring Payments** | Créer des plans de paiement récurrent, et les suspendre, reprendre, annuler ou prélever. |
+| **View Virtual Terminal** | Voir les paiements du terminal virtuel et leurs détails. |
+| **Take Virtual Terminal Payments** | Encaisser des paiements par carte, en argent et autres dans le terminal virtuel, et y ajouter notes, reçus et clients. |
+| **Refund Virtual Terminal Payments** | Rembourser des paiements du terminal virtuel. |
+| **View Appointments** | Ouvrir **Calendrier** et **Liste d’attente**. |
+| **Manage Appointments** | Réserver et modifier des rendez-vous, et ouvrir **Boîte de réception**. |
+| **Delete Appointments** | Supprimer des rendez-vous. |
+| **View Reviews** | Voir les notes et les commentaires des clients après leurs rendez-vous. |
+| **Manage Reviews** | Activer ou désactiver les demandes d'avis et choisir comment et quand elles sont envoyées. |
+| **View Packages** | Voir les forfaits de services et ce qu'il reste aux clients sur les leurs. |
+| **Manage Packages** | Créer et modifier des forfaits de services, en ajouter un à un client et annuler ceux des clients. |
+| **View Memberships** | Voir les plans d'adhésion, les membres et ce qu'il reste aux membres pour la période. |
+| **Manage Memberships** | Créer et modifier des plans d'adhésion, inscrire des clients et annuler des adhésions. |
+| **Manage Inventory** | Ouvrir **Inventaire**. |
+| **View Employees** | Ouvrir **Employés**. |
+| **Manage Employees** | Ajouter et modifier des employés, changer les rôles PDV et gérer les **Feuilles de temps**. Avec **Manage Web Users**, lier des employés à des comptes HQ. |
+| **Delete Employees** | Supprimer des employés. |
+| **View Message Center** | Ouvrir le **Centre de messages**. |
+| **Merchant UI Settings** | Ouvrir **Image de marque**. |
+| **Manage Subscriptions** | Ouvrir les paramètres d'abonnement et de facturation. |
+| **View Business Analytics** | Voir les ventes de toute l'entreprise, le graphique des ventes et les chiffres des employés au tableau de bord Taliup HQ et dans l'application mobile Taliup HQ. |
 
 ## Enregistrer les permissions
 
 Cliquez sur **Update Permissions** pour appliquer la sélection. À l'enregistrement :
 
-- Les permissions du rôle Admin sont synchronisées **exactement** sur l'ensemble coché — toute permission précédemment accordée et maintenant décochée est retirée.
-- Une tâche en arrière-plan reconstruit le cache de permissions pour **chaque utilisateur** qui a actuellement le rôle Admin sur cette entité. Leur accès est mis à jour immédiatement, sans déconnexion.
+- Les permissions du rôle Admin deviennent **exactement** l'ensemble coché. Les permissions maintenant décochées sont retirées.
+- Taliup HQ met en file une tâche en arrière-plan pour **chaque utilisateur** qui a le rôle Admin sur cette entité. La tâche met à jour la liste de permissions que Taliup HQ vérifie à l'ouverture d'une page ou lors d'une action.
 - Un message de succès confirme la mise à jour. En cas d'erreur serveur, un message d'erreur s'affiche et aucun changement n'est appliqué.
 
+Le changement n'est pas instantané. Le menu latéral peut montrer le nouvel ensemble au prochain chargement de page, mais les pages et les actions utilisent les anciennes permissions jusqu'à ce que la tâche de chaque utilisateur ait été exécutée, normalement en quelques instants. Les utilisateurs n'ont pas à se déconnecter.
+
 <Warning>
-  Retirer une permission prend effet immédiatement pour tous les utilisateurs admin de l'entité. Confirmez avec le marchand avant de révoquer l'accès à des fonctions critiques comme View Transactions ou Manage Settings.
+  Retirer une permission prend effet pour tous les utilisateurs admin de l'entité dès que la mise à jour en arrière-plan est exécutée. Confirmez avec le marchand avant de retirer l'accès à des fonctions critiques comme **View Transactions** ou **Manage Settings**.
 </Warning>

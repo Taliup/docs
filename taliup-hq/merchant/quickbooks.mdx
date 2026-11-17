@@ -1,0 +1,58 @@
+---
+title: "QuickBooks"
+sidebarTitle: "QuickBooks"
+description: "Connect QuickBooks Online to Taliup HQ, link your taxes and accounts, sync sales automatically or by hand, and import QuickBooks products."
+keywords: ["connect QuickBooks", "sync sales to QuickBooks", "QuickBooks tax codes", "automatic QuickBooks sync", "import products from QuickBooks", "QuickBooks deposit account"]
+applies_to:
+  audience: merchant
+  product: hq
+  features: [quickbooks]
+  permissions:
+    guard: web
+    any: ["Manage Quickbooks", "Manage Settings"]
+---
+
+Taliup HQ sends your sales, refunds and cash payouts to QuickBooks Online as receipts, on a schedule or when you choose, and brings your QuickBooks products into HQ.
+
+## Before you start
+
+- Your business needs the **Quickbooks** feature and a QuickBooks Online account.
+- **QuickBooks settings** (connecting, taxes, accounts) need the **Manage Settings** permission. The **QuickBooks** page (syncing and importing) needs **Manage Quickbooks**.
+
+## Connect QuickBooks
+
+Open **Settings** → **QuickBooks settings** (in the **Connections** section).
+
+<Steps>
+  <Step title="Connect">
+    Under **Connect QuickBooks Online**, select **Connect to QuickBooks**. QuickBooks opens in a new tab: sign in, check you're connecting the right company, and select Connect. QuickBooks brings you back.
+  </Step>
+  <Step title="Link your taxes">
+    Under **Taxes**, check the QuickBooks tax code picked for each tax, or **Choose a tax code**. If none fits, select **Create it in QuickBooks** and choose the **Tax agency**. Once linked, a tax stays **Linked**. If **Sales tax is off in QuickBooks**, set it up in QuickBooks Online, then select **Refresh**.
+  </Step>
+  <Step title="Pick your accounts">
+    Under **Accounts**, choose the **Deposit account** payments go into (needed for refunds; without it, sales go to Undeposited Funds) and the **Expense account** for cash payouts. Then save.
+  </Step>
+</Steps>
+
+**Disconnect** stops syncing and removes your tax links and account choices.
+
+## Sync sales
+
+Open **QuickBooks** in the sidebar.
+
+- **Sync sales**: choose **From** and **To**, check **Sales to sync**, **Net amount** and **Last synced**, then select **Sync now**. Synced sales can only be removed in QuickBooks.
+- **Automatic sync**: select **Turn on** (or **Change**), turn on **Sync automatically** and choose **How often**: **Daily**, **Weekly** or **Monthly**. New sales go to QuickBooks overnight; automatic sync sends what was sold since the last sync.
+
+QuickBooks doesn't take discounts on single items, so a discounted item is sent at its price after the discount.
+
+If the page asks you to **Sign in to QuickBooks again**, select **Reconnect**. If it says **Finish setting up in Settings**, link your taxes or pick the missing account.
+
+## Import products
+
+Under **Products**, select **Import** next to **Import from QuickBooks**, pick the products and services, and import them. Items marked **In HQ** were brought in before; importing them again replaces their name, description, SKU, price and stock with QuickBooks'.
+
+## Related
+
+- [Catalog products](/taliup-hq/merchant/catalogs/products)
+- [Reports](/taliup-hq/merchant/reports)

@@ -1,0 +1,41 @@
+---
+title: "Customer display"
+sidebarTitle: "Customer display"
+description: "What the customer sees on a terminal's customer-facing screen: the order and total, tip prompts, payment confirmations and the receipt choice."
+keywords: ["customer facing screen", "second screen", "customer sees the total", "tip on customer screen", "customer chooses receipt", "customer display blank"]
+applies_to:
+  audience: merchant
+  product: pos
+---
+
+On a terminal with a customer-facing screen, Taliup POS shows the customer their order and asks them the questions that are theirs to answer. There is nothing to turn on: Taliup POS uses the customer screen automatically when the device has one.
+
+## Before you start
+
+- Taliup POS uses the screen that Android reports as the device's customer (presentation) display. Poynt terminals use their own customer display.
+- Setups where the card payment runs in **Taliup Companion** on a separate PAX terminal (for example Elys) work differently: the customer sees the Companion terminal. See [Device settings](/taliup-pos/settings/device).
+
+## What the customer sees
+
+| When | On the customer display |
+|---|---|
+| No order in progress | Your business name with the logo |
+| While you add items | The items, the number of items and the total, with the tax, tip and card fee included when they apply |
+| Tip prompt | **Add a Tip** with your tip presets, **Custom** and **No Tip**, then **Confirm**. See [Tips](/taliup-pos/register/tips) |
+| Dual pricing | **Confirm your payment type**: the **Cash** and **Card** prices, to choose from |
+| Credit card surcharge | **REVIEW & CONFIRM (CREDIT)** with the subtotal, tax, tip, **Credit Card Surcharge** and **Total To Be Charged**. **Proceed** accepts; **Prefer Debit?** / **Pay With Debit** switches to debit when it is offered |
+| After payment | **Choose customer receipt**: **No Receipt**, **Paper**, and **Email** when available. See [Customer receipt](/taliup-pos/register/customer-receipt) |
+
+While the customer chooses a receipt, your screen shows **Customer is choosing a receipt…**, with **Take over** to choose for them.
+
+## If the customer display stays blank or shows the wrong thing
+
+- Check that the customer screen is connected and turned on, then restart Taliup POS.
+- On Poynt, the customer display belongs to the Poynt terminal; restart the terminal if it stops updating.
+- Still blank: see [Troubleshooting](/taliup-pos/help/troubleshooting) or contact [support](/taliup-pos/help/support).
+
+## Related
+
+- [Take payment](/taliup-pos/register/take-payment)
+- [Tips](/taliup-pos/register/tips)
+- [Customer receipt](/taliup-pos/register/customer-receipt)

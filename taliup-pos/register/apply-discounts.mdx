@@ -1,0 +1,58 @@
+---
+title: "Apply discounts"
+sidebarTitle: "Apply discounts"
+description: "Add a preset or custom discount to the whole order from Register Order actions, and remove it from the cart."
+keywords: ["apply a discount", "discount the order", "custom discount", "percentage off", "remove a discount", "discount not showing"]
+applies_to:
+  audience: merchant
+  product: pos
+  features: [catalog, catalog_discounts]
+---
+
+Discounts in Register apply to the whole order. You can pick one or more preset discounts from your catalog, or enter a custom one.
+
+## Before you start
+
+- The **Discounts** feature must be on for your business. Without it, Taliup POS explains that the feature is not available instead of opening the sheet.
+- Discounts are added on the **Menu** or **Catalog** tab, so this device needs a catalog. They are not offered on the **Open Sale** tab, on table orders, or on the [Open Sale Only](/taliup-pos/register/open-sale-only) screen.
+- Preset discounts come from the catalog assigned to this device. Seeing them needs the **View Discounts** permission. Without it, the **Preset** list is empty and you can still add a **Custom** discount.
+- Add at least one item first. Otherwise Taliup POS shows **You must add an item first.**
+
+## Add a discount
+
+<Steps>
+  <Step title="Open Order actions">
+    In Register, tap **Order actions** (the menu icon in the app bar).
+  </Step>
+  <Step title="Choose Add Order Discounts">
+    In the **Adjust** section, tap **Add Order Discounts**. The **Add discount** sheet opens.
+  </Step>
+  <Step title="Pick presets or enter a custom discount">
+    - **Preset** — tap each discount to apply. Each row shows its value and whether it is **Pre-Tax** or **Post-Tax**. Tap a selected row again to remove it.
+    - **Custom** — choose **Percentage** or **Fixed**, choose **Pre-Tax** or **Post-Tax**, then type the value.
+  </Step>
+  <Step title="Add it">
+    The button shows how much the total changes, for example **Add −$5.00**. Tap it to apply the discount.
+  </Step>
+</Steps>
+
+A **Pre-Tax** discount reduces the amount that is taxed. A **Post-Tax** discount comes off after tax.
+
+The discount cannot bring the total below zero. If it would, Taliup POS asks you to adjust the amount.
+
+## Remove a discount
+
+Discounts appear in the [cart](/taliup-pos/register/cart) under the items, each as a **Discount** row. Tap the delete control on the row to remove it.
+
+If you remove or change an item and the discount would then be larger than the order, Taliup POS warns you that the order-level discounts will be removed too.
+
+## Other discounts on an order
+
+- **Loyalty reward** — redeeming loyalty points adds a **Loyalty reward** discount. See [Loyalty](/taliup-pos/register/loyalty).
+- **Fees** — **Add Order Fees**, in the same **Adjust** section, works the same way for fees. It needs the **Fees** feature.
+
+## Related
+
+- [Order actions](/taliup-pos/register/options)
+- [Cart](/taliup-pos/register/cart)
+- [Discounts in the catalog](/taliup-pos/catalog/discounts)

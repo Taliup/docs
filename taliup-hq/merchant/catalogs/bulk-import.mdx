@@ -2,10 +2,23 @@
 title: "Bulk Import"
 sidebarTitle: "Bulk Import"
 description: "Load a merchant's whole product list at once from the Taliup Excel template, and export the current catalog back out."
+keywords: ["bulk import products", "Excel template", "BulkUploadTemplate", "export the catalog", "import failed", "update existing products"]
 icon: "file-import"
+applies_to:
+  audience: merchant
+  product: hq
+  features: [catalog]
+  permissions:
+    guard: web
+    any: ["View Catalogs"]
 ---
 
 **Bulk Upload** loads a merchant's product list from a spreadsheet instead of adding items one at a time. Download the Taliup template, fill it in, upload it.
+
+## Before you start
+
+- The plan includes the **Catalogs** feature.
+- You need **View Catalogs** to open **Bulk Upload** and export. Importing needs **Manage Catalogs**.
 
 ## How to get here
 

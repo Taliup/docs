@@ -1,7 +1,11 @@
 ---
 title: "Register"
 sidebarTitle: "Overview"
-description: "Ring up sales in Taliup POS — Open Sale, Menu/Catalog, cart, payment, and the Options side menu."
+description: "How Register works: Open Sale keypad, Menu or Catalog items, cart, tender keys and the Order actions menu, with links to each task."
+keywords: ["ring up a sale", "register screen", "how to make a sale", "open sale or catalog", "order actions menu", "start a new sale"]
+applies_to:
+  audience: merchant
+  product: pos
 ---
 
 **Register** is where staff build an order and take payment. Open it from the Home screen.
@@ -16,29 +20,32 @@ description: "Ring up sales in Taliup POS — Open Sale, Menu/Catalog, cart, pay
 |---|---|
 | **Open Sale** | Keypad for a custom amount |
 | **Menu** / **Catalog** | Pick sellable items (label depends on industry type) |
+| Mode title | The app bar title shows **Open Sale** or **Menu** / **Catalog**. Tap it to switch |
 | **Cart** | Review line items and totals |
-| **Pay** | Start the payment flow |
-| **Options** | Side menu for bills, discounts, order actions, kitchen, and more |
+| Tender keys | **Cash**, the card key, **Split** and **More** at the bottom charge the order. See [Take payment](/taliup-pos/register/take-payment) |
+| **Order actions** | The menu icon in the app bar: bills, gift cards, discounts and fees, order tools, cash drawer and scanner. See [Order actions](/taliup-pos/register/options) |
 
-Restaurants see **Menu**; other industry types see **Catalog**. If the catalog feature is not available for the merchant, Register stays on **Open Sale** only.
+Restaurants see **Menu**; other industry types see **Catalog**. If the **Catalogs** feature is not available for the merchant, Register stays on **Open Sale** only.
+
+A device whose location is set to Open Sale Only opens a simpler sale screen instead of this Register. See [Open Sale Only](/taliup-pos/register/open-sale-only).
 
 ### Layout notes
 
-- In portrait, use the bottom navigation to switch views and open **Cart** or **Pay**.
-- In landscape, the cart often stays visible beside the keypad or item picker.
+- In portrait, a strip above the tender keys shows the item count and total. Tap it to open the cart.
+- In landscape, the cart stays visible beside the keypad or item picker, with the tender keys under it.
 - Switching between Open Sale and Menu/Catalog while the cart has items shows a warning that the cart will be cleared.
 
 ## Typical paths
 
 <Steps>
   <Step title="Open Sale (amount only)">
-    Enter an amount on the keypad → **Pay** → choose card or cash. See [Open a sale](/taliup-pos/register/open-sale) and [Take payment](/taliup-pos/register/take-payment).
+    Enter an amount on the keypad, then tap a tender key such as **Cash** or **Card**. See [Open a sale](/taliup-pos/register/open-sale) and [Take payment](/taliup-pos/register/take-payment).
   </Step>
   <Step title="Catalog / menu sale">
-    Add items → review [Cart](/taliup-pos/register/cart) → **Pay**. See [Add items](/taliup-pos/register/add-items).
+    Add items, review the [Cart](/taliup-pos/register/cart), then tap a tender key. See [Add items](/taliup-pos/register/add-items).
   </Step>
   <Step title="Table order">
-    Start from [Tables](/taliup-pos/tables), then continue in Register. Table-only tools appear under [Options](/taliup-pos/register/options) (print individual bills, complete order, move order, and more).
+    Start from [Tables](/taliup-pos/tables), then continue in Register. Table-only tools appear under [Order actions](/taliup-pos/register/options) (print individual bills, complete order, move order, and more).
   </Step>
 </Steps>
 
@@ -58,12 +65,24 @@ Restaurants see **Menu**; other industry types see **Catalog**. If the catalog f
     Edit items, guests, and totals before payment.
   </Card>
   <Card title="Take payment" href="/taliup-pos/register/take-payment">
-    Pay Full or Split Amount — card, cash, and more.
+    Charge the order with card, cash, split and more.
   </Card>
   <Card title="Customer receipt" href="/taliup-pos/register/customer-receipt">
     Choose No Receipt, Paper, or Email after payment.
   </Card>
-  <Card title="Options side menu" href="/taliup-pos/register/options">
+  <Card title="Order actions" href="/taliup-pos/register/options">
     Print bills, auth, refund, discounts, save order, kitchen, scanner.
+  </Card>
+  <Card title="Apply discounts" href="/taliup-pos/register/apply-discounts">
+    Take an amount or percentage off the order or an item.
+  </Card>
+  <Card title="Tips" href="/taliup-pos/register/tips">
+    How tip prompts work during payment.
+  </Card>
+  <Card title="Pre-authorization" href="/taliup-pos/register/pre-auth">
+    Hold an amount on a card and capture it later.
+  </Card>
+  <Card title="Cash payouts" href="/taliup-pos/register/cash-payouts">
+    Record cash taken out of the drawer.
   </Card>
 </CardGroup>

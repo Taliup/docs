@@ -1,0 +1,60 @@
+---
+title: "Travailler hors ligne"
+sidebarTitle: "Travailler hors ligne"
+description: "Ce qui fonctionne encore dans Taliup POS sans connexion Internet, la connexion hors ligne et l'envoi des ventes à Taliup HQ au retour du réseau."
+keywords: ["pas de connexion Internet", "connexion hors ligne", "ventes non synchronisées", "synchronisation Taliup HQ", "synchroniser maintenant", "mode hors ligne"]
+---
+
+Taliup POS permet de poursuivre une partie du travail quand l'appareil perd sa connexion Internet. Les ventes et commandes enregistrées sur l'appareil sont envoyées à Taliup HQ au retour de la connexion.
+
+## Se connecter hors ligne
+
+Vous pouvez vous connecter sans connexion si cet appareil a déjà réussi au moins une connexion en ligne. Cette connexion enregistre sur l'appareil les employés de l'entreprise et leurs NIP; chacun peut donc se connecter hors ligne.
+
+Si personne ne s'est jamais connecté en ligne sur l'appareil, vous voyez **Ce terminal n'a pas encore été en ligne; il ne peut pas vérifier votre code. Connectez-vous à un réseau pour ouvrir une session.**
+
+Certaines fonctionnalités ont besoin de la session d'une connexion en ligne. Si l'une d'elles vous demande de vous connecter en ligne, reconnectez l'appareil, puis connectez-vous de nouveau.
+
+## Ce qui nécessite une connexion
+
+Ces tâches exigent que l'appareil joigne Taliup HQ :
+
+| Tâche | Comportement hors ligne |
+|---|---|
+| Pointer ou dépointer | **Le pointage d'entrée et de sortie nécessite une connexion réseau.** Voir [Pointer et dépointer](/fr-CA/taliup-pos/clock-in-out). |
+| Cartes-cadeaux | Vendre, recharger, vérifier ou payer avec des cartes-cadeaux n'est pas possible. |
+| Tables et plans de salle | Les tables ne peuvent pas être chargées. Les modifications de disposition en cours sont conservées jusqu'à ce que vous puissiez enregistrer. |
+| Articles du catalogue à la Caisse | Les articles sont chargés depuis Taliup HQ. Si **Impossible de charger les produits du catalogue.** s'affiche, touchez **Réessayer** au retour de la connexion. |
+| Catalogue ou Menu, Calendrier, Clientèle, Lien Pour Payer, Analytique, Transactions | Ces sections chargent leurs données depuis Taliup HQ. |
+| Assistant IA | Affiche un avis hors ligne et ne peut pas envoyer de questions. |
+
+## Ventes faites hors ligne
+
+Les ventes conclues et les commandes ouvertes ou annulées enregistrées sur l'appareil pendant que Taliup HQ était injoignable restent sur l'appareil. Taliup POS les envoie automatiquement au retour de la connexion.
+
+Pour les vérifier ou les envoyer vous-même :
+
+<Steps>
+  <Step title="Ouvrir Synchronisation Taliup HQ">
+    Allez à l'Accueil → **Paramètres** → **Outils** → **Synchronisation Taliup HQ**.
+  </Step>
+  <Step title="Voir ce qui attend">
+    L'écran liste les **Ventes conclues** et les **Commandes ouvertes et annulées** encore sur l'appareil. **Tout ce qui est sur cette caisse a été reçu par Taliup HQ.** signifie que rien n'attend.
+  </Step>
+  <Step title="Synchroniser maintenant">
+    Touchez **Synchroniser maintenant**. Ce qui ne peut pas être envoyé reste sur l'appareil et sera renvoyé automatiquement.
+  </Step>
+</Steps>
+
+<Warning>
+  N'utilisez pas **Effacer les données** pendant que des ventes attendent d'être synchronisées. Taliup POS vous avertit si quelque chose attend encore.
+</Warning>
+
+## Appareils WEB-SRM
+
+Sur les appareils qui facturent avec le WEB-SRM au Québec, une bannière rouge **Mode hors ligne** s'affiche et la plupart des tuiles de l'Accueil sont grisées hors ligne. Voir [Travailler hors ligne avec le WEB-SRM](/fr-CA/taliup-pos/web-srm/offline).
+
+## Voir aussi
+
+- [Se connecter et se déconnecter](/fr-CA/taliup-pos/sign-in-and-out)
+- [Dépannage](/fr-CA/taliup-pos/help/troubleshooting)

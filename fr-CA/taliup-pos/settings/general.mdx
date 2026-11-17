@@ -1,110 +1,112 @@
 ---
 title: "Paramètres généraux"
 sidebarTitle: "Général"
-description: "Indicateur de pourboires, comportement des reçus, favoris passés, vue Caisse par défaut, saisie des articles pesés, catalogue assigné, synchronisation Taliup HQ, imprimantes et effacement des données."
+description: "Préférences de reçu, taxes de la vente libre, impression en cuisine, catalogue assigné, écrans par défaut, articles pesés, synchronisation et effacement."
+keywords: ["ignorer la copie du commerçant", "imprimer automatiquement le reçu client", "taxes de la vente libre", "écran par défaut après la connexion", "vue du registre par défaut", "catalogue assigné", "synchronisation Taliup HQ", "effacer les données"]
 ---
 
-**Général** contrôle le comportement quotidien de l'appareil pour les reçus, les défauts de Caisse, les favoris passés et le matériel lié.
+Les sections générales de Paramètres — **Préférences**, **Caisse** et **Outils** — contrôlent les reçus, les valeurs par défaut de Caisse et l'entretien de ce terminal. Pour trouver une section en portrait ou en paysage, voir [Paramètres](/fr-CA/taliup-pos/settings).
 
 <Frame caption="Paramètres généraux avec Articles pesés réglé sur Saisir le poids.">
   ![Paramètres généraux montrant l'écran après connexion, la vue Caisse par défaut et Articles pesés réglé sur Saisir le poids](/images/taliup-pos/settings/general.png)
 </Frame>
 
-## Comment y arriver
+Sauf indication contraire, un réglage s'applique seulement à ce terminal.
 
-Accueil → **Paramètres** → **Général**.
+## Préférences
 
-## Bascules de reçu et de cuisine
+Accueil → **Paramètres** → **Préférences**.
 
 | Contrôle | Ce qu'il fait |
 |---|---|
-| **Tips** | Indique si les pourboires sont activés pour le marchand (affichage seulement — configurer dans Taliup HQ) |
-| **Ignorer le reçu de copie du commerçant** | Ignore l'impression de la copie marchand |
-| **Imprimer automatiquement le reçu client** | Imprime la copie client après le paiement et ignore **Choisir le reçu client**. Masqué sur les appareils WEB-SRM. |
-| **Ignorer les invitations de reçu entièrement payé** | Ignore **Invité entièrement payé** et **Choisir le reçu client de la commande complète**. N'ignore pas **Choisir le reçu client** après chaque paiement. Masqué sur les appareils WEB-SRM. |
-| **Envoyer la commande à l'imprimante externe après paiement** | Envoie les tickets cuisine après le paiement lorsqu'une imprimante de cuisine est configurée. Lorsque c'est activé, Taliup POS ne demande pas. |
-| **Imprimer l'inscription aux récompenses** | Ajoute un code d'inscription à la fidélité sur le reçu de vente lorsque le client n'est pas membre. Affiché lorsque la fidélité est active. Voir [Fidélité](/fr-CA/taliup-pos/register/loyalty). |
+| **Pourboires** | Indique si les pourboires sont activés pour l'entreprise. Affichage seulement — les pourboires se configurent dans Taliup HQ. Voir [Pourboires](/fr-CA/taliup-hq/onboarding/tips). |
+| **Ignorer le reçu de copie du commerçant** | N'imprime pas la copie du commerçant. |
+| **Afficher les favoris passés** | Après le choix d'un client, affiche les articles commandés au cours des 3 derniers mois. Associer des clients exige la fonction **Clients**. Voir [Associer depuis Caisse](/fr-CA/taliup-pos/clients/attach-from-register). |
+| **Imprimer l'inscription aux récompenses** | Ajoute un code d'inscription à la fidélité sur le reçu de vente lorsque le client n'est pas membre. Affiché lorsque la fidélité est active à cet emplacement. Voir [Fidélité](/fr-CA/taliup-pos/register/loyalty). |
+| **Imprimer automatiquement le reçu client** | Imprime la copie client après le paiement et ignore **Choisir le reçu client**. Absent sur les terminaux WEB-SRM. |
+| **Ignorer les invitations de reçu entièrement payé** | Ignore **Invité entièrement payé** et **Choisir le reçu client de la commande complète**. N'ignore pas **Choisir le reçu client** après chaque paiement. Absent sur les terminaux WEB-SRM. |
 
-La configuration des pourboires se fait dans Taliup HQ — voir [Pourboires](/fr-CA/taliup-hq/onboarding/tips).
+Lorsque **Afficher les favoris passés** est activé :
+
+| Quand | Ce qui se passe |
+|---|---|
+| Vous associez un client depuis Caisse | **Favoris passés** s'ouvre pour régler les quantités et ajouter ces articles avant de continuer |
+| Un client est déjà sur la commande | **Client associé** inclut **Favoris passés** pour rouvrir cette liste |
 
 Après le paiement, le personnel ou le client choisit **Aucun reçu**, **Papier** ou **Courriel**. Voir [Reçu client](/fr-CA/taliup-pos/register/customer-receipt).
 
-## Catalogue / menu assigné
+## Caisse
 
-Sous **Catalogue assigné**, choisissez le catalogue/menu que cet appareil utilise (liste **Catalogue**). S'il n'y en a aucun, vous verrez **Aucun catalogue disponible.** Utilisez **Retry** si le chargement échoue.
+Accueil → **Paramètres** → **Caisse**.
 
-## Vue Caisse par défaut
+### Taxes de la vente libre
 
-Lorsque la vente catalogue est disponible, **Vue du registre par défaut** vous permet de choisir :
+**Taxes de la vente libre** choisit les taxes appliquées aux montants de vente ouverte. Ce réglage est partagé par tous les terminaux de l'entreprise. Il est absent sur les terminaux WEB-SRM.
 
-- **Vente ouverte**
-- **Catalogue** ou **Menu** (libellé restaurant)
+1. Activez **Appliquer les taxes à la vente libre**.
+2. Activez chaque taxe à appliquer.
 
-Cela contrôle la vue que Caisse ouvre en premier. Voir [Ouvrir une vente](/fr-CA/taliup-pos/register/open-sale).
+Modifier les taxes exige la permission **Update Taxes**. Si l'entreprise n'a aucune taxe, Taliup POS affiche **Cette entreprise n'a pas encore de taxes. Ajoutez-en une dans Taliup HQ, puis choisissez-la ici.** Voir [Ouvrir une vente](/fr-CA/taliup-pos/register/open-sale).
 
-## Écran par défaut après la connexion
+### Impression en cuisine après paiement
 
-**Écran par défaut après la connexion** choisit **Accueil** ou **Caisse** après la saisie du code. Les nouveaux terminaux ouvrent **Accueil**. Les marchands vente ouverte seulement arrivent toujours en Caisse et ne voient pas ce réglage.
+**Envoyer la commande à l'imprimante externe après paiement** envoie le ticket de cuisine après le paiement sans demander. Il ne peut être activé que lorsqu'une imprimante de cuisine est configurée dans **Paramètres de l'imprimante**; d'ici là, il affiche **Ajoutez une imprimante de cuisine dans les paramètres d'imprimante pour activer cette option.** Il ne peut pas être activé dans une entreprise en vente ouverte seulement. Voir [Imprimantes](/fr-CA/taliup-pos/settings/printers).
 
-C'est différent de **Vue du registre par défaut**, qui s'applique seulement une fois Caisse déjà ouverte.
+### Catalogue assigné
 
-## Afficher les favoris passés
+**Catalogue assigné** choisit le catalogue ou le menu que ce terminal utilise pour vendre. Choisissez-le dans la liste. S'il n'y en a aucun, Taliup POS affiche **Aucun catalogue disponible.** Touchez **Réessayer** si le chargement échoue.
 
-Lorsque la fonction **Clients** est disponible, **Afficher les favoris passés** contrôle si Taliup POS propose les articles qu'un client a commandés au cours des 3 derniers mois.
+### Écran par défaut après la connexion
 
-| Lorsque c'est activé | Ce qui se passe |
-|---|---|
-| Vous associez un client depuis Caisse | Après le choix du client, **Favoris passés** s'ouvre pour régler les quantités et ajouter ces articles avant de continuer |
-| Un client est déjà sur la commande | **Client associé** inclut **Favoris passés** pour rouvrir cette liste |
+**Écran par défaut après la connexion** ouvre **Accueil** ou **Caisse** après la connexion d'un employé. Les nouveaux terminaux ouvrent **Accueil**. Absent dans une entreprise en vente ouverte seulement, qui ouvre toujours l'écran de vente ouverte.
 
-Lorsque le réglage est désactivé, associer un client l'attache seulement à la commande. Voir [Associer depuis Caisse](/fr-CA/taliup-pos/clients/attach-from-register).
+### Vue du registre par défaut
 
-## Articles pesés
+**Vue du registre par défaut** choisit si Caisse s'ouvre sur **Vente ouverte** ou sur **Catalogue** (**Menu** pour les restaurants). Ce choix n'apparaît que lorsque ce terminal a un catalogue assigné et que l'entreprise a la vente par catalogue; sinon, Caisse s'ouvre toujours sur **Vente ouverte**. Voir [Ouvrir une vente](/fr-CA/taliup-pos/register/open-sale).
 
-Lorsque ce terminal a un catalogue, **Articles pesés** choisit comment les caissiers ajoutent les articles vendus au poids :
+**Écran par défaut après la connexion** décide où vous arrivez après la connexion; **Vue du registre par défaut** décide ce que Caisse affiche une fois ouverte.
 
-- **Saisir le poids** (défaut) — touchez l'article, entrez le poids, et Caisse calcule le prix catalogue × le poids.
-- **Étiquettes** — scannez l'autocollant. Toucher l'article n'ajoute pas la quantité 1.
+### Articles pesés
 
-Ce réglage reste sur ce terminal. Voir [Codes-barres de balance](/fr-CA/taliup-pos/register/scale-barcodes) et [Articles de balance](/fr-CA/taliup-hq/features/scale-items) pour la configuration du produit dans Taliup HQ.
+Affiché lorsque ce terminal a un catalogue assigné. **Articles pesés** choisit comment les caissiers ajoutent les articles vendus au poids :
 
-## Raccourcis imprimante et appareil
+- **Saisir le poids** (défaut) — touchez l'article, entrez le poids, et Caisse facture le prix catalogue par unité × le poids.
+- **Étiquettes** — scannez l'autocollant de la balance. Toucher l'article n'ajoute pas une quantité de 1.
 
-| Bouton | Ouvre |
-|---|---|
-| **Paramètres de l'imprimante** | [Imprimantes](/fr-CA/taliup-pos/settings/printers) |
-| **Paramètres de l'appareil** | [Appareil](/fr-CA/taliup-pos/settings/device) — seulement lorsque cette configuration de paiement prend en charge les paramètres d'appareil |
+Voir [Codes-barres de balance](/fr-CA/taliup-pos/register/scale-barcodes) et, pour la configuration des produits, [Articles de balance](/fr-CA/taliup-hq/features/scale-items).
 
 ## Synchronisation Taliup HQ
 
-**Taliup HQ sync** liste les ventes et commandes stockées sur cette caisse pendant que Taliup HQ était injoignable. Elles sont envoyées automatiquement lorsque la connexion revient. **Sync now** les envoie tout de suite.
+Accueil → **Paramètres** → **Outils** → **Synchronisation Taliup HQ**.
 
-Accueil → **Paramètres** → **Outils** → **Taliup HQ sync**.
+**Synchronisation Taliup HQ** liste les ventes et commandes enregistrées sur cette caisse pendant que Taliup HQ était injoignable. Elles sont envoyées automatiquement au retour de la connexion. **Synchroniser maintenant** les envoie tout de suite.
 
-<Frame caption="Taliup HQ sync lorsque rien n'attend sur cette caisse.">
-  ![Taliup HQ sync montrant les ventes terminées, les commandes ouvertes ou annulées, et Sync now](/images/taliup-pos/settings/hq-sync.png)
+<Frame caption="Synchronisation Taliup HQ lorsque rien n'attend sur cette caisse.">
+  ![Synchronisation Taliup HQ montrant les ventes conclues, les commandes ouvertes et annulées, et Synchroniser maintenant](/images/taliup-pos/settings/hq-sync.png)
 </Frame>
 
 | Ligne | Ce qu'elle compte |
 |---|---|
-| **Completed sales** | Ventes payées qui n'ont pas atteint Taliup HQ |
-| **Open and cancelled orders** | Commandes ouvertes ou annulées encore en attente de téléversement |
-| **WEB-SRM records** | Dossiers fiscaux en file pour HQ, affichés seulement pour les marchands WEB-SRM |
+| **Ventes conclues** | Ventes payées qui n'ont pas atteint Taliup HQ |
+| **Commandes ouvertes et annulées** | Commandes ouvertes ou annulées encore en attente d'envoi |
+| **Enregistrements WEB-SRM** | Enregistrements fiscaux en attente pour Taliup HQ, sur les terminaux WEB-SRM seulement |
 
-Lorsque rien n'attend, Taliup POS indique que tout sur cette caisse a atteint Taliup HQ.
+Lorsque rien n'attend, Taliup POS affiche **Tout ce qui est sur cette caisse a été reçu par Taliup HQ.** Les enregistrements qui ne peuvent pas être envoyés restent sur la caisse et sont renvoyés automatiquement. L'écran WEB-SRM **Synchronisation en attente** mène aussi ici. Voir [Travailler hors ligne](/fr-CA/taliup-pos/offline).
 
-Si certains dossiers ne peuvent pas être envoyés, ils restent sur la caisse et sont réessayés automatiquement.
+## Effacer les données
 
-L'écran **Pending sync** de MEV pointe aussi ici.
+Accueil → **Paramètres** → **Outils** → **Effacer les données**.
 
-## Effacer les données de l'application
+L'effacement supprime les données locales de l'application sur ce terminal après confirmation. L'application se ferme; rouvrez-la et reconnectez-vous. Utilisez-le seulement lorsque le soutien vous le demande.
 
-**Effacer les données** efface les données locales de l'application sur cet appareil après confirmation. Utilisez seulement lorsque le soutien vous le demande — vous devrez vous reconnecter.
-
-Si des transactions terminées n'ont pas encore été envoyées à Taliup HQ, une fiche **Transactions not yet sent to Taliup HQ** les liste par type et pointe vers **Taliup HQ sync**. **Clear application data anyway** reste désactivé jusqu'à ce que vous confirmiez que ces ventes seront supprimées de cet appareil et n'apparaîtront pas dans Taliup HQ.
-
-L'effacement n'est pas bloqué. Synchronisez d'abord, sauf si le soutien vous demande d'effacer quand même.
+Si des transactions conclues n'ont pas encore atteint Taliup HQ, la fiche **Transactions pas encore envoyées à Taliup HQ** les liste et propose **Aller à Synchronisation Taliup HQ**. **Effacer les données quand même** reste désactivé jusqu'à ce que vous confirmiez que ces transactions seront supprimées de cette caisse et n'apparaîtront pas dans Taliup HQ. Synchronisez d'abord, sauf avis contraire du soutien.
 
 ## Quitter le mode démo
 
-Si l'appareil est dans une session démo, **Exit Demo Mode** apparaît pour quitter le mode démo.
+Pendant une session démo, **Quitter le mode démo** apparaît sous **Outils**. Touchez-le pour quitter le mode démo.
+
+## Voir aussi
+
+- [Paramètres](/fr-CA/taliup-pos/settings)
+- [Imprimantes](/fr-CA/taliup-pos/settings/printers)
+- [Paramètres de l'appareil](/fr-CA/taliup-pos/settings/device)

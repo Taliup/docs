@@ -1,0 +1,61 @@
+---
+title: "Terminal virtuel"
+sidebarTitle: "Terminal virtuel"
+description: "Prendre un paiement par carte, en espèces ou autre depuis Taliup HQ avec le terminal virtuel, puis consulter, annoter ou rembourser ces paiements."
+keywords: ["prendre un paiement dans HQ", "débiter une carte depuis HQ", "remboursement terminal virtuel", "vente rapide", "vente détaillée au terminal virtuel", "envoyer un reçu de paiement"]
+---
+
+Le **Terminal virtuel** prend des paiements par carte, en espèces ou autres depuis Taliup HQ, et liste les paiements qui y ont été pris.
+
+## Avant de commencer
+
+- Votre entreprise a besoin de la fonctionnalité **Virtual Terminal**. Votre partenaire la configure pour chaque emplacement; voir [Configuration du terminal virtuel](/fr-CA/taliup-hq/onboarding/virtual-terminal).
+- Votre compte Taliup HQ a besoin de **View Virtual Terminal** pour voir les paiements, de **Take Virtual Terminal Payments** pour prendre des paiements, ajouter des notes et envoyer des reçus, et de **Refund Virtual Terminal Payments** pour rembourser.
+- Les ventes détaillées exigent la fonctionnalité **Itemized Sale**. Ajouter un client exige la fonctionnalité **Clients**.
+
+## Comment y accéder
+
+Dans Taliup HQ, ouvrez **Terminal virtuel** dans la barre latérale.
+
+## Prendre un paiement
+
+<Steps>
+  <Step title="Commencer le paiement">
+    Sélectionnez **Nouveau paiement** et choisissez l'emplacement.
+  </Step>
+  <Step title="Saisir ce qui est payé">
+    **Vente rapide** : saisissez le montant à débiter, et utilisez **Ajouter une taxe**, **Ajouter un rabais** ou **Ajouter des frais** au besoin. **Vente détaillée** : cherchez des produits, ou ajoutez un **Article personnalisé**.
+  </Step>
+  <Step title="Choisir le mode de paiement">
+    **Carte** débite une carte. Un paiement par carte nécessite un client : utilisez **Ajouter un client** pour en choisir ou en créer un. Selon votre processeur, vous saisissez la carte sur la page ou dans la fenêtre sécurisée du processeur. À la question **Comment paie-t-il?**, choisissez **Carte de crédit** ou **Carte de débit**. **Espèces** et **Autre** enregistrent seulement un paiement pris autrement; rien n'est débité.
+  </Step>
+  <Step title="Terminer">
+    Envoyez au besoin un reçu au client et ajoutez des notes, puis prenez le paiement.
+  </Step>
+</Steps>
+
+## Consulter les paiements
+
+La page affiche **Paiements**, **Encaissé**, **Remboursé** et **Net** pour la période. Utilisez **Rechercher paiements ou clients** et le filtre d'emplacement, puis sélectionnez un paiement pour ouvrir **Détails du paiement** : le montant, le mode, les articles, le client, l'état du reçu et l'**Historique**. De là, vous pouvez **Ajouter une note**, **Envoyer le reçu** ou ajouter un client.
+
+## Rembourser un paiement
+
+<Steps>
+  <Step title="Ouvrir le remboursement">
+    Dans **Détails du paiement**, sélectionnez **Rembourser**.
+  </Step>
+  <Step title="Choisir ce qui est remboursé">
+    **Remboursement complet**, ou **Par article** pour choisir les articles et les frais. Saisissez le **Montant à rembourser** au besoin; la page indique combien peut encore être remboursé.
+  </Step>
+  <Step title="Donner une raison">
+    Choisissez une **Raison** (ou **Autre** et saisissez-la), puis confirmez le remboursement.
+  </Step>
+</Steps>
+
+Les paiements pris dans Taliup POS se remboursent plutôt depuis l'appareil. Voir [Rembourser un paiement](/fr-CA/taliup-pos/transactions/refund).
+
+## Connexe
+
+- [Transactions dans Taliup HQ](/fr-CA/taliup-hq/merchant/transactions)
+- [Clients](/fr-CA/taliup-hq/features/clients)
+- [Permissions de l'entité](/fr-CA/taliup-hq/manage/permissions)

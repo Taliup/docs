@@ -1,25 +1,25 @@
 ---
 title: "Analytique"
 sidebarTitle: "Aperçu"
-description: "Consulter les ventes, les pourboires, les articles populaires, les modes de paiement et un résumé des ventes dans Taliup POS, et partager le sommaire en PDF."
+description: "Voir les ventes nettes, les pourboires, les articles populaires et les ventes par employé de cet emplacement, et partager le sommaire en PDF."
+keywords: ["ventes du jour", "voir l'analytique", "articles les plus vendus", "ventes par employé", "rapport des pourboires", "partager le sommaire des ventes", "modes de paiement"]
 ---
 
-**Analytique** affiche la performance des ventes pour ce marchand et permet de partager le sommaire en PDF.
+**Analytique** affiche la performance des ventes de l'emplacement auquel cet appareil appartient et permet de partager le sommaire en PDF.
 
 <Frame caption="Analytique dans Taliup POS.">
   ![Analytique dans Taliup POS](/images/taliup-pos/analytics/overview.png)
 </Frame>
 
+## Avant de commencer
+
+- La fonction **Reports** (Rapports) doit être activée pour l'entreprise dans Taliup HQ. Sinon, Taliup POS affiche un message d'accès à la fonction.
+- Votre rôle doit avoir la permission **View Analytics**. Sinon, vous voyez *Vous n’avez pas la permission d’accéder à Analytique.*
+- Analytique se charge depuis Taliup HQ : l'appareil doit être en ligne.
+
 ## Comment y arriver
 
 Depuis Accueil, appuyez sur **Analytique**.
-
-### Exigences d'accès
-
-Deux vérifications s'appliquent :
-
-1. **Permission de rôle** — exige view-analytics. Refus : **Permission denied** — *You do not have permission to access Analytics.*
-2. **Droit de fonction** — la fonction Rapports / analytique doit être activée sur le compte. Sinon, un message d'accès pointe vers Taliup HQ / Marketplace.
 
 ## Période
 
@@ -41,7 +41,7 @@ Les pourboires comptent sauf si la vente a été annulée ou remboursée au comp
 
 **Ventes par employé** attribue chaque vente et son pourboire à l'employé [Aidé par](/fr-CA/taliup-pos/register/helped-by) de la vente. Sans lui, les ventes vont au caissier et les pourboires à l'employé qui a pris le paiement.
 
-Il n'y a pas de filtre d'emplacement sur cet écran.
+Les chiffres couvrent l'emplacement auquel cet appareil est assigné (toute l'entreprise si l'appareil n'a pas d'emplacement). Il n'y a pas de filtre d'emplacement sur cet écran.
 
 ## Partager le sommaire
 
@@ -59,6 +59,6 @@ Il n'y a pas de filtre d'emplacement sur cet écran.
 
 | Situation | À vérifier |
 |---|---|
-| Permission refusée | Mettre à jour le rôle du personnel dans Taliup HQ |
-| Message d'accès à la fonction | Activer Rapports/analytique pour le plan du marchand |
-| **Something went wrong** | Réessayer; vérifier le réseau; communiquer avec le soutien si ça persiste |
+| Permission refusée | Demander à un gestionnaire d’ajouter **View Analytics** à votre rôle dans Taliup HQ |
+| Message d'accès à la fonction | La fonction **Reports** n'est pas activée pour l'entreprise — voir [Obtenir de l'aide](/fr-CA/taliup-pos/help/support) |
+| **Quelque chose s'est mal passé** | Réessayer; vérifier le réseau; [obtenir de l'aide](/fr-CA/taliup-pos/help/support) si ça persiste |

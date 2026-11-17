@@ -1,14 +1,26 @@
 ---
 title: "Fees"
 sidebarTitle: "Fees"
-description: "Create order-level or item-level fees for the catalog."
+description: "Create, edit and delete the fees staff can add in Register, as a percentage or fixed amount, on the order or on items."
+keywords: ["create a fee", "service charge", "percentage fee", "item level fee", "edit a fee", "delete a fee"]
+applies_to:
+  audience: merchant
+  product: pos
+  features: [catalog, catalog_fees]
+  permissions:
+    guard: appUser
+    any: ["View Fees"]
 ---
 
-Use **Fees** to define fees staff can apply during a sale. Access requires the catalog fees feature.
+Use **Fees** to define fees staff can apply during a sale.
 
 <Frame caption="Fees list with Name, Value, Applied To.">
   ![Fees list with Name, Value, Applied To](/images/taliup-pos/catalog/fees.png)
 </Frame>
+
+## Before you start
+
+Requires the **Catalogs** and **Fees** features and the **View Fees** permission. Creating or editing needs **Manage Fees**, and deleting needs **Delete Fees**.
 
 ## How to get here
 

@@ -1,10 +1,17 @@
 ---
 title: "Refund a transaction"
 sidebarTitle: "Refund"
-description: "Issue a full refund or partial return from Transaction Details using Return."
+description: "Refund a payment in full, by amount, or by items from Transaction Details with Refund or Return, and complete any terminal prompts."
+keywords: ["refund a sale", "refund a card payment", "partial refund", "return items", "money back to customer", "refund to original card"]
+applies_to:
+  audience: merchant
+  product: pos
+  permissions:
+    guard: appUser
+    any: ["Manage Transactions"]
 ---
 
-In Transaction Details, refunds start with **Return**. You can refund the full amount, a custom amount, or selected items — depending on the original sale.
+In Transaction Details, a refund starts with **Refund** for a card payment, or **Return** for a cash or Other payment. You can refund the full amount, a custom amount, or selected items — depending on the original sale.
 
 <Frame caption="Refund. Amount lets you enter any amount up to the remaining total. Full refund sends the whole amount back to the original tender.">
   ![Refund screen asking How do you want to refund, with Amount and Full refund tiles](/images/taliup-pos/transactions/refund-options.png)
@@ -12,11 +19,11 @@ In Transaction Details, refunds start with **Return**. You can refund the full a
 
 ## Before you start
 
-- You need permission to manage transactions.
-- **Return** appears when the payment is eligible (for example settled/captured with a remaining refundable amount, or already partially refunded).
+- Your role needs the **Manage Transactions** permission.
+- **Refund** / **Return** appears when the payment is eligible (for example settled/captured with a remaining refundable amount, or already partially refunded).
 - Partial options are hidden for table orders — use **Full refund** in that case.
 - On a [WEB-SRM](/taliup-pos/web-srm) device, **Amount** is replaced by **Items** so the fiscal credit note can list the returned lines.
-- If **Return** is missing, the payment may already be fully refunded/voided, or your role cannot manage transactions.
+- If the button is missing, the payment may already be fully refunded/voided, or your role cannot manage transactions.
 
 ## Start a return
 
@@ -24,8 +31,8 @@ In Transaction Details, refunds start with **Return**. You can refund the full a
   <Step title="Open the payment">
     Go to Home → **Transactions** and open the sale.
   </Step>
-  <Step title="Tap Return">
-    Tap **Return**.
+  <Step title="Tap Refund or Return">
+    Tap **Refund** (card) or **Return** (cash or Other).
   </Step>
   <Step title="Choose how to refund">
     On **How do you want to refund?**, choose one of the paths below.
@@ -90,7 +97,7 @@ Shown on WEB-SRM when the linked order has line items (and is not a table order)
 |---|---|
 | Only **Full refund** is available | Table orders do not offer **Amount** or **Items** |
 | **Next** disabled on amount entry | Amount must be &gt; 0 and ≤ remaining refundable amount |
-| No **Return** button | Not eligible, already fully returned, or missing manage-transactions permission |
+| No **Refund** or **Return** button | Not eligible, already fully returned, or missing manage-transactions permission |
 | Permission message | Ask a manager or update the role in Taliup HQ |
 
 ## Related

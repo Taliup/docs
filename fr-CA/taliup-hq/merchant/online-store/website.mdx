@@ -1,0 +1,60 @@
+---
+title: "Site Web"
+sidebarTitle: "Site Web"
+description: "Configurer le site de votre boutique en ligne dans Taliup HQ : emplacement de paiement, catalogue, adresse Web, images, couleurs, recherche et domaine."
+keywords: ["configurer ma boutique en ligne", "choisir le menu en ligne", "changer l'adresse du site", "connecter mon propre domaine", "bannière du site", "description pour google"]
+---
+
+**Site Web** configure le site sur lequel vos clients commandent. Ouvrez **Site web** dans le groupe **Boutique en ligne** de la barre latérale, puis choisissez **Voir le site** pour l'afficher.
+
+## Avant de commencer
+
+- Votre entreprise a besoin de la fonctionnalité **Ecommerce**.
+- Les paiements par carte en ligne passent par le compte de paiement en ligne d'un emplacement. Si aucun emplacement n'en a, **Emplacement de paiement** l'indique; demandez à votre ISO ou partenaire, ou [contactez le soutien](/fr-CA/taliup-pos/help/support).
+
+Les onglets dépendent de votre secteur : les restaurants voient **Boutique**, **Apparence** et **Recherche**; les commerces de détail voient **Boutique**, **Adresse Web**, **Marque**, **Style**, **Recherche** et **Annonces promotionnelles**.
+
+## Boutique
+
+| Paramètre | Ce qu'il fait |
+|---|---|
+| **Emplacement de paiement** | Les paiements en ligne vont au compte de paiement de cet emplacement. |
+| **Menu** ou **Catalogue** | Les articles affichés sur le site. |
+| **Adresse Web** | Votre adresse Taliup gratuite. Lettres, chiffres et traits d'union seulement. |
+| **Modèle** | L'apparence du site. |
+| **Courriel de contact** | Affiché sur le site pour les clients. |
+| **ID Google Tag Manager** | Facultatif, pour suivre les visites avec Google. |
+| **À propos de votre entreprise** | Affiché dans la section À propos du site. |
+
+## Apparence, marque et style
+
+- Restaurants : dans **Apparence**, téléversez le **Logo**, la **Bannière**, l'**Image promotionnelle** et l'**Image À propos** (enregistrés dès le téléversement), rédigez le **Texte de la bannière et de la promotion** et choisissez les **Couleurs**.
+- Commerces de détail : **Marque** contient vos images et les sections **À propos**, **Style** la police et les couleurs, et **Réseaux sociaux** les liens du bas de page.
+
+## Recherche
+
+Dans **Recherche**, rédigez la **Description** et les **Mots-clés** qui déterminent comment votre site apparaît dans Google et les autres résultats de recherche.
+
+## Utiliser votre propre domaine (commerce de détail)
+
+Dans **Adresse Web**, activez **Utiliser mon propre domaine**, puis :
+
+<Steps>
+  <Step title="Entrez votre domaine et enregistrez">
+    Un sous-domaine comme `shop.yourstore.com` est le plus simple à configurer. Un domaine racine exige un fournisseur DNS qui prend en charge les enregistrements ANAME ou ALIAS.
+  </Step>
+  <Step title="Ajoutez deux enregistrements DNS">
+    Ajoutez chez votre fournisseur de domaine les deux enregistrements affichés pour prouver que le domaine vous appartient.
+  </Step>
+  <Step title="Ajoutez-en un autre pour le HTTPS">
+    Une fois le domaine vérifié, ajoutez le dernier enregistrement pour activer le certificat sécurisé.
+  </Step>
+</Steps>
+
+La page affiche l'avancement **Vérification du domaine**, **Site sécurisé (HTTPS)** et **Site Web**, et vérifie de nouveau toutes les 30 secondes. Les changements DNS peuvent prendre quelques heures.
+
+## Voir aussi
+
+- [Paramètres de la boutique en ligne](/fr-CA/taliup-hq/merchant/online-store/settings)
+- [Promouvoir votre boutique en ligne](/fr-CA/taliup-hq/merchant/online-store/promotions)
+- [Commandes en ligne](/fr-CA/taliup-hq/merchant/online-store/orders)

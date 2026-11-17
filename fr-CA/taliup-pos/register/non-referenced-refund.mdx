@@ -1,0 +1,42 @@
+---
+title: "Rembourser sans vente"
+sidebarTitle: "Rembourser sans vente"
+description: "Remboursez un montant sur une carte avec Créer un remboursement quand aucune vente d'origine ne peut être remboursée depuis Transactions."
+keywords: ["remboursement sans reçu", "remboursement non référencé", "créer un remboursement", "mode remboursement", "rembourser un montant sur une carte", "remboursement autonome"]
+---
+
+**Créer un remboursement** met la caisse en mode Remboursement pour rembourser un montant saisi sur une carte, sans vente d'origine. Si la vente d'origine est dans Transactions, remboursez-la plutôt depuis là; consultez [Rembourser une transaction](/fr-CA/taliup-pos/transactions/refund).
+
+## Avant de commencer
+
+- Votre rôle doit avoir la permission **Non-Ref Refunds**. Sans elle, **Créer un remboursement** est grisé et le toucher affiche **Vous n’avez pas la permission d’effectuer des remboursements. Veuillez contacter votre gestionnaire.**
+- Le mode Remboursement rembourse sur une carte seulement. Les touches dépendent de votre configuration de paiement.
+- Sur une caisse WEB-SRM (Revenu Québec), le remboursement produit une note de crédit.
+
+## Rembourser un montant
+
+<Steps>
+  <Step title="Ouvrir Créer un remboursement">
+    Dans Caisse, allez dans l'onglet **Vente ouverte**, touchez **Actions de commande** (l'icône de menu), puis **Créer un remboursement** dans la section **Facture**. Sur l'écran [Vente ouverte seulement](/fr-CA/taliup-pos/register/open-sale-only), touchez **Options** → **Créer un remboursement**.
+  </Step>
+  <Step title="Entrer en mode Remboursement">
+    Dans **Passer en mode Remboursement**, touchez **Entrer en mode Remboursement**. Le panier et tout montant saisi sont effacés. Une bannière **Remboursement** indique que vous êtes en mode Remboursement.
+  </Step>
+  <Step title="Saisir le montant">
+    Tapez le montant avant taxes sur le clavier. Les taxes choisies avec l'interrupteur **Taxe** s'ajoutent par-dessus.
+  </Step>
+  <Step title="Toucher une touche de carte">
+    Touchez **Crédit** ou **Débit**, ou **Débit/Crédit** quand votre terminal détecte le type de carte. **EBT** apparaît si votre entreprise l'accepte, et **Saisie manuelle** sur les lecteurs de cartes Elavon. Il n'y a ni pourboire, ni supplément, ni double tarification sur un remboursement.
+  </Step>
+  <Step title="Présenter la carte">
+    Suivez le lecteur de cartes. Le remboursement apparaît dans [Transactions](/fr-CA/taliup-pos/transactions).
+  </Step>
+</Steps>
+
+Pour revenir aux ventes normales, touchez **Quitter** dans la bannière **Remboursement**, puis **Entrer en mode Paiement**.
+
+## Voir aussi
+
+- [Rembourser une transaction](/fr-CA/taliup-pos/transactions/refund)
+- [Actions de commande](/fr-CA/taliup-pos/register/options)
+- [Autorisations des employés](/fr-CA/taliup-pos/permissions)

@@ -1,0 +1,59 @@
+---
+title: "Gérer les employés"
+sidebarTitle: "Employés"
+description: "Ajoutez des employés, modifiez leurs renseignements et leur NIP, et supprimez des employés depuis Taliup POS. Réservé au propriétaire ayant les autorisations."
+keywords: ["ajouter un employé", "modifier un employé", "changer le NIP d'un employé", "supprimer un employé", "Gérer les employés", "propriétaire seulement"]
+---
+
+Les propriétaires peuvent ajouter et mettre à jour les employés de l'entreprise directement dans Taliup POS. Pour les rôles, les autorisations et les appareils de chaque employé, utilisez Taliup HQ. Voir [Employés dans Taliup HQ](/fr-CA/taliup-hq/merchant/employees).
+
+## Avant de commencer
+
+- Vous êtes connecté avec le rôle **Owner** (propriétaire). Les autres rôles voient **Seul un propriétaire peut gérer les employés.**
+- Votre rôle a l'autorisation requise : **View Employees** pour voir la liste, **Manage Employees** pour ajouter ou modifier, **Delete Employees** pour supprimer. Voir [Autorisations](/fr-CA/taliup-pos/permissions).
+- L'appareil est en ligne.
+
+## Ouvrir Gérer les employés
+
+Allez à l'Accueil → **Paramètres** → **Outils** → **Gérer les employés**. Voir [Paramètres](/fr-CA/taliup-pos/settings) pour l'affichage des sections en portrait et en paysage.
+
+La liste affiche chaque employé. Utilisez **Rechercher** pour en trouver un. Les longues listes ont **Précédent** et **Suivant**.
+
+## Ajouter un employé
+
+<Steps>
+  <Step title="Ouvrir le formulaire">
+    Touchez **Ajouter un employé**.
+  </Step>
+  <Step title="Saisir les renseignements">
+    Remplissez **Prénom**, **Nom de famille** et **Nom d'utilisateur**. **Courriel (facultatif)** et **Taux horaire (facultatif)** peuvent rester vides.
+  </Step>
+  <Step title="Définir le NIP">
+    Saisissez un NIP de 6 chiffres dans **Code d'accès (6 chiffres)**, puis de nouveau dans **Confirmer le code d'accès**. L'employé s'en sert pour se connecter.
+  </Step>
+  <Step title="Enregistrer">
+    Touchez **Ajouter un employé**.
+  </Step>
+</Steps>
+
+## Modifier un employé ou changer son NIP
+
+1. Touchez l'employé dans la liste.
+2. Modifiez les renseignements. Pour définir un nouveau NIP, saisissez-le dans **Nouveau code d'accès (facultatif)** et **Confirmer le code d'accès**. Laissez les deux vides pour garder le NIP actuel.
+3. Touchez **Enregistrer les modifications**.
+
+## Supprimer un employé
+
+1. Touchez l'icône de corbeille sur la ligne de l'employé.
+2. Touchez **Supprimer l'employé** pour confirmer. Cette action est irréversible.
+
+Vous ne pouvez pas vous supprimer vous-même ni supprimer un employé ayant le rôle **Owner**.
+
+## Appareils WEB-SRM
+
+Sur les appareils qui facturent avec le WEB-SRM au Québec, chaque employé doit aussi être inscrit auprès de Revenu Québec. Voir [Inscrire les employés au WEB-SRM](/fr-CA/taliup-pos/web-srm/employees).
+
+## Voir aussi
+
+- [Se connecter et se déconnecter](/fr-CA/taliup-pos/sign-in-and-out)
+- [Autorisations](/fr-CA/taliup-pos/permissions)

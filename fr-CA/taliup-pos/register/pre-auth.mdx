@@ -1,0 +1,68 @@
+---
+title: "Préautorisations"
+sidebarTitle: "Préautorisations"
+description: "Bloquer un montant sur une carte avec Créer une autorisation, puis le capturer avec Post Autorisation ou le libérer."
+keywords: ["préautoriser une carte", "créer une autorisation", "capturer une préautorisation", "post autorisation", "annulation d'autorisation", "supprimer l'autorisation", "bloquer un montant sur une carte"]
+---
+
+Une préautorisation bloque un montant sur la carte du client sans le débiter. Vous la capturez plus tard avec **Post Autorisation**, ou vous la libérez.
+
+## Avant de commencer
+
+- Créer une préautorisation exige la permission **Pre-Authorization**. La capturer exige **Post-Authorization**. L'annuler exige **Manage Transactions**.
+- Les préautorisations ne sont pas offertes sur les caisses WEB-SRM (Revenu Québec). **Créer une autorisation** n'y est pas affiché.
+- Une préautorisation porte sur un montant saisi, pas sur des articles du catalogue.
+
+## Créer une préautorisation
+
+<Steps>
+  <Step title="Ouvrir Créer une autorisation">
+    Dans Caisse, allez dans l'onglet **Vente ouverte**, touchez **Actions de commande** (l'icône de menu), puis **Créer une autorisation** dans la section **Facture**. Sur l'écran [Vente ouverte seulement](/fr-CA/taliup-pos/register/open-sale-only), touchez **Options** → **Créer une autorisation**.
+  </Step>
+  <Step title="Passer en mode Autorisation">
+    Dans **Passer en mode Autorisation**, touchez **Entrer en mode Autorisation**. Si le panier contient des articles, ils sont effacés. Une bannière **Auth** indique que vous êtes en mode Autorisation.
+  </Step>
+  <Step title="Saisir le montant">
+    Tapez le **Montant à autoriser** au clavier.
+  </Step>
+  <Step title="Toucher la touche de carte">
+    Touchez **Carte** ou **Crédit**, ou **Saisie manuelle** avec les lecteurs de carte Elavon. Si votre entreprise utilise la double tarification ou une surcharge sur carte de crédit, le client la confirme. Il n'y a pas d'invite de pourboire.
+  </Step>
+  <Step title="Présenter la carte">
+    Suivez le lecteur de carte. La préautorisation approuvée apparaît dans [Transactions](/fr-CA/taliup-pos/transactions) avec le statut **Autorisée**.
+  </Step>
+</Steps>
+
+Pour revenir aux ventes habituelles, touchez **Quitter** dans la bannière **Auth**, puis **Entrer en mode Paiement**.
+
+Si **Créer une autorisation** est grisé, le toucher affiche **Vous n'avez pas la permission de créer des pré-autorisations.**
+
+## Capturer une préautorisation
+
+<Steps>
+  <Step title="Ouvrir l'autorisation">
+    Allez à Accueil → **Transactions** et touchez le paiement **Autorisée**.
+  </Step>
+  <Step title="Toucher Post Autorisation">
+    **Capturer cette autorisation ?** affiche le montant et la carte.
+  </Step>
+  <Step title="Confirmer">
+    Touchez **Capturer [montant]**. Le montant est débité et inclus dans le prochain lot.
+  </Step>
+</Steps>
+
+## Libérer une préautorisation
+
+Dans les détails de l'autorisation, touchez **Annulation d'autorisation** et confirmez **Annuler [montant]**. Avec les lecteurs de carte Elavon (Link 2500, Lane 3600), le bouton est plutôt **Supprimer l’autorisation**, confirmé avec **Supprimer [montant]**. Aucune de ces actions ne peut être annulée.
+
+## À savoir
+
+- **Post Autorisation**, **Annulation d'autorisation** et **Supprimer l’autorisation** ne fonctionnent que sur le terminal qui a pris la préautorisation. Sur un autre appareil, Taliup POS indique quel terminal utiliser.
+- Capturez avant de fermer le lot. Sur les terminaux PAX et Castles, [fermer le lot](/fr-CA/taliup-pos/transactions/close-batch) abandonne les autorisations non capturées.
+- Sur Poynt, les actions offertes viennent du statut en direct du terminal Poynt. S'il ne peut pas être lu, les détails affichent **Statut Poynt en direct indisponible.**
+
+## Connexe
+
+- [Détails de la transaction](/fr-CA/taliup-pos/transactions/details)
+- [Fermer le lot](/fr-CA/taliup-pos/transactions/close-batch)
+- [Actions de commande](/fr-CA/taliup-pos/register/options)

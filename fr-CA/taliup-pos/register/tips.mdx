@@ -1,0 +1,71 @@
+---
+title: "Pourboires"
+sidebarTitle: "Pourboires"
+description: "Comment fonctionne l'invite de pourboire sur les paiements par carte, où le client la voit, et comment ajuster un pourboire écrit sur le reçu."
+keywords: ["ajouter un pourboire", "invite de pourboire absente", "pourboire personnalisé", "ajuster le pourboire", "changer le pourboire après paiement", "pourboire avant taxes", "pourboire suggéré sur le reçu"]
+---
+
+Lorsque les pourboires sont activés pour votre entreprise, Taliup POS demande un pourboire au client pendant les paiements par carte. Avec **Tip Adjust**, le client peut plutôt écrire le pourboire sur le reçu, et vous l'ajoutez ensuite.
+
+## Avant de commencer
+
+- Les pourboires s'activent dans Taliup HQ, qui définit aussi les préréglages : pourcentages ou montants, jusqu'à quatre. Voir [Pourboires dans Taliup HQ](/fr-CA/taliup-hq/onboarding/tips). L'interrupteur **Pourboires**, en lecture seule dans Accueil → **Paramètres** → **Général** (**Préférences**), indique s'ils sont activés.
+- L'invite de pourboire n'apparaît que pour les paiements par carte : **Carte**, **Crédit**, **Débit** ou **Saisie manuelle**. Les paiements en espèces, EBT, par carte-cadeau et **Autre**, les préautorisations et les remboursements ne demandent jamais de pourboire.
+
+## L'invite de pourboire
+
+<Steps>
+  <Step title="Lancer un paiement par carte">
+    Touchez la touche de carte sur l'écran de paiement. Voir [Encaisser](/fr-CA/taliup-pos/register/take-payment).
+  </Step>
+  <Step title="Le client choisit un pourboire">
+    **Ajouter un pourboire ?** affiche l'addition, les préréglages, **Aucun pourboire** et **Personnalisé**. Avec **Personnalisé**, le client tape un montant puis touche **Confirmer le pourboire**.
+  </Step>
+  <Step title="La carte est débitée">
+    Le lecteur de carte demande la carte. Le pourboire est inclus dans le montant débité.
+  </Step>
+</Steps>
+
+L'endroit où le client voit l'invite dépend du matériel :
+
+| Configuration | Où l'invite de pourboire apparaît |
+|---|---|
+| Appareil avec un écran côté client, y compris Poynt | Sur l'écran côté client |
+| Appareil qui envoie les paiements à un terminal de paiement PAX distinct | Sur le terminal de paiement |
+| Tout autre appareil | Sur l'écran de Taliup POS. Tournez l'écran vers le client |
+
+Les pourboires en pourcentage sont calculés sur l'addition. Lorsque **Pourboire sur le montant avant impôt** est activé dans Taliup HQ, ils sont calculés avant taxes. Les cartes-cadeaux vendues dans la commande ne reçoivent jamais de pourboire.
+
+Si l'entreprise utilise la double tarification ou une surcharge sur carte de crédit, le client la confirme avant ou après le pourboire. Voir [Encaisser](/fr-CA/taliup-pos/register/take-payment#paiement-par-carte).
+
+## Reçus à signer avec pourboire (Tip Adjust)
+
+Avec la fonctionnalité **Tip Adjust**, un paiement par carte du montant complet saute l'invite de pourboire. Le reçu client imprime des montants de **Pourboire suggéré**, le client écrit un pourboire et vous l'ajoutez au paiement plus tard.
+
+Cela s'applique lorsque toutes ces conditions sont remplies :
+
+- L'entreprise a la fonctionnalité **Tip Adjust** et les pourboires sont activés.
+- L'appareil accepte les cartes sur un terminal PAX, Castles ou Poynt. Les lecteurs de carte Elavon (Link 2500, Lane 3600) ne prennent pas en charge l'ajustement du pourboire.
+- L'appareil n'envoie pas les paiements à un terminal de paiement PAX distinct. Ces configurations gardent l'invite de pourboire habituelle.
+
+### Ajuster un pourboire
+
+<Steps>
+  <Step title="Ouvrir le paiement">
+    Allez à Accueil → **Transactions** et touchez le paiement. Voir [Détails de la transaction](/fr-CA/taliup-pos/transactions/details).
+  </Step>
+  <Step title="Toucher Ajuster le pourboire">
+    La fiche affiche le **Pourboire actuel** et le **Pourboire max**.
+  </Step>
+  <Step title="Saisir le pourboire">
+    Tapez le montant écrit par le client, puis confirmez. Taliup POS affiche **Pourboire ajusté avec succès.**
+  </Step>
+</Steps>
+
+**Ajuster le pourboire** n'apparaît que sur les paiements par carte (sauf EBT) qui ne sont ni réglés, ni annulés, ni remboursés. Cela fonctionne seulement sur le terminal qui a pris le paiement : sur un autre appareil, Taliup POS indique quel terminal utiliser. Ajustez les pourboires avant de [fermer le lot](/fr-CA/taliup-pos/transactions/close-batch). Le pourboire maximal est défini dans Taliup HQ en pourcentage de la vente ou en montant fixe.
+
+## Connexe
+
+- [Encaisser](/fr-CA/taliup-pos/register/take-payment)
+- [Détails de la transaction](/fr-CA/taliup-pos/transactions/details)
+- [Pourboires dans Taliup HQ](/fr-CA/taliup-hq/onboarding/tips)

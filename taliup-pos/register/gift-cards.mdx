@@ -1,26 +1,29 @@
 ---
 title: "Gift cards"
 sidebarTitle: "Gift cards"
-description: "Sell, reload, and check gift cards at the Register, and take a gift card as payment."
-keywords: ["gift card", "digital gift card", "reload", "balance", "tender"]
+description: "Sell, reload and check physical or digital gift cards at the Register, take a gift card as payment, and retry cards that did not load."
+keywords: ["sell a gift card", "digital gift card", "reload gift card", "check gift card balance", "pay with gift card", "retry gift card load", "gift card not activated"]
+applies_to:
+  audience: merchant
+  product: pos
+  features: [gift_cards]
+  since: "2026-11"
 ---
 
 Sell physical or digital gift cards, reload them, check a balance, and accept a gift card as payment. One gift card program covers all of a merchant's locations, so a card sold at one store works at the others.
 
-Gift cards are turned on per location in Taliup HQ. See [Gift Cards in Taliup HQ](/taliup-hq/features/gift-cards).
+## Before you start
 
-<Note>
-  Gift cards need a connection to Taliup HQ and are unavailable offline. If the location is not activated, Taliup POS shows **Gift cards are not activated for this location.**
-</Note>
+- The **Gift Cards** feature must be on for your business, and gift cards must be activated for this location in Taliup HQ. See [Gift Cards in Taliup HQ](/taliup-hq/features/gift-cards). Otherwise Taliup POS shows **Gift cards are not activated for this location.**
+- Gift cards need a connection to Taliup HQ and are unavailable offline.
 
 ## Where to find gift card actions
 
-In Register, open **Order actions**. The **Gift Cards** section lists:
+In Register, tap **Order actions** (the menu icon). The **Gift Cards** section lists:
 
 | Action | What it does | When it appears |
 |---|---|---|
 | **Sell gift card** | Adds a new card to the sale | Menu / Catalog, not table orders |
-| **Load a batch** | Adds several cards with the same amount | Menu / Catalog, not table orders |
 | **Reload gift card** | Adds value to an active card | Menu / Catalog, not table orders |
 | **Gift card balance** | Checks a card's balance. Nothing is charged | Always, including Open Sale |
 | **Retry gift card load** | Loads cards that were paid for but not loaded | When a load failed |
@@ -62,18 +65,6 @@ As soon as you enter a physical card number, Taliup POS checks it with Taliup HQ
 | **This card isn't part of this store's gift card program.** | Scan a different card |
 | **Can't check this card right now.** | Check the connection and try again |
 
-### Load a batch
-
-**Load a batch** puts the same amount on several cards in one sale. Choose how the cards are identified:
-
-| Mode | How |
-|---|---|
-| **Each card** | Scan or type every card |
-| **First and last** | Scan the first card and the last. Every card in between is loaded |
-| **Card set** | Enter the card set number |
-
-The cards are loaded after the sale is paid.
-
 ## Reload a gift card
 
 1. From **Order actions**, tap **Reload gift card**.
@@ -91,7 +82,7 @@ From **Order actions**, tap **Gift card balance**, then scan or type the card. T
 
 <Steps>
   <Step title="Choose Gift card">
-    On the payment screen, tap **Gift card**. If it is not shown, open **More payment types**.
+    In Register, tap **More**, then **Gift card** in **More payment types**. On the payment screen (for example on the Open Sale Only screen), tap **Gift card** under **OTHER**.
   </Step>
   <Step title="Find the card">
     Scan the card or type its number, then tap **Check balance**.
@@ -103,7 +94,7 @@ From **Order actions**, tap **Gift card balance**, then scan or type the card. T
 
 If the card covers only part of the sale, the rest stays to pay with another tender, as a split payment.
 
-The gift card tender also works on Open Sale, including for merchants who use Open Sale only.
+The gift card tender also works on the **Open Sale** tab and on the [Open Sale Only](/taliup-pos/register/open-sale-only) screen.
 
 ## Refunds
 

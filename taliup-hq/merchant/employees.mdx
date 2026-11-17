@@ -1,0 +1,128 @@
+---
+title: "Employees"
+sidebarTitle: "Employees"
+description: "Add the people who sign in to Taliup POS, set their role, devices and passcode, edit POS roles, and link an employee to a Taliup HQ account."
+keywords: ["add an employee", "employee passcode", "POS roles and permissions", "custom role", "link employee to HQ account", "HQ access", "delete an employee"]
+applies_to:
+  audience: merchant
+  product: hq
+  features: [employees]
+  permissions:
+    guard: web
+    any: ["View Employees"]
+---
+
+Employees are the people who sign in to Taliup POS with a username and a 6-digit passcode. The people who sign in to Taliup HQ are **Web users**, a separate list. You can link an employee to one Taliup HQ account so the same person has both.
+
+## Before you start
+
+- Your plan includes the **Employees** feature.
+- You need the **View Employees** permission to open the list.
+- Adding or editing employees and changing POS roles need **Manage Employees**. Deleting an employee needs **Delete Employees**.
+- Linking an employee to a Taliup HQ account needs both **Manage Employees** and **Manage Web Users**.
+
+## How to get here
+
+In the sidebar, open **Employees**. When your plan also includes Timesheets, Schedule or Pay runs, **Employees** is under **Team**.
+
+## Add an employee
+
+<Steps>
+  <Step title="Start a new employee">
+    Click **Add employee**.
+  </Step>
+  <Step title="Fill in the profile">
+    Enter **First name** and **Last name**. **Username** is suggested from the name; the employee signs in to the POS with it. **Email (optional)** is where their schedule goes when you publish it.
+
+    Choose a **Role**. The role decides what they can do on the POS. **Hourly rate (optional)** is used for pay runs and the labour cost on timesheets.
+  </Step>
+  <Step title="Set the POS passcode">
+    Under **POS passcode**, enter 6 digits in **Passcode** and again in **Type it again**.
+  </Step>
+  <Step title="Choose devices">
+    Under **Devices**, select the POS terminals they can sign in to. Use **Select all** or **Clear all** to change every terminal at once.
+  </Step>
+  <Step title="Save">
+    Click **Add employee**.
+  </Step>
+</Steps>
+
+A username can be used only once in your business, including usernames of deleted employees.
+
+**Services they do** appears only when online booking assigns employees to services. Select the services clients can book this employee for.
+
+## Edit an employee
+
+Open the employee from the list, change what you need and click **Save changes**.
+
+- The passcode stays as it is unless you click **Change passcode** and enter a new one.
+- The **At a glance** card shows whether they are clocked in, their hours this week, their next published shift and their commission rates.
+
+## Delete an employee
+
+Open the employee's **More actions** menu, either on the list or on their profile, and choose **Delete employee**. They can no longer sign in to the POS. Past sales, timesheets and pay runs stay as they are.
+
+If the employee is linked to a Taliup HQ account, the confirmation shows **Linked web user**. Select **Also delete this web user** to delete that account too. Without it, the HQ account is kept and unlinked. The checkbox appears only if you have **Manage Web Users** and the linked account is not your own.
+
+## POS roles and permissions
+
+Click **Roles and permissions** on the **Employees** page. Each role lists what the people with that role can do on the POS.
+
+- Every business starts with **Owner**, **Manager** and **Employee**. These roles keep their names.
+- **Owner** always has every permission, so the business owner can never be locked out of the POS. New permissions are added to it automatically.
+- Roles you add can be renamed or duplicated from their **More actions** menu.
+- Permission groups for features your plan does not include are hidden.
+
+To add a role:
+
+<Steps>
+  <Step title="Create the role">
+    Click **Add role** and enter a **Role name**.
+  </Step>
+  <Step title="Pick a starting point">
+    Under **Start with the permissions of**, choose an existing role to copy, or **Nothing** to start with every permission off.
+  </Step>
+  <Step title="Adjust and save">
+    Turn permissions on or off, or use **Turn all on** and **Turn all off** for a group. Use **Find a permission** to search. Click **Save** with the role's name to apply the changes.
+  </Step>
+</Steps>
+
+When you remove a permission from a role, people who had that permission given to them directly lose it too.
+
+Changes apply to everyone with the role. Taliup HQ refreshes each person's stored permissions in a background task right after you save, usually within moments. Until it runs, the POS can still use the previous permissions.
+
+To manage employees from a terminal instead, see [Employees on Taliup POS](/taliup-pos/settings/employees).
+
+## Link an employee to a Taliup HQ account
+
+The **HQ access** card appears on the employee's profile only when you have both **Manage Employees** and **Manage Web Users**.
+
+<Steps>
+  <Step title="Open the employee">
+    Open the employee, or start a new one with **Add employee**.
+  </Step>
+  <Step title="Choose the HQ access">
+    Under **HQ access**, choose one of:
+
+    - **None**: no HQ account. Choosing it on a linked employee unlinks them.
+    - **Link existing web user**: pick the account in **Select a web user**. Only accounts that are not linked to another employee are listed.
+    - **Invite new web user**: enter the email address to invite and choose the account's role under **User Roles**. The email is required here, even though the field is labelled **Email (optional)**, and it cannot already belong to another Taliup HQ account. Taliup HQ emails an invitation, using the employee's first and last name.
+  </Step>
+  <Step title="Save">
+    Click **Save changes**, or **Add employee** for a new employee.
+  </Step>
+</Steps>
+
+An employee can be linked to one HQ account, and an HQ account to one employee. You can also link from the other side: in **Web users**, edit the account and use **POS employee account** to **Link existing employee**, or **Create new employee** with a username, role and 6-digit passcode.
+
+What a link does:
+
+- With the Timesheets feature, the linked person can **Clock in** and **Clock out** from their user menu in Taliup HQ.
+- The AI assistant in Taliup POS uses the linked account's own Taliup HQ permissions for questions about HQ-only settings. Without a link, it gives general guidance only. See [AI assistant](/taliup-pos/help/assistant).
+- Unlinking keeps both accounts and the employee's timesheets.
+
+## Related
+
+- [Employees on Taliup POS](/taliup-pos/settings/employees)
+- [Employee permissions on Taliup POS](/taliup-pos/permissions)
+- [Entity permissions](/taliup-hq/manage/permissions)

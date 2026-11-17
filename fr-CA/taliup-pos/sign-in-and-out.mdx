@@ -1,0 +1,77 @@
+---
+title: "Se connecter et se déconnecter"
+sidebarTitle: "Connexion et déconnexion"
+description: "Connectez-vous avec votre nom d'employé et votre NIP, changez d'employé sur un appareil partagé et déconnectez-vous. Voyez quand Taliup POS vous déconnecte."
+keywords: ["se connecter", "saisir le NIP", "changer d'employé", "se déconnecter", "employé absent de la liste", "identifiants incorrects", "déconnexion automatique"]
+---
+
+Chaque employé se connecte à Taliup POS avec son propre nom et son NIP. Ce que vous pouvez faire une fois connecté dépend des autorisations de votre rôle dans Taliup HQ.
+
+## Avant de commencer
+
+- L'appareil est activé. Voir [Activer un appareil](/fr-CA/taliup-pos/activate-device).
+- Vous avez un compte d'employé dans cette entreprise, attribué à cet appareil, avec un NIP de 6 chiffres. Le NIP s'appelle **code d'accès** dans Taliup HQ et dans le formulaire de l'employé.
+
+## Se connecter
+
+<Steps>
+  <Step title="Choisir votre nom">
+    Sélectionnez votre nom dans **Employé**. Si la liste semble périmée, touchez le bouton d'actualisation à côté.
+  </Step>
+  <Step title="Saisir votre NIP">
+    Saisissez votre NIP de 6 chiffres dans **NIP**.
+  </Step>
+  <Step title="Se connecter">
+    Touchez **Connexion**. Taliup POS ouvre l'Accueil, ou la Caisse si l'appareil est configuré ainsi. Pour les entreprises en Vente ouverte seulement, il ouvre la Vente ouverte.
+  </Step>
+</Steps>
+
+Si **Identifiants incorrects** s'affiche, vérifiez l'employé et le NIP, puis réessayez.
+
+## Changer d'employé
+
+Sur un appareil partagé, l'employé suivant se connecte sans déconnecter le premier.
+
+1. À l'Accueil, touchez **Changer d'employé** au bas de l'écran.
+2. Choisissez votre nom, saisissez votre NIP et touchez **Changer**.
+
+L'appareil continue avec le nouvel employé et ses autorisations.
+
+## Se déconnecter
+
+1. À l'Accueil, touchez vos initiales dans le coin supérieur gauche pour ouvrir votre profil.
+2. Touchez **Se déconnecter**, puis **Se déconnecter** de nouveau pour confirmer.
+
+L'écran de connexion s'ouvre.
+
+<Note>
+  L'icône **Se déconnecter** dans le coin supérieur droit de l'Accueil ne vous déconnecte pas. Elle envoie seulement Taliup POS en arrière-plan. Utilisez l'écran du profil pour vous déconnecter.
+</Note>
+
+## Quand Taliup POS vous déconnecte de lui-même
+
+Sauf sur les terminaux Poynt, Taliup POS déconnecte l'employé en cours quand :
+
+- L'écran s'éteint.
+- L'appareil s'éteint ou redémarre.
+- L'application reste en arrière-plan pendant 2 heures.
+
+Sur les terminaux Poynt, l'employé reste connecté dans ces cas.
+
+## Se connecter sans connexion Internet
+
+Vous pouvez vous connecter hors ligne si cet appareil a déjà réussi au moins une connexion en ligne. Voir [Travailler hors ligne](/fr-CA/taliup-pos/offline).
+
+## Dépannage
+
+| Problème | Quoi essayer |
+|---|---|
+| Votre nom n'est pas dans la liste | Demandez à un propriétaire ou à un gestionnaire de vous attribuer cet appareil dans Taliup HQ. Voir [Employés](/fr-CA/taliup-hq/merchant/employees). |
+| **Identifiants incorrects** | Saisissez de nouveau le NIP. Si vous l'avez oublié, un propriétaire peut en définir un nouveau. Voir [Gérer les employés](/fr-CA/taliup-pos/settings/employees). |
+| **Une nouvelle mise à jour (v…) est disponible !** | Une version plus récente est prête. Installez-la quand cela vous convient. |
+| Une mise à jour est obligatoire | Installez la version exigée avant de continuer. |
+
+## Voir aussi
+
+- [Pointer et dépointer](/fr-CA/taliup-pos/clock-in-out)
+- [Autorisations](/fr-CA/taliup-pos/permissions)

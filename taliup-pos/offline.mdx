@@ -1,0 +1,63 @@
+---
+title: "Work offline"
+sidebarTitle: "Work offline"
+description: "What still works in Taliup POS without an internet connection, how offline sign-in works, and how sales reach Taliup HQ when you reconnect."
+keywords: ["no internet connection", "offline sign in", "sales not synced", "Taliup HQ sync", "sync now", "offline mode"]
+applies_to:
+  audience: merchant
+  product: pos
+---
+
+Taliup POS keeps some work going when the device loses its internet connection. Sales and orders saved on the device are sent to Taliup HQ when the connection returns.
+
+## Sign in while offline
+
+You can sign in without a connection if this device has had at least one successful online sign-in. That sign-in saves the business's employees and PINs on the device, so any of them can sign in offline.
+
+If the device has never signed anyone in online, you see **This terminal has not been online yet, so it cannot verify your passcode. Connect to a network to sign in.**
+
+Some features need the session from an online sign-in. If one of them asks you to sign in while online, reconnect, then sign in again.
+
+## What needs a connection
+
+These need the device to reach Taliup HQ:
+
+| Task | Offline behaviour |
+|---|---|
+| Clock in or out | **Clocking in and out needs a network connection.** See [Clock in and out](/taliup-pos/clock-in-out). |
+| Gift cards | Selling, reloading, checking or paying with gift cards is unavailable. |
+| Tables and floor plans | Tables can't be loaded. Layout changes you were making are kept until you can save. |
+| Register catalog items | Items load from Taliup HQ. If **Could not load catalog products.** appears, tap **Retry** once the connection returns. |
+| Catalog or Menu, Calendar, Clients, Link To Pay, Analytics, Transactions | These load their data from Taliup HQ. |
+| AI assistant | Shows an offline notice and cannot send questions. |
+
+## Sales made while offline
+
+Completed sales, and open or cancelled orders, saved on the device while Taliup HQ could not be reached stay on the device. Taliup POS sends them automatically when the connection returns.
+
+To check or send them yourself:
+
+<Steps>
+  <Step title="Open Taliup HQ sync">
+    Go to Home → **Settings** → **Tools** → **Taliup HQ sync**.
+  </Step>
+  <Step title="Review what is waiting">
+    The screen lists **Completed sales** and **Open and cancelled orders** still on the device. **Everything on this register has reached Taliup HQ.** means nothing is waiting.
+  </Step>
+  <Step title="Sync now">
+    Tap **Sync now**. Anything that cannot be sent stays on the device and is retried automatically.
+  </Step>
+</Steps>
+
+<Warning>
+  Do not use **Clear Application Data** while sales are waiting to sync. Taliup POS warns you if anything is still waiting.
+</Warning>
+
+## WEB-SRM devices
+
+On devices that bill with WEB-SRM in Québec, a red **Offline Mode** banner appears and most Home tiles are greyed out while offline. See [Work offline with WEB-SRM](/taliup-pos/web-srm/offline).
+
+## Related
+
+- [Sign in and out](/taliup-pos/sign-in-and-out)
+- [Troubleshooting](/taliup-pos/help/troubleshooting)

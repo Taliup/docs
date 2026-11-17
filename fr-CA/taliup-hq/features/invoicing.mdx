@@ -1,7 +1,8 @@
 ---
 title: "Facturation"
 sidebarTitle: "Facturation"
-description: "Créer, envoyer, mettre à jour et gérer les factures depuis le portail marchand — y compris restaurer un client, mettre à jour et renvoyer, inventaire à la suppression, et dépannage courriel."
+description: "Créer, envoyer, mettre à jour et gérer les factures dans le portail marchand, y compris restaurer un client, renvoyer et dépanner les courriels."
+keywords: ["créer une facture", "envoyer une facture", "modifier une facture envoyée", "lien de paiement de facture", "courriel de facture non reçu", "rembourser une facture"]
 ---
 
 La facturation permet de créer des factures professionnelles, de les envoyer par courriel aux clients, d'inclure éventuellement un lien de paiement en ligne, et de suivre le paiement depuis Taliup HQ.
@@ -10,7 +11,7 @@ Ouvrez **Invoices** dans la barre latérale marchande pour commencer.
 
 ---
 
-## Prérequis
+## Avant de commencer
 
 <Steps>
   <Step title="Fonction Invoicing activée">
@@ -23,6 +24,8 @@ Ouvrez **Invoices** dans la barre latérale marchande pour commencer.
     Pour inclure un lien **Pay** sur la facture, activez **Link To Pay** / les paiements en ligne pour l'entité et configurez une passerelle en ligne sur l'emplacement. Si Online Payment affiche **Disabled**, les clients peuvent quand même recevoir la facture mais ne peuvent pas payer en ligne depuis le courriel.
   </Step>
 </Steps>
+
+Il faut **View Invoices** pour ouvrir **Factures**. Créer, modifier et envoyer des factures demandent **Manage Invoices**. Supprimer une facture demande **Delete Invoices**.
 
 ---
 
@@ -132,7 +135,7 @@ Contrôlez si et comment la facture est envoyée par courriel.
 | Paramètre | Description |
 |---|---|
 | **Email delivery** | Bascule principale pour l'envoi par courriel. La pastille **Immediate** apparaît lorsque l'envoi immédiat est actif. |
-| **Reply to Email** | Où vont les réponses des clients. Configuré dans Invoice Settings lorsque disponible. |
+| **Reply to Email** | Où vont les réponses des clients. La valeur par défaut vient du **Courriel de réponse** des [paramètres des factures](#paramètres-des-factures). |
 | **Support Message** | Texte de pied de page du courriel (par exemple comment joindre votre équipe). |
 
 Si l'envoi courriel est activé mais qu'aucun client n'est sélectionné, Taliup affiche une validation comme **Please select a client** et indique qu'un courriel est requis pour l'envoi immédiat.
@@ -177,20 +180,15 @@ Vous pouvez modifier une facture après l'envoi, tant qu'elle n'est pas payée.
 
 ---
 
-## Remettre le stock à la suppression
+## Paramètres des factures
 
-Lorsque vous supprimez une facture impayée qui retenait de l'inventaire, Taliup peut remettre ces quantités en stock.
+Ouvrez **Paramètres** → **Factures** (dans la section **Fonctionnalités**). Il faut la permission **Manage Settings**. Choisissez **Enregistrer** une fois terminé.
 
-Définissez le défaut dans **Settings → Invoice Settings → Inventory** :
-
-| Paramètre | Ce qui se passe |
+| Paramètre | Ce qu'il fait |
 |---|---|
-| **Always return stock** (bascule activée) | Le stock est remis automatiquement à la suppression d'une facture impayée. |
-| **Ask** (bascule désactivée) | Chaque suppression demande s'il faut **Return stock to inventory**. |
-
-<Frame caption="Section Inventory des Invoice Settings avec Return stock on invoice delete.">
-  ![Invoice Settings montrant Email, Reminders et Inventory avec Return stock on invoice delete activé](/images/taliup-hq/invoicing/invoice-settings-inventory.png)
-</Frame>
+| **Courriel de réponse** | Les réponses des clients aux courriels de facture arrivent ici. Vide : le courriel de votre entreprise. |
+| **Rappeler les clients lorsqu’une facture est en retard** | Envoie un courriel de rappel après l'échéance. Indiquez **L’envoyer après**, en jours. |
+| **Remettre ses articles en stock** (sous **Supprimer une facture**) | **Toujours** remet le stock automatiquement quand vous supprimez une facture impayée; **Demander chaque fois** demande à chaque suppression s'il faut remettre le stock. Seulement pour les articles dont vous suivez le stock. |
 
 <Frame caption="Confirmation de suppression avec Return stock to inventory.">
   ![Fenêtre demandant de supprimer une facture pour Ava Bennett, avec Return stock to inventory activé](/images/taliup-hq/invoicing/invoice-return-stock.png)
@@ -239,7 +237,7 @@ Un courriel de facture n'est envoyé que lorsque tout ce qui suit est vrai :
 | Le client a un courriel valide | Un client est sélectionné et le dossier inclut un courriel |
 | Le moment est prêt | **Send Invoice Immediately** est activé, ou la **Send Date** prévue est atteinte |
 | L'adresse peut recevoir du courrier | Taliup n'est pas bloqué pour cette adresse (vous voyez une erreur claire si l'envoi est bloqué) |
-| Reply-To (facultatif) | Si Invoice Settings inclut une adresse reply-to, les réponses y vont |
+| Reply-To (facultatif) | Si un **Courriel de réponse** est réglé dans les [paramètres des factures](#paramètres-des-factures), les réponses y vont |
 
 <Info>
   L'envoi immédiat exige toujours un courriel client. Si vous voyez **Email is required for immediate delivery**, sélectionnez ou créez un client avec un courriel avant de créer la facture.
@@ -276,4 +274,4 @@ Utilisez **Download Receipt** / le téléchargement PDF sur la page de paiement.
 
 ### Mauvaise destination de réponse
 
-Mettez à jour **Reply to Email** dans Invoice Settings pour que les réponses aillent à la bonne boîte.
+Mettez à jour le **Courriel de réponse** dans les [paramètres des factures](#paramètres-des-factures) pour que les réponses aillent à la bonne boîte.

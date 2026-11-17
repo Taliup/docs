@@ -1,0 +1,75 @@
+---
+title: "Taxes, discounts and fees"
+sidebarTitle: "Taxes, discounts and fees"
+description: "Set up sales taxes, register discounts and automatic fees in Taliup HQ, for a whole order or for items in one category."
+keywords: ["add a sales tax", "change a tax rate", "create a discount code", "add a bag fee", "discount before tax", "fee on a category"]
+applies_to:
+  audience: merchant
+  product: hq
+  features: [catalog]
+---
+
+Taxes, discounts and fees each have their own page in the catalog group of the Taliup HQ sidebar.
+
+## Before you start
+
+- Your business needs the **Catalogs** feature.
+- **Taxes**: opening needs **View Catalogs**, adding or changing needs **Manage Catalogs**, deleting needs **Delete Catalogs**.
+- **Discounts**: needs the **Discounts** feature, and **View Discounts**, **Manage Discounts** or **Delete Discounts**.
+- **Fees**: needs the **Fees** feature, and **View Fees**, **Manage Fees** or **Delete Fees**.
+- Discounts and fees belong to a catalog, so make a [catalog](/taliup-hq/merchant/catalogs) first.
+
+## Taxes
+
+Taxes are added to products through their catalog, or one product at a time.
+
+<Steps>
+  <Step title="Add the tax">
+    On **Taxes**, select **New tax**. Enter its name (for example HST) and an optional description that staff see when picking taxes.
+  </Step>
+  <Step title="Set the rate">
+    Under **Rates**, choose **Percentage** or **Fixed amount** and enter the rate. Use **Add rate** only when one tax is made of several parts.
+  </Step>
+  <Step title="Save and apply it">
+    Select **Add tax**. Then add it to a catalog (it applies to everything in that catalog) or to single products on their page.
+  </Step>
+</Steps>
+
+Deleting a tax removes it from every catalog and product. When WEB-SRM (MEV) is set up, taxes come from it and cannot be changed here. When QuickBooks is connected, synced taxes are managed in QuickBooks.
+
+## Discounts
+
+Discounts are offers staff apply on the register.
+
+<Steps>
+  <Step title="Create the discount">
+    On **Discounts**, select **New discount** and choose the catalog.
+  </Step>
+  <Step title="Choose what it applies to">
+    **Order discount** (**Whole order**) or **Item discount** (**Items in a category**, then the **Category**).
+  </Step>
+  <Step title="Set the amount">
+    Enter an amount off or a % off, and a **Code**, the name staff pick it by (for example WELCOME10). Turn on **Take off before tax** to calculate taxes on the discounted price.
+  </Step>
+  <Step title="Save">
+    Save it. Staff can apply it on the register: see [Apply discounts](/taliup-pos/register/apply-discounts).
+  </Step>
+</Steps>
+
+## Fees
+
+Fees are charges added automatically to orders, such as a bag fee.
+
+1. On **Fees**, select **New fee** and choose the catalog.
+2. Choose **Order fee** (**Whole order**) or **Item fee** (**Items in a category**).
+3. Enter the name and amount. Turn on **Add before tax** to charge taxes on the fee too.
+4. Save it.
+
+Deleting a fee stops it being added to orders. Deleting a discount means staff can no longer apply it.
+
+## Related
+
+- [Products](/taliup-hq/merchant/catalogs/products)
+- [Catalogs](/taliup-hq/merchant/catalogs)
+- [Discounts in Taliup POS](/taliup-pos/catalog/discounts)
+- [Fees in Taliup POS](/taliup-pos/catalog/fees)

@@ -1,0 +1,54 @@
+---
+title: "Units"
+sidebarTitle: "Units"
+description: "Manage units in Taliup HQ: what products and raw materials are counted in, their abbreviation and decimal places, and the built-in weight units."
+keywords: ["add a unit", "unit of measure", "decimal places for quantities", "kg g lb oz units", "sell by millilitre", "delete a unit"]
+applies_to:
+  audience: merchant
+  product: hq
+  features: [inventory, inventory_units]
+  permissions:
+    guard: web
+    any: ["Manage Inventory"]
+---
+
+**Units** are what products and raw materials are counted in, such as kilograms, millilitres or slices, and how many decimal places their quantities keep.
+
+## Before you start
+
+- Your business needs the **Inventory** and **Units** features, and your Taliup HQ account the **Manage Inventory** permission.
+
+## How to get here
+
+In Taliup HQ, open the **Inventory** group in the sidebar and select **Units**. Each unit shows what uses it.
+
+## Add a unit
+
+<Steps>
+  <Step title="Open the form">
+    Select **Add unit**.
+  </Step>
+  <Step title="Describe it">
+    Enter the **Name** (for example Millilitre) and the **Abbreviation** (for example ml). The abbreviation is shown after quantities on Taliup POS and on receipts.
+  </Step>
+  <Step title="Choose the decimal places">
+    Choose how many **Decimal places** quantities keep. The form shows an example.
+  </Step>
+  <Step title="Save">
+    Select **Save**. The unit can now be chosen for products and raw materials.
+  </Step>
+</Steps>
+
+## Built-in weight units
+
+kg, g, lb and oz are marked **Built in, for weight barcodes**: Taliup POS reads them from weight barcodes. You can **Rename** them, but not change their abbreviation or decimal places, and you cannot delete them. See [Scale items](/taliup-hq/features/scale-items).
+
+## Edit or delete a unit
+
+Open the **More** menu on a unit's row and select **Edit** or **Delete**. Deleting cannot be undone. Products and raw materials that used the unit go back to per item, and products sold by weight stop being sold by weight.
+
+## Related
+
+- [Products](/taliup-hq/merchant/catalogs/products)
+- [Raw materials](/taliup-hq/merchant/raw-materials)
+- [Inventory](/taliup-hq/merchant/inventory)

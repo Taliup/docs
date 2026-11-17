@@ -1,0 +1,65 @@
+---
+title: "Manage employees"
+sidebarTitle: "Employees"
+description: "Add employees, edit their details and PIN, and delete employees from Taliup POS. Only an owner with the employee permissions can do this."
+keywords: ["add employee", "edit employee", "reset employee PIN", "delete employee", "Manage Employees", "owner only"]
+applies_to:
+  audience: merchant
+  product: pos
+  permissions:
+    guard: appUser
+    any: ["View Employees"]
+---
+
+Owners can add and update the business's employees directly from Taliup POS. For roles, permissions and the devices each employee can use, use Taliup HQ. See [Employees in Taliup HQ](/taliup-hq/merchant/employees).
+
+## Before you start
+
+- You are signed in with the **Owner** role. Other roles see **Only an owner can manage employees.**
+- Your role has the permission for the task: **View Employees** to see the list, **Manage Employees** to add or edit, **Delete Employees** to delete. See [Permissions](/taliup-pos/permissions).
+- The device is online.
+
+## Open Manage Employees
+
+Go to Home → **Settings** → **Tools** → **Manage Employees**. See [Settings](/taliup-pos/settings) for how sections appear in portrait and landscape.
+
+The list shows each employee. Use **Search** to find one. Long lists have **Previous** and **Next**.
+
+## Add an employee
+
+<Steps>
+  <Step title="Open the form">
+    Tap **Add employee**.
+  </Step>
+  <Step title="Enter the details">
+    Fill in **First Name**, **Last Name** and **Username**. **Email (optional)** and **Hourly rate (optional)** can stay empty.
+  </Step>
+  <Step title="Set the PIN">
+    Enter a 6-digit PIN in **Passcode (6 digits)** and again in **Confirm passcode**. The employee uses it to sign in.
+  </Step>
+  <Step title="Save">
+    Tap **Add employee**.
+  </Step>
+</Steps>
+
+## Edit an employee or reset a PIN
+
+1. Tap the employee in the list.
+2. Change the details. To set a new PIN, enter it in **New passcode (optional)** and **Confirm passcode**. Leave both empty to keep the current PIN.
+3. Tap **Save changes**.
+
+## Delete an employee
+
+1. Tap the trash icon on the employee's row.
+2. Tap **Delete employee** to confirm. This cannot be undone.
+
+You cannot delete yourself or an employee with the **Owner** role.
+
+## WEB-SRM devices
+
+On devices that bill with WEB-SRM in Québec, each employee also needs to be registered with Revenu Québec. See [Register employees with WEB-SRM](/taliup-pos/web-srm/employees).
+
+## Related
+
+- [Sign in and out](/taliup-pos/sign-in-and-out)
+- [Permissions](/taliup-pos/permissions)

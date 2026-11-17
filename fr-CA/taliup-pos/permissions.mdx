@@ -1,0 +1,91 @@
+---
+title: "Autorisations des employés"
+sidebarTitle: "Autorisations"
+description: "Ce que chaque autorisation d'employé permet dans Taliup POS, et quoi faire devant un message d'autorisation."
+keywords: ["permission refusée", "autorisations des employés", "autorisations du rôle", "Manage Transactions", "rôle Owner", "ce que mon rôle permet"]
+---
+
+Chaque employé a un rôle, comme **Owner** (propriétaire), **Manager** (gestionnaire), **Employee** (employé), ou un rôle personnalisé créé par votre entreprise. Les autorisations du rôle déterminent ce que l'employé peut faire dans Taliup POS. Les rôles et leurs autorisations se définissent dans Taliup HQ. Voir [Autorisations dans Taliup HQ](/fr-CA/taliup-hq/manage/permissions).
+
+Une autorisation n'a d'effet que si l'entreprise a aussi la fonctionnalité. Par exemple, **Manage Payouts** ne change rien si **Payout** n'est pas activé.
+
+## Quand vous n'avez pas une autorisation
+
+Taliup POS vous le dit, par exemple **Vous n’avez pas la permission d’accéder à Transactions.** ou **Vous n’avez pas la permission d’effectuer des remboursements.** Demandez à un propriétaire ou à un gestionnaire de mettre à jour votre rôle dans Taliup HQ. Les changements d'autorisations faits dans Taliup HQ peuvent prendre quelques instants à s'appliquer.
+
+## Autorisations utilisées dans Taliup POS
+
+Les noms sont indiqués exactement comme dans Taliup HQ.
+
+### Transactions et paiements
+
+| Autorisation | Ce qu'elle permet dans Taliup POS |
+|---|---|
+| **Manage Transactions** | Ouvrir **Transactions** depuis l'Accueil. Annuler un paiement ou le rembourser depuis ses détails. Générer le rapport de fin de journée. |
+| **View All Terminal Transactions** | Voir les transactions de tous les appareils dans **Transactions**. Sans elle, vous voyez seulement celles de cet appareil. |
+| **Non-Ref Refunds** | Utiliser **Créer un remboursement** à la Caisse pour rembourser sans transaction d'origine. |
+| **Pre-Authorization** | Utiliser **Créer une autorisation** à la Caisse. Non offert sur les appareils WEB-SRM. |
+| **Post-Authorization** | Capturer une préautorisation depuis les détails de sa transaction. |
+| **Manage Settlements** | Fermer le lot depuis **Transactions**. Voir [Fermer un lot](/fr-CA/taliup-pos/transactions/close-batch). |
+| **Manage Payouts** | Enregistrer des paiements en espèces depuis la Caisse. Exige la fonctionnalité **Payout**. Voir [Paiements en espèces](/fr-CA/taliup-pos/register/cash-payouts). |
+
+### Rapports
+
+| Autorisation | Ce qu'elle permet dans Taliup POS |
+|---|---|
+| **View Analytics** | Ouvrir **Analytique** (exige la fonctionnalité **Reports**) et consulter les rapports de fin de journée (exige la fonctionnalité **End of Day Report**). |
+
+### Catalogue ou Menu
+
+Taliup HQ vérifie ces autorisations quand Taliup POS charge ou enregistre des données du catalogue.
+
+| Autorisation | Ce qu'elle permet |
+|---|---|
+| **View Catalogs** | Charger les catalogues, leurs catégories et leurs articles, y compris les articles affichés à la Caisse. |
+| **Add Catalogs** | Créer un catalogue. |
+| **Update Catalogs** | Modifier un catalogue : ses catégories, ses articles et taxes, et l'ordre des catégories. |
+| **View Products** | Voir les articles, les modificateurs et les services. |
+| **Add Products** | Créer des articles. |
+| **Update Products** | Modifier les articles, les modificateurs et les services. |
+| **Delete Products** | Supprimer des articles. |
+| **View Taxes**, **Add Taxes**, **Update Taxes**, **Delete Taxes** | Voir les taxes; les créer; les modifier; les supprimer. **Update Taxes** couvre aussi les taxes de la vente libre. |
+| **View Discounts**, **Manage Discounts**, **Delete Discounts** | Voir les rabais; les créer ou les modifier; les supprimer. |
+| **View Fees**, **Manage Fees**, **Delete Fees** | Voir les frais; les créer ou les modifier; les supprimer. |
+| **View Inventory**, **Edit Inventory** | Voir les stocks, ou les modifier. |
+
+### Clientèle et Lien Pour Payer
+
+| Autorisation | Ce qu'elle permet |
+|---|---|
+| **View Clients**, **Manage Clients**, **Delete Clients** | Voir les clients; les ajouter ou les modifier; les supprimer. |
+| **View Link to Pay**, **Manage Link to Pay**, **Delete Link to Pay** | Voir les liens de paiement et les factures; les créer, les envoyer ou les modifier; les supprimer. |
+
+### Tables
+
+| Autorisation | Ce qu'elle permet |
+|---|---|
+| **View Floor Plan TM** | Voir les tables et les plans de salle. |
+| **Create Tables TM** | Ajouter des tables et des plans de salle. |
+| **Manage Tables TM** | Renommer, disposer et réordonner les tables et les plans de salle. |
+| **Delete Tables TM** | Supprimer des tables et des plans de salle. |
+| **View Table Orders TM** | Voir les commandes des tables. |
+| **Manage Table Orders TM** | Diviser et combiner les commandes de table. |
+
+### Employés
+
+| Autorisation | Ce qu'elle permet |
+|---|---|
+| **View Employees** | Voir la liste dans **Gérer les employés**. |
+| **Manage Employees** | Ajouter des employés et modifier leurs renseignements et leur NIP. |
+| **Delete Employees** | Supprimer des employés. |
+
+Gérer les employés dans Taliup POS exige aussi le rôle **Owner**. Les autorisations seules ne suffisent pas. Voir [Gérer les employés](/fr-CA/taliup-pos/settings/employees).
+
+## Autorisations de Taliup HQ
+
+Les comptes Taliup HQ ont leurs propres autorisations, distinctes du rôle d'employé utilisé dans Taliup POS. Voir [Autorisations dans Taliup HQ](/fr-CA/taliup-hq/manage/permissions).
+
+## Voir aussi
+
+- [Se connecter et se déconnecter](/fr-CA/taliup-pos/sign-in-and-out)
+- [Dépannage](/fr-CA/taliup-pos/help/troubleshooting)

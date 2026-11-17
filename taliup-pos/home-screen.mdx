@@ -1,10 +1,14 @@
 ---
 title: "Home screen"
 sidebarTitle: "Home screen"
-description: "Overview of the Taliup POS Home screen tiles, permissions, and clock in / clock out."
+description: "What each Home tile opens, why a tile is missing or says you lack permission, and the profile, clock, update and assistant controls."
+keywords: ["Home screen tiles", "tile is missing", "feature not enabled", "no permission to open", "clock in from Home", "switch employee", "update banner"]
+applies_to:
+  audience: merchant
+  product: pos
 ---
 
-The Home screen is the main hub after login. Each tile opens a section of the app. Availability can depend on your plan, industry type, and role permissions.
+Home is the main screen after you sign in. Each tile opens a section of Taliup POS. Which tiles appear, and whether you can open them, depends on the features your business has and on your role's permissions.
 
 <Frame caption="Home screen tile grid.">
   ![Home screen tile grid](/images/taliup-pos/home-screen.png)
@@ -12,33 +16,49 @@ The Home screen is the main hub after login. Each tile opens a section of the ap
 
 ## Sections
 
-| Section | What it is for | Notes |
+| Tile | What it is for | Needs |
 |---|---|---|
-| **Register** | Ring up sales and take payments | Always available after login |
-| **Tables** | Seat guests and manage table orders | Shown when table management is enabled |
-| **Menu** / **Catalog** | Manage what you sell | Label depends on industry type |
-| **Orders** | Find open or past orders | Always available |
-| **Transactions** | Search payments, void, refund, reprint, End of Day | Needs manage-transactions permission |
-| **Clients** | Customer records | Needs Clients feature — [Clients](/taliup-pos/clients) |
-| **Link To Pay** | Payment links / invoices | Needs Link to Pay + L2P — [Link To Pay](/taliup-pos/link-to-pay) |
-| **Analytics** | Sales charts | Needs view-analytics + Reports feature — [Analytics](/taliup-pos/analytics) |
-| **Calendar** | Appointments | Needs Calendar feature — [Calendar](/taliup-pos/calendar) |
-| **Settings** | Terminal settings | Always available |
+| **Register** | Ring up sales and take payments | Nothing extra |
+| **Tables** | Seat guests and manage table orders | **Table Management** feature — the tile is hidden without it. [Tables](/taliup-pos/tables) |
+| **Menu** / **Catalog** | Manage what you sell | **Catalogs** feature. [Catalog](/taliup-pos/catalog) |
+| **Orders** | Find open or past orders | **Catalogs** feature. [Orders](/taliup-pos/orders) |
+| **Transactions** | Search payments, void, refund, reprint, End of Day | **Manage Transactions** permission. [Transactions](/taliup-pos/transactions) |
+| **Clients** | Customer records | **Clients** feature. [Clients](/taliup-pos/clients) |
+| **Link To Pay** | Payment links | **Link To Pay** feature. [Link To Pay](/taliup-pos/link-to-pay) |
+| **Analytics** | Sales charts | **Reports** feature and **View Analytics** permission. [Analytics](/taliup-pos/analytics) |
+| **Calendar** | Appointments | **Calendar** feature. [Calendar](/taliup-pos/calendar) |
+| **Settings** | Settings for this terminal | Nothing extra. [Settings](/taliup-pos/settings) |
 
 Restaurants see **Menu**; other industry types see **Catalog**.
 
-## Permission denials
+## When a tile does not open
 
-If you tap **Transactions** or **Analytics** without the right role permission, Taliup POS shows a permission denied message for that section. Ask a manager or update the role in Taliup HQ.
+- **Feature not on your plan** — a **Feature access** sheet explains that the feature is not enabled. When your plan allows add-ons, it says you can add the feature in Taliup HQ from **Settings** → **Marketplace**.
+- **Permission missing** — Taliup POS shows **You do not have permission to access** followed by the section name. Ask a manager to update your role. See [Permissions](/taliup-pos/permissions).
+- **No internet on a WEB-SRM terminal** — a red offline banner appears and the tiles that need Taliup HQ are dimmed. **Register**, **Orders** and **Settings** stay available. See [Working offline](/taliup-pos/offline).
 
-## Clock in / clock out
+## Top bar
 
-When time sheets are enabled, Home includes **Clock In / Clock Out**. Use it to record staff time. It does not replace app login.
+| Control | What it does |
+|---|---|
+| Your initials | Opens your profile (**View Profile**), where you can sign out |
+| AI assistant icon | Opens the AI assistant. Shown only when the **AI Assistant** feature is on for your business. See [AI assistant](/taliup-pos/help/assistant). |
+| **Log Out** icon | Sends Taliup POS to the background. It does not sign you out. |
 
-## Version banner
+See [Sign in and out](/taliup-pos/sign-in-and-out).
 
-If a newer app version is available (but not forced), a yellow banner can appear at the top of Home with the latest version number.
+## Shift and employee actions
+
+Below the greeting, a chip shows **Clocked in** with your shift time, or **Not clocked in**. At the bottom of Home:
+
+- **Clock in** / **Clock out** — records your shift. Available when the business has the **Timesheets** feature. See [Clock in and out](/taliup-pos/clock-in-out).
+- **Switch Employee** — hands the terminal to another employee without closing the app.
+
+## App updates
+
+- When a newer optional version exists, a banner shows **New update (v…) is available!**
+- When an update is required, a dialog explains how to install it from the PAXSTORE app (**My Apps** → **App Update** → **Update** on Taliup POS). Install it before you continue.
 
 ## Next
 
-Open the tile you need — start with [Register](/taliup-pos/register) for sales, or [Settings](/taliup-pos/settings) to configure this terminal.
+Start with [Register](/taliup-pos/register) for sales, or [Settings](/taliup-pos/settings) to set up this terminal.

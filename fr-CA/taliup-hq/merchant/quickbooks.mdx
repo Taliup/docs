@@ -1,0 +1,51 @@
+---
+title: "QuickBooks"
+sidebarTitle: "QuickBooks"
+description: "Connecter QuickBooks Online à Taliup HQ, lier vos taxes et vos comptes, synchroniser les ventes automatiquement ou à la main, et importer des produits."
+keywords: ["connecter QuickBooks", "synchroniser les ventes avec QuickBooks", "codes de taxe QuickBooks", "synchronisation automatique QuickBooks", "importer des produits de QuickBooks", "compte de dépôt QuickBooks"]
+---
+
+Taliup HQ envoie vos ventes, remboursements et décaissements à QuickBooks Online sous forme de reçus, selon un horaire ou quand vous le choisissez, et importe vos produits QuickBooks dans HQ.
+
+## Avant de commencer
+
+- Votre entreprise a besoin de la fonctionnalité **Quickbooks** et d'un compte QuickBooks Online.
+- Les **Paramètres QuickBooks** (connexion, taxes, comptes) exigent la permission **Manage Settings**. La page **QuickBooks** (synchronisation et importation) exige **Manage Quickbooks**.
+
+## Connecter QuickBooks
+
+Ouvrez **Paramètres** → **Paramètres QuickBooks** (dans la section **Connexions**).
+
+<Steps>
+  <Step title="Se connecter">
+    Sous **Connecter QuickBooks Online**, choisissez **Se connecter à QuickBooks**. QuickBooks s'ouvre dans un nouvel onglet : connectez-vous, vérifiez que vous connectez la bonne entreprise, puis confirmez. QuickBooks vous ramène ensuite à la page.
+  </Step>
+  <Step title="Lier vos taxes">
+    Sous **Taxes**, vérifiez le code de taxe QuickBooks choisi pour chaque taxe, ou **Choisir un code de taxe**. Si aucun ne convient, choisissez **La créer dans QuickBooks** et l'**Organisme fiscal**. Une fois liée, une taxe reste **Liée**. Si **La taxe de vente est désactivée dans QuickBooks**, configurez-la dans QuickBooks Online, puis choisissez **Actualiser**.
+  </Step>
+  <Step title="Choisir vos comptes">
+    Sous **Comptes**, choisissez le **Compte de dépôt** où vont les paiements (nécessaire pour les remboursements; sans lui, les ventes vont aux fonds non déposés) et le **Compte de dépenses** pour les décaissements. Enregistrez ensuite.
+  </Step>
+</Steps>
+
+**Déconnecter** arrête la synchronisation et retire vos liens de taxes et vos choix de comptes.
+
+## Synchroniser les ventes
+
+Ouvrez **QuickBooks** dans la barre latérale.
+
+- **Synchroniser les ventes** : choisissez **Du** et **Au**, vérifiez **Ventes à synchroniser**, **Montant net** et **Dernière synchronisation**, puis choisissez **Synchroniser**. Les ventes synchronisées ne peuvent être retirées que dans QuickBooks.
+- **Synchronisation automatique** : choisissez **Activer** (ou **Modifier**), activez **Synchroniser automatiquement** et choisissez la **Fréquence** : **Quotidienne**, **Hebdomadaire** ou **Mensuelle**. Les nouvelles ventes partent vers QuickBooks pendant la nuit; la synchronisation automatique envoie ce qui a été vendu depuis la dernière synchronisation.
+
+QuickBooks n'accepte pas les rabais sur un seul article; un article en rabais est donc envoyé à son prix après le rabais.
+
+Si la page affiche **Reconnectez-vous à QuickBooks**, choisissez **Se reconnecter**. Si elle indique **Terminez la configuration dans les Paramètres**, liez vos taxes ou choisissez le compte manquant.
+
+## Importer des produits
+
+Sous **Produits**, choisissez **Importer** à côté de **Importer de QuickBooks**, sélectionnez les produits et services, puis importez-les. Les articles marqués **Dans HQ** ont déjà été importés; les importer de nouveau remplace leur nom, leur description, leur UGS, leur prix et leur stock par ceux de QuickBooks.
+
+## Voir aussi
+
+- [Produits du catalogue](/fr-CA/taliup-hq/merchant/catalogs/products)
+- [Rapports](/fr-CA/taliup-hq/merchant/reports)

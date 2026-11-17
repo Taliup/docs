@@ -1,7 +1,14 @@
 ---
 title: "Search and filters"
 sidebarTitle: "Search and filters"
-description: "Find transactions with search and Filter Transactions options."
+description: "Find a transaction by searching or by receipt token, and filter the list by date, status, type, payment method and settlement."
+keywords: ["find a transaction", "search transactions", "filter by date", "find a refund", "unsettled transactions", "find by receipt"]
+applies_to:
+  audience: merchant
+  product: pos
+  permissions:
+    guard: appUser
+    any: ["Manage Transactions"]
 ---
 
 Use search and filters on the Transactions list to narrow results before opening a payment.
@@ -9,6 +16,10 @@ Use search and filters on the Transactions list to narrow results before opening
 <Frame caption="Filter Transactions screen with status and type chips.">
   ![Filter Transactions screen with status and type chips](/images/taliup-pos/transactions/filters.png)
 </Frame>
+
+## Before you start
+
+Your role needs the **Manage Transactions** permission to open **Transactions**. The list shows the payments taken on this device unless your role also has **View All Terminal Transactions**, which shows every device's payments.
 
 ## Search
 

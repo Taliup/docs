@@ -3,6 +3,14 @@ title: "Recurring Payments"
 sidebarTitle: "Recurring Payments"
 description: "Create agreements, send a hosted checkout link, and collect scheduled customer payments from the merchant portal."
 keywords: ["recurring payments", "subscriptions", "charge now", "free trial", "past due"]
+applies_to:
+  audience: merchant
+  product: hq
+  features: [recurring_payments]
+  permissions:
+    guard: web
+    any: ["View Recurring Payments"]
+  since: "2026-09"
 ---
 
 Recurring Payments lets you bill a customer on a schedule. You create an agreement in Taliup HQ, send a hosted checkout link, and the customer authorizes their card. After that, Elavon Converge charges the card on the schedule you set.
@@ -15,7 +23,7 @@ Open **Recurring Payments** in the merchant sidebar.
 
 ---
 
-## Prerequisites
+## Before you start
 
 <Steps>
   <Step title="Recurring Payments enabled">
@@ -30,6 +38,8 @@ Open **Recurring Payments** in the merchant sidebar.
 </Steps>
 
 If Converge is missing, the list shows **Elavon Converge required** and you cannot create agreements.
+
+You need **View Recurring Payments** to open **Recurring payments**. Creating agreements and pausing, resuming, cancelling or charging them need **Manage Recurring Payments**.
 
 ---
 
@@ -234,20 +244,16 @@ You cannot change the amount, frequency, or dates after enrollment. That needs a
 
 ## Settings
 
-From the Recurring Payments list, click **Settings**.
-
-<Frame caption="Recurring Payment Settings for customer access, invitations, defaults, and alerts.">
-  ![Recurring Payment Settings with Allow customers to cancel off, checkout link expiry 7 days, default frequency Monthly, and card expiry warning 60 days](/images/taliup-hq/recurring-payments/settings.png)
-</Frame>
+Open **Settings** → **Recurring payments** (in the **Features** section), or select **Settings** on the Recurring Payments list. This needs the **Manage Settings** permission.
 
 | Setting | Description |
 |---|---|
-| **Allow customers to cancel** | Default for new agreements. You can still override it on each create form. Off by default. |
-| **Checkout link expiry (days)** | How long the first-payment link stays valid (1–90, default 7). Expired links cannot be resent. |
-| **Default billing frequency** | Prefills **New agreement**. |
-| **Card expiry warning (days)** | How far ahead **Needs attention** flags an expiring card (default 60). |
+| **Let customers cancel** | Customers can cancel from the link in their emails. Default for new agreements; you can still change it on each create form. |
+| **Links expire after** | How long the first-payment sign-up link stays valid, from 1 to 90 days. Expired links cannot be resent. |
+| **Billing frequency** | Picked first on a new agreement. |
+| **Warn customers** | How many days before their card expires customers are warned (1–365). |
 
-Click **Save Recurring Payment Settings**.
+Select **Save changes**.
 
 ---
 

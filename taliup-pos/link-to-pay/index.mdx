@@ -1,12 +1,23 @@
 ---
 title: "Link To Pay"
 sidebarTitle: "Overview"
-description: "Review and manage Link To Pay invoices and payment links from Taliup POS."
+description: "See every Link To Pay payment link and invoice with its status and totals, and open one to resend, record payment, refund or delete."
+keywords: ["payment link list", "link to pay status", "unpaid invoices", "overdue payment links", "invoice totals", "check if a link was paid"]
+applies_to:
+  audience: merchant
+  product: pos
+  features: [link_to_pay]
+  permissions:
+    guard: appUser
+    any: ["View Link to Pay"]
 ---
 
 **Link To Pay** lets you review payment links/invoices, resend them, record offline payments, refund, and delete.
 
-Requires the **Link to Pay** feature and L2P enabled on the merchant’s payment types. If disabled, Taliup POS shows: **To enable Link To Pay, please contact your Customer Support for details.**
+## Before you start
+
+- The **Link To Pay** feature must be enabled for the business in Taliup HQ, with Link To Pay among the merchant's payment types. If it is not, Taliup POS shows: **To enable Link To Pay, please contact your Customer Support for details.**
+- Your role needs **View Link to Pay** to see the list. Sending, resending and refunding need **Manage Link to Pay**; deleting needs **Delete Link to Pay**.
 
 <Frame caption="Link To Pay list with PENDING / DUE / PAID / OVERDUE summary cards.">
   ![Link To Pay list with PENDING / DUE / PAID / OVERDUE summary cards](/images/taliup-pos/link-to-pay/list.png)

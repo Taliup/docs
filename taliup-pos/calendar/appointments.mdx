@@ -1,8 +1,17 @@
 ---
 title: "Appointments"
 sidebarTitle: "Appointments"
-description: "Create, edit, and delete calendar appointments in Taliup POS, and handle time conflicts."
+description: "Book, edit, and delete appointments from the Calendar, pick a client, service and employee, and handle time conflicts."
+keywords: ["book an appointment", "create an appointment", "edit an appointment", "delete an appointment", "time conflict", "appointment reminder", "assign an employee"]
+applies_to:
+  audience: merchant
+  product: pos
+  features: [calendar]
 ---
+
+## Before you start
+
+The **Calendar** feature must be enabled for the business in Taliup HQ. Picking a service also needs the **Services** feature.
 
 ## Create an appointment
 
@@ -31,7 +40,7 @@ description: "Create, edit, and delete calendar appointments in Taliup POS, and 
 | **Date** | The appointment day |
 | **Start** / **Ends** | End must be after the start. With a service, the end time follows the service duration |
 | **Client** | **Select client** |
-| **Service · optional** | Needs Services / `catalog_services` |
+| **Service · optional** | Requires the **Services** feature |
 | **Employee · optional** | **Select employee**, or **Leave unassigned** |
 | **Note · optional** | Anything the staff should know |
 | **Send reminder** | On / off |

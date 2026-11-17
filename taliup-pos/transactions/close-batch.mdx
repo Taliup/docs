@@ -1,0 +1,58 @@
+---
+title: "Close a batch"
+sidebarTitle: "Close batch"
+description: "Settle the open card batch from Transactions with Close batch, and how it differs by payment terminal and from automatic settlement."
+keywords: ["close batch", "settle the batch", "settlement", "end of day settlement", "batch not closing", "settlement report", "automatic settlement"]
+applies_to:
+  audience: merchant
+  product: pos
+  permissions:
+    guard: appUser
+    all: ["Manage Transactions", "Manage Settlements"]
+---
+
+Closing the batch settles the card payments taken since the last settlement, so the funds are sent for deposit. Once a payment is settled, it can no longer be voided or have its tip adjusted. It can only be refunded.
+
+## Before you start
+
+- Opening **Transactions** needs the **Manage Transactions** permission. **Close batch** also needs **Manage Settlements**. Without it, Taliup POS shows a permission message.
+- Taliup POS checks your permission with Taliup HQ, so close the batch while the device is online.
+- Adjust tips and capture pre-authorizations first. See [Tips](/taliup-pos/register/tips) and [Pre-authorizations](/taliup-pos/register/pre-auth).
+
+## Close the batch
+
+<Steps>
+  <Step title="Open Transactions">
+    From Home, tap **Transactions**. On the [Open Sale Only](/taliup-pos/register/open-sale-only) screen, tap **Options** → **View Transactions**.
+  </Step>
+  <Step title="Tap Close batch">
+    In portrait it is at the bottom of the list. In landscape it is in the app bar.
+  </Step>
+  <Step title="Confirm">
+    What happens next depends on the payment terminal. See the table below.
+  </Step>
+</Steps>
+
+| Payment terminal | What Close batch does |
+|---|---|
+| PAX and Castles terminals | Asks **Close batch?**: this settles the open card batch on this terminal, and authorizations that have not been captured are dropped. Tap **Close batch** to confirm. The terminal settles, and Taliup POS sends the result to Taliup HQ and prints a settlement report |
+| Elavon card readers (Link 2500, Lane 3600) | Opens a review screen with the **Open batch totals**. It settles the open batch for every terminal on this location's account, not only this device. Tap **Close batch**, wait for **Batch settled**, then tap **Done**. A settlement report prints |
+| Poynt | Opens the Poynt Settlements app. Settle there |
+
+If there is nothing to settle on an Elavon card reader, the review screen shows **No open batch**.
+
+## Close batch or automatic settlement
+
+**Close batch** settles now, from this device. Some businesses also have their batch settled automatically at a set time each day. Merchants cannot see or change automatic settlement in Taliup POS or Taliup HQ. If you are not sure how your batches settle, contact [support](/taliup-pos/help/support).
+
+Closing the batch is not the same as the [End of Day](/taliup-pos/transactions/end-of-day) report, which summarizes sales without settling them.
+
+## After closing
+
+Settled payments show **Settled** in [Transaction details](/taliup-pos/transactions/details). Use the **Settlement Status** filter in [Search and filters](/taliup-pos/transactions/search-and-filters) to find payments that are not settled yet.
+
+## Related
+
+- [Transactions](/taliup-pos/transactions)
+- [Void](/taliup-pos/transactions/void) · [Refund](/taliup-pos/transactions/refund)
+- [End of Day](/taliup-pos/transactions/end-of-day)

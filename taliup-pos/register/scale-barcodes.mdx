@@ -1,14 +1,21 @@
 ---
 title: "Scale barcodes"
 sidebarTitle: "Scale barcodes"
-description: "Scan price or weight labels from a counter scale into the Register cart."
+description: "Scan price or weight labels from a counter scale into the Register cart, and set up weighable products to match the scale."
+keywords: ["scan a scale label", "deli scale barcode", "weight label", "price label", "weighable item", "PLU code"]
+applies_to:
+  audience: merchant
+  product: pos
+  features: [catalog]
+  since: "2026-09"
 ---
 
 Use a barcode-printing scale (deli, butcher, produce) and scan the sticker in **Register**. Taliup reads the product and the printed price or weight. You do not pair the scale to the terminal.
 
-<Note>
-  The product **SKU** in Taliup must match the 5-digit PLU programmed on the scale. The item must be in the catalog this terminal uses.
-</Note>
+## Before you start
+
+- Scanning happens on the Register **Menu** / **Catalog** tab, which needs the **Catalogs** feature.
+- The product **SKU** in Taliup must match the 5-digit PLU programmed on the scale. The item must be in the catalog this terminal uses.
 
 ## Two kinds of labels
 
@@ -44,7 +51,7 @@ If several products share the same SKU, pick the correct one from the list.
 
 ## If the scale does not print labels
 
-Some counters have a scale that only shows the weight. **Enter weight** is the default on a new terminal. If this one was switched to **Scale labels**, open **Settings → General** and set **Weighable items** back to **Enter weight**.
+Some counters have a scale that only shows the weight. **Enter Weight** is the default on a new terminal. If this one was switched to **Scale Labels**, go to Home → **Settings** → **General** → **Weighable Items** and choose **Enter Weight**.
 
 Then tap the weighable item in Register, type the weight, and confirm. Register multiplies the catalog price per unit by that weight. If the item has attributes or modifiers, choose those next.
 
@@ -52,11 +59,11 @@ Then tap the weighable item in Register, type the weight, and confirm. Register 
   ![Enter weight sheet for Cashews showing $16.00 / kg, weight 1.50 kg, Total $24.00, and a keypad](/images/taliup-pos/register/enter-weight-sheet.png)
 </Frame>
 
-You can still scan a scale sticker in **Enter weight** — useful for a one-off printed label.
+You can still scan a scale sticker in **Enter Weight** — useful for a one-off printed label.
 
 This setting stays on this terminal. It does not sync to Taliup HQ.
 
-In **Scale labels** mode, tapping a weighable item does **not** add quantity 1. Scan the sticker, or switch the setting if cashiers type weight.
+In **Scale Labels** mode, tapping a weighable item does **not** add quantity 1. Scan the sticker, or switch the setting if cashiers type weight.
 
 <Note>
   Weighable items need a catalog price per unit. Custom price and Weighable cannot be on together.

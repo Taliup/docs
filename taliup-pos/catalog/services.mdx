@@ -1,14 +1,26 @@
 ---
 title: "Services"
 sidebarTitle: "Services"
-description: "Create and manage services in the catalog, including booking duration options."
+description: "Create and edit services, set their price, and choose whether clients can book them and for how long."
+keywords: ["add a service", "bookable service", "service duration", "edit a service", "allow online booking"]
+applies_to:
+  audience: merchant
+  product: pos
+  features: [catalog, catalog_services]
+  permissions:
+    guard: appUser
+    any: ["View Products"]
 ---
 
-Use **Services** for bookable or service-style offerings. Access requires the services catalog feature.
+Use **Services** for bookable or service-style offerings.
 
 <Frame caption="Services list.">
   ![Services list](/images/taliup-pos/catalog/services.png)
 </Frame>
+
+## Before you start
+
+Requires the **Catalogs** and **Services** features and the **View Products** permission. Creating or editing a service needs **Update Products**.
 
 ## How to get here
 
@@ -22,6 +34,6 @@ Home → **Menu** / **Catalog** → **Services**.
 | **Description** | Optional |
 | **Custom Price** / **Price** | Same pattern as products |
 | **Allow Customers to Book Appointments** | YES/NO |
-| **Duration** | N/A or 15–120 minutes |
+| **Duration** | **N/A** or 15–120 minutes. Taliup HQ offers longer durations, up to 8 hours |
 
 The edit screen uses **General**, **Attributes**/**Modifiers**, and **Taxes** tabs (SKU is not used for services). Use search and **Add New** on the list (**Name**, **Price** columns).

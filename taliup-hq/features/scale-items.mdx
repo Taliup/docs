@@ -2,6 +2,15 @@
 title: "Scale items"
 sidebarTitle: "Scale items"
 description: "Set SKU, Weighable, and unit in Taliup HQ so Register can scan scale labels or accept a typed weight."
+keywords: ["scale items", "weighable product", "price label", "weight label", "scale barcode setup", "price per unit"]
+applies_to:
+  audience: merchant
+  product: hq
+  features: [catalog]
+  permissions:
+    guard: web
+    any: ["Manage Catalogs"]
+  since: "2026-09"
 ---
 
 Prepare catalog products for a counter scale. Taliup HQ stores the **SKU**, **price per unit**, and **Weighable** flag. Taliup POS reads the printed sticker (or a typed weight) at Register.
@@ -14,8 +23,9 @@ Cashiers scan and type weight on the terminal. See [Scale barcodes](/taliup-pos/
 
 ---
 
-## Prerequisites
+## Before you start
 
+- You need **Manage Catalogs** to change products.
 - The **Catalog** feature is on the entity plan. Ask your ISO admin to enable it in [Plans & Features](/taliup-hq/onboarding/plans-features) if you do not see **Catalogs** in the sidebar.
 - The product is on the catalog the terminal uses. A product that exists but is not on that catalog returns **Product not found** on scan.
 

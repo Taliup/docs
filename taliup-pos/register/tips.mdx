@@ -1,0 +1,74 @@
+---
+title: "Tips"
+sidebarTitle: "Tips"
+description: "How the tip prompt works on card payments, where the customer sees it, and how to adjust a tip after a sign-and-tip receipt."
+keywords: ["add a tip", "tip prompt not showing", "custom tip", "adjust tip", "change tip after payment", "tip on pre-tax amount", "suggested tip on receipt"]
+applies_to:
+  audience: merchant
+  product: pos
+---
+
+When tips are on for your business, Taliup POS asks the customer for a tip during card payments. With **Tip Adjust**, the customer can instead write the tip on the receipt and you add it afterward.
+
+## Before you start
+
+- Tips are turned on in Taliup HQ, which also sets the presets: percentages or amounts, up to four. See [Tips in Taliup HQ](/taliup-hq/onboarding/tips). The read-only **Tips** switch in Home → **Settings** → **General** (**Preferences**) shows whether they are on.
+- The tip prompt only appears for card payments: **Card**, **Credit**, **Debit** or **Manual entry**. Cash, EBT, gift card and **Other** payments, pre-authorizations and refunds never ask for a tip.
+
+## The tip prompt
+
+<Steps>
+  <Step title="Start a card payment">
+    Tap the card key on the payment screen. See [Take payment](/taliup-pos/register/take-payment).
+  </Step>
+  <Step title="The customer chooses a tip">
+    **Add a tip?** shows the bill, the presets, **No tip** and **Custom**. With **Custom**, the customer types an amount and taps **Confirm tip**.
+  </Step>
+  <Step title="The card is charged">
+    The card reader asks for the card. The tip is included in the amount charged.
+  </Step>
+</Steps>
+
+Where the customer sees the prompt depends on the hardware:
+
+| Setup | Where the tip prompt appears |
+|---|---|
+| Device with a customer-facing display, including Poynt | On the customer display |
+| Device that sends payments to a separate PAX payment terminal | On the payment terminal |
+| Any other device | On the Taliup POS screen. Turn the screen toward the customer |
+
+Percentage tips are calculated on the bill. When **Tip on Pre-Tax Amount** is on in Taliup HQ, they are calculated before tax. Gift cards sold in the order are never tipped.
+
+If the business uses dual pricing or a credit card surcharge, the customer confirms that first or after the tip. See [Take payment](/taliup-pos/register/take-payment#card-payment).
+
+## Sign-and-tip receipts (Tip Adjust)
+
+With the **Tip Adjust** feature, a full card payment skips the tip prompt. The customer receipt prints **Suggested Tip** amounts, the customer writes a tip, and you add it to the payment later.
+
+This applies when all of these are true:
+
+- The business has the **Tip Adjust** feature and tips are on.
+- The device takes cards on a PAX, Castles or Poynt terminal. Elavon card readers (Link 2500, Lane 3600) do not support tip adjustment.
+- The device does not send payments to a separate PAX payment terminal. Those setups keep the normal tip prompt.
+
+### Adjust a tip
+
+<Steps>
+  <Step title="Open the payment">
+    Go to Home → **Transactions** and tap the payment. See [Transaction details](/taliup-pos/transactions/details).
+  </Step>
+  <Step title="Tap Adjust Tip">
+    The sheet shows the **Current tip** and the **Max tip**.
+  </Step>
+  <Step title="Enter the tip">
+    Type the amount the customer wrote, then confirm. Taliup POS shows **Tip adjusted successfully.**
+  </Step>
+</Steps>
+
+**Adjust Tip** appears only on card payments (not EBT) that are not settled, voided or refunded. It works only on the terminal that took the payment: on another device, Taliup POS tells you which terminal to use. Adjust tips before you [close the batch](/taliup-pos/transactions/close-batch). The maximum tip is set in Taliup HQ as a percentage of the sale or a fixed amount.
+
+## Related
+
+- [Take payment](/taliup-pos/register/take-payment)
+- [Transaction details](/taliup-pos/transactions/details)
+- [Tips in Taliup HQ](/taliup-hq/onboarding/tips)

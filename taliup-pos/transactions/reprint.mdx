@@ -1,7 +1,14 @@
 ---
 title: "Reprint a receipt"
 sidebarTitle: "Reprint"
-description: "Reprint merchant or customer receipt copies from Transaction Details."
+description: "Reprint the merchant or customer copy of a receipt from Transaction Details, and fix common reprint printer problems."
+keywords: ["reprint a receipt", "print receipt again", "customer copy", "merchant copy", "lost receipt", "print old receipt"]
+applies_to:
+  audience: merchant
+  product: pos
+  permissions:
+    guard: appUser
+    any: ["Manage Transactions"]
 ---
 
 Reprint receipts from **Transaction Details** when a copy is needed again. This path prints paper only. Email is offered at sale time — see [Customer receipt](/taliup-pos/register/customer-receipt).
@@ -9,6 +16,10 @@ Reprint receipts from **Transaction Details** when a copy is needed again. This 
 <Frame caption="Print menu with Print Merchant Copy and Print Customer Copy.">
   ![Print menu with Print Merchant Copy and Print Customer Copy](/images/taliup-pos/transactions/reprint.png)
 </Frame>
+
+## Before you start
+
+Your role needs the **Manage Transactions** permission to open **Transactions**.
 
 ## Reprint from details
 
