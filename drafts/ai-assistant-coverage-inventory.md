@@ -1,7 +1,7 @@
 # AI assistant docs coverage inventory
 
 Engineering checklist for Phase 1 P2 (plan Part A). Not published (drafts/ is in .mintignore) and not part of the
-assistant's knowledge base, which reads only tagged pages. Updated 2026-11-17.
+assistant's knowledge base, which reads only tagged pages. Updated 2026-11-18.
 
 - **Released?** `app main` = merged to the app's origin/main; `YYYY-MM release` = in that changelog; `HQ feature/ai-assistant` =
   checked against the integration branch (production release unconfirmed). Branch presence alone does not establish a shipment.
@@ -91,16 +91,16 @@ Counts: covered 88, partial 0, missing 0, deferred-unreleased 6, total 94 (2026-
 | HQ marketing | Campaigns, reviews, referrals | HQ | HQ feature/ai-assistant | taliup-hq/merchant/marketing/{campaigns,reviews,referrals} | covered | code-checked |
 | HQ appointments | Calendar in HQ | HQ | HQ feature/ai-assistant (mixed with unreleased cancel/no-show/deposit UI) | taliup-hq/merchant/appointments/calendar (released parts only) | covered | code-checked |
 | HQ appointments | Waitlist, forms, inbox, online booking settings | HQ | HQ feature/ai-assistant | taliup-hq/merchant/appointments/{waitlist,forms,inbox}, taliup-hq/merchant/settings/calendar | covered | code-checked |
-| HQ team | Employees and POS roles, linked HQ accounts | HQ | HQ feature/ai-assistant | taliup-hq/merchant/employees | covered | code-checked |
+| HQ team | Employees and POS roles, linked HQ accounts | HQ | HQ feature/ai-assistant | taliup-hq/merchant/employees | covered | code-checked, employee list and add form checked in local HQ |
 | HQ team | Timesheets | HQ | HQ feature/ai-assistant | taliup-hq/merchant/timesheets | covered | code-checked |
 | HQ team | Employee scheduling | HQ | HQ feature/ai-assistant | taliup-hq/merchant/schedule | covered | code-checked |
 | HQ team | Pay runs and commissions | HQ | HQ feature/ai-assistant | taliup-hq/merchant/pay-runs | covered | code-checked |
 | HQ team | HQ web users: invite, roles | HQ | HQ feature/ai-assistant | taliup-hq/merchant/web-users | covered | code-checked |
 | HQ integrations | QuickBooks sync and settings | HQ | HQ feature/ai-assistant | taliup-hq/merchant/quickbooks | covered | code-checked |
-| HQ billing | Add-on marketplace | HQ | HQ feature/ai-assistant | taliup-hq/merchant/marketplace | covered | code-checked |
+| HQ billing | Add-on marketplace | HQ | HQ feature/ai-assistant | taliup-hq/merchant/marketplace | covered | eligible and ineligible plans checked in local HQ |
 | HQ billing | Subscription settings | HQ | HQ feature/ai-assistant | taliup-hq/merchant/settings/subscription | covered | code-checked |
 | HQ settings | Business details, hours of operation, receipts | HQ | HQ feature/ai-assistant | taliup-hq/merchant/settings/business | covered | code-checked |
-| HQ settings | Payments (tips, tip adjustment, open-sale taxes, dual pricing, surcharge) | HQ | HQ feature/ai-assistant | taliup-hq/merchant/settings/payments | covered | code-checked |
+| HQ settings | Payments (tips, tip adjustment, open-sale taxes, dual pricing, surcharge) | HQ | HQ feature/ai-assistant | taliup-hq/merchant/settings/payments | covered | code-checked, tip controls checked in local HQ |
 | HQ settings | Brand hub | HQ | HQ feature/ai-assistant | taliup-hq/merchant/brand-hub | covered | code-checked |
 | HQ settings | Devices (terminal settings) | HQ | HQ feature/ai-assistant | taliup-hq/merchant/settings/devices | covered | code-checked |
 | HQ settings | Calendar, invoice and recurring payment settings | HQ | HQ feature/ai-assistant | taliup-hq/merchant/settings/calendar, taliup-hq/features/invoicing, taliup-hq/features/recurring-payments | covered | code-checked |
@@ -121,6 +121,14 @@ Counts: covered 88, partial 0, missing 0, deferred-unreleased 6, total 94 (2026-
 - Mintlify rendered the English and French assistant guides and reported zero broken links across the site. The knowledge sync validated 149 English pages and 149 French mirrors, including 135 merchant pages in each language. A transaction-scoped run of `fr-fallback-overview` cited the French overview with its mirror present and the English overview after temporarily removing the mirror. The transaction restored the original corpus.
 - HQ exercised 73 synthetic scenarios across 81 turns with a local model fixture. The single refund smoke checked that the evaluation judge received the retrieved article, its applicability, current employee context and resolved support channel. Local checks also exercised access changes, ISO contacts, card-number redaction, daily pruning, the 100,000-token price boundary and the 50-second request deadline.
 
+## Verification on 2026-11-18
+
+- All nine Android debug variants compiled. All 27 assistant and network tests passed, including a pasted emoji at the 2,000-character limit. The 14 payment-policy tests passed. On the A920Pro, a question sent from Home received a sourced answer through local HQ. Starting a new conversation cleared the exchange.
+- The local merchant portal displayed the documented **Payments** entry under **Settings**, the **Ask for tips** switch and, after enabling it in the form, **Tip type** and **Tip choices**. The **Employees** page displayed **Add employee** and **Roles and permissions**. The add-employee form opened. No changes to payment settings were saved.
+- The test merchant's plan hid **Add-ons** and HQ returned 403 for the page. With an eligible plan in a rolled-back database transaction, HQ returned the marketplace page and its rendered UI showed **Add-ons** and **Your plan**.
+- Mintlify rendered the revised English and French payment and support guides. The local HQ sync validated and activated 149 articles per language. Retrieval returned the configured ISO contact once, as a usable URL, in English, French and the English fallback for Spanish. HQ returned localized terminal-validation and service-error messages in French and Spanish.
+- The updated synthetic suite exercised 73 cases and 82 turns on KB revision `85885421960cd9305d7c9320410f57b8d200655d2890339af6446d06335e2c31`. The local provider's canned replies passed the deterministic checks in 14 of 31 security and support cases and 5 of 42 quality cases. For example, the provider did not retrieve the payment guide for the new credit-only follow-up. No judge was configured. The pilot gate remains open.
+
 ## Next steps
 
 All released workflows in this list now have a page. Still open:
@@ -137,6 +145,8 @@ The default HQ log stack sends diagnostics to daily Laravel files under `storage
 
 Before publishing the final employee notice, confirm the production database and replica regions, where backups and copies are held, and when they expire. The 90-day live cleanup does not remove a message from an earlier backup. The production infrastructure settings establish the maximum additional time a backed-up message can remain.
 
-Before the pilot, verify the Canada Bedrock endpoint, inference profile, destination IAM access, applicable prices, regional provider-retention settings and invocation logging in the deployed account. Verify that the production proxy, web server and PHP process allow the full 50-second request.
+On 2026-11-18 the configured Haiku 5.5 input, output, five-minute cache write and cache read prices matched the published short- and long-context geographic inference rates for Canada (Central) and Canada West (Calgary). [AWS Bedrock pricing](https://aws.amazon.com/bedrock/pricing/)
+
+Before the pilot, verify the complete tool loop against the Canadian inference profile, destination IAM access, effective account pricing, regional provider-retention settings and invocation logging in the deployed account. Verify that the production proxy, web server and PHP process allow the full 50-second request.
 
 Run the full 73-case evaluation against the approved profile with a separately configured judge. The pilot requires all 31 security and support cases and at least 38 of the 42 other cases to pass. Record the actual cost, per-turn p95 latency, cold and warm cache usage, and largest prompt. Include a measurement with six loaded articles and ten completed turns. The local fixture supplies its own answers, timings and token counts and cannot establish these results.

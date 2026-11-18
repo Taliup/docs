@@ -16,7 +16,7 @@ When the order is ready, charge it with the tender keys at the bottom of Registe
 
 ## Tender keys
 
-The bar shows **Cash**, the card key and, when there is room, **Split**. Everything else is under **More** (**More payment types**).
+Register shows keys for the payment types your business accepts. When more options are available than the bar can show, open **More** (**More payment types**) to see them.
 
 | Key | When it appears |
 |---|---|
@@ -27,7 +27,7 @@ The bar shows **Cash**, the card key and, when there is room, **Split**. Everyth
 | **EBT** | Your business accepts EBT. Not when the sale loads a gift card |
 | **Other** | WEB-SRM registers only |
 | **L2P** (Link To Pay) | Your business uses [Link to Pay](/taliup-pos/link-to-pay). Not when paying one guest |
-| **Manual entry** | Elavon card readers (Link 2500, Lane 3600): key the card number on the reader. Added in [November 2026](/changelog/2026-11) |
+| **Manual entry** | Your business accepts credit and uses an Elavon card reader (Link 2500 or Lane 3600). Key the card number on the reader. Added in [November 2026](/changelog/2026-11) |
 
 ## Card keys
 
@@ -35,11 +35,11 @@ Which card keys you see depends on how your business is set up in Taliup HQ:
 
 | Setup | Card keys |
 |---|---|
-| The terminal detects credit or debit automatically | One **Card** key |
-| The terminal detects automatically, and a credit card surcharge is on without dual pricing | **Credit** and **Debit** |
-| Any other setup | **Credit** and **Debit**, for the types your business accepts |
+| The terminal detects the card type automatically, and a credit card surcharge is on without dual pricing | One key for each type your business accepts (**Credit**, **Debit** or both) |
+| The terminal detects the card type automatically in any other configuration | One **Card** key if your business accepts credit or debit |
+| The terminal does not detect the card type automatically | One key for each type your business accepts (**Credit**, **Debit** or both) |
 
-**Dual pricing** shows a card price that includes a non-cash adjustment. The **Credit** key always includes it. **Debit** includes it only when your business applies dual pricing to debit.
+When **dual pricing** has a fee configured, the **Card** or **Credit** key includes the adjustment on eligible items. A separate **Debit** key includes it only when your business applies dual pricing to debit. If your business has dual pricing without a fee, the card price stays the same and automatic card detection still uses the single **Card** key.
 
 A **credit card surcharge** applies to credit only, and only when dual pricing is off. The **Credit** key shows the total with the surcharge.
 
@@ -87,7 +87,7 @@ On a table order, open a guest's options and tap **Pay** to charge only that gue
 
 Depending on settings and the order:
 
-1. **Send To Kitchen Printer** — send items to kitchen printers. It happens automatically when **Send order to external printer after payment** is on. See [Printers](/taliup-pos/settings/printers).
+1. **Send To Kitchen Printer** sends items to a configured kitchen printer. Outside Open Sale Only, turn on **Send order to external printer after payment** to send them automatically. See [Printers](/taliup-pos/settings/printers).
 2. **Choose customer receipt** — **No Receipt**, **Paper** or **Email**. See [Customer receipt](/taliup-pos/register/customer-receipt).
 3. On a split sale, **Choose full order customer receipt** after the last payment.
 4. On some table orders, **Order Fully Paid** or **Guest Fully Paid** print prompts, unless **Skip Fully Paid Receipt Prompts** is on.

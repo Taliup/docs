@@ -13,7 +13,7 @@ Lorsque la commande est prête, encaissez-la avec les touches de paiement au bas
 
 ## Touches de paiement
 
-La barre affiche **Espèces**, la touche de carte et, s'il y a de la place, **Partager**. Tout le reste se trouve sous **Plus** (**Autres modes de paiement**).
+La caisse affiche les touches des modes de paiement que votre entreprise accepte. Lorsque la barre ne peut pas afficher toutes les options, ouvrez **Plus** (**Autres modes de paiement**) pour voir les autres.
 
 | Touche | Quand elle apparaît |
 |---|---|
@@ -24,7 +24,7 @@ La barre affiche **Espèces**, la touche de carte et, s'il y a de la place, **Pa
 | **EBT** | Votre entreprise accepte EBT. Pas lorsque la vente charge une carte-cadeau |
 | **Autre** | Caisses WEB-SRM seulement |
 | **L2P** (Lien de paiement) | Votre entreprise utilise le [Lien Pour Payer](/fr-CA/taliup-pos/link-to-pay). Pas lorsque vous encaissez un seul invité |
-| **Saisie manuelle** | Lecteurs de carte Elavon (Link 2500, Lane 3600) : tapez le numéro de carte sur le lecteur. Ajoutée en [novembre 2026](/fr-CA/changelog/2026-11) |
+| **Saisie manuelle** | Votre entreprise accepte le crédit et utilise un lecteur Elavon (Link 2500 ou Lane 3600). Saisissez le numéro de carte sur le lecteur. Ajoutée en [novembre 2026](/fr-CA/changelog/2026-11) |
 
 ## Touches de carte
 
@@ -32,11 +32,11 @@ Les touches de carte affichées dépendent de la configuration de votre entrepri
 
 | Configuration | Touches de carte |
 |---|---|
-| Le terminal détecte automatiquement crédit ou débit | Une seule touche **Carte** |
-| Le terminal détecte automatiquement, et une surcharge sur carte de crédit est activée sans double tarification | **Crédit** et **Débit** |
-| Toute autre configuration | **Crédit** et **Débit**, selon les types que votre entreprise accepte |
+| Le terminal détecte automatiquement le type de carte et une surcharge sur carte de crédit est activée sans double tarification | Une touche par type accepté par votre entreprise (**Crédit**, **Débit** ou les deux) |
+| Le terminal détecte automatiquement le type de carte dans toute autre configuration | Une seule touche **Carte** si votre entreprise accepte le crédit ou le débit |
+| Le terminal ne détecte pas automatiquement le type de carte | Une touche par type accepté par votre entreprise (**Crédit**, **Débit** ou les deux) |
 
-La **double tarification** affiche un prix carte qui inclut un ajustement pour paiement autre qu'en espèces. La touche **Crédit** l'inclut toujours. **Débit** l'inclut seulement si votre entreprise applique la double tarification au débit.
+Lorsque des frais de **double tarification** sont configurés, la touche **Carte** ou **Crédit** inclut l'ajustement pour les articles admissibles. Une touche **Débit** distincte l'inclut seulement si votre entreprise applique la double tarification au débit. Si la double tarification est activée sans frais, le prix par carte reste le même et la détection automatique affiche toujours une seule touche **Carte**.
 
 Une **surcharge sur carte de crédit** s'applique au crédit seulement, et seulement si la double tarification est désactivée. La touche **Crédit** affiche le total avec la surcharge.
 
@@ -84,7 +84,7 @@ Sur une commande de table, ouvrez les options d'un invité et touchez **Payer** 
 
 Selon les paramètres et la commande :
 
-1. **Envoyer à l'imprimante de cuisine** — envoyer les articles aux imprimantes de cuisine. Cela se fait automatiquement lorsque **Envoyer la commande à l'imprimante externe après paiement** est activé. Voir [Imprimantes](/fr-CA/taliup-pos/settings/printers).
+1. **Envoyer à l'imprimante de cuisine** envoie les articles à une imprimante de cuisine configurée. En dehors du mode Vente ouverte seulement, activez **Envoyer la commande à l'imprimante externe après paiement** pour les envoyer automatiquement. Voir [Imprimantes](/fr-CA/taliup-pos/settings/printers).
 2. **Choisir le reçu client** — **Aucun reçu**, **Papier** ou **Courriel**. Voir [Reçu client](/fr-CA/taliup-pos/register/customer-receipt).
 3. Sur une vente partagée, **Choisir le reçu client de la commande complète** après le dernier paiement.
 4. Sur certaines commandes de table, les invites **Commande entièrement payée** ou **Invité entièrement payé**, sauf si **Ignorer les invitations de reçu entièrement payé** est activé.
