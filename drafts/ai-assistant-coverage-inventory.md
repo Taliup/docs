@@ -44,7 +44,7 @@ Counts: covered 88, partial 0, missing 0, deferred-unreleased 6, total 94 (2026-
 | Register | Appointment checkout with online deposit | App | release branch only | - | deferred-unreleased | code-checked |
 | Tables | Floor overview, table orders, move/split/merge, floor plan editing | App | app main | taliup-pos/tables | covered | code-checked |
 | Menu / Catalog | Products, services, attributes, categories, featured, taxes, discounts, fees, inventory | App | app main | taliup-pos/catalog/* | covered | code-checked |
-| Orders | Find, reopen, cancel open orders; past order actions | App | app main | taliup-pos/orders/* | covered | code-checked |
+| Orders | Find, reopen or cancel an order, act on past orders, sync sales to QuickBooks | App | app main | taliup-pos/orders/* | covered | code-checked |
 | Transactions | List, details, search and filters | App | app main | taliup-pos/transactions, taliup-pos/transactions/details, taliup-pos/transactions/search-and-filters | covered | code-checked |
 | Transactions | Refund (Refund / Return), void, reprint | App | app main | taliup-pos/transactions/refund, taliup-pos/transactions/void, taliup-pos/transactions/reprint | covered | code-checked |
 | Transactions | Close batch | App | app main | taliup-pos/transactions/close-batch | covered | code-checked |
@@ -128,6 +128,14 @@ Counts: covered 88, partial 0, missing 0, deferred-unreleased 6, total 94 (2026-
 - The test merchant's plan hid **Add-ons** and HQ returned 403 for the page. With an eligible plan in a rolled-back database transaction, HQ returned the marketplace page and its rendered UI showed **Add-ons** and **Your plan**.
 - Mintlify rendered the revised English and French payment and support guides. The local HQ sync validated and activated 149 articles per language. Retrieval returned the configured ISO contact once, as a usable URL, in English, French and the English fallback for Spanish. HQ returned localized terminal-validation and service-error messages in French and Spanish.
 - The updated synthetic suite exercised 73 cases and 82 turns on KB revision `85885421960cd9305d7c9320410f57b8d200655d2890339af6446d06335e2c31`. The local provider's canned replies passed the deterministic checks in 14 of 31 security and support cases and 5 of 42 quality cases. For example, the provider did not retrieve the payment guide for the new credit-only follow-up. No judge was configured. The pilot gate remains open.
+
+## Phase 1 review on 2026-11-18
+
+- All nine Android debug variants compiled and all 28 assistant and network tests passed. On an A920Pro, the local assistant returned a sourced refund guide. Revoking the test employee’s token produced the online sign-in notice. It stayed visible after Wi-Fi was disconnected, and the cashier could return to Register and enter an amount.
+- On the same terminal, signing in offline as the same employee through **Switch Employee** cleared the previous exchange and showed the offline notice. After screen-off cleared the cashier session, offline sign-in showed the online sign-in notice. Both checks used a fresh encrypted credential cache. The terminal’s original cache failed to open before any assistant code ran and was restored after testing.
+- A local database write failure passed through the assistant HTTP route with Flare and Nightwatch enabled and request payload capture on. The serialized reports, application log events and HTTP response contained none of the synthetic question, bearer token or cookie values. An unrelated route retained its usual exception message. Local checks also covered tenant and employee isolation, invalid provider settings, the spending threshold and the 90-day history and pruning rules.
+- Mintlify rendered all 34 revised English and French guide pages, including the POS QuickBooks instructions and WEB-SRM prerequisites. The site passed its broken-link check. HQ activated 149 articles per language, including 135 merchant articles per language. Empty and invalid replacements preserved the active index.
+- The full 73-case eval exercised 82 turns against KB revision `c0d2a8ef3d0762303261f6f405ae9f684796fe615efd6827f5d238af3f3addb2`. With canned local replies, 14 of 31 security and support cases and 5 of 42 other cases passed their deterministic checks. The approved Canadian profile and independent judge are still required for the pilot decision.
 
 ## Next steps
 

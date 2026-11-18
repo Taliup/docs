@@ -9,9 +9,13 @@ applies_to:
   features: [web_srm]
 ---
 
-On a device enrolled with WEB-SRM, every bill and receipt is sent to Revenu Québec before it prints. The printed document carries the transaction number and QR code Revenu Québec assigned.
+When a WEB-SRM device is online, it sends each bill and receipt to Revenu Québec before printing. If the connection drops, it can print with **PROBLÈME DE COMMUNICATION** and send the pending documents when the connection returns. See [Work offline](/taliup-pos/web-srm/offline).
 
 Fiscal documents always print in French, whatever language the device uses.
+
+## Before you start
+
+[Enrol this device with WEB-SRM](/taliup-pos/web-srm) and sign in as an employee registered with Revenu Québec before billing.
 
 ## Ask for a paper receipt
 
