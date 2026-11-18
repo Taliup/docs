@@ -1,36 +1,36 @@
 ---
-title: "Bulk Import"
-sidebarTitle: "Bulk Import"
+title: "Importer des produits en lot"
+sidebarTitle: "Importation en lot"
 description: "Chargez toute la liste de produits d'un marchand d'un coup à partir du gabarit Excel Taliup, et exportez le catalogue courant."
-keywords: ["importer des produits en lot", "gabarit Excel", "BulkUploadTemplate", "exporter le catalogue", "échec de l'importation", "mettre à jour des produits existants"]
+keywords: ["importer des produits en lot", "gabarit Excel", "téléverser un menu", "exporter le catalogue", "échec de l'importation", "mettre à jour des produits existants"]
 icon: "file-import"
 ---
 
-**Bulk Upload** charge la liste de produits d'un marchand depuis un chiffrier plutôt qu'un article à la fois. Téléchargez le gabarit Taliup, remplissez-le, téléversez-le.
+Utilisez **Importer** sur la page des produits pour ajouter ou mettre à jour plusieurs produits à partir d’un chiffrier. Téléchargez le gabarit Taliup, remplissez-le, téléversez-le.
 
 ## Avant de commencer
 
 - Le forfait comprend la fonctionnalité **Catalogs**.
-- Il faut **View Catalogs** pour ouvrir **Bulk Upload** et exporter. Importer demande **Manage Catalogs**.
+- Il faut **View Catalogs** pour ouvrir la liste des produits et exporter. Le bouton **Importer** exige aussi **Manage Catalogs**.
 
 ## Comment y arriver
 
-**Catalogs** (ou **Menus**) → **Products** (ou **Items**) → **Bulk Upload**.
+Ouvrez **Catalogues** → **Produits** → **Importer**. Pour un restaurant, ouvrez **Menus** → **Articles** → **Importer**.
 
 ## Importer des produits
 
 <Steps>
   <Step title="Téléchargez le gabarit">
-    Cliquez sur **Download Template**. Le fichier est un classeur Excel nommé `BulkUploadTemplate.xlsx`.
+    Sélectionnez **Télécharger le modèle** pour obtenir le classeur Excel `BulkUpload_Template.xlsx`.
   </Step>
   <Step title="Remplissez les feuilles">
     Complétez d'abord **Attributes** et **Tags** si vous prévoyez d'y faire référence, puis **Products**. Le détail des colonnes est plus bas.
   </Step>
   <Step title="Téléversez le fichier">
-    Cliquez sur **Upload File** et choisissez votre classeur rempli. Le nom du fichier s'affiche une fois sélectionné.
+    Glissez le classeur rempli dans la zone de téléversement ou sélectionnez **choisissez un fichier**. Vérifiez le nom du fichier affiché.
   </Step>
   <Step title="Soumettez">
-    Cliquez sur **Submit**. L'import s'exécute immédiatement et vous revenez à la liste des produits avec une confirmation.
+    Sélectionnez **Importer des produits** (**Importer des articles** pour un restaurant). Une fois l’importation réussie, HQ affiche une confirmation dans la liste des produits.
   </Step>
 </Steps>
 
@@ -106,9 +106,9 @@ C'est la façon d'ajouter des photos à un catalogue déjà construit : exportez
 
 ## Exporter le catalogue
 
-Depuis la liste des produits, cliquez sur **Export Products**. L'export est préparé en arrière-plan et un lien de téléchargement apparaît lorsqu'il est prêt — vous pouvez quitter la page et revenir.
+Dans une liste qui contient au moins un produit, sélectionnez **Exporter**. HQ prépare le chiffrier en arrière-plan et vous avise lorsqu’il est prêt à télécharger.
 
-**Export Attributes** produit un CSV distinct des groupes d'options et de leurs valeurs.
+Pour exporter les groupes d’options et leurs valeurs en CSV, ouvrez **Attributs** (**Modificateurs** pour un restaurant), sélectionnez **Exporter**, choisissez les groupes, puis **Télécharger le CSV**.
 
 ## Si l'import échoue
 

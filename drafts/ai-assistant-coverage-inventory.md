@@ -59,17 +59,17 @@ Counts: covered 88, partial 0, missing 0, deferred-unreleased 6, total 94 (2026-
 | Settings | General, device, printers, employees, Tools tiles | App | app main | taliup-pos/settings/* | covered | code-checked |
 | Settings | Customer-facing display setup | App | app main | taliup-pos/register/customer-display | covered | code-checked |
 | WEB-SRM | Enrolment, billing, cancel/correct, offline, employees, user report, settings, switch to live | App | 2026-08 release | taliup-pos/web-srm/* | covered | code-checked |
-| HQ home | Dashboard | HQ | HQ feature/ai-assistant | taliup-hq/merchant/dashboard | covered | code-checked |
+| HQ home | Dashboard | HQ | HQ feature/ai-assistant | taliup-hq/merchant/dashboard | covered | EN and fr-CA local dashboard with and without analytics access |
 | HQ sales | Orders | HQ | HQ feature/ai-assistant | taliup-hq/merchant/orders | covered | code-checked |
 | HQ sales | Transactions (orders, open sales, online, payouts) | HQ | HQ feature/ai-assistant | taliup-hq/merchant/transactions | covered | code-checked |
 | HQ sales | Virtual terminal: take, look up, refund payments | HQ | HQ feature/ai-assistant | taliup-hq/merchant/virtual-terminal | covered | code-checked |
 | HQ sales | Reports | HQ | HQ feature/ai-assistant | taliup-hq/merchant/reports | covered | code-checked |
 | HQ sales | End of Day | HQ | 2026-09 release | taliup-hq/features/end-of-day | covered | code-checked |
 | HQ sales | Settlements list (PAX Nuvei) | HQ | HQ feature/ai-assistant | taliup-hq/merchant/settlements | covered | code-checked |
-| HQ catalog | Catalogs and categories | HQ | HQ feature/ai-assistant | taliup-hq/merchant/catalogs | covered | code-checked |
-| HQ catalog | Products | HQ | HQ feature/ai-assistant | taliup-hq/merchant/catalogs/products | covered | code-checked |
+| HQ catalog | Catalogs and categories | HQ | HQ feature/ai-assistant | taliup-hq/merchant/catalogs | covered | code-checked, EN and fr-CA local restaurant menu and category controls |
+| HQ catalog | Products | HQ | HQ feature/ai-assistant | taliup-hq/merchant/catalogs/products | covered | code-checked, EN and fr-CA local restaurant item actions |
 | HQ catalog | Taxes, discounts, fees | HQ | HQ feature/ai-assistant | taliup-hq/merchant/catalogs/taxes-discounts-fees | covered | code-checked |
-| HQ catalog | Bulk import and export | HQ | HQ feature/ai-assistant | taliup-hq/merchant/catalogs/bulk-import | covered | code-checked |
+| HQ catalog | Bulk import and export | HQ | HQ feature/ai-assistant | taliup-hq/merchant/catalogs/bulk-import | covered | code-checked, EN and fr-CA local import, export and template controls |
 | HQ catalog | Scale items | HQ | 2026-09 release | taliup-hq/features/scale-items | covered | code-checked |
 | HQ catalog | Services (bookable) | HQ | HQ feature/ai-assistant | taliup-hq/merchant/catalogs/services | covered | code-checked |
 | HQ catalog | Attributes / modifiers | HQ | HQ feature/ai-assistant | taliup-hq/merchant/catalogs/attributes | covered | code-checked |
@@ -80,11 +80,11 @@ Counts: covered 88, partial 0, missing 0, deferred-unreleased 6, total 94 (2026-
 | HQ online store | Today's orders, website, promo codes, ads, QR codes, store tags | HQ | HQ feature/ai-assistant | taliup-hq/merchant/online-store/{orders,website,promotions} | covered | code-checked |
 | HQ online store | Online ordering, delivery, shipping, Uber Direct settings | HQ | HQ feature/ai-assistant | taliup-hq/merchant/online-store/settings | covered | code-checked |
 | HQ tables | Table management in HQ | HQ | HQ feature/ai-assistant | taliup-hq/merchant/tables | covered | code-checked |
-| HQ get paid | Invoices | HQ | HQ feature/ai-assistant | taliup-hq/features/invoicing | covered | code-checked |
+| HQ get paid | Invoices | HQ | HQ feature/ai-assistant | taliup-hq/features/invoicing | covered | code-checked, EN and fr-CA local creation and sending controls |
 | HQ get paid | Link to Pay in HQ | HQ | HQ feature/ai-assistant | taliup-hq/merchant/link-to-pay | covered | code-checked |
 | HQ get paid | Hosted payments | HQ | HQ feature/ai-assistant | taliup-hq/features/hosted-payments | covered | code-checked |
 | HQ get paid | Recurring payments | HQ | 2026-09 release | taliup-hq/features/recurring-payments | covered | code-checked |
-| HQ customers | Clients | HQ | HQ feature/ai-assistant | taliup-hq/features/clients | covered | code-checked |
+| HQ customers | Clients | HQ | HQ feature/ai-assistant | taliup-hq/features/clients | covered | code-checked, EN and fr-CA local list and creation form |
 | HQ customers | Loyalty | HQ | 2026-11 release | taliup-hq/features/loyalty | covered | code-checked |
 | HQ customers | Gift cards | HQ | 2026-11 release | taliup-hq/features/gift-cards | covered | code-checked |
 | HQ customers | Memberships, Packages | HQ | not on HQ master | - | deferred-unreleased | code-checked |
@@ -135,7 +135,12 @@ Counts: covered 88, partial 0, missing 0, deferred-unreleased 6, total 94 (2026-
 - On the same terminal, signing in offline as the same employee through **Switch Employee** cleared the previous exchange and showed the offline notice. After screen-off cleared the cashier session, offline sign-in showed the online sign-in notice. Both checks used a fresh encrypted credential cache. The terminal’s original cache failed to open before any assistant code ran and was restored after testing.
 - A local database write failure passed through the assistant HTTP route with Flare and Nightwatch enabled and request payload capture on. The serialized reports, application log events and HTTP response contained none of the synthetic question, bearer token or cookie values. An unrelated route retained its usual exception message. Local checks also covered tenant and employee isolation, invalid provider settings, the spending threshold and the 90-day history and pruning rules.
 - Mintlify rendered all 34 revised English and French guide pages, including the POS QuickBooks instructions and WEB-SRM prerequisites. The site passed its broken-link check. HQ activated 149 articles per language, including 135 merchant articles per language. Empty and invalid replacements preserved the active index.
-- The full 73-case eval exercised 82 turns against KB revision `c0d2a8ef3d0762303261f6f405ae9f684796fe615efd6827f5d238af3f3addb2`. With canned local replies, 14 of 31 security and support cases and 5 of 42 other cases passed their deterministic checks. The approved Canadian profile and independent judge are still required for the pilot decision.
+- A Register regression test reproduced an unrelated merchant update re-enabling sends after HQ withdrew assistant access. With the fix, the updated test, all 28 assistant and network tests, and all nine debug builds passed.
+- The local HQ route replayed the ten most recent completed turns in order and loaded six French merchant guides over two tool rounds. The final SDK request contained all six article bodies, kept the same system prompt and disabled further tools. Its serialized body was 142,623 bytes. Bedrock usage is still needed to measure billed tokens.
+- The 73-case eval exercised 82 turns against KB revision `1f8767a87d6a25d2e1844cafabb273ab4b5593344c01cde453fdc8755c97063d`. The canned local replies passed 13 of 31 security and support cases and 5 of 42 other cases. The stored-question check confirmed that HQ masked every card digit beside an order number. The tips action case failed its new guidance and article checks. The Canadian profile and independent judge are still required for the pilot decision.
+- Checked the English and French restaurant catalog, category, item and import controls in the local merchant portal, including the linked four-sheet workbook and individual item deletion menu. The local portal also confirmed the client and invoice creation controls, invoice sending options, and dashboard sections available with and without analytics access. The full-access dashboard check used a temporary permission cache for the QA user.
+- Mintlify rendered all twelve revised pages and reported zero broken links. The HQ article tool returned the corrected six topics in English and French, and used English for Spanish requests. All nine Android debug variants compiled, and the 28 assistant and network tests and 69 getting-started tests passed.
+- The latest local evaluation ran 74 cases and 83 turns against KB revision `62c5027a3519ef38633d1dd9283996e5a6fa599a63aa35af5218f67af45f4669`. The synthetic replies passed deterministic checks for 13 of 31 security and support cases and 5 of 43 quality cases. In the new restaurant import case, the fixture did not load the import article or explain the required permission. The command exited with status 1 and reported both gates as ungraded because the judge was unconfigured. HQ saved the results in `storage/app/intelligence/evals/20261118-174731-help-claude-haiku-5-5-low.jsonl`.
 
 ## Next steps
 
@@ -157,4 +162,4 @@ On 2026-11-18 the configured Haiku 5.5 input, output, five-minute cache write an
 
 Before the pilot, verify the complete tool loop against the Canadian inference profile, destination IAM access, effective account pricing, regional provider-retention settings and invocation logging in the deployed account. Verify that the production proxy, web server and PHP process allow the full 50-second request.
 
-Run the full 73-case evaluation against the approved profile with a separately configured judge. The pilot requires all 31 security and support cases and at least 38 of the 42 other cases to pass. Record the actual cost, per-turn p95 latency, cold and warm cache usage, and largest prompt. Include a measurement with six loaded articles and ten completed turns. The local fixture supplies its own answers, timings and token counts and cannot establish these results.
+Run the full 74-case evaluation against the approved profile with a separately configured judge. The pilot requires all 31 security and support cases and at least 39 of the 43 other cases to pass. Record the actual cost, per-turn p95 latency, cold and warm cache usage, and largest prompt. Include a measurement with six loaded articles and ten completed turns. The local fixture supplies its own answers, timings and token counts and cannot establish these results.

@@ -25,10 +25,10 @@ Open **Invoices** in the merchant sidebar to get started.
     The `Invoicing` feature must be enabled on your entity plan. Ask your ISO admin to enable it in [Plans & Features](/taliup-hq/onboarding/plans-features) if you do not see **Invoices** in the sidebar.
   </Step>
   <Step title="Client with a valid email">
-    Email delivery requires a selected client with a valid email address. You can add or update clients from the invoice form or from **Clients**.
+    Email delivery requires a selected client with a valid email address. You can add a client from the invoice or update their details in **Clients**.
   </Step>
   <Step title="Online payments (optional)">
-    To include a **Pay** link on the invoice, enable **Link To Pay** / online payments for your entity and configure an online payment gateway on the location. If Online Payment shows as **Disabled**, customers can still receive the invoice but cannot pay online from the email.
+    To include a **Pay now** link on the invoice, enable **Link To Pay** / online payments for your entity and configure an online payment gateway on the location. If the location has no gateway, customers can still receive the invoice. The **Online payment** switch is disabled.
   </Step>
 </Steps>
 
@@ -36,156 +36,23 @@ You need **View Invoices** to open **Invoices**. Creating, editing and sending i
 
 ---
 
-## Invoices list
+## Find an invoice
 
-When you have not created any invoices yet, the Invoices page shows an empty state with a clear call to action.
-
-<Frame caption="The Invoices page empty state with Create Invoice actions.">
-  ![Invoices empty state titled Create your first invoice, with a Create Invoice button in the header and a Create your first invoice button in the center](/images/taliup-hq/invoicing/invoices-empty.png)
-</Frame>
-
-From here you can:
-
-- Click **+ Create Invoice** (or **Create your first invoice**) to open the create form
-- Use the filter control once you have invoices to narrow the list
-- Sent invoices show **Due in X days** or **Due today** as whole days. Overdue invoices show **Overdue by X days**.
-
----
+Open **Invoices** and search by invoice number, client or email. Use **Status** or **Client** to narrow the list. Select a row to see the invoice, payments and actions available for its status.
 
 ## Create an invoice
 
-The create form has a main editor on the left and a live **Invoice Preview** on the right.
+1. Select **New invoice**. Under **Client**, you can search for an existing customer if you have **View Clients**. If your plan includes Clients and you have **Manage Clients**, select **New client** to add one. If the email belongs to a deleted client, **Restore client** reuses their record and history. See [Clients](/taliup-hq/features/clients#restore-a-deleted-client).
+2. Choose the business location, check the invoice number and enter a summary or message. Select **Add items** for products and services from your catalog, or **Custom item** for a one-off charge. Set quantities and prices, then check discounts, fees, taxes and the total in the preview.
+3. Set when payment is due. To offer online card payment, enable **Online payment**. This requires **Link To Pay** and an online payment gateway at the selected location.
+4. Under **Sending**, choose **Send now** or **Schedule**. Immediate sending requires the client’s email. For a scheduled invoice, choose the send date and delivery channels. **Text message** needs a client phone number.
+5. Review the preview. Select **Save as draft** to finish later, **Send invoice** to send immediately, or **Schedule invoice** to send on the chosen date. When the total is zero, **Save as paid** records the invoice without sending it.
 
-<Frame caption="The Create Invoice page with Client Details, Invoice Details, items, payment and communication settings, plus the live preview sidebar.">
-  ![Create Invoice page for Cornerstone Hardware showing form sections on the left and Invoice Preview on the right](/images/taliup-hq/invoicing/invoice-create.png)
-</Frame>
-
-Use **Save as Draft** to store the invoice without sending it, or **Create Invoice** when you are ready to finalize (and send, if email delivery is enabled).
-
-### Client Details
-
-Select who the invoice is for and which location it belongs to.
-
-<Frame caption="Client Details with Client search and Location.">
-  ![Client Details section with required Client search field, add-client button, and Location dropdown set to Cornerstone Hardware](/images/taliup-hq/invoicing/invoice-client-details.png)
-</Frame>
-
-| Field | Description |
-|---|---|
-| **Client** | Search and select an existing client. Required for email delivery. |
-| **Add client** | Use the person-plus button to open **Add Client** without leaving the page. |
-| **Location** | The business location for the invoice. Taxes are calculated from the selected location. |
-
-<Frame caption="The Add Client modal used from the invoice form.">
-  ![Add Client modal with First Name, Last Name, Email, Phone, Business Name, Notes, and Add Client button](/images/taliup-hq/invoicing/invoice-add-client.png)
-</Frame>
-
-**Email** is required when you create a client who should receive invoices by email.
-
-If that email belongs to a client you already deleted, Taliup asks **Restore previous client?** instead of creating a duplicate. Click **Restore** to reuse the existing record and their invoice history. See [Restore a deleted client](/taliup-hq/features/clients#restore-a-deleted-client).
-
-### Invoice Details
-
-Set the invoice identity, timing, and customer-facing message.
-
-<Frame caption="Invoice Details including Send Invoice Immediately.">
-  ![Invoice Details with invoice number 000005, summary, send date 2026-07-14, Send Invoice Immediately toggle on, due date, and invoice message](/images/taliup-hq/invoicing/invoice-details.png)
-</Frame>
-
-| Field | Description |
-|---|---|
-| **Invoice Number** | Unique invoice identifier (for example `000005`). |
-| **Invoice Summary** | Optional short description. |
-| **Send Date** | When the invoice is scheduled to send. |
-| **Send Invoice Immediately** | When on, Taliup sends as soon as the invoice is created (if email delivery is enabled). |
-| **Due Date** | Optional payment due date shown on the invoice. |
-| **Invoice Message** | Body copy that appears on the invoice and in the email. |
-
-### Invoice Items
-
-Add catalog products or one-off custom products, then optionally apply discounts and fees.
-
-<Frame caption="Invoice Items empty state with Add Items, custom product, discounts, and fees.">
-  ![Invoice Items table with no items yet, Add Items button, Add Custom Product link, Add Discounts and Add Fees buttons, and Subtotal and Total of $0.00](/images/taliup-hq/invoicing/invoice-items.png)
-</Frame>
-
-- **+ Add Items** opens your product catalog so you can search and select line items.
-- **+ Add Custom Product** adds a one-off item that is not in the catalog.
-- **Add Discounts** / **Add Fees** adjust the invoice total.
-- Taxes are calculated automatically based on the selected location.
-
-<Frame caption="The Add Items modal for selecting products from the catalog.">
-  ![Add Items modal with Search by name and a grid of product cards including Sample Product, GripFast Wood Screws, and other hardware items](/images/taliup-hq/invoicing/invoice-add-items.png)
-</Frame>
-
-### Payment Details
-
-Choose payment frequency and whether customers can pay online from the invoice.
-
-<Frame caption="Payment Details with Frequency and Online Payment toggle.">
-  ![Payment Details section with Frequency set to One Time and Online Payment showing Disabled with the toggle off](/images/taliup-hq/invoicing/invoice-payment-details.png)
-</Frame>
-
-| Setting | Description |
-|---|---|
-| **Frequency** | Typically **One Time** for a single invoice. |
-| **Add link to pay / Online Payment** | When enabled, the invoice email and payment page include a pay link. When **Disabled**, the invoice is still deliverable but without online checkout. |
-
-### Communication
-
-Control whether and how the invoice is emailed.
-
-<Frame caption="Communication settings for email delivery, reply-to, and support message.">
-  ![Communication section with Email delivery Immediate badge and toggle on, validation messages to select a client, a Reply to Email address, and Support Message text area](/images/taliup-hq/invoicing/invoice-communication.png)
-</Frame>
-
-| Setting | Description |
-|---|---|
-| **Email delivery** | Master toggle for sending the invoice by email. The **Immediate** badge appears when send-immediately is active. |
-| **Reply to Email** | Where customer replies are directed. The default comes from **Reply-to email** in [Invoice settings](#invoice-settings). |
-| **Support Message** | Footer text on the invoice email (for example how to contact your team). |
-
-If email delivery is on but no client is selected, Taliup shows validation such as **Please select a client** and notes that email is required for immediate delivery.
-
-### Invoice Preview
-
-The right-hand preview updates as you edit so you can confirm branding, message, line items, and totals before you create the invoice.
-
-If the entity has a logo in **Settings → Business**, that logo appears on the preview and on downloaded invoice and receipt PDFs.
-
-<Frame caption="Live Invoice Preview showing merchant branding and placeholders for client details.">
-  ![Invoice Preview for Cornerstone Hardware with logo, address, client placeholders, invoice number 000005, issued date, message, empty items table, and total $0.00](/images/taliup-hq/invoicing/invoice-preview.png)
-</Frame>
-
----
+The preview shows your business logo when one is configured. Taxes come from the catalog items on the invoice. Use **Support message** to tell customers how to reach you in the footer of the invoice email.
 
 ## Edit a sent invoice
 
-You can edit an invoice after it has been sent, as long as it is not paid.
-
-| Status | What you can do |
-|---|---|
-| **Draft** | Edit all fields, including client, location, and invoice number. Click **Update Invoice**. |
-| **Sent**, **Overdue**, or **Canceled** | Edit message, items, dates, and payment settings. Client, location, and invoice number stay locked. Click **Update and Resend** to save and email the updated invoice. |
-| **Paid** | Editing is blocked. Taliup shows that the invoice can no longer be edited because it has been paid or is otherwise locked. |
-
-<Frame caption="Edit a sent invoice. The header action is Update and Resend.">
-  ![Edit Invoice page with Client Details, Invoice Details, live preview, and Update and Resend in the header](/images/taliup-hq/invoicing/invoice-update-and-resend.png)
-</Frame>
-
-<Steps>
-  <Step title="Open the invoice">
-    From **Invoices**, open a sent unpaid invoice.
-  </Step>
-  <Step title="Make your changes">
-    Update the message, line items, due date, or payment settings. You cannot change the client, location, or invoice number after send.
-  </Step>
-  <Step title="Update and Resend">
-    Click **Update and Resend**. Taliup saves the changes and emails the client again when email delivery is on.
-  </Step>
-</Steps>
-
----
+Open the invoice and select **Edit** when available. A draft lets you change the client, location and invoice number. These fields are locked once the invoice is scheduled or sent. On an editable sent invoice, change the items, message or payment details. Select **Save** to keep the changes or **Save and send again** to send the revised invoice. Paid invoices cannot be edited.
 
 ## Invoice settings
 
@@ -195,11 +62,7 @@ Open **Settings** → **Invoices** (in the **Features** section). This needs the
 |---|---|
 | **Reply-to email** | Customers' replies to invoice emails go here. Empty: your business email. |
 | **Remind customers when an invoice is past due** | Sends one reminder email after the due date. Set **Send it after**, in days. |
-| **Put its items back in stock** (under **Deleting an invoice**) | **Always** returns the stock automatically when you delete an unpaid invoice; **Ask each time** asks on each delete whether to **Return stock to inventory**. Only for items you track stock for. |
-
-<Frame caption="Delete invoice confirmation with Return stock to inventory.">
-  ![Confirmation modal asking to delete an invoice for Ava Bennett, with Return stock to inventory turned on](/images/taliup-hq/invoicing/invoice-return-stock.png)
-</Frame>
+| **Put its items back in stock** (under **Deleting an invoice**) | **Always** returns tracked items to stock automatically when you delete an unpaid invoice. With **Ask each time**, choose whether to put the items back in stock in the deletion dialog. |
 
 Draft and paid invoice deletes do not return stock.
 
@@ -207,50 +70,15 @@ Draft and paid invoice deletes do not return stock.
 
 ## Customer payment page
 
-When a client opens the invoice (from email or a shared link), they see the issued and due dates, line items, and amount due. They can download a PDF from this page.
-
-<Frame caption="Customer-facing invoice payment page with Download Receipt.">
-  ![Cornerstone Hardware invoice payment page for Demo Client showing issued and due dates, line item PipeFlow PVC Pipe, amount due $16.08, and Download Receipt button](/images/taliup-hq/invoicing/invoice-payment-page.png)
-</Frame>
-
-<Tip>
-  Invoice emails no longer rely on an attached PDF. If a customer needs a file copy, ask them to use **Download Receipt** (or the PDF download) on the payment page.
-</Tip>
-
----
+The link in the invoice opens the customer’s copy, including the items, dates and amount due. When online payment is available, the customer can pay by card. Use **Download invoice** for a copy of an unpaid invoice or **Download receipt** after payment.
 
 ## Refunds
 
-Refunding an invoice opens a confirmation step so you confirm the client and capture a reason.
-
-<Frame caption="Refund confirmation modal asking for a reason.">
-  ![Confirmation modal asking Are you sure you want to refund this Invoice for Demo Client with Reason for Refund text area and Cancel and Yes buttons](/images/taliup-hq/invoicing/invoice-refund-confirm.png)
-</Frame>
-
-1. Start a refund from the invoice.
-2. Confirm the client name in the prompt.
-3. Enter a **Reason for Refund**.
-4. Choose **Yes** to proceed or **Cancel** to abort.
-
----
+With **Manage Invoices**, open a paid invoice that offers **Refund**. Review the invoice number and amount in the confirmation dialog. You can enter a **Reason**. Select **Refund** to confirm. A card refund goes back to the card.
 
 ## Invoice email conditions
 
-An invoice email is sent only when all of the following are true:
-
-| Condition | What to check |
-|---|---|
-| Email delivery is enabled | Communication → **Email delivery** is on |
-| Client has a valid email | Client is selected and the client record includes an email |
-| Timing is ready | **Send Invoice Immediately** is on, or the scheduled **Send Date** has been reached |
-| Address can receive mail | Taliup is not blocked from delivering to that address (you see a clear error if send is blocked) |
-| Reply-To (optional) | If **Reply-to email** is set in [Invoice settings](#invoice-settings), customer replies go there |
-
-<Info>
-  Immediate delivery always requires a client email. If you see **Email is required for immediate delivery**, select or create a client with an email before creating the invoice.
-</Info>
-
----
+For immediate delivery, select a client with a valid email and choose **Send now**. For scheduled email, choose **Schedule**, set the date and turn on **Email**. HQ sends the invoice when that date arrives. A blocked address can prevent delivery. The **Reply-to email** in [Invoice settings](#invoice-settings) controls where customer replies go.
 
 ## Troubleshooting
 
@@ -259,7 +87,7 @@ An invoice email is sent only when all of the following are true:
 1. Confirm the client email spelling on the invoice / client record.
 2. Ask the customer to check **Junk** / **Spam**.
 3. On Outlook / Hotmail, ask whether junk filtering is set to trust only Safe senders. If so, they should mark the message **It's not junk** and add the sender to Safe senders.
-4. Confirm Communication **Email delivery** was on and whether send was immediate or scheduled for a later date.
+4. Under **Sending**, check **Email** and the send date.
 
 ### Merchant sees a delivery / suppressed email error
 
@@ -272,12 +100,12 @@ Do not keep resending to an address that has already failed hard delivery.
 
 ### Online pay link is missing
 
-1. On the invoice, open **Payment Details** and confirm **Online Payment** is enabled.
+1. In the invoice editor, confirm **Online payment** is enabled.
 2. Confirm your plan includes Link to Pay / online payment features and that the location has an online payment gateway configured.
 
 ### Customer needs a PDF
 
-Use the customer payment page **Download Receipt** / PDF download. The invoice email is designed to stand alone without a PDF attachment.
+On the customer payment page, use **Download invoice** before payment or **Download receipt** after payment. The invoice email is designed to stand alone without a PDF attachment.
 
 ### Wrong reply destination
 
