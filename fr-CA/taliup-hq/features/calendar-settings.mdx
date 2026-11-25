@@ -1,0 +1,199 @@
+---
+title: "Paramètres du calendrier"
+sidebarTitle: "Paramètres du calendrier"
+description: "Régler la réservation en ligne, les paiements des réservations et les liens de paiement, la politique d'annulation et les frais, l'attribution des réservations au personnel, les salles et l'équipement, les rappels, et les options de réservation de chaque service."
+keywords: ["paramètres du calendrier", "rappels", "textos", "paiements des réservations", "dépôt", "délai d'annulation", "frais d'absence", "frais d'annulation tardive", "salles", "préparation"]
+---
+
+Les paramètres du calendrier déterminent la réservation en ligne, les dépôts et les annulations, l'attribution des réservations au personnel et aux salles, et les rappels. Certaines options se trouvent aussi dans chaque service.
+
+Pour la réservation au quotidien, voir [Calendrier](/fr-CA/taliup-hq/features/calendar).
+
+## Comment y arriver
+
+Barre latérale → **Paramètres** → **Fonctionnalités** → **Calendrier**. Vous pouvez aussi cliquer sur l'icône des paramètres dans la barre d'outils du calendrier.
+
+Il faut la fonction **Calendrier** et la permission **Manage Settings**. La réservation en ligne exige le module **Réservation en ligne**, et les dépôts, cartes enregistrées et frais exigent la fonction **Paiements des réservations en ligne**.
+
+La page compte quatre onglets : **Réservation en ligne**, **Paiements et annulations**, **Personnel et salles** et **Notifications**.
+
+### En un coup d'œil
+
+![Paramètres du calendrier avec les onglets Online booking, Payments & cancellations, Staff & rooms et Notifications, le résumé de la réservation en ligne, de ce que les clients paient à la réservation, des annulations et des rappels, et l'interrupteur Accept online bookings](/images/taliup-hq/calendar-settings/overview.png)
+
+Un résumé en haut montre vos réglages actuels : **Réservation en ligne** activée ou non, ce que les clients paient **À la réservation**, votre délai et vos frais d'**Annulations**, et vos **Rappels**. Cliquez sur une partie pour ouvrir son onglet.
+
+Une seule barre au bas de la page enregistre tous les onglets. Elle affiche **Vous avez des modifications non enregistrées** jusqu'à ce que vous cliquiez sur **Enregistrer les modifications**. Cliquez sur **Annuler** pour revenir en arrière. Si vous quittez avec des modifications non enregistrées, **Quitter sans enregistrer?** vous le demande d'abord.
+
+## Réservation en ligne
+
+| Paramètre | Ce qu'il fait |
+|---|---|
+| **Accepter les réservations en ligne** | Active votre page de réservation. Exige vos heures d'ouverture |
+| **Votre page de réservation** | Votre lien de réservation et son code QR, et l'image de bannière en haut de la page |
+| **Recevez des réservations de Google, Instagram et Facebook** | Un lien suivi pour chaque canal |
+| **Catégories de services** | Avec plus d'un catalogue, le catalogue dont les catégories regroupent les services sur votre page de réservation |
+| **Quand les clients peuvent réserver** | Le **Préavis minimum** avant une réservation, et **Jusqu'à quand les clients peuvent réserver** |
+| **Permettre aux clients de s'inscrire à une liste d'attente** | Les clients peuvent s'inscrire à une liste d'attente quand aucune plage ne convient. Voir [Liste d'attente](/fr-CA/taliup-hq/features/waitlist) |
+
+Tout ce qui suit **Accepter les réservations en ligne** s'affiche une fois l'option activée. Voir [Réservation en ligne](/fr-CA/taliup-hq/features/online-booking).
+
+## Paiements et annulations
+
+Les deux premières sections exigent la fonction **Paiements des réservations en ligne**. Sans elle, vous voyez **Les paiements des réservations en ligne ne font pas partie de votre forfait**. Contactez Taliup pour l'activer.
+
+Les dépôts, les cartes enregistrées et les frais exigent aussi une passerelle de paiement en ligne à l'emplacement. Sans passerelle, vous voyez **Les paiements en ligne ne sont pas configurés**. Les emplacements sans passerelle sont nommés dans un avertissement, et les réservations à ces endroits ne demandent pas de carte. Contactez le soutien Taliup pour en configurer une.
+
+### Paiements des réservations en ligne
+
+Choisissez ce que les clients paient ou laissent au dossier en réservant en ligne. Chaque service suit ce choix, sauf s'il a le sien.
+
+| Option | Ce qui se passe |
+|---|---|
+| **Aucun paiement** | Les clients réservent sans carte. Aucuns frais d'absence ni d'annulation tardive ne peuvent être facturés |
+| **Enregistrer une carte** | Rien n'est prélevé maintenant. La carte est conservée pour facturer les frais d'absence et d'annulation tardive |
+| **Prendre un dépôt** | Une partie du prix est payée à la réservation, en **Montant fixe** ou en **% du prix**. La carte est aussi enregistrée |
+| **Prix complet à l'avance** | Les clients paient le prix complet en réservant |
+
+Si des services ont leur propre choix, la section les énumère. Cliquez sur **Voir les services** pour les consulter.
+
+### Politique d'annulation et d'absence
+
+S'applique aux réservations en ligne qui prennent un dépôt ou enregistrent une carte.
+
+| Paramètre | Ce qu'il fait |
+|---|---|
+| **Délai d'annulation** | En heures avant le rendez-vous. Les clients qui annulent plus tôt sont remboursés automatiquement. Les annulations plus tardives peuvent entraîner les frais d'annulation tardive |
+| **Frais d'absence** | **Aucuns frais**, **Montant fixe** ou **% du prix**. Facturés lorsqu'un client ne se présente pas |
+| **Frais d'annulation tardive** | **Aucuns frais**, **Montant fixe** ou **% du prix**. Facturés lorsqu'un client annule à l'intérieur du délai d'annulation |
+
+Un dépôt déjà payé par le client est déduit des frais :
+
+- Seuls les frais sont retenus sur le dépôt. Le reste est remboursé sur la carte du client.
+- Sans frais configurés, tout le dépôt est remboursé.
+- Si les frais dépassent le dépôt, la différence est prélevée sur la carte enregistrée.
+
+Les frais ne peuvent être prélevés que sur une carte enregistrée par le client, ou sur un dépôt qu'il a payé, en réservant en ligne ou par un lien de paiement. Le personnel règle les frais au moment d'annuler ou de marquer une absence. Voir [Annuler un rendez-vous](/fr-CA/taliup-hq/features/calendar#annuler-un-rendez-vous).
+
+### Les clients peuvent annuler en ligne
+
+Permet aux clients d'annuler à partir du lien dans leur courriel de confirmation. Le lien d'annulation ne fonctionne plus une fois le rendez-vous commencé, ou une fois qu'il a été encaissé à la caisse.
+
+**Quand un client annule tardivement** s'affiche lorsque des frais peuvent être facturés. S'applique dans le délai d'annulation, avec des frais d'annulation tardive configurés. Les clients voient le montant avant de confirmer.
+
+| Option | Ce qui se passe |
+|---|---|
+| **Le signaler au personnel** | Le rendez-vous affiche **Annulation tardive · frais non prélevés** pour que le personnel les facture ou y renonce |
+| **Prélever les frais automatiquement** | Prélevés sur la carte enregistrée du client dès qu'il annule |
+
+### Liens de paiement
+
+Quand le personnel réserve un rendez-vous, il peut envoyer au client un lien pour payer le dépôt ou enregistrer une carte, comme pour une réservation en ligne.
+
+Réglez **Le lien reste valide pendant** en heures (de 1 à 168). Si le client n'a pas payé ni enregistré de carte d'ici là, le rendez-vous est annulé et le client en est avisé. Un lien envoyé plus près du rendez-vous que ce délai expire à son début, et le rendez-vous reste réservé.
+
+Voir [Liens de paiement](/fr-CA/taliup-hq/features/calendar#liens-de-paiement) dans le calendrier.
+
+## Personnel et salles
+
+### Attribution des réservations au personnel
+
+**Assigner des employés aux services** : chaque service se réserve avec les employés que vous lui assignez, et les clients peuvent choisir avec qui ils réservent. Désactivez-le pour réserver selon les heures du service.
+
+### Salles et équipement
+
+Énumérez les salles, chaises ou appareils requis par vos services. Choisissez-les ensuite dans chaque service.
+
+| Colonne | Ce qu'elle indique |
+|---|---|
+| **Nom** | Par exemple, une salle de soins |
+| **Combien à la fois** | Combien vous en avez, comme 2 tables de massage. Chacun est numéroté pour voir où se trouve chaque rendez-vous |
+| **Emplacement** | **Tous les emplacements**, ou un seul emplacement. Une salle liée à un emplacement ne compte que les réservations à cet endroit. Affiché lorsque vous avez plus d'un emplacement |
+| **Utilisé par** | Le nombre de services qui en ont besoin |
+| **Actif** | Désactivez une salle sans la supprimer |
+
+Pour en ajouter une, cliquez sur **Ajouter une salle ou un équipement**, entrez les détails, puis cliquez sur **Ajouter**.
+
+Pour en modifier une, ouvrez son menu et cliquez sur **Modifier**. Si elle compte plus d'une unité, renommez chaque unité numérotée sous **Nommer chacun**. Cliquez sur **Terminé**, puis sur **Enregistrer les modifications** au bas de la page.
+
+Vous ne pouvez pas réduire **Combien à la fois** :
+
+- tant que les unités retirées ont des rendez-vous à venir. Déplacez d'abord ces rendez-vous.
+- sous ce qu'un service utilise par réservation. Réduisez-le d'abord dans le service.
+
+Pour supprimer une salle, ouvrez son menu et cliquez sur **Supprimer**. Les services n'en ont plus besoin.
+
+### Dans le calendrier
+
+| Paramètre | Ce qu'il fait |
+|---|---|
+| **Glisser les rendez-vous pour les déplacer** | Activé par défaut. Le personnel qui a **Manage Appointments** peut glisser une réservation vers une autre heure, un autre jour ou un autre employé. Le déplacement est confirmé avant |
+
+## Notifications
+
+**Courriel**
+
+| Paramètre | Ce qu'il fait |
+|---|---|
+| **Rappels par courriel aux clients** | **Ne pas envoyer**, ou **1 jour avant**, **2 jours avant**, **3 jours avant** ou **7 jours avant** |
+| **M'avertir par courriel des rendez-vous** | Recevez un courriel quand un rendez-vous est pris, modifié ou annulé. Entrez l'adresse sous **Envoyer à**. Obligatoire lorsque la réservation en ligne est activée |
+
+**Textos**
+
+Cette section s'affiche seulement lorsque Taliup a activé les textos de rendez-vous.
+
+| Paramètre | Ce qu'il fait |
+|---|---|
+| **Envoyer un texto de confirmation de réservation** | Envoyé lorsque le rendez-vous est réservé, après le paiement du dépôt s'il y a lieu. Le client doit avoir un numéro de téléphone à son dossier |
+| **Envoyer des rappels de rendez-vous par texto** | Active les textos de rappel |
+| **Premier rappel** | 1, 2, 3 ou 7 jours avant |
+| **Deuxième rappel** | **Aucun deuxième rappel**, ou un court texto de 1 à 12 heures avant |
+
+Chaque texto se termine par une ligne de désabonnement. Les clients qui répondent STOP ne reçoivent plus de textos. La section affiche aussi le nombre de textos envoyés ce mois-ci.
+
+### Moment des rappels
+
+- Les rappels suivent vos paramètres tels qu'ils sont maintenant. Si vous changez un délai, les rendez-vous à venir utilisent le nouveau.
+- Une réservation faite plus près du rendez-vous que le délai reçoit son rappel une heure après la réservation. Pour le premier rappel par texto, il est laissé au deuxième rappel s'il reste à venir.
+- Quand un rendez-vous est déplacé, ses rappels sont envoyés de nouveau pour la nouvelle heure.
+- Les réservations qui attendent encore un dépôt ou un lien de paiement ne reçoivent pas de rappel avant d'être confirmées.
+- Le personnel peut désactiver **Envoyer un rappel** pour une seule réservation.
+
+## Options de réservation des services
+
+Certaines options de réservation se règlent par service. Barre latérale → **Catalogue** → **Services**, puis ouvrez un service.
+
+### Temps autour de chaque rendez-vous
+
+| Champ | Ce qu'il fait |
+|---|---|
+| **Préparation avant** | Bloqué avant le début du rendez-vous |
+| **Nettoyage après** | Bloqué après la fin du rendez-vous |
+
+L'employé et les salles restent occupés pendant ce temps, alors la réservation en ligne n'y placera pas d'autre rendez-vous.
+
+### Salles et équipement requis
+
+Cochez les salles ou l'équipement dont le service a besoin. Chaque réservation utilise un exemplaire de chaque élément coché. Si vous en avez plus d'un, réglez combien chaque réservation en utilise avec **−** et **+**, comme 2 chaises de massage. La réservation en ligne n'offrira pas de plage lorsqu'il n'y en a pas assez de libres.
+
+Si l'une ou l'autre de plusieurs salles convient, ne les cochez pas toutes. Regroupez-les en un seul élément et réglez plutôt **Combien à la fois**. La page vous avertit lorsque deux éléments ou plus sont cochés.
+
+### Paiement des réservations en ligne
+
+Affiché lorsque la réservation en ligne est activée. Sous **Ce que les clients paient en réservant en ligne**, choisissez :
+
+- **Suivre le choix de l'entreprise : [choix]**, qui suit l'onglet **Paiements et annulations**
+- **Rien à l'avance**
+- **Enregistrer une carte (aucun prélèvement)**
+- **Dépôt fixe** ou **Dépôt en pourcentage**, avec le montant sous **Dépôt**
+- **Prix complet à l'avance**
+
+Le même choix s'applique lorsque le personnel envoie un lien de paiement pour ce service.
+
+Les heures du service, les emplacements, les employés et les rendez-vous en même temps sont expliqués dans [Réservation en ligne](/fr-CA/taliup-hq/features/online-booking).
+
+## Connexe
+
+- [Calendrier](/fr-CA/taliup-hq/features/calendar)
+- [Rendez-vous dans Taliup POS](/fr-CA/taliup-pos/calendar/appointments)
+- [Réservation en ligne](/fr-CA/taliup-hq/features/online-booking)

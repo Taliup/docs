@@ -3,171 +3,176 @@ title: Dashboard
 description: View your sales performance, top products, and employee metrics for your merchant location.
 ---
 
-The Dashboard is the home screen for every merchant in Taliup HQ. It gives you an at-a-glance view of sales activity, financial summaries, and employee performance — all scoped to your location and timezone.
+The Dashboard is the home screen for every merchant in Taliup HQ. Open it any time from **Home** at the top of the side menu. It greets you by name and gives you an at-a-glance view of today's appointments, sales, top products, and how each employee is doing — all scoped to your location and timezone.
 
-<Frame caption="The merchant Dashboard showing the Sales tab with KPI cards, a Sales Performance chart, and Quick Links sidebar.">
-  ![Merchant Dashboard Sales tab with Gross Sales $1656.58, Net Sales $1376.36 (39 Transactions), Tips $76.71, Authorizations $0.00 KPI cards; a Sales Performance area chart for July 10, 2026; and Quick Links sidebar listing Products, Taxes, Timesheets, Settings, and FAQs.](/images/taliup-hq/dashboard-sales.png)
+<Frame caption="The Dashboard Overview tab with the sales tiles, the Sales over time chart, and the Breakdown card.">
+  ![Dashboard greeting the signed-in user, with Overview and Staff tabs. The Sales section shows the Day, Week, Month, and Year period picker, four tiles for Gross sales, Net sales, Tips, and Authorizations, the Sales over time chart, and the Breakdown card on the right.](/images/taliup-hq/dashboard-sales.png)
 </Frame>
 
-The dashboard is divided into two tabs: **Sales** and **Employees**.
+The dashboard has two tabs: **Overview** and **Staff**. Click **Help** at the top right to open help for this page.
 
 ---
 
-## Sales tab
+## What you see
 
-### KPI cards
+Each section only appears for people allowed to see it:
 
-The four metric cards at the top of the Sales tab update whenever you change the time period in the Sales Performance chart.
+| Section | Needs |
+|---|---|
+| **Today's appointments** | A salon, spa, or clinic business with Calendar on the plan, and the **View Appointments** permission |
+| **Sales** tiles, chart, and **Breakdown** | **View Transactions** and **View Business Analytics** |
+| **Top products** and **Best sellers** | **View Transactions** |
+| **Staff** tab | **View Employees** and **View Business Analytics** |
 
-<Frame caption="The four KPI cards showing Gross Sales, Net Sales, Tips, and Authorizations for the selected period.">
-  ![Four KPI cards: Gross Sales $1656.58 (Including taxes and tips), Net Sales $1376.36 (39 Transactions), Tips $76.71 (Total tips received), Authorizations $0.00 (0 Transactions)](/images/taliup-hq/dashboard-kpi-cards.png)
+**Shortcuts** shows for everyone. Someone with none of these permissions sees a welcome message and the shortcuts.
+
+---
+
+## Overview tab
+
+### Today's appointments
+
+Salons, spas, and clinics see today's appointments at the top of the page. The panel refreshes every minute, so statuses stay current through the day.
+
+The tiles count what is **Booked today**, **Done**, and **Still to come**, the **Expected** revenue, and appointments in the **Next 7 days**. Below them, each appointment shows its time, client, service, and staff member, with badges such as **Deposit paid**, **Awaiting payment**, **Confirmed**, **Upcoming**, **In progress**, **Done**, **Cancelled**, or **No-show**.
+
+- Click **Open calendar** to go to the [Calendar](/taliup-hq/features/calendar).
+- Click a client's name to open their profile.
+
+### Sales tiles
+
+The **Sales** section covers payments taken in the period you choose, in your business's time zone. Four tiles sit at the top:
+
+<Frame caption="The period picker and the four sales tiles: Gross sales, Net sales, Tips, and Authorizations.">
+  ![Sales section with the Day, Week, Month, and Year buttons, previous and next arrows, and a date picker, above four tiles: Gross sales (Incl. taxes and tips), Net sales with the transaction count, Tips (Tips received), and Authorizations with the transaction count](/images/taliup-hq/dashboard-kpi-cards.png)
 </Frame>
 
-| Card | What it shows |
+| Tile | What it shows |
 |---|---|
-| **Gross Sales** | Total revenue including taxes and tips |
-| **Net Sales** | Revenue after refunds and voids, plus the transaction count |
-| **Tips** | Total tip amount collected in the period |
+| **Gross sales** | Total revenue including taxes and tips |
+| **Net sales** | Revenue after refunds and voids, plus the transaction count |
+| **Tips** | Total tips received in the period |
 | **Authorizations** | Pre-authorized (open tab) total and transaction count |
 
-### Sales Performance chart
+### Choose the period
 
-The Sales Performance chart plots **Gross Sales** over time as a shaded area chart. A dashed red reference line marks the **average sale amount** for the selected period. Hovering over the chart shows a tooltip with the exact gross sales value at that time.
+The dashboard opens on today. Use the period picker on the right of the **Sales** heading:
 
-<Frame caption="The Sales Performance chart for July 10, 2026 showing Gross Sales by hour, with a tooltip at 06:00 am and the average sale amount reference line at $125.80.">
-  ![Sales Performance area chart with DAY / WEEK / MONTH / YEAR tabs and a date picker showing 2026-07-10. The chart shows hourly gross sales activity with a peak around 1 PM–2 PM. A tooltip reads '06:00 am — Gross Sales: 0.00'. The dashed red average-sale-amount reference line shows Avg Sale Amount: $125.80.](/images/taliup-hq/dashboard-sales-performance.png)
-</Frame>
-
-Use the period tabs to change the granularity:
-
-| Tab | Data granularity | Date input |
+| Button | Period | Chart shows |
 |---|---|---|
-| **DAY** | Hourly breakdown for a single date | Date picker (YYYY-MM-DD) |
-| **WEEK** | Daily breakdown for an ISO week | Week-number picker |
-| **MONTH** | Daily breakdown for a calendar month | Month picker (YYYY-MM) |
-| **YEAR** | Monthly breakdown for a calendar year | Year picker (YYYY) |
+| **Day** | One day | Gross sales by hour |
+| **Week** | Sunday to Saturday | Gross sales by day |
+| **Month** | One calendar month | Gross sales by day |
+| **Year** | One calendar year | Gross sales by month |
 
-Selecting a different period or date immediately refreshes the KPI cards and chart data via an AJAX call — no full page reload required.
+Use the arrows to step back or forward one period, or click the date to pick a day, week, month, or year. You cannot go past the current period. When you are looking at an earlier period, click **Today**, **This week**, **This month**, or **This year** to come back.
 
-### Quick Links
+The tiles, chart, and **Breakdown** all refresh together, without reloading the page.
 
-The Quick Links sidebar provides one-click navigation to the most-used sections of your merchant portal:
+### Sales over time
 
-- **Products** — manage your product catalog
-- **Taxes** — configure tax rates
-- **Timesheets** — view employee time records
-- **Settings** — adjust entity configuration
-- **FAQs** — access help documentation
+The **Sales over time** chart plots gross sales across the period. Hover over the chart to see the exact amount.
 
-### Summary
-
-The Summary section is a detailed financial breakdown for the selected period.
-
-<Frame caption="The Summary table showing a hierarchical breakdown of Gross Sales, Refunds, Payouts, Voids, Net Total, Tips, Taxes, Surcharge Total, and Authorizations.">
-  ![Summary table with two columns: # Transactions and Total. Gross Sales (incl. taxes, incl. tips) = 34 / $1656.58, broken down by ACH Sales ($0.00), Cash Sales (17 / $880.78), Credit Card Sales (17 / $775.75, expandable), Debit Card Sales ($0.00). Refunds = 0 / -$0.00. Payouts = 5 / -$280.22. Voids = 0 / -$0.00. Net Total = 34 / $1376.36. Tips = $76.71. Taxes = $0.00. Surcharge Total = $7.04. Authorizations = 0 / $0.00.](/images/taliup-hq/dashboard-summary.png)
+<Frame caption="The Sales over time chart, with the previous period beside it and the change between the two.">
+  ![Sales over time card showing gross sales as bars across the period, a muted series for the previous period, a green or red badge with the percentage change, and the Bars and Area style buttons](/images/taliup-hq/dashboard-sales-performance.png)
 </Frame>
 
-The table is organized into the following rows:
+- The chart compares each period with the one before: a day with the same weekday last week, and a week, month, or year with the previous one. The earlier period shows muted beside the current one.
+- The badge at the top shows the change, for example **+12% vs last week**. For a period still in progress, it compares up to the same point in the period.
+- For a single day, the chart only shows the hours around your sales.
+- Use the two buttons at the top right to switch between **Bars** and **Area**. Your browser remembers your choice.
 
-| Row | Description |
+### Breakdown
+
+The **Breakdown** card is a detailed financial summary of the period, with a **Count** and an **Amount** for each line.
+
+<Frame caption="The Breakdown card, with sales and refunds by payment method, then voids, the net total, tips, taxes, and authorizations.">
+  ![Breakdown card with Count and Amount columns. Gross sales (Incl. taxes and tips) split into Cash, Credit cards, and Debit cards, followed by Refunds, Voids, Net total, Tips, Taxes, and Authorizations](/images/taliup-hq/dashboard-summary.png)
+</Frame>
+
+| Line | Description |
 |---|---|
-| **Gross Sales** | All completed transactions (incl. taxes, incl. tips) |
-| — ACH Sales | Bank transfer transactions |
-| — Cash Sales | Cash tender transactions |
-| — Gift Card Sales | Gift card redemptions (shown when applicable) |
-| — Credit Card Sales | Card-present credit transactions; click the chevron to expand by card type (Visa, Mastercard, Amex, etc.) |
-| — Debit Card Sales | Debit card transactions |
-| — EBT Sales | EBT transactions (shown when applicable) |
-| — Other Sales | Sales tendered as **Other** at the terminal (shown when applicable) |
-| **Refunds** | Refunded transactions (negative values) |
-| — Cash Refunds | Refunds applied to cash tender |
-| — Credit Card Refunds | Refunds applied to credit cards |
-| — Debit Card Refunds | Refunds applied to debit cards |
-| — Other Refunds | Refunds of **Other** sales (shown when applicable) |
-| **Payouts** | Cash payouts recorded at the terminal (negative values) |
+| **Gross sales** | All completed transactions, including taxes and tips |
+| — ACH | Bank transfer sales (shown when applicable) |
+| — Cash | Cash sales |
+| — Gift cards | Gift card sales (shown when you sell gift cards, or when any were used in the period) |
+| — Other | Sales tendered as **Other** at the terminal (shown when applicable) |
+| — Credit cards | Credit card sales. Click to open the split by card type (Visa, Mastercard, Amex, and so on) |
+| — Debit cards | Debit card sales. Click to open the split by card type |
+| — EBT | EBT sales (shown for businesses that accept EBT) |
+| **Refunds** | Refunded transactions (negative values), split by the same payment methods |
+| **Payouts** | Cash payouts recorded at the terminal (shown when there are any) |
 | **Voids** | Voided transactions (negative values) |
-| **Net Total** | Gross Sales minus Refunds, Payouts, and Voids |
+| **Net total** | Gross sales minus refunds, payouts, and voids |
 | **Tips** | Total tips collected |
-| **Taxes** | Total taxes collected |
-| **Surcharge Total** | Total surcharge collected |
+| **Taxes** | Total taxes collected. Click to open the amount for each tax |
+| **Surcharges** | Total surcharge collected (shown when surcharging is on) |
+| **Dual pricing markup** | Total dual pricing markup (shown when dual pricing is on) |
 | **Authorizations** | Open pre-authorized amounts not yet captured |
 
-### Top Products
+### Top products
 
-The Top Products table lists up to 20 of your best-selling products (custom products excluded), ranked by units sold.
+The **Top products** card lists your 20 best-selling products of all time, ranked by units sold. Custom products are not included.
 
-<Frame caption="The Top Products table listing up to 20 best-selling products ranked by units sold, with expandable rows for monthly sales detail.">
-  ![Top Products table showing products such as BondRight Construction Adhesive 295 mL (6 units, $39.24), SwitchPro 3-Way Light Switch White (6 units, $27.30), BrightGuard Reflective Safety Vest (5 units, $48.90), and other products. Each row has columns: Products, Units Sold, Total Sales, Units Available, and a chevron to expand monthly breakdowns.](/images/taliup-hq/dashboard-top-products.png)
+<Frame caption="The Top products card, with one product opened to show its sales this year by month.">
+  ![Top products card with numbered rows showing each product's name and price, Units sold, and Sales. One row is open, showing a line chart titled with the current year and its sales by month.](/images/taliup-hq/dashboard-top-products.png)
 </Frame>
 
 | Column | Description |
 |---|---|
-| **Products** | Product name and unit price |
-| **Units Sold** | Total quantity sold |
-| **Total Sales** | Total revenue from this product |
-| **Units Available** | Current inventory count |
+| **Product** | Product name and unit price |
+| **Units sold** | Total quantity sold |
+| **Sales** | Total revenue from this product |
+| **In stock** | Current inventory count. Shown for retail businesses that track inventory |
 
-Click any product row to expand a monthly sales breakdown for the current year.
+Click a product to open a chart of its sales this year, by month. Click it again to close the chart.
 
-### Sales Distribution
+### Best sellers
 
-The Sales Distribution section shows a breakdown of your sales by category with a **Top Selling Products (Quantity)** pie chart. This gives a visual overview of which products drive the most volume.
+The **Best sellers** card shows your top 10 products of all time by units sold, as a bar chart with the number sold at the end of each bar.
 
-<Frame caption="Sales Distribution pie chart showing Top Selling Products by quantity, with a color-coded legend.">
-  ![Sales Distribution section titled 'Breakdown of your sales by category'. A multicolored pie chart labeled 'Top Selling Products (Quantity)' is shown alongside a legend listing product names including BondRight Construction Adhesive 295 mL, SwitchPro 3-Way Light Switch White, RollerPro Paint Roller Frame 9 in., IceMelt Pro Sidewalk Salt 10 kg, CablePro Outdoor Extension Cord 50 ft, BrightGuard Reflective Safety Vest, MeasureMax 25 ft Tape Measure, GripWorks Adjustable Wrench 8 in., SawSharp Jigsaw Blade Set – 10 Piece, and DriverPro 10-Piece Screwdriver Set.](/images/taliup-hq/dashboard-sales-distribution.png)
+<Frame caption="The Best sellers card showing the top 10 products by units sold.">
+  ![Best sellers card titled 'All time, top 10 by units sold', with a horizontal bar for each product and the number of units sold at the end of each bar](/images/taliup-hq/dashboard-sales-distribution.png)
 </Frame>
+
+### Shortcuts
+
+The **Shortcuts** card gives one-click access to **Products**, **Taxes**, **Timesheets**, **Settings**, and **FAQs**. Products, Taxes, Timesheets, and Settings only show when you can open that page from the side menu.
 
 ---
 
-## Employees tab
+## Staff tab
 
-The Employees tab contains three sections for analyzing individual employee performance within your location.
+The **Staff** tab shows **Sales by employee**: each employee's sales, tips, and average ticket over the dates you choose.
 
-<Frame caption="The Employees tab with Thomas Walker selected, showing the Employee Performance chart, Employee Distribution bar chart, and Employee Tips table.">
-  ![Employees tab with Thomas Walker selected in the Employee dropdown. The Employee Performance section shows a line chart titled 'Sales Performance: Thomas Walker' with a peak of $2218.98 in July 2026. The Employee Distribution bar chart shows Gross Sales by employee with Thomas at approximately 42. The Employee Tips table shows Thomas Walker with 34 Total Sales, $1789.84 Total Sales Amount, $66.90 Total Tips, and $52.64 Average Ticket.](/images/taliup-hq/dashboard-employees.png)
+<Frame caption="The Staff tab with the Sales by employee table and its date picker.">
+  ![Staff tab showing the Sales by employee card with a Show everyone switch and a date picker. The table lists employees with Employee, Sales, Sales amount, Tips, and Average ticket columns, a bar behind each sales amount, and a Total row at the bottom.](/images/taliup-hq/dashboard-employees.png)
 </Frame>
-
-### Employee Performance
-
-Select an employee from the **Employee** dropdown to display a monthly time-series chart of their gross sales over the rolling 12-month period.
-
-<Frame caption="Employee Performance chart for Thomas Walker showing a peak of $2218.98 in July 2026.">
-  ![Employee Performance card showing Thomas Walker selected in the dropdown and a line chart titled 'Sales Performance: Thomas Walker' plotting monthly gross sales from 2025-08 to 2026-07 with a spike to $2218.98 in July 2026.](/images/taliup-hq/dashboard-employee-performance.png)
-</Frame>
-
-When no employee is selected, the chart area displays a **No Employee selected** placeholder. Once an employee is chosen, the chart loads automatically.
-
-### Employee Distribution
-
-The Employee Distribution card shows a bar chart of **Gross Sales** grouped by employee, giving a quick visual comparison of sales volume across your team.
-
-<Frame caption="Employee Distribution bar chart showing Gross Sales by employee.">
-  ![Employee Distribution card with a Gross Sales bar chart. The x-axis shows the employee name Thomas and the y-axis shows values from 0 to 50, with Thomas's bar reaching approximately 42.](/images/taliup-hq/dashboard-employee-distribution.png)
-</Frame>
-
-### Employee Tips
-
-The Employee Tips table shows tips received by each employee within a date range you specify.
-
-<Frame caption="Employee Tips table showing Thomas Walker with 34 sales, $1789.84 in sales, $66.90 in tips, and a $52.64 average ticket for July 10, 2026.">
-  ![Employee Tips card with Date Range 2026-07-10 to 2026-07-10. The table shows one row: ID 1, Name Thomas Walker, Total Sales 34, Total Sales Amount $1789.84, Total Tips $66.90, Average Ticket $52.64.](/images/taliup-hq/dashboard-employee-tips.png)
-</Frame>
-
-Use the **Date Range** picker to filter the tips table by a custom start and end date. The table columns are:
 
 | Column | Description |
 |---|---|
-| **ID** | Employee record ID |
-| **Name** | Employee full name |
-| **Total Sales** | Number of transactions attributed to this employee |
-| **Total Sales Amount** | Gross revenue from this employee's transactions |
-| **Total Tips** | Total tips received by this employee |
-| **Average Ticket** | Average transaction value (Total Sales Amount ÷ Total Sales) |
+| **Employee** | Employee name |
+| **Sales** | Number of transactions attributed to this employee |
+| **Sales amount** | Revenue from this employee's transactions, after refunds and voids. The bar compares it with your busiest employee |
+| **Tips** | Total tips received by this employee |
+| **Average ticket** | Average transaction value |
+
+- The table opens on today. Click the date to pick **Today**, **Yesterday**, **This week**, **Last week**, **This month**, or **Last month**, or set your own **From** and **To** dates and click **Apply**.
+- Employees are listed busiest first. Turn on **Show everyone** to also list employees with no sales in those dates.
+- When more than one employee is listed, a **Total** row sums the table.
 
 A sale with a [Helped by](/taliup-pos/register/helped-by) employee counts for that employee: its sales, amount, and tip. Without one, it counts for the employee who took the payment. The **Tips** report's employee filter follows the same rule.
+
+### One employee's sales
+
+Click an employee to open their numbers in a side panel: **Sales**, **Sales amount**, **Tips**, and **Average ticket** for the chosen dates, and a **Last 12 months** chart of their sales each month.
+
+<Frame caption="An employee's panel with their totals for the chosen dates and their sales over the last 12 months.">
+  ![Side panel for one employee showing four tiles for Sales, Sales amount, Tips, and Average ticket, and a Last 12 months bar chart of their sales each month](/images/taliup-hq/dashboard-employee-performance.png)
+</Frame>
 
 ---
 
 ## Data scope
 
-All dashboard figures are scoped to your merchant entity and calculated in your entity's configured **timezone**. Dates and time groupings (hourly, daily, weekly, monthly, yearly) all respect this timezone, so sales that occur near midnight are attributed to the correct local business day.
+All dashboard figures are scoped to your merchant entity and calculated in your entity's configured **timezone**. Days, weeks, months, and years all follow this timezone, so sales that occur near midnight are attributed to the correct local business day. **Top products** and **Best sellers** cover all time, not the period you picked.

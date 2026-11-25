@@ -1,12 +1,10 @@
 ---
 title: "Facturation"
 sidebarTitle: "Facturation"
-description: "Créer, envoyer, mettre à jour et gérer les factures depuis le portail marchand — y compris restaurer un client, mettre à jour et renvoyer, inventaire à la suppression, et dépannage courriel."
+description: "Créer, envoyer et suivre les factures dans Taliup HQ — les planifier ou les envoyer par texto, accepter le paiement en ligne, enregistrer des paiements, envoyer des rappels, rembourser et remettre le stock à la suppression."
 ---
 
-La facturation permet de créer des factures professionnelles, de les envoyer par courriel aux clients, d'inclure éventuellement un lien de paiement en ligne, et de suivre le paiement depuis Taliup HQ.
-
-Ouvrez **Invoices** dans la barre latérale marchande pour commencer.
+La facturation permet de facturer un client pour des produits, des services ou autre chose. Vous envoyez la facture par courriel ou par texto, le client peut la payer en ligne par carte, et Taliup HQ montre ce qui est planifié, en attente, en retard et payé.
 
 ---
 
@@ -14,218 +12,270 @@ Ouvrez **Invoices** dans la barre latérale marchande pour commencer.
 
 <Steps>
   <Step title="Fonction Invoicing activée">
-    La fonction `Invoicing` doit être activée sur le plan de l'entité. Demandez à votre admin ISO de l'activer dans [Plans et fonctionnalités](/fr-CA/taliup-hq/onboarding/plans-features) si vous ne voyez pas **Invoices** dans la barre latérale.
+    La fonction `Invoicing` doit être activée sur le plan de l'entité. Demandez à votre admin ISO de l'activer dans [Plans et fonctionnalités](/fr-CA/taliup-hq/onboarding/plans-features) si vous ne voyez pas **Factures** dans la barre latérale.
   </Step>
-  <Step title="Client avec un courriel valide">
-    L'envoi par courriel exige un client sélectionné avec une adresse valide. Vous pouvez ajouter ou mettre à jour des clients depuis le formulaire de facture ou depuis **Clients**.
+  <Step title="Client avec un courriel ou un téléphone">
+    **Maintenant** envoie la facture par courriel : le client doit donc avoir une adresse courriel. Une facture planifiée peut partir par courriel, par texto ou les deux. Vous pouvez ajouter un client depuis la facture ou depuis **Clients**.
   </Step>
   <Step title="Paiements en ligne (facultatif)">
-    Pour inclure un lien **Pay** sur la facture, activez **Link To Pay** / les paiements en ligne pour l'entité et configurez une passerelle en ligne sur l'emplacement. Si Online Payment affiche **Disabled**, les clients peuvent quand même recevoir la facture mais ne peuvent pas payer en ligne depuis le courriel.
+    Pour ajouter un bouton **Payer maintenant**, la fonction `Link To Pay` doit être sur votre plan et l'emplacement de la facture doit être relié à une passerelle de paiement en ligne. Sans passerelle, la facture part quand même, mais le client ne peut pas la payer en ligne.
   </Step>
 </Steps>
+
+## Comment y arriver
+
+Barre latérale → **Paiements reçus** → **Factures**.
+
+| Pour | Permission |
+|---|---|
+| Voir les factures et leurs détails | **View Invoices** |
+| Créer, modifier, envoyer, rappeler, enregistrer un paiement ou rembourser | **Manage Invoices** |
+| Supprimer une facture | **Delete Invoices** |
+
+Les liens de paiement créés à la caisse sont listés à part sous **Paiements reçus** → **Lien de paiement**, avec la même liste et le même panneau de détails. Voir [Lien Pour Payer dans Taliup POS](/fr-CA/taliup-pos/link-to-pay/create-and-send).
 
 ---
 
 ## Liste des factures
 
-Lorsque vous n'avez encore aucune facture, la page Invoices affiche un état vide avec un appel à l'action.
+Le haut de la page résume vos factures en quatre tuiles : **Planifiée**, **En attente de paiement**, **En retard** et **Payée**, chacune avec un nombre et un total. Cliquez sur une tuile pour n'afficher que ces factures.
 
-<Frame caption="L'état vide de la page Invoices avec les actions Create Invoice.">
-  ![État vide Invoices intitulé Create your first invoice, avec un bouton Create Invoice dans l'en-tête et Create your first invoice au centre](/images/taliup-hq/invoicing/invoices-empty.png)
+<Frame caption="La page Factures avec les tuiles de statut, la recherche et la liste des factures.">
+  ![Page Factures avec les tuiles Planifiée, En attente de paiement, En retard et Payée, une zone de recherche et un filtre Statut, et une liste de factures avec numéro, client, échéance, statut et total](/images/taliup-hq/invoicing/invoices-empty.png)
 </Frame>
 
-À partir d'ici vous pouvez :
+- Cliquez sur **Nouvelle facture** pour ouvrir l'éditeur.
+- Cherchez par numéro, client ou courriel, ou choisissez un **Statut**. **Réinitialiser** efface les filtres.
+- La colonne **Échéance** affiche **À la réception** ou la date d'échéance. Tant qu'une facture attend son paiement, elle affiche aussi **Due aujourd’hui**, **Due dans X jours** ou **X jours de retard**.
+- Cliquez sur une ligne pour ouvrir ses détails. Utilisez le menu **⋮** d'une ligne pour les actions rapides.
 
-- Cliquer sur **+ Create Invoice** (ou **Create your first invoice**) pour ouvrir le formulaire
-- Utiliser le filtre une fois que vous avez des factures
-- Les factures envoyées affichent **Due in X days** ou **Due today** en jours entiers. Les factures en retard affichent **Overdue by X days**.
+Avant votre première facture, la page affiche **Aucune facture pour l’instant** avec un bouton **Nouvelle facture**.
+
+### Statuts
+
+| Statut | Signification |
+|---|---|
+| **Brouillon** | Enregistrée mais pas envoyée. Le client ne la voit pas |
+| **Planifiée** | Part automatiquement à sa date d'envoi |
+| **En attente de paiement** | Envoyée et pas encore payée |
+| **En retard** | Échéance dépassée et pas payée |
+| **Payée** | Payée en entier |
+| **Remboursée** | Le paiement a été remboursé |
+| **Annulée** | Annulée. Il n'y a rien à payer |
+
+### Détails d'une facture
+
+Cliquez sur une ligne pour ouvrir la facture dans un panneau latéral. Il montre le **Total**, l'échéance (ou **Payée le**), les **Détails** comme l'emplacement et le mode d'envoi, le **Client**, les **Articles** avec les totaux, les **Paiements** et l'**Activité**.
+
+Le bouton principal en bas change selon le statut :
+
+| Statut | Action principale |
+|---|---|
+| **Planifiée** | **Envoyer maintenant** |
+| **En attente de paiement** | **Envoyer de nouveau** |
+| **En retard** | **Envoyer un rappel** |
+| **Payée** | **Rembourser** |
+
+Vous pouvez aussi cliquer sur **Voir la page** pour ouvrir la page de paiement du client, sur **Modifier** ou sur **Supprimer**.
 
 ---
 
 ## Créer une facture
 
-Le formulaire a un éditeur à gauche et un **Invoice Preview** en direct à droite.
+Cliquez sur **Nouvelle facture**. L'éditeur présente la facture à gauche, et un **Récapitulatif** des totaux et un **Aperçu** en direct à droite.
 
-<Frame caption="La page Create Invoice avec Client Details, Invoice Details, articles, paiement et communication, plus l'aperçu en direct.">
-  ![Page Create Invoice de Cornerstone Hardware avec les sections du formulaire à gauche et Invoice Preview à droite](/images/taliup-hq/invoicing/invoice-create.png)
+<Frame caption="L'éditeur Nouvelle facture avec le formulaire à gauche, et le récapitulatif et l'aperçu à droite.">
+  ![Page Nouvelle facture avec les cartes Client, Détails, Articles, Paiement et Envoi à gauche, et Récapitulatif et Aperçu à droite](/images/taliup-hq/invoicing/invoice-create.png)
 </Frame>
 
-Utilisez **Save as Draft** pour enregistrer sans envoyer, ou **Create Invoice** lorsque vous êtes prêt à finaliser (et envoyer, si l'envoi courriel est activé).
+La barre du bas affiche le total et les boutons d'enregistrement :
 
-### Client Details
+- **Enregistrer comme brouillon** garde la facture sans l'envoyer.
+- **Envoyer la facture** l'envoie maintenant. Quand vous la planifiez, le bouton devient **Planifier la facture**.
+- **Enregistrer comme payée** les remplace quand le total est de 0 $, par exemple quand un abonnement couvre tous les articles. Rien n'est envoyé.
 
-Sélectionnez le destinataire et l'emplacement.
+Si vous quittez avec des modifications non enregistrées, Taliup vous demande avant de les abandonner.
 
-<Frame caption="Client Details avec recherche Client et Location.">
-  ![Section Client Details avec champ Client obligatoire, bouton ajouter un client, et liste Location réglée sur Cornerstone Hardware](/images/taliup-hq/invoicing/invoice-client-details.png)
+### Client
+
+Cherchez un client par nom, courriel ou téléphone, ou cliquez sur l'un de vos **Clients fréquents**.
+
+<Frame caption="La carte Client avec la recherche, les clients fréquents et Nouveau client.">
+  ![Carte Client avec un champ de recherche par nom, courriel ou téléphone, une rangée de clients fréquents et un bouton Nouveau client](/images/taliup-hq/invoicing/invoice-client-details.png)
+</Frame>
+
+Cliquez sur **Nouveau client** pour ajouter quelqu'un sans quitter la facture. Entrez son **Prénom**, son **Nom** et son **Courriel**. **Téléphone**, **Nom de l’entreprise** et **Notes** sont facultatifs. Cliquez sur **Ajouter le client** : il est choisi pour la facture.
+
+<Frame caption="Le panneau Nouveau client ouvert depuis la facture.">
+  ![Panneau Nouveau client avec les champs Prénom, Nom, Courriel, Téléphone, Nom de l'entreprise et Notes, et les boutons Annuler et Ajouter le client](/images/taliup-hq/invoicing/invoice-add-client.png)
+</Frame>
+
+Si ce courriel appartient à un client déjà supprimé, Taliup demande **Restaurer ce client?** au lieu de créer un doublon. Cliquez sur **Restaurer le client** pour ramener le dossier et son historique. Voir [Restaurer un client supprimé](/fr-CA/taliup-hq/features/clients#restaurer-un-client-supprimé).
+
+### Détails
+
+<Frame caption="La carte Détails.">
+  ![Carte Détails avec les champs Numéro de facture, Emplacement, Résumé et Message](/images/taliup-hq/invoicing/invoice-details.png)
 </Frame>
 
 | Champ | Description |
 |---|---|
-| **Client** | Cherchez et sélectionnez un client existant. Obligatoire pour l'envoi par courriel. |
-| **Add client** | Utilisez le bouton personne-plus pour ouvrir **Add Client** sans quitter la page. |
-| **Location** | L'emplacement d'affaires de la facture. Les taxes sont calculées selon l'emplacement choisi. |
+| **Numéro de facture** | Rempli avec le numéro suivant. Vous pouvez le changer tant que la facture est un brouillon. |
+| **Emplacement** | L'emplacement d'affaires de la facture. Sa passerelle de paiement en ligne reçoit le paiement du client. |
+| **Résumé** | Facultatif. L'objet de la facture, en quelques mots. |
+| **Message** | Affiché en haut de la facture. |
 
-<Frame caption="La fenêtre Add Client utilisée depuis le formulaire de facture.">
-  ![Fenêtre Add Client avec First Name, Last Name, Email, Phone, Business Name, Notes et bouton Add Client](/images/taliup-hq/invoicing/invoice-add-client.png)
+### Articles
+
+<Frame caption="La carte Articles avec les lignes, les rabais et les frais.">
+  ![Carte Articles listant les articles avec quantité, prix unitaire et montant, les boutons Article personnalisé et Ajouter des articles, et les liens Ajouter un rabais et Ajouter des frais](/images/taliup-hq/invoicing/invoice-items.png)
 </Frame>
 
-**Email** est obligatoire lorsque vous créez un client qui doit recevoir des factures par courriel.
+- **Ajouter des articles** ouvre votre catalogue. Cherchez par nom ou UGS, cochez les produits et services voulus, puis cliquez sur **Ajouter**.
+- **Article personnalisé** ajoute une ligne hors catalogue, avec un nom, un prix et une description facultative.
+- Sur chaque ligne, changez la **Quantité**. Les articles dont le prix est fixé à la vente prennent aussi un prix. Utilisez le menu **⋮** de la ligne pour ajouter une note ou retirer la ligne.
+- Si un article a besoin d'options, la ligne affiche **Choisir les options**.
+- **Ajouter un rabais** et **Ajouter des frais** prennent un montant ou un pourcentage, avant ou après taxes. Choisissez l'un des vôtres ou créez-en un.
 
-Si ce courriel appartient à un client déjà supprimé, Taliup demande **Restore previous client?** au lieu de créer un doublon. Cliquez sur **Restore** pour réutiliser le dossier et son historique de factures. Voir [Restaurer un client supprimé](/fr-CA/taliup-hq/features/clients#restaurer-un-client-supprimé).
+Les taxes viennent de celles de chaque article dans votre catalogue.
 
-### Invoice Details
-
-Définissez l'identité, le calendrier et le message visible par le client.
-
-<Frame caption="Invoice Details incluant Send Invoice Immediately.">
-  ![Invoice Details avec numéro 000005, résumé, date d'envoi 2026-07-14, bascule Send Invoice Immediately activée, date d'échéance et message](/images/taliup-hq/invoicing/invoice-details.png)
+<Frame caption="Le panneau Ajouter des articles pour choisir des produits du catalogue.">
+  ![Panneau Ajouter des articles avec un champ Chercher par nom ou UGS et une liste de produits du catalogue avec cases à cocher et prix](/images/taliup-hq/invoicing/invoice-add-items.png)
 </Frame>
 
-| Champ | Description |
-|---|---|
-| **Invoice Number** | Identifiant unique (par exemple `000005`). |
-| **Invoice Summary** | Description courte facultative. |
-| **Send Date** | Quand la facture est prévue pour l'envoi. |
-| **Send Invoice Immediately** | Lorsque c'est activé, Taliup envoie dès la création (si l'envoi courriel est activé). |
-| **Due Date** | Date d'échéance facultative affichée sur la facture. |
-| **Invoice Message** | Texte qui apparaît sur la facture et dans le courriel. |
+#### Abonnements
 
-### Invoice Items
+Les factures peuvent utiliser les visites et rabais que l'abonnement d'un client lui donne. Quand le client a un abonnement qui couvre un article, la ligne propose **Utiliser la visite**. Les rabais aux membres sont ajoutés pour vous. Voir [Abonnements](/fr-CA/taliup-hq/features/memberships).
 
-Ajoutez des produits du catalogue ou des produits personnalisés, puis appliquez éventuellement rabais et frais.
+### Paiement
 
-<Frame caption="État vide Invoice Items avec Add Items, produit personnalisé, rabais et frais.">
-  ![Tableau Invoice Items vide, bouton Add Items, lien Add Custom Product, boutons Add Discounts et Add Fees, sous-total et total 0,00 $](/images/taliup-hq/invoicing/invoice-items.png)
-</Frame>
-
-- **+ Add Items** ouvre le catalogue pour chercher et sélectionner des lignes.
-- **+ Add Custom Product** ajoute un article hors catalogue.
-- **Add Discounts** / **Add Fees** ajustent le total.
-- Les taxes sont calculées automatiquement selon l'emplacement.
-
-<Frame caption="La fenêtre Add Items pour sélectionner des produits du catalogue.">
-  ![Fenêtre Add Items avec Search by name et une grille de cartes produits](/images/taliup-hq/invoicing/invoice-add-items.png)
-</Frame>
-
-### Payment Details
-
-Choisissez la fréquence et si les clients peuvent payer en ligne.
-
-<Frame caption="Payment Details avec Frequency et bascule Online Payment.">
-  ![Section Payment Details avec Frequency réglé sur One Time et Online Payment Disabled](/images/taliup-hq/invoicing/invoice-payment-details.png)
+<Frame caption="La carte Paiement avec l'échéance et le paiement en ligne.">
+  ![Carte Paiement avec Échéance réglée sur À la réception ou À une date, et une bascule Paiement en ligne](/images/taliup-hq/invoicing/invoice-payment-details.png)
 </Frame>
 
 | Paramètre | Description |
 |---|---|
-| **Frequency** | Habituellement **One Time** pour une facture unique. |
-| **Add link to pay / Online Payment** | Lorsque c'est activé, le courriel et la page de paiement incluent un lien. Lorsque **Disabled**, la facture reste livrable sans paiement en ligne. |
+| **Échéance** | **À la réception**, ou **À une date** avec une date d'échéance. |
+| **Paiement en ligne** | Ajoute un bouton **Payer maintenant** pour que le client paie par carte. Affiché quand `Link To Pay` est sur votre plan. |
 
-### Communication
+Si l'emplacement n'est relié à aucune passerelle de paiement en ligne, la bascule reste désactivée et Taliup affiche **Cet emplacement ne peut pas encore accepter les paiements en ligne**.
 
-Contrôlez si et comment la facture est envoyée par courriel.
+### Envoi
 
-<Frame caption="Paramètres Communication pour l'envoi courriel, reply-to et message de soutien.">
-  ![Section Communication avec pastille Immediate, messages de validation, Reply to Email et zone Support Message](/images/taliup-hq/invoicing/invoice-communication.png)
+<Frame caption="La carte Envoi avec le moment d'envoi, le courriel, le texto, le courriel de réponse et le message d'assistance.">
+  ![Carte Envoi avec Quand l'envoyer réglé sur Maintenant ou Planifier, les bascules Courriel et Texto, Courriel de réponse et Message d'assistance](/images/taliup-hq/invoicing/invoice-communication.png)
 </Frame>
 
 | Paramètre | Description |
 |---|---|
-| **Email delivery** | Bascule principale pour l'envoi par courriel. La pastille **Immediate** apparaît lorsque l'envoi immédiat est actif. |
-| **Reply to Email** | Où vont les réponses des clients. Configuré dans Invoice Settings lorsque disponible. |
-| **Support Message** | Texte de pied de page du courriel (par exemple comment joindre votre équipe). |
+| **Quand l’envoyer** | **Maintenant**, ou **Planifier** pour l'envoyer automatiquement à une **Date d’envoi**. |
+| **Courriel** | Envoie la facture au client par courriel. Toujours activé avec **Maintenant**. |
+| **Texto** | Envoie le lien de paiement par texto au téléphone du client. |
+| **Courriel de réponse** | Où vont les réponses des clients. Réglez-le dans les [Paramètres des factures](#paramètres-des-factures). S'il n'est pas réglé, cliquez sur **Configurer**. |
+| **Message d’assistance** | Affiché à la fin du courriel de la facture, par exemple comment vous joindre. |
 
-Si l'envoi courriel est activé mais qu'aucun client n'est sélectionné, Taliup affiche une validation comme **Please select a client** et indique qu'un courriel est requis pour l'envoi immédiat.
+### Récapitulatif et aperçu
 
-### Invoice Preview
+Le **Récapitulatif** montre le sous-total, les rabais, les frais, les taxes et le total. L'**Aperçu** en dessous se met à jour pendant que vous modifiez, pour vérifier le message, les articles et les totaux avant l'envoi.
 
-L'aperçu à droite se met à jour pendant que vous modifiez, pour confirmer l'image de marque, le message, les lignes et les totaux.
+Si votre entreprise a un logo dans **Paramètres** → **Détails de l’entreprise**, il apparaît sur l'aperçu et sur les PDF de facture et de reçu téléchargés.
 
-Si l'entité a un logo dans **Settings → Business**, ce logo apparaît sur l'aperçu et sur les PDF de facture et de reçu.
-
-<Frame caption="Invoice Preview en direct montrant l'image de marque et les espaces réservés client.">
-  ![Aperçu de facture Cornerstone Hardware avec logo, adresse, espaces clients, numéro 000005, date d'émission, message, tableau vide et total 0,00 $](/images/taliup-hq/invoicing/invoice-preview.png)
+<Frame caption="L'aperçu en direct de la facture.">
+  ![Aperçu de facture avec le logo et l'adresse de l'entreprise, les coordonnées Facturer à, le numéro, les dates d'émission et d'échéance, le message, les articles, les totaux et un bouton Payer maintenant](/images/taliup-hq/invoicing/invoice-preview.png)
 </Frame>
 
 ---
 
-## Modifier une facture envoyée
+## Modifier une facture
 
-Vous pouvez modifier une facture après l'envoi, tant qu'elle n'est pas payée.
+Ouvrez la facture et cliquez sur **Modifier**, ou utilisez **Modifier** dans le menu **⋮** de la ligne. Vous pouvez modifier une facture jusqu'à ce qu'elle soit payée.
 
 | Statut | Ce que vous pouvez faire |
 |---|---|
-| **Draft** | Modifier tous les champs, y compris client, emplacement et numéro. Cliquez sur **Update Invoice**. |
-| **Sent**, **Overdue** ou **Canceled** | Modifier le message, les articles, les dates et les paramètres de paiement. Client, emplacement et numéro restent verrouillés. Cliquez sur **Update and Resend** pour enregistrer et renvoyer. |
-| **Paid** | La modification est bloquée. Taliup indique que la facture ne peut plus être modifiée. |
+| **Brouillon** | Tout modifier. Cliquez sur **Enregistrer le brouillon**, ou envoyez-la ou planifiez-la. |
+| **Planifiée** | Tout modifier sauf le client, le numéro et l'emplacement. Cliquez sur **Enregistrer**, ou sur **Remettre en brouillon** pour l'empêcher de partir. |
+| **En attente de paiement** ou **En retard** | Modifier les articles, le message, l'échéance et les paramètres de paiement. Cliquez sur **Enregistrer**, ou sur **Enregistrer et renvoyer** pour envoyer la facture mise à jour. |
+| **Payée**, **Remboursée** ou **Annulée** | Ne peut pas être modifiée. Une facture qui a un paiement ne peut pas être modifiée non plus. |
 
-<Frame caption="Modifier une facture envoyée. L'action d'en-tête est Update and Resend.">
-  ![Page Edit Invoice avec Client Details, Invoice Details, aperçu en direct et Update and Resend](/images/taliup-hq/invoicing/invoice-update-and-resend.png)
+<Frame caption="Modifier une facture envoyée. La barre affiche Enregistrer et Enregistrer et renvoyer.">
+  ![Éditeur d'une facture envoyée avec son statut, un client verrouillé, et les boutons Enregistrer et Enregistrer et renvoyer dans la barre du bas](/images/taliup-hq/invoicing/invoice-update-and-resend.png)
 </Frame>
 
-<Steps>
-  <Step title="Ouvrir la facture">
-    Depuis **Invoices**, ouvrez une facture envoyée non payée.
-  </Step>
-  <Step title="Faire vos changements">
-    Mettez à jour le message, les lignes, la date d'échéance ou les paramètres de paiement. Vous ne pouvez pas changer le client, l'emplacement ni le numéro après l'envoi.
-  </Step>
-  <Step title="Update and Resend">
-    Cliquez sur **Update and Resend**. Taliup enregistre et renvoie le courriel lorsque l'envoi est activé.
-  </Step>
-</Steps>
+Une fois planifiée ou envoyée, la facture garde son client, son numéro et son emplacement.
 
 ---
 
-## Remettre le stock à la suppression
+## Envoyer, rappeler et enregistrer des paiements
 
-Lorsque vous supprimez une facture impayée qui retenait de l'inventaire, Taliup peut remettre ces quantités en stock.
+Utilisez le panneau de détails ou le menu **⋮** de la ligne.
 
-Définissez le défaut dans **Settings → Invoice Settings → Inventory** :
+- **Envoyer maintenant** envoie tout de suite une facture planifiée. **Envoyer de nouveau** renvoie une facture en attente de paiement.
+- **Envoyer un rappel** envoie un rappel par courriel pour une facture en retard. Vous pouvez d'abord changer l'**Objet du courriel**. Pour envoyer les rappels automatiquement, activez les rappels de retard dans les [Paramètres des factures](#paramètres-des-factures).
+- **Enregistrer un paiement** enregistre un paiement reçu hors de Taliup. Entrez le **Montant**, choisissez **Payé par** (**Comptant**, **Chèque** ou **Autre**) et ajoutez des **Notes** facultatives. Activez **Envoyer un reçu** pour envoyer un reçu au client par courriel.
 
-| Paramètre | Ce qui se passe |
+---
+
+## Paramètres des factures
+
+Paramètres → **Fonctionnalités** → **Factures**. Il faut la permission **Manage Settings**.
+
+<Frame caption="Paramètres des factures avec Courriels, Rappels et Supprimer une facture.">
+  ![Page Paramètres des factures avec Courriel de réponse sous Courriels, la bascule de rappel de retard sous Rappels, et Remettre ses articles en stock réglé sur Toujours ou Demander chaque fois sous Supprimer une facture](/images/taliup-hq/invoicing/invoice-settings-inventory.png)
+</Frame>
+
+| Paramètre | Description |
 |---|---|
-| **Always return stock** (bascule activée) | Le stock est remis automatiquement à la suppression d'une facture impayée. |
-| **Ask** (bascule désactivée) | Chaque suppression demande s'il faut **Return stock to inventory**. |
+| **Courriel de réponse** | Où vont les réponses des clients aux courriels de facture. S'il est vide, les réponses vont au courriel de votre entreprise. |
+| **Rappeler les clients lorsqu’une facture est en retard** | Envoie un courriel de rappel après la date d'échéance. Réglez le nombre de jours dans **L’envoyer après**. |
+| **Remettre ses articles en stock** | **Toujours**, ou **Demander chaque fois** que vous supprimez une facture. Seulement pour les articles dont vous suivez le stock. |
 
-<Frame caption="Section Inventory des Invoice Settings avec Return stock on invoice delete.">
-  ![Invoice Settings montrant Email, Reminders et Inventory avec Return stock on invoice delete activé](/images/taliup-hq/invoicing/invoice-settings-inventory.png)
+### Remettre le stock à la suppression
+
+Quand votre entreprise suit son inventaire, supprimer une facture planifiée, envoyée, en retard ou annulée peut remettre ses articles en stock.
+
+- Avec **Toujours**, la fenêtre de suppression indique que les articles retournent en stock.
+- Avec **Demander chaque fois**, cochez **Remettre ses articles en stock** dans la fenêtre de suppression.
+
+<Frame caption="La fenêtre de suppression de facture.">
+  ![Fenêtre Supprimer la facture indiquant qu'elle est supprimée définitivement et que sa page de paiement ne fonctionnera plus, avec les boutons Annuler et Supprimer](/images/taliup-hq/invoicing/invoice-return-stock.png)
 </Frame>
 
-<Frame caption="Confirmation de suppression avec Return stock to inventory.">
-  ![Fenêtre demandant de supprimer une facture pour Ava Bennett, avec Return stock to inventory activé](/images/taliup-hq/invoicing/invoice-return-stock.png)
-</Frame>
-
-Les suppressions de brouillons et de factures payées ne remettent pas le stock.
+Supprimer un brouillon ou une facture payée ne remet pas le stock. La page de paiement d'une facture supprimée ne fonctionne plus.
 
 ---
 
 ## Page de paiement client
 
-Lorsque le client ouvre la facture (courriel ou lien partagé), il voit les dates d'émission et d'échéance, les lignes et le montant dû. Il peut télécharger un PDF depuis cette page.
+Lorsque le client ouvre la facture depuis le courriel ou le texto, il voit le numéro et le statut, le montant dû, les dates d'émission et d'échéance, l'émetteur et le destinataire, le message et les articles.
 
-<Frame caption="Page de paiement client avec Download Receipt.">
-  ![Page de paiement Cornerstone Hardware pour Demo Client avec dates, article PipeFlow PVC Pipe, montant dû 16,08 $ et bouton Download Receipt](/images/taliup-hq/invoicing/invoice-payment-page.png)
+- Avec le paiement en ligne activé, il clique sur **Payer maintenant** et entre sa carte sous **Payer par carte**.
+- **Télécharger la facture** enregistre un PDF tant qu'elle est impayée. Une fois payée, la page affiche **Payée** avec **Télécharger le reçu**.
+
+Pour voir ce que voit votre client, ouvrez la facture dans Taliup HQ et cliquez sur **Voir la page**.
+
+<Frame caption="La page de paiement de la facture côté client.">
+  ![Page de paiement de facture avec le numéro, le statut, le montant dû, les dates d'émission et d'échéance, De et Facturé à, les articles et les totaux, et les boutons Payer maintenant et Télécharger la facture](/images/taliup-hq/invoicing/invoice-payment-page.png)
 </Frame>
 
 <Tip>
-  Les courriels de facture ne s'appuient plus sur un PDF joint. Si le client a besoin d'un fichier, demandez-lui d'utiliser **Download Receipt** (ou le téléchargement PDF) sur la page de paiement.
+  Les courriels de facture n'ont pas de PDF joint. Si un client a besoin d'un fichier, demandez-lui d'utiliser **Télécharger la facture** ou **Télécharger le reçu** sur la page de paiement.
 </Tip>
 
 ---
 
 ## Remboursements
 
-Rembourser une facture ouvre une confirmation pour confirmer le client et saisir un motif.
+Vous pouvez rembourser une facture payée depuis son panneau de détails ou le menu **⋮** de la ligne.
 
-<Frame caption="Fenêtre de confirmation de remboursement demandant un motif.">
-  ![Fenêtre Are you sure you want to refund this Invoice for Demo Client avec zone Reason for Refund et boutons Cancel et Yes](/images/taliup-hq/invoicing/invoice-refund-confirm.png)
+<Frame caption="La fenêtre de remboursement.">
+  ![Fenêtre de remboursement indiquant que le montant sera remis au client et que les paiements par carte sont remboursés sur la carte, avec un champ Raison facultatif et les boutons Annuler et Rembourser](/images/taliup-hq/invoicing/invoice-refund-confirm.png)
 </Frame>
 
-1. Démarrez un remboursement depuis la facture.
-2. Confirmez le nom du client dans l'invite.
-3. Saisissez un **Reason for Refund**.
-4. Choisissez **Yes** pour continuer ou **Cancel** pour abandonner.
+1. Cliquez sur **Rembourser**.
+2. Entrez une **Raison** facultative.
+3. Cliquez sur **Rembourser** pour confirmer, ou sur **Annuler**.
+
+Le montant total est remis au client. Les paiements par carte sont remboursés sur la carte.
 
 ---
 
@@ -235,14 +285,15 @@ Un courriel de facture n'est envoyé que lorsque tout ce qui suit est vrai :
 
 | Condition | Quoi vérifier |
 |---|---|
-| L'envoi courriel est activé | Communication → **Email delivery** est activé |
-| Le client a un courriel valide | Un client est sélectionné et le dossier inclut un courriel |
-| Le moment est prêt | **Send Invoice Immediately** est activé, ou la **Send Date** prévue est atteinte |
+| Le courriel est activé | **Envoi** → **Courriel** est activé |
+| Le client a un courriel valide | Un client est choisi et son dossier a un courriel |
+| Le moment est venu | **Maintenant** a été choisi, ou la **Date d’envoi** planifiée est atteinte |
+| Le total dépasse 0 $ | Ajoutez un article. Une facture à 0 $ est enregistrée comme payée et n'est pas envoyée |
 | L'adresse peut recevoir du courrier | Taliup n'est pas bloqué pour cette adresse (vous voyez une erreur claire si l'envoi est bloqué) |
-| Reply-To (facultatif) | Si Invoice Settings inclut une adresse reply-to, les réponses y vont |
+| Courriel de réponse (facultatif) | Si les Paramètres des factures ont un courriel de réponse, les réponses des clients y vont |
 
 <Info>
-  L'envoi immédiat exige toujours un courriel client. Si vous voyez **Email is required for immediate delivery**, sélectionnez ou créez un client avec un courriel avant de créer la facture.
+  **Maintenant** exige toujours un courriel client. Si le client n'en a pas, ajoutez son courriel, ou planifiez la facture pour un envoi par texto.
 </Info>
 
 ---
@@ -251,10 +302,10 @@ Un courriel de facture n'est envoyé que lorsque tout ce qui suit est vrai :
 
 ### Le client dit ne pas avoir reçu la facture
 
-1. Confirmez l'orthographe du courriel sur la facture / le dossier client.
+1. Confirmez l'orthographe du courriel dans le dossier client.
 2. Demandez au client de vérifier **Junk** / **Spam**.
 3. Sur Outlook / Hotmail, demandez si le filtrage n'accepte que les expéditeurs sûrs. Le cas échéant, il doit marquer le message **It's not junk** et ajouter l'expéditeur aux expéditeurs sûrs.
-4. Confirmez que Communication **Email delivery** était activé et si l'envoi était immédiat ou planifié.
+4. Ouvrez la facture et vérifiez l'**Activité** pour voir quand et comment elle a été envoyée. Utilisez **Envoyer de nouveau** au besoin.
 
 ### Le marchand voit une erreur de livraison / courriel supprimé
 
@@ -267,13 +318,22 @@ Ne continuez pas à renvoyer vers une adresse qui a déjà échoué de façon d�
 
 ### Le lien de paiement en ligne manque
 
-1. Sur la facture, ouvrez **Payment Details** et confirmez que **Online Payment** est activé.
-2. Confirmez que le plan inclut Link to Pay / les paiements en ligne et que l'emplacement a une passerelle en ligne.
+1. Modifiez la facture et confirmez que **Paiement** → **Paiement en ligne** est activé.
+2. Si vous voyez **Cet emplacement ne peut pas encore accepter les paiements en ligne**, l'emplacement n'a pas de passerelle de paiement en ligne. Communiquez avec Taliup pour en configurer une.
+3. Si vous ne voyez pas **Paiement en ligne** du tout, demandez à votre admin ISO d'activer `Link To Pay` sur votre plan.
 
 ### Le client a besoin d'un PDF
 
-Utilisez **Download Receipt** / le téléchargement PDF sur la page de paiement. Le courriel de facture est conçu pour se suffire sans pièce jointe PDF.
+Demandez-lui d'utiliser **Télécharger la facture** ou **Télécharger le reçu** sur la page de paiement. Le courriel de facture est conçu pour se suffire sans pièce jointe PDF.
 
 ### Mauvaise destination de réponse
 
-Mettez à jour **Reply to Email** dans Invoice Settings pour que les réponses aillent à la bonne boîte.
+Mettez à jour le **Courriel de réponse** dans les [Paramètres des factures](#paramètres-des-factures) pour que les réponses des clients aillent à la bonne boîte.
+
+---
+
+## Connexe
+
+- [Clients](/fr-CA/taliup-hq/features/clients)
+- [Abonnements](/fr-CA/taliup-hq/features/memberships)
+- [Lien Pour Payer dans Taliup POS](/fr-CA/taliup-pos/link-to-pay/create-and-send)

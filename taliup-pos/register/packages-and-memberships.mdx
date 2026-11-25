@@ -1,0 +1,148 @@
+---
+title: "Memberships"
+sidebarTitle: "Memberships"
+description: "Use a client's membership visits, apply member pricing, and manage membership plans and members on Taliup POS."
+keywords: ["memberships", "visits", "member discount", "membership plans", "sign up member", "member pricing"]
+---
+
+A **membership** is a plan the client pays for every billing period. It can include services each period and give members a discount.
+
+Plans are set up in Taliup HQ or on Taliup POS. Memberships bill through Recurring Payments in Taliup HQ. See [Memberships in Taliup HQ](/taliup-hq/features/memberships).
+
+## How to get here
+
+| Where | What you do there |
+|---|---|
+| Register, with a client attached | Use included visits, member pricing |
+| Home → **Memberships** | Manage plans and members |
+| **Clients** → a client → **Memberships** tab | One client's memberships |
+
+The **Memberships** tile shows when the business has that feature. It needs a connection to Taliup HQ.
+
+Each part has its own role permission. A manager sets them in Taliup HQ under [POS roles and permissions](/taliup-hq/features/employees#pos-roles-and-permissions), in the **Memberships** group.
+
+| Permission | What it allows |
+|---|---|
+| **See memberships** | Open **Memberships**, and see a client's memberships |
+| **Sign up members** | Sign a client up to a membership |
+| **Manage membership plans** | Create, change and delete plans |
+| **Change clients' memberships** | Cancel a membership, resend the payment link |
+
+Without **See memberships**, tapping the tile shows a permission denied message.
+
+## Memberships at the register
+
+With a client attached, tap the client and open the **Memberships** tab. Each membership shows its plan, status, the next charge (or when it ends), and the included services as chips, such as *Haircut 0/1*.
+
+| Status | Meaning |
+|---|---|
+| **Active** | Benefits can be used |
+| **Waiting for payment** | The client hasn't made the first payment yet |
+| **Paused** | A payment failed. Benefits are on hold |
+| **Ends [date]** | Cancelled. Benefits last until the paid period ends |
+
+### Use an included service
+
+An active membership covers its included services. A cart line whose service the membership includes shows **Use a visit from [plan] · 0 left after** under it.
+
+<Steps>
+  <Step title="Use the visit">
+    Tap **Use a visit from …** under the line. You can also tap the attached client, open the **Memberships** tab, and tap **Use visit** next to the line.
+  </Step>
+  <Step title="Check the line">
+    The line now costs $0 and shows **Membership visit · [plan]**.
+  </Step>
+  <Step title="Take payment">
+    The visit is used when the sale is paid.
+  </Step>
+</Steps>
+
+To take the visit off, tap the remove button on the line. The line goes back to its own price and discounts.
+
+- Included visits reset each billing period.
+- Changing or removing the client takes the visits off.
+- Voids and refunds give the visit back.
+
+Receipts and past order details show **Membership visit: [plan]** on the line.
+
+### At appointment checkout
+
+When you check out an appointment from the Calendar, Taliup POS covers the service line for you:
+
+1. If a visit was already used for the appointment in the calendar, that visit covers the line.
+2. Otherwise, a visit of the client's membership that includes the service.
+
+It works like tapping **Use a visit**, so you can still take it off. See [Appointments](/taliup-pos/calendar/appointments).
+
+### Member pricing
+
+An active member gets their plan's discount on the sale's lines, before tax. Services get the services percentage. Products get the retail percentage. When the client has more than one active membership, the biggest discount applies.
+
+The **Memberships** tab shows **Member discount** with the percentages, such as *10% off services · 5% off retail*. Turn the switch off to take the discount off this sale. It turns back on for the next client.
+
+The member discount does not apply to custom items, gift cards, or lines covered by a visit.
+
+## Memberships section
+
+Home → **Memberships**. The section has two tabs. On a countertop, the details show beside the list. In portrait, they open in a sheet. Pull down to refresh.
+
+| Tab | What it lists |
+|---|---|
+| **Plans** | Your plans, with the price per billing period and how many members each has |
+| **Members** | Everyone signed up. Search by client. The filter picks a status (**Active**, **Waiting for payment**, **Paused**, **Ended**, or **All**) and a plan |
+
+### Create or edit a plan
+
+Needs **Manage membership plans**. On the **Plans** tab, tap **New plan**, or tap a plan to edit it.
+
+| Field | What it does |
+|---|---|
+| **Name** and **Description (optional)** | How the plan is shown |
+| **Price before tax** | What the member pays each period, before tax |
+| **Billing** | How often the member is charged, such as monthly |
+| **Included each billing period** | The services and visits included every period |
+| **Services discount (%)** and **Retail discount (%)** | The member discount |
+| **Taxes** | Ticked taxes are charged on each payment |
+| **Offered to new members** | Turn off to stop new sign-ups. The plan shows **Not offered** |
+
+**Delete** removes a plan. Members keep their membership until it ends. No one new can sign up to it.
+
+### Sign a client up
+
+Needs **Sign up members**. The client pays through a link, so you sign them up from the client, not on a sale.
+
+<Steps>
+  <Step title="Start the sign-up">
+    On the **Members** tab, tap **Sign up member** and **Choose a client**. Or open the client's **Memberships** tab and tap **Sign up for a membership**.
+  </Step>
+  <Step title="Pick the plan">
+    **Sign up for a membership** opens: *For [client] · they pay through a link*. Tap a plan.
+  </Step>
+  <Step title="Let the client pay">
+    **Scan to pay** shows a QR code. Ask the client to scan it to pay and start the membership. If the client has an email, Taliup POS shows **We also emailed the link to [email]**.
+  </Step>
+</Steps>
+
+The membership shows **Waiting for payment** until the first payment goes through.
+
+### Member details
+
+Tap a member to open them. **Overview** shows the plan, the visits **Included this period**, the **Member discount**, and **Billing**: **Member since**, **Payments made**, **Last payment**, **Next charge** or **Ends**, and the **Card on file**. When the last payment failed, it shows **The last payment didn't go through**. **History** lists the **Visit history**, with where each visit was used: **Appointment**, **Register**, **Invoice**, or **Virtual Terminal**.
+
+With **Change clients' memberships**:
+
+| Action | What it does |
+|---|---|
+| **Resend payment link** | For a member still waiting for payment. Shows the QR code again, and emails the link when the client has an email |
+| **Cancel membership** | Billing stops now. A period already paid for runs until it ends, then the membership ends. The client is emailed |
+
+## Client record
+
+On **Clients**, a client's record has a **Memberships** tab when you have the permission to see it. It lists the client's memberships, with the same actions as the sections above.
+
+## Related
+
+- [Memberships in Taliup HQ](/taliup-hq/features/memberships)
+- [Options side menu](/taliup-pos/register/options)
+- [Attach from Register](/taliup-pos/clients/attach-from-register)
+- [Appointments](/taliup-pos/calendar/appointments)

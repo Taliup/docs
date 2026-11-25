@@ -6,53 +6,105 @@ description: "Créer et gérer les dossiers clients dans Taliup HQ, y compris re
 
 **Clients** conserve les dossiers clients que vous pouvez associer aux factures, à Link to Pay, aux rendez-vous Calendrier et aux paiements du Terminal virtuel.
 
-Ouvrez **Clients** dans la barre latérale marchande pour commencer.
+Dans le menu latéral, ouvrez **Clientèle** → **Clients** pour commencer.
 
-<Frame caption="La liste Clients avec recherche, Add Client et import en lot.">
-  ![Page Clients de Michael's Kitchen montrant 15 clients avec les colonnes Name, Phone, Address, Notes et Actions](/images/taliup-hq/clients/list.png)
+<Frame caption="La liste Clients avec la recherche, le tri et les boutons Importer, Exporter et Ajouter un client.">
+  ![Page Clients avec le sous-titre « Toutes les personnes qui ont réservé, acheté ou été ajoutées », les boutons Importer, Exporter et Ajouter un client, une zone de recherche et le menu Trier, et une liste de clients avec les colonnes Client, Téléphone, Visites et Dépensé](/images/taliup-hq/clients/list.png)
 </Frame>
 
 ---
 
 ## Prérequis
 
-La fonction **Clients** doit être activée sur le plan de l'entité. Demandez à votre admin ISO de l'activer dans [Plans et fonctionnalités](/fr-CA/taliup-hq/onboarding/plans-features) si vous ne voyez pas **Clients** dans la barre latérale.
+La fonction **Clients** doit être activée sur le plan de l'entité. Demandez à votre admin ISO de l'activer dans [Plans et fonctionnalités](/fr-CA/taliup-hq/onboarding/plans-features) si vous ne voyez pas **Clients** sous **Clientèle** dans le menu latéral.
+
+| Pour | Permission |
+|---|---|
+| Voir la liste des clients et les profils | **View Clients** |
+| Ajouter ou modifier des clients, des notes, des alertes et des étiquettes | **Manage Clients** |
+| Supprimer des clients | **Delete Clients** |
+
+---
+
+## Trouver un client
+
+La liste affiche le nom et le courriel de chaque client, son téléphone, ses **Visites** et le montant **Dépensé**. Une icône d'avertissement à côté d'un nom indique que le client a une alerte d'allergie ou médicale.
+
+- **Rechercher par nom, courriel ou téléphone** filtre la liste.
+- **Trier** la classe par **Plus récents**, **Plus de visites** ou **Dépenses les plus élevées**. Lorsque la fidélité est active, vous pouvez aussi trier par **Plus de points fidélité**, et une colonne **Points** s'affiche.
+- **Réinitialiser** efface la recherche et le tri.
 
 ---
 
 ## Créer un client
 
 <Steps>
-  <Step title="Ouvrir Clients">
-    Dans la barre latérale marchande, cliquez sur **Clients**, puis **Create** (ou **Add Client**).
+  <Step title="Ouvrir Ajouter un client">
+    Dans **Clients**, cliquez sur **Ajouter un client**.
   </Step>
   <Step title="Saisir les détails">
-    Remplissez **First Name**, **Last Name** et **Email**. Téléphone, adresse, nom d'entreprise et notes sont facultatifs.
+    Remplissez **Prénom**, **Nom** et **Courriel**. Le **Téléphone**, le **Nom de l'entreprise**, l'adresse et la **Note** sont facultatifs. Sous **Trouver l'adresse**, choisissez une correspondance pour remplir les champs d'adresse, ou saisissez-les vous-même.
   </Step>
   <Step title="Enregistrer">
-    Cliquez sur **Add Client**.
+    Cliquez sur **Ajouter un client** au bas de la page. Le profil du nouveau client s'ouvre.
   </Step>
 </Steps>
 
-Vous pouvez aussi ajouter un client sans quitter **Create Invoice**, **Recurring Payments**, **Link to Pay**, **Calendar** ou **Virtual Terminal**. Utilisez le contrôle personne-plus à côté de la recherche client.
+Vous pouvez aussi ajouter un client sans quitter une facture, un paiement récurrent, un rendez-vous Calendrier ou un paiement du Terminal virtuel. Cliquez sur **Nouveau client** (ou **Ajouter un client**) à côté de la recherche client.
 
-**Email** est obligatoire. Taliup l'utilise pour retrouver le client plus tard et pour envoyer factures ou reçus.
+Le **Courriel** est obligatoire. Taliup l'utilise pour retrouver le client plus tard et pour envoyer factures ou reçus.
+
+<Tip>
+  La **Note** sert aux renseignements généraux, comme la façon dont le client préfère être joint. Les allergies et les tests cutanés vont dans les **Alertes** du profil client, pour que le personnel les voie à la réservation.
+</Tip>
 
 ---
 
-## Historique du client
+## Détails du client
 
-Cliquez sur un client dans la liste pour ouvrir un panneau latéral sans quitter la page. Il affiche :
+Cliquez sur un client dans la liste pour ouvrir un panneau sans quitter la page. Il affiche :
 
 | Section | Contenu |
 |---|---|
-| **Contact** | Courriel, téléphone et adresse |
-| **Notes** | Ajouter ou mettre à jour une note |
-| **Recent payments** | Date, montant, source et mode |
-| **Recent appointments** | Date, heure, titre et **Confirmed** ou **Cancelled**. **Create appointment** ouvre le calendrier |
-| **Invoices** | Affiché lorsque la facturation est sur le plan |
+| **Coordonnées** | Courriel, téléphone et adresse |
+| **Note** | Ajouter ou mettre à jour une note |
+| **Rendez-vous** | Les rendez-vous récents et leur statut. Affiché lorsque Calendrier est sur le plan |
+| **Paiements récents** | Source, mode, date et montant |
+| **Factures et lien de paiement** | Affiché lorsque le client en a |
 
-Utilisez **View profile** pour le dossier complet, ou **Edit** pour modifier les détails. Dans le profil, un onglet **Loyalty** liste les points du membre lorsque la fidélité est active.
+Les alertes s'affichent en haut du panneau. Cliquez sur **Voir le profil** pour le dossier complet, ou sur **Modifier** pour changer les détails.
+
+### Profil du client
+
+Le profil affiche le nom du client, depuis quand il est client, sa dernière visite et ses étiquettes. Les totaux **Visites** et **Dépensé** sont à droite, ainsi que les **Points** pour les membres du programme de fidélité. Cliquez sur **+ Étiquette** pour ajouter une étiquette.
+
+La colonne de gauche contient les coordonnées, la **Note** et les **Alertes** (allergie, médical, test cutané, préférence ou autre). Les alertes et les notes de traitement sont chiffrées et visibles seulement par le personnel.
+
+Le menu **Plus d'actions** à côté de **Modifier** propose **Nouveau rendez-vous**, **Nouvelle facture**, **Envoyer la carte de fidélité** et **Supprimer**, selon votre plan et vos permissions.
+
+<Frame caption="Un profil client avec les totaux en haut, les coordonnées et les alertes à gauche, et un onglet pour chaque fonction du plan.">
+  ![Profil client affichant le nom du client, la date depuis laquelle il est client, ses étiquettes, les totaux Visites et Dépensé, les boutons Modifier et Plus d'actions, les coordonnées et la Note à gauche, et des onglets comme Transactions, Rendez-vous, Factures et Portefeuille](/images/taliup-hq/clients/profile.png)
+</Frame>
+
+Les onglets dépendent des fonctions de votre plan :
+
+| Onglet | Contenu |
+|---|---|
+| **Transactions** | Les paiements du client |
+| **Fidélité** | Points accumulés, échangés et ajustés. Voir [Fidélité](/fr-CA/taliup-hq/features/loyalty) |
+| **Rendez-vous** | Les rendez-vous à venir et passés |
+| **Factures** | Les factures et les liens de paiement |
+| **Notes de traitement** | Les notes et photos de chaque visite |
+| **Portefeuille** | Cartes-cadeaux, [abonnements](/fr-CA/taliup-hq/features/memberships) avec les visites restantes, et cartes enregistrées |
+
+---
+
+## Importer et exporter des clients
+
+Lorsque l'importation de clients est sur votre plan, la liste Clients affiche **Importer** et **Exporter**.
+
+- **Importer** ouvre **Importer des clients**. Cliquez sur **Télécharger le modèle (.xlsx)**, remplissez un client par ligne, puis téléversez le fichier. Un client dont le courriel est déjà dans votre liste est mis à jour. Les lignes sans courriel sont ignorées. Cliquez sur **Télécharger les lignes ignorées** pour les corriger et les importer de nouveau.
+- **Exporter** télécharge votre liste de clients dans un tableur.
 
 ---
 
@@ -62,19 +114,19 @@ Supprimer un client masque le dossier. Cela ne retire pas définitivement son hi
 
 Si vous créez de nouveau un client avec le **même courriel** sur la même entité, Taliup trouve le dossier précédent et vous demande de le restaurer.
 
-<Frame caption="Confirmation Restore previous client après réutilisation d'un courriel supprimé.">
-  ![Fenêtre Restore previous client pour Ava Bennett avec les boutons Cancel et Restore](/images/taliup-hq/clients/restore-confirm.png)
+<Frame caption="Confirmation Restaurer le client précédent ? après réutilisation d'un courriel supprimé.">
+  ![Fenêtre Restaurer le client précédent ? sur la page Ajouter un client, nommant le client supprimé, avec les boutons Annuler et Restaurer](/images/taliup-hq/clients/restore-confirm.png)
 </Frame>
 
 <Steps>
   <Step title="Ajouter le client de nouveau">
-    Utilisez **Clients → Create**, ou **Add Client** depuis une facture, Recurring Payments, Link to Pay, Calendar ou Virtual Terminal. Saisissez le même courriel que le client supprimé.
+    Utilisez **Clients → Ajouter un client**, ou **Nouveau client** depuis une facture, un paiement récurrent, un rendez-vous Calendrier ou le Terminal virtuel. Saisissez le même courriel que le client supprimé.
   </Step>
   <Step title="Confirmer la restauration">
-    Lorsque Taliup trouve une correspondance, il affiche **Restore previous client?** Le message nomme le client précédent et explique que la restauration réutilise son dossier et ramène factures, rendez-vous, paiements et autre historique.
+    Lorsque Taliup trouve une correspondance, il affiche **Restaurer le client précédent ?** Le message nomme le client précédent et explique que la restauration réutilise son dossier et ramène factures, rendez-vous, paiements et autre historique.
   </Step>
   <Step title="Restaurer ou annuler">
-    Cliquez sur **Restore** pour réutiliser ce client. Cliquez sur **Cancel** pour le laisser supprimé et rester sur le formulaire.
+    Cliquez sur **Restaurer** pour réutiliser ce client. Cliquez sur **Annuler** pour le laisser supprimé et rester sur le formulaire.
   </Step>
 </Steps>
 
@@ -94,9 +146,11 @@ Un client **actif** avec ce courriel ne peut toujours pas être dupliqué. Taliu
 
 ## Supprimer un client
 
-Depuis la liste Clients ou la page de détail, cliquez sur **Delete** et confirmez l'avertissement.
+Dans la liste Clients, ouvrez le menu **Plus d'actions** sur la ligne du client et cliquez sur **Supprimer**. Dans le profil client, utilisez **Plus d'actions** → **Supprimer**. Confirmez avec **Supprimer**.
 
-Le client disparaît de la liste. Le recréer avec le même courriel démarre le flux de restauration ci-dessus.
+Le client disparaît de la liste. Ses visites et paiements restent dans vos rapports. Si le client est membre du programme de fidélité, le supprimer met fin à son adhésion et retire ses points. Ses cartes-cadeaux continuent de fonctionner.
+
+Le recréer avec le même courriel démarre le flux de restauration ci-dessus.
 
 ---
 

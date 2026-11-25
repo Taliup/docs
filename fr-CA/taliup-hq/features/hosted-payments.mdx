@@ -4,44 +4,57 @@ sidebarTitle: "Paiements hébergés"
 description: "Accepter des paiements sur n'importe quel site, application ou plateforme — sans page de paiement à construire."
 ---
 
-Hosted Payments permet aux marchands d'accepter des paiements sur n'importe quel site, application ou plateforme sans construire une page de paiement. Le backend du marchand génère une URL de paiement sécurisée à usage unique; le client paie sur une page hébergée par Taliup et revient sur le site du marchand.
+Les paiements hébergés permettent aux marchands d'accepter des paiements sur n'importe quel site, application ou plateforme sans construire une page de paiement. Le backend du marchand génère une URL de paiement sécurisée à usage unique; le client paie sur une page hébergée par Taliup et revient sur le site du marchand.
 
-La fonction s'ouvre via **Hosted Payments** dans la barre latérale marchande.
+Ouvrez **Paiements reçus** → **Paiements hébergés** dans le menu latéral. La page compte quatre onglets : **Identifiants**, **WooCommerce**, **Intégration directe** et **Boutons de paiement**.
 
 ---
 
 ## Prérequis
 
-Trois conditions doivent être remplies avant que les identifiants apparaissent et que la fonction soit utilisable :
+Trois conditions doivent être remplies pour que la fonction soit utilisable :
 
 <Steps>
-  <Step title="Fournisseur de paiement = Elavon">
-    L'entité doit être configurée avec **Elavon** comme fournisseur de paiement. C'est défini à la création de l'entité ou dans le [Profil de l'entité](/fr-CA/taliup-hq/manage/profile).
+  <Step title="Fournisseur de paiement compatible">
+    Le fournisseur de paiement de l'entité doit prendre en charge les paiements hébergés, comme **Elavon**. C'est défini à la création de l'entité ou dans le [Profil de l'entité](/fr-CA/taliup-hq/manage/profile).
   </Step>
   <Step title="Fonction activée">
     La fonction `Hosted Payment Solution` doit être activée pour l'entité. Activez-la dans [Plans et fonctionnalités](/fr-CA/taliup-hq/onboarding/plans-features).
   </Step>
   <Step title="Passerelle de paiement en ligne configurée">
-    Au moins un emplacement doit avoir une **Online Payment Gateway** active (Converge / Elavon). Voir [Emplacements](/fr-CA/taliup-hq/onboarding/locations).
+    Au moins un emplacement doit avoir une passerelle de paiement en ligne active, comme Elavon Converge. Voir [Emplacements](/fr-CA/taliup-hq/onboarding/locations).
   </Step>
 </Steps>
 
+Dans l'onglet **Identifiants**, chaque emplacement affiche **Prêt** ou **Aucune passerelle**. Quand un emplacement n'a pas de passerelle, un avis **Aucune passerelle de paiement active** le nomme. Cet emplacement ne peut pas accepter de paiements hébergés tant qu'une passerelle n'est pas configurée.
+
 ---
 
-## Identifiants API
+## Identifiants
 
-<Frame caption="L'onglet API Credentials — Merchant Site ID, Secret Key et API Base URL par emplacement.">
-  ![Onglet API Credentials de Hosted Payments montrant Merchant Site ID, Secret Key masquée avec boutons Show et Copy, Rotate Secret Key et API Base URL](/images/taliup-hq/hosted-payments/hosted-payments-credentials.png)
+<Frame caption="L'onglet Identifiants : totaux sur 30 jours, clés de chaque emplacement et détails de connexion.">
+  ![Onglet Identifiants des paiements hébergés avec les tuiles Emplacements, Prêts pour les paiements, Paiements et Montant débité, une ligne d'emplacement avec son ID du site marchand et sa clé secrète masquée, et la carte Détails de connexion avec l'URL de base de l'API et le SDK JavaScript](/images/taliup-hq/hosted-payments/hosted-payments-credentials.png)
 </Frame>
 
-Les identifiants sont générés **par emplacement**. Lorsqu'une entité a plusieurs emplacements, un sélecteur apparaît en haut de la carte.
+Les tuiles du haut indiquent le nombre d'emplacements, combien sont **Prêts pour les paiements**, ainsi que les **Paiements** et le **Montant débité** par les paiements hébergés au cours des 30 derniers jours.
+
+Les identifiants sont générés **par emplacement**. Chaque emplacement a sa propre ligne.
 
 | Champ | Description |
 |---|---|
-| **Merchant Site ID** | Identifiant unique de cet emplacement (`hpm_...`). Envoyé comme en-tête `X-Merchant-Site-Id` dans chaque requête API. Bouton Copy disponible. |
-| **Secret Key** | Masquée par défaut. Utilisez **Show** pour la révéler ou **Copy** pour copier sans la révéler. |
-| **Rotate Secret Key** | Génère immédiatement une nouvelle clé. Toute intégration qui utilise l'ancienne clé échouera jusqu'à la mise à jour. |
-| **API Base URL** | L'URL de base de toutes les requêtes API. |
+| **Emplacement** | Le nom de l'emplacement, avec son statut **Prêt** ou **Aucune passerelle**. |
+| **ID du site marchand** | Identifiant unique de cet emplacement (`hpm_...`). Envoyé comme en-tête `X-Merchant-Site-Id` dans chaque requête API. Utilisez le bouton de copie à côté. |
+| **Clé secrète** | Masquée par défaut. Utilisez le bouton en forme d'œil pour l'afficher ou la masquer, ou le bouton de copie pour la copier sans l'afficher. Seuls les utilisateurs qui ont la permission **Manage Settings** peuvent voir ou copier la clé. Les autres voient **Visible seulement par une personne qui peut gérer les paramètres**. |
+
+Le menu **⋮** de chaque ligne propose :
+
+| Action | Description |
+|---|---|
+| **Ouvrir la page de paiement** | Ouvre la page de paiement à montant libre de l'emplacement. Voir [Page montant libre et don](#page-montant-libre-et-don). |
+| **Copier le lien de la page de paiement** | Copie le lien de cette page. |
+| **Renouveler la clé secrète** | Génère une nouvelle clé secrète après confirmation avec **Renouveler la clé**. Tout ce qui utilise encore l'ancienne clé cesse de fonctionner immédiatement. Exige **Manage Settings**. |
+
+La carte **Détails de connexion** affiche l'**URL de base de l'API** et l'URL du **SDK JavaScript**, chacune avec un bouton de copie.
 
 **URL de base API :**
 
@@ -51,31 +64,31 @@ Les identifiants sont générés **par emplacement**. Lorsqu'une entité a plusi
 | Staging | `https://staging.taliuphq.com/api/v1` |
 
 <Warning>
-  N'exposez jamais la Secret Key dans le code frontal. Toutes les requêtes API doivent partir de votre serveur.
+  Gardez la clé secrète sur votre serveur. Ne la mettez jamais dans une page Web, une application ou un dépôt de code public. Toutes les requêtes API doivent partir de votre serveur.
 </Warning>
 
 ---
 
 ## Intégration WooCommerce
 
-<Frame caption="L'onglet WooCommerce — guide en quatre étapes pour installer et configurer le plugin TaliupPay.">
-  ![Onglet WooCommerce Integration avec quatre étapes : Install the Plugin, Configure Credentials, Test a Payment, Go Live](/images/taliup-hq/hosted-payments/hosted-payments-woocommerce.png)
+<Frame caption="L'onglet WooCommerce : quatre étapes pour installer et configurer l'extension TaliupPay.">
+  ![Onglet WooCommerce avec quatre étapes numérotées : Installer l'extension, Ajouter vos identifiants avec l'URL de base de l'API et un bouton Voir les identifiants, Tester un paiement et Passer en production](/images/taliup-hq/hosted-payments/hosted-payments-woocommerce.png)
 </Frame>
 
-L'onglet WooCommerce guide les boutiques WordPress qui utilisent le plugin TaliupPay.
+L'onglet **WooCommerce** guide les boutiques WordPress qui utilisent l'extension TaliupPay.
 
 <Steps>
-  <Step title="Installer le plugin">
-    Dans l'admin WordPress, allez à **Plugins → Add New**. Cherchez **TaliupPay**, ou téléversez le ZIP fourni par votre gestionnaire de compte. Cliquez sur **Install Now** puis **Activate**.
+  <Step title="Installer l'extension">
+    Dans l'administration WordPress, allez dans **Extensions → Ajouter**. Recherchez **TaliupPay**, ou téléversez le fichier ZIP de l'extension fourni par votre gestionnaire de compte. Cliquez sur **Installer maintenant**, puis sur **Activer**.
   </Step>
-  <Step title="Configurer les identifiants">
-    Allez à **WooCommerce → Settings → Payments**. Cliquez sur **TaliupPay**. Saisissez le **Merchant Site ID** et la **Secret Key** de l'onglet API Credentials. Réglez l'**API Base URL** sur `https://taliuphq.com/api/v1`. Cliquez sur **Save Changes**.
+  <Step title="Ajouter vos identifiants">
+    Allez dans **WooCommerce → Réglages → Paiements**. Cliquez sur **TaliupPay** pour le configurer. Entrez l'**ID du site marchand** et la **Clé secrète** de l'onglet **Identifiants**. Utilisez l'**URL de base de l'API** affichée dans cette étape (`https://taliuphq.com/api/v1`). Cliquez sur **Enregistrer les modifications**. **Voir les identifiants** vous ramène à l'onglet **Identifiants**.
   </Step>
   <Step title="Tester un paiement">
-    Passez une commande test. Choisissez **TaliupPay** au paiement. Vous serez redirigé vers la page TaliupPay sécurisée.
+    Passez une commande de test dans votre boutique. Choisissez **TaliupPay** comme mode de paiement à la caisse. Vous êtes redirigé vers la page de paiement sécurisée TaliupPay.
   </Step>
   <Step title="Passer en production">
-    Une fois les tests terminés, désactivez le mode test dans les paramètres du plugin. Les commandes débiteront de vraies cartes.
+    Une fois les tests terminés, désactivez le mode test dans les réglages de l'extension. Les commandes débiteront alors de vraies cartes.
   </Step>
 </Steps>
 
@@ -83,19 +96,29 @@ L'onglet WooCommerce guide les boutiques WordPress qui utilisent le plugin Taliu
 
 ## Intégration directe
 
-<Frame caption="L'onglet Direct Integration — exemples PHP, Node.js et cURL pour générer une URL de paiement depuis votre backend.">
-  ![Onglet Direct Integration montrant du code PHP avec le SDK Taliup pour créer une URL de paiement et rediriger le client](/images/taliup-hq/hosted-payments/hosted-payments-direct-integration.png)
+<Frame caption="L'onglet Intégration directe : exemples PHP, Node.js et cURL pour créer un lien de paiement depuis votre serveur.">
+  ![Onglet Intégration directe avec les choix PHP, Node.js et cURL, la commande d'installation Composer avec un lien GitHub, un exemple de code PHP qui crée une URL de paiement et l'avis Vérifiez toujours le paiement sur votre serveur](/images/taliup-hq/hosted-payments/hosted-payments-direct-integration.png)
 </Frame>
 
-L'onglet Direct Integration s'adresse aux développeurs qui veulent appeler l'API Taliup depuis leur backend. La page fournit des exemples PHP, Node.js et cURL.
+L'onglet **Intégration directe** s'adresse aux développeurs qui veulent appeler l'API Taliup depuis leur backend. Choisissez **PHP**, **Node.js** ou **cURL** pour voir un exemple. Les exemples contiennent votre ID du site marchand. Si vous avez plus d'un emplacement, choisissez-en un dans **Emplacement** en haut de l'onglet.
 
-### Installer le SDK PHP
+L'avis **Vérifiez toujours le paiement sur votre serveur** indique le point de terminaison à appeler avant de traiter une commande. Voir [Vérifier la transaction](#vérifier-la-transaction).
+
+### Installer le SDK
+
+PHP :
 
 ```bash
 composer require taliup/taliuphq-php
 ```
 
-Le code source est aussi sur [GitHub](https://github.com/Taliup/taliuphq-php).
+Node.js :
+
+```bash
+npm install @taliup/taliuphq-node
+```
+
+Le code source est aussi sur GitHub ([PHP](https://github.com/Taliup/taliuphq-php), [Node.js](https://github.com/Taliup/taliuphq-node)).
 
 ### Flux d'intégration
 
@@ -172,7 +195,12 @@ Pour la référence API complète, l'authentification et la gestion des erreurs,
 
 ## Page montant libre et don
 
-La page Open Amount & Donation permet aux clients de payer le montant de leur choix — sans code serveur. Idéale pour les dons, adhésions, pourboires ou tout prix flexible.
+La page de paiement à montant libre permet aux clients de payer le montant de leur choix — sans code serveur. Idéale pour les dons, adhésions, pourboires ou tout prix flexible.
+
+Tout se trouve dans l'onglet **Boutons de paiement**. Si vous avez plus d'un emplacement, choisissez-en un dans **Emplacement** en haut de l'onglet.
+
+- La carte **Page de paiement** affiche le lien de la page de paiement de l'emplacement, avec **Copier** et **Aperçu**.
+- La carte **Boutons de paiement et de don** contient le code d'un bouton pour votre propre site : **Code à intégrer**, **Bouton de don**, **Montant fixe** et **Rappel onComplete**.
 
 ### Fonctionnement
 
@@ -186,20 +214,20 @@ Le client visite une page d'accueil Taliup (ou clique un bouton intégré), sais
 
 Si l'industrie de l'entité est **Charity**, la page de don à montant libre peut envoyer un reçu électronique conforme (anglais, français ou espagnol).
 
-Avant que la page de don fonctionne, complétez **Charity Details** sur l'entité :
+Avant que la page de don fonctionne, ouvrez **Paramètres** → **Détails de l’entreprise** et remplissez :
 
-- **Charity / Registration Number** (obligatoire)
-- **Tax ID** (facultatif)
-- Une adresse enregistrée complète sur le [profil de l'entité](/fr-CA/taliup-hq/manage/profile)
+- **Numéro d’organisme de bienfaisance** dans la carte **Organisme de bienfaisance** (obligatoire)
+- **Numéro fiscal** dans la carte **Organisme de bienfaisance** (facultatif)
+- Une adresse enregistrée complète dans la carte **Adresse**
 
-<Frame caption="Charity Details dans Settings → Business.">
-  ![Paramètres Business de Harbour Light Foundation avec Charity Details, numéro d'enregistrement BN 123456789RR0001 et Tax ID](/images/taliup-hq/charity-details.png)
+<Frame caption="La carte Organisme de bienfaisance dans Paramètres → Détails de l’entreprise.">
+  ![Paramètres Détails de l’entreprise d'un organisme de bienfaisance avec la carte Adresse et la carte Organisme de bienfaisance montrant le numéro d’organisme de bienfaisance et le numéro fiscal](/images/taliup-hq/charity-details.png)
 </Frame>
 
-Des détails de bienfaisance incomplets bloquent la page d'accueil de don à montant libre et l'appel d'initiation. Le paiement à montant fixe et l'intégration directe fonctionnent toujours.
+Des détails de bienfaisance incomplets bloquent la page d'accueil de don à montant libre et l'appel d'initiation. L'onglet **Boutons de paiement** affiche alors **Les dons ne sont pas encore ouverts**. Le paiement à montant fixe et l'intégration directe fonctionnent toujours.
 
 <Warning>
-  N'activez pas Charity et ne partagez pas l'URL `/pay/{merchant_site_id}` tant que **Charity Details** et l'adresse du profil ne sont pas complets. Sinon les donateurs verront une erreur au lieu de la page de paiement.
+  N'activez pas Charity et ne partagez pas l'URL `/pay/{merchant_site_id}` tant que le **Numéro d’organisme de bienfaisance** et l'adresse ne sont pas complets. Sinon les donateurs verront une erreur au lieu de la page de paiement.
 </Warning>
 
 ### Consulter et renvoyer un reçu
@@ -211,10 +239,10 @@ Après la capture d'un don d'un organisme de bienfaisance, vous pouvez ouvrir le
     Allez dans **Transactions** et sélectionnez l'onglet **En ligne**.
   </Step>
   <Step title="Sélectionner le don">
-    Cliquez sur le don pour ouvrir les détails de la transaction.
+    Cliquez sur le don pour en ouvrir les détails.
   </Step>
   <Step title="Consulter ou envoyer le reçu">
-    Cliquez sur **Voir le reçu** pour ouvrir le reçu fiscal envoyé au donateur. Cliquez sur **Envoyer le reçu** pour le renvoyer par courriel. L'adresse par défaut est celle du client lié à la commande. Vous pouvez la modifier avant l'envoi.
+    Cliquez sur **Voir le reçu** pour ouvrir le reçu fiscal envoyé au donateur. Cliquez sur **Envoyer le reçu** pour le renvoyer par courriel. L'adresse par défaut est celle du client lié à la commande. Vous pouvez la modifier avant de cliquer sur **Envoyer**.
   </Step>
 </Steps>
 
@@ -224,10 +252,10 @@ Si l'envoi échoue, la fenêtre reste ouverte et affiche une erreur afin que vou
   **Voir le reçu** et **Envoyer le reçu** apparaissent uniquement pour les dons Charity effectués sur la page à montant libre. Les dons plus anciens n'affichent pas ces actions.
 </Note>
 
-### Extraire de code (embed)
+### Code à intégrer
 
-<Frame caption="Le sous-onglet Embed Snippet — intégration minimale en deux lignes pour n'importe quelle plateforme.">
-  ![Sous-onglet Embed Snippet montrant la balise script TaliupPay SDK et l'appel TaliupPay.Button](/images/taliup-hq/hosted-payments/hosted-payments-open-amount-embed.png)
+<Frame caption="L'onglet Boutons de paiement sur Code à intégrer : le lien de la page de paiement et un court code pour n'importe quelle plateforme.">
+  ![Onglet Boutons de paiement avec la carte Page de paiement montrant le lien avec Copier et Aperçu, et la carte Boutons de paiement et de don sur Code à intégrer avec la liste des plateformes et le code du SDK TaliupPay](/images/taliup-hq/hosted-payments/hosted-payments-open-amount-embed.png)
 </Frame>
 
 Le moyen le plus rapide d'ajouter un bouton de paiement. Chargez le SDK et initialisez le bouton :
@@ -252,18 +280,18 @@ TaliupPay.Button({
 
 Fonctionne sur toute plateforme qui accepte du HTML personnalisé, y compris Wix, WordPress, Squarespace, Webflow, Shopify, Weebly et GoDaddy.
 
-### Bouton Donate
+### Bouton de don
 
-<Frame caption="Le sous-onglet Donate Button — exemple de page HTML complète pour un bouton à montant libre.">
-  ![Sous-onglet Donate Button montrant une page HTML complète avec le SDK TaliupPay dans head et le bouton mode open dans body](/images/taliup-hq/hosted-payments/hosted-payments-open-amount-donate-btn.png)
+<Frame caption="Bouton de don : exemple de page HTML complète pour un bouton à montant libre.">
+  ![Carte Boutons de paiement et de don sur Bouton de don, montrant une page HTML complète avec le SDK TaliupPay dans head et un bouton à montant libre dans body](/images/taliup-hq/hosted-payments/hosted-payments-open-amount-donate-btn.png)
 </Frame>
 
 Un exemple de page HTML complète avec le SDK dans `<head>` et un bouton à montant libre dans `<body>`. Le client clique, arrive sur la page Taliup, saisit son montant et paie.
 
-### Bouton à montant fixe
+### Montant fixe
 
-<Frame caption="Le sous-onglet Fixed Amount Button — bouton qui démarre une session pour un montant prédéfini.">
-  ![Sous-onglet Fixed Amount Button montrant TaliupPay.Button avec mode fixed, amount, currency et label](/images/taliup-hq/hosted-payments/hosted-payments-open-amount-fixed-btn.png)
+<Frame caption="Montant fixe : un bouton qui débite un montant fixe.">
+  ![Carte Boutons de paiement et de don sur Montant fixe, montrant TaliupPay.Button avec mode fixed, amount, currency et label](/images/taliup-hq/hosted-payments/hosted-payments-open-amount-fixed-btn.png)
 </Frame>
 
 Utilisez `mode: 'fixed'` pour facturer un montant précis sans que le client en saisisse un :
@@ -279,10 +307,10 @@ TaliupPay.Button({
 }).render('#pay-btn');
 ```
 
-### Rappels onComplete
+### Rappel onComplete
 
-<Frame caption="Le sous-onglet onComplete Callback — traiter le résultat du paiement dans le navigateur.">
-  ![Sous-onglet onComplete Callback montrant la fonction onComplete qui reçoit transaction_id, amount, currency et status](/images/taliup-hq/hosted-payments/hosted-payments-open-amount-callback.png)
+<Frame caption="Rappel onComplete : exécuter votre propre code après le paiement.">
+  ![Carte Boutons de paiement et de don sur Rappel onComplete, montrant la fonction onComplete qui reçoit transaction_id, amount, currency et status avec des exemples de traitement](/images/taliup-hq/hosted-payments/hosted-payments-open-amount-callback.png)
 </Frame>
 
 Les boutons `open` et `fixed` déclenchent un rappel `onComplete` lorsque le paiement réussit. Le rappel reçoit `{ transaction_id, amount, currency, status }` :
@@ -316,7 +344,7 @@ TaliupPay.Button({
 
 ### URL de page d'accueil directe
 
-Aucun embed requis. Partagez cette URL dans un courriel, une publication ou un code QR — les clients arrivent sur votre page Taliup et saisissent leur montant :
+Aucun code à intégrer requis. Copiez le lien de la carte **Page de paiement**, ou avec **Copier le lien de la page de paiement** dans l'onglet **Identifiants**. Partagez-le dans un courriel, une publication ou un code QR — les clients arrivent sur votre page Taliup et saisissent leur montant :
 
 ```
 https://taliuphq.com/pay/{merchant_site_id}
@@ -326,7 +354,7 @@ https://taliuphq.com/pay/{merchant_site_id}
 
 ## Webhooks
 
-Les webhooks livrent une notification signée serveur à serveur lorsqu'un paiement est capturé. Ils s'appliquent au flux **Direct Integration** — passez `webhook_url` dans votre requête `createCheckoutUrl`.
+Les webhooks livrent une notification signée serveur à serveur lorsqu'un paiement est capturé. Ils s'appliquent au flux **Intégration directe** — passez `webhook_url` dans votre requête `createCheckoutUrl`.
 
 ### Charge utile
 
@@ -361,7 +389,7 @@ if (!hash_equals($expected, $signature)) {
 }
 ```
 
-La signature est un HMAC-SHA256 du corps brut, signé avec votre **Secret Key**.
+La signature est un HMAC-SHA256 du corps brut, signé avec votre **Clé secrète**.
 
 <Warning>
   Rejetez toute requête webhook dont la signature ne correspond pas. N'utilisez pas la charge utile pour honorer une commande tant que la signature n'est pas vérifiée.

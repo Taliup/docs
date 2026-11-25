@@ -6,42 +6,55 @@ description: "Accept payments on any website, app, or platform — no checkout p
 
 Hosted Payments lets merchants accept payments on any website, app, or platform without building a checkout page. The merchant's backend generates a secure, one-time checkout URL; the customer completes payment on a Taliup-hosted page and is returned to the merchant's site.
 
-The feature is accessed via **Hosted Payments** in the merchant sidebar.
+Open **Get paid** → **Hosted payments** in the side menu. The page has four tabs: **Credentials**, **WooCommerce**, **Direct integration**, and **Pay buttons**.
 
 ---
 
 ## Prerequisites
 
-Three conditions must be met before credentials appear and the feature is usable:
+Three conditions must be met before the feature is usable:
 
 <Steps>
-  <Step title="Payment provider = Elavon">
-    The entity must be configured with **Elavon** as its payment provider. This is set during entity creation or can be updated in the [Entity Profile](/taliup-hq/manage/profile).
+  <Step title="Supported payment provider">
+    The entity's payment provider must support Hosted Payments, such as **Elavon**. This is set during entity creation or can be updated in the [Entity Profile](/taliup-hq/manage/profile).
   </Step>
   <Step title="Feature enabled">
     The `Hosted Payment Solution` feature must be enabled for the entity. Enable it in [Plans & Features](/taliup-hq/onboarding/plans-features).
   </Step>
-  <Step title="Online Payment Gateway configured">
-    At least one location must have an active **Online Payment Gateway** (Converge / Elavon) set up. See [Locations](/taliup-hq/onboarding/locations) for setup instructions.
+  <Step title="Online payment gateway configured">
+    At least one location must have an active online payment gateway, such as Elavon Converge. See [Locations](/taliup-hq/onboarding/locations) for setup instructions.
   </Step>
 </Steps>
 
+On the **Credentials** tab, each location shows **Ready** or **No gateway**. When a location has no gateway, a **No active payment gateway** notice names it. That location can't take hosted payments until a gateway is set up.
+
 ---
 
-## API Credentials
+## Credentials
 
-<Frame caption="The API Credentials tab — Merchant Site ID, Secret Key, and API Base URL per location.">
-  ![Hosted Payments API Credentials tab showing Merchant Site ID, masked Secret Key with Show and Copy buttons, Rotate Secret Key button, and API Base URL](/images/taliup-hq/hosted-payments/hosted-payments-credentials.png)
+<Frame caption="The Credentials tab: 30-day totals, each location's keys, and the connection details.">
+  ![Hosted payments Credentials tab with Locations, Ready for payments, Payments and Charged tiles, a location row with its merchant site ID and masked secret key, and the Connection details card with the API base URL and JavaScript SDK](/images/taliup-hq/hosted-payments/hosted-payments-credentials.png)
 </Frame>
 
-Credentials are generated **per location**. When an entity has multiple locations, a location selector appears at the top of the card.
+The tiles at the top show how many locations you have, how many are **Ready for payments**, and the **Payments** and amount **Charged** through hosted payments in the last 30 days.
+
+Credentials are generated **per location**. Each location has its own row.
 
 | Field | Description |
 |---|---|
-| **Merchant Site ID** | Unique identifier for this location (`hpm_...`). Passed as the `X-Merchant-Site-Id` header in every API request. Copy button available. |
-| **Secret Key** | Masked by default. Use the **Show** button to reveal it or **Copy** to copy without revealing. |
-| **Rotate Secret Key** | Generates a new secret key immediately. Any existing integration using the old key will fail until updated with the new value. |
-| **API Base URL** | The base URL for all API requests. |
+| **Location** | The location name, with its **Ready** or **No gateway** status. |
+| **Merchant site ID** | Unique identifier for this location (`hpm_...`). Passed as the `X-Merchant-Site-Id` header in every API request. Use the copy button next to it. |
+| **Secret key** | Masked by default. Use the eye button to show or hide it, or the copy button to copy it without showing it. Only users with the **Manage Settings** permission can see or copy the key. Others see **Only someone who can manage settings can see it**. |
+
+The **⋮** menu on each row has:
+
+| Action | Description |
+|---|---|
+| **Open payment page** | Opens the location's open-amount payment page. See [Open amount and donation page](#open-amount-and-donation-page). |
+| **Copy payment page link** | Copies the link to that page. |
+| **Rotate secret key** | Generates a new secret key after you confirm with **Rotate key**. Anything still using the old key stops working right away. Requires **Manage Settings**. |
+
+The **Connection details** card shows the **API base URL** and the **JavaScript SDK** URL, each with a copy button.
 
 **API Base URLs:**
 
@@ -51,51 +64,61 @@ Credentials are generated **per location**. When an entity has multiple location
 | Staging | `https://staging.taliuphq.com/api/v1` |
 
 <Warning>
-  Never expose the Secret Key in frontend code. All API requests must be made from your server.
+  Keep the secret key on your server. Never put it in a web page, an app, or a public code repository. All API requests must be made from your server.
 </Warning>
 
 ---
 
-## WooCommerce Integration
+## WooCommerce integration
 
-<Frame caption="The WooCommerce tab — four-step guide to install and configure the TaliupPay WooCommerce plugin.">
-  ![WooCommerce Integration tab with four numbered setup steps: Install the Plugin, Configure Credentials, Test a Payment, Go Live](/images/taliup-hq/hosted-payments/hosted-payments-woocommerce.png)
+<Frame caption="The WooCommerce tab: four steps to install and set up the TaliupPay plugin.">
+  ![WooCommerce tab with four numbered steps: Install the plugin, Add your credentials with the API base URL and a View credentials button, Test a payment, and Go live](/images/taliup-hq/hosted-payments/hosted-payments-woocommerce.png)
 </Frame>
 
-The WooCommerce tab provides a guided setup for WordPress stores using the TaliupPay WooCommerce plugin.
+The **WooCommerce** tab provides a guided setup for WordPress stores using the TaliupPay WooCommerce plugin.
 
 <Steps>
-  <Step title="Install the Plugin">
+  <Step title="Install the plugin">
     In your WordPress admin, go to **Plugins → Add New**. Search for **TaliupPay**, or upload the plugin ZIP file provided by your account manager. Click **Install Now** then **Activate**.
   </Step>
-  <Step title="Configure Credentials">
-    Go to **WooCommerce → Settings → Payments**. Click **TaliupPay** to configure. Enter your **Merchant Site ID** and **Secret Key** from the API Credentials tab. Set the **API Base URL** to `https://taliuphq.com/api/v1`. Click **Save Changes**.
+  <Step title="Add your credentials">
+    Go to **WooCommerce → Settings → Payments**. Click **TaliupPay** to set it up. Enter the **Merchant site ID** and **Secret key** from the **Credentials** tab. Set the **API base URL** to the one shown in this step (`https://taliuphq.com/api/v1`). Click **Save Changes**. **View credentials** takes you back to the **Credentials** tab.
   </Step>
-  <Step title="Test a Payment">
-    Place a test order in your store. Select **TaliupPay** as the payment method at checkout. You will be redirected to the secure TaliupPay checkout page to complete the test.
+  <Step title="Test a payment">
+    Place a test order in your store. Choose **TaliupPay** as the payment method at checkout. You are sent to the secure TaliupPay checkout page to complete the test.
   </Step>
-  <Step title="Go Live">
-    Once testing is complete, disable test mode in the plugin settings. Orders will now charge real cards.
+  <Step title="Go live">
+    When testing is done, turn off test mode in the plugin settings. Orders then charge real cards.
   </Step>
 </Steps>
 
 ---
 
-## Direct Integration
+## Direct integration
 
-<Frame caption="The Direct Integration tab — PHP, Node.js, and cURL code examples for generating a checkout URL from your backend.">
-  ![Direct Integration tab showing PHP code using the Taliup PHP SDK to create a checkout URL and redirect the customer](/images/taliup-hq/hosted-payments/hosted-payments-direct-integration.png)
+<Frame caption="The Direct integration tab: PHP, Node.js, and cURL examples for creating a checkout link from your server.">
+  ![Direct integration tab with PHP, Node.js and cURL choices, the Composer install command with a GitHub link, a PHP code sample that creates a checkout URL, and the Always check the payment on your server notice](/images/taliup-hq/hosted-payments/hosted-payments-direct-integration.png)
 </Frame>
 
-The Direct Integration tab is for developers who want to call the Taliup API directly from their backend. The page provides code examples for PHP, Node.js, and cURL.
+The **Direct integration** tab is for developers who want to call the Taliup API directly from their backend. Choose **PHP**, **Node.js**, or **cURL** to see an example. The samples are filled in with your merchant site ID. When you have more than one location, pick one from **Location** at the top of the tab.
 
-### Install the PHP SDK
+The **Always check the payment on your server** notice shows the endpoint to call before you fulfil an order. See [Verify transaction](#verify-transaction).
+
+### Install the SDK
+
+PHP:
 
 ```bash
 composer require taliup/taliuphq-php
 ```
 
-The source is also available on [GitHub](https://github.com/Taliup/taliuphq-php).
+Node.js:
+
+```bash
+npm install @taliup/taliuphq-node
+```
+
+The source is also available on GitHub ([PHP](https://github.com/Taliup/taliuphq-php), [Node.js](https://github.com/Taliup/taliuphq-node)).
 
 ### Integration flow
 
@@ -170,9 +193,14 @@ For the full API reference, authentication details, and error handling see the [
 
 ---
 
-## Open Amount & Donation Page
+## Open amount and donation page
 
-The Open Amount & Donation Page lets customers pay any amount they choose — no server-side code required. It is ideal for donations, memberships, tips, or any use case with flexible pricing.
+The open-amount payment page lets customers pay any amount they choose — no server-side code required. It is ideal for donations, memberships, tips, or any use case with flexible pricing.
+
+Everything for it is on the **Pay buttons** tab. When you have more than one location, pick one from **Location** at the top of the tab.
+
+- The **Payment page** card shows the location's payment page link, with **Copy** and **Preview**.
+- The **Pay and donate buttons** card has the code for a button on your own site: **Embed snippet**, **Donate button**, **Fixed amount**, and **onComplete callback**.
 
 ### How it works
 
@@ -186,20 +214,20 @@ A customer visits a Taliup-hosted landing page (or clicks an embedded button on 
 
 If the entity industry is **Charity**, the open-amount donation page can send a tax-compliant electronic receipt (English, French, or Spanish).
 
-Before the donation page works, complete **Charity Details** on the entity:
+Before the donation page works, open **Settings** → **Business details** and complete:
 
-- **Charity / Registration Number** (required)
-- **Tax ID** (optional)
-- A complete registered address on the [entity profile](/taliup-hq/manage/profile)
+- **Charity number** in the **Charity** card (required)
+- **Tax ID** in the **Charity** card (optional)
+- A complete registered address in the **Address** card
 
-<Frame caption="Charity Details on Settings → Business.">
-  ![Harbour Light Foundation Business settings with Charity Details, registration number BN 123456789RR0001, and Tax ID](/images/taliup-hq/charity-details.png)
+<Frame caption="The Charity card on Settings → Business details.">
+  ![Business details settings for a charity with the Address card and the Charity card showing Charity number and Tax ID](/images/taliup-hq/charity-details.png)
 </Frame>
 
-Incomplete charity details block the open-amount donation landing page and initiate call. Fixed-amount checkout and Direct Integration still work.
+Incomplete charity details block the open-amount donation landing page and initiate call. The **Pay buttons** tab then shows **Donations are not open yet**. Fixed-amount checkout and Direct integration still work.
 
 <Warning>
-  Do not enable Charity and share the open-amount `/pay/{merchant_site_id}` URL until **Charity Details** and the profile address are complete. Donors will otherwise see an error instead of the payment page.
+  Do not enable Charity and share the open-amount `/pay/{merchant_site_id}` URL until the **Charity number** and the address are complete. Donors will otherwise see an error instead of the payment page.
 </Warning>
 
 ### View and resend a receipt
@@ -211,23 +239,23 @@ After a charity donation is captured, you can open the same tax receipt from **T
     Go to **Transactions** and select the **Online** tab.
   </Step>
   <Step title="Select the donation">
-    Click the donation to open the transaction details.
+    Click the donation to open its details.
   </Step>
   <Step title="View or send the receipt">
-    Click **View Receipt** to open the receipt the donor received. Click **Send Receipt** to email it again. The address defaults to the client on the order. You can change it before sending.
+    Click **View receipt** to open the receipt the donor received. Click **Send receipt** to email it again. The address defaults to the client on the order. You can change it before you click **Send**.
   </Step>
 </Steps>
 
 If sending fails, the dialog stays open and shows an error so you can retry. The receipt number on the preview may be blank.
 
 <Note>
-  **View Receipt** and **Send Receipt** appear only for Charity donations taken on the open-amount hosted page. Older donations do not show these actions.
+  **View receipt** and **Send receipt** appear only for Charity donations taken on the open-amount hosted page. Older donations do not show these actions.
 </Note>
 
-### Embed Snippet
+### Embed snippet
 
-<Frame caption="The Embed Snippet sub-tab — minimal two-line embed for any platform.">
-  ![Open Amount Embed Snippet sub-tab showing the TaliupPay SDK script tag and TaliupPay.Button initialisation call](/images/taliup-hq/hosted-payments/hosted-payments-open-amount-embed.png)
+<Frame caption="The Pay buttons tab with Embed snippet selected: the payment page link and a short embed for any platform.">
+  ![Pay buttons tab with the Payment page card showing the link with Copy and Preview, and the Pay and donate buttons card on Embed snippet with the platform list and the TaliupPay SDK code](/images/taliup-hq/hosted-payments/hosted-payments-open-amount-embed.png)
 </Frame>
 
 The quickest way to add a payment button to any webpage. Load the SDK and initialise the button:
@@ -252,18 +280,18 @@ TaliupPay.Button({
 
 Works on any platform that supports custom HTML, including Wix, WordPress, Squarespace, Webflow, Shopify, Weebly, and GoDaddy.
 
-### Donate Button
+### Donate button
 
-<Frame caption="The Donate Button sub-tab — full HTML page example for an open-amount button.">
-  ![Donate Button sub-tab showing a complete HTML page with the TaliupPay SDK loaded in head and the open-mode button initialised in body](/images/taliup-hq/hosted-payments/hosted-payments-open-amount-donate-btn.png)
+<Frame caption="Donate button: a full HTML page example for an open-amount button.">
+  ![Pay and donate buttons card on Donate button, showing a complete HTML page with the TaliupPay SDK loaded in head and an open-amount button in body](/images/taliup-hq/hosted-payments/hosted-payments-open-amount-donate-btn.png)
 </Frame>
 
 A complete HTML page example showing the SDK loaded in `<head>` and an open-amount button initialised in `<body>`. The customer clicks the button, is taken to the Taliup landing page, enters their amount, and completes payment.
 
-### Fixed Amount Button
+### Fixed amount
 
-<Frame caption="The Fixed Amount Button sub-tab — button that initiates a session for a pre-set amount.">
-  ![Fixed Amount Button sub-tab showing TaliupPay.Button with mode set to fixed, amount, currency, and label fields](/images/taliup-hq/hosted-payments/hosted-payments-open-amount-fixed-btn.png)
+<Frame caption="Fixed amount: a button that charges a set amount.">
+  ![Pay and donate buttons card on Fixed amount, showing TaliupPay.Button with mode set to fixed, amount, currency, and label](/images/taliup-hq/hosted-payments/hosted-payments-open-amount-fixed-btn.png)
 </Frame>
 
 Use `mode: 'fixed'` to charge a specific amount without requiring the customer to enter one:
@@ -279,10 +307,10 @@ TaliupPay.Button({
 }).render('#pay-btn');
 ```
 
-### onComplete Callback
+### onComplete callback
 
-<Frame caption="The onComplete Callback sub-tab — handle the payment result directly in the browser.">
-  ![onComplete Callback sub-tab showing the onComplete function receiving transaction_id, amount, currency, and status parameters with three example handler options](/images/taliup-hq/hosted-payments/hosted-payments-open-amount-callback.png)
+<Frame caption="onComplete callback: run your own code after the payment.">
+  ![Pay and donate buttons card on onComplete callback, showing the onComplete function receiving transaction_id, amount, currency, and status with example handlers](/images/taliup-hq/hosted-payments/hosted-payments-open-amount-callback.png)
 </Frame>
 
 Both `open` and `fixed` mode buttons fire an `onComplete` callback when payment succeeds. The callback receives `{ transaction_id, amount, currency, status }`:
@@ -316,7 +344,7 @@ TaliupPay.Button({
 
 ### Direct landing page URL
 
-No embed required. Share this URL directly in an email, social post, or QR code — customers land on your branded Taliup payment page and enter their own amount:
+No embed required. Copy the link from the **Payment page** card, or from **Copy payment page link** on the **Credentials** tab. Share it directly in an email, social post, or QR code — customers land on your branded Taliup payment page and enter their own amount:
 
 ```
 https://taliuphq.com/pay/{merchant_site_id}
@@ -326,7 +354,7 @@ https://taliuphq.com/pay/{merchant_site_id}
 
 ## Webhooks
 
-Webhooks deliver a signed server-to-server notification when a payment captures. They apply to the **Direct Integration** flow — pass `webhook_url` in your `createCheckoutUrl` request.
+Webhooks deliver a signed server-to-server notification when a payment captures. They apply to the **Direct integration** flow — pass `webhook_url` in your `createCheckoutUrl` request.
 
 ### Webhook payload
 
@@ -361,7 +389,7 @@ if (!hash_equals($expected, $signature)) {
 }
 ```
 
-The signature is an HMAC-SHA256 of the raw request body, signed with your **Secret Key**.
+The signature is an HMAC-SHA256 of the raw request body, signed with your **Secret key**.
 
 <Warning>
   Reject any webhook request where the signature does not match. Do not use the payload for order fulfillment until the signature is verified.

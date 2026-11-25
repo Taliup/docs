@@ -5,30 +5,30 @@ description: "Chargez toute la liste de produits d'un marchand d'un coup à part
 icon: "file-import"
 ---
 
-**Bulk Upload** charge la liste de produits d'un marchand depuis un chiffrier plutôt qu'un article à la fois. Téléchargez le gabarit Taliup, remplissez-le, téléversez-le.
+**Importer des produits** charge la liste de produits d'un marchand depuis un chiffrier plutôt qu'un article à la fois. Téléchargez le gabarit Taliup, remplissez-le, téléversez-le.
 
 ## Comment y accéder
 
-**Catalogs** (ou **Menus**) → **Products** (ou **Items**) → **Bulk Upload**.
+Dans le menu latéral, ouvrez **Catalogue** → **Produits**, puis cliquez sur **Importer**. Si le catalogue n'a encore aucun produit, cliquez plutôt sur **Importer une feuille de calcul**. Il faut la permission **Manage Catalogs**.
 
-<Frame caption="La page Bulk Upload avec le téléchargement du gabarit, le sélecteur de fichier et le bouton Submit.">
-  ![Page Bulk Upload Your Products avec un bouton Download Template, un contrôle Upload File et un bouton Submit](/images/taliup-hq/catalogs/bulk-upload.png)
+<Frame caption="La page Importer des produits : téléchargez le modèle, puis déposez ou choisissez votre fichier et cliquez sur Importer des produits.">
+  ![Page Importer des produits avec le sous-titre « Ajoutez ou modifiez plusieurs produits à la fois avec une feuille de calcul », l'étape 1 Téléchargez le modèle avec un bouton Télécharger le modèle, et l'étape 2 Téléversez votre fichier avec une zone de dépôt « Déposez votre fichier ici, ou choisissez un fichier » et un bouton Importer des produits](/images/taliup-hq/catalogs/bulk-upload.png)
 </Frame>
 
 ## Importer des produits
 
 <Steps>
   <Step title="Téléchargez le gabarit">
-    Cliquez sur **Download Template**. Le fichier est un classeur Excel nommé `BulkUploadTemplate.xlsx`.
+    Cliquez sur **Télécharger le modèle**. Le fichier est un classeur Excel nommé `BulkUpload_Template.xlsx`.
   </Step>
   <Step title="Remplissez les feuilles">
     Complétez d'abord **Attributes** et **Tags** si vous prévoyez d'y faire référence, puis **Products**. Le détail des colonnes est plus bas.
   </Step>
   <Step title="Téléversez le fichier">
-    Cliquez sur **Upload File** et choisissez votre classeur rempli. Le nom du fichier s'affiche une fois sélectionné.
+    Sous **Téléversez votre fichier**, déposez votre classeur rempli dans la zone, ou cliquez sur **choisissez un fichier**. Fichiers Excel seulement (`.xlsx` ou `.xls`). Le nom du fichier s'affiche une fois sélectionné.
   </Step>
-  <Step title="Soumettez">
-    Cliquez sur **Submit**. L'import s'exécute immédiatement et vous revenez à la liste des produits avec une confirmation.
+  <Step title="Importez">
+    Cliquez sur **Importer des produits**. L'import s'exécute immédiatement et vous revenez à la liste des produits avec une confirmation.
   </Step>
 </Steps>
 
@@ -104,9 +104,9 @@ C'est la façon d'ajouter des photos à un catalogue déjà construit : exportez
 
 ## Exporter le catalogue
 
-Depuis la liste des produits, cliquez sur **Export Products**. L'export est préparé en arrière-plan et un lien de téléchargement apparaît lorsqu'il est prêt — vous pouvez quitter la page et revenir.
+Depuis la liste des produits, cliquez sur **Exporter**. Le chiffrier est préparé en arrière-plan, et vous recevez une notification lorsqu'il est prêt à télécharger. Vous pouvez quitter la page entre-temps.
 
-**Export Attributes** produit un CSV distinct des groupes d'options et de leurs valeurs.
+Pour exporter les groupes d'options et leurs valeurs, ouvrez **Catalogue** → **Attributs** et cliquez sur **Exporter**. Cochez les attributs voulus, ou **Tout sélectionner**, puis cliquez sur **Télécharger le CSV**. Le fichier est prêt à remplir et à utiliser avec l'import de produits.
 
 ## Si l'import échoue
 

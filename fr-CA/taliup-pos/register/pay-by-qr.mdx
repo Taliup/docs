@@ -1,0 +1,107 @@
+---
+title: "Paiement par code QR"
+sidebarTitle: "Paiement par code QR"
+description: "Imprimer une addition avec un code QR pour que les clients paient ce qu'ils doivent, plus un pourboire, avec leur téléphone, et voir comment Taliup POS ferme les commandes payées en ligne."
+keywords: ["paiement par code QR", "code QR", "balayez pour payer", "addition", "payer à la table", "paiement en ligne", "pourboire"]
+---
+
+Avec le paiement par code QR, l'addition porte un code QR. Le client le balaie, ajoute un pourboire et paie ce qui reste dû avec son téléphone. Le paiement est inscrit sur la même commande, et Taliup POS ferme la commande une fois payée.
+
+## L'activer
+
+Un gestionnaire active le paiement par code QR dans Taliup HQ. Il faut :
+
+- La fonction **Paiement par code QR** au forfait du marchand. Demandez à votre ISO ou partenaire si vous ne la voyez pas.
+- Au moins un emplacement qui accepte les paiements par carte en ligne, avec une [passerelle de paiement en ligne](/fr-CA/taliup-hq/onboarding/locations#passerelle-de-paiement-en-ligne) active.
+
+<Steps>
+  <Step title="Ouvrir les paramètres de paiement">
+    Dans Taliup HQ, allez à **Paramètres** → **Paiements**.
+  </Step>
+  <Step title="L'activer">
+    Dans la carte **Paiement par code QR**, activez **Paiement par code QR**. Il faut la permission **Manage Settings**.
+  </Step>
+  <Step title="Enregistrer">
+    Enregistrez la page.
+  </Step>
+</Steps>
+
+Si aucun emplacement n'accepte les paiements par carte en ligne, l'interrupteur reste désactivé et vous voyez **Aucun de vos emplacements n'accepte encore les paiements par carte en ligne.** Si seulement certains les acceptent, la carte liste les emplacements où le code QR n'est pas imprimé.
+
+Les codes QR s'impriment seulement sur les terminaux des emplacements qui acceptent les paiements par carte en ligne. Le paiement par code QR n'est pas offert sur les appareils inscrits au [WEB-SRM](/fr-CA/taliup-pos/web-srm).
+
+Désactiver le paiement par code QR arrête aussi les paiements à partir des additions déjà imprimées.
+
+## Imprimer une addition avec un code QR
+
+Vous pouvez imprimer le code QR de deux façons.
+
+### Le mode de paiement Payer par code QR
+
+Utilisez-le pour remettre l'addition au client et passer à la vente suivante.
+
+<Steps>
+  <Step title="Monter la commande">
+    Ajoutez les articles comme d'habitude.
+  </Step>
+  <Step title="Toucher Payer par code QR">
+    Touchez la touche **Payer par code QR**. Si elle n'a pas sa place avec les autres touches, ouvrez **Autres modes de paiement**. Taliup POS enregistre la commande dans Taliup HQ comme commande ouverte et imprime l'addition avec son code QR.
+  </Step>
+  <Step title="Remettre l'addition">
+    Taliup POS affiche **Addition imprimée. Le client peut balayer le code QR pour payer.** et vide la caisse pour la vente suivante. La commande reste ouverte jusqu'au paiement du client.
+  </Step>
+</Steps>
+
+**Payer par code QR** n'est pas offert sur l'addition d'un seul invité ni sur une vente qui charge une carte-cadeau.
+
+Si Taliup POS ne peut pas obtenir de lien de paiement de Taliup HQ, il affiche **Impossible d'obtenir un lien de paiement de HQ : l'addition n'a pas été imprimée.** Vérifiez la connexion et réessayez.
+
+### Imprimer la facture complète
+
+Sur une commande ouverte, **Options** → **Imprimer la facture complète** imprime aussi le code QR. La commande est enregistrée dans Taliup HQ et reste ouverte sur la caisse pour que vous puissiez continuer. Voir [Menu Options](/fr-CA/taliup-pos/register/options).
+
+Le code QR s'imprime sous **Balayez pour payer** avec **Payez cette addition avec votre téléphone**. Il s'imprime sur les imprimantes intégrées et externes. Les factures individuelles des invités n'ont pas de code QR, pas plus qu'une addition imprimée quand la caisse est hors ligne.
+
+## Ce que voit le client
+
+<Steps>
+  <Step title="Balayer le code">
+    Le client balaie le code QR. **Votre addition** s'ouvre avec les articles, les totaux, ce qui est déjà payé et le **Montant dû**.
+  </Step>
+  <Step title="Ajouter un pourboire">
+    Sous **Ajouter un pourboire**, il choisit **Aucun**, 10 %, 15 %, 20 % ou **Autre**. Le pourboire ne peut pas dépasser l'addition.
+  </Step>
+  <Step title="Payer">
+    Il touche **Payer** avec le montant et termine sur une page de paiement sécurisée. Les détails de sa carte ne passent jamais par la page de l'addition.
+  </Step>
+  <Step title="Terminé">
+    La page affiche **Payé en entier**.
+  </Step>
+</Steps>
+
+- Le client paie seulement ce qui reste dû. Les paiements déjà faits à la caisse sont affichés et déduits.
+- Si l'addition change pendant que la page est ouverte, il voit **Votre addition a été mise à jour. Vérifiez le nouveau total avant de payer.**
+- Une carte refusée affiche un message pour réessayer ou utiliser une autre carte.
+- Le lien fonctionne 7 jours. Ensuite, le client voit **Ce lien a expiré** et demande une nouvelle addition au personnel.
+
+## Quand la commande est payée en ligne
+
+Le paiement en ligne est inscrit sur la même commande dans Taliup HQ.
+
+La prochaine fois que vous enregistrez ou payez cette commande à la caisse, Taliup POS affiche **Cette commande a été payée en ligne. Elle est maintenant fermée.** et la retire. Avant de prendre un paiement sur une commande dont l'addition porte un code QR, Taliup POS vérifie d'abord auprès de Taliup HQ. Si Taliup HQ ne répond pas en quelques secondes, la vente se poursuit.
+
+Les commandes mises en file hors ligne et synchronisées plus tard sont aussi fermées si elles ont été payées en ligne.
+
+## Si le panier a changé après le paiement du client
+
+| Changement | Ce qui se passe |
+|---|---|
+| Articles ajoutés | Le paiement en ligne est ajouté à la commande. Taliup POS affiche **Le client a payé [montant] en ligne avant la modification de la commande. Il reste [montant] à payer.** Encaissez le reste |
+| Articles retirés | La commande se ferme. Taliup POS affiche **Cette commande a été payée en ligne et est fermée. Le client a payé [montant] de plus que le nouveau total : remboursez la différence.** |
+
+## Connexe
+
+- [Encaisser](/fr-CA/taliup-pos/register/take-payment)
+- [Menu Options](/fr-CA/taliup-pos/register/options)
+- [Tables](/fr-CA/taliup-pos/tables)
+- [Emplacements](/fr-CA/taliup-hq/onboarding/locations)

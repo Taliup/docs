@@ -1,20 +1,31 @@
 ---
 title: "Appointments"
 sidebarTitle: "Appointments"
-description: "Create, edit, and delete calendar appointments in Taliup POS, and handle time conflicts."
+description: "Book, edit, check out, cancel, and mark no-shows for appointments in Taliup POS, with online deposits and fees."
+keywords: ["appointment", "booking", "checkout", "deposit", "no-show", "late cancellation", "payment link", "text confirmation"]
 ---
+
+Book appointments from the calendar, then check them out at the Register when the client is done. When your business takes deposits or saves cards, Taliup POS also handles the deposit, refunds, and late-cancellation and no-show fees.
+
+Deposits, saved cards, fees, the cancellation window, reminders, and text confirmations are set up in Taliup HQ. See [Calendar in Taliup HQ](/taliup-hq/features/calendar) and [Online booking in Taliup HQ](/taliup-hq/features/online-booking).
+
+## How to get here
+
+From Home, tap **Calendar**. Requires the **Calendar** feature.
+
+Actions that go through Taliup HQ need a connection. Offline, they are dimmed and Taliup POS shows **Connect to the internet to check out, cancel, delete, mark a no-show or charge a fee.**
 
 ## Create an appointment
 
 <Steps>
   <Step title="Open a day">
-    From **Calendar**, tap a day, then start a new appointment.
+    From **Calendar**, tap a day, then tap **New Appointment**.
   </Step>
   <Step title="Fill in details">
     On **New appointment**, complete the fields below.
   </Step>
   <Step title="Save">
-    Tap **Create appointment**.
+    Tap **Create appointment** (**Add appointment** on smaller screens).
   </Step>
 </Steps>
 
@@ -26,19 +37,28 @@ description: "Create, edit, and delete calendar appointments in Taliup POS, and 
 
 | Field | Notes |
 |---|---|
-| **Location** | The location for the appointment. Taliup POS saves the location you pick |
+| **Location** | The location for the appointment. You can change it when the business has more than one location |
 | **Title** | Required. Picking a service fills it in; you can still edit it |
 | **Date** | The appointment day |
-| **Start** / **Ends** | End must be after the start. With a service, the end time follows the service duration |
+| **Starts** / **Ends** | End must be after the start. With a service, the end time follows the service duration |
 | **Client** | **Select client** |
-| **Service · optional** | Needs Services / `catalog_services` |
+| **Service · optional** | Needs the **Services** feature |
 | **Employee · optional** | **Select employee**, or **Leave unassigned** |
-| **Note · optional** | Anything the staff should know |
-| **Send reminder** | On / off |
-| **Client can confirm** | On / off |
-| **Client can cancel** | On / off |
+| **Notes** | Optional. Anything the staff should know |
 
 Services can last up to 8 hours. Set the duration on the service in Taliup HQ.
+
+### Client options
+
+These options match the booking options in Taliup HQ.
+
+| Option | Notes |
+|---|---|
+| **Ask for a [amount] deposit** / **Ask to save a card** | Shows once you pick a client and a service, when your Taliup HQ settings ask for a deposit or a saved card. Off by default. See [Ask for a deposit when booking](#ask-for-a-deposit-when-booking) |
+| **Text [name] a confirmation** | Shows when your business texts booking confirmations. On by default. Sent when you book, from your business number. Turned off and unavailable when the client has no phone number |
+| **Send reminder** | Shows when your business sends reminders. On by default |
+| **Client can confirm** | Off by default |
+| **Client can cancel** | Off by default |
 
 ## Time conflicts
 
@@ -49,16 +69,186 @@ When you save, Taliup POS checks whether the employee already has an appointment
 | **Change time** | Go back and pick another time |
 | **Book anyway** | Save it. Both appointments overlap on the day view |
 
-## Edit or delete
+## Ask for a deposit when booking
 
-Tap an appointment to open it.
+Turn on **Ask for a [amount] deposit** (or **Ask to save a card**) to send the client a payment link. The hint under the switch says how the link is sent (email, text message, or both) and what happens if the client does not finish:
+
+- If the payment deadline comes before the appointment starts, the appointment is cancelled automatically when the client does not finish in time.
+- If the appointment starts before the payment deadline, the link expires at the start and the appointment is not cancelled.
+
+When **Text [name] a confirmation** is off, the link is not texted either.
+
+While the client has not finished, the appointment shows **Payment link pending**. Its sheet shows **Waiting for a [amount] deposit** or **Waiting for a saved card**, with the deadline.
+
+| Outcome | What you see |
+|---|---|
+| The client pays or saves a card | The **Payment** row shows the deposit paid or the card saved |
+| The deadline passes before the start | **Cancelled automatically** |
+| The appointment starts first | **Payment link expired**. Check out, cancel, or mark a no-show as needed |
+
+When you edit an appointment that is still waiting, **Payment link** stays on. A new time, service, location, or client sends a new link. Turn it off to stop asking and send the usual booking confirmation.
+
+## Open an appointment
+
+Tap an appointment to open its sheet. It shows the status, **When**, **Client**, **Staff**, **Location**, **Payment**, and **Note**.
+
+| Status | Meaning |
+|---|---|
+| **Scheduled** | Booked, without client confirm or cancel options |
+| **Awaiting** | Waiting for the client to confirm or cancel |
+| **Confirmed** | The client confirmed |
+| **Payment link pending** | Waiting for the client to pay the deposit or save a card |
+| **Payment link expired** | The link ran out without being used |
+| **Cancelled · by client** / **Cancelled · by business** | Cancelled. It stays on the calendar |
+| **No-show** | The client did not come. It stays on the calendar |
+
+The **Payment** row lists what happened to the money, such as **[amount] deposit paid**, **Deposit refunded**, **[amount] no-show fee charged**, **[amount] late-cancellation fee charged**, and the saved card.
+
+The buttons depend on the appointment:
+
+| Button | When it shows |
+|---|---|
+| **Checkout** | The appointment is not cancelled, a no-show, or paid |
+| **Paid** | A completed sale paid the appointment. Replaces **Checkout** |
+| **Edit appointment** / **Edit** | The appointment is not cancelled |
+| **Cancel** | When Taliup HQ allows it. Not offered for a no-show or a paid appointment |
+| **No-show** | When Taliup HQ allows it. Not offered for a paid appointment |
+| **Delete** | The appointment is not paid |
+
+A button shows a spinner while Taliup HQ answers. If something goes wrong, such as a charge or refund that did not go through, Taliup POS explains it in a message.
+
+## Check out an appointment
+
+<Steps>
+  <Step title="Start checkout">
+    Open the appointment and tap **Checkout**. The Register opens on the sale.
+  </Step>
+  <Step title="Review the sale">
+    The client is attached, and the service is in the cart, **Done by** the appointment's employee. Add anything else the client buys.
+  </Step>
+  <Step title="Take payment">
+    Pay as usual. When the sale is complete, the appointment shows **Paid**.
+  </Step>
+</Steps>
+
+What the Register adds for you:
+
+- **Online deposit.** A deposit the client paid online is applied to the sale as **Paid online**. The client pays only the rest.
+- **Service price.** If the service needs a price or a required choice, Taliup POS asks you to set it first.
+- **Membership visit.** If the client has a membership visit that covers the service, it is used on the service line. You can still take it off.
+
+### Saved sales
+
+If you saved the sale for later, **Checkout** reopens that sale instead of starting a new one, with the deposit still applied.
+
+If another employee started the sale and it is already partly paid, Taliup POS shows **Another employee started this appointment's sale, and it's already partly paid. Ask them or a manager to finish it.**
+
+### When the deposit is more than the sale
+
+The deposit can only be applied in full. If the sale total is less than the deposit, **The deposit is more than this sale** opens with **Paid online (deposit)**, **Sale total**, and **Difference**.
+
+| Choice | What happens |
+|---|---|
+| **Add items** | Go back and add items so the total is at least the deposit |
+| **Refund [amount] deposit** | The whole deposit goes back to the client's card. **Deposit refunded** opens: tap **Continue** and charge the full price at the Register |
+
+If the refund fails, **Couldn't refund the deposit** opens and nothing is refunded. Tap **Try again**, or **Add items**.
+
+### Refunds and voids of a checked-out sale
+
+A deposit paid online is not part of a refund or void made in Taliup POS. The transaction and refund screens show **[amount] was paid online and isn't included. Refund it from HQ.**
+
+## Cancel an appointment
+
+Use **Cancel** when the client or the business cancels. The appointment stays on the calendar as cancelled.
+
+<Steps>
+  <Step title="Open Cancel">
+    Open the appointment and tap **Cancel**. **Cancel [name]'s appointment?** opens.
+  </Step>
+  <Step title="Choose who cancelled">
+    Tap **The client cancelled** or **The business cancelled**.
+  </Step>
+  <Step title="Review the deposit and fee">
+    Check the boxes. They start from your cancellation policy each time.
+  </Step>
+  <Step title="Confirm">
+    Tap **Cancel appointment**, or **Cancel · charge [amount]** when a fee is charged. Tap **Back** to leave it booked.
+  </Step>
+</Steps>
+
+When the client cancels, Taliup POS shows whether it is a **Late cancellation:** (inside the cancellation window) or **In time:** (no fee applies).
+
+| Situation | Deposit | Fee |
+|---|---|---|
+| Client cancelled in time, or no fee is set | **Refund the [amount] deposit to [card]** is ticked. Untick it to keep the deposit | None |
+| Client cancelled late, with a late-cancellation fee | **Keep the [fee] late-cancellation fee from the [deposit] deposit ([amount] refunded)** is ticked. Untick it to refund the whole deposit | If the fee is more than the deposit kept, **Charge the late-cancellation fee: [amount] to [card]** charges the rest to the saved card |
+| Business cancelled | **The [amount] deposit will be refunded.** | None |
+
+When the client has an email address, **Email [name] that it's cancelled** is ticked. Untick it to cancel without the email.
+
+## Mark a no-show
+
+<Steps>
+  <Step title="Open No-show">
+    Open the appointment and tap **No-show**. **Mark [name] as a no-show?** opens.
+  </Step>
+  <Step title="Review the fee">
+    When a no-show fee is set, its box is ticked. Untick it to waive the fee.
+  </Step>
+  <Step title="Confirm">
+    Tap **Mark no-show**, or **Mark no-show · charge [amount]** when the saved card is charged. Tap **Cancel** to go back.
+  </Step>
+</Steps>
+
+| Situation | What the fee box does |
+|---|---|
+| The client paid a deposit | **Keep the [fee] no-show fee from the [deposit] deposit**. The rest of the deposit is refunded, or any amount above the deposit is charged to the saved card. Waiving the fee refunds the whole deposit |
+| No deposit, saved card | **Charge the no-show fee: [amount] to [card]** |
+| No deposit, no card | **No card on file, so the fee can't be charged.** |
+
+The appointment stays on the calendar as a no-show.
+
+## Fees not charged
+
+When a late-cancellation or no-show fee is owed but was not charged, the sheet shows **Late cancellation · [amount] fee not charged** or **No-show · [amount] fee not charged**.
+
+| Choice | What happens |
+|---|---|
+| **Charge [amount]** | Charges the fee to the saved card. Shows only with a usable saved card |
+| **Waive** | Lets the fee go |
+
+## Ask for a deposit on a booked appointment
+
+When your Taliup HQ settings ask for a deposit or a saved card and a booked appointment has neither, its sheet shows **Ask for a [amount] deposit** or **Ask to save a card**.
+
+<Steps>
+  <Step title="Send the link">
+    Tap **Send link**. Taliup POS asks **Send [name] a [amount] deposit link?** or **Send [name] a link to save a card?**
+  </Step>
+  <Step title="Confirm">
+    Tap **Send link**, or **Back** to leave it.
+  </Step>
+</Steps>
+
+The client gets the link by email, text message, or both. A link sent after booking never cancels the appointment: it stays booked whether or not the client pays. If the client does not pay in time, the sheet shows **Payment link expired** and that the appointment is still booked.
+
+## Edit or delete
 
 | Action | How |
 |---|---|
-| Save changes | Tap **Edit appointment**, change the fields, then **Save changes** |
-| Delete | Tap delete, then confirm **Delete this appointment?** The client is not notified automatically |
+| Edit | Tap **Edit appointment** (or **Edit**), change the fields, then **Save changes** (**Save** on smaller screens) |
+| Text the new time | When you move an appointment, **Text [name] the new time** shows. It is sent when you save, from your business number |
+| Delete | Tap **Delete**, then confirm **Delete this appointment?** The client is not notified automatically |
+
+Delete is for mistakes, like a duplicate booking. To record a real cancellation, use **Cancel**. When you delete an appointment with a deposit, the deposit is refunded to the client, unless the client missed the appointment, cancelled late, or a sale already used the deposit. A paid appointment cannot be deleted.
 
 ## Related
 
+- [Calendar in Taliup HQ](/taliup-hq/features/calendar)
+- [Online booking in Taliup HQ](/taliup-hq/features/online-booking)
+- [Calendar overview](/taliup-pos/calendar)
 - [Clients](/taliup-pos/clients) — client records and client activity **Appointments**
 - [Services](/taliup-pos/catalog/services) — service catalog used by the picker
+- [Take payment](/taliup-pos/register/take-payment)
+- [Refund a transaction](/taliup-pos/transactions/refund)

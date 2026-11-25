@@ -123,14 +123,52 @@
               {
                 "group": "Features",
                   "pages": [
-                  "taliup-hq/features/hosted-payments",
-                  "taliup-hq/features/recurring-payments",
-                  "taliup-hq/features/invoicing",
-                  "taliup-hq/features/clients",
-                  "taliup-hq/features/loyalty",
-                  "taliup-hq/features/gift-cards",
-                  "taliup-hq/features/scale-items",
-                  "taliup-hq/features/end-of-day"
+                  {
+                    "group": "Payments",
+                    "icon": "credit-card",
+                    "pages": [
+                      "taliup-hq/features/hosted-payments",
+                      "taliup-hq/features/recurring-payments",
+                      "taliup-hq/features/invoicing"
+                    ]
+                  },
+                  {
+                    "group": "Customers",
+                    "icon": "users",
+                    "pages": [
+                      "taliup-hq/features/clients",
+                      "taliup-hq/features/loyalty",
+                      "taliup-hq/features/gift-cards",
+                      "taliup-hq/features/memberships"
+                    ]
+                  },
+                  {
+                    "group": "Appointments",
+                    "icon": "calendar",
+                    "pages": [
+                      "taliup-hq/features/calendar",
+                      "taliup-hq/features/calendar-settings",
+                      "taliup-hq/features/online-booking"
+                    ]
+                  },
+                  {
+                    "group": "Team",
+                    "icon": "id-badge",
+                    "pages": [
+                      "taliup-hq/features/employees",
+                      "taliup-hq/features/timesheets",
+                      "taliup-hq/features/staff-schedule",
+                      "taliup-hq/features/payroll"
+                    ]
+                  },
+                  {
+                    "group": "Other",
+                    "icon": "layer-group",
+                    "pages": [
+                      "taliup-hq/features/scale-items",
+                      "taliup-hq/features/end-of-day"
+                    ]
+                  }
                 ]
               }
             ]
@@ -167,9 +205,11 @@
                   "taliup-pos/register/scale-barcodes",
                   "taliup-pos/register/cart",
                   "taliup-pos/register/take-payment",
+                  "taliup-pos/register/pay-by-qr",
                   "taliup-pos/register/customer-receipt",
                   "taliup-pos/register/gift-cards",
                   "taliup-pos/register/loyalty",
+                  "taliup-pos/register/packages-and-memberships",
                   "taliup-pos/register/helped-by",
                   "taliup-pos/register/receipt-barcode",
                   "taliup-pos/register/options"
@@ -342,6 +382,7 @@
                 "group": "Releases",
                 "pages": [
                   "changelog/index",
+                  "changelog/2026-11-late",
                   "changelog/2026-11",
                   "changelog/2026-09",
                   "changelog/2026-08"
@@ -447,14 +488,52 @@
                   {
                     "group": "Fonctions",
                     "pages": [
-                      "fr-CA/taliup-hq/features/hosted-payments",
-                      "fr-CA/taliup-hq/features/recurring-payments",
-                      "fr-CA/taliup-hq/features/invoicing",
-                      "fr-CA/taliup-hq/features/clients",
-                      "fr-CA/taliup-hq/features/loyalty",
-                      "fr-CA/taliup-hq/features/gift-cards",
-                      "fr-CA/taliup-hq/features/scale-items",
-                      "fr-CA/taliup-hq/features/end-of-day"
+                      {
+                        "group": "Paiements",
+                        "icon": "credit-card",
+                        "pages": [
+                          "fr-CA/taliup-hq/features/hosted-payments",
+                          "fr-CA/taliup-hq/features/recurring-payments",
+                          "fr-CA/taliup-hq/features/invoicing"
+                        ]
+                      },
+                      {
+                        "group": "Clientèle",
+                        "icon": "users",
+                        "pages": [
+                          "fr-CA/taliup-hq/features/clients",
+                          "fr-CA/taliup-hq/features/loyalty",
+                          "fr-CA/taliup-hq/features/gift-cards",
+                          "fr-CA/taliup-hq/features/memberships"
+                        ]
+                      },
+                      {
+                        "group": "Rendez-vous",
+                        "icon": "calendar",
+                        "pages": [
+                          "fr-CA/taliup-hq/features/calendar",
+                          "fr-CA/taliup-hq/features/calendar-settings",
+                          "fr-CA/taliup-hq/features/online-booking"
+                        ]
+                      },
+                      {
+                        "group": "Équipe",
+                        "icon": "id-badge",
+                        "pages": [
+                          "fr-CA/taliup-hq/features/employees",
+                          "fr-CA/taliup-hq/features/timesheets",
+                          "fr-CA/taliup-hq/features/staff-schedule",
+                          "fr-CA/taliup-hq/features/payroll"
+                        ]
+                      },
+                      {
+                        "group": "Autres",
+                        "icon": "layer-group",
+                        "pages": [
+                          "fr-CA/taliup-hq/features/scale-items",
+                          "fr-CA/taliup-hq/features/end-of-day"
+                        ]
+                      }
                     ]
                   }
                 ]
@@ -491,9 +570,11 @@
                       "fr-CA/taliup-pos/register/scale-barcodes",
                       "fr-CA/taliup-pos/register/cart",
                       "fr-CA/taliup-pos/register/take-payment",
+                      "fr-CA/taliup-pos/register/pay-by-qr",
                       "fr-CA/taliup-pos/register/customer-receipt",
                       "fr-CA/taliup-pos/register/gift-cards",
                       "fr-CA/taliup-pos/register/loyalty",
+                      "fr-CA/taliup-pos/register/packages-and-memberships",
                       "fr-CA/taliup-pos/register/helped-by",
                       "fr-CA/taliup-pos/register/receipt-barcode",
                       "fr-CA/taliup-pos/register/options"
@@ -620,6 +701,7 @@
                     "group": "Versions",
                     "pages": [
                       "fr-CA/changelog/index",
+                      "fr-CA/changelog/2026-11-late",
                       "fr-CA/changelog/2026-11",
                       "fr-CA/changelog/2026-09",
                       "fr-CA/changelog/2026-08"

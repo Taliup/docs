@@ -1,0 +1,107 @@
+---
+title: "Pay by QR"
+sidebarTitle: "Pay by QR"
+description: "Print a bill with a QR code so customers pay what they owe, plus a tip, from their phone, and see how Taliup POS closes orders paid online."
+keywords: ["pay by QR", "QR code", "scan to pay", "bill", "pay at table", "online payment", "tip"]
+---
+
+With Pay by QR, the bill carries a QR code. The customer scans it, adds a tip, and pays what is still owed from their phone. The payment goes on the same order, and Taliup POS closes the order once it is paid.
+
+## Turn it on
+
+A manager turns Pay by QR on in Taliup HQ. You need:
+
+- The **Pay by QR** feature on the merchant's plan. Ask your ISO or partner if you don't see it.
+- At least one location that takes online card payments, with an active [online payment gateway](/taliup-hq/onboarding/locations#online-payment-gateway).
+
+<Steps>
+  <Step title="Open payment settings">
+    In Taliup HQ, go to **Settings** → **Payments**.
+  </Step>
+  <Step title="Turn it on">
+    In the **Pay by QR** card, turn on **Pay by QR**. You need the **Manage Settings** permission.
+  </Step>
+  <Step title="Save">
+    Save the page.
+  </Step>
+</Steps>
+
+If no location takes online card payments, the switch stays off and you see **None of your locations take online card payments yet.** If only some do, the card lists the locations where the QR code is not printed.
+
+QR codes print only on terminals at locations that take online card payments. Pay by QR is not available on devices enrolled with [WEB-SRM](/taliup-pos/web-srm).
+
+Turning Pay by QR off also stops payments from bills already printed.
+
+## Print a bill with a QR code
+
+You can print the QR code two ways.
+
+### The Pay by QR tender
+
+Use it to hand the customer a bill and move on to the next sale.
+
+<Steps>
+  <Step title="Build the order">
+    Add the items as usual.
+  </Step>
+  <Step title="Tap Pay by QR">
+    Tap the **Pay by QR** tender key. If it doesn't fit with the other keys, open **More payment types**. Taliup POS saves the order to Taliup HQ as an open order and prints the bill with its QR code.
+  </Step>
+  <Step title="Hand over the bill">
+    Taliup POS shows **Bill printed. The customer can scan the QR code to pay.** and clears the register for the next sale. The order stays open until the customer pays.
+  </Step>
+</Steps>
+
+**Pay by QR** is not shown on one guest's bill or on a sale that loads a gift card.
+
+If Taliup POS cannot get a payment link from Taliup HQ, it shows **Couldn't get a payment link from HQ, so the bill wasn't printed.** Check the connection and try again.
+
+### Print Entire Bill
+
+On an open order, **Options** → **Print Entire Bill** also prints the QR code. The order is saved to Taliup HQ and stays open on the register so you can keep working on it. See [Options side menu](/taliup-pos/register/options).
+
+The QR code prints under **Scan to pay** with **Pay this bill from your phone**. It prints on built-in and external printers. Individual guest bills do not carry a QR code, and neither does a bill printed while the register is offline.
+
+## What the customer sees
+
+<Steps>
+  <Step title="Scan the code">
+    The customer scans the QR code. **Your bill** opens with the items, totals, anything already paid, and the **Amount due**.
+  </Step>
+  <Step title="Add a tip">
+    Under **Add a tip**, they pick **No tip**, 10%, 15%, 20%, or **Custom**. The tip can't be more than the bill.
+  </Step>
+  <Step title="Pay">
+    They tap **Pay** with the amount and finish on a secure checkout page. Their card details never touch the bill page.
+  </Step>
+  <Step title="Done">
+    The page shows **Paid in full**.
+  </Step>
+</Steps>
+
+- The customer pays only what is still owed. Payments already taken on the register are shown and left out.
+- If the bill changes while the page is open, they see **Your bill was updated. Check the new total before you pay.**
+- A declined card shows a message to try again or use another card.
+- The link works for 7 days. After that, the customer sees **This link has expired** and asks staff for a new bill.
+
+## When the order is paid online
+
+The online payment goes on the same order in Taliup HQ.
+
+When you next save or pay that order on the register, Taliup POS shows **This order was paid online. It's closed now.** and clears it. Before you take a payment on an order whose bill has a QR code, Taliup POS checks with Taliup HQ first. If Taliup HQ doesn't answer within a few seconds, the sale goes ahead.
+
+Orders that were queued offline and synced later are also closed when they were paid online.
+
+## If the cart changed after the customer paid
+
+| Change | What happens |
+|---|---|
+| Items added | The online payment is added to the order. Taliup POS shows **The customer paid [amount] online before the order changed. [amount] is still owed.** Collect the rest |
+| Items removed | The order closes. Taliup POS shows **This order was paid online and is closed. The customer paid [amount] more than the new total, so refund the difference.** |
+
+## Related
+
+- [Take payment](/taliup-pos/register/take-payment)
+- [Options side menu](/taliup-pos/register/options)
+- [Tables](/taliup-pos/tables)
+- [Locations](/taliup-hq/onboarding/locations)

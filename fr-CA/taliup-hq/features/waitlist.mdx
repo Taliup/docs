@@ -1,0 +1,112 @@
+---
+title: "Liste d'attente"
+sidebarTitle: "Liste d'attente"
+description: "Laissez les clients s'inscrire à une liste d'attente depuis votre page de réservation, avisez-les quand une plage se libère, et proposez ou réservez la prochaine plage depuis Taliup HQ."
+keywords: ["liste d'attente", "plage libérée", "annulation", "prochaine plage", "alerte", "réservation en ligne"]
+---
+
+Quand aucune plage ne convient à un client, il peut s'inscrire à une liste d'attente depuis votre page de réservation. Quand une plage correspondante se libère, Taliup envoie aux premiers clients de la file un texto et un courriel avec un lien pour la réserver. Le premier à réserver obtient la plage.
+
+La page **Liste d'attente** de Taliup HQ montre qui attend, qui a été avisé et quelles demandes sont échues. Vous pouvez y envoyer la prochaine plage à un client ou le réserver vous-même.
+
+## Comment y arriver
+
+Barre latérale → **Rendez-vous** → **Liste d’attente**. Il faut la fonction **Liste d'attente**, qui accompagne le **Calendrier**.
+
+| Permission | Ce qu'elle permet |
+|---|---|
+| **View Appointments** | Ouvrir la liste d'attente, ainsi que les détails et l'historique de chaque client |
+| **Manage Appointments** | **Envoyer la prochaine plage**, **Réserver pour le client**, **Remettre en file** et **Retirer** |
+| **Manage Settings** | Activer la liste d'attente depuis la page ou dans les paramètres du calendrier |
+
+Le menu **Plus d'actions** du calendrier mène aussi à la **Liste d'attente**.
+
+## Activer la liste d'attente
+
+Les clients s'inscrivent depuis votre page de [réservation en ligne](/fr-CA/taliup-hq/features/online-booking). La réservation en ligne doit donc être activée.
+
+<Steps>
+  <Step title="Ouvrir les paramètres du calendrier">
+    Allez dans les [Paramètres du calendrier](/fr-CA/taliup-hq/features/calendar-settings) et ouvrez l'onglet **Réservation en ligne**.
+  </Step>
+  <Step title="L'activer">
+    Activez **Permettre aux clients de s'inscrire à une liste d'attente**. L'option s'affiche une fois la réservation en ligne activée.
+  </Step>
+  <Step title="Enregistrer">
+    Cliquez sur **Enregistrer les modifications**.
+  </Step>
+</Steps>
+
+Quand la liste d'attente est désactivée, la page **Liste d'attente** l'indique. Cliquez sur **Activer** pour l'activer sur place, ou sur **Paramètres de la liste d'attente** pour ouvrir le paramètre.
+
+## Comment les clients s'inscrivent
+
+Sur la page de réservation, l'étape de la date et de l'heure affiche **Aucune plage ne convient? Liste d’attente**. L'étape du personnel mène aussi à la liste d'attente.
+
+La page d'inscription reprend le service, le jour, l'employé et l'emplacement que le client consultait. Le client choisit :
+
+| Question | Choix |
+|---|---|
+| **Quels jours?** | Une période |
+| **À quel moment de la journée?** | **N’importe quand**, **Matin** (avant 12 h), **Après-midi** (12 h à 17 h) ou **Soir** (après 17 h) |
+| **Avec qui?** | Un employé, ou n'importe quel employé |
+| **Où devons-nous envoyer l’alerte?** | Prénom, nom, courriel et cellulaire |
+| **Quelque chose à nous dire?** | Une note facultative pour votre équipe |
+
+Le client clique sur **S'inscrire à la liste d'attente** et voit **Vous êtes sur la liste d'attente**. L'inscription est gratuite. Rien n'est réservé ni facturé avant que le client réserve depuis une alerte.
+
+S'inscrire de nouveau pour le même service met à jour la demande du client. L'inscription ne remplace jamais le numéro de téléphone déjà au dossier d'un client existant.
+
+## Quand une plage se libère
+
+Une plage se libère quand un rendez-vous est annulé, supprimé, ou déplacé vers une autre heure, un autre service, un autre employé ou un autre emplacement. C'est le cas peu importe où le changement est fait : Taliup HQ, Taliup POS ou l'annulation par le client lui-même.
+
+Taliup cherche alors les clients en attente dont le service, les dates, le moment de la journée, l'employé et l'emplacement correspondent à la plage libérée. Les trois premiers de la file reçoivent un texto et un courriel avec un lien pour la réserver.
+
+- Le lien ouvre la page de réservation sur cette plage, à l'emplacement de la plage libérée.
+- L'étape des coordonnées se remplit avec le nom, le courriel et le téléphone de la demande. Le client peut toujours les modifier.
+- Quand le client réserve, il est retiré de la liste d'attente. Si la réservation exige un dépôt ou une carte, il n'est retiré qu'une fois le paiement réussi.
+- Un client qui ne réserve pas dans les 24 heures retourne dans la file pour la prochaine plage.
+- Chaque alerte contient un lien **Quitter la liste d’attente**.
+
+## La page Liste d'attente
+
+Les clients sont répartis dans trois onglets, chacun avec un compte.
+
+| Onglet | Qui s'y trouve |
+|---|---|
+| **En attente** | Les clients qui attendent une plage. Un client déjà avisé qui est retourné dans la file affiche **De retour dans la file · averti le** et la date |
+| **Avisé** | Les clients à qui une plage a été envoyée et qui n'ont pas encore réservé. La colonne **Heure proposée** montre la plage envoyée et le moment où ils retournent dans la file |
+| **Dates passées** | Les clients dont la dernière date souhaitée est passée |
+
+Cherchez par client ou par service, et filtrez par **Service**, **Personnel** et **Emplacement**. Cliquez sur **Réinitialiser** pour effacer les filtres. Cliquez sur **Comment ça marche** pour une courte explication dans un panneau latéral. L'icône des paramètres ouvre les **Paramètres de la liste d'attente**.
+
+### Actions
+
+| Action | Ce qu'elle fait |
+|---|---|
+| **Envoyer la prochaine plage** | Trouve la première plage libre qui correspond aux dates, au moment de la journée, à l'employé et à l'emplacement du client, et la lui envoie par texto et courriel. Si rien ne correspond encore, un message l'indique |
+| **Réserver pour le client** | Ouvre le formulaire de réservation du calendrier avec le client, le service, l'employé et l'emplacement déjà remplis, à la première date souhaitée qui n'est pas passée |
+| **Remettre en file** | Pour les clients avisés. Les remet dans la file pour la prochaine plage, par exemple quand quelqu'un d'autre a pris la plage |
+| **Retirer** | Retire le client de la liste d'attente après confirmation. Il ne reçoit plus d'alertes, mais peut se réinscrire depuis votre page de réservation |
+
+**Envoyer la prochaine plage** n'est plus offert une fois les dates du client passées.
+
+## Détails du client
+
+Cliquez sur une ligne pour ouvrir les détails du client dans un panneau :
+
+- Le service, l'employé et le statut
+- Pour les clients avisés, la plage proposée, la date d'envoi et le moment où ils retournent dans la file s'ils ne réservent pas
+- **Souhaite** : les dates, le moment de la journée, l'emplacement et la note du client
+- **Coordonnées** : téléphone et courriel, avec un lien **Profil** vers le dossier du client
+- **Historique** : l'inscription ou la mise à jour de la demande, chaque alerte (par texto, courriel ou les deux), les retours dans la file, la réservation et le retrait. Les actions du personnel indiquent qui les a faites
+
+Le bas du panneau offre **Retirer**, **Réserver pour le client** et **Envoyer la prochaine plage**.
+
+## Connexe
+
+- [Réservation en ligne](/fr-CA/taliup-hq/features/online-booking)
+- [Calendrier](/fr-CA/taliup-hq/features/calendar)
+- [Paramètres du calendrier](/fr-CA/taliup-hq/features/calendar-settings)
+- [Clients](/fr-CA/taliup-hq/features/clients)

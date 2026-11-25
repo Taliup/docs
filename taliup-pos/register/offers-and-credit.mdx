@@ -1,0 +1,96 @@
+---
+title: "Offers and client credit"
+sidebarTitle: "Offers and credit"
+description: "Apply marketing offers at checkout by code, barcode, or from the client, and take a client's referral credit off a sale before tax."
+keywords: ["offer", "offer code", "promo code", "marketing offer", "client credit", "referral credit", "discount", "checkout"]
+---
+
+Clients bring two kinds of value to checkout:
+
+- **Offers** from Marketing messages, used with a code.
+- **Client credit** earned through referrals or given by the business.
+
+Both come off the sale as a discount before tax. Both are set up in Taliup HQ. See [Marketing](/taliup-hq/features/marketing) and [Referrals](/taliup-hq/features/referrals).
+
+<Note>
+  Offers and client credit are checked with Taliup HQ, so the register needs a connection to use them.
+</Note>
+
+## Offers
+
+You need the **Marketing** feature and the **Apply Offers** permission. One offer per sale.
+
+### Apply an offer
+
+| Where | How |
+|---|---|
+| Discount sheet | **Options** → **Add Order Discounts**. Under **Have an offer code?**, type the code in **Offer code** and tap **Apply** |
+| Scan | Scan the barcode in the client's email or text while you build the order. Taliup POS shows **Offer scanned: [offer] applied** |
+| The client | Attach the client, tap the client on the cart, and open the **Offers** tab. Tap **Apply** on one of their offers |
+
+Taliup HQ checks the code first. If it can't be used, Taliup POS says why, for example **This offer has ended**, **This client already used this offer**, **This offer is for new clients only**, or the minimum spend.
+
+The **Offers** tab lists the client's personal codes and the offers from messages they were sent. Each one shows the campaign it came from (or **Personal code**), when it ends, and its minimum. The offer on the sale shows **Applied**.
+
+### How the offer comes off
+
+- A percentage on chosen services and products comes off those item lines.
+- Any other offer comes off the whole sale, before tax. The cart shows an **Offer** line with the offer's name and **before tax**. An amount off chosen items is capped at what those items come to.
+
+To take it off, tap **Remove** in the discount sheet or on the client's **Offers** tab, or delete the **Offer** line in the cart.
+
+### When an offer is removed
+
+Taliup POS takes the offer off and tells you why when:
+
+| Situation | Message |
+|---|---|
+| The sale drops under the offer's minimum | **[offer] removed: the sale is now under the [amount] minimum** |
+| None of the offer's items are left on the sale | **[offer] removed: none of its items are on the sale** |
+| You attach a different client | **Offer removed: it was checked for the previous client** |
+| Taliup HQ no longer accepts it at payment, for example the client used it on another sale since | **Offer removed before payment: [reason]** |
+
+To use a different offer, remove the one on the sale first.
+
+### Offers on appointments
+
+When a client booked online with an offer, the appointment keeps it. The offer comes off when you check out the appointment.
+
+### After the sale
+
+The offer use is recorded when the sale is paid. If you void or refund the sale, the use is given back. The receipt shows the discount under the offer's name.
+
+## Client credit
+
+Client credit appears when the business runs a referral program in Taliup HQ. You need the **Referrals** feature.
+
+<Steps>
+  <Step title="Attach the client">
+    Attach the client to the order. See [Attach from Register](/taliup-pos/clients/attach-from-register).
+  </Step>
+  <Step title="Open their credit">
+    Tap the client on the cart and open the **Credit** tab. It shows the **Client credit** balance and when some of it expires.
+  </Step>
+  <Step title="Use the credit">
+    Tap **Use [amount] of credit**. Taliup POS shows **[amount] of client credit taken off**.
+  </Step>
+  <Step title="Take payment">
+    The cart shows a **Client credit** line, **Referral credit, before tax**. Take payment as usual.
+  </Step>
+</Steps>
+
+- The amount is the client's balance, up to what the sale comes to before tax after its other discounts. Gift cards sold on the sale don't count.
+- To take it off, tap **Remove credit** on the **Credit** tab, or delete the **Client credit** line in the cart.
+- If you change the client, the credit comes off: **Client credit removed: the client changed**.
+- The credit is used only when the sale is paid. Saving the sale or discarding it costs the client nothing.
+- A partial refund gives back the refunded share of the credit. A void or full refund gives it all back.
+
+Receipts show the line as **Client credit**.
+
+## Related
+
+- [Marketing](/taliup-hq/features/marketing) · [Referrals](/taliup-hq/features/referrals)
+- [Attach from Register](/taliup-pos/clients/attach-from-register)
+- [Create and edit a client](/taliup-pos/clients/create-and-edit)
+- [Take payment](/taliup-pos/register/take-payment)
+- [Loyalty](/taliup-pos/register/loyalty)

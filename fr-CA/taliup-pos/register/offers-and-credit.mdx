@@ -1,0 +1,96 @@
+---
+title: "Offres et crédit client"
+sidebarTitle: "Offres et crédit"
+description: "Appliquer les offres marketing à la caisse par code, code-barres ou depuis le client, et déduire le crédit de recommandation d'un client d'une vente avant taxes."
+keywords: ["offre", "code promo", "offre marketing", "crédit client", "crédit de recommandation", "rabais", "caisse"]
+---
+
+Les clients apportent deux types de valeur à la caisse :
+
+- Les **offres** des messages Marketing, utilisées avec un code.
+- Le **crédit client** gagné par les recommandations ou donné par l'entreprise.
+
+Les deux sont déduits de la vente comme rabais avant taxes. Les deux se configurent dans Taliup HQ. Voir [Marketing](/fr-CA/taliup-hq/features/marketing) et [Parrainages](/fr-CA/taliup-hq/features/referrals).
+
+<Note>
+  Les offres et le crédit client sont vérifiés auprès de Taliup HQ : la caisse doit être connectée pour les utiliser.
+</Note>
+
+## Offres
+
+Il faut la fonction **Marketing** et la permission **Apply Offers**. Une offre par vente.
+
+### Appliquer une offre
+
+| Où | Comment |
+|---|---|
+| Feuille de rabais | **Options** → **Ajouter des réductions à la commande**. Sous **Vous avez un code promo?**, tapez le code dans **Code promo** et touchez **Appliquer** |
+| Balayage | Balayez le code-barres du courriel ou du texto du client pendant que vous montez la commande. Taliup POS affiche **Offre balayée : [offre] appliquée** |
+| Le client | Associez le client, touchez le client dans le panier et ouvrez l'onglet **Offres**. Touchez **Appliquer** sur l'une de ses offres |
+
+Taliup HQ vérifie d'abord le code. S'il ne peut pas être utilisé, Taliup POS indique pourquoi, par exemple **Cette offre est terminée.**, **Ce client a déjà utilisé cette offre.**, **Cette offre est réservée aux nouveaux clients.** ou l'achat minimum.
+
+L'onglet **Offres** liste les codes personnels du client et les offres des messages qu'il a reçus. Chacune indique la campagne d'où elle vient (ou **Code personnel**), sa date de fin et son minimum. L'offre appliquée à la vente affiche **Appliquée**.
+
+### Comment l'offre est déduite
+
+- Un pourcentage sur des services et produits choisis est déduit de ces lignes d'articles.
+- Toute autre offre est déduite de toute la vente, avant taxes. Le panier affiche une ligne **Offre** avec le nom de l'offre et **avant taxes**. Un montant sur des articles choisis est plafonné à ce que valent ces articles.
+
+Pour la retirer, touchez **Retirer** dans la feuille de rabais ou dans l'onglet **Offres** du client, ou supprimez la ligne **Offre** du panier.
+
+### Quand une offre est retirée
+
+Taliup POS retire l'offre et indique pourquoi quand :
+
+| Situation | Message |
+|---|---|
+| La vente passe sous le minimum de l'offre | **[offre] retirée : la vente est maintenant sous le minimum de [montant]** |
+| Aucun des articles de l'offre ne reste dans la vente | **[offre] retirée : aucun de ses articles n'est dans la vente** |
+| Vous associez un autre client | **Offre retirée : elle avait été vérifiée pour le client précédent** |
+| Taliup HQ ne l'accepte plus au paiement, par exemple si le client l'a utilisée sur une autre vente depuis | **Offre retirée avant le paiement : [raison]** |
+
+Pour utiliser une autre offre, retirez d'abord celle de la vente.
+
+### Offres sur les rendez-vous
+
+Quand un client a réservé en ligne avec une offre, le rendez-vous la garde. L'offre est déduite au règlement du rendez-vous.
+
+### Après la vente
+
+L'utilisation de l'offre est enregistrée quand la vente est payée. Si vous annulez ou remboursez la vente, l'utilisation est rendue. Le reçu affiche le rabais sous le nom de l'offre.
+
+## Crédit client
+
+Le crédit client s'affiche quand l'entreprise offre un programme de recommandation dans Taliup HQ. Il faut la fonction **Parrainages**.
+
+<Steps>
+  <Step title="Associer le client">
+    Associez le client à la commande. Voir [Associer un client depuis Caisse](/fr-CA/taliup-pos/clients/attach-from-register).
+  </Step>
+  <Step title="Ouvrir son crédit">
+    Touchez le client dans le panier et ouvrez l'onglet **Crédit**. Il affiche le solde **Crédit client** et quand une partie expire.
+  </Step>
+  <Step title="Utiliser le crédit">
+    Touchez **Utiliser [montant] de crédit**. Taliup POS affiche **[montant] de crédit client déduit**.
+  </Step>
+  <Step title="Encaisser">
+    Le panier affiche une ligne **Crédit client**, **Crédit de recommandation, avant taxes**. Encaissez comme d'habitude.
+  </Step>
+</Steps>
+
+- Le montant est le solde du client, jusqu'au total de la vente avant taxes après ses autres rabais. Les cartes-cadeaux vendues dans la vente ne comptent pas.
+- Pour le retirer, touchez **Retirer le crédit** dans l'onglet **Crédit**, ou supprimez la ligne **Crédit client** du panier.
+- Si vous changez de client, le crédit est retiré : **Crédit client retiré : le client a changé**.
+- Le crédit n'est utilisé que lorsque la vente est payée. Enregistrer ou abandonner la vente ne coûte rien au client.
+- Un remboursement partiel rend la part remboursée du crédit. Une annulation ou un remboursement complet rend tout le crédit.
+
+Les reçus affichent la ligne **Crédit client**.
+
+## Connexe
+
+- [Marketing](/fr-CA/taliup-hq/features/marketing) · [Parrainages](/fr-CA/taliup-hq/features/referrals)
+- [Associer un client depuis Caisse](/fr-CA/taliup-pos/clients/attach-from-register)
+- [Créer et modifier un client](/fr-CA/taliup-pos/clients/create-and-edit)
+- [Encaisser](/fr-CA/taliup-pos/register/take-payment)
+- [Fidélité](/fr-CA/taliup-pos/register/loyalty)

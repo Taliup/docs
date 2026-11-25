@@ -1,0 +1,99 @@
+---
+title: "Timesheets"
+sidebarTitle: "Timesheets"
+description: "See the hours staff clocked on Taliup POS, fix a missed clock-out, add a forgotten shift, and export the hours."
+keywords: ["timesheets", "clock in", "clock out", "shifts", "hours worked", "labour cost", "CSV export"]
+---
+
+Timesheets show the hours staff clock on Taliup POS. Use them to check hours, fix a missed clock-out, or add a shift someone forgot to clock. Pay runs use the same hours.
+
+## How to get here
+
+Sidebar → **Team** → **Timesheets**. You need the **Timesheets** feature and the **Manage Employees** permission.
+
+From an employee, **Timesheets** in the row menu or on their profile opens this page filtered to them.
+
+## Pick the dates and people
+
+The page opens on **This week**.
+
+- Use the arrows (**Earlier**, **Later**) to move by the same length of time.
+- Open the dates to pick **This week**, **Last week**, **This month**, **Last month**, or **Custom dates** (**From**, **To**, then **Show these dates**).
+- Pick an **Employee**, or **Everyone**. **Reset** clears the employee.
+
+The dates and employee stay in the page address, so you can bookmark or share the view.
+
+## Summary
+
+| Card | What it shows |
+|---|---|
+| **Hours worked** | Finished shifts only |
+| **Labour cost** | Hours × each person's hourly rate. Flags shifts with no hourly rate |
+| **Shifts** | How many shifts are in the dates |
+| **Clocked in now** | Who is still clocked in, or **Nobody** |
+
+Hours are exact to the minute, the same way pay runs count them.
+
+## Shifts tab
+
+**Shifts** lists every shift with the **Employee**, **Date**, **Clocked in – out** times, **Hours**, **Labour cost** and **Status**. A shift that ends after midnight shows **+1 day**. A shift still running shows **Clocked in**.
+
+Click a shift to open it.
+
+## Totals by employee tab
+
+**Totals by employee** shows each person's **Shifts**, **Hours**, **Hourly rate** and **Labour cost** for the dates, with a **Totals** row. Hours and cost count finished shifts. Shifts still running count once they end.
+
+Click **View shifts** to see one person's shifts.
+
+## Add a shift
+
+Use this for a shift someone forgot to clock.
+
+<Steps>
+  <Step title="Open the drawer">
+    Click **Add shift**.
+  </Step>
+  <Step title="Fill in the shift">
+    Choose the **Employee**. Set the **Date** and **Time** for **Clocked in** and **Clocked out**. For a shift past midnight, pick the next day for the clock-out.
+  </Step>
+  <Step title="Save">
+    The drawer previews the hours and labour cost. Click **Save shift**.
+  </Step>
+</Steps>
+
+The clock-out has to be after the clock-in.
+
+## Fix a shift
+
+Click the shift, change the times, then click **Save shift**.
+
+To remove it, click **Delete shift** and confirm. The shift is removed from timesheets and from pay runs that aren't finalized.
+
+## Clock someone out
+
+If someone forgot to clock out, their shift is still running.
+
+<Steps>
+  <Step title="Open the shift">
+    Click their shift. The drawer shows when they clocked in and how long so far.
+  </Step>
+  <Step title="Pick the clock-out time">
+    Choose **Now**, or **At another time** (for example, when they left) and set the date and time.
+  </Step>
+  <Step title="Clock out">
+    Click **Clock out**.
+  </Step>
+</Steps>
+
+You can also use **Clock out now** on the [employees list](/taliup-hq/features/employees), or **Clock out** on the employee's profile.
+
+## Export
+
+Click **Export CSV** to download the shifts for the dates and employee you picked. The file lists each shift with the employee, date, clock-in, clock-out, hours, hourly rate and labour cost.
+
+## Related
+
+- [Employees](/taliup-hq/features/employees)
+- [Staff schedule](/taliup-hq/features/staff-schedule)
+- [Pay runs and commissions](/taliup-hq/features/payroll)

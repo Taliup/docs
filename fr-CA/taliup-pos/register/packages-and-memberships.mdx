@@ -1,0 +1,148 @@
+---
+title: "Abonnements"
+sidebarTitle: "Abonnements"
+description: "Utiliser les visites de l'abonnement d'un client, appliquer le prix membre et gérer les formules d'abonnement et les membres dans Taliup POS."
+keywords: ["abonnements", "visites", "rabais de membre", "formules d'abonnement", "inscrire un membre", "prix membre"]
+---
+
+Un **abonnement** est une formule que le client paie à chaque période de facturation. Il peut inclure des services à chaque période et donner un rabais aux membres.
+
+Les formules se configurent dans Taliup HQ ou dans Taliup POS. Les abonnements sont facturés par les paiements récurrents de Taliup HQ. Voir [Abonnements dans Taliup HQ](/fr-CA/taliup-hq/features/memberships).
+
+## Comment y arriver
+
+| Où | Ce que vous y faites |
+|---|---|
+| Caisse, avec un client associé | Utiliser les visites incluses, prix membre |
+| Accueil → **Abonnements** | Gérer les formules et les membres |
+| **Clientèle** → un client → onglet **Abonnements** | Les abonnements d'un client |
+
+La tuile **Abonnements** s'affiche quand l'entreprise a la fonction. Elle exige une connexion à Taliup HQ.
+
+Chaque partie a sa propre permission de rôle. Un gestionnaire les règle dans Taliup HQ, sous [Rôles et permissions PDV](/fr-CA/taliup-hq/features/employees#rôles-et-permissions-pdv), dans le groupe **Abonnements**.
+
+| Permission | Ce qu'elle permet |
+|---|---|
+| **Voir les abonnements** | Ouvrir **Abonnements** et voir les abonnements d'un client |
+| **Inscrire des membres** | Inscrire un client à un abonnement |
+| **Gérer les plans d'abonnement** | Créer, modifier et supprimer des formules |
+| **Modifier les abonnements des clients** | Annuler un abonnement, renvoyer le lien de paiement |
+
+Sans **Voir les abonnements**, appuyer sur la tuile affiche un message de permission refusée.
+
+## Abonnements à la caisse
+
+Avec un client associé, appuyez sur le client et ouvrez l'onglet **Abonnements**. Chaque abonnement affiche sa formule, son statut, le prochain prélèvement (ou sa date de fin) et les services inclus sous forme de pastilles, comme *Coupe 0/1*.
+
+| Statut | Signification |
+|---|---|
+| **Actif** | Les avantages peuvent être utilisés |
+| **En attente de paiement** | Le client n'a pas encore fait le premier paiement |
+| **En pause** | Un paiement a échoué. Les avantages sont suspendus |
+| **Se termine le [date]** | Annulé. Les avantages durent jusqu'à la fin de la période payée |
+
+### Utiliser un service inclus
+
+Un abonnement actif couvre ses services inclus. Une ligne du panier dont le service est inclus dans l'abonnement affiche **Utiliser une visite de [formule] · 0 restante après** en dessous.
+
+<Steps>
+  <Step title="Utiliser la visite">
+    Appuyez sur **Utiliser une visite de …** sous la ligne. Vous pouvez aussi appuyer sur le client associé, ouvrir l'onglet **Abonnements** et appuyer sur **Utiliser une visite** à côté de la ligne.
+  </Step>
+  <Step title="Vérifier la ligne">
+    La ligne coûte maintenant 0 $ et affiche **Visite d'abonnement · [formule]**.
+  </Step>
+  <Step title="Prendre le paiement">
+    La visite est utilisée quand la vente est payée.
+  </Step>
+</Steps>
+
+Pour retirer la visite, appuyez sur le bouton de retrait de la ligne. La ligne reprend son propre prix et ses rabais.
+
+- Les visites incluses repartent à zéro à chaque période de facturation.
+- Changer ou retirer le client retire les visites.
+- Les annulations et remboursements redonnent la visite.
+
+Les reçus et les détails des commandes passées affichent **Visite d'abonnement : [formule]** sur la ligne.
+
+### À l'encaissement d'un rendez-vous
+
+Quand vous encaissez un rendez-vous depuis le Calendrier, Taliup POS couvre la ligne du service pour vous :
+
+1. Si une visite a déjà été utilisée pour le rendez-vous dans le calendrier, cette visite couvre la ligne.
+2. Sinon, une visite de l'abonnement du client qui inclut le service.
+
+Cela fonctionne comme appuyer sur **Utiliser une visite** : vous pouvez encore la retirer. Voir [Rendez-vous](/fr-CA/taliup-pos/calendar/appointments).
+
+### Prix membre
+
+Un membre actif obtient le rabais de sa formule sur les lignes de la vente, avant taxes. Les services reçoivent le pourcentage sur les services. Les produits reçoivent le pourcentage sur les produits. Quand le client a plus d'un abonnement actif, le plus grand rabais s'applique.
+
+L'onglet **Abonnements** affiche **Rabais de membre** avec les pourcentages, comme *10 % de rabais sur les services · 5 % de rabais sur les produits*. Désactivez l'interrupteur pour retirer le rabais de cette vente. Il se réactive pour le client suivant.
+
+Le rabais de membre ne s'applique pas aux articles personnalisés, aux cartes-cadeaux ni aux lignes couvertes par une visite.
+
+## Section Abonnements
+
+Accueil → **Abonnements**. La section a deux onglets. Sur un comptoir, les détails s'affichent à côté de la liste. En mode portrait, ils s'ouvrent dans une fiche. Tirez vers le bas pour actualiser.
+
+| Onglet | Ce qu'il liste |
+|---|---|
+| **Formules** | Vos formules, avec le prix par période de facturation et le nombre de membres de chacune |
+| **Membres** | Tous les inscrits. Recherchez par client. Le filtre choisit un statut (**Actif**, **En attente de paiement**, **En pause**, **Terminé** ou **Tous**) et une formule |
+
+### Créer ou modifier une formule
+
+Exige **Gérer les plans d'abonnement**. Dans l'onglet **Formules**, appuyez sur **Nouvelle formule**, ou sur une formule pour la modifier.
+
+| Champ | Ce qu'il fait |
+|---|---|
+| **Nom** et **Description (facultatif)** | Comment la formule s'affiche |
+| **Prix avant taxes** | Ce que le membre paie à chaque période, avant taxes |
+| **Facturation** | La fréquence des prélèvements, comme chaque mois |
+| **Inclus à chaque période de facturation** | Les services et visites inclus à chaque période |
+| **Rabais sur les services (%)** et **Rabais sur les produits (%)** | Le rabais de membre |
+| **Taxes** | Les taxes cochées sont facturées sur chaque paiement |
+| **Offerte aux nouveaux membres** | Désactivez pour arrêter les nouvelles inscriptions. La formule affiche **Non offerte** |
+
+**Supprimer** retire une formule. Les membres gardent leur abonnement jusqu'à sa fin. Personne d'autre ne pourra s'y inscrire.
+
+### Inscrire un client
+
+Exige **Inscrire des membres**. Le client paie par un lien : vous l'inscrivez depuis le client, pas sur une vente.
+
+<Steps>
+  <Step title="Commencer l'inscription">
+    Dans l'onglet **Membres**, appuyez sur **Inscrire un membre** et **Choisir un client**. Ou ouvrez l'onglet **Abonnements** du client et appuyez sur **Inscrire à un abonnement**.
+  </Step>
+  <Step title="Choisir la formule">
+    **Inscrire à un abonnement** s'ouvre : *Pour [client] · paiement par un lien*. Appuyez sur une formule.
+  </Step>
+  <Step title="Laisser le client payer">
+    **Balayer pour payer** affiche un code QR. Demandez au client de le balayer pour payer et commencer l'abonnement. Si le client a un courriel, Taliup POS affiche **Le lien a aussi été envoyé par courriel à [courriel]**.
+  </Step>
+</Steps>
+
+L'abonnement affiche **En attente de paiement** jusqu'à ce que le premier paiement soit accepté.
+
+### Détails du membre
+
+Appuyez sur un membre pour l'ouvrir. **Aperçu** affiche la formule, les visites **Inclus cette période**, le **Rabais membre** et la **Facturation** : **Membre depuis**, **Paiements effectués**, **Dernier paiement**, **Prochain prélèvement** ou **Se termine**, et la **Carte au dossier**. Quand le dernier paiement a échoué, il affiche **Le dernier paiement n'est pas passé**. **Historique** liste l'**Historique des visites**, avec l'endroit où chaque visite a été utilisée : **Rendez-vous**, **Caisse**, **Facture** ou **Terminal virtuel**.
+
+Avec **Modifier les abonnements des clients** :
+
+| Action | Ce qu'elle fait |
+|---|---|
+| **Renvoyer le lien de paiement** | Pour un membre en attente de paiement. Affiche de nouveau le code QR, et envoie le lien par courriel si le client a un courriel |
+| **Annuler l'abonnement** | La facturation s'arrête maintenant. Une période déjà payée se poursuit jusqu'à sa fin, puis l'abonnement prend fin. Le client reçoit un courriel |
+
+## Fiche du client
+
+Dans **Clientèle**, la fiche d'un client a un onglet **Abonnements** quand vous avez la permission de le voir. Il liste les abonnements du client, avec les mêmes actions que les sections ci-dessus.
+
+## Connexe
+
+- [Abonnements dans Taliup HQ](/fr-CA/taliup-hq/features/memberships)
+- [Menu Options](/fr-CA/taliup-pos/register/options)
+- [Associer depuis Caisse](/fr-CA/taliup-pos/clients/attach-from-register)
+- [Rendez-vous](/fr-CA/taliup-pos/calendar/appointments)

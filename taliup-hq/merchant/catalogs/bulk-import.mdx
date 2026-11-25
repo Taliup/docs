@@ -5,30 +5,30 @@ description: "Load a merchant's whole product list at once from the Taliup Excel
 icon: "file-import"
 ---
 
-**Bulk Upload** loads a merchant's product list from a spreadsheet instead of adding items one at a time. Download the Taliup template, fill it in, upload it.
+**Import products** loads a merchant's product list from a spreadsheet instead of adding items one at a time. Download the Taliup template, fill it in, upload it.
 
 ## How to get here
 
-**Catalogs** (or **Menus**) → **Products** (or **Items**) → **Bulk Upload**.
+In the side menu, open **Catalog** → **Products**, then click **Import**. If the catalog has no products yet, click **Import a spreadsheet** instead. You need the **Manage Catalogs** permission.
 
-<Frame caption="The Bulk Upload page with the template download, the file picker, and the Submit button.">
-  ![Bulk Upload Your Products page showing a Download Template button, an Upload File control and a Submit button](/images/taliup-hq/catalogs/bulk-upload.png)
+<Frame caption="The Import products page: download the template, then drop or choose your file and click Import products.">
+  ![Import products page with the subtitle 'Add or update many products at once from a spreadsheet', step 1 Download the template with a Download template button, and step 2 Upload your file with a drop zone reading 'Drop your file here, or choose a file' and an Import products button](/images/taliup-hq/catalogs/bulk-upload.png)
 </Frame>
 
 ## Import products
 
 <Steps>
   <Step title="Download the template">
-    Click **Download Template**. The file is an Excel workbook named `BulkUploadTemplate.xlsx`.
+    Click **Download template**. The file is an Excel workbook named `BulkUpload_Template.xlsx`.
   </Step>
   <Step title="Fill in the sheets">
     Complete **Attributes** and **Tags** first if you plan to reference them, then **Products**. Column details are below.
   </Step>
   <Step title="Upload the file">
-    Click **Upload File** and choose your completed workbook. The file name appears once it is selected.
+    Under **Upload your file**, drop your completed workbook on the box, or click **choose a file**. Excel files only (`.xlsx` or `.xls`). The file name appears once it is selected.
   </Step>
-  <Step title="Submit">
-    Click **Submit**. The import runs immediately and you land back on the products list with a confirmation.
+  <Step title="Import">
+    Click **Import products**. The import runs immediately and you land back on the products list with a confirmation.
   </Step>
 </Steps>
 
@@ -104,9 +104,9 @@ This is the way to add photos to a catalog you already built: export, paste imag
 
 ## Export the catalog
 
-From the products list, click **Export Products**. The export is prepared in the background and a download link appears when it is ready — you can leave the page and come back.
+From the products list, click **Export**. The spreadsheet is prepared in the background, and you get a notification when it is ready to download. You can leave the page in the meantime.
 
-**Export Attributes** produces a separate CSV of option groups and their values.
+To export option groups and their values, open **Catalog** → **Attributes** and click **Export**. Tick the attributes you want, or **Select all**, then click **Download CSV**. The file is ready to fill in and use with the product import.
 
 ## If the import fails
 
